@@ -4,6 +4,8 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'ZimaDocs',
@@ -24,6 +26,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/IceWhaleTech/ZimaDocs/edit/main/',
+          remarkPlugins: [simplePlantUML],
         },
         // blog: {
         //   showReadingTime: true,
@@ -54,6 +57,7 @@ const config = {
         path: 'zimaboard',
         routeBasePath: 'zimaboard',
         sidebarPath: require.resolve('./sidebarsZimaBoard.js'),
+        remarkPlugins: [simplePlantUML],
         editUrl: 'https://github.com/IceWhaleTech/ZimaDocs/edit/main/zimaboard/',
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
@@ -66,6 +70,7 @@ const config = {
         path: 'casaos',
         routeBasePath: 'casaos',
         sidebarPath: require.resolve('./sidebarsCasaOS.js'),
+        remarkPlugins: [simplePlantUML],
         editUrl: 'https://github.com/IceWhaleTech/ZimaDocs/edit/main/casaos/',
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
