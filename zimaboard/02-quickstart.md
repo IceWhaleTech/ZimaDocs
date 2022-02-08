@@ -2,17 +2,28 @@
 sidebar_label: Quick Start
 title: Quick Start | ZimaBoard
 ---
+import BrowserWindow from '@site/src/components/BrowserWindow';
 
 # Quick Start
 
 ## Preparation
+
+<p><img
+  src={require('./images/quickstart-preparation.jpg').default}
+  alt="Preparation"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
 
 - Required
   - ZimaBoard 
   - 12V/3A Power Adapter
   - Cat.5E or higher network cable
 - Recommended
-  - SATA Cable for ZimaBoard
+  - SATA Cable for ZimaBoard (Inside the ZimaBoard package)
   - 2.5" SATA SSD or HDD
 
 :::tip
@@ -27,9 +38,19 @@ Of course, if you find it more convenient to plug in your monitor, you can also 
 
 ### Connect Ethernet
 
+<p><img
+  src={require('./images/quickstart-eth-connect.jpg').default}
+  alt="Ethernet Connection"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
+
 It is recommended to connect the ZimaBoard to your router or ISP modem through a network cable, refer to this picture
 
-<img
+<p><img
   src={require('./images/eth-connection.jpg').default}
   alt="Ethernet Connection Guide"
   style={{
@@ -37,8 +58,7 @@ It is recommended to connect the ZimaBoard to your router or ISP modem through a
     display: 'block',
     margin: 'auto'
     }}
-/>
-
+/></p>
 
 :::info
 
@@ -52,7 +72,7 @@ In short, just try to connect to the top router!
 
 **For example, if your network looks like this:**
 
-<img
+<p><img
   src={require('./images/network-case-1.png').default}
   alt="Network Case 1"
   style={{
@@ -60,7 +80,7 @@ In short, just try to connect to the top router!
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
 The routers are connected as shown in the diagram. Both router A and router B are connected to different devices that need to be networked, and you want them both to be connected to the ZimaBoard, connect the ZimaBoard to router A.
 
@@ -70,7 +90,7 @@ But if all your devices that need to be networked are actually connected to rout
 
 **The same goes for the following network situation:**
 
-<img
+<p><img
   src={require('./images/network-case-2.png').default}
   alt="Network Case 2"
   style={{
@@ -78,7 +98,7 @@ But if all your devices that need to be networked are actually connected to rout
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
 The routers are connected as shown in the figure. Routers A, B, C and D are all connected to different Internet devices, and you want them all to connect to the ZimaBoard, connect the ZimaBoard to router A.
 
@@ -90,21 +110,85 @@ If you only want the devices under router B to access the ZimaBoard, then just c
 
 ### Connect HDD/SSD Drive
 
+:::tip 
+This step is optional, but it is recommended that you add an external drive to use CasaOS.
+:::
+
+<p><img
+  src={require('./images/quickstart-sata-connect.jpg').default}
+  alt="SATA Connection"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
 
 
+### Power On 
 
-### Power on
+Plug in the power cable and the power indicator flashes! (ง ͡ʘ ͜ʖ ͡ʘ)ง
 
-Plug in the power cable and the network indicator flashes! (ง ͡ʘ ͜ʖ ͡ʘ)ง
-
-![Power On](./images/quickstart-power-on.jpg)
+<p><img
+  src={require('./images/quickstart-power-connect.jpg').default}
+  alt="Power Connection"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
 
 :::info
 
-The network indicator blinks normally and the system is powered on normally.
 Please be patient for about 10-15 seconds! 
 
 :::
 
 
-The system has started, next step!
+## Setting Up CasaOS
+
+:::tip
+Make sure your computer is connected to the same router as the ZimaBoard
+:::
+
+### Open CasaOS
+
+Open a new tab in your browser and enter `http://casaos.local`
+
+<BrowserWindow minHeight={100} url="http://casaos.local">
+
+![CasaOS Welcome](./images/casaos-welcome.jpg)
+
+</BrowserWindow>
+
+### Create Your Account
+
+<BrowserWindow url="http://casaos.local">
+
+![CasaOS Create Account](./images/casaos-create-account.jpg)
+
+</BrowserWindow>
+
+### Update CasaOS
+
+<BrowserWindow url="http://casaos.local">
+
+![CasaOS Update](./images/casaos-update.jpg)
+
+</BrowserWindow>
+
+
+### Have Fun!
+
+:::tip
+
+**Default account for Pre-installed Apps**
+
+Username:`casaos`
+
+Password:`casaos`
+
+:::
+
+![CasaOS Main](./images/casaos-main.jpg)
