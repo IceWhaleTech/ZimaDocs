@@ -3,9 +3,9 @@ sidebar_label: Introduction
 title: Introduction | ZimaBoard
 ---
 
-# ZimaBoard Introduction
+# Introduction
 
-<img
+<p><img
   src={require('./images/zimaboard.png').default}
   alt="ZimaBoard"
   style={{
@@ -13,7 +13,7 @@ title: Introduction | ZimaBoard
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
 
 ## What is ZimaBoard
@@ -25,7 +25,7 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
 
 ## Applications
 
-<img
+<p><img
   src={require('./images/applications-1.png').default}
   alt="Applications-1"
   style={{
@@ -33,9 +33,9 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
-<img
+<p><img
   src={require('./images/applications-2.png').default}
   alt="Applications-2"
   style={{
@@ -43,9 +43,9 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
-<img
+<p><img
   src={require('./images/applications-3.png').default}
   alt="Applications-3"
   style={{
@@ -53,9 +53,9 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
-<img
+<p><img
   src={require('./images/applications-4.png').default}
   alt="Applications-4"
   style={{
@@ -63,9 +63,9 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
-<img
+<p><img
   src={require('./images/applications-5.png').default}
   alt="Applications-5"
   style={{
@@ -73,9 +73,9 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
-<img
+<p><img
   src={require('./images/applications-6.png').default}
   alt="Applications-6"
   style={{
@@ -83,12 +83,12 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
 
 ## Specifications
 
-<img
+<p><img
   src={require('./images/specifications.png').default}
   alt="Specifications"
   style={{
@@ -96,12 +96,12 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
 
 ## Interfaces
 
-<img
+<p><img
   src={require('./images/interfaces.png').default}
   alt="Interfaces"
   style={{
@@ -109,12 +109,12 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
 
 
 ## Pinouts
 
-<img
+<p><img
   src={require('./images/pinouts.png').default}
   alt="Pinouts"
   style={{
@@ -122,4 +122,4 @@ It has both the expandability of an x86 single-board computer (SBC), and the app
     display: 'block',
     margin: 'auto'
     }}
-/>
+/></p>
