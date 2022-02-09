@@ -3,6 +3,8 @@ sidebar_label: Manage Photos
 title: Manage Photos with PhotoPrism | ZimaBoard
 ---
 
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
 # Manage Your Photos with PhotoPrism
 
 ## Open PhotoPrism
@@ -11,45 +13,25 @@ Open your web browser and open **`http://casaos.local`**
 
 (If you can't open it in Windows, try **`http://casaos`**)
 
-Once opened, you will see the CasaOs login screen: !
+<BrowserWindow url="http://casaos.local">
 
-<p><img
-  src={require('./images/watching-casaos-home-page.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
+![CasaOS Main](./images/casaos-main.jpg)
 
-<p><img
-  src={require('./images/watching-casaos-create-account.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
+</BrowserWindow>
 
-<p><img
-  src={require('./images/watching-casaos-home.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
+We find **PhotoPrism** in **Apps** and click on its logo, and it opens
 
-Create your account and password and click on **"Sign In"** to log in.
-Then we are in the CasaOs Dashboard.
-We find **PhotoPrism** in My Apps and click on its logo, and it opens
+### Login to PhotoPrism ###
 
-### Sign in to PhotoPrism ###
+:::tip
 
-Enter the username **`casaos`** and password **`casaos`**, and click **Login**
+**Default account for Pre-installed Apps**
+
+Username:`casaos`
+
+Password:`casaos`
+
+:::
 
 <p><img
   src={require('./images/photo-photoprism-login-page.png').default}
@@ -61,56 +43,7 @@ Enter the username **`casaos`** and password **`casaos`**, and click **Login**
     }}
 /></p>
 
-After opening PhotoPrism you will see a public album page, `by default there is no public album, so the page is empty.`
-
-<p><img
-  src={require('./images/photo-creat-albums.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
-
-
 ## Using PhotoPrism
-
-### Create Albums
-
-<p><img
-  src={require('./images/photo-create-albums2.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
-
-### Upload Photos 
-
-<p><img
-  src={require('./images/photo-upload2.jpg').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
-
-### Update index
-
-<p><img
-  src={require('./images/photo-upload-photos.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
 
 ### View Photos
 
@@ -147,5 +80,43 @@ After opening PhotoPrism you will see a public album page, `by default there is 
     margin: 'auto'
     }}
 /></p>
+
+### Create Albums
+
+<p><img
+  src={require('./images/photo-create-albums2.png').default}
+  alt="Network Case 2"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
+
+### Upload Photos 
+
+<p><img
+  src={require('./images/photo-upload2.jpg').default}
+  alt="Network Case 2"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
+
+#### Update index
+
+<p><img
+  src={require('./images/photo-upload-photos.png').default}
+  alt="Network Case 2"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
+
+
 
 See this link for more information-**https://docs.photoprism.app/**
