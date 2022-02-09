@@ -35,7 +35,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/watching-jellfin-login.jpeg').default}
-  alt="Network Case 2"
+  alt="jellfin login"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -49,7 +49,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/watching-jellfin-library.jpeg').default}
-  alt="Network Case 2"
+  alt="move library 2"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -61,7 +61,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/watching-move-details.jpeg').default}
-  alt="Network Case 2"
+  alt="move details"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -73,7 +73,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/watching-move-play.jpeg').default}
-  alt="Network Case 2"
+  alt="play move"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -89,7 +89,7 @@ Emby offers a lot of ways to watch movies to choose from, you can watch them on 
 
 <p><img
   src={require('./images/watching-move-jellfin-phone.png').default}
-  alt="Network Case 2"
+  alt="watching move jellfin on phone"
   style={{
     maxWidth: '50%',
     display: 'block',
@@ -101,7 +101,7 @@ Emby offers a lot of ways to watch movies to choose from, you can watch them on 
 
 <p><img
   src={require('./images/watching-oculus-browser.jpeg').default}
-  alt="Network Case 2"
+  alt="watching oculus browser"
   style={{
     maxWidth: '80%',
     display: 'block',

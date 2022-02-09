@@ -35,7 +35,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-photoprism-login-page.png').default}
-  alt="Network Case 2"
+  alt=" photoprism login "
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -49,7 +49,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-view-photos.png').default}
-  alt="Network Case 2"
+  alt="in photoprism  view photo "
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -61,7 +61,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-view-photo-information.png').default}
-  alt="Network Case 2"
+  alt="photo information"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -73,7 +73,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-editing-photo.png').default}
-  alt="Network Case 2"
+  alt="editing photo"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -85,7 +85,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-create-albums2.png').default}
-  alt="Network Case 2"
+  alt="create albums"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -97,7 +97,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-upload2.jpg').default}
-  alt="Network Case 2"
+  alt="photo upload"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -109,7 +109,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/photo-upload-photos.png').default}
-  alt="Network Case 2"
+  alt="photo upload"
   style={{
     maxWidth: '80%',
     display: 'block',

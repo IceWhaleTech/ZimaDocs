@@ -23,7 +23,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/finder-go.png').default}
-  alt="Network Case 2"
+  alt="finder-go"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -35,7 +35,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/mac-connect-to-casaos-mac.png').default}
-  alt="Network Case 2"
+  alt="mac connect to casaos"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -43,11 +43,11 @@ All devices on the local network can use these shared folders as "**guest**".
     }}
 /></p>
 
-3. Select the connection identity, here we directly select **"Guest"**, then click **"Connect"**
+1. Select the connection identity, here we directly select **"Guest"**, then click **"Connect"**
 
 <p><img
   src={require('./images/mac-guest.png').default}
-  alt="Network Case 2"
+  alt="mac guest"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -59,7 +59,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/connect-to-data.png').default}
-  alt="Network Case 2"
+  alt="connect to data"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -71,7 +71,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/see-data-file.png').default}
-  alt="Network Case 2"
+  alt="see data file"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -85,7 +85,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/win-file-manager.png').default}
-  alt="Network Case 2"
+  alt="win file manager"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -97,7 +97,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/win-see-data.png').default}
-  alt="Network Case 2"
+  alt="win see data"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -111,7 +111,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/search-files-ios.jpg').default}
-  alt="Network Case 2"
+  alt="search files ios"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -123,7 +123,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/connect-to-server-ios.png').default}
-  alt="Network Case 2"
+  alt="connect to server ios"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -135,7 +135,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/connect-server-ios.jpg').default}
-  alt="Network Case 2"
+  alt="connect server ios"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -147,7 +147,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <img
   src={require('./images/connect-to-server-guest-ios.jpg').default}
-  alt="Network Case 2"
+  alt="connect to server guest ios"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -159,7 +159,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/see-data.jpg').default}
-  alt="Network Case 2"
+  alt="see data"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -169,7 +169,7 @@ All devices on the local network can use these shared folders as "**guest**".
 
 <p><img
   src={require('./images/see-data-file-ios.jpg').default}
-  alt="Network Case 2"
+  alt="see data file ios"
   style={{
     maxWidth: '80%',
     display: 'block',
@@ -191,7 +191,7 @@ See it all in one picture:
 
 <p><img
   src={require('./images/android-get.gif').default}
-  alt="Network Case 2"
+  alt="android-get"
   style={{
     maxWidth: '80%',
     display: 'block',
