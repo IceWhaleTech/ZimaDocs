@@ -48,7 +48,7 @@ Password:`casaos`
 ### Browse the Library
 
 <p><img
-  src={require('./images/jellyfin-home.png').default}
+  src={require('./images/watching-jellfin-library.jpeg').default}
   alt="Network Case 2"
   style={{
     maxWidth: '80%',
@@ -60,7 +60,7 @@ Password:`casaos`
 ### Movie Information
 
 <p><img
-  src={require('./images/watching-move-details.png').default}
+  src={require('./images/watching-move-details.jpeg').default}
   alt="Network Case 2"
   style={{
     maxWidth: '80%',
@@ -72,7 +72,7 @@ Password:`casaos`
 ### Playback
 
 <p><img
-  src={require('./images/watching-move-play.png').default}
+  src={require('./images/watching-move-play.jpeg').default}
   alt="Network Case 2"
   style={{
     maxWidth: '80%',
