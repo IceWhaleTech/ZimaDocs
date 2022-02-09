@@ -73,6 +73,7 @@ After opening PhotoPrism you will see a public album page, `by default there is 
     }}
 /></p>
 
+
 ## Using PhotoPrism
 
 ### Create Albums
@@ -98,6 +99,8 @@ After opening PhotoPrism you will see a public album page, `by default there is 
     margin: 'auto'
     }}
 /></p>
+
+### Update index
 
 <p><img
   src={require('./images/photo-upload-photos.png').default}
