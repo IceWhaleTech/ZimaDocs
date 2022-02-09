@@ -1,9 +1,9 @@
 ---
-sidebar_label: Accessing Shared Folders
-title: Accessing Shared Folders| ZimaBoard
+sidebar_label: Shared Folders
+title: Accessing Shared Folders | ZimaBoard
 ---
 
-# Accessing Shared Folders Computers and Phones
+# Accessing Shared Folders
 
 ## Brief
 
@@ -13,11 +13,11 @@ So, once ZimaBoard is started, the shared folders created by Samba will be autom
 
 Of course, all the pre-made scripts are simply configuring some shared areas in the ZimaBoard file system. If you need advanced requirements, you can check Samba extended configuration information
 
-## Accessing from Computers
+:::tip
+All devices on the local network can use these shared folders as "**guest**".
+:::
 
-### macOS Manual Accessing
-
-### Auto-discovery of LAN disks
+## Accessing from macOS
 
 1. In the Finder menu, click Go > Connect to Server...
 
@@ -31,7 +31,7 @@ Of course, all the pre-made scripts are simply configuring some shared areas in 
     }}
 /></p>
 
-2. Type smb://casaos.local and click on **"Connect"**
+2. Type `smb://casaos.local` and click on **"Connect"**
 
 <p><img
   src={require('./images/mac-connect-to-casaos-mac.png').default}
@@ -79,7 +79,7 @@ Of course, all the pre-made scripts are simply configuring some shared areas in 
     }}
 /></p>
 
-### Windows Accessing
+## Accessing from Windows
 
 1. Open File Manager and type **`\\casaos`** in the address bar
 
@@ -105,13 +105,7 @@ Of course, all the pre-made scripts are simply configuring some shared areas in 
     }}
 /></p>
 
-:::tip
-All devices on the local network can use these shared folders as **"guest".**
-:::
-
-## Accessing from Phones
-
-### iOS Accessing
+## Accessing from iOS
 
 1. Open the Files app that comes with iOS
 
@@ -183,7 +177,7 @@ All devices on the local network can use these shared folders as **"guest".**
     }}
 /></p>
 
-## Android Accessing
+## Accessing from Android
 
 In Android phones, we tested several file managers (ES File Explorer, Xiaomi File Explorer, File Geek, CX File Manager, etc.).
 
