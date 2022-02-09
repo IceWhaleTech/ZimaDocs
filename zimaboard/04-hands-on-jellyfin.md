@@ -1,6 +1,6 @@
 ---
-title: Watching Videos Anywhere
-sidebar_position: 3
+sidebar_label: Watching Videos
+title: Watching Videos Anywhere with Jellfin | ZimaBoard
 ---
 
 # Watching Videos Anywhere with Jellyfin
