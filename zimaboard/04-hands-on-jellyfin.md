@@ -1,6 +1,6 @@
 ---
 sidebar_label: Watching Videos
-title: Watching Videos Anywhere with Jellfin | ZimaBoard
+title: Watching Videos Anywhere with Jellyfin | ZimaBoard
 ---
 
 import BrowserWindow from '@site/src/components/BrowserWindow';
@@ -21,7 +21,7 @@ Open your web browser and open **`http://casaos.local`**
 
 We find **Jellyfin** in **Apps** and click on its logo, and it opens
 
-## Login to  Jellyfin
+## Login to Jellyfin
 
 :::tip
 
@@ -35,7 +35,7 @@ Password:`casaos`
 
 <p><img
   src={require('./images/watching-jellfin-login.jpeg').default}
-  alt="Network Case 2"
+  alt="Jellyfin Login"
   style={{
     maxWidth: '80%',
     display: 'block',
