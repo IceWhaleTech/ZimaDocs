@@ -3,6 +3,8 @@ sidebar_label: Watching Videos
 title: Watching Videos Anywhere with Jellfin | ZimaBoard
 ---
 
+import BrowserWindow from '@site/src/components/BrowserWindow';
+
 # Watching Videos Anywhere with Jellyfin
 
 ## Open Jellyfin
@@ -11,47 +13,25 @@ Open your web browser and open **`http://casaos.local`**
 
 (If you can't open it in Windows, try **`http://casaos`**)
 
-Once opened, you will see the CasaOs login screen: !
+<BrowserWindow url="http://casaos.local">
 
-<p><img
-  src={require('./images/watching-casaos-home-page.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
+![CasaOS Main](./images/casaos-main.jpg)
 
-<p><img
-  src={require('./images/watching-casaos-create-account.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
+</BrowserWindow>
 
-<p><img
-  src={require('./images/watching-casaos-home.png').default}
-  alt="Network Case 2"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
-
-Create your account and password and click on **"Sign In"** to log in.
-Then we are in the CasaOs Dashboard.
-We find **Jellyfin** in **My Apps** and click on its logo, and it opens
+We find **Jellyfin** in **Apps** and click on its logo, and it opens
 
 ## Login to  Jellyfin
 
-Once inside **Jellyfin**, we can see the user selection screen
-Select the casaos account, enter the password casaos
- and click Login
+:::tip
+
+**Default account for Pre-installed Apps**
+
+Username:`casaos`
+
+Password:`casaos`
+
+:::
 
 <p><img
   src={require('./images/watching-jellfin-login.jpeg').default}
@@ -63,8 +43,9 @@ Select the casaos account, enter the password casaos
     }}
 /></p>
 
+## Watch Videos with Jellyfin!
 
-Once you have logged in, we can browse the library
+### Browse the Library
 
 <p><img
   src={require('./images/jellyfin-home.png').default}
@@ -76,9 +57,7 @@ Once you have logged in, we can browse the library
     }}
 /></p>
 
-## Watch Videos with Jellyfin!
-
-Movie Information:
+### Movie Information
 
 <p><img
   src={require('./images/watching-move-details.png').default}
@@ -90,7 +69,7 @@ Movie Information:
     }}
 /></p>
 
-Playback Page:
+### Playback
 
 <p><img
   src={require('./images/watching-move-play.png').default}
@@ -106,7 +85,7 @@ Playback Page:
 
 Emby offers a lot of ways to watch movies to choose from, you can watch them on your computer, cell phone, TV, game console, or even on VR.
 
-**Watch videos on your phone**
+### Watch Videos on Your Phone
 
 <p><img
   src={require('./images/watching-move-jellfin-phone.png').default}
@@ -118,7 +97,7 @@ Emby offers a lot of ways to watch movies to choose from, you can watch them on 
     }}
 /></p>
 
-Watch videos with the browser in Oculus Quest 2
+### Watch Videos in Oculus Quest 2
 
 <p><img
   src={require('./images/watching-oculus-browser.jpeg').default}
