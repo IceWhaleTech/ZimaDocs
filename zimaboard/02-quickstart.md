@@ -191,4 +191,8 @@ Password:`casaos`
 
 :::
 
+<BrowserWindow url="http://casaos.local">
+
 ![CasaOS Main](./images/casaos-main.jpg)
+
+</BrowserWindow>
