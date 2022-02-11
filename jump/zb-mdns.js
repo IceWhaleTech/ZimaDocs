@@ -6,7 +6,7 @@ export class Redirect extends Component {
     this.state = { ...props };
   }
   componentWillMount(){
-    location.href="/";
+    location.href="/zimaboard/troubleshooting";
   }
   render(){
     return (<section>Jumping</section>);
