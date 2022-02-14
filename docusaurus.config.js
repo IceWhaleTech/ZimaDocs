@@ -97,7 +97,7 @@ const config = {
           // },
           {
             type: 'doc',
-            docId: 'get-started/intro',
+            docId: 'intro',
             docsPluginId: 'zimaboard',
             position: 'left',
             label: 'ZimaBoard',
