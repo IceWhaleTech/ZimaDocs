@@ -1,42 +1,11 @@
 ---
-sidebar_label: Quick Start
-title: Quick Start | ZimaBoard
+sidebar_label: Wiring and Power On
+title: Wiring and Power On | Get Started | ZimaBoard
 ---
-import BrowserWindow from '@site/src/components/BrowserWindow';
 
-# Quick Start
+# Wiring and Power On
 
-## Preparation
-
-<p><img
-  src={require('./images/quickstart-preparation.jpg').default}
-  alt="Preparation"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
-
-- Required
-  - ZimaBoard 
-  - 12V/3A Power Adapter
-  - Cat.5E or higher network cable
-- Recommended
-  - SATA Cable for ZimaBoard (Inside the ZimaBoard package)
-  - 2.5" SATA SSD or HDD
-
-:::tip
-
-You don't need to connect your mouse and keyboard to the ZimaBoard, you can access all the services on the ZimaBoard directly through the network after connecting cables.
-
-Of course, if you find it more convenient to plug in your monitor, you can also use a miniDP to DP or HDMI cable to connect your monitor, and connect your mouse and keyboard.
-
-:::
-
-## Wiring and Powering Up
-
-### Connect Ethernet
+## Connect Ethernet
 
 <p><img
   src={require('./images/quickstart-eth-connect.jpg').default}
@@ -108,7 +77,7 @@ If you only want the devices under router B to access the ZimaBoard, then just c
 
 :::
 
-### Connect HDD/SSD Drive
+## Connect HDD/SSD Drive
 
 :::tip 
 This step is optional, but it is recommended that you add an external drive to use CasaOS.
@@ -125,7 +94,7 @@ This step is optional, but it is recommended that you add an external drive to u
 /></p>
 
 
-### Power On 
+## Power On
 
 Plug in the power cable and the power indicator flashes! (ง ͡ʘ ͜ʖ ͡ʘ)ง
 
@@ -144,55 +113,3 @@ Plug in the power cable and the power indicator flashes! (ง ͡ʘ ͜ʖ ͡ʘ)ง
 Please be patient for about 10-15 seconds! 
 
 :::
-
-
-## Setting Up CasaOS
-
-:::tip
-Make sure your computer is connected to the same router as the ZimaBoard
-:::
-
-### Open CasaOS
-
-Open a new tab in your browser and enter `http://casaos.local`
-
-<BrowserWindow minHeight={100} url="http://casaos.local">
-
-![CasaOS Welcome](./images/casaos-welcome.jpg)
-
-</BrowserWindow>
-
-### Create Your Account
-
-<BrowserWindow url="http://casaos.local">
-
-![CasaOS Create Account](./images/casaos-create-account.jpg)
-
-</BrowserWindow>
-
-### Update CasaOS
-
-<BrowserWindow url="http://casaos.local">
-
-![CasaOS Update](./images/casaos-update.jpg)
-
-</BrowserWindow>
-
-
-### Have Fun!
-
-:::tip
-
-**Default account for Pre-installed Apps**
-
-Username:`casaos`
-
-Password:`casaos`
-
-:::
-
-<BrowserWindow url="http://casaos.local">
-
-![CasaOS Main](./images/casaos-main.jpg)
-
-</BrowserWindow>

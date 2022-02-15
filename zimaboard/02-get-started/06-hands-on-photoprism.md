@@ -1,6 +1,6 @@
 ---
 sidebar_label: Manage Photos
-title: Manage Photos with PhotoPrism | ZimaBoard
+title: Manage Photos with PhotoPrism | Get Started | ZimaBoard
 ---
 
 import BrowserWindow from '@site/src/components/BrowserWindow';
