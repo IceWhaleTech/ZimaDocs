@@ -1,20 +1,27 @@
 ---
-title: Oculus Meet ZimaBoard
-sidebar_position: 5
+sidebar_label: Oculus Meet ZimaBoard
+title: Oculus Quest 2 Meet ZimaBoard | ZimaBoard
 ---
 
-# If you want to play videos from the ZimaBoard on your Oculus
+# Oculus Quest 2 Meet ZimaBoard
 
-## 我们推荐Skybox
-这是我们众多方式中最方便、质量最好的播放方式。
+## Watching Videos
 
-skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的PC/Mac无线串流视频到你的独立VR设备而不损失质量。
+:::info
 
-## skybox 使用教程
+**Skybox is recommended**
+
+We tested a number of players in Oculus Quest 2, and Skybox was the player we found to be the cleanest and easiest to use from our experience.
+
+Feel free to suggest good ideas!
+
+:::
+
+### Open Skybox
 
 1. Install **Skybox** app from the Oculus Store and open it
 
-2. Select skybox and open it
+2. Select **Skybox** and open it
 
 <p><img
   src={require('./images/oculus-select-skybox.png').default}
@@ -26,7 +33,9 @@ skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的
     }}
 /></p>
 
-3. Then select network
+### Setup CasaOS Shared Folders
+
+1. Then select network
 
 <p><img
   src={require('./images/oculus-select-network.png').default}
@@ -38,7 +47,7 @@ skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的
     }}
 /></p>
 
-4. Once you are in, select New in the top right hand corner and type in casa and click confirm
+2. Once you are in, select New in the top right hand corner and type in casa and click confirm
 
 <p><img
   src={require('./images/oculus-creat-casa.png').default}
@@ -50,7 +59,7 @@ skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的
     }}
 /></p>
 
-5. Now you can see the Data file under casa's folder. Once inside you can select your favourite movie and watch it.
+3. Now you can see the Data file under casa's folder. Once inside you can select your favourite movie and watch it.
 
 <p><img
   src={require('./images/oculus-see-casa-data.png').default}
@@ -61,6 +70,8 @@ skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的
     margin: 'auto'
     }}
 /></p>
+
+### Select Video
 
 <p><img
   src={require('./images/oculus-see-casa-data-media.png').default}
@@ -82,7 +93,7 @@ skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的
     }}
 /></p>
 
-6. Interface for film playback
+### Enjoy Your Time!
 
 <p><img
   src={require('./images/oculus-see-move.png').default}
@@ -93,3 +104,12 @@ skybox介绍：AirScreen使用最先进的Wi-Fi技术，所以你可以从你的
     margin: 'auto'
     }}
 /></p>
+
+
+## Share How You Play!
+
+If you have more interesting ways to play feel free to tell us in Discord!
+
+Let's bring it to reality together!
+
+[![Discord Card](https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2)](https://discord.gg/knqAbbBbeX)
