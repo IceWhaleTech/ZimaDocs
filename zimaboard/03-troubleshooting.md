@@ -18,7 +18,7 @@ We recommend using ZimaBoard official 12V/3A DC power adapter.
 Make sure the connection is tight.
 
 
-## Can't reach page:casaos.local
+## Can't reach page: casaos.local
 
 ### Reason 
 
@@ -31,8 +31,6 @@ Router compatibility issues
 ### How to Solve
 
 Make sure PC and ZimaBoard are connected to the same router.
-
-Visit docs.zimaboard.com/jump/zb-mdns for help.
 
 
 ## My monitor only has HDMI or VGA port
