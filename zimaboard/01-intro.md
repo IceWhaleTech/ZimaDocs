@@ -3,7 +3,7 @@ sidebar_label: Introduction
 title: Introduction | ZimaBoard
 ---
 
-# Introduction
+# ZimaBoard Introduction
 
 <p><img
   src={require('./images/zimaboard.png').default}
