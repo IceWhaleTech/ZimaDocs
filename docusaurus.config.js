@@ -43,14 +43,6 @@ const config = {
 
   plugins: [
     [
-      '@docusaurus/plugin-content-pages',
-      {
-        id: 'jump',
-        path: 'jump',
-        routeBasePath: 'jump',
-      }
-    ],
-    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'zimaboard',
@@ -142,7 +134,7 @@ const config = {
             items: [
               {
                 label: 'ZimaBoard',
-                to: 'zimaboard/get-started/intro',
+                to: 'zimaboard/intro',
               },
               {
                 label: 'CasaOS',
