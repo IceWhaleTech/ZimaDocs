@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 export class Redirect extends Component {
   constructor( props ){
@@ -6,7 +7,9 @@ export class Redirect extends Component {
     this.state = { ...props };
   }
   componentWillMount(){
-    location.href="/zimaboard/troubleshooting";
+    <BrowserOnly>
+      location.href="/zimaboard/troubleshooting";
+    </BrowserOnly>
   }
   render(){
     return (<section>Jumping</section>);
