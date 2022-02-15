@@ -88,8 +88,8 @@ Emby offers a lot of ways to watch movies to choose from, you can watch them on 
 ### Watch Videos on Your Phone
 
 <p><img
-  src={require('./images/watching-move-jellfin-phone.png').default}
-  alt="watching move jellfin on phone"
+  src={require('./images/watching-move-jellyfin-phone.png').default}
+  alt="watching move jellfiny on phone"
   style={{
     maxWidth: '50%',
     display: 'block',
