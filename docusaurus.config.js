@@ -156,7 +156,7 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                href: 'https://docs.zimaboard.com',
+                href: 'https://blog.zimaboard.com',
               },
               {
                 label: 'GitHub',
