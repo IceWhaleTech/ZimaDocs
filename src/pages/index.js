@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="ZimaDocs, Official documentation for ZimaBoard and CasaOS. From IceWhale Technology.<head />">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
