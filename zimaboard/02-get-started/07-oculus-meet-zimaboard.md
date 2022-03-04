@@ -47,7 +47,7 @@ Feel free to suggest good ideas!
     }}
 /></p>
 
-2. Once you are in, select New in the top right hand corner and type in casa and click confirm
+2. Once you are in, select New in the top right hand corner and type in `casaos` and click confirm
 
 <p><img
   src={require('./images/oculus-creat-casa.png').default}
@@ -59,7 +59,7 @@ Feel free to suggest good ideas!
     }}
 /></p>
 
-3. Now you can see the Data file under casa's folder. Once inside you can select your favourite movie and watch it.
+3. Now you can see the Data folder under CasaOS's folder. Once inside you can select your favourite movie and watch it.
 
 <p><img
   src={require('./images/oculus-see-casa-data.png').default}
