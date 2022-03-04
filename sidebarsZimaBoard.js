@@ -33,10 +33,22 @@ const sidebars = {
         'get-started/shared-folders',
         'get-started/hands-on-jellyfin',
         'get-started/hands-on-photoprism',
-        'get-started/oculus-meet-zimaboard'
+        'get-started/oculus-meet-zimaboard',
       ],
     },
-    'troubleshooting'
+    'troubleshooting',
+    {
+      type: 'category',
+      label: 'Advanced',
+      link: {
+        type: 'generated-index',
+      },
+      collapsed: true,
+      items: [
+        'advanced/preinstalled-casaos',
+        'advanced/bios',
+      ],
+    },
   ],
 };
 
