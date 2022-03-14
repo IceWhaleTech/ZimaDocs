@@ -1,37 +1,38 @@
 ---
-sidebar_label: Install New OS to ZimaBoard
-title: Install New OS to ZimaBoard | Advanced | ZimaBoard
+sidebar_label: Install other system on ZimaBoard
+title: Install other system on ZimaBoard | Advanced | ZimaBoard
 ---
 
-# Installing a new operating system for ZimaBoard 
+# Installing other system on ZimaBoard 
 
-Many of you have purchased a ZimaBoard and want to install some different operating systems to experience or meet specific usage needs.
-Here we will show you how to install a new operating system on your ZimaBoard, using the example of installing Ubuntu Server OS.
+## Intro
 
-Ubuntu is a Linux distribution based on Debian and composed mostly of free and open-source software.Ubuntu is officially released in three editions: Desktop,Server,and Core for Internet of things devices and robots.
+Many of the people who got ZimaBoard want to install some different operating systems to experience or meet specific usage needs.
+
+Here we will show you how to install a new operating system on your ZimaBoard, using the installation of Ubuntu Server as an example in this document.
 
 ## Prepation
 
-### What you need to do on your computer to prepare.
+### On your PC or Mac
 
-- Download and install on your computer [balenaEtcher](https://www.balena.io/etcher/)
-- Download the system image you want to install, the text is [Ubuntu Server](https://ubuntu.com/download/server)
+- Download and install [balenaEtcher](https://www.balena.io/etcher/) on your computer. 
+- Download the system image you want to install, in this document it is [Ubuntu Server](https://ubuntu.com/download/server).
 
-
-### ZimaBoard-related preparations
+### ZimaBoard related
 
 - ZimaBoard and power adapter
 - A USB drive (The capacity needs to be larger than the system image you want to install)
 - A miniDP to DP/HDMI Adapter (Used to connect to a monitor)
 - A monitor
 - A keyboard
+- A network cable (Recommended)
+  - Convenient for you to complete the network setup and install the latest security and feature updates at the same time as installing the system.
 - A USB hub (Optional, if the USB port is not enough)
 - A mouse (Optional)
   - It will be convenient if the system installer you want to install comes with a GUI interactive interface. Most desktop OS will have one, server OS generally do not.)
-- A network cable (Recommended)
-  - Convenient for you to complete the network setup and install the latest security and feature updates at the same time as installing the system.)
+
   
-## Create installation USB flash drive
+## Create a USB installer
 
 ### 1. Open balenaEtcher
 
@@ -45,7 +46,9 @@ Ubuntu is a Linux distribution based on Debian and composed mostly of free and o
     }}
 /></p>
 
-### 2. Click on "Flash from file" and select the system image you downloaded earlier.
+### 2. Select system image
+
+Click on "Flash from file" and select the system image you downloaded earlier.
 
 <p><img
   src={require('./images/ubuntu-select-iso.png').default}
@@ -57,17 +60,9 @@ Ubuntu is a Linux distribution based on Debian and composed mostly of free and o
     }}
 /></p>
 
-<p><img
-  src={require('./images/ubuntu-select-iso-1.png').default}
-  alt="select iso 1"
-  style={{
-    maxWidth: '80%',
-    display: 'block',
-    margin: 'auto'
-    }}
-/></p>
+### 3. Select USB drive
 
-### 3. Click "Select target" and select your inserted USB drive in the dialog box.
+Click "Select target" and select your inserted USB drive in the dialog box.
 
 <p><img
   src={require('./images/ubuntu-select-usb-drive.png').default}
@@ -79,7 +74,19 @@ Ubuntu is a Linux distribution based on Debian and composed mostly of free and o
     }}
 /></p>
 
-### 4. Click "Flash!" and wait for it to complete.
+### 4. Flash!
+
+Click "Flash!" and wait for it to complete.
+
+<p><img
+  src={require('./images/ubuntu-select-iso-1.png').default}
+  alt="select iso 1"
+  style={{
+    maxWidth: '80%',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
 
 You may be asked to enter your system password during the process, just enter it and click OK.
 
@@ -107,17 +114,17 @@ The whole process will take a few minutes, depending on the size of your system 
 
 ## Install Ubuntu Server to ZimaBoard
 
-### Boot from the installation USB drive
+### Boot from the USB installer
 
-### 1. Connecting the accessories to ZimaBoard
+#### 1. Connecting the accessories to ZimaBoard
 Connect your USB drive, monitor, keyboard, USB hub (Optional), mouse (Optional), network cable (Recommended) to ZimaBoard.
 
-### 2. Power on and select the boot device
+#### 2. Power on and select the boot device
 1. Connect power and press F11 continuously.
 
 2. Select your USB drive starting with UEFI in the boot device menu.
- 
- <p><img
+
+<p><img
   src={require('./images/ubuntu-select-drive-starting.jpeg').default}
   alt="select drive starting"
   style={{
@@ -129,7 +136,7 @@ Connect your USB drive, monitor, keyboard, USB hub (Optional), mouse (Optional),
 
 ### Start installation
 
- <p><img
+<p><img
   src={require('./images/ubuntu-start-installation.png').default}
   alt="ubuntu start installation"
   style={{
@@ -141,17 +148,20 @@ Connect your USB drive, monitor, keyboard, USB hub (Optional), mouse (Optional),
 
 Refer to the [official Ubuntu installation tutorial](https://ubuntu.com/tutorials/install-ubuntu-server#3-boot-from-install-media) for setup.
 
-### Note that when selecting storage space, please take care to select the correct disk
+:::tip
+When selecting the storage for installing the system, please take care to select the correct drive.
 
-Because operating systems and storage vendors calculate storage space sizes differently, usually the capacity you see when you install your system is not exactly the same as the hardware capacity. You can tell the difference by the type of disk and the approximate size.
+Because operating systems and storage vendors calculate storage space sizes differently, usually the capacity you see when you install your system is not exactly the same as the hardware capacity. You can distinguish different storage devices by the type and approximate size of the drive.
 
 The built-in storage type of the ZimaBoard is eMMC, which may also be recognized as an MMC device in the operating system.
+:::
+
 
 ## Complete installation
 
 After the installation is complete, you will see a message on your screen that looks like this.
 
- <p><img
+<p><img
   src={require('./images/ubuntu-installation-complete.png').default}
   alt="ubuntu installation complete"
   style={{
@@ -163,4 +173,6 @@ After the installation is complete, you will see a message on your screen that l
 
 Unplug your installation USB drive and select "Reboot Now".
 
-**Attention! You may need to modify the boot sequence in BIOS or select the boot device at boot time, if you install the OS to an external hard disk.**
+:::tip
+You may need to modify the boot sequence in BIOS or select the boot device at boot time, if you install the OS to an external hard disk.
+:::
