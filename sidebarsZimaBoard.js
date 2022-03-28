@@ -47,6 +47,7 @@ const sidebars = {
       items: [
         'advanced/preinstalled-casaos',
         'advanced/bios',
+        'advanced/install-other-os'
       ],
     },
   ],
