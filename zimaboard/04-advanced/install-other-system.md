@@ -1,9 +1,9 @@
 ---
 sidebar_label: Install other system
-title: Install other system on ZimaBoard | Advanced | ZimaBoard
+title: Install other system | Advanced | ZimaBoard
 ---
 
-# Installing other system on ZimaBoard 
+# Installing other system
 
 ## Intro
 
