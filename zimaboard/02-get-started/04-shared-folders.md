@@ -1,6 +1,7 @@
 ---
 sidebar_label: Accessing Shared Folders
 title: Accessing Shared Folders | Get Started | ZimaBoard
+hide_title: true
 ---
 
 # Accessing Shared Folders

@@ -1,6 +1,7 @@
 ---
 sidebar_label: Preparation
 title: Preparation | Get Started | ZimaBoard
+hide_title: true
 ---
 
 # Preparation

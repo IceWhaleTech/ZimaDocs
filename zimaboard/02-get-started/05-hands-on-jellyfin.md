@@ -1,6 +1,7 @@
 ---
 sidebar_label: Watching Videos
 title: Watching Videos Anywhere with Jellyfin | Get Started | ZimaBoard
+hide_title: true
 ---
 
 import BrowserWindow from '@site/src/components/BrowserWindow';

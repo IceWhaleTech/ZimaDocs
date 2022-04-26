@@ -1,6 +1,7 @@
 ---
 sidebar_label: AppFile v2 Definition
 title: AppFile v2 Definition | App Store | CasaOS
+hide_title: true
 toc_max_heading_level: 5
 ---
 

@@ -1,6 +1,7 @@
 ---
 sidebar_label: Setup CasaOS
 title: Setup CasaOS | Get Started | ZimaBoard
+hide_title: true
 ---
 import BrowserWindow from '@site/src/components/BrowserWindow';
 

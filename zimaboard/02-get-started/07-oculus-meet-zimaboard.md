@@ -1,6 +1,7 @@
 ---
 sidebar_label: Oculus Meet ZimaBoard
 title: Oculus Quest 2 Meet ZimaBoard | Get Started | ZimaBoard
+hide_title: true
 ---
 
 # Oculus Quest 2 Meet ZimaBoard

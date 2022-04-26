@@ -1,6 +1,7 @@
 ---
 sidebar_label: Introduction
 title: Introduction | ZimaBoard
+hide_title: true
 ---
 
 # ZimaBoard Introduction
