@@ -1,9 +1,12 @@
 ---
 sidebar_label: Troubleshooting
 title: Troubleshooting | ZimaBoard
+hide_title: true
 ---
 
 # Troubleshooting
+
+The main goal of this document is to be able to categorize problems and find quick solutions in a few simple steps when you encounter problems with the product.
 
 ## Fail to boot
 
