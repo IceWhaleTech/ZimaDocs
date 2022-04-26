@@ -8,22 +8,25 @@ hide_title: true
 
 The main goal of this document is to be able to categorize problems and find quick solutions in a few simple steps when you encounter problems with the product.
 
-## Fail to boot
 
-### Reason
+## Known Issues
+
+### Fail to boot
+
+#### Reason
 
 Wrong AC Adapter or loose connection
 
-### How to Solve
+#### How to Solve
 
 We recommend using ZimaBoard official 12V/3A DC power adapter. 
 
 Make sure the connection is tight.
 
 
-## Can't reach page: casaos.local
+### Can't reach page: casaos.local
 
-### Reason 
+#### Reason 
 
 Not on the same network;
 
@@ -31,7 +34,7 @@ Operation system does not support mDNS;
 
 Router compatibility issues
 
-### How to Solve
+#### How to Solve
 
 Make sure PC and ZimaBoard are connected to the same router.
 
@@ -84,21 +87,21 @@ If you only want the devices under router B to access the ZimaBoard, then just c
 :::
 
 
-## My monitor only has HDMI or VGA port
+### My monitor only has HDMI or VGA port
 
-### How to Solve
+#### How to Solve
 
 Use a MiniDP to HDMI or a MiniDP to VGA adapter.
 
 
-## No screen on/after boot
+### No screen on/after boot
 
-### Reason
+#### Reason
 
 Loose connection;
 Power adapter failure
 
-### How to Solve
+#### How to Solve
 
 Make sure the connection is tight.
 
@@ -107,12 +110,59 @@ Try with another DC power adapter;
 Try to power off ZimaBoard first, re-plug the MiniDP, and reboot.
 
 
-## System not responding/hanging
+### System not responding/hanging
 
-### Reason
+#### Reason
 
 System failure
 
-### How to Solve
+#### How to Solve
 
 Reboot ZimaBoard. Unplug and reconnect the power adapter.
+
+## Looking for support
+
+Welcome to join our [Discord](https://discord.gg/TZjYGnAW3M) and get community support in #zimaboard-support.
+
+You can also contact ober@icewhale.org for assistance with this.
+
+:::tip
+In order for IceWhale or the community to quickly understand the problem you are experiencing and better help you.
+
+You can refer to the outline below to better write your problem.
+
+1. Hardware connection picture
+2. Operation steps
+3. Issue description
+
+<details>
+
+<summary>Example</summary>
+
+**Hardware connection picture**
+
+<p><img
+  src={require('./images/troubleshooting-hardware-connection-picture.png').default}
+  alt="Network Case 2"
+  style={{
+    maxHeight: '300px',
+    display: 'block',
+    margin: 'auto'
+    }}
+/></p>
+
+**Operation steps**
+
+I entered the system and changed the system file with the file path xxx, and the changed action is xxx.
+
+I also executed what under xx application, the changed operation is xxx
+
+After running overnight, I got up this morning and found that the device had been shut down
+
+**Issue Description**
+
+Now the machine does not turn on properly, and the phenomenon appears is that after power on, it lights up and goes off periodically.
+
+
+</details>
+:::
