@@ -8,8 +8,51 @@ hide_title: true
 
 The main goal of this document is to be able to categorize problems and find quick solutions in a few simple steps when you encounter problems with the product.
 
-
 ## Known Issues
+
+:::info
+This section will be continuously updated, if the documentation does not contain the issue you are currently experiencing. You can refer to "[Looking for support](#looking-for-support)"
+:::
+
+### Cannot be turned on normally, power indicator goes off periodically
+
+When you find that the power indicator can light up, you can be sure that your hardware is able to run properly.
+
+The probability is that the system is not working properly due to reboot. The most common causes of repeated system reboots are as follows.
+
+1. Due to high load on the motherboard, caused by insufficient power supply, CPU boot failure
+2. Insufficient power supply to the motherboard due to low power adapter output current
+3. System boot failure due to corrupted system image
+4. Failure to boot due to modification of Bios setting items.
+
+In most cases, it is caused by the current demand of the system running is less than the power supply capacity.
+
+#### For excessive load
+
+To diagnose and confirm, remove all ZimaBoard peripherals (including USB devices), connect to power independently, observe the working status of ZimaBoard, wait patiently for 3 minutes (for the first 1 minute, the power indicator may go off briefly and come on again due to the BIOS operation mechanism), if the power indicator is always on, it indicates normal operation.
+
+#### For insufficient power or abnormal power adapter
+
+Please check first if the voltage specification of the power adapter is 12V and its maximum power. Usually, you can easily get this information from the back or bottom of your power adapter at the plug.
+
+When your power adapter can provide low power, you can observe the ZimaBoard working status (please wait 1-3 minutes) by removing the ZimaBoard related peripherals and then plugging in the standalone power supply, if the power indicator is always on, it is working properly.
+
+The following is the ZimaBoard operating data we tested earlier for your reference.
+
+Standby: 0.11A @ 12v, 1.3w.
+Full load: 0.7A @ 12v, 8.6w. 
+
+We recommend you to use the original power adapter (12V/3A) from the official website to better avoid such problems.
+
+#### For system damage
+
+The diagnosis and confirmation is to connect the ZimaBoard to the monitor through the miniDP port, then connect the power to the ZimaBoard, when the monitor gets the ZimaBoard logo, the rest screen appears and this login process is cycled. In this case, you can re-burn the ZimaBoard image by writing the image in our other tutorial.
+
+#### For problems after modifying the setting items of specific Bios
+
+You can fix the problem by replugging the RTC battery on the back of the backplane and restoring the default entries of the Bios.
+
+
 
 ### Fail to boot
 
