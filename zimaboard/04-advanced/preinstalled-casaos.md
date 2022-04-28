@@ -2,6 +2,7 @@
 sidebar_label: Pre-installed CasaOS
 title: Pre-installed CasaOS | Advanced | ZimaBoard
 hide_title: true
+comments: true
 ---
 
 # Pre-installed CasaOS
