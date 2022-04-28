@@ -16,10 +16,10 @@ export default function DocPaginatorWrapper(props) {
         <div className="docusaurus-mt-lg">
           <Giscus
             id="comments"
-            repo="RCRP-Pro/RayCity.Pro"
-            repoId="R_kgDOHPxDZg"
-            category="Z.Giscus"
-            categoryId="DIC_kwDOHPxDZs4CO0Ez"
+            repo="IceWhaleTech/ZimaDocs"
+            repoId="R_kgDOGcaYdg"
+            category="ZimaDocs Comments"
+            categoryId="DIC_kwDOGcaYds4CO0nU"
             mapping="pathname"
             reactionsEnabled="1"
             emitMetadata="0"
