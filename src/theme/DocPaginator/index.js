@@ -17,7 +17,7 @@ function getComments(){
 
 export default function DocPaginatorWrapper(props) {
   const { colorMode } = useColorMode();
-  const comments = getComments;
+  const comments = getComments();
   const { i18n } = useDocusaurusContext();
   return (
     <>
