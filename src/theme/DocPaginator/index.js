@@ -5,9 +5,19 @@ import { useColorMode } from "@docusaurus/theme-common";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Giscus from "@giscus/react";
 
+function getComments(){
+  try {
+    let { comments } = useFrontMatter();
+    return comments;
+  } catch (error) {
+    let comments = false;
+    return comments
+  }
+}
+
 export default function DocPaginatorWrapper(props) {
   const { colorMode } = useColorMode();
-  const { comments } = useFrontMatter();
+  const comments = getComments;
   const { i18n } = useDocusaurusContext();
   return (
     <>
