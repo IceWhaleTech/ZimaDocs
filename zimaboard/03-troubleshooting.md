@@ -2,6 +2,7 @@
 sidebar_label: Troubleshooting
 title: Troubleshooting | ZimaBoard
 hide_title: true
+comments: true
 ---
 
 # Troubleshooting
