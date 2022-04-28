@@ -2,6 +2,7 @@
 sidebar_label: Install other system
 title: Install other system | Advanced | ZimaBoard
 hide_title: true
+comments: true
 ---
 
 # Installing other system
