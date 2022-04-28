@@ -18,6 +18,10 @@ const config = {
   organizationName: 'IceWhaleTech',
   projectName: 'ZimaDocs',
 
+  themes: [
+    'docusaurus-theme-frontmatter',
+  ],
+
   presets: [
     [
       '@docusaurus/preset-classic',
