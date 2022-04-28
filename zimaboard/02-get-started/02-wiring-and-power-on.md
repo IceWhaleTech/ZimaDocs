@@ -2,6 +2,7 @@
 sidebar_label: Wiring and Power On
 title: Wiring and Power On | Get Started | ZimaBoard
 hide_title: true
+comments: true
 ---
 
 # Wiring and Power On
