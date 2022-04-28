@@ -2,6 +2,7 @@
 sidebar_label: BIOS
 title: BIOS | Advanced | ZimaBoard
 hide_title: true
+comments: true
 ---
 
 # BIOS
