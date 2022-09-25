@@ -1,44 +1,51 @@
 {
-  "name": "zimadocs",
-  "version": "0.1.0",
+  "name": "zima-docs",
+  "version": "0.0.0",
   "private": true,
+  "hexo": {
+    "version": "6.3.0"
+  },
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "build": "hexo generate",
+    "eslint": "eslint .",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@akebifiky/remark-simple-plantuml": "^1.0.2",
-    "@docusaurus/core": "^2.0.0-beta.15",
-    "@docusaurus/preset-classic": "^2.0.0-beta.15",
-    "@giscus/react": "^2.0.3",
-    "@lottiefiles/react-lottie-player": "^3.4.1",
-    "@mdx-js/react": "^1.6.21",
-    "@svgr/webpack": "^5.5.0",
-    "clsx": "^1.1.1",
-    "docusaurus-theme-frontmatter": "^1.1.0",
-    "file-loader": "^6.2.0",
-    "prism-react-renderer": "^1.2.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "url-loader": "^4.1.1"
+    "cheerio": "^0.22.0",
+    "hexo": "hexojs/hexo",
+    "hexo-asset-image-for-hexo5": "^2.1.7",
+    "hexo-clean-css": "^2.0.0",
+    "hexo-filter-nofollow": "^2.0.2",
+    "hexo-fs": "^3.1.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-renderer-marked": "^5.0.0",
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-server": "^3.0.0",
+    "hexo-tag-mmedia": "^1.1.7",
+    "hexo-tag-youtube-responsive": "^0.4.2",
+    "hexo-uglify": "^2.0.0",
+    "lunr": "2.3.9",
+    "sharp": "^0.30.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-hexo": "^5.0.0",
+    "hexo-browsersync": "^0.3.0",
+    "husky": "^8.0.1",
+    "imagemin-lint-staged": "^0.5.1",
+    "lint-staged": "^13.0.3"
+  },
+  "lint-staged": {
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged",
+      "git add"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "*.js": "eslint --fix"
+  },
+  "engines": {
+    "node": ">=12.9.0"
   }
 }
