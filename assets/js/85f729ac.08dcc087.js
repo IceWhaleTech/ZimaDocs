@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkzimadocs=self.webpackChunkzimadocs||[]).push([[8695],{673:function(s){s.exports=JSON.parse('{"plugin":{"name":"docusaurus-plugin-content-docs","id":"zimaboard"}}')}}]);

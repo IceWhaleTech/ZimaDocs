@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkzimadocs=self.webpackChunkzimadocs||[]).push([[3210],{2406:function(e,t,a){a.r(t);var n=a(7294),o=a(6775);t.default=function(){return n.createElement(o.l_,{to:"/zimaboard/troubleshooting"})}}}]);
