@@ -2,11 +2,11 @@
  * @Author: Jerryk jerry@icewhale.org
  * @Date: 2022-08-30 17:35:42
  * @LastEditors: Jerryk jerry@icewhale.org
- * @LastEditTime: 2022-09-13 18:45:58
- * @FilePath: \hexo-site\themes\zima\source\js\lang_select.js
- * @Description: 
- * 
- * Copyright (c) 2022 by IceWhale, All Rights Reserved. 
+ * @LastEditTime: 2022-09-29 11:49:16
+ * @FilePath: \ZimaDocs\themes\zima\source\js\lang_select.js
+ * @Description:
+ *
+ * Copyright (c) 2022 by IceWhale, All Rights Reserved.
  */
 (function() {
   'use strict';
@@ -24,5 +24,8 @@
   }
 
   // document.getElementById('lang-select').addEventListener('change', changeLang);
-  document.getElementById('mobile-lang-select').addEventListener('change', changeLang);
+  var langSelect = document.getElementById('lang-select');
+  if (langSelect) {
+    langSelect.addEventListener('change', changeLang);
+  }
 }());
