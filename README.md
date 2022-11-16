@@ -14,8 +14,8 @@ $ npm install -g hexo-cli
 Install dependencies:
 
 ``` bash
-$ git clone https://github.com/jerrykuku/zima-docs.git
-$ cd zima-docs
+$ git clone https://github.com/IceWhaleTech/ZimaDocs.git
+$ cd ZimaDocs
 $ yarn install
 ```
 
