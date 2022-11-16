@@ -5,6 +5,8 @@ The website for Zima Docs. Bulit with Hexo.
 
 ## Getting started
 
+You will need [Node.js](https://nodejs.org/en/)(LTS version recommended),and [yarn](https://classic.yarnpkg.com/en/docs/install)
+
 Install Hexo
 
 ``` bash
@@ -93,3 +95,72 @@ tag type: default / primary / success / info / warn / danger
 
 ![Specify the ratio](/image/test.jpg?40)
 ```
+
+## Contributing Guide
+
+1. Please fork the repo first.
+2. Follow the getting started guide to install the environment and dependencies.
+3. Clone the forked repo to your local pc.
+4. Run ```hexo server``` to preview the site.
+
+### Create a new page
+
+``` bash
+# Create a new docs page
+hexo new page -p docs/<page name> "<title>" 
+# hexo new page -p docs/Install-Debian "Install-Debian" will create a new Install-Debian.md in /source/docs
+
+# Create a new faq page
+hexo new page -p faq/<page name> "<title>" 
+# hexo new page -p faq/Install-Debian "Install-Debian" will create a new Install-Debian.md in /source/faq
+```
+You can open the /source/docs/Install-Debian.md and use markdown to edit it.
+
+``` markdown
+title: Install Debian
+---
+
+new content here
+```
+
+If you want add images for new page. You need to create a folder under the /source/images folder with the same name as the page.
+
+``` markdown
+title: Install Debian
+---
+
+new content here
+
+![Debian-Logo](/images/Install-Debian/logo.png)
+```
+
+### Show the new page in the sidebar
+
+1. Open the /source/_data/sidebar.yml
+2. Add your page to the appropriate category.
+
+``` yaml
+docs:
+...
+  operating_systems:
+    ...
+    install_debian: Install-Debian.html  # <index-key>: <page-name>.html
+...
+```
+
+### Add translation for the sidebar
+
+1. Open the /themes/languages/en.yml
+2. Add new translation to en.yml
+
+``` yaml
+...
+
+sidebar:
+  docs:
+    ...
+    install_debian: Install Debian # <index-key>: <Final content>
+    ...
+```
+
+After confirming that everything is OK, you can commit your changes to github, and PR them to IceWhaleTech/ZimaDocs.
