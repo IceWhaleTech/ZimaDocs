@@ -1,12 +1,12 @@
 ---
-title: Universal-third-party-system-installation.md
+title: Universal Third-party System Installation
 typora-root-url: ..
 ---
 ## Reason
 
-**There are many users who do not know how to install the system after we have downloaded it. Do not know the clear installation steps, etc. This article will help users to solve the problem of installing the system**
+**Many users do not know how to install the system after we have downloaded it. Do not know the clear installation steps, etc. This article will help users to solve the problem of installing the system**
 
-## Universal production mirror
+## Universal Production Mirror
 
 **What you need to do on your computer to prepare.**
 - Download and install [balenaEtcher](https://www.balena.io/etcher/) on your computer
@@ -28,23 +28,23 @@ typora-root-url: ..
 
 # Create an installation USB stick
 
-## 1.  Open balenaEtcher
+## 1.Open balenaEtcher
 
 
 ![Open Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
 
-## 2. Click on "Flash from file" and select the system image you downloaded earlier.
+## 2. Click “Flash from file” and select the system image you downloaded earlier.
 
 ![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
 
 
 ![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
 
-## 3. Click "Select target" and select your inserted USB drive in the dialog box.
+## 3.Click “Select target” and select your inserted USB drive in the dialog box.
 
 ![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-usb-disk.png)
 
-## 4. Click "Flash!" and wait for it to complete.
+## 4.Click “Flash!” and wait for it to complete.
 You may be asked to enter your system password during the process, just enter it and click OK.
 
 ![Enter you Computer Account And Password](/images/Installing-Ubuntu-System/install-ubuntu-system-enter-password.png)
@@ -53,11 +53,11 @@ The whole process will take a few minutes, depending on the size of your system 
 
 ![Waitting Balenaetcher Flash](/images/Installing-Ubuntu-System/install-ubuntu-system-makeing-image.png)
 
-## 5. Complete! Remove the USB drive and you're ready to go!
+## 5.Completion! Remove the USB drive, and you’re ready to go!
 
 ![Complete Create Usb Boot](/images/Installing-Ubuntu-System/install-ubuntu-system-image-complete.png)
 
-## Universal start-up system
+## Universal Start-up System
 
 After the ZimaBoard is plugged in, press the **`F11 key`** / **`Delete key`** uninterrupted . When we insert the U disk boot disk, it will automatically display the USB key, select the USB key and press the Enter key
 

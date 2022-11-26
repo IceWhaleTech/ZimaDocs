@@ -1,5 +1,5 @@
 ---
-title: Basic functions of dedicated systems
+title: Basic Functions of Dedicated Systems
 ---
 
 # Watching Videos Anywhere with Jellyfin
@@ -16,7 +16,7 @@ Open your web browser and open **`http://casaos.local`**
 
 We find **Jellyfin** in **Apps** and click on its logo, and it opens
 
-## Login to Jellyfin
+## Log in to Jellyfin
 
 {% note dinfo %}
 TIPS
@@ -29,7 +29,7 @@ TIPS
 
 ![Log In Jellyfin ](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg)
 
-## Watch Videos with Jellyfin!
+## StreamVideos with Jellyfin!
 
 ### Browse the Library
 
@@ -43,17 +43,17 @@ TIPS
 
 ![Use Jellyfin Watching Move ](/images/Basic-functions-of-dedicated-systems/watching-move-play.jpeg)
 
-## Watch Videos Anywhere
+## Stream Videos Anywhere
 
-Emby offers a lot of ways to watch movies to choose from, you can watch them on your computer, cell phone, TV, game console, or even on VR.
+Emby offers a lot of ways to watch movies to choose from; you can watch them on your computer, cell phone, TV, game console, or even on VR.
 
-### Watch Videos on Your Phone
+### Stream Videos on Your Phone
 
 ![Use Jellyfin Watching Move With Phone](/images/Basic-functions-of-dedicated-systems/watching-move-jellyfin-phone.png)
 
 
 
-# Manage Your Photos with PhotoPrism
+# Manage your Photos with PhotoPrism
 
 ## Open PhotoPrism
 
@@ -69,7 +69,7 @@ Open your web browser and open **`http://casaos.local`**
 
 We find **PhotoPrism** in **Apps** and click on its logo, and it opens
 
-### Login to PhotoPrism ###
+### Log in to PhotoPrism ###
 
 {% note dinfo %}
 TIPS

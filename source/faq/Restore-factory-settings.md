@@ -9,7 +9,7 @@ Download the official ZimaBoard CasaOS image
 - For [**ZimaBoard CasaOS image -832/432**](https://mega.nz/file/jrISlLCL#YGBsaqysSOv_o70KMhwvc_PrE8RCK4BEHfzhXO4j4g0)
 
 - For [**ZimaBoard CasaOS image -216**](https://mega.nz/file/OuoFmZDQ#nKI9pm3fHN74S0devyXR_COpoX2Il2MUjw1xj3t5jp8)
-## Create an image USB stick
+## Create an Image Using A USB stick
 
 **Prepare in advance**
 
@@ -27,7 +27,7 @@ ZimaBoard related preparation.
 
 
 
-## Create an installation USB drive
+## Install Using a USB Drive
 
 ###  Open [BalenaEtcher](https://www.balena.io/etcher/)
 
@@ -49,29 +49,29 @@ ZimaBoard related preparation.
 
 ![Enter you Computer Account And Password ](/images/Restore-factory-settings/enter-password.png)
 
-**The whole process will take a few minutes, depending on the size of your system image and the read/write speed of your USB drive.**
+**The whole process will take a few minutes, depending on the size of your system image and your USB drive’s read/write speed.**
 
 ![Watting Flash](/images/Restore-factory-settings/waiting-flash.png)
 
 ### Complete! 
 
-**Remove the USB drive and you're ready to go!**
+**Remove the USB drive, and you’re ready to go!**
 
 ![ComPlete Creat Usb Driver](/images/Restore-factory-settings/complete-flash.png)
 
-## **Boot from the installation USB** **drive**
+## **Boot from the Installation USB Drive**
 
-### Connecting the accessories to ZimaBoard
+### Connecting the Accessories to ZimaBoard
 
 Connect your USB drive, monitor, keyboard,` USB hub `**(Optional)**, `mouse `**(Optional)**, `network cable `**(Recommended)** to ZimaBoard.
 
 ![Connection Diagram](/images/Restore-factory-settings/connection-diagram.png)
 
-### Power on and select the boot device
+### Turn the Power On and Select the Boot Device
 
-Connect power and press **F11**continuously.
+Connect power and press **F11** continuously.
 
-## **Start Install**
+## **Start Installation**
 
 **1. Select your USB drive starting with UEFI in the boot device menu.**
 
@@ -85,7 +85,7 @@ Connect power and press **F11**continuously.
 
 ![Select mmcblk0](/images/Restore-factory-settings/select-mmcblk0.png)
 
-**4. Enter **"y"****
+**4. Enter `y`**
 
 ![Installing CasaOS](/images/Restore-factory-settings/enter-yes.png)
 
@@ -102,12 +102,12 @@ Connect power and press **F11**continuously.
 # Video short tutorials
 
 {% youtuber video SMV3wG1YbUk %}
+https://www.youtube.com/embed/SMV3wG1YbUk
 {% endyoutuber %}
 
-**Note****:** **when selecting** **storage,** **please take care to select the correct disk**
+**Note**:when selecting storage, please take care to select the correct disk
 
-Because operating systems and storage vendors calculate storage space sizes differently, usually the capacity you see when you install your system is not exactly the same as the hardware capacity. You can tell the difference by the type of disk and the approximate size.
-
+Because operating systems and storage vendors calculate storage space sizes differently, the capacity you see when installing your system is not the same as the hardware capacity. You can tell the difference by the type of disk and the approximate size.
 The built-in storage type of the ZimaBoard is eMMC, which may also be recognized as an MMC device in the operating system.
 
 **Attention****! You may need to modify the boot sequence in BIOS or select the boot device at boot time if you install the OS to an external hard disk.**

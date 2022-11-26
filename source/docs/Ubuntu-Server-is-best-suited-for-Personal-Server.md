@@ -112,16 +112,3 @@ Attention! You may need to modify the boot sequence in BIOS or select the boot d
 **ZimaBoard installs any operating system you like!**
 
 [![Discord Card](https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2)](https://discord.gg/knqAbbBbeX)
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,10 +12,11 @@ Please ask for help in [Discord](https://discord.gg/TZjYGnAW3M) if you encounter
 
 
 {% note warn %}
-**waring**
-If your ZimaBoard is running normally, upgrading the BIOS is not recommended!
+**warning**
 
+If your ZimaBoard runs normally, upgrading the BIOS is not recommended!
 Improper operation can cause the ZimaBoard to fail to start.
+
 {% endnote %}
 
 ## ZimaBoard 216
@@ -57,7 +58,7 @@ Improper operation can cause the ZimaBoard to fail to start.
 
 ![](/images/Upgrade-Motherboard-BIOS-Version/bios-select-boot-device.jpg)
 
-**1. Wait for BIOS update to complete.**
+**1. Wait for the BIOS update to complete**
 
 ![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.jpg)
 

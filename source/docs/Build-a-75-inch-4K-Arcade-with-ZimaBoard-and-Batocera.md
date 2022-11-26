@@ -1,21 +1,21 @@
 ---
-title: Build a 75-inch 4K Arcade with ZimaBoard and Batocera.linux
+title: Build a 75-inch 4K Arcade Machine with ZimaBoard and Batocera.linux
 ---
 >**Story:**
- There are so many nostalgic games out there, and browsing through them one by one, with their memorable names and screenshots, is like going back in time. It's like going back in time to your own childhood passions and desires (what? Your childhood desire was to watch JAV?) This tutorial will take us back to our childhood
+ There are still so many retro games out there, and browsing through them one by one, with their memorable names and screenshots, is like going back in time. It’s like going back in time to your own childhood passions and desires)This tutorial will take us back to your early days.
 
-**Read this document to learn about other ways to use ZimaBorad and get a quick overview of the diversity of ZimaBoard use**
+**Read this document to learn about other ways to use ZimaBoard and get a quick overview of the diversity of ZimaBoard use**
 > **Reasons to choose Batocera：**
     - > **Batocera** is one of the easiest ways to turn our ZimaBoard into an attractive retro console with multiple emulators and hundreds of games to enjoy.
-    - > One of the positive points of **Batocera** is that it does not modify the internal storage memory of the ZimaBoard or other compatible device. Just remove the memory or the card we use when we do not want to use Batocera and our machine will return to its original state without any modification. A system similar to [EmuELEC](https://androidpctv.com/tutorial-emuelec-turns-your-android-tv-box-into-a-retro-console/) that we can also try.
+    - > One of the positive points of **Batocera** is that it does not modify the internal storage memory of the ZimaBoard or other compatible devices. Remove the memory or the card we use when we do not want to use Batocera, and our machine will return to its original state without any modification. There is a  system similar to [EmuELEC](https://androidpctv.com/、tutorial-emuelec-turns-your-android-tv-box-into-a-retro-console/) that we can also try.
 
 # 1. WHAT IS [BATOCERA.LINUX](https://batocera.org/) ?
 
 ![Introduce Batocera](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png)
 
-**[Batocera](https://batocera.org/)software based on Debian distribution is a group of emulators that allows us to load games with their covers and other extras to play in an orderly way dozens of emulators of different machines. To play them you need the ```ROMS or ISO``` of the games and some of these systems also require the BIOS images of the machine to emulate.**
+**[Batocera](https://batocera.org/) software, based on Debian distribution, is a group of emulators that allows us to load games with their covers and other extras to play in an orderly way dozens of emulators of different machines. To play them, you need the ```ROMS or ISO``` of the games. Some of these systems also require the BIOS images of the machine to emulate.**
 
-**Batocera also supports ```Android```,```PC``` ```or MacOS``` computers of all kinds, ```Raspberry Pi``` boards, many **portable retro consoles**… for which there are exclusive distributions. Batocera installation is simple, it is easy to configure, its interface is nice, easy to use and the list of supported emulators is huge.**
+**Batocera also supports ```Android```,```PC``` ```or MacOS``` computers of all kinds, ```Raspberry Pi``` boards, and many **portable retro consoles**… for which there are exclusive distributions. Batocera installation is simple and easy to configure, its interface is nice and easy to use, and the list of supported emulators is huge.**
 
 - Basic emulators supported: AMIGA, MSX, NES, SNES, GBA, MG, DREAMCAST, NDS, PS1, CPS1/2/3…
 - Supported only on powerful hardware: PS2, PS3, GAMECUBE, 3DS, WII/U, SWITCH, XBOX…
@@ -24,16 +24,17 @@ title: Build a 75-inch 4K Arcade with ZimaBoard and Batocera.linux
 
 ![Introduce Batocera](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera2.png)
 
-# 2. INSTALL BATOCERA ON USB PENDRIVE OR MICROSD
+# 2.INSTALL BATOCERA ON USB PENDRIVE OR MICROSD
 
-## Things to prepare in the early stages
+## Things to Prepare in Advance
 
 ![Batocera Linux](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare.png)
 
 ![Introduce Batocera](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare2.jpeg)
 
-## Making Batocera image
-**To install **Batocera** we need the **IMG.GZ** file for our device, to download it we only have to enter the Batocera website and save it in our computer. Then thanks to the balenaEtcher software we will create the boot drive that will allow us to run the system without modifying our device.**
+## Making a Batocera Image
+
+**To install **Batocera** we need the **IMG.GZ** file for our device.To download it, we only have to enter the Batocera website and save it on our computer. Then thanks to the balenaEtcher software, we will create the boot drive that will allow us to run the system without modifying our device.**
 
 - **[Download Batocera image file IMG.GZ.](https://batocera.org/download)**
 - **[Download Balena to burn the image](https://www.balena.io/etcher)**
@@ -41,7 +42,7 @@ title: Build a 75-inch 4K Arcade with ZimaBoard and Batocera.linux
 
 ## Create boot drive for Batocera
 
-**After downloading the necessary files we can generate the ```SD memory or USB drive``` to boot this system, running the Balena program. If it does not work on our device by USB drive is recommended to use an SD card, in any case we must have the fastest possible drive if we are going to use it with this method.**
+**After downloading the necessary files, we can generate the  ```SD memory or USB drive``` to boot this system, running the Balena program. If it does not work on our device by USB drive is recommended to use an SD card; in any case, we must have the fastest possible drive if we are going to use it with this method.**
 
 **- step1**
 
@@ -65,7 +66,7 @@ title: Build a 75-inch 4K Arcade with ZimaBoard and Batocera.linux
 
 ![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
 
-# 3.Start on ZimaBoard
+# 3.Power on ZimaBoard
 
 ## First boot on ZiamBoard
 
@@ -73,32 +74,32 @@ title: Build a 75-inch 4K Arcade with ZimaBoard and Batocera.linux
 
 ![Zimaboard Connect Usb](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png)
 
-**When booting long press to enter the Bios interface, select the ```U disk boot```**
+**When booting, long press to enter the Bios interface, select the ```U disk boot```**
 
 ![Zimaboard Boot Select The USB Disk](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-select-the-u-disk.jpeg)
 
-**Finally you are in the Batocera interface**
+**Finally, you are in the Batocera interface**
 
 ![Enter Batocerag](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-enter-batocera.png)
 
-# 4. Getting started with Batocera
+# 4. Getting Started with Batocera
 
-## Handle usage rules
+## Handle Usage Rules
 
 ![Batocera Hotkeys](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-in-game-batocera-hotkeys.png)
 
-May not be suitable for all grips, but satisfies the rules of use of the mainstream grips on the market.
+Batocera may not be suitable for all grips, but it satisfies the rules of use of the mainstream grips on the market.
 
 ## Play
 **Batocera is shipped with a selection of ```free ROMs - games``` that are freely available and that can be legally distributed.**
 
 ![Play Batocera With Zimaboard](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-play.jpeg)
 
-# 5.Some other configurations
+# 5.Other Configurations
 
 **If you want to add your own ROM and BIOS files, you must first get access to Batocera**
 
-## Find a ZiamBoard IP address 
+## Find a ZiamBoard IP Address 
 
 **- Step1 Press the space bar**
 
@@ -125,7 +126,7 @@ May not be suitable for all grips, but satisfies the rules of use of the mainstr
 
 Please refer to the **[official tutorial](https://wiki.batocera.org/add_games_bios)** for detailed documentation
 
-## Overwriting the batocera with the original system
+## Overwriting the Batocera with the Original System
 
 **- Step1 Press the space bar and look for `SYSTEM SETTINGS`**
 
