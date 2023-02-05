@@ -154,7 +154,7 @@ For some users, because of the environmental factors of the LAN, the OMV address
 ## Docker与CasaOS
 
 **a)** Login to Wetty's SSH with the root account password and enter.
-**<code>`wget -qO- https://get.icewhale.io/casaos.sh | bash`<code>**
+**<code>`wget -qO- https://get.casaos.io | sudo bash`<code>**
 
 ![Omv System with-casaos ](/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos.jpeg)
 
