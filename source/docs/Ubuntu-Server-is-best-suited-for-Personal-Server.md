@@ -9,19 +9,19 @@ Many of you have purchased a ZimaBoard and want to install a number of different
 
 Here we will show you how to install a new operating system on your ZimaBoard, using the installation of the Ubuntu server operating system as an example.
 
-# Introudce Ubuntu Server 
+# Introduce Ubuntu Server
 
-![Introuduce Ubuntu Server](/images/Installing-Ubuntu-System/install-ubuntu-system-introuduce-ubuntu.png?400x100)
+![Introduce Ubuntu Server](/images/Installing-Ubuntu-System/install-ubuntu-system-introduce-ubuntu.png?400x100)
 
 Ubuntu is a Linux distribution based on Debian and composed mostly of free and open-source software.Ubuntu is officially released in three editions: Desktop,Server,and Core for Internet of things devices and robots.
 
 # Preparation
 
 **What you need to do on your computer to prepare.**
+
 - Download and install [balenaEtcher](https://www.balena.io/etcher/) on your computer
 - Download the system image you wish to install, in the text [Ubuntu Server](https://ubuntu.com/download/server)
   
-
 **ZimaBoard related preparation.**
 
 - ZimaBoard and power adapter
@@ -39,21 +39,20 @@ Ubuntu is a Linux distribution based on Debian and composed mostly of free and o
 
 ## 1.  Open balenaEtcher
 
-
 ![Open balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
 
-## 2. Click on "Flash from file" and select the system image you downloaded earlier.
+## 2. Click on "Flash from file" and select the system image you downloaded earlier
 
 ![Create Ubunt Server Image](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
 
-
 ![Create Ubunt Server Image](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
 
-## 3. Click "Select target" and select your inserted USB drive in the dialog box.
+## 3. Click "Select target" and select your inserted USB drive in the dialog box
 
 ![Create Ubunt Server Image](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-usb-disk.png)
 
-## 4. Click "Flash!" and wait for it to complete.
+## 4. Click "Flash!" and wait for it to complete
+
 You may be asked to enter your system password during the process, just enter it and click OK.
 
 ![Enter you Computer Account And Password](/images/Installing-Ubuntu-System/install-ubuntu-system-enter-password.png)
@@ -62,10 +61,9 @@ The whole process will take a few minutes, depending on the size of your system 
 
 ![Create Ubunt Server Boot Usb Disk ](/images/Installing-Ubuntu-System/install-ubuntu-system-makeing-image.png)
 
-## 5. Complete! Remove the USB drive and you're ready to go!
+## 5. Complete! Remove the USB drive and you're ready to go
 
 ![Complete Create Ubunt Server Boot Usb Disk ](/images/Installing-Ubuntu-System/install-ubuntu-system-image-complete.png)
-
 
 # Installing Ubuntu Server to ZimaBoard
 
@@ -75,13 +73,11 @@ The whole process will take a few minutes, depending on the size of your system 
 
 Connect your **USB Drive**, **Monitor**, **Keyboard**, **UsB Hub**(Optional), **Mouse** (Optional), **Network Cable** (Recommended) to **ZimaBoard.**
 
-
 # Power on and select the boot device
 
+## 7.Connect power and press F11 continuously
 
-## 7.Connect power and press F11 continuously.
-
-## 8.Select your USB drive starting with UEFI in the boot device menu.
+## 8.Select your USB drive starting with UEFI in the boot device menu
 
 ![Ubunt Server Choose Usb Boot](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-usb-boot.jpg)
 
@@ -90,7 +86,6 @@ Connect your **USB Drive**, **Monitor**, **Keyboard**, **UsB Hub**(Optional), **
 ![Ubunt Server Install System](/images/Installing-Ubuntu-System/install-ubintu-system-start-installing.png)
 
 **Refer to the [official Ubuntu installation tutorial](https://ubuntu.com/tutorials/install-ubuntu-server#3-boot-from-install-media) for setup.**
-
 
 {% note danger %}
 that when selecting storage space please take care to select the correct disk
