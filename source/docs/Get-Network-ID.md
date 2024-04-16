@@ -1,5 +1,5 @@
 ---
-title: GetNetworkID
+title: Get Network ID
 typora-root-url: ..
 ---
 ## GetNetworkIDGetNetworkIDGetNetworkIDGetNetworkIDGetNetworkIDGetNetworkIDGetNetworkID
