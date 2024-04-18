@@ -11,6 +11,7 @@ Install Hexo
 
 ``` bash
 $ npm install -g hexo-cli
+$ yarn global add open-cli
 ```
 
 Install dependencies:
@@ -31,6 +32,11 @@ Run server:
 
 ``` bash
 $ hexo server
+```
+
+Run editor
+``` bash
+$ yarn start
 ```
 
 Create a new page:
