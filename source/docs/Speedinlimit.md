@@ -1,64 +1,21 @@
 ---
-title: Speedinlimit
+title: How to achieve the fastest transfer speed with the Zima device
 typora-root-url: ..
 ---
-## Reason
+## How to achieve the fastest transfer speed with the Zima device
 
-**Many users do not know how to install the system after we have downloaded it. Do not know the clear installation steps, etc. This article will help users to solve the problem of installing the system**
-
-## Universal Production Mirror
-
-**What you need to do on your computer to prepare.**
-- Download and install [balenaEtcher](https://www.balena.io/etcher/) on your computer
-- Download the system image you wish to install, in the text [Ubuntu Server](https://ubuntu.com/download/server)
-  
-
-**ZimaBoard related preparation.**
-
-- ZimaBoard and power adapter
-- A USB drive (The capacity needs to be larger than the system image you want to install)
-- A miniDP to DP/HDMI Adapter (Used to connect to a monitor)
-- A monitor
-- A keyboard
-- A USB hub (Optional, if the USB port is not enough)
-- A mouse (Optional)
-  - It will be convenient if the system installer you want to install comes with a GUI interactive interface. Most desktop OS will have one, server OS generally do not.)
-- A network cable (Recommended)
-  - Convenient for you to complete the network setup and install the latest security and feature updates at the same time as installing the system.)
-
-# SpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimitSpeedinlimit
-
-## 1.Open balenaEtcher
-
-
-![Open Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
-
-## 2. Click “Flash from file” and select the system image you downloaded earlier.
-
-![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
-
-
-![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
-
-## 3.Click “Select target” and select your inserted USB drive in the dialog box.
-
-![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-usb-disk.png)
-
-## 4.Click “Flash!” and wait for it to complete.
-You may be asked to enter your system password during the process, just enter it and click OK.
-
-![Enter you Computer Account And Password](/images/Installing-Ubuntu-System/install-ubuntu-system-enter-password.png)
-
-The whole process will take a few minutes, depending on the size of your system image and the read/write speed of your USB drive.
-
-![Waitting Balenaetcher Flash](/images/Installing-Ubuntu-System/install-ubuntu-system-makeing-image.png)
-
-## 5.Completion! Remove the USB drive, and you’re ready to go!
-
-![Complete Create Usb Boot](/images/Installing-Ubuntu-System/install-ubuntu-system-image-complete.png)
-
-## Universal Start-up System
-
-After the ZimaBoard is plugged in, press the **`F11 key`** / **`Delete key`** uninterrupted . When we insert the U disk boot disk, it will automatically display the USB key, select the USB key and press the Enter key
-
-[![Discord Card](https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2)](https://discord.gg/knqAbbBbeX)
+### If you find that the transfer speed achieved by the Zima device is lower than its maximum speed, for example in the following cases:
+### Please check and upgrade the following aspects to achieve the highest speed:
+![ZimaOS](/images/Speedinlimit/e3a6036d-a2e6-47af-95fe-4d2dc299d382.png/1ec6067a-38b9-4a23-a23e-d288d2ef1be5.jpeg)
+1. Router issue: Choose a router with a 2.5G/10G interface that matches the performance of the ZimaCube network card. The router may have hardware failures or configuration issues, causing the network connection speed to decrease. Restarting the router and checking its settings may help resolve the issue.
+2. Switch issue: If you are using a switch on your local area network, it may also have insufficient speed specifications or configuration issues. Check the switch's connections and settings to ensure everything is normal.
+3. Network cable issue: Lower speed specification network cables may cause a decrease in connection speed. Check if the cables meet the highest speed requirements and try replacing the cables.
+### If you have ruled out the above possibilities, try the following methods:
+1. Move the Zima device to another LAN port
+2. Move the router to another LAN port
+3. Replace with another Ethernet cable
+4. Test the transfer speed of other devices on the same network
+5. Connect directly to the upstream router as much as possible
+### Other factors affecting transfer speed not shown:
+1. DNS server issue: Performance issues with the DNS server may affect network connection speed. Try changing the DNS server used by your computer or router, or contact your network service provider for faster DNS resolution service.
+2. Firewall or security software issue: Some firewalls or security software may affect network connection speed. Try temporarily disabling these software to see if they have an impact on connection speed.
