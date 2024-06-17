@@ -2,7 +2,7 @@
 title: Get Network ID
 typora-root-url: ..
 ---
-## GetNetworkID
+## Get Network ID
 
 ### The NetworkID is one of the ways to uniquely identify a Zima device and connect to it.
 ### You can find the device's NetworkID in ZimaOS at the following location:
