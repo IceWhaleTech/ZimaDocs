@@ -7,7 +7,7 @@ typora-root-url: ..
 
 ### If you forget your ZimaOS password, please follow the steps below:
 1. Connect ZimaCube to a monitor via HDMI cable
-![ZimaOS](/images/ForgotPassword/1ec6067a-38b9-4a23-a23e-d288d2ef1be5.png)
+![ZimaOS](/images/ForgotPassword/1ec6067a-38b9-4a23-a23e-d288d2ef1be5.jpeg)
 2. Setting SSH password on ZimaCube via keyboard
 ![ZimaOS](/images/ForgotPassword/8e016566-2381-45b9-9434-33ca0cf99cdb.png)
 3. Enter the user reset command
