@@ -56,7 +56,7 @@ Updating the system will enable a better experience
 
 ![CasaOS Main](/images/Get-Started-with-ZimaBoard/casaos-main.jpg)
 
-{% note warn Default account for Pre-installed Apps %}
+{% note warn Default account for Pre installed Apps %}
 Username:casaos
 Password:casaos
 {% endnote %}
