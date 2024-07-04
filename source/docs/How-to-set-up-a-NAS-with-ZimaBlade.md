@@ -111,8 +111,7 @@ After creating the account, you will be logged into the CasaOS Web UI.
 <br>
 
 **Now, configure your disk.** CasaOS will detect the disk connected. Click the storage setting button, then click the "Create Storage" button.
-
-![](https://manage.icewhale.io/api/static/docs/1719988324946_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720065540546_image.png)
 ![](https://manage.icewhale.io/api/static/docs/1719988986725_Arc_Xe3iywhbjm.png)
 
 Choose the appropriate option for your needs. Your drive is now ready to be used as storage.
