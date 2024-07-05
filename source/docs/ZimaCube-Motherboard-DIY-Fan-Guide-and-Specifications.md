@@ -15,41 +15,17 @@ Standard fan size
 
 ZimaCube supports fans with a maximum voltage of 12V. You can DIY according to your needs
 
-Rated voltage
-
-Operating voltage
-
-  
-
-Rated current
-
-  
-
-Number of revolutions per minute
-
-Static (in a signal)
-
-DC 12V
-
-DC 6.0~13.6v
-
-200mA±10%
-
-3800RPM±10%
-
-28.5db(A)
-
-  
+![](https://manage.icewhale.io/api/static/docs/1720161435774_copyImage.png)
 
 ### Standard fan and locating hole sizes
 
-![](https://manage.icewhale.io/api/static/docs/1720159893920_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720161436651_copyImage.png)
 
   
 
 ### Standard fan screw size
 
-![](https://manage.icewhale.io/api/static/docs/1720159894793_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720161437195_copyImage.png)
 
   
 
@@ -57,25 +33,25 @@ DC 6.0~13.6v
 
 Fan plug wires
 
-![](https://manage.icewhale.io/api/static/docs/1720159896592_copyImage.jpeg)
+![](https://manage.icewhale.io/api/static/docs/1720161438813_copyImage.jpeg)
 
 Base
 
-![](https://manage.icewhale.io/api/static/docs/1720159897138_copyImage.jpeg)
-![](https://manage.icewhale.io/api/static/docs/1720160666396_image.png)
+![](https://manage.icewhale.io/api/static/docs/1720161439294_copyImage.jpeg)
 
+![](https://manage.icewhale.io/api/static/docs/1720161439784_copyImage.png)
 
 ### Bios fan configuration
 
 1.  Select Advance, Hardware Monitor in Bios.
     
 
-![](https://manage.icewhale.io/api/static/docs/1720159899845_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720161442424_copyImage.png)
 
 2.  Configure it according to your needs using the options under SMMART FAN Control.
     
 
-![](https://manage.icewhale.io/api/static/docs/1720159902339_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720161444798_copyImage.png)
 
 Removal and replacement steps
 -----------------------------
@@ -83,12 +59,12 @@ Removal and replacement steps
 1.  Remove the original fan by unplugging the fan power cord and unscrewing the four corner screws.
     
 
-![](https://manage.icewhale.io/api/static/docs/1720159904544_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720161446963_copyImage.png)
 
 2.  Align the new fan with the holes on the motherboard, tighten the screws, and plug in the power cord.
     
 
-![](https://manage.icewhale.io/api/static/docs/1720159906664_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1720161449065_copyImage.png)
 
   
 
