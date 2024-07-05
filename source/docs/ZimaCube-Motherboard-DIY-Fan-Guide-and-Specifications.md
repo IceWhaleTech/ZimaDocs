@@ -62,36 +62,8 @@ Fan plug wires
 Base
 
 ![](https://manage.icewhale.io/api/static/docs/1720159897138_copyImage.jpeg)
+![](https://manage.icewhale.io/api/static/docs/1720160666396_image.png)
 
-Pin
-
-Name
-
-Color
-
-1
-
-GND
-
-Black
-
-2
-
-+12V
-
-Yellow
-
-3
-
-TACH
-
-Green
-
-4
-
-PWM
-
-Blue
 
 ### Bios fan configuration
 
