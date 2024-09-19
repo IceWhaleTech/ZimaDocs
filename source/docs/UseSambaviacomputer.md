@@ -6,7 +6,7 @@ Verify the address for your Operation System compatibility.
    1. Open the "File Explorer"
       ![](/images/Use-Sambaviacomputer/open_file_explorer.png)
    2. Enter your address in the search box.
-      ![](/DATA/ZimaDocs/source/images/Use-Sambaviacomputer/input_add.png)
+      ![](/images/Use-Sambaviacomputer/input_add.png)
    3. Enter your member's account and password.
    4. Click "OK"
       ![](/images/Use-Sambaviacomputer/win-network-box.png)
