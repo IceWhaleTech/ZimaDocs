@@ -26,4 +26,4 @@ Verify the address for your Operation System compatibility.
    7. Connect successful
       ![](/images/Use-Sambaviacomputer/mac-success.png)
    8. If you face this, just check your permission with this file's manager.
-      ![](/DATA/ZimaDocs/source/images/Use-Sambaviacomputer/mac-error.png)
+      ![](/images/Use-Sambaviacomputer/mac-error.png)
