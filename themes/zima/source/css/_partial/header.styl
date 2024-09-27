@@ -3,7 +3,7 @@ header-padding-max = 30px
 logo-size = 60px
 
 #header_outer
-  height: 97px
+  height: 64px
   width 100%
   @media mq-mobile
     height: 60px
@@ -11,18 +11,22 @@ logo-size = 60px
   position: fixed
   z-index 10
   width 100%
-  height: 97px
+  height: 64px
   padding:  0
-  background-color: color-navy
+  background-color: rgba(17, 17, 17, 0.75)
+  backdrop-filter: blur(8px)
   @media print
     display: none
   @media mq-mobile
     height: 60px
 
 #header-inner
+  max-width: 1200px
+  margin: 0 auto
   display: flex
   flex-flow: row nowrap
   align-items: center
+  height: 100%
   @media mq-mobile
     justify-content: center
 
@@ -42,15 +46,25 @@ logo-size = 60px
   @media mq-normal
     display: flex
     
-
-
 .search-icon-container
   flex-shrink: 0
-  width: 60px
   display: flex
   justify-content: center
+  align-items: center
+  a.shop
+    white-space: nowrap
+    display: inline-block
+    background: color-link
+    padding: 10px 20px
+    // margin-right: 20px
+    font-weight: 500
+    margin-left: 10px
+    &:hover
+      opacity: 0.9
   @media mq-mobile
     justify-content: flex-end
+    a.shop
+      margin-right: -10px
 
 #logo-wrap
   flex: 0 logo-size
@@ -76,49 +90,22 @@ logo-size = 60px
   text-decoration: none
   transition: 0.2s
   font-family: font-menu
-  font-size: 18px
-  text-transform: uppercase
-  font-weight: 600
+  font-size: 16px
+  // text-transform: uppercase
+  // font-weight: 600
   display: inline-block
-  padding: 35px 14px
+  padding: 0px 14px
   line-height: 1.5em
-  &::before
-    content: ''
-    position: absolute
-    width: 10px
-    height: 30px
-    transition: all 0.5s ease-out
-    opacity: 0
-    top: 34px
-    border: 1px solid #fff
-    border-right: 0px
-    left: 5%
-  &::after
-    content: ''
-    position: absolute
-    width: 10px
-    height: 30px
-    transition: all 0.5s ease-out
-    opacity: 0
-    top: 34px
-    border: 1px solid #fff
-    border-left: 0px
-    right: 5%
+  opacity: 0.5
   &:hover , &.current
     opacity: 1
     color: #fff
-    &::before
-      left: 0
-      opacity: 1
-    &::after
-      right: 0
-      opacity: 1
   
   
 .maxmenu {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'BrittiSans', sans-serif;
     color: #fff;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-size: 18px;
     padding: 0;
     display: block;
@@ -154,10 +141,9 @@ logo-size = 60px
   width 100%
   height: 100%
   left: 0
-  top: 0
+  top: 10vh
   display: flex
   flex-flow: column nowrap
-  justify-content: center
   align-items: center
   
 
@@ -175,10 +161,11 @@ logo-size = 60px
 
 #search-input-wrap
   position: relative
-  padding-left: 6px
   padding-bottom: 8px
   border-bottom: 1px solid color-gray
-  width: 80%
+  width: 60%
+  min-width: 380px
+  max-width: 800px
   &.on
     display: flex
 
@@ -207,6 +194,7 @@ logo-size = 60px
 
 #search-input
   width 100%
+  text-indent: 18px
   background: none
   font-size: 18px
   font-family: font-title
@@ -214,6 +202,18 @@ logo-size = 60px
   outline: none
   -webkit-appearance: none
   flex-grow: 1
+#resultContent
+  width: 60%
+  min-width: 380px
+  max-width: 800px
+  max-height: 70vh
+  overflow-y: auto
+  ul.search-result-list
+    padding: 20px 
+    li
+      padding: 4px 0
+      &:hover
+        color: color-link
 
 #lang-select-wrap
   display: none

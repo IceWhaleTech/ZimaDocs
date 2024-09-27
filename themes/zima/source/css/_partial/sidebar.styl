@@ -5,28 +5,41 @@
   opacity: 0.8
   margin-left: sidebar-width * -1
   display: none
-  // position: sticky
-  // top: 97px
+  position: sticky
+  top: 97px
+  height: calc(100vh - 97px)
+  overflow-y: auto
   @media mq-normal
     display: block
 
 .sidebar-title
-  margin-top: 40px
-  padding: 10px 0
+  padding: 12px 0
   font-family: font-menu
   font-weight: bold
-  font-size: 18px
-  color: color-link
+  font-size: 16px
+  // color: color-link
   display: inline-block
   border-top: 1px solid color-border
   line-height: 1
+  display: flex
+  justify-content: space-between
+  align-items: center
+  cursor pointer
+  &.current
+    color: color-link
+  a
+    color: inherit
+  i
+    font-size: 12px
+    transition: 0.5s ease-in-out
 
 .sidebar-link
   font-family: font-title
   display: block
   color: color-default
+  font-size: 16px
   text-decoration: none
-  padding: 7px 0
+  padding: 6px 0
   line-height: 1.25em
   position: relative
   width: 100%
@@ -34,3 +47,20 @@
     color: color-link
   &:hover
     color: color-link-hover
+  a
+    color: inherit
+
+.category-list
+  .category-list-children
+    max-height: 0
+    overflow: hidden
+    transition: max-height 0.5s ease-in-out
+    margin-bottom: 6px
+    margin-top: -6px
+  .show-children
+    h4
+      i
+        transform: rotate(90deg)
+    .category-list-children
+      max-height: 1000px
+      

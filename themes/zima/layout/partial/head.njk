@@ -12,11 +12,11 @@
     {% endfor %}
   {% endif %}
   <!-- FAVICONS ICON -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="shortcut icon" type="image/x-icon" href="favicon-32x32.png" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
 
   <!-- Icon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('icon/apple-icon-57x57.png') }}">
+  {# <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('icon/apple-icon-57x57.png') }}">
   <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('icon/apple-icon-60x60.png') }}">
   <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('icon/apple-icon-72x72.png') }}">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('icon/apple-icon-76x76.png') }}">
@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('icon/android-icon-192x192.png') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('icon/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('icon/favicon-96x96.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('icon/favicon-16x16.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('icon/favicon-16x16.png') }}"> #}
   <link rel="manifest" href="{{ url_for('icon//manifest.json') }}">
   <meta name="msapplication-TileColor" content="#f1b335">
   <meta name="msapplication-TileImage" content="{{ url_for('icon/ms-icon-144x144.png') }}">
@@ -37,15 +37,23 @@
   <!-- build:css build/css/zima.css -->
   {{ css('css/zima') }}
   <!-- endbuild -->
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rajdhani%3A300%2C400%2C500%2C600%2C700%7CMuli%3A200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;subset'/>
+  {# <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rajdhani%3A300%2C400%2C500%2C600%2C700%7CMuli%3A200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;subset'/> #}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
   
   <!-- Open Graph -->
+  {% set description %}
+    {% if page.description %}
+      {{ page.description }}
+    {% else %}
+      {{ page.content }}
+    {% endif %}
+  {% endset %}
   {{ open_graph({
     fb_admins: config.fb_admins,
-    twitter_site: config.twitter
+    twitter_site: config.twitter,
+    description: description
   }) }}
   {{ partial('google_analytics') }}
 

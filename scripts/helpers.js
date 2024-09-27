@@ -49,16 +49,51 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
     return '';
   }
 
-  for (const [title, menu] of Object.entries(sidebar)) {
-    result += '<strong class="' + className + '-title">' + self.__(prefix + title) + '</strong>';
-
-    for (const [text, link] of Object.entries(menu)) {
-      let itemClass = className + '-link';
-      if (link === path) itemClass += ' current';
-
-      result += '<a href="' + link + '" class="' + itemClass + '">' + self.__(prefix + text) + '</a>';
-    }
+  if(type === 'zimaos') {
+    result += `
+    <h4 class="category-list-link sidebar-title ${path=='index.html'?'current':''}" style="border:none"> 
+      <a href="/zimaos">What's Zima</a>
+    </h4>
+    `
   }
+
+  result += '<ul class="category-list">'
+
+  for (const [title, menu] of Object.entries(sidebar)) {
+    let showChildren = '';
+    let childrenContent = '';
+    for (const [text, link] of Object.entries(menu)) {
+      let itemClass = '';
+      if (link === path){
+        itemClass += ' current';
+        showChildren = 'show-children';
+      }
+      if( !(type=='zimaos' && link == 'index.html') ){ 
+        childrenContent += `<li class="sidebar-link ${itemClass}"><a href="${link}">${self.__(prefix + text)}</a></li>`;
+      }
+    }
+    result += `
+    <li class="${showChildren}">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>${self.__(prefix + title)}</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      ${childrenContent}
+      </ul>
+    </li>`;
+  }
+  result += '</ul>';
+  // for (const [title, menu] of Object.entries(sidebar)) {
+  //   result += '<strong class="' + className + '-title">' + self.__(prefix + title) + '</strong>';
+
+  //   for (const [text, link] of Object.entries(menu)) {
+  //     let itemClass = className + '-link';
+  //     if (link === path) itemClass += ' current';
+
+  //     result += '<a href="' + link + '" class="' + itemClass + '">' + self.__(prefix + text) + '</a>';
+  //   }
+  // }
 
   return result;
 });
@@ -72,7 +107,8 @@ hexo.extend.helper.register('header_menu', function(className) {
   for (const [title, path] of Object.entries(menu)) {
     let langPath = path;
     let active = '';
-    if (!isEnglish && ~localizedPath.indexOf(title)) langPath = lang + path;
+    // if (!isEnglish && ~localizedPath.indexOf(title)) langPath = lang + path;
+    if (!isEnglish) langPath = lang + path;
     if (this.page.permalink.includes(langPath)) active = 'current_page_item';
     result += `<li class="menu-item ${active}"><a href="${self.url_for(langPath)}" class="${className}-link ">${self.__('menu.' + title)}</a></li>`;
   }
@@ -157,7 +193,7 @@ hexo.extend.helper.register('lunr_index', data => {
 // Will be replace with full_url_for after hexo v4 release
 hexo.extend.helper.register('canonical_path_for_nav', function() {
   const path = this.page.canonical_path;
-
+  return path
   if (path.startsWith('docs/') || path.startsWith('api/')) return path;
   return '';
 });

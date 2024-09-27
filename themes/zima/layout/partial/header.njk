@@ -3,7 +3,8 @@
     <div id="header-inner" class="inner">
       <div class="logo-container">
         <h1 id="logo-wrap">
-          <a href="{{ url_for_lang('') }}" id="logo">Zima-Docs</a>
+          {# <a href="{{ url_for_lang('/zimacube') }}" id="logo">Zima-Docs</a> #}
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
         </h1>
       </div>
       <div class="nav-container">
@@ -11,11 +12,13 @@
           <ul id="menu-main-menu" class="maxmenu-list">
 
             {{ header_menu('main-nav') }}
-            <li class="menu-item menu-item-has-children">
+            <li class="menu-item menu-item-has-children" style="display:none">
               <span class="maxmenu-click">
                 <i class="maxmenu-arrow"></i>
               </span>
-              <a href="#">Language</a>
+              <a href="#">
+                <img src="/img/lang.svg" />
+              </a>
               <ul class="sub-menu">
                 {% for lang, value in site.data.languages %}
                   <li class="menu-item">
@@ -33,6 +36,7 @@
         <div id="search-container-icon">
           {# <i class="fa fa-search" id="showSearch"></i> #}
         </div>
+        <a class="shop" href="https://shop.zimaboard.com/" target="_blank">Store</a>
       </div>
 
       <a id="mobile-nav-toggle">
@@ -52,10 +56,11 @@
   <div class="search-content-container">
     <div id="search-input-wrap">
       <div id="search-input-icon">
-        <i class="fa fa-search"></i>
+        {# <i class="fa fa-search"></i> #}
       </div>
       <input type="search" id="search-input" placeholder="Search...">
     </div>
+    <div id="resultContent"></div>
   </div>
 
 </div>

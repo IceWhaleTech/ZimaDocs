@@ -7,118 +7,189 @@
       <div class="row">
 
         <div class="col-lg-6 col-md-6">
-
-          <div class="widget recent-posts-entry">
-            <h3 class="widget-title">
-              <a href="https://www.zimaboard.com/contact" target="_blank">Contact Us</a>
-            </h3>
-            <ul class="widget_address">
-              <li>
-                <i class="fa fa-map-marker"></i>
-                <a href="https://www.zimaboard.com/contact" target="_blank">X-NODE Space, 4F, 800 NaXian Road, Shanghai, P.R.C</a>
-              </li>
-              <li>
-                <i class="fa fa-envelope"></i>
-                <a href="mailto:info@icewhale.org" target="_blank">info@icewhale.org</a>
-              </li>
-              <li>
-                <i class="fa fa-phone"></i>
-                <a href="tel:+86-13774231816" target="_blank">+86 137 7423 1816</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3">
-          <div class="widget widget_services">
-            <h3 class="widget-title">Useful links</h3>
-            <div class="row">
-              <div class="col-lg-6 col-md-6">
-                <ul>
-                  <li>
-                    <a href="https://www.zimaboard.com/about/product">ZimaBoard</a>
-                  </li>
-                  <li>
-                    <a href="https://www.casaos.io" target="_blank">CasaOS</a>
-                  </li>
-                  <li>
-                    <a href="https://discord.gg/Gx4BCEtHjx" target="_blank">Community</a>
-                  </li>
-                  <li>
-                    <a href="https://www.zimaboard.com/distributors" target="_blank">Distributors</a>
-                  </li>
-                  <li>
-                    <a href="https://www.zimaboard.com/contact" target="_blank">Contact Us</a>
-                  </li>
-
-                </ul>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3">
-
           <div class="widget widget_newsletter">
-            <h3 class="widget-title">Keep In Touch</h3>
-            <p>Join our subscribers list to get the latest news, updates and special offers.</p>
-            <div class="newsletter-input">
-              <form class=" validate" action="https://gmail.us2.list-manage.com/subscribe/post?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+            <h3 class="widget-title">Keep In Touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
                 <div class="input-group">
-                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
                   <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="b_f78b71ceb3f6e97b84a70d168" tabindex="-1" value="">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
                   </div>
-                  <div class="input-group-append">
-                    <button type="submit" class="mc-button input-group-text nl-search-btn text-black mc-button site-bg-primary title-style-2">Subscribe</button>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/img/arrow.svg" alt="SVG Icon">
+                    </button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
         </div>
-
+        {% set socialMedia = [
+          {
+            name: "Facebook",
+            icon: "facebook",
+            href: "https://www.facebook.com/zimaboard"
+          },
+          {
+            name: "Discord",
+            icon: "discord",
+            href: "https://discord.gg/f9nzbmpMtU"
+          },
+          {
+            name: "Youtube",
+            icon: "youtube",
+            href: "https://www.youtube.com/@ZimaBoardOfficialChannel"
+          },
+          {
+            name: "Instagram",
+            icon: "instagram",
+            href: "https://www.instagram.com/zimaboard"
+          },
+          {
+            name: "X / Twitter",
+            icon: "x",
+            href: "https://twitter.com/ZimaBoard"
+          },
+          {
+            name: "TikTok",
+            icon: "tiktok",
+            href: "https://www.tiktok.com/@zimaboard"
+          }
+        ] %}
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              {% for social in socialMedia %}
+              <li>
+                <a href="{{ social.href }}" target="_blank">
+                  <img src="{{ '/img/' + social.icon + '.svg' }}" alt="{{ social.name }}">
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <!-- FOOTER COPYRIGHT -->
-
+  {% set menuLinks = [
+    {
+      title: "Products",
+      links: [
+        { title: "ZimaCube", href: "https://www.zimaspace.com/products/cube-personal-cloud" },
+        { title: "ZimaBoard", href: "https://www.zimaspace.com/products/single-board-server" },
+        { title: "ZimaBlade", href: "https://www.zimaspace.com/products/blade-personal-nas" },
+        {
+          title: "Accessories",
+          href: "https://shop.zimaboard.com/collections/zima-accessories"
+        },
+        { title: "CasaOS", href: "https://www.casaos.io" }
+      ]
+    },
+    {
+      title: "Resource",
+      links: [
+        {
+          title: "ZimaSpace",
+          href: "https://www.zimaspace.com"
+        },
+        {
+          title: "Blog",
+          href: "https://www.zimaspace.com/blog/"
+        },
+        {
+          title: "Media Servers",
+          href: "https://www.zimaspace.com/blog/category/media-servers"
+        },
+        {
+          title: "Personal NAS",
+          href: "https://www.zimaspace.com/blog/category/personal-nas"
+        },
+        {
+          title: "Ad Blocker",
+          href: "https://www.zimaspace.com/blog/category/ad-blocker"
+        }
+      ]
+    },
+    {
+      title: "Support",
+      links: [
+        {
+          title: "Discord",
+          href: "https://discord.gg/f9nzbmpMtU"
+        },
+        {
+          title: "Community",
+          href: "https://icewhale.community"
+        },
+        { title: "Contact", href: "https://www.zimaspace.com/support/contact" },
+        {
+          title: "Refund Policy",
+          href: "https://www.zimaspace.com/support/refund-policy"
+        },
+        {
+          title: "Privacy Policy",
+          href: "https://www.zimaspace.com/support/privacy-policy"
+        },
+        { title: "Terms of Service", href: "https://www.zimaspace.com/support/terms-of-service" },
+        {
+          title: "Shipping Policy",
+          href: "https://www.zimaspace.com/support/shipping-policy"
+        }
+      ]
+    },
+    {
+      title: "Explore",
+      links: [
+        {
+          title: "Gallery",
+          href: "https://www.zimaspace.com/explore/gallery" 
+        },
+        {
+          title: "Made with IceWhale",
+          href: "https://discord.gg/f9nzbmpMtU"
+        },
+        {
+          title: "Community",
+          href: "https://icewhale.community"
+        },
+        { title: "About Us", href: "https://www.zimaspace.com/about" },
+        { title: "Blog", href: "https://www.zimaspace.com/blog/" },
+        { title: "Distributors", href: "https://www.zimaspace.com/distributors" },
+        { title: "Affiliate", href: "https://www.zimaspace.com/affiliate" }
+      ]
+    }
+  ] %}
   <div class="footer-middle">
-
-    <div class="container">
-      <div class="footer-middle-content1">
-        <ul class="social-icons  wt-social-links footer-social-icon">
-          <li>
-            <a href="https://discord.gg/Gx4BCEtHjx" target="_blank"><img src="{{ url_for('icon/discord.png') }}" alt=""></a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/zimaboard/" target="_blank"><img src="{{ url_for('icon/facebook.png') }}" alt=""></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/c/zimaboardofficialchannel/featured" target="_blank"><img src="{{ url_for('icon/youtube.png') }}" alt=""></a>
-          </li>
-          <li>
-            <a href="https://twitter.com/zimaboard" target="_blank"><img src="{{ url_for('icon/twitter.png') }}" alt=""></a>
-          </li>
-        </ul>
+    <div class="container menu-wrapper">
+      <div class="row">
+        {% for menu in menuLinks %}
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">{{ menu.title }}</h3>
+          <ul>
+            {% for link in menu.links %}
+            <li>
+              <a href="{{ link.href }}">{{ link.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
       </div>
     </div>
 
   </div>
   <div class="footer-bottom">
     <div class="container">
-      <ul class="copyrights-nav">
-        <li>
-          <a href="https://blog.zimaboard.com/privacy-policy/">Privacy Policy</a>
-        </li>
-      </ul>
       <div class="wt-footer-bot-left d-flex justify-content-center">
-        <span class="copyrights-text">© 2022 Shanghai Icewhale Technology Co.,Ltd. </span>
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
       </div>
     </div>
   </div>
-
 </footer>
 <!-- FOOTER END -->
