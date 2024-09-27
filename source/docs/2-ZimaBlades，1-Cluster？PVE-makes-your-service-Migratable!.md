@@ -62,7 +62,7 @@ Write PVE to the USB drive to create the PVE installation media:
 
   
 
-Install memory, connect the Ethernet, and video cables to ZimaBlade. For a detailed step-by-step guide on installing memory and other components on ZimaBlade, refer to this comprehensive tutorial: [Set up a NAS with ZimaBlade](https://docs.zimaboard.com/docs/How-to-set-up-a-NAS-with-ZimaBlade.html).
+Install memory, connect the Ethernet, and video cables to ZimaBlade. For a detailed step-by-step guide on installing memory and other components on ZimaBlade, refer to this comprehensive tutorial: [Set up a NAS with ZimaBlade](https://docs.zimaspace.com/docs/How-to-set-up-a-NAS-with-ZimaBlade.html).
 
   
 
