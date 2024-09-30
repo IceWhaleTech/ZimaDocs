@@ -4,7 +4,7 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# Introdction
+# Introduction
 In this article, we'll briefly introduce the main features available on ZimaOS. Those familiar with Zima know that ZimaOS is developed based on CasaOS, an open-source private cloud project released by the Zima team in 2022. It has garnered significant attention from developers worldwide, with over 700k installations serving enthusiasts in hundreds of countries globally.
 
 Building on the foundation of CasaOS, ZimaOS has further enhanced its core functionalities as a ultimate NAS OS. In a nutshell, while **CasaOS serves** as a personal cloud **application hub** enabling easy deployment of various private cloud applications, **ZimaOS** builds on this foundation to **establish a robust, complete operating system.** It features RAID setup, remote access, a cloud-like file manager, automatic backups, and unified management of cloud and NAS data—a suite of system-level functions. 
