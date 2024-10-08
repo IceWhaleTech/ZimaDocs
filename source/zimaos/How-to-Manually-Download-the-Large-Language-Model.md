@@ -1,6 +1,9 @@
-# How to Manually Download the Large Language Model
+
 ---
-How to Manually Download the Large Language Model
+title: How to Manually Download the Large Language Model
+description:
+type: “Docs”
+tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 
 Assist currently uses the “TheBloke/Llama-2-13b-Chat-GPTQ” by default for ZimaOS.
