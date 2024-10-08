@@ -18,7 +18,10 @@ Let's begin our exploration of ZimaOS, this streamlined system.
 ## Remote Access
 Accessibility is foundational for private clouds, and configuring network settings on most NAS devices can be quite complex. ZimaOS aims to offer a plug-and-play remote access experience that is both secure and reliable, without any risk of cloud forwarding or data leakage.
 
-Thus, once you install the Zima Client application and scan to connect to ZimaOS for the first time, your remote access channel is already set up. You can connect to your ZimaCube at home or in the office from anywhere using your MacBook or laptop without any additional configurations. The connection between your laptop and ZimaCube is automatically established by the Zima Client Application and ZimaOS, utilizing P2P communication to build the connection. Data transfers between the two are encrypted, ensuring all data transmissions are peer-to-peer.
+Thus, once you install the [**Zima Client**](https://find.zimaspace.com/) application and scan to connect to ZimaOS for the first time, your remote access channel is already set up！
+![](https://manage.icewhale.io/api/static/docs/1728377337978_image.png)
+
+You can connect to your ZimaCube at home or in the office from anywhere using your MacBook or laptop without any additional configurations. The connection between your laptop and ZimaCube is automatically established by the Zima Client Application and ZimaOS, utilizing P2P communication to build the connection. Data transfers between the two are encrypted, ensuring all data transmissions are peer-to-peer.
 
 For complete control, you can also log into the settings panel to turn off the remote access feature with just one click.
 ![](https://manage.icewhale.io/api/static/docs/1727081506994_image.png)
