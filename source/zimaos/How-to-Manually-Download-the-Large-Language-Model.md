@@ -1,4 +1,3 @@
-
 ---
 title: How to Manually Download the Large Language Model
 description:
