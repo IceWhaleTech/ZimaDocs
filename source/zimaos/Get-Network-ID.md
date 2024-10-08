@@ -4,7 +4,7 @@ description:
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-## Get Network ID
+
 ### The NetworkID is one of the ways to uniquely identify a Zima device and connect to it.
 ### You can find the device’s NetworkID in ZimaOS at the following location:
 1. Click “Settings” in the top-left corner of the system.
