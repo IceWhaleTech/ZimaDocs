@@ -38,10 +38,14 @@ Please visit https://find.zimaspace.com/ on your host device to download the cli
 </div>
 
 Now that **you have successfully connected to the device**, when you see the ZImaCube here (either Connect via ...), it means that you have configured the “Configuration”. you have configured “Remote Access”.
+![](https://manage.icewhale.io/api/static/docs/1728459310497_image.png)
+
 *In particular, if you have turned off remote access in the ZimaOS settings, you will not be able to connect.*
+![](https://manage.icewhale.io/api/static/docs/1728459277560_image.png)
+
 ### Enjoy Remote Access
-After the first successful connection, your device will automatically save the connection information. No matter where you are, just open the Zima client. A remote connection can be quickly established.
-Verify that your ZImaCube can be accessed remotely: (try with mobile hotspot on)
+After the first successful connection, your device will automatically save the connection information. No matter where you are, just open the Zima client. You can quickly establish a remote connection.
+When you leave the home LAN, the remote access status of ZimaCube is as follows:
 ![](https://manage.icewhale.io/api/static/docs/1728382289343_image.png)
 ## Second host device access:
 If you have another computer in the office, but the zimacube is not with you, you can still use Connect ID.
