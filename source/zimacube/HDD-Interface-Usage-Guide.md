@@ -41,7 +41,6 @@ Remove the 7th Bay and prepare.
 - （You’ll know it’s in correctly when it clicks into place. Don’t force it; if it doesn’t go in easily,  ensure to recheck and adjust the alignment accordingly.）
 3. **Secure the M.2 SSD:**
 - Use the appropriate screw to secure the SSD in place.  
----
 
 **Compatibility List**
 | <center>是否兼容</center> | <center>信息来源（内部/第三方）</center> | <center>品牌</center> | <center>级别</center> | <center>类型</center> | <center>系列</center> | <center>型号</center> | <center>固件</center> | <center>容量</center> | <center>备注</center> |
