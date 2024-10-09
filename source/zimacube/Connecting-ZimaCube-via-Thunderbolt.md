@@ -11,10 +11,10 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
 
 ![](https://manage.icewhale.io/api/static/docs/1728443998198_image.png)
 
-## 1. Plug-in
+## 1. Pluging
 1. Connect one end of the Thunderbolt cable to the Thunderbolt port on the back panel of the ZimaCube (either of the two ports) and the other end to your computer's Thunderbolt port.
-   a. Thunderbolt Cable: Requires a Thunderbolt 3 or Thunderbolt 4 standard cable; shorter cables provide better transmission stability and speed.
-   b. Note: The front panel ports of ZimaCube Pro do not support Thunderbolt functionality, and ZimaCube itself does not support Thunderbolt functionality.
+   - a. Thunderbolt Cable: Requires a Thunderbolt 3 or Thunderbolt 4 standard cable; shorter cables provide better transmission stability and speed.
+   - b. Note: The front panel ports of ZimaCube Pro do not support Thunderbolt functionality, and ZimaCube itself does not support Thunderbolt functionality.
 
 | ![](https://manage.icewhale.io/api/static/docs/1728444041984_image.png) | ![](https://manage.icewhale.io/api/static/docs/1728444057975_image.png) |
 |:---:|:---:|
@@ -42,9 +42,9 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
 
 ## FAQ
 **1. What is ZimaCube? How is it different from external USB storage devices?**
-   a. ZimaCube is a personal cloud device that surpasses DAS connectivity under similar speed conditions. It has both NAS and DAS capabilities, allowing fast connections to personal computers via Thunderbolt 4 cables while maintaining an independent internet connection for ZimaCube.
-   b. Unlike USB storage devices, ZimaCube has its own motherboard and CPU; it is not just a storage device. Therefore, when connected to a personal computer via Thunderbolt cable, it establishes a Thunderbolt network connection and is displayed as a Thunderbolt bridge device rather than a USB storage device. Connecting ZimaCube to a personal computer does not affect ZimaCube's operation or its internet connection; it operates simultaneously as both NAS and DAS.
-   c. Connecting ZimaCube to a personal computer via Thunderbolt bridge does not result in slower speeds compared to external USB storage devices. The connection speed mainly depends on the cable and hard disk. However, if ZimaCube is simultaneously connected to LAN and Thunderbolt cables, the personal computer can connect to ZimaCube via either method. With ZimaClient installed, it will automatically switch to the faster connection. If you connect manually, ZimaCube will appear as two IPs (devices) on the network.
+   - a. ZimaCube is a personal cloud device that surpasses DAS connectivity under similar speed conditions. It has both NAS and DAS capabilities, allowing fast connections to personal computers via Thunderbolt 4 cables while maintaining an independent internet connection for ZimaCube.
+   - b. Unlike USB storage devices, ZimaCube has its own motherboard and CPU; it is not just a storage device. Therefore, when connected to a personal computer via Thunderbolt cable, it establishes a Thunderbolt network connection and is displayed as a Thunderbolt bridge device rather than a USB storage device. Connecting ZimaCube to a personal computer does not affect ZimaCube's operation or its internet connection; it operates simultaneously as both NAS and DAS.
+   - c. Connecting ZimaCube to a personal computer via Thunderbolt bridge does not result in slower speeds compared to external USB storage devices. The connection speed mainly depends on the cable and hard disk. However, if ZimaCube is simultaneously connected to LAN and Thunderbolt cables, the personal computer can connect to ZimaCube via either method. With ZimaClient installed, it will automatically switch to the faster connection. If you connect manually, ZimaCube will appear as two IPs (devices) on the network.
 
 **2. Is Thunderbolt 4 the fastest connection on ZimaCube Pro?**
    - Yes.
@@ -67,19 +67,19 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
    - Speed tests can reach 20Gbps, but actual transfer speeds may decrease due to hard disk limitations, file sizes, and protocols.
 
 **8. How can I achieve optimal Thunderbolt 4 speeds on ZimaCube Pro?**
-   a. Purchase genuine Thunderbolt 4 cables.
-   b. Ensure that the hard drives and RAID configuration inside ZimaCube can support read/write speeds greater than 20Gbps.
-   c. In macOS, Samba transfer speeds may be limited by Finder.
-   d. When transferring a large number of small files, speeds may be limited.
+   - a. Purchase genuine Thunderbolt 4 cables.
+   - b. Ensure that the hard drives and RAID configuration inside ZimaCube can support read/write speeds greater than 20Gbps.
+   - c. In macOS, Samba transfer speeds may be limited by Finder.
+   - d. When transferring a large number of small files, speeds may be limited.
    e. [Link to additional resources](https://icewhale.feishu.cn/wiki/QDtVwzmYHixefEkU4cIcBRssnpS)
 
 **9. What are the differences between Thunderbolt 4 and USB interfaces?**
    - Please refer to: [Intel Comparison](https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/thunderbolt-4-vs-usb-c.html)
 
 **10. What are the troubleshooting steps if the Thunderbolt 4 interface cannot be enabled?**
-    a. Check device and cable support for TB4, especially the cable.
-    b. Can the PC detect the Thunderbolt device when plugged in?
-    c. Can ZimaCube connect to other Thunderbolt devices or docks?
+   - a. Check device and cable support for TB4, especially the cable.
+   - b. Can the PC detect the Thunderbolt device when plugged in?
+   - c. Can ZimaCube connect to other Thunderbolt devices or docks?
 
 **11. Are Thunderbolt 4 interfaces and devices backward compatible?**
     - TB4 is backward compatible with TB3.
