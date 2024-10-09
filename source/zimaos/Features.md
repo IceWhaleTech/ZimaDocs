@@ -28,16 +28,16 @@ Please visit https://find.zimaspace.com/ on your host device to download the cli
 1. Make sure your ZimaCube device is turned on and connected to the network.
 2. Open the Zima client and select Scan and Connect Zima.
 <div style="display: flex; justify-content: space-between;">
-  <img src="https://manage.icewhale.io/api/static/docs/1728439070524_image.png" alt="图片1" style="height: 200px; object-fit: cover;" />
+  <img src="https://manage.icewhale.io/api/static/docs/1728439070524_image.png" alt="图片1" style="height: 200px; object-fit: cover; margin-right: 10px;" />
   <img src="https://manage.icewhale.io/api/static/docs/1728439097159_image.png" alt="图片2" style="height: 200px; object-fit: cover;" />
 </div>
-111
-
-
 
 3. Select your ZimaCube device IP from the list and click Connect.Follow the prompts to create a username password
-![](https://manage.icewhale.io/api/static/docs/1728381985338_image.png)
-![](https://manage.icewhale.io/api/static/docs/1728381994632_image.png)
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://manage.icewhale.io/api/static/docs/1728381985338_image.png" alt="图片1" style="height: 200px; object-fit: cover; margin-right: 10px;" />
+  <img src="https://manage.icewhale.io/api/static/docs/1728381994632_image.png" alt="图片2" style="height: 200px; object-fit: cover;" />
+</div>
+
 Now that **you have successfully connected to the device**, when you see the ZImaCube here (either Connect via ...), it means that you have configured the “Configuration”. you have configured “Remote Access”.
 *In particular, if you have turned off remote access in the ZimaOS settings, you will not be able to connect.*
 ### Enjoy Remote Access
