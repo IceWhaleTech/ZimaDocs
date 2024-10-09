@@ -27,10 +27,11 @@ Please visit https://find.zimaspace.com/ on your host device to download the cli
 ### Successfully connect to your device
 1. Make sure your ZimaCube device is turned on and connected to the network.
 2. Open the Zima client and select Scan and Connect Zima.
-| ![图片1](https://manage.icewhale.io/api/static/docs/1728439070524_image.png
-) | ![图片2](https://manage.icewhale.io/api/static/docs/1728439097159_image.png
-) |
-|----------------------|----------------------|
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://manage.icewhale.io/api/static/docs/1728439070524_image.png" alt="图片1" style="height: 200px; object-fit: cover;" />
+  <img src="https://manage.icewhale.io/api/static/docs/1728439097159_image.png" alt="图片2" style="height: 200px; object-fit: cover;" />
+</div>
+111
 
 
 
