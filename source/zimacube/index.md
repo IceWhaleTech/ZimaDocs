@@ -41,6 +41,8 @@ Before powering on, let's take another look at how to install your accessories. 
 ### Unlock the device
 1. **Remove the the front panel**
 Begin by carefully detaching the front panel of the ZimaCube chassis to access the internal components.
+
+
 {% note warn Tips %}
 The front panel is attached with magnets. To remove it, simply press the corners to lift it up. 
 {% endnote %}
