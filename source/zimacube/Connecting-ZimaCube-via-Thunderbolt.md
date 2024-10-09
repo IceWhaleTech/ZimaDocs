@@ -11,7 +11,7 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
 
 ![](https://manage.icewhale.io/api/static/docs/1728443998198_image.png)
 
-## 1. Connect
+## 1. Plug-in
 1. Connect one end of the Thunderbolt cable to the Thunderbolt port on the back panel of the ZimaCube (either of the two ports) and the other end to your computer's Thunderbolt port.
    a. Thunderbolt Cable: Requires a Thunderbolt 3 or Thunderbolt 4 standard cable; shorter cables provide better transmission stability and speed.
    b. Note: The front panel ports of ZimaCube Pro do not support Thunderbolt functionality, and ZimaCube itself does not support Thunderbolt functionality.
