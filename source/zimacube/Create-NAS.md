@@ -27,10 +27,12 @@ Steps:
 2. **Network Configuration:** IP is assigned through auto-configuration features. And it will be like 169.254.x.x.
 ![](https://manage.icewhale.io/api/static/docs/1726131302533_image.png)
 
-3. **This Means Your Successful Connection: **An IP like 169.254.x.x shown on screen indicates a direct connection success.
+3. **This Means Your Successful Connection:** An IP like 169.254.x.x shown on screen indicates a direct connection success.
 ![](https://manage.icewhale.io/api/static/docs/1726131333502_image.png)
 
-**Application Example and Use Cases: **Take advantage of the high-speed connection, particularly useful for video editing or other bandwidth-intensive tasks. It is ideal for scenarios where low-latency and high-speed data transfer are crucial.
+**Application Example and Use Cases:** Take advantage of the high-speed connection, particularly useful for video editing or other bandwidth-intensive tasks. It is ideal for scenarios where low-latency and high-speed data transfer are crucial.
+
+If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
 
 ##  Local Area Network (LAN) Connection
 ![](https://manage.icewhale.io/api/static/docs/1726131416246_image.png)
