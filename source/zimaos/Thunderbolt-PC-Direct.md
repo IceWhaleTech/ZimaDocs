@@ -82,16 +82,16 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
    - c. Can ZimaCube connect to other Thunderbolt devices or docks?
 
 **11. Are Thunderbolt 4 interfaces and devices backward compatible?**
-    - TB4 is backward compatible with TB3.
+   - TB4 is backward compatible with TB3.
 
 **12. Can the Thunderbolt 4 port on ZimaCube Pro support Daisy Chain connections?**
-    - Yes.
+   - Yes.
 
 **13. Can I use ZimaCube Pro as a direct Thunderbolt storage device like a regular external hard drive?**
-    - No, unlike USB storage devices, ZimaCube has its own motherboard and CPU, and data transfer will pass through them.
+   - No, unlike USB storage devices, ZimaCube has its own motherboard and CPU, and data transfer will pass through them.
 
 **14. Will connecting multiple cables to Mac/PC through the two Thunderbolt 4 ports increase speed?**
-    - No, TB Networking does not support link aggregation like dual Ethernet cables.
+   - No, TB Networking does not support link aggregation like dual Ethernet cables.
 ## Conclusion
 No matter your needs, ZimaOS provides flexible and powerful connectivity options to suit any situation. From high-speed direct connections to convenient remote access via WAN, you can manage your devices and data effortlessly. Always consider security measures, especially when dealing with WAN connections, to protect your information and maintain smooth operations.
 If you encounter any issues during use, feel free to let us know at any time. You can also join our [community](https://community.zimaspace.com/) and [Discord](https://discord.com/invite/uuNfKzG5) to discuss more about ZimaCube and ZimaOS. We look forward to your feedback!
