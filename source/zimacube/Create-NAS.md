@@ -14,6 +14,10 @@ This article is for understanding connections under different networks.
 
 Direct connections are ideal for quick and straightforward setups, offering a fast and secure way to link devices without needing a broader network. This method is perfect for file transfers or using specific applications that require high-speed access.
 
+{% note warn Note: %}
+If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
+{% endnote %}
+
 **What You Need:**
 
 * Network cable or Thunderbolt cable for high-speed connections
@@ -31,10 +35,6 @@ Steps:
 ![](https://manage.icewhale.io/api/static/docs/1726131333502_image.png)
 
 **Application Example and Use Cases:** Take advantage of the high-speed connection, particularly useful for video editing or other bandwidth-intensive tasks. It is ideal for scenarios where low-latency and high-speed data transfer are crucial.
-
-{% Note %}
-If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
-{% endnote %}
 
 
 ##  Local Area Network (LAN) Connection
