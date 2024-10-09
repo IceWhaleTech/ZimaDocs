@@ -6,7 +6,9 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 ## Compatibility List
 
+{% note warn Note: %}
 We've compiled this list based on the drivers supported by the ZimaOS, with "verified" models marked accordingly. If you've successfully run **Assist** on a different graphics card model, please help us update this list by using the 'Improve' feature in the top right corner. Thank you for your contribution.
+{% endnote %}
 
 | **Category**                          | **Models**                                                       |
 | :-------------------------------- | ------------------------------------------------------------ |
