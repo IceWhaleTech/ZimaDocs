@@ -71,7 +71,7 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
    - b. Ensure that the hard drives and RAID configuration inside ZimaCube can support read/write speeds greater than 20Gbps.
    - c. In macOS, Samba transfer speeds may be limited by Finder.
    - d. When transferring a large number of small files, speeds may be limited.
-   e. [Link to additional resources](https://icewhale.feishu.cn/wiki/QDtVwzmYHixefEkU4cIcBRssnpS)
+
 
 **9. What are the differences between Thunderbolt 4 and USB interfaces?**
    - Please refer to: [Intel Comparison](https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/thunderbolt-4-vs-usb-c.html)
