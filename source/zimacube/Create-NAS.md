@@ -14,7 +14,7 @@ This article is for understanding connections under different networks.
 
 Direct connections are ideal for quick and straightforward setups, offering a fast and secure way to link devices without needing a broader network. This method is perfect for file transfers or using specific applications that require high-speed access.
 
-{% note warn Note: %}
+{% note warn Tips: %}
 If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
 {% endnote %}
 
