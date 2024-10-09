@@ -32,7 +32,10 @@ Steps:
 
 **Application Example and Use Cases:** Take advantage of the high-speed connection, particularly useful for video editing or other bandwidth-intensive tasks. It is ideal for scenarios where low-latency and high-speed data transfer are crucial.
 
+{% Note %}
 If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
+{% endnote %}
+
 
 ##  Local Area Network (LAN) Connection
 ![](https://manage.icewhale.io/api/static/docs/1726131416246_image.png)
