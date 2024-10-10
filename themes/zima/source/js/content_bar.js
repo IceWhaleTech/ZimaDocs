@@ -63,4 +63,13 @@
         }
     }
     updatetocbar();
+
+
+    // 设置反馈按钮的链接
+    var feedbackBtn = document.querySelector('#feedback-link');
+    if (feedbackBtn) {
+      var url = window.location.href;
+      feedbackBtn.href = 'https://www.zimaspace.com/support/feedback?fb_system=Docs&fb_page='+url;
+      // feedbackBtn.href = 'http://10.0.175.187:3002/support/feedback?fb_system=Docs&fb_page='+url;
+    }
 }());
