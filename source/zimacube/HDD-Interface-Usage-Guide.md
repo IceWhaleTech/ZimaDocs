@@ -42,7 +42,7 @@ Remove the 7th Bay and prepare.
 3. **Secure the M.2 SSD:**
 - Use the appropriate screw to secure the SSD in place.  
 
-## Compatibility List
+# Compatibility List
 | <center>Compatible</center> | <center>Brand</center> | <center>Level</center> | <center>Type</center> | <center>Serial</center> | <center>No</center> | <center>Capacity</center> | <center>Note</center> |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | <center>Yes</center> | <center>Western Digital</center> | <center>NAS</center> | <center>HDD</center> | <center>Red(®)Pro</center> | <center>WD2002FFSX</center> | <center>2T</center> | <center></center> |
