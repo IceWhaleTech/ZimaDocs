@@ -6,47 +6,9 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 # Build Data Station 
 # Remote Access
-## Data On-the-Go
-Have you ever found yourself on vacation wishing you could peek at your home surveillance videos or access multimedia content from your home server, but felt frustrated by the lack of easy remote access? Or have you been caught on a business trip desperately needing an important document you forgot at home?
-
-Community member Grandil recently accessed ZimaOS remotely from a train in Norway, connected to servers back in Ireland. Despite being in a mobile roaming environment, all tests and usage went smoothly, leading Grandil to give a glowing review. Watch his experience [here](https://www.youtube.com/watch?v=ZDmO2h0tE0c).
-
-
-In today’s fast-paced world, our dependence on data grows daily. Whether you’re a home user or a small business, managing and accessing data efficiently has become a key part of our routines. The ability to access data remotely is crucial—it boosts productivity, ensures data security, and avoids the inconveniences of geographical limitations.
-
 ##  Your Gateway to Remote Access
-Enter ZimaCube’s Remote feature, a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
-### Brief Description
-The connection between your laptop and the ZimaCube is established automatically by the Zima Client application and ZimaOS, utilizing P2P communication to establish the connection. The data transfer between the two is encrypted, ensuring that all data transfers are peer-to-peer.
+[Enter ZimaCube’s Remote feature](/zimaos/Romote-Access), a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
 
-Additionally when you successfully connect to ZimaOS for the first time via the Zima Client, your remote access channel is already configured. This means that you can use this device to access ZimaOS from anywhere at any time.
-## If you have not yet connected to ZimaCube using ZimaClient:
-### Download the Zima Client
-Please visit https://find.zimaspace.com/ on your host device to download the client
-![](https://manage.icewhale.io/api/static/docs/1728381740811_image.png)
-### Successfully connect to your device
-1. Make sure your ZimaCube device is turned on and connected to the network.
-2. Open the Zima client and select Scan and Connect Zima.
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://manage.icewhale.io/api/static/docs/1728439070524_image.png" alt="图片1" style="height: 200px; object-fit: cover; margin-right: 10px;" />
-  <img src="https://manage.icewhale.io/api/static/docs/1728439097159_image.png" alt="图片2" style="height: 200px; object-fit: cover;" />
-</div>
-3. Select your ZimaCube device IP from the list and click Connect.Follow the prompts to create a username password
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://manage.icewhale.io/api/static/docs/1728381985338_image.png" alt="图片1" style="height: 200px; object-fit: cover; margin-right: 10px;" />
-  <img src="https://manage.icewhale.io/api/static/docs/1728381994632_image.png" alt="图片2" style="height: 200px; object-fit: cover;" />
-</div>
-
-Now that **you have successfully connected to the device**, when you see the ZImaCube here (either Connect via ...), it means that you have configured the “Configuration”. you have configured “Remote Access”.
-![](https://manage.icewhale.io/api/static/docs/1728459310497_image.png)
-
-*In particular, if you have turned off remote access in the ZimaOS settings, you will not be able to connect.*
-![](https://manage.icewhale.io/api/static/docs/1728459277560_image.png)
-
-### Enjoy Remote Access
-After the first successful connection, your device will automatically save the connection information. No matter where you are, just open the Zima client. You can quickly establish a remote connection.
-When you leave the home LAN, the remote access status of ZimaCube is as follows:
-![](https://manage.icewhale.io/api/static/docs/1728382289343_image.png)
 ## Second host device access:
 If you have another computer in the office, but the zimacube is not with you, you can still use Connect ID.
 ### Setting Up ZimaCube Remote Access
