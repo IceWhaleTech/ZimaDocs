@@ -4,6 +4,10 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
+## Introduction
+The ZimaCube supports **low-profile** graphics cards, typically around 64.41 mm (2.536 inches) in height. The PCIe slot provides up to **75W** of power, so it is recommended to select graphics cards within this size and power range to ensure compatibility with ZimaCube's compact design and power limitations. 
+**Please note that other graphics cards may require external power for proper operation.**
+
 ## Compatibility List
 
 {% note warn Note: %}
