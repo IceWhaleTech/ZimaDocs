@@ -38,6 +38,10 @@ After the first successful connection, your device will automatically save the c
 When you leave the home LAN, the remote access status of ZimaCube is as follows:
 ![](https://manage.icewhale.io/api/static/docs/1728382289343_image.png)
 
+## Second host device access:
+If you have the **second** computer in the office, but the zimacube is not with you, you can still use Connect ID. Find more in [here](https://docs.zimaspace.com/zimaos/Features.html#Second-host-device-access).
+
+
 ## For your reference
 The connection between your laptop and the ZimaCube is established automatically by the Zima Client application and ZimaOS, utilizing P2P communication to establish the connection. The data transfer between the two is encrypted, ensuring that all data transfers are peer-to-peer.
 
