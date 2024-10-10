@@ -37,3 +37,6 @@ Now that **you have successfully connected to the device**, when you see the ZIm
 After the first successful connection, your device will automatically save the connection information. No matter where you are, just open the Zima client. You can quickly establish a remote connection.
 When you leave the home LAN, the remote access status of ZimaCube is as follows:
 ![](https://manage.icewhale.io/api/static/docs/1728382289343_image.png)
+
+## Brief Description
+The connection between your laptop and the ZimaCube is established automatically by the Zima Client application and ZimaOS, utilizing P2P communication to establish the connection. The data transfer between the two is encrypted, ensuring that all data transfers are peer-to-peer.
