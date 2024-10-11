@@ -44,6 +44,7 @@ How to connect to ZimaCube via ZimaClient, please refer to this [document](https
 
 - Visit https://www.zerotier.com/download/ to download and install Make sure the internet connection is working.
 - Try running ZimaClient again.
+
 <br>
 
 **2. If ZimaClient does not show up on macOS but indicates that it is running, please follow the steps below to troubleshoot the problem:**
