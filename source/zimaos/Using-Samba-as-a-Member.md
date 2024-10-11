@@ -1,9 +1,26 @@
 ---
-title: As “Member”, How to use Samba？
+title: Samba with Multi-User
 description: 
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
+## What Can Samba do?
+### 3 Roles in Samba
+![](https://manage.icewhale.io/api/static/docs/1728632674915_image.png)
+## As "Manager", How to Create Shares?（Manager Roadmap）
+### 1. Choose the file, click "Share Samba". 
+### 2. Set the permission
+1. There are 2 roles for you to choose.
+  1. Member
+    1.Create a new member 
+     2.Choose a new member 
+  2. Guest
+    1. This role means anyone who has this file's address can access it.
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728634674940_image.png
+"/>
+
+
+
 ## Verify the address for your Operation System compatibility.
 ### 1.For Windows OS
 1. Open the “File Explorer”.
