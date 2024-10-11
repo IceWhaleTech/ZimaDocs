@@ -63,9 +63,8 @@ With these AI applications, you can fully utilize the advantages of artificial i
   - Gentle Handling: Avoid excessive force when installing or removing the GPU to prevent damage.
   - Cleanliness: Ensure the slot and device are free of dust or foreign objects during installation or removal to avoid poor contact.
   - Driver Installation: Install the correct drivers to achieve optimal performance and stability.
-## 4. Compatibility List
-Please refer to this document:：https://docs.zimaspace.com/zimacube/GPU-Expansion.html
-## 5. Conclusion
+
+## 4. Conclusion
   This guide should help you successfully install a GPU on ZimaCube and understand its importance in various applications. We encourage you to try out the installation and explore more GPU functions to enhance your work efficiency and quality of life.
   
   We look forward to hearing more about your experiences!
