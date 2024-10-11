@@ -47,3 +47,67 @@ We've compiled this list based on the drivers supported by the ZimaOS, with "ver
 | NVS Series                        | NVS 810                                                      |
 
 More to come...
+# ZimaCube GPU Installation Guide and Application Examples
+## 1. Introduction
+  ZimaCube is a computing device that can meet your professional work needs. Through its modular design, it allows users to expand hardware according to personal requirements, including the installation of a Graphics Processing Unit (GPU). A GPU is crucial for users who need to handle extensive graphical processing and parallel computing tasks.
+## 2. GPU Installation Steps
+#### Step 1: Remove the IO shield.
+  - Before installing the GPU, remove the IO shield from the PCIe slot.
+
+
+| ![](https://manage.icewhale.io/api/static/docs/1728614816722_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614828318_image.png)|
+|:---:|:---:|
+#### Step 2: Install the GPU in the correct orientation.
+  - Ensure the GPU is aligned correctly, matching the gold fingers with the PCIe slot.
+  - Gently insert the GPU into the slot until it is fully secured.
+
+| ![](https://manage.icewhale.io/api/static/docs/1728614909590_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614920088_image.png)|
+|:---:|:---:|
+#### Tips:
+  - When installing or removing the GPU, press the clip on the PCIe slot. This ensures the GPU is securely fixed or released.
+![](https://manage.icewhale.io/api/static/docs/1728614946501_copyImage.png)
+## 3. Application Examples: GPU Transcoding and AI Applications
+### Hardware Transcoding:
+
+Utilizing GPU for hardware transcoding can greatly improve media processing performance. For instance, Plex Media Server can use the GPU on ZimaOS to enable efficient hardware transcoding (note: download the professional GPU version of Plex).
+![](https://manage.icewhale.io/api/static/docs/1728615170049_image.png)
+- Select hardware transcoding device: Unknown (NVIDIA)
+- Click Save to start transcoding
+
+| ![](https://manage.icewhale.io/api/static/docs/1728615235531_image.png)|![](https://manage.icewhale.io/api/static/docs/1728615252888_image.png)|
+|:---:|:---:|
+
+| Before： |      After： |
+| - | - |
+| ![](https://manage.icewhale.io/api/static/docs/1728615297358_image.png)|![](https://manage.icewhale.io/api/static/docs/1728615306943_image.png)|
+
+For a list of Nvidia GPUs currently supported by ZimaOS, see the Current NVIDIA GPUs section：https://us.download.nvidia.com/XFree86/Linux-x86_64/555.58.02/README/supportedchips.html
+### AI Application Examples:
+On ZimaOS, you can use Open WebUI to experience advanced AI conversation clients.
+It supports the latest language models, including but not limited to Llama3 and Gemma, and is compatible with OpenAI's API. Additionally, Open WebUI will call on the ZimaCube Pro Creator's built-in NVIDIA 2000 Ada GPU to reduce processing latency.
+Most importantly, all your data (including login details) is locally stored on your device. Open WebUI ensures strict confidentiality under your authorization, with no external requests, protecting your privacy and enhancing your security.
+
+![](https://manage.icewhale.io/api/static/docs/1728615600750_094e8811-903b-4bb0-8053-548119f56272.gif)
+- The version has integrated Stable Diffusion.
+
+![](https://manage.icewhale.io/api/static/docs/1728615658463_2.gif)
+
+- There are other AI apps in our AppStore, such as Tasking AI and Anything AI.
+
+![](https://manage.icewhale.io/api/static/docs/1728615689023_image.png)
+Tasking AI is an intelligent task management tool that utilizes AI technology to help users more efficiently organize and manage daily tasks. It can intelligently prioritize, remind, and automate tasks, improving efficiency in work and life.
+
+Anything AI is a multi-functional AI application that provides a variety of practical AI tools and services, including text generation, language translation, and speech recognition. It aims to simplify daily work and life for users through powerful AI technology.
+
+With these AI applications, you can fully utilize the advantages of artificial intelligence to enhance your work efficiency and quality of life!
+## 4. Precautions
+  - Power Down: Ensure ZimaCube is completely powered off before performing any operations, and ground yourself to avoid static damage to the device.
+  - Gentle Handling: Avoid excessive force when installing or removing the GPU to prevent damage.
+  - Cleanliness: Ensure the slot and device are free of dust or foreign objects during installation or removal to avoid poor contact.
+  - Driver Installation: Install the correct drivers to achieve optimal performance and stability.
+## 5. Compatibility List
+Please refer to this document:：https://docs.zimaspace.com/zimacube/GPU-Expansion.html
+## 6. Conclusion
+  This guide should help you successfully install a GPU on ZimaCube and understand its importance in various applications. We encourage you to try out the installation and explore more GPU functions to enhance your work efficiency and quality of life.
+  
+  We look forward to hearing more about your experiences!
