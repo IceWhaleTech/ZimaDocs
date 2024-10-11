@@ -40,26 +40,29 @@ How to connect to ZimaCube via ZimaClient, please refer to this [document](https
 |:---:|:---:|
 ### FAQ
 **1. If you are stuck in the following screen during installation, please try the following steps:**
-![](https://manage.icewhale.io/api/static/docs/1728618855323_image.png)
+![](https://manage.icewhale.io/api/static/docs/1728641073103_image.png)
 
 - Visit https://www.zerotier.com/download/ to download and install Make sure the internet connection is working.
 - Try running ZimaClient again.
 <br>
+
 **2. If ZimaClient does not show up on macOS but indicates that it is running, please follow the steps below to troubleshoot the problem:**
 - Open macOS “Activity Monitor”, search and find Zima related processes (e.g. Zima, Zima Helper, zima-client-backup, etc.).
 - Close all related processes.
 - Reopen the Launchpad and run ZimaClient.
-  <br>
+<br>
+
 **3. Will remote access compromise my privacy?**
 Absolutely not! The connection between your laptop and ZimaCube is established automatically by the Zima Client application and ZimaOS, using P2P communication to establish the connection. The data transfer between the two is encrypted, ensuring that all data transfers are peer-to-peer.
 We use a self-deployed network controller on ZimaCube, which means we only use ZeroTier's global public discovery servers. The control of the virtual network is entirely under the control of ZimaCube. neither IceWhale nor ZeroTier have any administrative rights. Data privacy and sovereignty are our top priorities, so if you have any questions, please feel free to challenge them.
 We will continue to monitor and optimize these issues.
-  <br>
+<br>
+
 **4. How to access logs and assist with debugging**
 When an error/issue occurs, immediately take a screenshot (if applicable) and exit the Zima client.
 Retrieve the logs from the following locations:
 macOS:
-~/Library/Application Support/Zima/logs
+`~/Library/Application Support/Zima/logs`
 Windows:
-%AppData%\Zima\logs
+`%AppData%\Zima\logs`
 Pack all the log files and send them to john@icewhale.org, describing the issue and providing screenshots (if any).
