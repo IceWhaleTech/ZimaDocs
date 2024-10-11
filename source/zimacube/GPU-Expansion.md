@@ -21,7 +21,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 
 | ![](https://manage.icewhale.io/api/static/docs/1728614909590_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614920088_image.png)|
 |:---:|:---:|
-### Tips:
+#### Tips:
   - When installing or removing the GPU, press the clip on the PCIe slot. This ensures the GPU is securely fixed or released.
 ![](https://manage.icewhale.io/api/static/docs/1728614946501_copyImage.png)
 ## 2. Application Examples: GPU Transcoding and AI Applications
