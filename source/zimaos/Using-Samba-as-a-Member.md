@@ -10,7 +10,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ## As "Manager", How to Create Shares?（Manager Roadmap）
 ### 1. Choose the file, click "Share Samba". 
 ### 2. Set the permission
-| **1.** There are 2 roles for you to choose.<br>&nbsp;&nbsp;*a.* Member<br>&nbsp;&nbsp;&nbsp;&nbsp;1. Create a new member<br>&nbsp;&nbsp;&nbsp;&nbsp;2. Choose a new member<br>&nbsp;&nbsp;2. Guest<br>&nbsp;&nbsp;&nbsp;&nbsp;1. This role means anyone who has this file's address can access it. | ![](https://manage.icewhale.io/api/static/docs/1728635259975_image.png) |
+| **1. There are 2 roles for you to choose.** <br> **a. Member:** <br>1. Create a new member<br>2. Choose a new member<br> **b. Guest** <br>1. This role means anyone who has this file's address can access it. | ![](https://manage.icewhale.io/api/static/docs/1728635259975_image.png) |
 | -------- | ----- |
 
 
