@@ -4,16 +4,38 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# Introduction
-In this article, we'll briefly introduce the main features available on ZimaOS. Those familiar with Zima know that ZimaOS is developed based on CasaOS, an open-source private cloud project released by the Zima team in 2022. It has garnered significant attention from developers worldwide, with over 700k installations serving enthusiasts in hundreds of countries globally.
 
-Building on the foundation of CasaOS, ZimaOS has further enhanced its core functionalities as a ultimate NAS OS. In a nutshell, while **CasaOS serves** as a personal cloud **application hub** enabling easy deployment of various private cloud applications, **ZimaOS** builds on this foundation to **establish a robust, complete operating system.** It features RAID setup, remote access, a cloud-like file manager, automatic backups, and unified management of cloud and NAS data—a suite of system-level functions. 
+# Onboarding
 
-As an innovative system, our core is to ensure stability while rapidly iterating and enriching system functionalities based on community suggestions. Here, you can view the history of past versions and, through community involvement and contributions, provide your suggestions for ZimaOS.
+Getting started with ZimaOS is very simple. The overall system **design focuses on simplicity and language consistency**. Our goal is to ensure that using, sharing, and managing data on a private cloud is a seamless, elegant, and fast experience.
+Throughout the setup process, the **Zima client application establishes all connections** between your laptop or iMac and the ZimaCube, **providing the foundation for access, high-speed transfers, and remote experiences**. After installing the client app, simply follow the guided steps to complete the ZimaCube initialization.
 
-Let's begin our exploration of ZimaOS, this streamlined system.
+## Install Zima Client 
+### Download Zima Client
+https://find.zimaspace.com/ and install ZimaClient. It will automatically scan for available devices.
+### Quick Search
+If you prefer to use the web interface, you can visit the website. Please make sure your device is connected to the same network as ZimaCube. Scan on the web page, and after the scan is completed, you will see a list of available ZimaCube devices. Just click on the corresponding device to connect to ZimaOS.
+![](https://manage.icewhale.io/api/static/docs/1727082045246_image.png)
 
-# Key Features
+## Login ZimaOS
+After successfully connecting to ZimaCube, enter the corresponding IP address to enter the ZimaOS initialization interface, where you can start configuring your ZimaCube.
+### Select language
+Currently ZimaOS supports 6 languages ​​including English, Chinese, Japanese, Italian, and Norwegian. Choose the language you are most familiar with to ensure the best user experience.
+![](https://manage.icewhale.io/api/static/docs/1727082127778_image.png)
+### Create User
+Next, you will need to create a user account. This account will be the primary way you manage ZimaOS. Please set a secure username and password to protect your data and settings.
+![](https://manage.icewhale.io/api/static/docs/1727082165610_image.png)
+### Initialization successful
+After initialization, ZimaOS will provide you with a brief introduction to the functions and usage guide. This will help you understand the main features and usage of ZimaOS. You can learn about: 
+- File management system
+- App store and installable applications
+- Device management and network settings
+- Multiple Raid types to choose from
+![](https://manage.icewhale.io/api/static/docs/1727082245929_image.png)
+![](https://manage.icewhale.io/api/static/docs/1728377751054_copyImage.png)
+
+
+# Brief
 
 ## Remote Access
 Accessibility is foundational for private clouds, and configuring network settings on most NAS devices can be quite complex. ZimaOS aims to offer a plug-and-play remote access experience that is both secure and reliable, without any risk of cloud forwarding or data leakage.
@@ -74,26 +96,10 @@ Recent popular local AI applications like OpenWeb UI and Stable Diffusion can al
 There are many scenarios and uses to explore, waiting for you to unlock. We will gradually showcase these to you through upcoming content.
 ![](https://manage.icewhale.io/api/static/docs/1727081765695_image.png)
 
-# Onboarding
-## Find ZimaOS
-### Zima-Client
-https://find.zimaspace.com/ and install ZimaClient. It will automatically scan for available devices.
-### Quick Search
-If you prefer to use the web interface, you can visit the website. Please make sure your device is connected to the same network as ZimaCube. Scan on the web page, and after the scan is completed, you will see a list of available ZimaCube devices. Just click on the corresponding device to connect to ZimaOS.
-![](https://manage.icewhale.io/api/static/docs/1727082045246_image.png)
-## Initialize ZimaOS
-After successfully connecting to ZimaCube, enter the corresponding IP address to enter the ZimaOS initialization interface, where you can start configuring your ZimaCube.
-### Select language
-Currently ZimaOS supports 6 languages ​​including English, Chinese, Japanese, Italian, and Norwegian. Choose the language you are most familiar with to ensure the best user experience.
-![](https://manage.icewhale.io/api/static/docs/1727082127778_image.png)
-### Create User
-Next, you will need to create a user account. This account will be the primary way you manage ZimaOS. Please set a secure username and password to protect your data and settings.
-![](https://manage.icewhale.io/api/static/docs/1727082165610_image.png)
-### Initialization successful
-After initialization, ZimaOS will provide you with a brief introduction to the functions and usage guide. This will help you understand the main features and usage of ZimaOS. You can learn about: 
-- File management system
-- App store and installable applications
-- Device management and network settings
-- Multiple Raid types to choose from
-![](https://manage.icewhale.io/api/static/docs/1727082245929_image.png)
-![](https://manage.icewhale.io/api/static/docs/1728377751054_copyImage.png)
+
+# ZimaOS and CasaOS
+In this article, we'll briefly introduce the main features available on ZimaOS. Those familiar with Zima know that ZimaOS is developed based on CasaOS, an open-source private cloud project released by the Zima team in 2022. It has garnered significant attention from developers worldwide, with over 700k installations serving enthusiasts in hundreds of countries globally.
+
+Building on the foundation of CasaOS, ZimaOS has further enhanced its core functionalities as a ultimate NAS OS. In a nutshell, while **CasaOS serves** as a personal cloud **application hub** enabling easy deployment of various private cloud applications, **ZimaOS** builds on this foundation to **establish a robust, complete operating system.** It features RAID setup, remote access, a cloud-like file manager, automatic backups, and unified management of cloud and NAS data—a suite of system-level functions. 
+
+Further content will delve deeper into the detailed features of ZimaOS.
