@@ -5,214 +5,92 @@ type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 
-<h2 id="what-can-samba-do">What Can Samba do?</h2>
+## What Can Samba do?
 
-<h3 id="roles-in-samba">3 Roles in Samba</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>Samba allows for file sharing across different systems and platforms, including Windows, macOS, and Linux. It has three primary roles: Server, Client, and Domain Controller.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728632674915_image.png" alt="Samba roles" style="max-width: 100%;">
-  </div>
-</div>
+### 3 Roles in Samba
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728632674915_image.png" alt="3 Roles in Samba">
 
-<h2 id="how-to-create-shares-as-manager">As "Manager", How to Create Shares?</h2>
+## As "Manager", How to Create Shares?（Manager Roadmap）
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>1. Choose the file, click "Share Samba".</p>
-  </div>
-</div>
+**1. Choose the file, click "Share Samba".**
 
-<h3 id="set-permission">2. Set the Permission</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>Roles available:</p>
-    <ul>
-      <li>Member: Create and select new members.</li>
-      <li>Guest: Anyone with the file's address can access it.</li>
-    </ul>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728635259975_image.png" alt="Set permission" style="max-width: 100%;">
-  </div>
-</div>
+**2. Set the permission**
+| **1. Choose Role** <br><br> a. Member:<br> 1. Create a new member<br>2. Choose a new member<br><br> b. Guest:<br>1. Anyone with the file's address can access it. | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728635259975_image.png" alt="Set the permission"> |
+| -------- | ----- |
+| **2. Choose Permission**<br><br> **Permission "Read":** <br> Download only.<br> **Permission "Read & Write":** <br> Perform all operations (Download, Upload, Rename, Delete).| <img align="right" src="https://manage.icewhale.io/api/static/docs/1728636948904_image.png" alt="Choose permission"> |
 
-<h3 id="choose-permission">Choose Permission</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>Permission options:</p>
-    <ul>
-      <li><b>Read</b>: Only download allowed.</li>
-      <li><b>Read & Write</b>: Full control, including download, upload, rename, delete.</li>
-    </ul>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728636948904_image.png" alt="Choose permission" style="max-width: 100%;">
-  </div>
-</div>
+**3. Create Sharing**
 
-<h3 id="create-sharing">3. Create Sharing</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>1. Click the "Create" button.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728638375493_image.png" alt="Create sharing" style="max-width: 100%;">
-  </div>
-</div>
+| 1. Click "Create" | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728638375493_image.png" alt="Create sharing"> |
+| -------- | ----- |
+| 2. Choose "Address" and "Copy" based on the OS. Send it to the member or guest. | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728638496968_image.png" alt="Send address"> |
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>2. Choose the "Address" and "Copy" for the member or guest, depending on their OS. Send the address to them.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728638496968_image.png" alt="Address selection" style="max-width: 100%;">
-  </div>
-</div>
+**4. Manage your shared files**
 
-<h3 id="manage-your-shared-files">4. Manage Your Shared Files</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>1. Click the "Shared" button to view your shared files.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728638620287_image.png" alt="Shared button" style="max-width: 100%;">
-  </div>
-</div>
+There are 2 methods to manage shares.
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>2. On the "Shared via Samba" page, hover over a file to click "Manage Share", where you can edit the permissions. Don't forget to save your changes. The file address can be viewed here at any time.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728638763045_image.png" alt="Manage share" style="max-width: 100%;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728638801741_image.png" alt="File address" style="max-width: 100%;">
-  </div>
-</div>
+| 1. Click "Shared" | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728638620287_image.png" alt="Shared button"> |
+| -------- | ----- |
+| 2. On the "Shared via Samba" page, hover over the file to edit permissions.<br><br> Click "Save" to confirm changes.<br> The address is always visible. | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728638763045_image.png" alt="Shared via Samba"><br><img align="right" src="https://manage.icewhale.io/api/static/docs/1728638801741_image.png" alt="Edit permissions"> |
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>3. Right-click and select "Manage Samba" from the context menu.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728638926994_image.png" alt="Manage Samba" style="max-width: 100%;">
-  </div>
-</div>
+3. Right-click and select "Manage Samba" in the context menu.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728638926994_image.png" alt="Manage Samba">
 
-<h3 id="create-share-roadmap">5. Create Share Roadmap</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>The roadmap for creating shares as a manager in Samba.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728639005880_image.png" alt="Share roadmap" style="max-width: 100%;">
-  </div>
-</div>
+**5. Create Share Roadmap**
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728639005880_image.png" alt="Share roadmap">
 
-<h2 id="how-to-manage-members-as-manager">As "Manager", How to Manage Members?</h2>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>As a manager, you can add and remove members, as well as edit their account details.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728639061073_image.png" alt="Manage members roadmap" style="max-width: 100%;">
-  </div>
-</div>
+<br>
 
-<h3 id="manage-members">6. Manage Members</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>1. Create new member accounts.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728639235564_image.png" alt="Create members" style="max-width: 100%;">
-  </div>
-</div>
+## As "Manager", How to Manage Members?（RoadMap）
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728639061073_image.png" alt="Manager Roadmap">
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>2. Edit passwords or delete accounts.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728639475546_image.png" alt="Edit members" style="max-width: 100%;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728639486206_image.png" alt="Delete members" style="max-width: 100%;">
-  </div>
-</div>
+<br>
 
-<h2 id="how-to-use-samba-as-member">As "Member", How to Use Samba?</h2>
+**6. Manage your Member**  
+***At the "Settings - Member" Page***
 
-<h3 id="for-windows-os">1. For Windows OS</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>1. Open "File Explorer".</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370332527_4.1.png" alt="File Explorer" style="max-width: 100%;">
-  </div>
-</div>
+| 1. Create new member accounts | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728639235564_image.png" alt="Create member"> |
+| -------- | ----- |
+| 2. Edit or delete accounts.<br>**Set a new password** or **delete** the account. | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728639475546_image.png" alt="Edit member"><img align="right" src="https://manage.icewhale.io/api/static/docs/1728639486206_image.png" alt="Delete member"><img align="right" src="https://manage.icewhale.io/api/static/docs/1728639504689_image.png" alt="Member password"><img align="right" src="https://manage.icewhale.io/api/static/docs/1728639516436_image.png" alt="Confirm edit"> |
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>2. Enter the address in the search box.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370346032_4.2.png" alt="Search address" style="max-width: 100%;">
-  </div>
-</div>
+<br>
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>3. Enter your member account and password, then click "OK".</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370367682_4.3.png" alt="Enter credentials" style="max-width: 100%;">
-  </div>
-</div>
+## As "Member",  How to use Samba?
+**Verify the address for your OS compatibility.**
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>4. Connection successful.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370378592_4.4.png" alt="Connection success" style="max-width: 100%;">
-  </div>
-</div>
+### 1. For Windows OS
+1. Open “File Explorer”.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370332527_4.1.png" alt="File Explorer">
 
-<h3 id="for-mac-os">2. For Mac OS</h3>
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>1. Click "Go" - "Connect to Server" from the menu bar.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370418677_4.5.png" alt="Connect to server" style="max-width: 100%;">
-  </div>
-</div>
+2. Enter the address in the search box.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370346032_4.2.png" alt="Enter address">
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>2. Enter the address and click "Connect".</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370424977_4.6.png" alt="Enter address" style="max-width: 100%;">
-  </div>
-</div>
+3. Enter your account and password.  
+4. Click “OK”.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370367682_4.3.png" alt="Enter credentials">
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>3. Enter your member account and password, then click "Connect".</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370435735_4.9.png" alt="Enter credentials" style="max-width: 100%;">
-  </div>
-</div>
+5. Connection successful.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370378592_4.4.png" alt="Connection success">
 
-<div style="display: flex; align-items: center;">
-  <div style="flex: 1;">
-    <p>4. Connection successful.</p>
-  </div>
-  <div style="flex: 1;">
-    <img src="https://manage.icewhale.io/api/static/docs/1728370440897_4.10.png" alt="Connection success" style="max-width: 100%;">
-  </div>
-</div>
+### 2. For Mac OS
+1. Click “Go” - “Connect to Server” in the Menu-Bar.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370418677_4.5.png" alt="Connect to Server">
+
+2. Enter the address.  
+3. Click “Connect”.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370424977_4.6.png" alt="Enter address Mac">
+
+4. Click “Connect” to proceed.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370429529_4.8.png" alt="Connect proceed Mac">
+
+5. Enter your account and password.  
+6. Click “Connect”.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370435735_4.9.png" alt="Enter credentials Mac">
+
+7. Connection successful.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370440897_4.10.png" alt="Connection success Mac">
+
+8. If you face issues, check your permissions with the file manager.  
+<img align="right" src="https://manage.icewhale.io/api/static/docs/1728370447288_4.11.png" alt="Check permissions">
+
+
