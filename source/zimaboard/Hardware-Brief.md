@@ -36,3 +36,5 @@ USB 3.0：https://en.wikipedia.org/wiki/USB_3.0
 Mini- DisplayPort 1.2：https://en.wikipedia.org/wiki/DisplayPort
 SATA 3.0：https://en.wikipedia.org/wiki/Serial_ATA
 PCIe 2.0x4：https://en.wikipedia.org/wiki/PCI_Express
+
+*This hardware guide aims to clearly demonstrate the capabilities and potential applications of ZimaBlade, making it a versatile choice for personal and professional use.*
