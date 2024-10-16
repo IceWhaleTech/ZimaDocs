@@ -72,4 +72,22 @@
       feedbackBtn.href = 'https://www.zimaspace.com/support/feedback?fb_system=Docs&fb_page='+url;
       // feedbackBtn.href = 'http://10.0.175.187:3002/support/feedback?fb_system=Docs&fb_page='+url;
     }
+
+  // 为文章中的图片添加点击事件监听器
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取所有文章中的图片
+    const images = document.querySelectorAll('.article-content img');
+    // 为每张图片添加点击事件监听器
+    images.forEach(function(image) {
+      image.style.cursor = 'pointer';
+      image.title = 'view image in new tab';
+      image.addEventListener('click', function() {
+        // 获取图片的原始 URL
+        const imageUrl = image.src;
+        // 在新标签页中打开图片
+        window.open(imageUrl, '_blank');
+      });
+    });
+  });
+
 }());
