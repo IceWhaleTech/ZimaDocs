@@ -8,15 +8,15 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 Currently, ZimaOS supports RAID0/1/5, but we understand that many users require RAID6 for enhanced redundancy. To address this, we've prepared a step-by-step guide for creating RAID6 through the command line. Please follow the instructions below.
 We look forward to accelerating our support for more RAID levels in the future!
 ## Prerequisites
+
 1. You will need at least four hard drives.
 2. Use the command lsblk to check the available hard drives.
 ![](https://manage.icewhale.io/api/static/docs/1729145283950_image.png)
 3. If MOUNTPOINTS has a mount point, you need to cancel it with the following command.
-```
-umount /dev/sda
-```
-
-![](https://manage.icewhale.io/api/static/docs/1729145392591_image.png)
+   ```
+   umount /dev/sda
+   ```
+   ![](https://manage.icewhale.io/api/static/docs/1729145392591_image.png)
 4. You need to run the commands in the tutorial with superuser privileges (root privileges). You can use `sudo `to elevate privileges, such as  `sudo mkfs.ext4 /dev/md0 `
 
 ## Steps to Create RAID6
