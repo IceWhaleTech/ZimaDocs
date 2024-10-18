@@ -7,17 +7,24 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ## Introduction
 Currently, ZimaOS supports RAID0/1/5, but we understand that many users require RAID6 for enhanced redundancy. To address this, we've prepared a step-by-step guide for creating RAID6 through the command line. Please follow the instructions below.
 We look forward to accelerating our support for more RAID levels in the future!
+
+## First tip:
+If the system is rebooted, you'll need to reassemble the RAID6 array.
+
 ## Prerequisites
 
 1. You will need at least four hard drives.
-2. Use the command lsblk to check the available hard drives.
-![](https://manage.icewhale.io/api/static/docs/1729145283950_image.png)
-3. If MOUNTPOINTS has a mount point, you need to cancel it with the following command.
-   ```
+2. You need to run the commands in the tutorial with superuser privileges (root privileges). You can use `sudo `to elevate privileges, such as  `sudo mkfs.ext4 /dev/md0 `
+3. Use the command lsblk to check the available hard drives.
+   ![](https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg)
+
+4. If MOUNTPOINTS has a mount point, you need to cancel it with the following command.
+   ![](https://manage.icewhale.io/api/static/docs/1729145392591_image.png)
+   ```command
    umount /dev/sda
    ```
-   ![](https://manage.icewhale.io/api/static/docs/1729145392591_image.png)
-4. You need to run the commands in the tutorial with superuser privileges (root privileges). You can use `sudo `to elevate privileges, such as  `sudo mkfs.ext4 /dev/md0 `
+   
+
 
 ## Steps to Create RAID6
 
@@ -35,10 +42,15 @@ We look forward to accelerating our support for more RAID levels in the future!
 
    `/dev/sda /dev/sdb /dev/sdc /dev/sdd` are the drives participating in the array.
 
+   ![](https://manage.icewhale.io/api/static/docs/1729219387443_img_v3_02fp_8fce2dd8-56af-4706-b5de-96cea3b8162g.jpg)
+
+
 2. Format the RAID using the following command:
    ```
    mkfs.ext4 /dev/md0
    ```
+   ![](https://manage.icewhale.io/api/static/docs/1729219416289_img_v3_02fp_7340f5ef-7892-4696-8707-cdda424461cg.jpg)
+
 
 3. Create a directory for mounting the RAID:
 
@@ -52,7 +64,13 @@ We look forward to accelerating our support for more RAID levels in the future!
    ```
    mount -t ext4 /dev/md0 /media/foldername
    ```
+5. Once created, enter the path in the web-based File to display it
 
+   ![](https://manage.icewhale.io/api/static/docs/1729220708308_img_v3_02fp_245f1382-835d-4827-8852-f6ab8b166d8g.jpg)
+
+   ![](https://manage.icewhale.io/api/static/docs/1729220715773_img_v3_02fp_1b36a2a6-e9a5-45d0-acc2-9b3345b3224g.jpg)
+
+   
 ## Notice:
 If the system is rebooted, you'll need to reassemble the RAID6 array:
 ```
