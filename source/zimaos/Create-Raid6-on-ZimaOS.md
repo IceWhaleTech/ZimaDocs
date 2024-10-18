@@ -8,7 +8,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 Currently, ZimaOS supports RAID0/1/5, but we understand that many users require RAID6 for enhanced redundancy. To address this, we've prepared a step-by-step guide for creating RAID6 through the command line. Please follow the instructions below.
 We look forward to accelerating our support for more RAID levels in the future!
 
-> **Tip:**
+> **Tips:**
 If the system is rebooted, you'll need to reassemble the RAID6 array.
 
 ## Prerequisites
