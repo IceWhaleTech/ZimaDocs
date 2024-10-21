@@ -31,7 +31,7 @@
 
   function getSearchData() {
     $.ajax({
-      url: '/search.xml',
+      url: '/docs/search.xml',
       dataType: 'xml',
       success: function(xmlResponse) {
         var datas = $( "entry", xmlResponse ).map(function() {

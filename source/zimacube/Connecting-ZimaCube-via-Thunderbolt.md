@@ -7,7 +7,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 
 If you want to connect your computer to the ZimaCube using a Thunderbolt cable for faster connection speeds, you can follow these steps:
 
-- If you have not yet connected to ZimaCube using ZimaClient, please refer to the [documentation](https://docs.zimaspace.com/zimaos/Features.html#Download-the-Zima-Client) to download and install [ZimaClient](https://find.zimaspace.com/). ZimaClient will prioritize and identify devices with Thunderbolt connections during the initial scan.
+- If you have not yet connected to ZimaCube using ZimaClient, please refer to the [documentation](https://www.zimaspace.com/docs/zimaos/Features.html#Download-the-Zima-Client) to download and install [ZimaClient](https://find.zimaspace.com/). ZimaClient will prioritize and identify devices with Thunderbolt connections during the initial scan.
 
 ![](https://manage.icewhale.io/api/static/docs/1728443998198_image.png)
 
@@ -22,7 +22,7 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
 
 ## 2. Setting
 2. After plugging in the cable, ZimaClient will automatically adapt and switch to the Thunderbolt connection.
-   - If you have not yet connected to ZimaCube using ZimaClient, please refer to the [documentation](https://docs.zimaspace.com/zimaos/Features.html#Download-the-Zima-Client) to download and install [ZimaClient](https://find.zimaspace.com/).
+   - If you have not yet connected to ZimaCube using ZimaClient, please refer to the [documentation](https://www.zimaspace.com/docs/zimaos/Features.html#Download-the-Zima-Client) to download and install [ZimaClient](https://find.zimaspace.com/).
 
 | ![](https://manage.icewhale.io/api/static/docs/1728444146303_image.png) | ![](https://manage.icewhale.io/api/static/docs/1728444152947_image.png) | ![](https://manage.icewhale.io/api/static/docs/1728444159320_image.png) |
 |:---:|:---:|:---:|

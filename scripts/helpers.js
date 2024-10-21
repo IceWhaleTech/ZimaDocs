@@ -52,7 +52,7 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   if(type === 'zimaos') {
     result += `
     <h4 class="category-list-link sidebar-title ${path=='index.html'?'current':''}" style="border:none"> 
-      <a href="/zimaos">What's Zima</a>
+      <a href="index.html">What's Zima</a>
     </h4>
     `
   }

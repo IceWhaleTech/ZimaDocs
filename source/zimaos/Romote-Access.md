@@ -39,7 +39,7 @@ When you leave the home LAN, the remote access status of ZimaCube is as follows:
 ![](https://manage.icewhale.io/api/static/docs/1728382289343_image.png)
 
 ## Second host device access:
-If you have the **second** computer in the office, but the zimacube is not with you, you can still use Connect ID. Find more in [here](https://docs.zimaspace.com/zimaos/Features.html#Second-host-device-access).
+If you have the **second** computer in the office, but the zimacube is not with you, you can still use Connect ID. Find more in [here](https://www.zimaspace.com/docs/zimaos/Features.html#Second-host-device-access).
 
 
 ## For your reference

@@ -27,7 +27,7 @@ https://find.zimaspace.com/
 Notes:
 ZimaClient will **display its icon in the taskbar** and you can open and operate the client by clicking on the icon.
 
-How to connect to ZimaCube via ZimaClient, please refer to this [document](https://docs.zimaspace.com/zimaos/Romote-Access.html)
+How to connect to ZimaCube via ZimaClient, please refer to this [document](https://www.zimaspace.com/docs/zimaos/Romote-Access.html)
 |![](https://manage.icewhale.io/api/static/docs/1728618411227_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618433316_image.png) |
 |:---:|:---:|
 |![](https://manage.icewhale.io/api/static/docs/1728618448765_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618468465_image.png)|

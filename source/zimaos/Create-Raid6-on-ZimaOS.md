@@ -16,7 +16,7 @@ If the system is rebooted, you’ll need to reassemble the RAID6 array.
 ## Prerequisites
 
 1. You will need at least four hard drives.
-2. You need to learn how to get to the command line page by clicking on [this](https://docs.zimaspace.com/zimaos/How-to-Open-SSH-in-ZimaOS.html).
+2. You need to learn how to get to the command line page by clicking on [this](https://www.zimaspace.com/docs/zimaos/How-to-Open-SSH-in-ZimaOS.html).
 3. You need to run the commands in the tutorial with superuser privileges (root privileges). You can use `sudo `to elevate privileges, such as  `sudo mkfs.ext4 /dev/md0 `
 4. Use the command lsblk to check the available hard drives.
    ![](https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg)
