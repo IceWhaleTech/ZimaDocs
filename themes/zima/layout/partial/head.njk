@@ -57,4 +57,27 @@
   }) }}
   {{ partial('google_analytics') }}
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{ page.title }}",
+      "description": "{{ page.description }}",
+      "image": "{{ page.feature_image }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ page.author or 'Zima' }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "{{ page.date }}"
+    }
+    </script>
+
 </head>
