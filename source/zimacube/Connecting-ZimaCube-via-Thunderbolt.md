@@ -64,7 +64,7 @@ If you want to connect your computer to the ZimaCube using a Thunderbolt cable f
 
 ## Extended Reading
   1. How to access and modify files on ZimaCube in MacOS Finder and Windows Explorer, please refer to [more](https://www.zimaspace.com/docs/zimaos/Using-Samba-as-a-Member).
-  2. Learn about the fastest transfer speeds that can be achieved with a Thunderbolt connection on the ZimaCube, please refer to: ZimaCube Thunderbolt Connection Transfer Speeds Analysis.
+  2. Learn about the fastest transfer speeds that can be achieved with a Thunderbolt connection on the ZimaCube, please refer to: [ZimaCube Thunderbolt Connection Transfer Speeds Analysis](https://www.zimaspace.com/docs/zimacube/Transfer-Speeds-Over-Thunderbolt).
 
 ## Troubleshooting (to be completed)
 1. If the client is not displayed, check the network settings on Mac and Windows.
