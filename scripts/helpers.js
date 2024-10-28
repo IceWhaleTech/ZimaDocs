@@ -52,7 +52,7 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   if(type === 'zimaos') {
     result += `
     <h4 class="category-list-link sidebar-title ${path=='index.html'?'current':''}" style="border:none"> 
-      <a href="index.html">What's Zima</a>
+      <a href="./index.html">What's Zima</a>
     </h4>
     `
   }
@@ -69,7 +69,7 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
         showChildren = 'show-children';
       }
       if( !(type=='zimaos' && link == 'index.html') ){ 
-        childrenContent += `<li class="sidebar-link ${itemClass}"><a href="${link}">${self.__(prefix + text)}</a></li>`;
+        childrenContent += `<li class="sidebar-link ${itemClass}"><a href="./${link}">${self.__(prefix + text)}</a></li>`;
       }
     }
     result += `
