@@ -98,3 +98,6 @@ The above method can ensure that the WOL setting is automatically enabled after 
 3. Enter the previous broadcast address in IP address. For example, if the IP address of ZimaBoard is `10.0.192.211`, the broadcast address should be `10.0.255.255`. Fill in the MAC Address normally. Do not fill in other information. Click `OK`.
 4. Select the device to be awakened, click `Wake Up Selected Computers` in the upper right corner, and observe whether it can be awakened and started.
 ![](https://manage.icewhale.io/api/static/docs/1730197821740_image.png)
+{% note warn Tips %}
+If you need remote wakeup on other devices (such as Android, iOS, MacOS, etc.), you can search for related software online. Since the basic steps are not much different, I will not go into details here. I wish you all the best.
+{% endnote %}
