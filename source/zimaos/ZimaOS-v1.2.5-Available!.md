@@ -1,10 +1,17 @@
 ---
-title: ZimaOS v1.2.5 Available!
+title: ZimaOS V1.2.5
 description: 
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 ![](https://manage.icewhale.io/api/static/docs/1730184763693_image.png)
+
+## Download
+- For users who have installed ZimaOS V1.1:
+Click on the red dot in the top left corner of the dashboard to initiate the update.
+- Installer: [https://github.com/IceWhaleTech/ZimaOS/releases/download/1.2.5/zimaos_zimacube-1.2.5_installer.img](https://github.com/IceWhaleTech/ZimaOS/releases/download/1.2.5/zimaos_zimacube-1.2.5_installer.img)
+
+- Manual upgrade: [https://github.com/IceWhaleTech/ZimaOS/releases/download/1.2.5/zimaos_zimacube-1.2.5.raucb](https://github.com/IceWhaleTech/ZimaOS/releases/download/1.2.5/zimaos_zimacube-1.2.5.raucb)
 
 ## New
 1. Added “Share via link” function, which can generate file links and share files on ZimaOS.
@@ -30,4 +37,4 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 
 The modification time of the new folder in Files is set to the current time of ZimaCube.
 
-![:earth_africa:](https://manage.icewhale.io/api/static/docs/1730185032222_copyImage.png ":earth_africa:") **Introducing [Share via Link on ZimaOS v1.2.5](https://www.youtube.com/watch?v=b6oyZNQendw)** ![:rocket:](https://manage.icewhale.io/api/static/docs/1730185032835_copyImage.png ":rocket:")
+**Introducing [Share via Link on ZimaOS v1.2.5](https://www.youtube.com/watch?v=b6oyZNQendw)** 
