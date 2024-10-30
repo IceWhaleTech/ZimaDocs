@@ -75,11 +75,12 @@ With these steps, you can easily find the photo files backed up on ZimaOS, wheth
 2. When your disk capacity is insufficient, how do you migrate your previous data to a new disk?
 a. Data migration
 Click Data migration in Settings, select Library migration, and Gallery, Documents, Media, and Backup will be automatically migrated to the target location
-![](https://manage.icewhale.io/api/static/docs/1730270747834_image.png)
-b. Manual migration
+![](https://manage.icewhale.io/api/static/docs/1730272017160_image.png)
+
+b. Manual migration!
 You can also just copy the Gallery folder to the target location, the steps are as follows:
 - Disable the Immich application
 - Copy the Gallery to the target location
 - Then modify the directory under Volumes of immich-server in the application to the modified directory
 - Restart Immich
-![](https://manage.icewhale.io/api/static/docs/1730270779537_image.png)
+![](https://manage.icewhale.io/api/static/docs/1730271838216_image.png)
