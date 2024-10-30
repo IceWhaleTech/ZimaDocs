@@ -1,9 +1,10 @@
 ---
-title: Immich's Guide: Step-by-step to efficient photo backup
+title: 
 description: 
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
+# Immich's Guide: Step-by-step to efficient photo backup!
 ## Introduction
 Immich, with its simple web interface and smart features, provides you with a perfect platform to organize and share your precious photos and videos. ZimaOS, with its intuitive operation and powerful data protection capabilities, brings a revolutionary experience to NAS users, professionals and creative studios. It simplifies the installation of Docker applications and can be completed with just a few clicks.
 Combine Immich with ZimaOS and you will get a powerful and easy-to-use solution. Let's explore how to easily enjoy the convenience of Immich on ZimaOS.
