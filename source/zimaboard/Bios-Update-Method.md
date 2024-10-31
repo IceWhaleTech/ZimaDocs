@@ -11,8 +11,8 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 - MiniDP X1
 ## Step 1: Download BIOS installer
 **Link:**
-{% note warn Tips %}
-Warning:There is no bios update package for zimaboard832 with J3455 CPU
+{% note warn Warning %}
+There is no bios update package for zimaboard832 with J3455 CPU
 {% endnote %}
 
 | Model | CPU | Download Link |
