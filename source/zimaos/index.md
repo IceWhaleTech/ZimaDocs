@@ -31,7 +31,7 @@ With this assumption, we embarked on Zima's journey of building and exploration.
 <table style="width:100%; table-layout: fixed;">
   <tr>
     <td style="width:50%; text-align:center; vertical-align:top;">
-      <img src="https://manage.icewhale.io/api/static/docs/1726730281869_copyImage.png" alt="Description" style="max-width:100%; height:auto;">
+      <img src="https://manage.icewhale.io/api/static/docs/1730367361796_zimacube.png" alt="Description" style="max-width:100%; height:auto;">
     </td>
     <td style="width:50%; text-align:left; vertical-align:top;">
       <p><strong>ZimaCube</strong> is our flagship private cloud device launched in 2023 for professional users. Through Kickstarter, we garnered support from 1,252 backers and became one of the Top 30 hardware projects on Kickstarter for 2023.</p>
