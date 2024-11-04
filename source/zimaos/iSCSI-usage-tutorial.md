@@ -4,13 +4,16 @@ description:
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
+
+iSCSI (Internet Small Computer System Interface) is a protocol for transmitting SCSI commands over a network, allowing storage devices to communicate over a network, similar to directly connected storage. It can virtualize storage resources, achieve centralized management, network sharing, and remote access, and is suitable for scenarios such as data centers, virtualized environments, and backup and recovery. 
+Through this tutorial, you will learn how to configure and use iSCSI in ZimaOS to improve storage management efficiency, simplify network storage architecture, and achieve flexible data access methods.
 ## Prerequisites
 1. The hard disk used is not in use
 2. Confirm the client's IQN
 
 ## Operation steps
 ### Server
-*Make sure your ZimaOS has been upgraded to 12.5 or above.*
+*Make sure your ZimaOS has been upgraded to 1.2.5 or above.*
 
 1. Use the command `sudo -i` to enter superuser mode，Start targetcli
 ```
