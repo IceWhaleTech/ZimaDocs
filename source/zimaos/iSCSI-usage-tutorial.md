@@ -10,14 +10,16 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 
 ## Operation steps
 ### Server
-1. Start targetcli
+*Make sure your ZimaOS has been upgraded to 12.5 or above.*
+
+1. Use the command `sudo -i` to enter superuser mode，Start targetcli
 ```
 targetcli
 ```
 
 ![](https://manage.icewhale.io/api/static/docs/1730362966225_image.png)
 
-2. Create a LUN, assuming /dev/sde is used as the storage backend:
+2. Create a LUN, assuming `/dev/sde` is used as the storage backend(Here we use sde. You can use the `lsblk` to view the device status and change to `sda` or `sdb`..):
 ```
 cd backstores/block
 create myblockdev /dev/sde
@@ -41,7 +43,7 @@ create /backstores/block/myblockdev
 
 ![](https://manage.icewhale.io/api/static/docs/1730363050568_image.png)
 
-5. Set the ACL (access control list) to allow the connection. The IQN here needs to be consistent with the client's
+5. Set the ACL (access control list) to allow the connection. The IQN here needs to be consistent with the client(Open iSCSI Initiator, it is in the Configuration tab)
 ```
 cd ../acls
 create iqn.1993-08.org.debian:01:bb1e6772dfb6
