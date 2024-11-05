@@ -107,6 +107,7 @@ We've compiled this list based on the drivers supported by the ZimaOS, with "ver
 | Quadro Series (Notebooks)         | Quadro T2000, Quadro T1000, Quadro P5200, Quadro P5000, Quadro P4200, Quadro P3200, Quadro P4000, Quadro P3000, Quadro P2000, Quadro P1000, Quadro P600, Quadro P520, Quadro P500, Quadro M2200, Quadro M1200, Quadro M620, Quadro M520, Quadro M5500, Quadro M5000M, Quadro M4000M, Quadro M3000M, Quadro M2000M, Quadro M1000M, Quadro M600M, Quadro M500M, Quadro K2200M, Quadro K620M |
 | Quadro Blade/Embedded Series      | Quadro P5000, Quadro P3000, Quadro M5000 SE, Quadro M3000 SE |
 | Quadro NVS Series                 | NVS 810                                                      |
-| NVS Series                        | NVS 810                                                      |
+| NVS Series                        | NVS 810                                                      | 
+Intel A-series Graphics                       | A310，A380，A580，A750，A770                                                    |
 
 More to come...
