@@ -1,5 +1,5 @@
 ---
-title: resetnetworksettings
+title: Reset Network Settings
 description: 
 type: Docs
 author: icewhale123456
