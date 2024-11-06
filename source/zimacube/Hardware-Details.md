@@ -18,6 +18,14 @@ ZimaCube Pro is equipped with two higher-specification PCIe interfaces:
 2. **PCIe Gen 3.0 x1** interface, with a transfer rate of **2 GB/s** (bidirectional).
 
 ## Compatibility List
+| Adapter Name | Chipset | Compatibility |
+| - | - | - |
+| PCIe to 4-Port 2.5G Ethernet Adapter | Intel I225 | Yes |
+| PCIe to 4-Port 2.5G Ethernet Adapter | Realtek RTL8125B | Yes |
+| PCIe to 4-Port Ethernet Adapter | Intel I350-T4 | Yes |
+| PCIe to 4-Port Gigabit Ethernet Adapter | Realtek RTL8111 | Yes |
+| PCIe to Dual Port 2.5G Ethernet Adapter | Realtek RTL8125B | Yes |
+| PCIe to Dual Port Gigabit Ethernet Adapter | Realtek RTL8111 | Yes |
 
 
 # Fan Interface Instructions
