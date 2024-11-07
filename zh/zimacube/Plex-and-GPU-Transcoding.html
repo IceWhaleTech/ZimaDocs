@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>如何在 ZimaCube 上启用 Plex 硬件转码？ | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimacube/Plex-and-GPU-Transcoding">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimacube/Plex-and-GPU-Transcoding">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimacube/Plex-and-GPU-Transcoding">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimacube/Plex-and-GPU-Transcoding">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Plex 和 GPU 转码Plex 媒体服务器是一个多功能且受到广泛欢迎的平台，用于管理和流媒体传输您的媒体库。通过利用 Intel &#x2F; NVIDIA GPU 的强大功能，可以显著提升其性能和转码能力。在本指南中，我们将为您详细讲解如何设置 Docker Plex 以实现 Intel &#x2F; NVIDIA GPU 加速，从而实现高效的硬件转码和更好的媒体流传">
+<meta property="og:type" content="website">
+<meta property="og:title" content="如何在 ZimaCube 上启用 Plex 硬件转码？">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimacube/Plex-and-GPU-Transcoding">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Plex 和 GPU 转码Plex 媒体服务器是一个多功能且受到广泛欢迎的平台，用于管理和流媒体传输您的媒体库。通过利用 Intel &#x2F; NVIDIA GPU 的强大功能，可以显著提升其性能和转码能力。在本指南中，我们将为您详细讲解如何设置 Docker Plex 以实现 Intel &#x2F; NVIDIA GPU 加速，从而实现高效的硬件转码和更好的媒体流传">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727266956851_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727266979170_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727266997124_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727267013579_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727267065118_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727267082104_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727267123811_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727267241180_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727267268401_image.png">
+<meta property="article:published_time" content="2024-11-07T10:03:26.448Z">
+<meta property="article:modified_time" content="2024-11-07T10:03:26.448Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727266956851_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "如何在 ZimaCube 上启用 Plex 硬件转码？",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "ZimaSpace"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1730973806448"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a href="zhhttps://community.zimaspace.com/" rel="external nofollow noreferrer" class="main-nav-link ">论坛</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimacube/Plex-and-GPU-Transcoding">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimacube/Plex-and-GPU-Transcoding">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimacube/Plex-and-GPU-Transcoding">日本語</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaboard.com/" rel="external nofollow noreferrer" target="_blank">商店</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="搜索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">如何在 ZimaCube 上启用 Plex 硬件转码？</h1>
+                
+              
+                <a id="feedback-link" class="article-edit-link" target="_blank" href="" title="改进此文档">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                    <path d="M12.698 4.9349C12.95 4.6829 13.0886 4.34823 13.0886 3.99223C13.0886 3.63623 12.95 3.30156 12.698 3.04956L11.6406 1.99223C11.3886 1.74023 11.054 1.60156 10.698 1.60156C10.342 1.60156 10.0073 1.74023 9.75597 1.99156L2.66797 9.05756V12.0009H5.60997L12.698 4.9349ZM10.698 2.9349L11.756 3.99156L10.696 5.04756L9.63864 3.9909L10.698 2.9349ZM4.0013 10.6676V9.6109L8.69464 4.93223L9.75197 5.98956L5.0593 10.6676H4.0013ZM2.66797 13.3342H13.3346V14.6676H2.66797V13.3342Z"/>
+                  </svg>
+                </a>
+              
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h1 id="Plex-和-GPU-转码" class="article-heading"><a href="#Plex-和-GPU-转码" class="headerlink" title="Plex 和 GPU 转码"></a>Plex 和 GPU 转码<a class="article-anchor" href="#Plex-和-GPU-转码" aria-hidden="true"></a></h1><p>Plex 媒体服务器是一个多功能且受到广泛欢迎的平台，用于管理和流媒体传输您的媒体库。通过利用 Intel &#x2F; NVIDIA GPU 的强大功能，可以显著提升其性能和转码能力。在本指南中，我们将为您详细讲解如何设置 Docker Plex 以实现 Intel &#x2F; NVIDIA GPU 加速，从而实现高效的硬件转码和更好的媒体流传输。</p>
+<h2 id="为什么使用硬件加速流媒体？" class="article-heading"><a href="#为什么使用硬件加速流媒体？" class="headerlink" title="为什么使用硬件加速流媒体？"></a>为什么使用硬件加速流媒体？<a class="article-anchor" href="#为什么使用硬件加速流媒体？" aria-hidden="true"></a></h2><p>为了在多种设备上流畅播放视频，Plex 媒体服务器通常需要将视频转换为不同的质量或兼容格式。视频的转换（转码）会在您播放时自动进行实时处理。使用 Plex 媒体服务器的免费软件转码，家庭计算机可以无缝地实时转换和流式传输视频到任何 Plex 应用。有些处理器更强大的计算机甚至可以同时流式传输多个视频，尤其是在较低质量时。</p>
+<p>为了更快地转换视频并减少处理器的使用，您可以在 Plex 媒体服务器中打开硬件加速流媒体。当开启硬件加速时，Plex 媒体服务器将使用您计算机&#x2F;设备中专用的视频解码器和编码器硬件支持来转换视频，让您能够更顺畅地流式传输 HD 或 4K 视频，并能同时向更多设备进行流媒体传输。而且，如果您在同一台计算机上进行工作和娱乐，硬件加速在视频流传输时使用的处理器能力更少，从而为您的其他活动恢复所需的速度。</p>
+<h2 id="硬件加速流媒体具有多个优势：" class="article-heading"><a href="#硬件加速流媒体具有多个优势：" class="headerlink" title="硬件加速流媒体具有多个优势："></a>硬件加速流媒体具有多个优势：<a class="article-anchor" href="#硬件加速流媒体具有多个优势：" aria-hidden="true"></a></h2><ul>
+<li>通常，可以同时流式传输更多视频。</li>
+<li>视频可以更快开始流式传输，并且缓冲较少。</li>
+<li>高质量视频，尤其是 4K 和 HEVC 视频，可以更流畅地进行流式传输。</li>
+<li>通过将 CPU 密集型的转码任务卸载到专用硬件上，视频流传输对您的计算机性能的影响更小。</li>
+<li>使用专用的视频解码&#x2F;编码硬件更加节能，从而消耗更少的电力。</li>
+</ul>
+<h2 id="如何启用硬件加速流媒体？" class="article-heading"><a href="#如何启用硬件加速流媒体？" class="headerlink" title="如何启用硬件加速流媒体？"></a>如何启用硬件加速流媒体？<a class="article-anchor" href="#如何启用硬件加速流媒体？" aria-hidden="true"></a></h2><blockquote>
+<p>硬件加速流媒体是一个高级功能，需要有效的 Plex Pass 订阅。</p>
+</blockquote>
+<h3 id="1-使用内置的-Intel-GPU" class="article-heading"><a href="#1-使用内置的-Intel-GPU" class="headerlink" title="1. 使用内置的 Intel GPU"></a>1. 使用内置的 Intel GPU<a class="article-anchor" href="#1-使用内置的-Intel-GPU" aria-hidden="true"></a></h3><p>ZimaCube 使用 Intel N100&#x2F;1235U 处理器，这两款处理器都集成了 Intel 最新的集成 GPU，具有很强的硬件转码能力。</p>
+<ul>
+<li>从应用商店搜索并安装 Plex。（<strong>如果之前已经安装，请更新到最新版本。建议进行全新安装。</strong>）</li>
+<li>打开 Plex Web 应用。</li>
+<li>用拥有 Plex Pass 的帐户登录。</li>
+<li>导航到设置 &gt; 服务器 &gt; 转码器以访问服务器设置。</li>
+<li>在右上角开启“显示高级设置”以显示高级选项。</li>
+<li>开启“在可用时使用硬件加速”。</li>
+<li>选择硬件转码设备：Alder Lake….<br><img src="https://manage.icewhale.io/api/static/docs/1727266956851_image.png"></li>
+<li>在底部点击“保存更改”。</li>
+<li>保存后，选择一部电影播放，并在播放设置中选择“自动转换”。</li>
+<li>通常，使用内置 GPU 进行转码时，其功耗将增加 4-8W，而 CPU 的功耗非常少。这非常令人兴奋。<br><img src="https://manage.icewhale.io/api/static/docs/1727266979170_image.png"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>之前</strong></th>
+<th><strong>之后</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://manage.icewhale.io/api/static/docs/1727266997124_image.png" alt="之前图片"></td>
+<td><img src="https://manage.icewhale.io/api/static/docs/1727267013579_image.png" alt="之后图片"></td>
+</tr>
+</tbody></table>
+<h3 id="2-使用-Nvidia-GPU" class="article-heading"><a href="#2-使用-Nvidia-GPU" class="headerlink" title="2. 使用 Nvidia GPU"></a>2. 使用 Nvidia GPU<a class="article-anchor" href="#2-使用-Nvidia-GPU" aria-hidden="true"></a></h3><p>如果您有一个内置 NVIDIA GPU 的 ZimaCube pro，或者您自己安装了 NVIDIA GPU，可以按照以下步骤进行设置：</p>
+<ul>
+<li>建议进行全新安装。</li>
+<li>有关当前 ZimaOS 支持的 NVIDIA GPU 列表，请参见 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://us.download.nvidia.com/XFree86/Linux-x86_64/555.58.02/README/supportedchips.html">https://us.download.nvidia.com/XFree86/Linux-x86_64/555.58.02/README/supportedchips.html</a> 中的当前 NVIDIA GPU 部分。</li>
+<li>在 ZimaOS 仪表板中找到 Plex 应用，点击右上角的三个点，然后在下一个菜单中点击“设置”。</li>
+<li>在设置中将 NVIDIA_VISIBLE_DEVICES 设置为 all 的环境变量，并保存。<br><img src="https://manage.icewhale.io/api/static/docs/1727267065118_image.png"></li>
+<li>导航到设置 &gt; 服务器 &gt; 转码器以访问服务器设置。</li>
+<li>在右上角开启“显示高级设置”以显示高级选项。</li>
+<li>开启“在可用时使用硬件加速”。</li>
+<li>选择硬件转码设备：未知 (NVIDIA)<br>   <img src="https://manage.icewhale.io/api/static/docs/1727267082104_image.png"></li>
+<li>在底部点击“保存更改”。</li>
+<li>保存后，选择一部电影播放，并在播放设置中选择“自动转换”。</li>
+<li>通常，使用 NVIDIA GPU 进行转码时，其功耗将增加 10-25W。同时，它不会消耗 CPU 的计算能力。这非常令人兴奋。</li>
+<li>尽管功耗高于内置 GPU，但由于 NVIDIA GPU 的出色性能，它能够更快地处理高分辨率转码，并能同时处理多个视频流。<br><img src="https://manage.icewhale.io/api/static/docs/1727267123811_image.png"></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>之前</strong></th>
+<th><strong>之后</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://manage.icewhale.io/api/static/docs/1727267241180_image.png" alt="之前图片"></td>
+<td><img src="https://manage.icewhale.io/api/static/docs/1727267268401_image.png" alt="之后图片"></td>
+</tr>
+</tbody></table>
+<h2 id="总结" class="article-heading"><a href="#总结" class="headerlink" title="总结"></a>总结<a class="article-anchor" href="#总结" aria-hidden="true"></a></h2><p>这两种解决方案均能有效支持 Plex 的硬件加速流媒体。选择 NVIDIA 还是 Intel GPU 取决于您的具体需求和预算。如果您需要处理高分辨率视频或多个流，NVIDIA GPU 可能是更好的选择。如果您更关注成本和功耗，Intel GPU 可能更合适。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-11-07T10:03:26.448Z" itemprop="dateModified">最后更新：2024-11-07</time>
+                <a href="GPU-Expansion.html" class="article-footer-prev" title="GPU 扩展"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="RAID-SSD-Expansion.html" class="article-footer-next" title="RAID SSD 扩展"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Plex-%E5%92%8C-GPU-%E8%BD%AC%E7%A0%81"><span class="toc-text">Plex 和 GPU 转码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%E6%B5%81%E5%AA%92%E4%BD%93%EF%BC%9F"><span class="toc-text">为什么使用硬件加速流媒体？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%E6%B5%81%E5%AA%92%E4%BD%93%E5%85%B7%E6%9C%89%E5%A4%9A%E4%B8%AA%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-text">硬件加速流媒体具有多个优势：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%90%AF%E7%94%A8%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%E6%B5%81%E5%AA%92%E4%BD%93%EF%BC%9F"><span class="toc-text">如何启用硬件加速流媒体？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E7%9A%84-Intel-GPU"><span class="toc-text">1. 使用内置的 Intel GPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-Nvidia-GPU"><span class="toc-text">2. 使用 Nvidia GPU</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机指南</a></li><li class="sidebar-link "><a href="./PC-Direct.html">PC 直连</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简述</a></li><li class="sidebar-link "><a href="./Hardware-Details.html">硬件详情</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./HDD-Interface-Usage-Guide.html">安装硬盘指南</a></li><li class="sidebar-link "><a href="./Instructions-for-use-of-the-7th-Bay.html">第七硬盘槽使用说明</a></li><li class="sidebar-link "><a href="./Auto-Power-On.html">自动开机</a></li><li class="sidebar-link "><a href="./GPU-Expansion.html">GPU 扩展</a></li><li class="sidebar-link  current"><a href="./Plex-and-GPU-Transcoding.html">Plex 和 GPU 转码</a></li><li class="sidebar-link "><a href="./RAID-SSD-Expansion.html">RAID SSD 扩展</a></li><li class="sidebar-link "><a href="./BIOS-Configuration.html">BIOS 配置</a></li><li class="sidebar-link "><a href="./How-to-Install-ZimaOS.html">安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Install-UnRAID.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./Install-TrueNAS.html">安装 TrueNAS</a></li><li class="sidebar-link "><a href="./ZimaCube-Motherboard-DIY-Fan-Guide-and-Specifications.html">DIY 风扇指南</a></li><li class="sidebar-link "><a href="./Transfer-Speeds-Over-Thunderbolt.html">Thunderbolt 传输速度</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Resets-CMOS.html">ZimaCube 重置 CMOS</a></li><li class="sidebar-link "><a href="./Creating-RAID-Troubleshooting-Guide.html">RAID 创建故障排除指南</a></li><li class="sidebar-link "><a href="./ZimaCube-Bios-Update-Method-.html">ZimaCube BIOS 更新方法</a></li><li class="sidebar-link "><a href="./Memory-Test-Tutorial.html">内存测试教程</a></li><li class="sidebar-link "><a href="./Troubleshooting-Self-Test-Guide.html">Troubleshooting Self-Test Guide</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaBoardOfficialChannel" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://twitter.com/ZimaBoard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaboard.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/media-servers">媒体服务器</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/personal-nas">个人 NAS</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/ad-blocker">广告拦截器</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a href="zhhttps://community.zimaspace.com/" rel="external nofollow noreferrer" class="mobile-nav-link ">论坛</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机指南</a></li><li class="sidebar-link "><a href="./PC-Direct.html">PC 直连</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简述</a></li><li class="sidebar-link "><a href="./Hardware-Details.html">硬件详情</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./HDD-Interface-Usage-Guide.html">安装硬盘指南</a></li><li class="sidebar-link "><a href="./Instructions-for-use-of-the-7th-Bay.html">第七硬盘槽使用说明</a></li><li class="sidebar-link "><a href="./Auto-Power-On.html">自动开机</a></li><li class="sidebar-link "><a href="./GPU-Expansion.html">GPU 扩展</a></li><li class="sidebar-link  current"><a href="./Plex-and-GPU-Transcoding.html">Plex 和 GPU 转码</a></li><li class="sidebar-link "><a href="./RAID-SSD-Expansion.html">RAID SSD 扩展</a></li><li class="sidebar-link "><a href="./BIOS-Configuration.html">BIOS 配置</a></li><li class="sidebar-link "><a href="./How-to-Install-ZimaOS.html">安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Install-UnRAID.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./Install-TrueNAS.html">安装 TrueNAS</a></li><li class="sidebar-link "><a href="./ZimaCube-Motherboard-DIY-Fan-Guide-and-Specifications.html">DIY 风扇指南</a></li><li class="sidebar-link "><a href="./Transfer-Speeds-Over-Thunderbolt.html">Thunderbolt 传输速度</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Resets-CMOS.html">ZimaCube 重置 CMOS</a></li><li class="sidebar-link "><a href="./Creating-RAID-Troubleshooting-Guide.html">RAID 创建故障排除指南</a></li><li class="sidebar-link "><a href="./ZimaCube-Bios-Update-Method-.html">ZimaCube BIOS 更新方法</a></li><li class="sidebar-link "><a href="./Memory-Test-Tutorial.html">内存测试教程</a></li><li class="sidebar-link "><a href="./Troubleshooting-Self-Test-Guide.html">Troubleshooting Self-Test Guide</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>中文</span></span>
+    <select id="mobile-lang-select" data-canonical="zimacube/Plex-and-GPU-Transcoding.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh" selected>中文</option>
+      
+        <option value="jp">日本語</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

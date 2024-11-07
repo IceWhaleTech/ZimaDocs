@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>GPU扩展 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimacube/GPU-Expansion">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimacube/GPU-Expansion">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimacube/GPU-Expansion">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimacube/GPU-Expansion">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="GPU扩展介绍ZimaCube是一款可以满足您专业工作需求的计算设备。通过其模块化设计，用户可以根据个人需求扩展硬件，包括安装图形处理单元（GPU）。GPU对需要处理大量图形处理和并行计算任务的用户至关重要。 安装指南与应用示例1. GPU安装步骤步骤1：移除I&#x2F;O挡板 在安装GPU之前，从PCIe插槽移除I&#x2F;O挡板。          步骤2：将GPU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GPU扩展">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimacube/GPU-Expansion">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="GPU扩展介绍ZimaCube是一款可以满足您专业工作需求的计算设备。通过其模块化设计，用户可以根据个人需求扩展硬件，包括安装图形处理单元（GPU）。GPU对需要处理大量图形处理和并行计算任务的用户至关重要。 安装指南与应用示例1. GPU安装步骤步骤1：移除I&#x2F;O挡板 在安装GPU之前，从PCIe插槽移除I&#x2F;O挡板。          步骤2：将GPU">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728614816722_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728614828318_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728614909590_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728614920088_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728614946501_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615170049_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615235531_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615252888_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615297358_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615306943_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615600750_094e8811-903b-4bb0-8053-548119f56272.gif">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615658463_2.gif">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728615689023_image.png">
+<meta property="article:published_time" content="2024-11-07T10:03:26.448Z">
+<meta property="article:modified_time" content="2024-11-07T10:03:26.448Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1728614816722_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "GPU扩展",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "ZimaSpace"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1730973806448"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a href="zhhttps://community.zimaspace.com/" rel="external nofollow noreferrer" class="main-nav-link ">论坛</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimacube/GPU-Expansion">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimacube/GPU-Expansion">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimacube/GPU-Expansion">日本語</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaboard.com/" rel="external nofollow noreferrer" target="_blank">商店</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="搜索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">GPU扩展</h1>
+                
+              
+                <a id="feedback-link" class="article-edit-link" target="_blank" href="" title="改进此文档">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                    <path d="M12.698 4.9349C12.95 4.6829 13.0886 4.34823 13.0886 3.99223C13.0886 3.63623 12.95 3.30156 12.698 3.04956L11.6406 1.99223C11.3886 1.74023 11.054 1.60156 10.698 1.60156C10.342 1.60156 10.0073 1.74023 9.75597 1.99156L2.66797 9.05756V12.0009H5.60997L12.698 4.9349ZM10.698 2.9349L11.756 3.99156L10.696 5.04756L9.63864 3.9909L10.698 2.9349ZM4.0013 10.6676V9.6109L8.69464 4.93223L9.75197 5.98956L5.0593 10.6676H4.0013ZM2.66797 13.3342H13.3346V14.6676H2.66797V13.3342Z"/>
+                  </svg>
+                </a>
+              
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="GPU扩展" class="article-heading"><a href="#GPU扩展" class="headerlink" title="GPU扩展"></a>GPU扩展<a class="article-anchor" href="#GPU扩展" aria-hidden="true"></a></h3><h4 id="介绍" class="article-heading"><a href="#介绍" class="headerlink" title="介绍"></a>介绍<a class="article-anchor" href="#介绍" aria-hidden="true"></a></h4><p>ZimaCube是一款可以满足您专业工作需求的计算设备。通过其模块化设计，用户可以根据个人需求扩展硬件，包括安装图形处理单元（GPU）。GPU对需要处理大量图形处理和并行计算任务的用户至关重要。</p>
+<h4 id="安装指南与应用示例" class="article-heading"><a href="#安装指南与应用示例" class="headerlink" title="安装指南与应用示例"></a>安装指南与应用示例<a class="article-anchor" href="#安装指南与应用示例" aria-hidden="true"></a></h4><h5 id="1-GPU安装步骤" class="article-heading"><a href="#1-GPU安装步骤" class="headerlink" title="1. GPU安装步骤"></a>1. GPU安装步骤<a class="article-anchor" href="#1-GPU安装步骤" aria-hidden="true"></a></h5><h6 id="步骤1：移除I-x2F-O挡板" class="article-heading"><a href="#步骤1：移除I-x2F-O挡板" class="headerlink" title="步骤1：移除I&#x2F;O挡板"></a>步骤1：移除I&#x2F;O挡板<a class="article-anchor" href="#步骤1：移除I-x2F-O挡板" aria-hidden="true"></a></h6><ul>
+<li>在安装GPU之前，从PCIe插槽移除I&#x2F;O挡板。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728614816722_image.png"></th>
+<th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728614828318_image.png"></th>
+</tr>
+</thead>
+</table>
+<h6 id="步骤2：将GPU安装到正确位置" class="article-heading"><a href="#步骤2：将GPU安装到正确位置" class="headerlink" title="步骤2：将GPU安装到正确位置"></a>步骤2：将GPU安装到正确位置<a class="article-anchor" href="#步骤2：将GPU安装到正确位置" aria-hidden="true"></a></h6><ul>
+<li>确保GPU对齐正确，将金手指与PCIe插槽匹配。</li>
+<li>小心将GPU插入插槽，直到完全固定。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728614909590_image.png"></th>
+<th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728614920088_image.png"></th>
+</tr>
+</thead>
+</table>
+<h5 id="小贴士：" class="article-heading"><a href="#小贴士：" class="headerlink" title="小贴士："></a>小贴士：<a class="article-anchor" href="#小贴士：" aria-hidden="true"></a></h5><ul>
+<li>安装或拆卸GPU时，按住PCIe插槽上的卡夹，确保GPU安全固定或释放。<br><img src="https://manage.icewhale.io/api/static/docs/1728614946501_copyImage.png"></li>
+</ul>
+<h5 id="2-应用示例：GPU转码与AI应用" class="article-heading"><a href="#2-应用示例：GPU转码与AI应用" class="headerlink" title="2. 应用示例：GPU转码与AI应用"></a>2. 应用示例：GPU转码与AI应用<a class="article-anchor" href="#2-应用示例：GPU转码与AI应用" aria-hidden="true"></a></h5><h6 id="硬件转码：" class="article-heading"><a href="#硬件转码：" class="headerlink" title="硬件转码："></a>硬件转码：<a class="article-anchor" href="#硬件转码：" aria-hidden="true"></a></h6><p>利用GPU进行硬件转码，可以大大提高媒体处理性能。例如，Plex媒体服务器可以使用ZimaOS上的GPU实现高效的硬件转码（注：下载Plex的专业GPU版本）。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1728615170049_image.png"></p>
+<ul>
+<li>选择硬件转码设备：未知（NVIDIA）</li>
+<li>点击保存开始转码</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728615235531_image.png"></th>
+<th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728615252888_image.png"></th>
+</tr>
+</thead>
+</table>
+<table>
+<thead>
+<tr>
+<th>转码前：</th>
+<th>转码后：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://manage.icewhale.io/api/static/docs/1728615297358_image.png"></td>
+<td><img src="https://manage.icewhale.io/api/static/docs/1728615306943_image.png"></td>
+</tr>
+</tbody></table>
+<p>有关ZimaOS当前支持的Nvidia GPU列表，请参见当前的NVIDIA GPU部分：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://us.download.nvidia.com/XFree86/Linux-x86_64/555.58.02/README/supportedchips.html">NVIDIA支持的芯片</a></p>
+<h6 id="AI应用示例：" class="article-heading"><a href="#AI应用示例：" class="headerlink" title="AI应用示例："></a>AI应用示例：<a class="article-anchor" href="#AI应用示例：" aria-hidden="true"></a></h6><p>在ZimaOS上，您可以使用Open WebUI体验先进的AI对话客户端。<br>它支持最新的语言模型，包括但不限于Llama3和Gemma，并兼容OpenAI的API。此外，Open WebUI将调用ZimaCube Pro Creator内置的NVIDIA 2000 Ada GPU，以减少处理延迟。<br>最重要的是，所有您的数据（包括登录信息）都将本地存储在您的设备上。Open WebUI确保在您的授权下严格保密，没有外部请求，保护您的隐私并增强安全性。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1728615600750_094e8811-903b-4bb0-8053-548119f56272.gif"></p>
+<ul>
+<li>此版本已集成Stable Diffusion。</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1728615658463_2.gif"></p>
+<ul>
+<li>我们的AppStore中还有其他AI应用，如Tasking AI和Anything AI。</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1728615689023_image.png"><br>Tasking AI是一个智能任务管理工具，利用AI技术帮助用户更高效地组织和管理日常任务。它能够智能优先排序、提醒和自动化任务，提高工作和生活效率。</p>
+<p>Anything AI是一款多功能AI应用，提供各种实用的AI工具和服务，包括文本生成、语言翻译和语音识别。它通过强大的AI技术，简化了用户的日常工作和生活。</p>
+<p>通过这些AI应用，您可以充分利用人工智能的优势，提升工作效率和生活质量！</p>
+<h5 id="3-注意事项" class="article-heading"><a href="#3-注意事项" class="headerlink" title="3. 注意事项"></a>3. 注意事项<a class="article-anchor" href="#3-注意事项" aria-hidden="true"></a></h5><ul>
+<li>关机：在进行任何操作之前，确保ZimaCube已完全关机，并接地以避免静电损坏设备。</li>
+<li>轻拿轻放：安装或拆卸GPU时避免用力过猛，以防损坏。</li>
+<li>清洁：安装或拆卸时，确保插槽和设备没有灰尘或异物，以避免接触不良。</li>
+<li>驱动安装：安装正确的驱动程序，以确保最佳性能和稳定性。</li>
+</ul>
+<h5 id="4-结论" class="article-heading"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论<a class="article-anchor" href="#4-结论" aria-hidden="true"></a></h5><p>本指南旨在帮助您成功安装GPU并了解其在各种应用中的重要性。我们鼓励您尝试安装并探索更多GPU功能，以提升工作效率和生活质量。</p>
+<p>期待听到您的使用体验！</p>
+<h4 id="兼容性列表" class="article-heading"><a href="#兼容性列表" class="headerlink" title="兼容性列表"></a>兼容性列表<a class="article-anchor" href="#兼容性列表" aria-hidden="true"></a></h4><p>ZimaCube支持<strong>低调</strong>显卡，通常高度约为64.41毫米（2.536英寸）。PCIe插槽提供最多<strong>75W</strong>的功率，因此建议选择在此尺寸和功率范围内的显卡，以确保与ZimaCube紧凑设计和功率限制的兼容性。<br><strong>请注意，其他显卡可能需要外部电源才能正常运行。</strong></p>
+<blockquote class="note warn"><strong class="note-title">提示：</strong><p>我们根据ZimaOS支持的驱动程序编制了此列表，已“验证”的型号已标明。如果您成功运行了<strong>Assist</strong>的其他显卡型号，请通过右上角的“改进”功能帮助我们更新此列表。感谢您的贡献。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th align="left"><strong>类别</strong></th>
+<th><strong>型号</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GeForce RTX 40系列（笔记本）</td>
+<td>GeForce RTX 4090 Laptop GPU, GeForce RTX 4080 Laptop GPU, GeForce RTX 4070 Laptop GPU, GeForce RTX 4060 Laptop GPU, GeForce RTX 4050 Laptop GPU</td>
+</tr>
+<tr>
+<td align="left">GeForce RTX 40系列</td>
+<td>NVIDIA GeForce RTX 4090 D, NVIDIA GeForce RTX 4090, NVIDIA GeForce RTX 4080, NVIDIA GeForce RTX 4070 Ti, NVIDIA GeForce RTX 4070, NVIDIA GeForce RTX 4060 Ti（已验证）, NVIDIA GeForce RTX 4060</td>
+</tr>
+<tr>
+<td align="left">GeForce RTX 30系列（笔记本）</td>
+<td>GeForce RTX 3080 Ti Laptop GPU, GeForce RTX 3080 Laptop GPU, GeForce RTX 3070 Ti Laptop GPU, GeForce RTX 3070 Laptop GPU, GeForce RTX 3060 Laptop GPU, GeForce RTX 3050 Ti Laptop GPU, GeForce RTX 3050 Laptop GPU</td>
+</tr>
+<tr>
+<td align="left">GeForce RTX 30系列</td>
+<td>GeForce RTX 3090 Ti, GeForce RTX 3090, GeForce RTX 3080 Ti, GeForce RTX 3080, GeForce RTX 3070 Ti, GeForce RTX 3070, GeForce RTX 3060 Ti（已验证）, GeForce RTX 3060, GeForce RTX 3050</td>
+</tr>
+<tr>
+<td align="left">GeForce RTX 20系列（笔记本）</td>
+<td>GeForce RTX 2080 SUPER, GeForce RTX 2080, GeForce RTX 2070 SUPER, GeForce RTX 2070, GeForce RTX 2060, GeForce RTX 2050</td>
+</tr>
+<tr>
+<td align="left">GeForce RTX 20系列</td>
+<td>GeForce RTX 2080 Ti, GeForce RTX 2080 SUPER, GeForce RTX 2080, GeForce RTX 2070 SUPER, GeForce RTX 2070, GeForce RTX 2060 SUPER, GeForce RTX 2060</td>
+</tr>
+<tr>
+<td align="left">GeForce MX500系列（笔记本）</td>
+<td>GeForce MX570, GeForce MX550</td>
+</tr>
+<tr>
+<td align="left">GeForce MX400系列（笔记本）</td>
+<td>GeForce MX450</td>
+</tr>
+<tr>
+<td align="left">GeForce MX300系列（笔记本）</td>
+<td>GeForce MX350, GeForce MX330</td>
+</tr>
+<tr>
+<td align="left">GeForce MX200系列（笔记本）</td>
+<td>GeForce MX250, GeForce MX230</td>
+</tr>
+<tr>
+<td align="left">GeForce MX100系列（笔记本）</td>
+<td>GeForce MX150, GeForce MX130, GeForce MX110</td>
+</tr>
+<tr>
+<td align="left">GeForce GTX 16系列（笔记本）</td>
+<td>GeForce GTX 1660 Ti, GeForce GTX 1650 Ti, GeForce GTX 1650</td>
+</tr>
+<tr>
+<td align="left">GeForce 16系列</td>
+<td>GeForce GTX 1660 SUPER, GeForce GTX 1650 SUPER, GeForce GTX 1660 Ti, GeForce GTX 1660, GeForce GTX 1650, GeForce GTX 1630</td>
+</tr>
+<tr>
+<td align="left">GeForce 10系列</td>
+<td>GeForce GTX 1080 Ti, GeForce GTX 1080, GeForce GTX 1070 Ti, GeForce GTX 1070, GeForce GTX 1060, GeForce GTX 1050 Ti, GeForce GTX 1050, GeForce GT 1030, GeForce GT 1010</td>
+</tr>
+<tr>
+<td align="left">GeForce 10系列（笔记本）</td>
+<td>GeForce GTX 1080, GeForce GTX 1070, GeForce GTX 1060, GeForce GTX 1050 Ti</td>
+</tr>
+</tbody></table>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-11-07T10:03:26.448Z" itemprop="dateModified">最后更新：2024-11-07</time>
+                <a href="Auto-Power-On.html" class="article-footer-prev" title="自动开机"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="Plex-and-GPU-Transcoding.html" class="article-footer-next" title="Plex 和 GPU 转码"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU%E6%89%A9%E5%B1%95"><span class="toc-text">GPU扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">安装指南与应用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-GPU%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-text">1. GPU安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E7%A7%BB%E9%99%A4I-x2F-O%E6%8C%A1%E6%9D%BF"><span class="toc-text">步骤1：移除I&#x2F;O挡板</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E5%B0%86GPU%E5%AE%89%E8%A3%85%E5%88%B0%E6%AD%A3%E7%A1%AE%E4%BD%8D%E7%BD%AE"><span class="toc-text">步骤2：将GPU安装到正确位置</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9A"><span class="toc-text">小贴士：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B%EF%BC%9AGPU%E8%BD%AC%E7%A0%81%E4%B8%8EAI%E5%BA%94%E7%94%A8"><span class="toc-text">2. 应用示例：GPU转码与AI应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E8%BD%AC%E7%A0%81%EF%BC%9A"><span class="toc-text">硬件转码：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#AI%E5%BA%94%E7%94%A8%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">AI应用示例：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">3. 注意事项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E7%BB%93%E8%AE%BA"><span class="toc-text">4. 结论</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E5%88%97%E8%A1%A8"><span class="toc-text">兼容性列表</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机指南</a></li><li class="sidebar-link "><a href="./PC-Direct.html">PC 直连</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简述</a></li><li class="sidebar-link "><a href="./Hardware-Details.html">硬件详情</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./HDD-Interface-Usage-Guide.html">安装硬盘指南</a></li><li class="sidebar-link "><a href="./Instructions-for-use-of-the-7th-Bay.html">第七硬盘槽使用说明</a></li><li class="sidebar-link "><a href="./Auto-Power-On.html">自动开机</a></li><li class="sidebar-link  current"><a href="./GPU-Expansion.html">GPU 扩展</a></li><li class="sidebar-link "><a href="./Plex-and-GPU-Transcoding.html">Plex 和 GPU 转码</a></li><li class="sidebar-link "><a href="./RAID-SSD-Expansion.html">RAID SSD 扩展</a></li><li class="sidebar-link "><a href="./BIOS-Configuration.html">BIOS 配置</a></li><li class="sidebar-link "><a href="./How-to-Install-ZimaOS.html">安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Install-UnRAID.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./Install-TrueNAS.html">安装 TrueNAS</a></li><li class="sidebar-link "><a href="./ZimaCube-Motherboard-DIY-Fan-Guide-and-Specifications.html">DIY 风扇指南</a></li><li class="sidebar-link "><a href="./Transfer-Speeds-Over-Thunderbolt.html">Thunderbolt 传输速度</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Resets-CMOS.html">ZimaCube 重置 CMOS</a></li><li class="sidebar-link "><a href="./Creating-RAID-Troubleshooting-Guide.html">RAID 创建故障排除指南</a></li><li class="sidebar-link "><a href="./ZimaCube-Bios-Update-Method-.html">ZimaCube BIOS 更新方法</a></li><li class="sidebar-link "><a href="./Memory-Test-Tutorial.html">内存测试教程</a></li><li class="sidebar-link "><a href="./Troubleshooting-Self-Test-Guide.html">Troubleshooting Self-Test Guide</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaBoardOfficialChannel" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://twitter.com/ZimaBoard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaboard.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/media-servers">媒体服务器</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/personal-nas">个人 NAS</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/ad-blocker">广告拦截器</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a href="zhhttps://community.zimaspace.com/" rel="external nofollow noreferrer" class="mobile-nav-link ">论坛</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机指南</a></li><li class="sidebar-link "><a href="./PC-Direct.html">PC 直连</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简述</a></li><li class="sidebar-link "><a href="./Hardware-Details.html">硬件详情</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./HDD-Interface-Usage-Guide.html">安装硬盘指南</a></li><li class="sidebar-link "><a href="./Instructions-for-use-of-the-7th-Bay.html">第七硬盘槽使用说明</a></li><li class="sidebar-link "><a href="./Auto-Power-On.html">自动开机</a></li><li class="sidebar-link  current"><a href="./GPU-Expansion.html">GPU 扩展</a></li><li class="sidebar-link "><a href="./Plex-and-GPU-Transcoding.html">Plex 和 GPU 转码</a></li><li class="sidebar-link "><a href="./RAID-SSD-Expansion.html">RAID SSD 扩展</a></li><li class="sidebar-link "><a href="./BIOS-Configuration.html">BIOS 配置</a></li><li class="sidebar-link "><a href="./How-to-Install-ZimaOS.html">安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Install-UnRAID.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./Install-TrueNAS.html">安装 TrueNAS</a></li><li class="sidebar-link "><a href="./ZimaCube-Motherboard-DIY-Fan-Guide-and-Specifications.html">DIY 风扇指南</a></li><li class="sidebar-link "><a href="./Transfer-Speeds-Over-Thunderbolt.html">Thunderbolt 传输速度</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Resets-CMOS.html">ZimaCube 重置 CMOS</a></li><li class="sidebar-link "><a href="./Creating-RAID-Troubleshooting-Guide.html">RAID 创建故障排除指南</a></li><li class="sidebar-link "><a href="./ZimaCube-Bios-Update-Method-.html">ZimaCube BIOS 更新方法</a></li><li class="sidebar-link "><a href="./Memory-Test-Tutorial.html">内存测试教程</a></li><li class="sidebar-link "><a href="./Troubleshooting-Self-Test-Guide.html">Troubleshooting Self-Test Guide</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>中文</span></span>
+    <select id="mobile-lang-select" data-canonical="zimacube/GPU-Expansion.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh" selected>中文</option>
+      
+        <option value="jp">日本語</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
