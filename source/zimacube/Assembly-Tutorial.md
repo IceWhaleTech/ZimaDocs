@@ -40,7 +40,7 @@ Please confirm that the device has been completely shut down and remove all devi
 
   
 
-## Disassembly of upper body
+### Disassembly of upper body
 
 **Chassis cover removal**
 
@@ -74,7 +74,7 @@ Just plug in the replaced USB.
 
 ![](https://manage.icewhale.io/api/static/docs/1731048460938_copyImage.png)
 
-2.  ### CPU cooling fan removal
+2.  **CPU cooling fan removal**
     
 
 *   Open the back cover disassembly tutorial
@@ -288,7 +288,7 @@ The replacement panel is installed from the inside to the outside, and pressed h
 
 ![](https://manage.icewhale.io/api/static/docs/1731048498645_copyImage.png)
 
-**Lower half of the body**
+### Lower half of the body
 
 Pull down the box to open the fan protection cover
 
