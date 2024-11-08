@@ -42,7 +42,7 @@ Please confirm that the device has been completely shut down and remove all devi
 
 ### Disassembly of upper body
 
-**Chassis cover removal**
+#### Chassis cover removal
 
 *   Circled in the figure , the other side of the same operation
     
@@ -53,14 +53,14 @@ Please confirm that the device has been completely shut down and remove all devi
 
 ![](https://manage.icewhale.io/api/static/docs/1731048458851_copyImage.png)
 
-**Side housing removal**
+#### Side housing removal
 
 *   Push the side top cover up from the buckle and remove it
     
 
 ![](https://manage.icewhale.io/api/static/docs/1731048459824_copyImage.png)
 
-1.  **WiFi USB Removal**
+#### 1.  WiFi USB Removal
     
 
 *   Open the top cover disassembly tutorial
@@ -74,7 +74,7 @@ Just plug in the replaced USB.
 
 ![](https://manage.icewhale.io/api/static/docs/1731048460938_copyImage.png)
 
-2.  **CPU cooling fan removal**
+#### 2. CPU cooling fan removal
     
 
 *   Open the back cover disassembly tutorial
@@ -104,7 +104,7 @@ Note: The four sides of the screws are twisted in turn, otherwise it will warp
 
 ![](https://manage.icewhale.io/api/static/docs/1731048466402_copyImage.png)
 
-3.  **Memory removal**
+#### 3.  Memory removal
     
 
 *   Removing the top cover disassembly tutorial
@@ -130,7 +130,7 @@ The second block synchronizes this operation
 
 ![](https://manage.icewhale.io/api/static/docs/1731048468738_copyImage.png)
 
-4.  **Remove hard drive**
+#### 4.  Remove hard drive
     
 
 Front: Open the top cover disassembly tutorial
@@ -151,7 +151,7 @@ Insert the hard disk to be replaced along 30~ 45 ° diagonally downward, then pu
 
 ![](https://manage.icewhale.io/api/static/docs/1731048471523_copyImage.png)
 
-5.  **Extended network interface card removal**
+#### 5.  Extended network interface card removal
     
 
 *   Front: Removing the top cover disassembly tutorial
@@ -184,7 +184,7 @@ Align the network interface card with the black bayonet, insert the black side u
 | ![](https://manage.icewhale.io/api/static/docs/1731048479761_copyImage.png) | ![](https://manage.icewhale.io/api/static/docs/1731048480552_copyImage.png) |
 | - | - |
 
-6.  **Front interface panel removal**
+#### 6.  Front interface panel removal
     
 
 *   Front: Removing the top cover disassembly tutorial
@@ -212,7 +212,7 @@ Front panel replacement completed
 | ![](https://manage.icewhale.io/api/static/docs/1731048483159_copyImage.png) | ![](https://manage.icewhale.io/api/static/docs/1731048484064_copyImage.png) | ![](https://manage.icewhale.io/api/static/docs/1731048484959_copyImage.png) |
 | - | - | - |
 
-7.  **Main board removal**
+#### 7.  Main board removal
     
 
 *   Front: Disassembling the main board disassembly tutorial
@@ -271,7 +271,7 @@ Note: When installing the transmission line, there are BP-CON1 and BP-CON2 ( dis
 
 ![](https://manage.icewhale.io/api/static/docs/1731048496743_copyImage.png)
 
-8.  **Rear panel removal**
+#### 8.  Rear panel removal
     
 
 Precondition: Disassembling the main board disassembly tutorial
@@ -300,7 +300,7 @@ Then remove the entire protective cover
 
   
 
-9.  **HDD cooling fan removal**
+#### 9.  HDD cooling fan removal
     
 
 *   Previous: Remove protective cover disassembly tutorial
@@ -326,7 +326,7 @@ Then remove the entire protective cover
 
 ![](https://manage.icewhale.io/api/static/docs/1731048502465_copyImage.png)
 
-10.  **SATA expansion board removal**
+#### 10.  SATA expansion board removal
     
 
 *   Previous: Remove protective cover disassembly tutorial
@@ -376,7 +376,7 @@ Then remove the entire protective cover
 
   
 
-11.  **Bottom plate removal**
+#### 11.  Bottom plate removal
     
 
 *   Lift the four rubber pads on the base and unscrew the threads below
@@ -388,4 +388,5 @@ Then remove the entire protective cover
 
 ![](https://manage.icewhale.io/api/static/docs/1731048513738_copyImage.png)
 
-## Chassis disassembly completed
+## Chassis disassembly completedDisassembly and assembly machine tutorial
+
