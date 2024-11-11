@@ -56,7 +56,7 @@ Before disassembling the device, make sure it is completely turned off and remov
 #### 1.  WiFi USB Disassembly
     
 
-- Open the top cover [Disassembly Tutorial]
+- Open the top cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Unplug the WiFi USB on the motherboard
 **WiFi USB replacement**
 Plug in the replacement USB
@@ -66,7 +66,7 @@ Plug in the replacement USB
 #### 2. CPU cooling fan disassembly
     
 
-- Open the back cover [Disassembly Tutorial]
+- Open the back cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Unplug the power supply of the fan
 - Then unscrew the screws at the four corners
 - At this time, the cooling fan can be taken out
@@ -92,8 +92,8 @@ Note: tighten the screws on the four sides in turn, otherwise it will lift up
 #### 3.  Memory removal
     
 
-- Removing the top cover [Disassembly Tutorial]
-- Removing the fan [Disassembly Tutorial]
+- Removing the top cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
+- Removing the fan [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Pry open the locks on both sides
 - The memory stick pops up automatically
 - Take out the memory diagonally
@@ -111,7 +111,7 @@ Synchronize the second block with this operation
 ![](https://manage.icewhale.io/api/static/docs/1731048468738_copyImage.png)
 
 #### 4.  Remove the hard disk
-Front: Remove the top cover [Disassembly Tutorial]
+Front: Remove the top cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 1. Use a screwdriver to unscrew the fixing screws in the red circle
 2. Lift the hard disk
 3. Take out the hard disk diagonally upward
@@ -129,7 +129,7 @@ Insert the hard disk to be replaced diagonally downward at 30~45°, then lay the
 #### 5.  Disassemble the extended network card
     
 
-- Front: Removing the top cover [Disassembly Tutorial]
+- Front: Removing the top cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Unscrew the screws
 - Lift the black network card and pull it out
 - Pull the two black buttons upwards to pull out the wires
@@ -157,7 +157,7 @@ Align the network card with the black slot, insert the black side of the card in
 
 #### 6.  Disassembly of the front interface panel
     
-- Front: Disassembling the top cover [Disassembly Tutorial]
+- Front: Disassembling the top cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Remove the cover of the front panel (push the ten clips in the picture inwards and remove them)
 - Unscrew the four screws of the front panel
 - Remove the front panel
@@ -176,8 +176,8 @@ The front panel is replaced
 | - | - | - |
 
 #### 7.  Disassembly of the motherboard
-- Front: Disassembling the motherboard [Disassembly Tutorial]
-- Front: Disassemble the front panel [Disassembly Tutorial]
+- Front: Disassembling the motherboard [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
+- Front: Disassemble the front panel [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Remove the motherboard by tightening the screws at the four corners of the chassis
     
 
@@ -227,7 +227,7 @@ Note: When installing the transmission line, there are BP-CON1 and BP-CON2 (iden
 ![](https://manage.icewhale.io/api/static/docs/1731048496743_copyImage.png)
 
 #### 8.  Rear panel removal
-Prerequisites: Motherboard removal [Disassembly Tutorial]
+Prerequisites: Motherboard removal [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 Push the edge of the rear panel inward to remove it
 
 ![](https://manage.icewhale.io/api/static/docs/1731048497733_copyImage.png)
@@ -249,7 +249,7 @@ Then remove the entire cover
   
 
 #### 9.  HDD cooling fan removal
-- Front: Remove the cover [Disassembly Tutorial]
+- Front: Remove the cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Loosen the fan screws
 - Align and unplug the fan power cord
     
@@ -266,7 +266,7 @@ Then remove the entire cover
 ![](https://manage.icewhale.io/api/static/docs/1731048502465_copyImage.png)
 
 #### 10.  SATA expansion board removal
-- Front: Remove the cover [Disassembly Tutorial]
+- Front: Remove the cover [Disassembly Tutorial](https://www.zimaspace.com/docs/zimacube/Assembly-Tutorial#Disassembly-of-the-top-cover-of-the-case)
 - Unscrew the fixing screws of the fan board
     
 
