@@ -1,0 +1,1 @@
+¿Te gustaría que traduzca todo el texto completo o solo una parte específica?
