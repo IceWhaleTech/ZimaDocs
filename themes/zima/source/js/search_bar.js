@@ -41,7 +41,7 @@
               url: $( "url" , this).text()
           };
         }).get();
-        searchdata = datas.filter(item => item.title && item.content && item.url && item.url.indexOf('/cn') == -1);
+        searchdata = datas.filter(item => item.title && item.content && item.url);
       },
     })
   }
