@@ -4,7 +4,7 @@ description:
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# If the motherboard fails to boot properly, or there is a screen distortion or freeze during use, follow the steps below to troubleshoot the memory problem.
+**If the motherboard fails to boot properly, or there is a screen distortion or freeze during use, follow the steps below to troubleshoot the memory problem.**
 ## Hardware environment：
 1X ZimaCube
 1X Monitor
