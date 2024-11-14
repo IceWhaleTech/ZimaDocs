@@ -1,17 +1,18 @@
 ---
-title: Features
+title: Features-Build Data Station 
 description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# Build Data Station 
+
 # Remote Access
 ##  Your Gateway to Remote Access
-[Enter ZimaCube’s Remote feature](/zimaos/Romote-Access), a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
+[**Enter ZimaCube’s Remote feature**](/docs/zimaos/Romote-Access), a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
+![](https://manage.icewhale.io/api/static/docs/1731556707120_image.png)
 
 ## Second host device access:
 If you have another computer in the office, but the zimacube is not with you, you can still use Connect ID.
-### Setting Up ZimaCube Remote Access
+**Setting Up ZimaCube Remote Access**
 * Open the network settings in ZimaOS and copy the Network ID.
 ![](https://manage.icewhale.io/api/static/docs/1726647865007_image.png)
 * Download and install the Zima client from [find.zimaspace.com](https://find.zimaspace.com/).
@@ -22,7 +23,7 @@ If you have another computer in the office, but the zimacube is not with you, yo
 ![](https://manage.icewhale.io/api/static/docs/1726647980176_image.png)
 ![](https://manage.icewhale.io/api/static/docs/1726647985810_image.png)
 
-### Maximizing Your Remote Experience
+**Maximizing Your Remote Experience**
 Here are some tips to ensure a seamless remote access experience:
 
 * Stable Connection: Always connect both your ZimaCube and remote device to reliable networks.
