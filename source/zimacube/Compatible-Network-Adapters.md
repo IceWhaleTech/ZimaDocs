@@ -17,10 +17,10 @@ Here’s a list of network adapters compatible with ZimaCube and ZimaOS. Based o
 - **PCIe to 2-Port Ethernet Adapter** Intel I350-T2 Chipset
 - **PCIe to 2.5G Ethernet Adapter** Realtek RTL8125 Chipset
 - **Intel AX210 WiFi 6E PCIe Card** with 8Dbi Antennas Set
-Added according to community user(Coming soon):
 - **PCIe Network Adapter** Intel X540 Chipset (New Addition)
 - **PCIe Network Adapter** Realtek RTL8125B (New Addition)
 - **PCIe 10G 2-Port SFP + Server Adapter** Intel 82599ES  Chipset (New Addition)
+- **Qualcomm Atheros AR93xx Wireless Network Addapter**(New Addition)
 ### Recommended Speed Test Tools
 To help you measure network performance accurately, we recommend the following two tools:
 1. **iPerf3**: A built-in command-line tool within ZimaOS, iPerf3 is perfect for testing internal network speeds. It’s fast, reliable, and ideal for users comfortable with terminal commands to benchmark their internal network performance.
