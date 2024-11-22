@@ -2,12 +2,12 @@
 
 (function() {
   'use strict';
-  let searchdata = null
+  let searchdata = null;
   function showSearch() {
     document.body.classList.add('search-active');
     document.getElementById('search-container').classList.add('show');
     document.getElementById('search-input').focus();
-    if(!searchdata) getSearchData();
+    if (!searchdata) getSearchData();
   }
 
   function hideSearch() {
@@ -25,7 +25,7 @@
   }
 
   var searchInput = document.getElementById('search-input');
-  if(searchInput) {
+  if (searchInput) {
     searchInput.addEventListener('input', debounce(doSearch, 300));
   }
 
@@ -34,35 +34,42 @@
       url: '/docs/search.xml',
       dataType: 'xml',
       success: function(xmlResponse) {
-        var datas = $( "entry", xmlResponse ).map(function() {
+        var datas = $('entry', xmlResponse).map(function() {
           return {
-              title: $( "title", this ).text(),
-              content: $("content",this).text(),
-              url: $( "url" , this).text()
+            title: $('title', this).text(),
+            content: $('content', this).text(),
+            url: $('url', this).text()
           };
         }).get();
-        searchdata = datas.filter(item => item.title && item.content && item.url);
-      },
-    })
+        const currentLang = document.documentElement.lang || 'en';
+        console.log(currentLang, getLang(datas[300].url));
+        searchdata = datas.filter(item => item.title && item.content && getLang(item.url) === currentLang);
+      }
+    });
   }
 
-  function doSearch(e){
+  function getLang(url) {
+    var lang = url.match(/\/(en|zh|es|pt-PT|jp)\//);
+    return lang ? lang[1] : 'en';
+  }
+
+  function doSearch(e) {
     var value = e.target.value;
-    var $resultContent = document.getElementById("resultContent");
-      if (value.length > 0) {
-        var results = filterSearchData(value);
-        var str = '<ul class=\"search-result-list\">';
-        $resultContent.innerHTML = "";
-        if(results.length){
-          for (var item of results) {
-            str += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
-          }
-          str += "</ul>";
-          $resultContent.innerHTML = str;
+    var $resultContent = document.getElementById('resultContent');
+    if (value.length > 0) {
+      var results = filterSearchData(value);
+      var str = '<ul class="search-result-list">';
+      $resultContent.innerHTML = '';
+      if (results.length) {
+        for (var item of results) {
+          str += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
         }
-      }else{
-        $resultContent.innerHTML = '';
+        str += '</ul>';
+        $resultContent.innerHTML = str;
       }
+    } else {
+      $resultContent.innerHTML = '';
+    }
   }
 
   function filterSearchData(value) {
@@ -75,10 +82,10 @@
 
   function debounce(func, wait) {
     let timeout;
-    
+
     return function(...args) {
       const context = this;
-      
+
       clearTimeout(timeout);
       timeout = setTimeout(() => func.apply(context, args), wait);
     };
