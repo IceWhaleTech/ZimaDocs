@@ -15,11 +15,14 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 There is no bios update package for zimaboard832 with J3455 CPU
 {% endnote %}
 
+<!--
 | Model | CPU | Download Link |
 | - | - | - |
 | ZimaBoard 232 | N3350 | [https://drive.google.com/file/d/1rlta-pCJsxf-pNaonC315TNpfAHhsBmo/view?usp=drive_link](https://drive.google.com/file/d/1rlta-pCJsxf-pNaonC315TNpfAHhsBmo/view?usp=drive_link) |
 | ZimaBoard 432 | N3450 | [https://drive.google.com/file/d/19Fsh1zFckYG_Cdg8owyRLh_2kDQJamtG/view?usp=drive_link](https://drive.google.com/file/d/19Fsh1zFckYG_Cdg8owyRLh_2kDQJamtG/view?usp=drive_link) |
 | ZimaBoard 832 | N3450 | [https://drive.google.com/file/d/1f66o8-FldwDss1PcCZSGS_PyrCnyoAGS/view?usp=drive_link](https://drive.google.com/file/d/1f66o8-FldwDss1PcCZSGS_PyrCnyoAGS/view?usp=drive_link) |
+-->
+  
 ## Step 2: Prepare a USB flash drive
 Format the USB drive into FAT32 format, open the installation package according to the ZimaBoard model number, and copy the EFI folder to an empty USB drive.
 |![](https://manage.icewhale.io/api/static/docs/1729154067524_image.png) | ![](https://manage.icewhale.io/api/static/docs/1729154081840_image.png) |
