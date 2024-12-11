@@ -17,7 +17,7 @@ As a home theater solution, Emby offers flexible options and an easy streaming e
 ## Deployment convenience: from installation to use
 In today's home theater environment, the convenience of deploying and using a media server is essential. For ZimaOS, users can install and deploy it in a simple way. ZimaOS makes installation easy by allowing you to download and install directly from the App Store. Unlike other complex server software, it eliminates the need for tedious configuration steps.
 ### Quick Deployment Guide
-1. Search for Emby
+1. **Search for Emby**
 We provide two versions of the app:
 **Normal version**: This version lacks support for discrete graphics cards (GPU).
 **GPU version**: This version is designed to work with dedicated GPUs. Its offering enhanced performance for demanding tasks and smoother media processing.
@@ -28,53 +28,54 @@ You can choose to download and install the corresponding version according to yo
   <img src="https://manage.icewhale.io/api/static/docs/1733898136560_image.png" alt="Image 2" style="width: 45%; height: auto;">
 </div>
 
-2. Set language.
+2. Set **language**
 ![](https://manage.icewhale.io/api/static/docs/1733898456976_image.png)
 
-3. Create a user and set a password.
+3. Create a **user** and set a **password**
 ![](https://manage.icewhale.io/api/static/docs/1733898467306_image.png)
 
-4. Configure remote access and check Enable automatic port mapping.
+4. **Configure remote access** and check **Enable automatic port mapping**
 ![](https://manage.icewhale.io/api/static/docs/1733898487602_image.png)
 
-5. Complete the configuration
+5. Complete the **configuration**
 ![](https://manage.icewhale.io/api/static/docs/1733898734330_image.png)
 
 ## Content management through Files
 1. Import your film and television resources into the corresponding folder (here we use media/movies as an example)
-2. In emby, click Settings in the upper right corner and scroll down to find Library
+
+2. In emby, click **Settings** in the upper right corner and scroll down to find Library
+
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898803658_image.png" alt="Image 1" style="width: 200px; height: 200px; object-fit: cover;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898814780_image.png" alt="Image 2" style="width: 200px; height: 200px; object-fit: cover;">
 </div> 
-3. Click New Library and follow the steps below to configure our media library
+
+3. Click **New Library** and follow the steps below to configure our media library
 
 ![](https://manage.icewhale.io/api/static/docs/1733898861871_image.png)
 
-4. Click Add to add a media library folder
+- Click **Add** to add a media library folder
 ![](https://manage.icewhale.io/api/static/docs/1733898935344_image.png)
 
-5. Select the appropriate folder as the media library folder in Folder
+- Select the appropriate folder as the media library folder in **Folder**
 ![](https://manage.icewhale.io/api/static/docs/1733898989858_image.png)
 
-6. Select the appropriate language and country, and enable real-time monitoring of changes to files by default.
+- Select the appropriate **language** and country, and **enable real-time monitoring** of changes to files by default.
 ![](https://manage.icewhale.io/api/static/docs/1733899008619_image.png)
 
-
-8. Enable import collection information from metadata downloader, it will import collection information from enabled metadata downloader.
+- Enable **import collection information from metadata downloaders**, it will import collection information from enabled metadata downloader.
 ![](https://manage.icewhale.io/api/static/docs/1733899046613_image.png)
 
-{% note warn Tips %}
-Here are three options for managing media images:
+
+- Choose the option that best suits your needs.
+  ![](https://manage.icewhale.io/api/static/docs/1733900275276_image.png)
+{% note warn Note: %}The above options are the best configurations we recommend based on various requirements. You can choose the configuration options that suit you according to your specific needs.
+Here are **three** options for managing media images:
 1. Save media images to media folder: Places images next to the media files, allowing easy access outside Emby.
 2. Keep a cached copy in the metadata folder: Stores images in a server folder for quick access.
 3. Pre-download images from the internet: Downloads images before displaying the media in Emby.
-- Choose the option that best suits your needs.
 {% endnote %}
 
-  ![](https://manage.icewhale.io/api/static/docs/1733900275276_image.png)
-{% note warn Note: %}The above options are the best configurations we recommend based on various requirements. You can choose the configuration options that suit you according to your specific needs.
-{% endnote %}
 - This completes the creation of the media library
   ![](https://manage.icewhale.io/api/static/docs/1733900340972_image.png)
 4.  Now we have created our own media library. Click Home on the left to enter the homepage and watch our film and television resources.
