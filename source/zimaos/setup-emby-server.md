@@ -45,10 +45,10 @@ You can choose to download and install the corresponding version according to yo
 
 2. In emby, click **Settings** in the upper right corner and scroll down to find Library
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="https://manage.icewhale.io/api/static/docs/1733898803658_image.png" alt="Image 1" style="width: 200px; height: 200px; object-fit: cover;">
-  <img src="https://manage.icewhale.io/api/static/docs/1733898814780_image.png" alt="Image 2" style="width: 200px; height: 200px; object-fit: cover;">
-</div> 
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898803658_image.png" alt="Image 1" style="width: 45%; height: auto;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898814780_image.png" alt="Image 2" style="width: 45%; height: auto;">
+</div>
 
 3. Click **New Library** and follow the steps below to configure our media library
 
