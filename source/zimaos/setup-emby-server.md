@@ -22,9 +22,10 @@ We provide two versions of the app:
 **Normal version**: This version lacks support for discrete graphics cards (GPU).
 **GPU version**: This version is designed to work with dedicated GPUs. Its offering enhanced performance for demanding tasks and smoother media processing.
 You can choose to download and install the corresponding version according to your personal needs. Here we choose the normal version.
-<div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="https://manage.icewhale.io/api/static/docs/1733898121660_copyImage.png" alt="Image 1" style="width: 200px; height: 200px; object-fit: cover;">
-  <img src="https://manage.icewhale.io/api/static/docs/1733898136560_image.png" alt="Image 2" style="width: 200px; height: 200px; object-fit: cover;">
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898121660_copyImage.png" alt="Image 1" style="width: 45%; height: auto;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898136560_image.png" alt="Image 2" style="width: 45%; height: auto;">
 </div>
 
 2. Set language.
