@@ -47,7 +47,7 @@ You can choose to download and install the corresponding version according to yo
 5. Complete the **Configuration**
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898734330_image.png" alt="Complete the Configuration" style="width: 75%; height: auto;">
-</div>![]()
+</div>
 
 ## Content management through Files
 1. Import your film and television resources into the corresponding folder (here we use media/movies as an example)
