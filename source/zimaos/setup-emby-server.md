@@ -17,28 +17,37 @@ As a home theater solution, Emby offers flexible options and an easy streaming e
 ## Deployment convenience: from installation to use
 In today's home theater environment, the convenience of deploying and using a media server is essential. For ZimaOS, users can install and deploy it in a simple way. ZimaOS makes installation easy by allowing you to download and install directly from the App Store. Unlike other complex server software, it eliminates the need for tedious configuration steps.
 ### Quick Deployment Guide
-1. **Search for Emby**
+1. Search for **Emby**
 We provide two versions of the app:
 **Normal version**: This version lacks support for discrete graphics cards (GPU).
 **GPU version**: This version is designed to work with dedicated GPUs. Its offering enhanced performance for demanding tasks and smoother media processing.
+
 You can choose to download and install the corresponding version according to your personal needs. Here we choose the normal version.
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-  <img src="https://manage.icewhale.io/api/static/docs/1733898121660_copyImage.png" alt="Image 1" style="width: 45%; height: auto;">
-  <img src="https://manage.icewhale.io/api/static/docs/1733898136560_image.png" alt="Image 2" style="width: 45%; height: auto;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898121660_copyImage.png" alt="Install Emby in ZimaOS" style="width: 45%; height: auto;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898136560_image.png" alt="Open Emby in ZimaOS" style="width: 45%; height: auto;">
 </div>
 
-2. Set **language**
-![](https://manage.icewhale.io/api/static/docs/1733898456976_image.png)
+2. Set **Language**
+<div style="text-align: center;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898456976_image.png" alt="choose a language in Emby" style="width: 75%; height: auto;">
+</div>
 
-3. Create a **user** and set a **password**
-![](https://manage.icewhale.io/api/static/docs/1733898467306_image.png)
+3. Create a **User** and set a **Password**
+<div style="text-align: center;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898467306_image.png" alt="creat first User and password in Emby" style="width: 75%; height: auto;">
+</div>
 
-4. **Configure remote access** and check **Enable automatic port mapping**
-![](https://manage.icewhale.io/api/static/docs/1733898487602_image.png)
+4. **Configure Remote Access** and check **Enable automatic port mapping**
+<div style="text-align: center;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898487602_image.png" alt="Configure Remote Access and check Enable automatic port mapping" style="width: 75%; height: auto;">
+</div>
 
-5. Complete the **configuration**
-![](https://manage.icewhale.io/api/static/docs/1733898734330_image.png)
+5. Complete the **Configuration**
+<div style="text-align: center;">
+  <img src="https://manage.icewhale.io/api/static/docs/1733898734330_image.png" alt="Complete the Configuration" style="width: 75%; height: auto;">
+</div>![]()
 
 ## Content management through Files
 1. Import your film and television resources into the corresponding folder (here we use media/movies as an example)
@@ -60,10 +69,10 @@ You can choose to download and install the corresponding version according to yo
 - Select the appropriate folder as the media library folder in **Folder**
 ![](https://manage.icewhale.io/api/static/docs/1733898989858_image.png)
 
-- Select the appropriate **language** and country, and **enable real-time monitoring** of changes to files by default.
+- Select the appropriate **Language** and country, and **Enable real-time monitoring** of changes to files by default.
 ![](https://manage.icewhale.io/api/static/docs/1733899008619_image.png)
 
-- Enable **import collection information from metadata downloaders**, it will import collection information from enabled metadata downloader.
+- Enable **Import collection information from metadata downloaders**, it will import collection information from enabled metadata downloader.
 ![](https://manage.icewhale.io/api/static/docs/1733899046613_image.png)
 
 
