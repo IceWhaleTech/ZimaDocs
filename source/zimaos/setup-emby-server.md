@@ -93,9 +93,9 @@ You can choose to download and install the corresponding version according to yo
 
 {% note warn Note: %}The above options are the best configurations we recommend based on various requirements. You can choose the configuration options that suit you according to your specific needs.
 Here are **three** options for managing media images:
-1. Save media images to media folder: Places images next to the media files, allowing easy access outside Emby.
-2. Keep a cached copy in the metadata folder: Stores images in a server folder for quick access.
-3. Pre-download images from the internet: Downloads images before displaying the media in Emby.
+1. **Save media images to media folder**: Places images next to the media files, allowing easy access outside Emby.
+2.** Keep a cached copy in the metadata folder**: Stores images in a server folder for quick access.
+3. **Pre-download images from the internet**: Downloads images before displaying the media in Emby.
  
 {% endnote %}
  
@@ -131,7 +131,7 @@ First, connect your external disk to ZimaCube. Make sure the device can recogniz
   <img src="https://manage.icewhale.io/api/static/docs/1733900415693_image.png" alt="Configure this address to Emby" style="width: 80%; height: auto;">
 </div>
 
-After re-entering Emby, click Add to create a media library folder. This will allow you to locate and select the address of the external storage.
+After re-entering Emby, click **Add** to create a media library folder. This will allow you to locate and select the address of the external storage.
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733900433853_image.png" alt="Add a media library folder and select the external storage" style="width: 80%; height: auto;">
 </div>
