@@ -4,7 +4,7 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# Unlock the device
+## Unlock the device
 1. **Remove the the front panel**
 Begin by carefully detaching the front panel of the ZimaCube chassis to access the internal components.
 {% note warn Tips %}
@@ -15,8 +15,8 @@ The front panel is attached with magnets. To remove it, simply press the corners
 Locate and press the yellow button situated on the hard drive bay. This will release the locking mechanism of the hard drive tray.
 4. **pull out the tray**
 Once the hard drive tray handle pops out, gently pull it to slowly slide the hard drive tray out of the bay.
-#  Install SATA Disk
-## Install 3.5 hard disk
+##  Install SATA Disk
+### Install 3.5 hard disk
 1. **Prepare the Hard Drive Tray:**
 - Remove the hard drive tray and prepare.
 2. **Insert the 3.5-inch Hard Drive:**
@@ -24,7 +24,7 @@ Once the hard drive tray handle pops out, gently pull it to slowly slide the har
 3. **Secure the Hard Drive:**
 - Use the provided 6-32 screws to secure the hard drive in place. It is recommended to use the screws that come with your ZimaCube for a proper fit.
 - Ensure the screws are tightened so that the surface is flush and even.
-## Install 2.5 Hard Disk
+### Install 2.5 Hard Disk
 1. **Prepare the Hard Drive Tray:**
 - Remove the hard drive tray and prepare.
 2. **Insert the 3.5-inch hard drive:**
@@ -32,7 +32,8 @@ Once the hard drive tray handle pops out, gently pull it to slowly slide the har
 3. **Secure the Hard Drive:**
 - Use the provided M3 screws to secure the hard drive in place. It is recommended to use the screws that come with your ZimaCube for a proper fit.
 - Ensure the screws are tightened so that the surface is flush and even.
-##  Install M.2 Disk
+##  Install M.2 Disk 
+
 How to install an M.2 drive
 1. **Prepare the 7th Bay:**
 Remove the 7th Bay and prepare.
@@ -42,7 +43,7 @@ Remove the 7th Bay and prepare.
 3. **Secure the M.2 SSD:**
 - Use the appropriate screw to secure the SSD in place.  
 
-# Compatibility List
+## Compatibility List
 | <center>Compatible</center> | <center>Brand</center> | <center>Level</center> | <center>Type</center> | <center>Serial</center> | <center>No</center> | <center>Capacity</center> | <center>Note</center> |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | <center>Yes</center> | <center>Western Digital</center> | <center>NAS</center> | <center>HDD</center> | <center>Red(®)Pro</center> | <center>WD2002FFSX</center> | <center>2T</center> | <center></center> |
