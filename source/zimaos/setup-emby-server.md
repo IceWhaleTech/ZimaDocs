@@ -28,22 +28,22 @@ You can choose to download and install the corresponding version according to yo
   <img src="https://manage.icewhale.io/api/static/docs/1733898121660_copyImage.png" alt="Install Emby in ZimaOS" style="width: 45%; height: auto;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898136560_image.png" alt="Open Emby in ZimaOS" style="width: 45%; height: auto;">
 </div>
- 
+
 2. Set **Language**
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898456976_image.png" alt="choose a language in Emby" style="width: 80%; height: auto;">
 </div>
- 
+
 3. Create a **User** and set a **Password**
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898467306_image.png" alt="creat first User and password in Emby" style="width: 80%; height: auto;">
 </div>
- 
+
 4. **Configure Remote Access** and check **Enable automatic port mapping**
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898487602_image.png" alt="Configure Remote Access and check Enable automatic port mapping" style="width: 80%; height: auto;">
 </div>
- 
+
 5. Complete the **Configuration**
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898734330_image.png" alt="Complete the Configuration" style="width: 80%; height: auto;">
@@ -53,28 +53,28 @@ You can choose to download and install the corresponding version according to yo
 1. Import your film and television resources into the corresponding folder (here we use media/movies as an example)
  
 2. In emby, click **Settings** in the upper right corner and scroll down to find Library
- 
+
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898803658_image.png" alt="click setting in Emby" style="width: 45%; height: auto;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898814780_image.png" alt="scroll down to find Library" style="width: 45%; height: auto;">
 </div>
- 
+
 3. Click **New Library** and follow the steps below to configure our media library
  
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898861871_image.png" alt="Click to add New Library" style="width: 80%; height: auto;">
 </div>
- 
+
 - Click **Add** to add a media library folder
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898935344_image.png" alt="add a media library folder" style="width: 80%; height: auto;">
 </div>
- 
+
 - Select the appropriate folder as the media library folder in **Folder**
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733898989858_image.png" alt="Select the appropriate folder as the media library" style="width: 80%; height: auto;">
 </div>
- 
+
 - Select the appropriate **Language** and country, and **Enable real-time monitoring** of changes to files by default.
 <div style="text-align: center;">
   <img src="https://manage.icewhale.io/api/static/docs/1733899008619_image.png" alt="set Language and country and Enable real-time monitoring" style="width: 80%; height: auto;">
@@ -96,7 +96,7 @@ Here are **three** options for managing media images:
 1. **Save media images to media folder**: Places images next to the media files, allowing easy access outside Emby.
 2.** Keep a cached copy in the metadata folder**: Stores images in a server folder for quick access.
 3. **Pre-download images from the internet**: Downloads images before displaying the media in Emby.
- 
+
 {% endnote %}
  
 - This completes the creation of the media library
