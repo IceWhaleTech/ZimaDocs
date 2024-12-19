@@ -26,7 +26,36 @@ Locate your Zima device and click Connect.
 Zima.exe will prompt you to enter your WebUI’s username and password to log in. After that, your zima.exe icon will turn from a question mark into a ZIMA mark, which means your zima.exe has entered a logged in status.
 ![](https://manage.icewhale.io/api/static/docs/1727149972815_image.png)
 Right click on the zima icon and select Open in File Explorer, which will mount your shared folder to your Windows system and open it up automatically!
+**Manually mount zimacube under Windows**
+1. Temporary mount
 
+- Click on this computer.
+![](https://manage.icewhale.io/api/static/docs/1734589265561_image.png)
+
+- Enter "\\Device Intranet IP" in the address bar, which is the IP address of zimacube
+![](https://manage.icewhale.io/api/static/docs/1734589279076_image.png)
+
+- Enter the network credentials
+![](https://manage.icewhale.io/api/static/docs/1734589285351_image.png)
+
+- After verification, Windows SMB mount is completed
+![](https://manage.icewhale.io/api/static/docs/1734589299508_image.png)
+
+2. Mount as a network hard disk
+This method is suitable for personal computers. When your computer and zimacube are in the same LAN, the mount is completed automatically, and when you select "Remember my credentials", you can avoid the password verification step and log in permanently without a password; the disadvantage is that each folder needs to be mounted separately and repeated operations are performed. For example: when you want to mount "My Files" and "A Certain File Group" at the same time, you need to mount them separately
+- Open "My Computer", right-click "My Computer" and select "Map Network Drive".
+![](https://manage.icewhale.io/api/static/docs/1734589308925_image.png)
+
+- Enter the IP address of your device and the name of the disk you want to mount
+![](https://manage.icewhale.io/api/static/docs/1734589315004_image.png)
+
+By default, "Reconnect at login (R)" is checked, and the folder will be automatically mounted after booting, without manual operation; it is recommended to check "Use other credentials to connect", because Windows logs in through the local account of the current computer by default. If it is not checked, you may encounter a situation where you cannot change the user name;
+
+- Enter the user name and password
+![](https://manage.icewhale.io/api/static/docs/1734589323555_image.png)
+
+3. Mount through "Add a network location"
+This method of mounting is not recommended. Under certain operations, Windows will clear the files in your folder, causing unnecessary data loss.
 > Note: to work properly, your Windows and ZimaOS need be in the same local area network(LAN).
 ## Mount your SMB shared folder on macOS
 Like above, we have also prepared a zima app for Mac users on [findzima](https://findzima.com/) . The usage of the Mac zima app is pretty the same as the Windows one. Just refer to the content above.
