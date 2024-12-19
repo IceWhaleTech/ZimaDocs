@@ -5,7 +5,7 @@ type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 ### If you find that the transfer speed achieved by the Zima device is lower than its maximum speed, for example in the following cases:
-![](https://manage.icewhale.io/api/static/docs/1728369466092_3.1.PNG)
+![ZimaOS Network status](https://manage.icewhale.io/api/static/docs/1734591491179_image.png)
 ### Please check and upgrade the following aspects to achieve the highest speed:
 1. Router issue: Choose a router with a 2.5G/10G interface that matches the performance of the ZimaCube network card. The router may have hardware failures or configuration issues, causing the network connection speed to decrease. Restarting the router and checking its settings may help resolve the issue.
 2. Switch issue: If you are using a switch on your local area network, it may also have insufficient speed specifications or configuration issues. Check the switch's connections and settings to ensure everything is normal.
