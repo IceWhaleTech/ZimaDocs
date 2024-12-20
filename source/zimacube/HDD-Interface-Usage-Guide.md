@@ -32,15 +32,15 @@ Once the hard drive tray handle pops out, gently pull it to slowly slide the har
 3. **Secure the Hard Drive:**
 - Use the provided M3 screws to secure the hard drive in place. It is recommended to use the screws that come with your ZimaCube for a proper fit.
 - Ensure the screws are tightened so that the surface is flush and even.
-##  Install M.2 Disk 
+##  Install M.2 NVMe Disk 
 
-How to install an M.2 drive
+How to install an M.2 NVMe/PCIe drive
 1. **Prepare the 7th Bay:**
 Remove the 7th Bay and prepare.
-2. **Insert the M.2 SSD:**
-- Align the M.2 interface and gently slide the M.2 SSD into the slot at a 30 to 45 degree angle, then push it down flat. 
+2. **Insert the PCIe SSD:**
+- Align the M.2 interface and gently slide the NVMe SSD into the slot at a 30 to 45 degree angle, then push it down flat. 
 - （You’ll know it’s in correctly when it clicks into place. Don’t force it; if it doesn’t go in easily,  ensure to recheck and adjust the alignment accordingly.）
-3. **Secure the M.2 SSD:**
+3. **Secure the M.2 NVMe/PCIe SSD:**
 - Use the appropriate screw to secure the SSD in place.  
 
 ## Compatibility List
