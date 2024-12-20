@@ -27,13 +27,13 @@ Once the hard drive tray handle pops out, gently pull it to slowly slide the har
 ### Install 2.5 Hard Disk
 1. **Prepare the Hard Drive Tray:**
 - Remove the hard drive tray and prepare.
-2. **Insert the 3.5-inch hard drive:**
-- Place the 3.5-inch hard drive into the tray, aligning the screw holes on the sides of the hard drive with those on the tray.
+2. **Insert the 2.5-inch hard drive:**
+- Place the 2.5-inch hard drive into the tray, aligning the screw holes on the sides of the hard drive with those on the tray.
 3. **Secure the Hard Drive:**
 - Use the provided M3 screws to secure the hard drive in place. It is recommended to use the screws that come with your ZimaCube for a proper fit.
 - Ensure the screws are tightened so that the surface is flush and even.
+  
 ##  Install M.2 NVMe Disk 
-
 How to install an M.2 NVMe/PCIe drive
 1. **Prepare the 7th Bay:**
 Remove the 7th Bay and prepare.
