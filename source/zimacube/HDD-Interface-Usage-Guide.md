@@ -39,9 +39,15 @@ How to install an M.2 NVMe/PCIe drive
 Remove the 7th Bay and prepare.
 2. **Insert the PCIe SSD:**
 - Align the M.2 interface and gently slide the NVMe SSD into the slot at a 30 to 45 degree angle, then push it down flat. 
-- （You’ll know it’s in correctly when it clicks into place. Don’t force it; if it doesn’t go in easily,  ensure to recheck and adjust the alignment accordingly.）
+（You’ll know it’s in correctly when it clicks into place. Don’t force it; if it doesn’t go in easily,  ensure to recheck and adjust the alignment accordingly.）
 3. **Secure the M.2 NVMe/PCIe SSD:**
-- Use the appropriate screw to secure the SSD in place.  
+- Use the appropriate screw to secure the SSD in place.
+- 
+{% note warn Tips %}
+M key usually support PCIe x2/x4.
+
+![What’s the Difference of M.2 B key or M key](https://manage.icewhale.io/api/static/docs/1734673960689_image.png)
+{% endnote %}
 
 ## Compatibility List
 | <center>Compatible</center> | <center>Brand</center> | <center>Level</center> | <center>Type</center> | <center>Serial</center> | <center>No</center> | <center>Capacity</center> | <center>Note</center> |
