@@ -4,7 +4,8 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# How to Share and Get files from a NAS? SAMBA may be the most important way
+How to Share and Get files from a NAS? **SAMBA** may be the most important way
+
 When we talk about Network Attached Storage, we want our files be stored, managed in one place and be accessed from every place. But how is that going?
 ![](https://manage.icewhale.io/api/static/docs/1727149654477_image.png)
 You can always access your data by visiting ZimaOS’ WebUI, which has a beautifully organized interface and a fluent experience. However, when your work involves files referring, or you need a more complex operation on file system hierarchy, mounting your NAS drives to your client system through technologys like SMB/SAMBA will be a better way.
