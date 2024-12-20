@@ -44,10 +44,11 @@ Remove the 7th Bay and prepare.
 - Use the appropriate screw to secure the SSD in place.
 - 
 {% note warn Tips %}
-M key usually support PCIe x2/x4.
+**M key** usually support PCIe x2/x4.
+{% endnote %}
 
 ![What’s the Difference of M.2 B key or M key](https://manage.icewhale.io/api/static/docs/1734673960689_image.png)
-{% endnote %}
+
 
 ## Compatibility List
 | <center>Compatible</center> | <center>Brand</center> | <center>Level</center> | <center>Type</center> | <center>Serial</center> | <center>No</center> | <center>Capacity</center> | <center>Note</center> |
