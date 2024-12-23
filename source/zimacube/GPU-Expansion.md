@@ -4,27 +4,31 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-# Introduction
+**Introduction**
   ZimaCube is a computing device that can meet your professional work needs. Through its modular design, it allows users to expand hardware according to personal requirements, including the installation of a Graphics Processing Unit (GPU). A GPU is crucial for users who need to handle extensive graphical processing and parallel computing tasks.
 
-# Installation Guide and Application Examples
-## 1. GPU Installation Steps
-### Step 1: Remove the IO shield.
+## Installation Guide and Application Examples
+### 1. GPU Installation Steps
+#### Step 1: Remove the IO shield.
   - Before installing the GPU, remove the IO shield from the PCIe slot.
 
 
-| ![](https://manage.icewhale.io/api/static/docs/1728614816722_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614828318_image.png)|
+| ![Remove the PCIe IO shield](https://manage.icewhale.io/api/static/docs/1728614816722_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614828318_image.png)|
 |:---:|:---:|
-### Step 2: Install the GPU in the correct orientation.
+#### Step 2: Install the GPU in the correct orientation.
   - Ensure the GPU is aligned correctly, matching the gold fingers with the PCIe slot.
   - Gently insert the GPU into the slot until it is fully secured.
 
-| ![](https://manage.icewhale.io/api/static/docs/1728614909590_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614920088_image.png)|
+| ![Install Graphic Card](https://manage.icewhale.io/api/static/docs/1728614909590_image.png)|![](https://manage.icewhale.io/api/static/docs/1728614920088_image.png)|
 |:---:|:---:|
-#### Tips:
+
+{% note warn Tips: %}
   - When installing or removing the GPU, press the clip on the PCIe slot. This ensures the GPU is securely fixed or released.
 ![](https://manage.icewhale.io/api/static/docs/1728614946501_copyImage.png)
-## 2. Application Examples: GPU Transcoding and AI Applications
+{% endnote %}
+
+
+### 2. Application Examples: GPU Transcoding and AI Applications
 ### Hardware Transcoding:
 
 Utilizing GPU for hardware transcoding can greatly improve media processing performance. For instance, Plex Media Server can use the GPU on ZimaOS to enable efficient hardware transcoding (note: download the professional GPU version of Plex).
@@ -40,7 +44,7 @@ Utilizing GPU for hardware transcoding can greatly improve media processing perf
 | ![](https://manage.icewhale.io/api/static/docs/1728615297358_image.png)|![](https://manage.icewhale.io/api/static/docs/1728615306943_image.png)|
 
 For a list of Nvidia GPUs currently supported by ZimaOS, see the Current NVIDIA GPUs section：https://us.download.nvidia.com/XFree86/Linux-x86_64/555.58.02/README/supportedchips.html
-### AI Application Examples:
+#### AI Application Examples:
 On ZimaOS, you can use Open WebUI to experience advanced AI conversation clients.
 It supports the latest language models, including but not limited to Llama3 and Gemma, and is compatible with OpenAI's API. Additionally, Open WebUI will call on the ZimaCube Pro Creator's built-in NVIDIA 2000 Ada GPU to reduce processing latency.
 Most importantly, all your data (including login details) is locally stored on your device. Open WebUI ensures strict confidentiality under your authorization, with no external requests, protecting your privacy and enhancing your security.
@@ -58,19 +62,19 @@ Tasking AI is an intelligent task management tool that utilizes AI technology to
 Anything AI is a multi-functional AI application that provides a variety of practical AI tools and services, including text generation, language translation, and speech recognition. It aims to simplify daily work and life for users through powerful AI technology.
 
 With these AI applications, you can fully utilize the advantages of artificial intelligence to enhance your work efficiency and quality of life!
-## 3. Precautions
+### 3. Precautions
   - Power Down: Ensure ZimaCube is completely powered off before performing any operations, and ground yourself to avoid static damage to the device.
   - Gentle Handling: Avoid excessive force when installing or removing the GPU to prevent damage.
   - Cleanliness: Ensure the slot and device are free of dust or foreign objects during installation or removal to avoid poor contact.
   - Driver Installation: Install the correct drivers to achieve optimal performance and stability.
 
-## 4. Conclusion
+### 4. Conclusion
   This guide should help you successfully install a GPU on ZimaCube and understand its importance in various applications. We encourage you to try out the installation and explore more GPU functions to enhance your work efficiency and quality of life.
   
   We look forward to hearing more about your experiences!
 
 # Compatibility List
-The ZimaCube supports **low-profile** graphics cards, typically around 64.41 mm (2.536 inches) in height. The PCIe slot provides up to **75W** of power, so it is recommended to select graphics cards within this size and power range to ensure compatibility with ZimaCube's compact design and power limitations. 
+The ZimaCube supports **low-profile** graphics cards, typically around **2.7"** in height. The PCIe slot provides up to **75W** of power, so it is recommended to select graphics cards within this size and power range to ensure compatibility with ZimaCube's compact design and power limitations. 
 **Please note that other graphics cards may require external power for proper operation.**
 
 {% note warn Note: %}
