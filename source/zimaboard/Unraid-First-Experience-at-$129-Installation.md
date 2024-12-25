@@ -1,5 +1,5 @@
 ---
-title: Unraid’s First Experience at $129 - Installation
+title: Unraid’s First Experience - Installation
 ---
 
 # Introducing Unraid
