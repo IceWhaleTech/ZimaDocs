@@ -6,9 +6,9 @@ title: ZimaBoard CasaOS Factory Recovery
 
 Download the official ZimaBoard CasaOS image
 
-- For [**ZimaBoard CasaOS image -832/432**](https://drive.google.com/file/d/1b-k7d1LzPHNUtem-hOrHB5dDt0_AC6mK/view)
+- For [**ZimaBoard CasaOS image-GUI version**](https://drive.google.com/file/d/1b-k7d1LzPHNUtem-hOrHB5dDt0_AC6mK/view)
 
-- For [**ZimaBoard CasaOS image -216**](https://drive.google.com/file/d/1PFw1JXoimwUvOX9kgkmOSUM0evi_GGxv/view)
+- For [**ZimaBoard CasaOS image-Headless version**](https://drive.google.com/file/d/1PFw1JXoimwUvOX9kgkmOSUM0evi_GGxv/view)
 ## Create an Image Using A USB stick
 
 **Prepare in advance**
