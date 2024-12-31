@@ -13,7 +13,7 @@ Based on this tutorial, we will demonstrate how to use the ZimaBoard’s pre-bui
 1. PC Host x1
 2. ZimaBoard x1 (connected to the same LAN as the PC)
 3. your favourite x86 OpenWrt Image or download the image recommended by the team via this link
-
+[OpenWRT](https://drive.google.com/file/d/139V750OGWw2XEOc_MyOt1ebLXuCBypLU/view?usp=drive_link)
 
 > **Tips：**
 >1. This tutorial will install OpenWRT directly onto the ZimaBoard’s eMMC, overwrite and remove the pre-installed operating system. Please also save and backup your original system user data!
