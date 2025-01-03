@@ -1,5 +1,6 @@
 ---
-title: How Enable AI for ZimaOS
+title: How to
+Enable AI for ZimaOS
 description: 
 type: Docs
 author: admin
