@@ -8,7 +8,9 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ## Introduction
 As user demands for storage devices diversify, ZimaOS continually optimizes and expands its file system support. This document aims to provide users with a comprehensive overview of the disk format support in the current version (v1.3.0), helping users manage and utilize storage resources more efficiently.
 
-|**File System Format** | **USB Disk Auto-Mount** | **Internal Disk** |
+<div style="text-align: center;">
+
+| File System Format | USB Disk Auto-Mount | Internal Disk |
 |---------------------|---------------------|---------------|
 | APFS               | Not Supported      | Not Supported |
 | HFS/HFS+           | Read/Write         | Not Supported |
@@ -22,7 +24,10 @@ As user demands for storage devices diversify, ZimaOS continually optimizes and 
 | BTRFS              | Not Supported      | Not Supported |
 | XFS                | Not Supported      | Not Supported |
 
-  ***<u>Current version (v1.3.0)</u>**
+</div>
+
+
+**<u>Current version (v1.3.0)</u>**
 
 {% note warn Tips: %}
 
