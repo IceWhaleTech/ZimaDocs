@@ -65,13 +65,13 @@ Once installed, you can enable AI search capabilities within ZimaOS. The AI modu
 **A:** Currently, semantic search is temporarily limited to image content.<br><br>
 
 - **Q:** Why does network traffic increase after running the application?
-- **A:** Automatic model downloads consume network bandwidth. For different functions (currently, AI search automatically triggers the download of the latter two):
+**A:** Automatic model downloads consume network bandwidth. For different functions (currently, AI search automatically triggers the download of the latter two):
 
   - OCR: 1.4GB
   - <u>Image/Summary/Tag: 4.5GB</u>
   - <u>Subtitle: 3.09GB</u><br><br>
 - **Q:** ZimaOS-AI consumes too many resources, affecting normal work or entertainment on ZimaOS.
-- **A:** You can set the time periods during which GPU resources are available for API Call in the user interface of ZimaOS-AI. For example, you can disable it or schedule AI search feature extraction tasks to run only between 1:00 AM and 7:00 AM.
+**A:** You can set the time periods during which GPU resources are available for API Call in the user interface of ZimaOS-AI. For example, you can disable it or schedule AI search feature extraction tasks to run only between 1:00 AM and 7:00 AM.
 <div align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1736132154512_copyImage.png" alt="Allow Api CAll Time Range" />
 </div>
