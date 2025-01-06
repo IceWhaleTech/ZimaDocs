@@ -1,5 +1,5 @@
 ---
-title: List of disk formats supported by ZimaOS
+title: List of disk formats supported
 description: 
 type: Docs
 author: admin
