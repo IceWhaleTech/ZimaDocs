@@ -1,5 +1,5 @@
 ---
-title: Enable AI search for ZimaOS
+title: Enable AI search
 description: 
 type: Docs
 author: admin
