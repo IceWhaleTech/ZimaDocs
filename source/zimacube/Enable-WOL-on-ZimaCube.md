@@ -13,7 +13,9 @@ WOL (Wake-on-LAN) is a remote wake-up technology that allows users to start devi
 - Mouse X 1
 - Mac X 1
 - Monitor X 1
-> Note: Currently this function only supports 2.5GB network port
+{% note warn Tips %}
+Currently this function only supports 2.5GB network port
+{% endnote %}
 ## Method:
 ### Step 1 Enter ZimaCube BIOS and modify Wake-on-LAN settings
 1. After plugging in the power, press the Del button to enter Bios
