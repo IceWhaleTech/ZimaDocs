@@ -30,7 +30,7 @@ ZimaBlade是一款紧凑型单板服务器，将您的存储需求转化为无�
 *   显示器：让您能够在启动和设置过程中看到发生了什么。
     
 
-您可以在我们的[Zima商店](https://shop.zimaboard.com/collections/zima-accessories?utm_source=head&utm_medium=menu)中找到所有配件。
+您可以在我们的[Zima商店](https://shop.zimaspace.com/collections/zima-accessories?utm_source=head&utm_medium=menu)中找到所有配件。
 
 [此外，可以快速观看我们的快速入门视频。](https://www.youtube.com/watch?v=--G4T5aGGEM) 让我们开始吧！
 

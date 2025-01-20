@@ -30,7 +30,7 @@ ZimaBladeは、ストレージニーズをシームレスなNAS体験に変え�
 *   スクリーン: ブートと設定の進行状況を見るため。
     
 
-アクセサリーはすべて私たちの[Zimaストア](https://shop.zimaboard.com/collections/zima-accessories?utm_source=head&utm_medium=menu)で見つけることができます。
+アクセサリーはすべて私たちの[Zimaストア](https://shop.zimaspace.com/collections/zima-accessories?utm_source=head&utm_medium=menu)で見つけることができます。
 
 [また、クイックスタート動画もご覧ください。](https://www.youtube.com/watch?v=--G4T5aGGEM) では、始めましょう！
 

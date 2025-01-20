@@ -7,7 +7,7 @@ Imagine your home server running essential services like VPN, media transcoding,
 
 ![](https://manage.icewhale.io/api/static/docs/1720063069079_copyImage.jpeg)
 
-[ZimaBlade](https://shop.zimaboard.com/products/zimablade-single-board-server-for-cyber-native) is a compact yet powerful server computer. PVE (Proxmox Virtual Environment) is a server virtualization management solution. You can use ZimaBlade with PVE to manage virtual machines, containers, and highly available clusters.
+[ZimaBlade](https://shop.zimaspace.com/products/zimablade-single-board-server-for-cyber-native) is a compact yet powerful server computer. PVE (Proxmox Virtual Environment) is a server virtualization management solution. You can use ZimaBlade with PVE to manage virtual machines, containers, and highly available clusters.
 
 ![](https://manage.icewhale.io/api/static/docs/1720063069927_copyImage.png)
 
@@ -19,7 +19,7 @@ Today, we’ll set up our PVE Cluster using 2 ZimaBlade units to achieve service
 
 Here’s what you need:
 
-*   2 ZimaBlade Kits: [ZimaBlade Single Board Server](https://shop.zimaboard.com/products/zimablade-single-board-server-for-cyber-native)
+*   2 ZimaBlade Kits: [ZimaBlade Single Board Server](https://shop.zimaspace.com/products/zimablade-single-board-server-for-cyber-native)
     
 *   2 Hard Drives (SATA)
     

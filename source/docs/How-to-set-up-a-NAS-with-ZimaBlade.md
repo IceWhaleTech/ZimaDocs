@@ -28,7 +28,7 @@ ZimaBlade is a compact, single-board server that transforms your storage needs i
 *   Screen: So you can see what’s happening during boot and setup.
     
 
-You can find all the accessories in our [Zima Store](https://shop.zimaboard.com/collections/zima-accessories?utm_source=head&utm_medium=menu).
+You can find all the accessories in our [Zima Store](https://shop.zimaspace.com/collections/zima-accessories?utm_source=head&utm_medium=menu).
 
 [Also, give our quick-start video a glance.](https://www.youtube.com/watch?v=--G4T5aGGEM) Let's start!
 

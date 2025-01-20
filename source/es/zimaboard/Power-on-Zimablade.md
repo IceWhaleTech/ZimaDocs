@@ -30,7 +30,7 @@ ZimaBlade es un servidor compacto de placa única que transforma tus necesidades
 *   Pantalla: Para que puedas ver lo que sucede durante el arranque y la configuración.
     
 
-Puedes encontrar todos los accesorios en nuestra [Tienda Zima](https://shop.zimaboard.com/collections/zima-accessories?utm_source=head&utm_medium=menu).
+Puedes encontrar todos los accesorios en nuestra [Tienda Zima](https://shop.zimaspace.com/collections/zima-accessories?utm_source=head&utm_medium=menu).
 
 [Además, echa un vistazo a nuestro video de inicio rápido.](https://www.youtube.com/watch?v=--G4T5aGGEM) ¡Empecemos!
 
