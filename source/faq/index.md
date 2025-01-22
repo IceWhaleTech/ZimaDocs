@@ -1,44 +1,56 @@
 ---
 title: FAQ
 ---
-# ZimaBoard FAQ's
+# ZimaBoard Frequently Asked Questions
 
-# Q：What is the account password for ROOT?
+# Q：What are the default login credentials for CasaOS?
 
-Account： `casaos`
+Username: `casaos`
 Password：`casaos`
 
 
-# The red light comes on when I plug it in, but I can't access CasaOS through http://casaos.local/?
+# Q：Why do I see a red light when I plug in the device, but I can’t access CasaOS at http://casaos.local?
 
-When you power on the device normally, the network port light flashes, and the machine device indicator palace light is on, indicating that the device power system is running normally. At this time, you need to get the device’s IP address into CasaOS by entering the route or other means or check it by connecting the miniDP on the device through the monitor. 
+If you can’t access CasaOS at http://casaos.local/:
+1. Obtain the device’s IP address from your router’s connected devices list or by connecting a monitor to the miniDP port on the ZimaBoard.
+2. Enter the IP address in your browser (e.g., http://192.168.X.X) to access CasaOS.
 [**Tutorial to get the IP address**](/faq/How-to-check-IP-address)
 [**Tutorial for Recovery the system**](/faq/Restore-factory-settings) 
 
 {% note dinfo %}
 **TIPS**
-1. If the signal indicator blinks, it means the signal is normal and communication is in progress
-2. If the signal indicator is off, it means no communication
-3. If the signal indicator light is long, it means the network cable is short-circuited
+1. **Blinking LED:** Normal activity; communication in progress.
+2. **LED Off:** No communication or no network connection.
+3. **LED Solid (always on):** Possible short-circuit in the network cable.
 {% endnote %}
 
 # Q：Does the power supply support 110v?
 
-**No. We recommend that you use the official 12V/3A power adapter for ZimaBoard.**
+No. We recommend using the official 12V/3A power adapter for ZimaBoard.
 
-# Q:Does ZimaBoard support a single 8T hard drive??
+# Q:Can ZimaBoard support a single 8TB hard drive?
 
-**ZimaBoard can be expanded to 36TB HDD (2x18TB) via two SATA ports onboard. Please note that external power supply for 3.5inch HDDs will be needed as power supply from the ZimaBoard could be insufficient**
+Yes. ZimaBoard can be expanded up to 36TB (2×18TB) via its two onboard SATA ports. However, if you’re using 3.5" HDDs, you will need an external power supply, as ZimaBoard’s power output may be insufficient for large HDDs.
 
-# Does SSH need to go into the server and open the port itself?
+# Is SSH enabled by default?
 
-  SSH is opened by default
+Yes. SSH is enabled by default on ZimaBoard. You do not need to enable or open the port manually.
 
 # Q BIOS Problems:
 
-**I reinstalled a Debian system with a USB flash drive and then prepared to use it to do their own docker, another empty USB flash drive for expansion, I plugged in the USB flash drive, which can be recognized, ready to pull some data to put the docker container, but after unplugging, the power light all out, ssh also out, at this time not yet plugged in the empty USB flash drive, and then plugged in the power, the power light flashes a little and gone, and then try to plug in monitor, the monitor can not receive the signal, the logo can not see, bios naturally can not enter may be unplugged u disk when the sudden current, resulting in parts burned** 
+**Scenario:**
+- You reinstalled Debian on a USB flash drive and used another flash drive for additional storage.
+- After removing the USB drive, the system lost power, SSH access failed, and no display signal was detected when plugging in a monitor.
 
-  This side of the current understanding of the system BIOS problems (belonging to the version of the problem that has been repaired), if earlier users buy equipment find such problems, the machine cannot open. Please open the backplane, and remove the RTC battery to re-power the boot again.
+**Possible Cause:**
+- An older BIOS version may cause system startup failures, sometimes triggered by sudden power changes or hardware swaps.
+
+**Recommended Solution:**
+1. Power off and unplug your ZimaBoard.
+2. Open the back panel and carefully remove the RTC battery (the small coin battery on the board).
+3. Wait a few seconds, then reinsert the RTC battery.
+4. Reattach the back panel and plug in the power adapter.
+5. Attempt to power on again.
  [**modify the BIOS system**](/faq/Upgrade-Motherboard-BIOS-Version)
  [**Tutorial for Recovery the system**](/faq/Restore-factory-settings) 
 
