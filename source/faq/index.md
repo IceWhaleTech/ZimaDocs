@@ -28,15 +28,15 @@ If you can’t access CasaOS at http://casaos.local/:
 
 No. We recommend using the official 12V/3A power adapter for ZimaBoard.
 
-# Q:Can ZimaBoard support a single 8TB hard drive?
+# Q：Can ZimaBoard support a single 8TB hard drive?
 
 Yes. ZimaBoard can be expanded up to 36TB (2×18TB) via its two onboard SATA ports. However, if you’re using 3.5" HDDs, you will need an external power supply, as ZimaBoard’s power output may be insufficient for large HDDs.
 
-# Is SSH enabled by default?
+# Q：Is SSH enabled by default?
 
 Yes. SSH is enabled by default on ZimaBoard. You do not need to enable or open the port manually.
 
-# Q BIOS Problems:
+# Q：BIOS Problems:
 
 **Scenario:**
 - You reinstalled Debian on a USB flash drive and used another flash drive for additional storage.
