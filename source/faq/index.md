@@ -14,8 +14,8 @@ Password：`casaos`
 If you can’t access CasaOS at http://casaos.local/:
 1. Obtain the device’s IP address from your router’s connected devices list or by connecting a monitor to the miniDP port on the ZimaBoard.
 2. Enter the IP address in your browser (e.g., http://192.168.X.X) to access CasaOS.
-[**Tutorial to get the IP address**](/faq/How-to-check-IP-address)
-[**Tutorial for Recovery the system**](/faq/Restore-factory-settings) 
+**[Tutorial to get the IP address](https://www.zimaspace.com/docs/faq/How-to-check-IP-address)**
+**[Tutorial for Recovery the system](https://www.zimaspace.com/docs/faq/Restore-factory-settings)**
 
 {% note dinfo %}
 **TIPS**
@@ -51,8 +51,7 @@ Yes. SSH is enabled by default on ZimaBoard. You do not need to enable or open t
 3. Wait a few seconds, then reinsert the RTC battery.
 4. Reattach the back panel and plug in the power adapter.
 5. Attempt to power on again.
- [**modify the BIOS system**](/faq/Upgrade-Motherboard-BIOS-Version)
- [**Tutorial for Recovery the system**](/faq/Restore-factory-settings) 
+**[Modify the BIOS system](https://www.zimaspace.com/docs/faq/Upgrade-Motherboard-BIOS-Version)**
 
  [![Discord Card](https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2)](https://discord.gg/knqAbbBbeX)
 
