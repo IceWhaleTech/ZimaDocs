@@ -110,7 +110,7 @@ hexo.extend.helper.register('header_menu', function(className) {
     // if (!isEnglish && ~localizedPath.indexOf(title)) langPath = lang + path;
     if (!isEnglish) langPath = lang + path;
     if (this.page.permalink.includes(langPath)) active = 'current_page_item';
-    result += `<li class="menu-item ${active}"><a href="${self.url_for(langPath)}" class="${className}-link ">${self.__('menu.' + title)}</a></li>`;
+    result += `<li class="menu-item ${active}"><a href="${title==='forum'?path: self.url_for(langPath)}" class="${className}-link ">${self.__('menu.' + title)}</a></li>`;
   }
 
   return result;
