@@ -24,11 +24,11 @@ Similarly, we assume you have already purchased a “My World” account (refer 
 
 ## Start to Build a Minecraft Server
 
-#### Enter CasaOS
+1.  Enter CasaOS
 
 ![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png)
 
-#### Open the App Store and Select “Custom Install”
+2. Open the App Store and Select “Custom Install”
 
 ```
  docker run -d \
@@ -39,12 +39,12 @@ Similarly, we assume you have already purchased a “My World” account (refer 
 itzg/minecraft-server
 ```
 
-#### Copy [CLI]
+3.  Copy [CLI]
 （<https://hub.docker.com/r/itzg/minecraft-server>)
 
 ![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.png).
 
-#### Check Environment
+4.  Check Environment
 
 ![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.png)
 
@@ -56,21 +56,21 @@ Make sure you always include `-e EULA=TRUE` in your commands and container defin
 
 {% endnote %}
 
-#### Open the My World Client
+## Set up the My World Client
 
 Now open the My World client you installed earlier. In this example, we are using a Mac.
 
 ![](/images/Minecraft-Friendship-Service/minecraft-open-minecraft-client.png)
 
-#### Click “Multiplayer” 
+* **Click “Multiplayer” **
 
 ![Open Minecraft Client](/images/Minecraft-Friendship-Service/minecraft-click-multiplayer.png)
 
-#### Click “Add Server”
+* **Click “Add Server”**
 
 ![Add Minecraft Server](/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png)
 
-#### Enter Your IP Address and Append Port 25565
+*  **Enter Your IP Address and Append Port 25565**
 
 ![Add Minecraft Server](/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png)
 
@@ -78,11 +78,11 @@ Now open the My World client you installed earlier. In this example, we are usin
 
 If you don’t know your IP address, refer to the tutorial—["**Find Your CasaOS IP Address**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)
 
-#### Congratulations! Your Minecraft server is now ready to host your adventures.
+*  **Congratulations! Your Minecraft server is ready to host your adventures.**
 
 ![Show Minecraft Server](/images/Minecraft-Friendship-Service/minecraft-show-minecraft-server.png)
 
-#### Play
+**Now！Play！**
 
 ![Show Minecraft Game Page](/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page.png)
 
@@ -115,7 +115,7 @@ docker run -d -e ANNOUNCE_PLAYER_ACHIEVEMENTS=true
 
 **More Information** - [**Docker Minecraftf Server**](https://github.com/itzg/docker-minecraft-server)
 
-#### Extended Additions
+**Extended Additions**
 
 1.In the future, an MC Server Docker application will be available in the CasaOS App Store, enabling one-click installation in under a minute.
 
