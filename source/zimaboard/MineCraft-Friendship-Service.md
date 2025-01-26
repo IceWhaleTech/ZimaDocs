@@ -2,34 +2,33 @@
 title: Minecraft Server–Build a Minecraft Server with ZimaBoard
 ---
 
-# Reason
+We have experience using a **ZimaCube/ZimaBoard** to build a home 4K theater, but simply watching movies no longer meets our family’s entertainment needs. As a result, we started looking for engaging games that appeal to both adults and children. A truly captivating game not only brings family members closer but also nurtures children’s creativity.
+**Minecraft **is an ideal choice for this purpose. Often described as a digital take on LEGO, it presents players of all ages with a vast, blocky 3D world where they can build structures, craft tools, and embark on endless adventures. Whether it’s exploring dungeons, farming crops, raising animals, or designing elaborate roller coasters, Minecraft offers something enjoyable for everyone in the family.
 
-**COVID-19** forced us to spend more time with our families. Previously, there was an introduction on how to build a home version of a 4K theater using ZimaBoard. Recently the theater is no longer enough for the family. So we found some fun games at home that are more suitable for adults and children. Good games can make family members closerand improve kid’s creative abilities.
-
-## Introduce [**Minecraft**](https://www.minecraft.net/zh-hans)
+## Introduce [**Minecraft**](https://www.minecraft.net/)
 
 ![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-introduce-home-page.png)
 
-[**Minecraft**](https://www.minecraft.net/zh-hans) is a sandbox building game created by Markus Persson, founder of Mojang AB, and inspired by Endless Miner, Dwarf Fortress and Dungeon Keeper. The current lead developer is Jens Bergensten. Players can create and destroy a myriad of cubes in the game’s three-dimensional space and even experience different game modes on multiplayer servers versus single-player worlds to create exquisite buildings, creations, and artwork
+Minecraft is a sandbox building game created by Markus Persson, founder of Mojang AB, and inspired by Endless Miner, Dwarf Fortress, and Dungeon Keeper. The current lead developer is Jens Bergensten. Players can create and destroy a myriad of cubes in the game’s three-dimensional space and can also experience different game modes on multiplayer servers or in single-player worlds to construct impressive buildings, creations, and artwork.
 
-# Prepare in advance
+## Prepare in Advance
 
-By default, you know how to use ZimaBoard when reading this tutorial:[**ZimaBoard Tutorial**](/docs/)
+By default, we assume you already know how to use ZimaBoard when following this tutorial:[**ZimaBoard Tutorial**](/docs/zimaboard/)
 
-Similarly, here you have already purchased a My World account by default:[**MineCraft purchase link**](https://www.minecraft.net/zh-hans/about-minecraft)
+Similarly, we assume you have already purchased a “My World” account (refer to the [**MineCraft purchase link**](https://www.minecraft.net/about-minecraft))
 
 | Item     | Description |
 | ----------- | ----------- |
 | Software    | [**MineCraft Installation Links**](https://www.minecraft.net/en-us/download) |
 | Paragraph   | ZimaBoard 216|
 
-# Start to Build a Minecraft Server
+## Start to Build a Minecraft Server
 
-## Enter CasaOS
+### Enter CasaOS
 
 ![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png)
 
-## Open the App Store and Select Custom Install
+### Open the App Store and Select “Custom Install”
 
 ```
  docker run -d \
@@ -40,64 +39,64 @@ Similarly, here you have already purchased a My World account by default:[**Mine
 itzg/minecraft-server
 ```
 
-## Copy [Cli]（<https://hub.docker.com/r/itzg/minecraft-server>)
+### Copy [CLI]（<https://hub.docker.com/r/itzg/minecraft-server>)
 
 ![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.png).
 
-## Check Environment
+### Check Environment
 
 ![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.png)
 
 {% note dinfo %}
 **Attention**
 
-Environment Variables **EULA=TRUE**
+Environment Variable: **EULA=TRUE**
+Make sure you always include `-e EULA=TRUE` in your commands and container definitions, because Mojang/Microsoft requires EULA acceptance.
 
-Be sure to always include -e EULA=TRUE in your commands and container definitions, as Mojang/Microsoft requires EULA acceptance.
 {% endnote %}
 
-## Opne MY World Client
+### Open the My World Client
 
-**Now open the My World client you installed earlier, here it is using MAC**
+Now open the My World client you installed earlier. In this example, we are using a Mac.
 
 ![](/images/Minecraft-Friendship-Service/minecraft-open-minecraft-client.png)
 
-## Click Multiplayer ##
+## Click “Multiplayer” ##
 
 ![Open Minecraft Client](/images/Minecraft-Friendship-Service/minecraft-click-multiplayer.png)
 
-## Add Server ##
+## Click “Add Server” ##
 
 ![Add Minecraft Server](/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png)
 
-## Enter your IP address and add 25565
+## Enter Your IP Address and Append Port 25565
 
 ![Add Minecraft Server](/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png)
 
 ![Add Minecraft Address](/images/Minecraft-Friendship-Service/minecraft-add-server-address.png)
 
-If you don’t know your IP address, you can refer to the tutorial—["**Find Your CasaOS IP Address**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)
+If you don’t know your IP address, refer to the tutorial—["**Find Your CasaOS IP Address**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)
 
-## Your Minecraft Server is Now Ready ##
+### Congratulations! Your Minecraft server is now ready to host your adventures. ##
 
 ![Show Minecraft Server](/images/Minecraft-Friendship-Service/minecraft-show-minecraft-server.png)
 
-## PLay ##
+### PLay
 
 ![Show Minecraft Game Page](/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page.png)
 
 ![Show Minecraft Game Page](/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page2.png)
 
-# Adjusting server parameters
+## Adjusting Server Parameters
 
-## For example
+For example
 
-By default, [**Minecraft**](https://www.minecraft.net/zh-hans) servers are configured to run in Survival mode. You can change the mode using **MODE** where you can either provide the standard numerical values or the shortcut values:
+By default, Minecraft servers are configured to run in Survival mode. You can change the mode by specifying **MODE**, where you can either provide the standard numeric values or the following shortcut values:
 
-- creative
-- survival
-- adventure
-- spectator (only for [**Minecraft**](https://www.minecraft.net/zh-hans) 1.8 or later)
+creative
+survival
+adventure
+spectator (available only in Minecraft 1.8 or later)
 
 ```
 
@@ -117,12 +116,12 @@ docker run -d -e ANNOUNCE_PLAYER_ACHIEVEMENTS=true
 
 ### Extended Additions ###
 
-1.Later there will be mc server docker application in CasaOS APP store (realize one minute to one click to install MC Server)
+1.In the future, an MC Server Docker application will be available in the CasaOS App Store, enabling one-click installation in under a minute.
 
-2.Zimaboard & [**Minecraft**](https://www.minecraft.net/zh-hans) Advanced Version Play
+2.Explore advanced gameplay with ZimaBoard and Minecraft to unlock enhanced performance and features.
 
 ## Conclusion ##
 
-The philosophy behind [**Minecraft**](https://www.minecraft.net/zh-hans) is very simple to create a world that belongs to you; please guide your children correctly, participate with your children together, and control the gaming time. I believe you can get more beyond sheer joy and happiness.
+The philosophy behind Minecraft is simple: it lets you create a world of your own. By guiding children responsibly, joining their adventures, and managing gaming time, you’ll discover far more than just fun—you’ll foster creativity, cooperation, and lasting memories.
 
 [![Discord Card](https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2)](https://discord.gg/knqAbbBbeX)
