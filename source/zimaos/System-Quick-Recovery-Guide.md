@@ -10,17 +10,17 @@ ZimaOS is a lightweight NAS operating system that uses a dual-partition design (
 ## Preparation
 Before you begin, make sure you have a monitor and keyboard connected.
 ## Step by step guide:
-**Step 1: Boot the device**
+### Step 1: Boot the device
 - Power on the ZimaOS device.
 
-**Step 2: Enter the GRUB menu**
+### Step 2: Enter the GRUB menu
 - When the system boots up, pay close attention to the screen display. Quickly press the ↑ and ↓ arrow keys on the keyboard to bring up the GRUB menu. The GRUB menu is displayed as follows:
 ![](https://manage.icewhale.io/api/static/docs/1738826493349_image.png)
 
-**Step 3: Select Boot Partition**
+### Step 3: Select Boot Partition
 - Use the arrow keys to select the alternate partition you wish to boot from (e.g. if Slot A crashes, select Slot B).
 
-Step 4: Boot Selected Partition
+### Step 4: Boot Selected Partition
 - Press Enter to boot from the selected partition.
 
 **Now you can successfully enter the ZimaOS system**
