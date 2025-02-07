@@ -28,13 +28,12 @@ Click "**DLNA Configuration**" to enter the settings interface. You can modify t
 After completing the modification, click the "**Save**" button.
 ## Step 4: Play content on TV
 1. Open a TV device or player app that supports DLNA
-![](https://manage.icewhale.io/api/static/docs/1738831977224_image.png)
+![](https://manage.icewhale.io/api/static/docs/1738911374861_image.png)
 2. Search the DLNA devices on the network and find "ZimaCube DLNA Server".
-![](https://manage.icewhale.io/api/static/docs/1738832005480_image.png)
+![](https://manage.icewhale.io/api/static/docs/1738911391198_image.png)
 3. Browse the shared media file and select Play.
-
-| ![](https://manage.icewhale.io/api/static/docs/1738832059024_image.png) | ![](https://manage.icewhale.io/api/static/docs/1738832067952_image.png) | ![](https://manage.icewhale.io/api/static/docs/1738832081469_image.png) |
-| - | - | - |
+![](https://manage.icewhale.io/api/static/docs/1738911431343_image.png)
+![](https://manage.icewhale.io/api/static/docs/1738911442711_image.png)
 
 ## Troubleshooting
 If you have problems with connection or playback, please check the following points:
