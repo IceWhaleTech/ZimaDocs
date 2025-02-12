@@ -76,6 +76,9 @@ With these AI applications, you can fully utilize the advantages of artificial i
 # Compatibility List
 The ZimaCube supports **low-profile** graphics cards, typically around **2.7"** in height. The PCIe slot provides up to **75W** of power, so it is recommended to select graphics cards within this size and power range to ensure compatibility with ZimaCube's compact design and power limitations. 
 **Please note that other graphics cards may require external power for proper operation.**
+If you want to choose a suitable GPU based on the size information, the following information can help you. The maximum length, width and height supported are 17.8cm X 3.8cm X 8.4cm.
+![](https://manage.icewhale.io/api/static/docs/1739332281322_img_v3_02je_83ff6ae1-654c-48ba-b522-13c192eed6eg.png)
+
 
 {% note warn Note: %}
 We've compiled this list based on the drivers supported by the ZimaOS, with "verified" models marked accordingly. If you've successfully run **Assist** on a different graphics card model, please help us update this list by using the 'Improve' feature in the top right corner. Thank you for your contribution.
