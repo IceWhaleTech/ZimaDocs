@@ -76,7 +76,7 @@ With these AI applications, you can fully utilize the advantages of artificial i
 # Compatibility List
 The ZimaCube supports **low-profile** graphics cards, typically around **2.7"** in height. The PCIe slot provides up to **75W** of power, so it is recommended to select graphics cards within this size and power range to ensure compatibility with ZimaCube's compact design and power limitations. 
 **Please note that other graphics cards may require external power for proper operation.**
-If you want to choose a suitable GPU based on the size information, the following information can help you. The maximum length, width and height supported are 17.8cm X 3.8cm X 8.4cm.
+If you want to choose a suitable GPU based on the size information, the following information can help you. The maximum length, width and height supported are 17.8cm X 3.8cm X 8.4cm，If you need to put in a longer GPU, such as the NVIDIA RTX 3050 LP, you will need to remove the front panel and try to put it in!
 ![](https://manage.icewhale.io/api/static/docs/1739332281322_img_v3_02je_83ff6ae1-654c-48ba-b522-13c192eed6eg.png)
 
 
