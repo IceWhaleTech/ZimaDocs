@@ -35,6 +35,6 @@ Once the installation process is complete, the system will prompt you to remove 
 ## Step 5: Obtain IP Address and Access ZimaOS
 ![](https://manage.icewhale.io/api/static/docs/1722420740564_image.png)
 ![](https://manage.icewhale.io/api/static/docs/1722420752348_image.png)
-Congratulations! You have successfully installed ZimaOS V1.2.2 on your ZimaCube. Now you can start exploring and utilizing the rich features provided by ZimaOS.
+Congratulations! You have successfully installed ZimaOS on your ZimaCube. Now you can start exploring and utilizing the rich features provided by ZimaOS.
 
 For more information, please visit ZimaOS GitHub Repository.
