@@ -61,12 +61,10 @@ There are 2 methods to manage shares:
 **6. Manage your Member**
 
 ***At the "Settings - Member" Page:***
+| **1. Create new member accounts** | ![](https://manage.icewhale.io/api/static/docs/1740556673210_img_v3_02js_5652110b-ba30-49f4-8a46-f97dbd7defbg.png) ![](https://manage.icewhale.io/api/static/docs/1740556688981_img_v3_02js_376725eb-69e4-4d95-a07e-87cd87d6694g.png)![](https://manage.icewhale.io/api/static/docs/1740556707102_img_v3_02js_018c5c70-dc76-4e0d-ad51-c08eeee9570g.jpg)|
+| - | - |
+| 2. Edit or delete accounts.**Set a new password** or **delete the account**. | ![](https://manage.icewhale.io/api/static/docs/1740556736803_img_v3_02js_5d220385-dfcb-43f6-ad66-a2034c2db25g.png) ![](https://manage.icewhale.io/api/static/docs/1740556751951_img_v3_02js_b44747b1-0109-4fcc-8382-0ab578d58f4g.jpg)|
 
-| 1. Create new member accounts | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728639235564_image.png" alt="Create Member"> |
-| -------- | ----- |
-| 2. Edit or delete accounts.<br> **Set a new password** or **delete** the account. | <img align="right" src="https://manage.icewhale.io/api/static/docs/1728639475546_image.png" alt="Edit member"><img align="right" src="https://manage.icewhale.io/api/static/docs/1728639486206_image.png" alt="Delete member"><img align="right" src="https://manage.icewhale.io/api/static/docs/1728639504689_image.png" alt="Member password"><img align="right" src="https://manage.icewhale.io/api/static/docs/1728639516436_image.png" alt="Confirm edit"> |
-
----
 
 ## As "Member",  How to use Samba?
 
