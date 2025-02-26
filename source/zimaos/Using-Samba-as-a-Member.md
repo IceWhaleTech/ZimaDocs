@@ -54,9 +54,8 @@ There are 2 methods to manage shares:
 
 ## As "Manager", How to Manage Members?（Roadmap）
 
-<img align="right" src="https://manage.icewhale.io/api/static/docs/1728714150294_image.png" alt="Manage Members Roadmap">
+![](https://manage.icewhale.io/api/static/docs/1740561750650_Untitled.png)
 
----
 
 **6. Manage your Member**
 
