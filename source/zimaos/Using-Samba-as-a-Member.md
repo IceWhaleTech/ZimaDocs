@@ -77,7 +77,7 @@ Right-click and select "Manage Samba" in the context menu.
 | 2. Edit or delete accounts.**Set a new password** or **delete the account**. |![](https://manage.icewhale.io/api/static/docs/1740560059915_img_v3_02js_27a8ffc1-bc61-44ec-aceb-f50a2dbc347g.png)![](https://manage.icewhale.io/api/static/docs/1740560070975_img_v3_02js_01b02471-e1f0-476b-9b50-16206153c40g.png)![](https://manage.icewhale.io/api/static/docs/1740560080903_img_v3_02js_5ea14e02-7f6e-45c4-9600-849591fbc96g.png)|
 
 ### 7. "Manage Share" Roadmap
-![](https://manage.icewhale.io/api/static/docs/1740561750650_Untitled.png)
+![](https://manage.icewhale.io/api/static/docs/1740997058046_tututu.png)
 
 
 ## As "Member",  How to use Samba?
