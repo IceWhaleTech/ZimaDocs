@@ -70,11 +70,23 @@ Right-click and select "Manage Samba" in the context menu.
 ## As "Manager", How to Manage Members?
 
 ### 6. Manage your Member
+1. At the "Settings" Page
+2. Find the “Member”Page
+  a. Just click the avatar
+  ![](https://manage.icewhale.io/api/static/docs/1741069363668_image.png)
+  b. Go view your "Shared folder account"
+  ![](https://manage.icewhale.io/api/static/docs/1741069385693_image.png)
+  c. Create new member accounts
+  ![](https://manage.icewhale.io/api/static/docs/1741069416996_image.png)
+  ![](https://manage.icewhale.io/api/static/docs/1741069424854_image.png)
+  d. Edit the member's account password or delete the account.
+  ![](https://manage.icewhale.io/api/static/docs/1741069449927_image.png)
+  - You can set a new Password for the member.
+    ![](https://manage.icewhale.io/api/static/docs/1741069481191_image.png)
+      - Click "Confirm" to save your edition.
+  - Click "Delete account"
+![](https://manage.icewhale.io/api/static/docs/1741069520624_image.png)
 
-***At the "Settings - Member" Page:***
-| **1. Create new member accounts** | ![](https://manage.icewhale.io/api/static/docs/1740556673210_img_v3_02js_5652110b-ba30-49f4-8a46-f97dbd7defbg.png) ![](https://manage.icewhale.io/api/static/docs/1740556688981_img_v3_02js_376725eb-69e4-4d95-a07e-87cd87d6694g.png)![](https://manage.icewhale.io/api/static/docs/1740556707102_img_v3_02js_018c5c70-dc76-4e0d-ad51-c08eeee9570g.jpg)|
-| - | - |
-| 2. Edit or delete accounts.**Set a new password** or **delete the account**. |![](https://manage.icewhale.io/api/static/docs/1740560059915_img_v3_02js_27a8ffc1-bc61-44ec-aceb-f50a2dbc347g.png)![](https://manage.icewhale.io/api/static/docs/1740560070975_img_v3_02js_01b02471-e1f0-476b-9b50-16206153c40g.png)![](https://manage.icewhale.io/api/static/docs/1740560080903_img_v3_02js_5ea14e02-7f6e-45c4-9600-849591fbc96g.png)|
 
 ### 7. "Manage Share" Roadmap
 ![](https://manage.icewhale.io/api/static/docs/1740997058046_tututu.png)
