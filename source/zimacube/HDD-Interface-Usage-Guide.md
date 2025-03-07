@@ -79,6 +79,8 @@ Remove the 7th Bay and prepare.
 | <center>NO</center> | <center>SEAGATE</center> | <center>NAS</center> | <center>HDD</center> | <center>Ironwolf Pro</center> | <center></center> | <center>14T</center> | <center></center> |
 | <center>Yes</center> | <center>Western Digital</center> | <center>Gaming</center> | <center>SSD</center> | <center>Black</center> | <center>SN770</center> | <center>1T</center> | <center></center> |
 | <center>No</center> | <center>WD (HGST)</center> | <center>Enterprise</center> | <center>HDD</center> | <center>Ultrastar</center> | <center>0f27610</center> | <center>8T</center> | <center>Need to shield pin3</center> |
+| <center>No</center> | <center>WD</center> | <center>Enterprise</center> | <center>HDD</center> | <center>Ultrastar</center> | <center>HC 520</center> | <center>8T</center> | <center>Need to shield pin3</center> |
+| <center>No</center> | <center>WD</center> | <center>Enterprise</center> | <center>HDD</center> | <center>Ultrastar</center> | <center>HC 520</center> | <center>12T</center> | <center>Need to shield pin3</center> |
 | <center>NO</center> | <center>SEAGATE</center> | <center>NAS</center> | <center>HDD</center> | <center>Ironwolf Pro</center> | <center></center> | <center>4T</center> | <center></center> |
 | <center>NO</center> | <center>SEAGATE</center> | <center>NAS</center> | <center>HDD</center> | <center>Ironwolf</center> | <center></center> | <center>4T</center> | <center></center> |
 | <center>Yes</center> | <center>WD (HGST)</center> | <center>Enterprise</center> | <center>SSD</center> | <center></center> | <center>SN200</center> | <center>3.8TB</center> | <center>Need to shield pin3</center> |
