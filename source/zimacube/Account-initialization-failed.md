@@ -12,7 +12,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 - Keyboard  
 
 **Steps**:  
-- Please follow [this link](/zimacube/How-to-Install-ZimaOS) to complete the installation.
+- Please follow [this link](docs/zimacube/How-to-Install-ZimaOS) to complete the installation.
 
 ---
 
