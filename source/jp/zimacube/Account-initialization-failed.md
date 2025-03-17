@@ -15,7 +15,7 @@ tip: 上部バーの固定フォーマットは削除しないでください, d
 - キーボード  
 
 **手順**:  
-- [このリンク](/zimacube/How-to-Install-ZimaOS)を参照して、インストールを完了してください。
+- [このリンク](https://www.zimaspace.com/docs/jp/zimacube/How-to-Install-ZimaOS)を参照して、インストールを完了してください。
 
 ---
 
