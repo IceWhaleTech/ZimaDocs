@@ -2,23 +2,23 @@
 <html lang="zh">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>连接Synology与SMB共享 | Zimaspace Docs</title>
+  <title>ZimaOS 和 QTS 双向同步指南：WebDAV + Zerotier 设置 | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/Link-Synology-and-SMB-Shares">
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
   <!-- Alternative links -->
   
     
-  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaos/Link-Synology-and-SMB-Shares">
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
     
-  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaos/Link-Synology-and-SMB-Shares">
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
     
-  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaos/Link-Synology-and-SMB-Shares">
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
     
-  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaos/Link-Synology-and-SMB-Shares">
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
     
-  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaos/Link-Synology-and-SMB-Shares">
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
     
   
   <!-- FAVICONS ICON -->
@@ -44,30 +44,25 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="如何分享和获取NAS上的文件？SAMBA可能是最重要的方式当我们谈论网络附加存储时，我们希望我们的文件能够存储、管理在一个地方，并在任何地方都能访问。但是，这一切是如何实现的呢？您可以通过访问ZimaOS的WebUI来随时访问您的数据，WebUI拥有组织良好的界面和流畅的体验。然而，当您的工作涉及文件引用，或者您需要对文件系统层次结构进行更复杂的操作时，通过像SMB&amp;#x2">
+  <meta name="description" content="实际痛点：跨 NAS 同步挑战最近有用户询问：“我们的团队同时使用 ZimaOS 和 QNAP QTS 系统。手动传输文件每天耗费超过 2 小时。我们如何能够实现自动双向同步？”本指南正是为了解决这个问题而来。 为什么选择 WebDAV + Zerotier？图 1：通过 WebDAV 和 Zerotier 实现的跨系统文件同步架构 关键词：ZimaOS 和 QTS 双向">
 <meta property="og:type" content="website">
-<meta property="og:title" content="连接Synology与SMB共享">
-<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/Link-Synology-and-SMB-Shares">
+<meta property="og:title" content="ZimaOS 和 QTS 双向同步指南：WebDAV + Zerotier 设置">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="如何分享和获取NAS上的文件？SAMBA可能是最重要的方式当我们谈论网络附加存储时，我们希望我们的文件能够存储、管理在一个地方，并在任何地方都能访问。但是，这一切是如何实现的呢？您可以通过访问ZimaOS的WebUI来随时访问您的数据，WebUI拥有组织良好的界面和流畅的体验。然而，当您的工作涉及文件引用，或者您需要对文件系统层次结构进行更复杂的操作时，通过像SMB&amp;#x2">
+<meta property="og:description" content="实际痛点：跨 NAS 同步挑战最近有用户询问：“我们的团队同时使用 ZimaOS 和 QNAP QTS 系统。手动传输文件每天耗费超过 2 小时。我们如何能够实现自动双向同步？”本指南正是为了解决这个问题而来。 为什么选择 WebDAV + Zerotier？图 1：通过 WebDAV 和 Zerotier 实现的跨系统文件同步架构 关键词：ZimaOS 和 QTS 双向">
 <meta property="og:locale">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149654477_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149678738_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149714447_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149728058_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149849839_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149936501_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149952959_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727149972815_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150063996_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150080211_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150117572_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150133237_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550303202_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550364111_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550445278_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550489305_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550534267_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550603938_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742550646713_image.png">
 <meta property="article:published_time" content="2025-03-21T09:56:07.967Z">
 <meta property="article:modified_time" content="2025-03-21T09:56:07.967Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727149654477_image.png">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1742550303202_image.png">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -84,12 +79,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "连接Synology与SMB共享",
+      "headline": "ZimaOS 和 QTS 双向同步指南：WebDAV + Zerotier 设置",
       "description": "",
       "image": "",
       "author": {
         "@type": "Person",
-        "name": "ZimaSpace"
+        "name": "admin"
       },
       "publisher": {
         "@type": "Organization",
@@ -137,23 +132,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <ul class="sub-menu">
                 
                   <li class="menu-item">
-                    <a href="/docs/zimaos/Link-Synology-and-SMB-Shares">English</a>
+                    <a href="/docs/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">English</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/zh/zimaos/Link-Synology-and-SMB-Shares">中文</a>
+                    <a href="/docs/zh/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">中文</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/jp/zimaos/Link-Synology-and-SMB-Shares">日本語</a>
+                    <a href="/docs/jp/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">日本語</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/Link-Synology-and-SMB-Shares">Português</a>
+                    <a href="/docs/pt-PT/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">Português</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/es/zimaos/Link-Synology-and-SMB-Shares">Español</a>
+                    <a href="/docs/es/zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide">Español</a>
                   </li>
                 
               </ul>
@@ -203,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">连接Synology与SMB共享</h1>
+                <h1 class="article-title" itemprop="name">ZimaOS 和 QTS 双向同步指南：WebDAV + Zerotier 设置</h1>
                 
               
                 <a id="feedback-link" class="article-edit-link" target="_blank" href="" title="改进此文档">
@@ -214,25 +209,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               
               </header>
               <div class="article-content" itemprop="articleBody">
-                <h1 id="如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" class="article-heading"><a href="#如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" class="headerlink" title="如何分享和获取NAS上的文件？SAMBA可能是最重要的方式"></a>如何分享和获取NAS上的文件？SAMBA可能是最重要的方式<a class="article-anchor" href="#如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" aria-hidden="true"></a></h1><p>当我们谈论网络附加存储时，我们希望我们的文件能够存储、管理在一个地方，并在任何地方都能访问。但是，这一切是如何实现的呢？<br><img src="https://manage.icewhale.io/api/static/docs/1727149654477_image.png"><br>您可以通过访问ZimaOS的WebUI来随时访问您的数据，WebUI拥有组织良好的界面和流畅的体验。然而，当您的工作涉及文件引用，或者您需要对文件系统层次结构进行更复杂的操作时，通过像SMB&#x2F;SAMBA这样的技术将NAS驱动器挂载到您的客户端系统将是更好的方式。<br><img src="https://manage.icewhale.io/api/static/docs/1727149678738_image.png"><br>SMB（服务器消息块）是一种内置于Windows系统中的协议，用于在网络上共享文件和其他服务。SAMBA实现了SMB协议，丰富了类*nix系统的文件共享方法。ZimaOS配备了SAMBA，使文件共享和传输非常方便。在以下内容中，我们将描述SMB和SAMBA，并为了方便起见将其统一称为SMB。</p>
-<h2 id="在ZimaOS上创建共享文件夹" class="article-heading"><a href="#在ZimaOS上创建共享文件夹" class="headerlink" title="在ZimaOS上创建共享文件夹"></a>在ZimaOS上创建共享文件夹<a class="article-anchor" href="#在ZimaOS上创建共享文件夹" aria-hidden="true"></a></h2><p>在ZimaOS的仪表板上启动文件应用程序，找到您想共享的文件所在的目标文件夹。右键单击文件夹并选择共享。<br><img src="https://manage.icewhale.io/api/static/docs/1727149714447_image.png"><br>一个对话框窗口将提示您需要的URLs，以在相应系统上挂载共享文件夹。<br><img src="https://manage.icewhale.io/api/static/docs/1727149728058_image.png"><br>这两个URLs是供专业用户手动挂载驱动器的。此外，在相应系统上使用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/">Zima客户端</a>，我们可以使挂载过程更简单。<br><img src="https://manage.icewhale.io/api/static/docs/1727149849839_image.png"></p>
-<h2 id="在Windows上挂载您的SMB共享文件夹" class="article-heading"><a href="#在Windows上挂载您的SMB共享文件夹" class="headerlink" title="在Windows上挂载您的SMB共享文件夹"></a>在Windows上挂载您的SMB共享文件夹<a class="article-anchor" href="#在Windows上挂载您的SMB共享文件夹" aria-hidden="true"></a></h2><p>从<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/">findzima</a>下载Zima-latest setup.exe并打开它。它将启动安装过程，Zima客户端将在安装后自动启动。您将在任务栏右侧找到Zima图标，由于未连接状态，图标显示为问号。<br>右键单击该图标，选择扫描并连接到Zima。<br><img src="https://manage.icewhale.io/api/static/docs/1727149936501_image.png"><br>找到您的Zima设备并单击连接。<br><img src="https://manage.icewhale.io/api/static/docs/1727149952959_image.png"><br>Zima.exe将提示您输入WebUI的用户名和密码以登录。之后，您的zima.exe图标将从问号变为ZIMA标志，这意味着您的zima.exe已进入登录状态。<br><img src="https://manage.icewhale.io/api/static/docs/1727149972815_image.png"><br>右键单击zima图标，选择在文件资源管理器中打开，这将把您的共享文件夹挂载到Windows系统并自动打开！</p>
-<blockquote>
-<p>注意：要正常工作，您的Windows和ZimaOS需要处于同一局域网（LAN）中。</p>
-</blockquote>
-<h2 id="在macOS上挂载您的SMB共享文件夹" class="article-heading"><a href="#在macOS上挂载您的SMB共享文件夹" class="headerlink" title="在macOS上挂载您的SMB共享文件夹"></a>在macOS上挂载您的SMB共享文件夹<a class="article-anchor" href="#在macOS上挂载您的SMB共享文件夹" aria-hidden="true"></a></h2><p>和上面一样，我们也为Mac用户在<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/">findzima</a>准备了zima应用程序。Mac zima应用程序的使用与Windows相似。只需参考上述内容。</p>
-<p>您还记得文件应用程序在您完成创建共享文件夹时提示了什么吗？在macOS上，我们将使用您刚才获得的URLs进行手动挂载！<br><img src="https://manage.icewhale.io/api/static/docs/1727150063996_image.png"><br>在您的Mac上打开Finder并按CMD+K，然后将相应的URL复制粘贴到输入框中。<br><img src="https://manage.icewhale.io/api/static/docs/1727150080211_image.png"><br>点击连接。此时，在提示对话框中，选择访客并点击连接。</p>
-<blockquote>
-<p>对于ZimaOS v1.2.3的用户，选择注册用户并输入正确的用户名和密码。<br><img src="https://manage.icewhale.io/api/static/docs/1727150117572_image.png"><br>现在，您将看到共享文件夹打开，并且它将在Finder应用程序的左侧栏中列出。<br><img src="https://manage.icewhale.io/api/static/docs/1727150133237_image.png"><br>Windows资源管理器的URL怎么处理？Zima自动挂载与手动通过URL挂载驱动器有什么区别？</p>
-</blockquote>
-<p>目前我们的SMB共享使用访客账户。在未来的版本中，我们将引入多个用户共享功能并加强权限管理。我们希望这些功能能满足每个人的多样化需求。</p>
-<h2 id="不仅仅是局域网" class="article-heading"><a href="#不仅仅是局域网" class="headerlink" title="不仅仅是局域网"></a>不仅仅是局域网<a class="article-anchor" href="#不仅仅是局域网" aria-hidden="true"></a></h2><p>实际上，不仅在局域网上，而且在直连网络和广域网（WAN）上，您也可以轻松连接Zima设备并将共享目录映射为网络驱动器。我们将发布相关的教程。感谢您持续的关注。</p>
-<p>如果您在使用过程中遇到任何问题，请随时告诉我们。您还可以加入我们的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/">社区</a>和<a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.com/invite/uuNfKzG5">Discord</a>，以讨论关于NAS和ZimaOS的更多内容。我们期待您的反馈！</p>
+                <p><img src="https://manage.icewhale.io/api/static/docs/1742550303202_image.png"></p>
+<h2 id="实际痛点：跨-NAS-同步挑战" class="article-heading"><a href="#实际痛点：跨-NAS-同步挑战" class="headerlink" title="实际痛点：跨 NAS 同步挑战"></a>实际痛点：跨 NAS 同步挑战<a class="article-anchor" href="#实际痛点：跨-NAS-同步挑战" aria-hidden="true"></a></h2><p>最近有用户询问：“我们的团队同时使用 ZimaOS 和 QNAP QTS 系统。手动传输文件每天耗费超过 2 小时。我们如何能够实现自动双向同步？”本指南正是为了解决这个问题而来。</p>
+<h2 id="为什么选择-WebDAV-Zerotier？" class="article-heading"><a href="#为什么选择-WebDAV-Zerotier？" class="headerlink" title="为什么选择 WebDAV + Zerotier？"></a>为什么选择 WebDAV + Zerotier？<a class="article-anchor" href="#为什么选择-WebDAV-Zerotier？" aria-hidden="true"></a></h2><p><img src="https://manage.icewhale.io/api/static/docs/1742550364111_image.png"><br>图 1：通过 WebDAV 和 Zerotier 实现的跨系统文件同步架构</p>
+<h3 id="关键词：ZimaOS-和-QTS-双向同步" class="article-heading"><a href="#关键词：ZimaOS-和-QTS-双向同步" class="headerlink" title="关键词：ZimaOS 和 QTS 双向同步"></a>关键词：ZimaOS 和 QTS 双向同步<a class="article-anchor" href="#关键词：ZimaOS-和-QTS-双向同步" aria-hidden="true"></a></h3><ul>
+<li>WebDAV : 跨平台文件协作协议</li>
+<li>Zerotier : 无需公共 IP 的 NAT 穿透虚拟 LAN 工具</li>
+<li>优势 : 配置简单，自动同步和可恢复同步</li>
+</ul>
+<h2 id="分步实施" class="article-heading"><a href="#分步实施" class="headerlink" title="分步实施"></a>分步实施<a class="article-anchor" href="#分步实施" aria-hidden="true"></a></h2><h3 id="步骤-1：在-ZimaOS-上配置-WebDAV" class="article-heading"><a href="#步骤-1：在-ZimaOS-上配置-WebDAV" class="headerlink" title="步骤 1：在 ZimaOS 上配置 WebDAV"></a>步骤 1：在 ZimaOS 上配置 WebDAV<a class="article-anchor" href="#步骤-1：在-ZimaOS-上配置-WebDAV" aria-hidden="true"></a></h3><ol>
+<li>安装应用 : 在 ZimaOS 应用商店中搜索“WebDAV”<br><img src="https://manage.icewhale.io/api/static/docs/1742550445278_image.png"></li>
+<li>关键参数（图 2）：</li>
+</ol>
+<ul>
+<li>认证信息：默认 <code>casaos</code> </li>
+<li>同步目录：通过“选择目录图标”（第二个红色圆圈）选择目标文件夹</li>
+<li>端口：注意自定义端口（例如，<code>5005</code>）<br><img src="https://manage.icewhale.io/api/static/docs/1742550489305_image.png"><br>图 2：ZimaOS WebDAV 配置界面</li>
+</ul>
+<h3 id="步骤-2：建立-Zerotier-网络" class="article-heading"><a href="#步骤-2：建立-Zerotier-网络" class="headerlink" title="步骤 2：建立 Zerotier 网络"></a>步骤 2：建立 Zerotier 网络<a class="article-anchor" href="#步骤-2：建立-Zerotier-网络" aria-hidden="true"></a></h3><ol>
+<li>获取网络 ID :</li>
+</ol>
+<ul>
+<li>ZimaOS 控制面板 → 设置 → 网络 → 远程访问 → 启用 → 点击“NetworkID”进行复制<br><img src="https://manage.icewhale.io/api/static/docs/1742550534267_image.png"></li>
+</ul>
+<ol start="2">
+<li>安装 Zerotier 并启用 SSH。（相关文章资源可在文章下方找到）</li>
+<li>QNAP 配置：</li>
+</ol>
+<ul>
+<li>SSH 进入 QTS 并运行：<br><code>zerotier-cli join [ZimaOS NetworkID]</code></li>
+</ul>
+<ol start="4">
+<li>验证连接性：</li>
+</ol>
+<ul>
+<li>获取 ZimaOS Zerotier IP：网络 → 虚拟网络 → 静态 IP</li>
+<li>使用 <code>ping [ZimaOS Zerotier IP]</code> 测试连接</li>
+</ul>
+<h3 id="步骤-3：创建-HBS-3-同步任务" class="article-heading"><a href="#步骤-3：创建-HBS-3-同步任务" class="headerlink" title="步骤 3：创建 HBS 3 同步任务"></a>步骤 3：创建 HBS 3 同步任务<a class="article-anchor" href="#步骤-3：创建-HBS-3-同步任务" aria-hidden="true"></a></h3><ol>
+<li>设置同步：</li>
+</ol>
+<ul>
+<li>从 QTS 应用中心安装“HBS 3”</li>
+<li>启动 HBS 3 并选择同步 → 双向同步任务 → 添加 WebDAV 账户<br><img src="https://manage.icewhale.io/api/static/docs/1742550603938_image.png"></li>
+</ul>
+<ol start="2">
+<li>优化：</li>
+</ol>
+<ul>
+<li>选择“冲突策略”以重命名本地文件</li>
+<li>将“任务调度频率”设置为 30 ~ 300 秒</li>
+</ul>
+<h2 id="结论与资源" class="article-heading"><a href="#结论与资源" class="headerlink" title="结论与资源"></a>结论与资源<a class="article-anchor" href="#结论与资源" aria-hidden="true"></a></h2><p><img src="https://manage.icewhale.io/api/static/docs/1742550646713_image.png"><br>您已完成：<br>✅ 实时跨系统同步<br>✅ 无需公共 IP 的 NAT 穿透<br>✅ 自动文件双向同步<br>如果在使用过程中遇到任何问题，请随时告知我们。您也可以加入我们的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/">社区</a> 和 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/uuNfKzG5">Discord</a> 以讨论更多关于 NAS 和 ZimaOS 的内容。期待您的反馈！</p>
+<p>进一步阅读：<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.zerotier.com/qnap/">Zerotier 官方手册</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.qnap.com.cn/zh-cn/how-to/faq/article/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-ssh-%E8%AE%BF%E9%97%AE-qnap-nas">在 QNAP 上启用 SSH 访问</a><br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.youtube.com/watch?v=n8ajxo6Uh3c">保持 ZimaOS 和 Synology DSM 之间的文件同步</a></p>
 
               </div>
               <footer class="article-footer">
                 <time class="article-footer-updated" datetime="2025-03-21T09:56:07.967Z" itemprop="dateModified">最后更新：2025-03-21</time>
-                <a href="NVR-Camera-Server.html" class="article-footer-prev" title="NVR 摄像机服务器"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="Sync-Photos-via-Configurable-CLI.html" class="article-footer-next" title="通过可配置 CLI 同步照片"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+                <a href="iSCSI-on-ZimaOS.html" class="article-footer-prev" title="ZimaOS上的iSCSI"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="set-your-SSH.html" class="article-footer-next" title="SSH"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
             </div>
@@ -240,7 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E4%BA%AB%E5%92%8C%E8%8E%B7%E5%8F%96NAS%E4%B8%8A%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%9FSAMBA%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">如何分享和获取NAS上的文件？SAMBA可能是最重要的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8ZimaOS%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在ZimaOS上创建共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Windows%E4%B8%8A%E6%8C%82%E8%BD%BD%E6%82%A8%E7%9A%84SMB%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在Windows上挂载您的SMB共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8macOS%E4%B8%8A%E6%8C%82%E8%BD%BD%E6%82%A8%E7%9A%84SMB%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在macOS上挂载您的SMB共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-text">不仅仅是局域网</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%97%9B%E7%82%B9%EF%BC%9A%E8%B7%A8-NAS-%E5%90%8C%E6%AD%A5%E6%8C%91%E6%88%98"><span class="toc-text">实际痛点：跨 NAS 同步挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-WebDAV-Zerotier%EF%BC%9F"><span class="toc-text">为什么选择 WebDAV + Zerotier？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D%EF%BC%9AZimaOS-%E5%92%8C-QTS-%E5%8F%8C%E5%90%91%E5%90%8C%E6%AD%A5"><span class="toc-text">关键词：ZimaOS 和 QTS 双向同步</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%AD%A5%E5%AE%9E%E6%96%BD"><span class="toc-text">分步实施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E5%9C%A8-ZimaOS-%E4%B8%8A%E9%85%8D%E7%BD%AE-WebDAV"><span class="toc-text">步骤 1：在 ZimaOS 上配置 WebDAV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E5%BB%BA%E7%AB%8B-Zerotier-%E7%BD%91%E7%BB%9C"><span class="toc-text">步骤 2：建立 Zerotier 网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E5%88%9B%E5%BB%BA-HBS-3-%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1"><span class="toc-text">步骤 3：创建 HBS 3 同步任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%E4%B8%8E%E8%B5%84%E6%BA%90"><span class="toc-text">结论与资源</span></a></li></ol>
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -268,7 +302,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="fa fa-chevron-right"></i>
       </h4>
       <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link  current"><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li>
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link  current"><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li>
       </ul>
     </li>
     <li class="">
@@ -562,7 +596,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="fa fa-chevron-right"></i>
       </h4>
       <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link  current"><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li>
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link  current"><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li>
       </ul>
     </li>
     <li class="">
@@ -607,7 +641,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span id="mobile-lang-select-label" style="display:none">
       <i class="fa fa-globe"></i>
       <span>中文</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/Link-Synology-and-SMB-Shares.html">
+    <select id="mobile-lang-select" data-canonical="zimaos/ZimaOS-&-QTS-Two-Way-Sync-Guide.html">
       
         <option value="en">English</option>
       
