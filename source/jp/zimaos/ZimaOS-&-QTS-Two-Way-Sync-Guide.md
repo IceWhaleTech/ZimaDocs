@@ -1,5 +1,5 @@
 ---
-title: ZimaOS & QTS 双方向同期ガイド: WebDAV + Zerotier 設定
+title: ZimaOS & QTS 双方向同期ガイド
 description: 
 type: Docs
 author: admin

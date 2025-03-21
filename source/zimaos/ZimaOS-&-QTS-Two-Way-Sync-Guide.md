@@ -1,5 +1,5 @@
 ---
-title: ZimaOS & QTS Two-Way Sync Guide: WebDAV + Zerotier Setup
+title: ZimaOS & QTS Two-Way Sync Guide
 description: 
 type: Docs
 author: admin

@@ -1,5 +1,5 @@
 ---
-title: Fix "Account Initialization Failed" Error: Quick Guide  
+title: Fix "Account Initialization Failed"  
 description: 
 type: Docs
 author: admin

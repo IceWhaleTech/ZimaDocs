@@ -1,5 +1,5 @@
 ---
-title: Guía de Sincronización Bidireccional ZimaOS & QTS: Configuración de WebDAV + Zerotier
+title: Guía de Sincronización Bidireccional ZimaOS & QTS
 description: 
 type: Docs
 author: admin
