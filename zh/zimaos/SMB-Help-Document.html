@@ -2,23 +2,23 @@
 <html lang="zh">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>如何在 ZimaOS 上创建 Raid6？ | Zimaspace Docs</title>
+  <title>SMB帮助文档 | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/Create-Raid6-on-ZimaOS">
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/SMB-Help-Document">
   <!-- Alternative links -->
   
     
-  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaos/Create-Raid6-on-ZimaOS">
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaos/SMB-Help-Document">
     
-  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaos/Create-Raid6-on-ZimaOS">
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaos/SMB-Help-Document">
     
-  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaos/Create-Raid6-on-ZimaOS">
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaos/SMB-Help-Document">
     
-  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaos/Create-Raid6-on-ZimaOS">
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaos/SMB-Help-Document">
     
-  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaos/Create-Raid6-on-ZimaOS">
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaos/SMB-Help-Document">
     
   
   <!-- FAVICONS ICON -->
@@ -44,24 +44,20 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="介绍目前，ZimaOS 支持 RAID0&#x2F;1&#x2F;5，但我们理解许多用户需要 RAID6 以增强冗余。为此，我们准备了一份通过命令行创建 RAID6 的逐步指南。请按照以下说明操作。我们期待在未来加速对更多 RAID 级别的支持！ Tips如果系统重启，您需要重新组装 RAID6 阵列。    先决条件 您需要至少四个硬盘。  您需要学习如何通过点击 此处">
+  <meta name="description" content="核心问题 认证方式错误： 直接输入smb:&#x2F;&#x2F;IP连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。 MacOS 14.x版本缓存问题： 第一次认证失败后，即使之后输入正确的账号和密码，连接仍然无法建立。必须通过输入大小写不一致的用户名绕过macOS缓存重新认证。例如，正确的账号密码是zimaos&#x2F;zimaos，第一次输入smb:&#x2F;&#x2F;zimaos:zim">
 <meta property="og:type" content="website">
-<meta property="og:title" content="如何在 ZimaOS 上创建 Raid6？">
-<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/Create-Raid6-on-ZimaOS">
+<meta property="og:title" content="SMB帮助文档">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/SMB-Help-Document">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="介绍目前，ZimaOS 支持 RAID0&#x2F;1&#x2F;5，但我们理解许多用户需要 RAID6 以增强冗余。为此，我们准备了一份通过命令行创建 RAID6 的逐步指南。请按照以下说明操作。我们期待在未来加速对更多 RAID 级别的支持！ Tips如果系统重启，您需要重新组装 RAID6 阵列。    先决条件 您需要至少四个硬盘。  您需要学习如何通过点击 此处">
+<meta property="og:description" content="核心问题 认证方式错误： 直接输入smb:&#x2F;&#x2F;IP连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。 MacOS 14.x版本缓存问题： 第一次认证失败后，即使之后输入正确的账号和密码，连接仍然无法建立。必须通过输入大小写不一致的用户名绕过macOS缓存重新认证。例如，正确的账号密码是zimaos&#x2F;zimaos，第一次输入smb:&#x2F;&#x2F;zimaos:zim">
 <meta property="og:locale">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729145392591_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729219387443_img_v3_02fp_8fce2dd8-56af-4706-b5de-96cea3b8162g.jpg">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729219416289_img_v3_02fp_7340f5ef-7892-4696-8707-cdda424461cg.jpg">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729220708308_img_v3_02fp_245f1382-835d-4827-8852-f6ab8b166d8g.jpg">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729220715773_img_v3_02fp_1b36a2a6-e9a5-45d0-acc2-9b3345b3224g.jpg">
-<meta property="article:published_time" content="2025-03-24T06:28:37.176Z">
-<meta property="article:modified_time" content="2025-03-24T06:28:37.176Z">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742797263676_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742797274843_image.png">
+<meta property="article:published_time" content="2025-03-24T06:28:37.177Z">
+<meta property="article:modified_time" content="2025-03-24T06:28:37.177Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1742797263676_image.png">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -78,12 +74,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "如何在 ZimaOS 上创建 Raid6？",
+      "headline": "SMB帮助文档",
       "description": "",
       "image": "",
       "author": {
         "@type": "Person",
-        "name": "ZimaSpace"
+        "name": "admin"
       },
       "publisher": {
         "@type": "Organization",
@@ -93,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "1742797717176"
+      "datePublished": "1742797717177"
     }
     </script>
 
@@ -131,23 +127,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <ul class="sub-menu">
                 
                   <li class="menu-item">
-                    <a href="/docs/zimaos/Create-Raid6-on-ZimaOS">English</a>
+                    <a href="/docs/zimaos/SMB-Help-Document">English</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/zh/zimaos/Create-Raid6-on-ZimaOS">中文</a>
+                    <a href="/docs/zh/zimaos/SMB-Help-Document">中文</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/jp/zimaos/Create-Raid6-on-ZimaOS">日本語</a>
+                    <a href="/docs/jp/zimaos/SMB-Help-Document">日本語</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/Create-Raid6-on-ZimaOS">Português</a>
+                    <a href="/docs/pt-PT/zimaos/SMB-Help-Document">Português</a>
                   </li>
                 
                   <li class="menu-item">
-                    <a href="/docs/es/zimaos/Create-Raid6-on-ZimaOS">Español</a>
+                    <a href="/docs/es/zimaos/SMB-Help-Document">Español</a>
                   </li>
                 
               </ul>
@@ -197,7 +193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">如何在 ZimaOS 上创建 Raid6？</h1>
+                <h1 class="article-title" itemprop="name">SMB帮助文档</h1>
                 
               
                 <a id="feedback-link" class="article-edit-link" target="_blank" href="" title="改进此文档">
@@ -208,53 +204,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               
               </header>
               <div class="article-content" itemprop="articleBody">
-                <h2 id="介绍" class="article-heading"><a href="#介绍" class="headerlink" title="介绍"></a>介绍<a class="article-anchor" href="#介绍" aria-hidden="true"></a></h2><p>目前，ZimaOS 支持 RAID0&#x2F;1&#x2F;5，但我们理解许多用户需要 RAID6 以增强冗余。为此，我们准备了一份通过命令行创建 RAID6 的逐步指南。请按照以下说明操作。<br>我们期待在未来加速对更多 RAID 级别的支持！</p>
-<blockquote class="note warn"><strong class="note-title">Tips</strong><p>如果系统重启，您需要重新组装 RAID6 阵列。</p>
-</blockquote>
-
-
-<h2 id="先决条件" class="article-heading"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件<a class="article-anchor" href="#先决条件" aria-hidden="true"></a></h2><ol>
-<li><p>您需要至少四个硬盘。</p>
-</li>
-<li><p>您需要学习如何通过点击 <a href="https://www.zimaspace.com/docs/zimaos/How-to-Open-SSH-in-ZimaOS.html">此处</a> 访问命令行页面。</p>
-</li>
-<li><p>您需要以超级用户权限（root 权限）运行教程中的命令。您可以使用 <code>sudo </code> 提升权限，例如 <code>sudo mkfs.ext4 /dev/md0 </code></p>
-</li>
-<li><p>使用 <code>lsblk</code> 命令检查可用的硬盘。<br><img src="https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg"></p>
-</li>
-<li><p>如果 MOUNTPOINTS 有挂载点，您需要使用以下命令取消挂载。<br><img src="https://manage.icewhale.io/api/static/docs/1729145392591_image.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">umount /dev/sda</span><br></pre></td></tr></table></figure></li>
+                <h2 id="核心问题" class="article-heading"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题<a class="article-anchor" href="#核心问题" aria-hidden="true"></a></h2><ul>
+<li><strong>认证方式错误：</strong> 直接输入<code>smb://IP</code>连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。</li>
+<li><strong>MacOS 14.x版本缓存问题：</strong> 第一次认证失败后，即使之后输入正确的账号和密码，连接仍然无法建立。必须通过输入大小写不一致的用户名绕过macOS缓存重新认证。例如，正确的账号密码是<code>zimaos/zimaos</code>，第一次输入<br><code>smb://zimaos:zimaos1@10.0.0.99/ZimaOS-HD</code>（密码错误）失败后，再次输入<br><code>smb://zimaos:zimaos@10.0.0.99/ZimaOS-HD</code>仍然无法连接。必须输入<br><code>smb://Zimaos:zimaos@10.0.0.99/ZimaOS-HD</code>（或者继续改变用户名的大小写）。</li>
+</ul>
+<h2 id="服务器SMB服务状态检查" class="article-heading"><a href="#服务器SMB服务状态检查" class="headerlink" title="服务器SMB服务状态检查"></a>服务器SMB服务状态检查<a class="article-anchor" href="#服务器SMB服务状态检查" aria-hidden="true"></a></h2><ol>
+<li>确保服务器上的SMB服务已经正确启动。</li>
 </ol>
-<h2 id="创建-RAID6-的步骤" class="article-heading"><a href="#创建-RAID6-的步骤" class="headerlink" title="创建 RAID6 的步骤"></a>创建 RAID6 的步骤<a class="article-anchor" href="#创建-RAID6-的步骤" aria-hidden="true"></a></h2><ol>
-<li><p>使用以下命令创建至少四个驱动器的 RAID6 阵列：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mdadm -Cv /dev/md0 --level=6 --name=foldername --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd --run --homehost=zimaos</span><br></pre></td></tr></table></figure>
-<p><code>/dev/md0</code> 是新 RAID 设备的名称。</p>
-<p><code>--level=6</code> 表示您正在创建一个 RAID6 阵列。</p>
-<p><code>--name=foldername</code> 指定 RAID 阵列的名称。</p>
-<p><code>--raid-devices=4</code> 告诉系统使用四个硬盘。</p>
-<p><code>/dev/sda /dev/sdb /dev/sdc /dev/sdd</code> 是参与阵列的驱动器。</p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1729219387443_img_v3_02fp_8fce2dd8-56af-4706-b5de-96cea3b8162g.jpg"></p>
-</li>
-<li><p>使用以下命令格式化 RAID：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></figure>
-<p><img src="https://manage.icewhale.io/api/static/docs/1729219416289_img_v3_02fp_7340f5ef-7892-4696-8707-cdda424461cg.jpg"></p>
-</li>
-<li><p>创建一个用于挂载 RAID 的目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /media</span><br><span class="line">mkdir foldername</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用以下命令挂载 RAID：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mount -t ext4 /dev/md0 /media/foldername</span><br></pre></td></tr></table></figure></li>
-<li><p>创建完成后，输入路径到基于网页的文件中以进行显示</p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1729220708308_img_v3_02fp_245f1382-835d-4827-8852-f6ab8b166d8g.jpg"></p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1729220715773_img_v3_02fp_1b36a2a6-e9a5-45d0-acc2-9b3345b3224g.jpg"></p>
-</li>
+<ul>
+<li>当服务器未启动时，Windows和macOS会显示相应的错误提示。<br>| <img src="https://manage.icewhale.io/api/static/docs/1742797263676_image.png"> | <img src="https://manage.icewhale.io/api/static/docs/1742797274843_image.png"> |</li>
+<li>输入错误的用户名进行匿名登录时，文件夹会显示为空白。</li>
+<li>输入正确的用户名但密码错误时，会出现密码错误提示。</li>
+</ul>
+<ol start="2">
+<li>可以通过命令确定当前连接的账户名，以确认登录状态。</li>
 </ol>
-<h2 id="注意：" class="article-heading"><a href="#注意：" class="headerlink" title="注意："></a>注意：<a class="article-anchor" href="#注意：" aria-hidden="true"></a></h2><p>如果系统重启，您需要重新组装 RAID6 阵列：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mdadm -Av /dev/md0 /dev/sda /dev/sdb /dev/sdc /dev/sdd</span><br><span class="line">mount /dev/md0 /media/foldername</span><br></pre></td></tr></table></figure>
+<h2 id="客户端解决方案" class="article-heading"><a href="#客户端解决方案" class="headerlink" title="客户端解决方案"></a>客户端解决方案<a class="article-anchor" href="#客户端解决方案" aria-hidden="true"></a></h2><h3 id="Windows-10-x2F-11" class="article-heading"><a href="#Windows-10-x2F-11" class="headerlink" title="Windows 10&#x2F;11"></a>Windows 10&#x2F;11<a class="article-anchor" href="#Windows-10-x2F-11" aria-hidden="true"></a></h3><ol>
+<li>清除现有的连接记录：</li>
+</ol>
+<ul>
+<li><code>net use \\%IP%\ /delete /y</code></li>
+<li>示例：<code>net use \\10.0.0.99\ /delete /y</code></li>
+</ul>
+<ol start="2">
+<li>保存连接凭证：</li>
+</ol>
+<ul>
+<li><code>cmdkey /add:% IP% /user:%USERNAME% /pass:%PASSWORD%</code></li>
+<li>示例：<code>cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos</code></li>
+</ul>
+<ol start="3">
+<li>映射网络驱动器：</li>
+</ol>
+<ul>
+<li><code>net use \\%IP%\ /USER:% USERNAME% %PASSWORD% /PERSISTENT:YES</code></li>
+<li>示例：<code>net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES</code></li>
+</ul>
+<ol start="4">
+<li>Windows连接SMB脚本：</li>
+</ol>
+<ul>
+<li>可以将以上命令合并为批处理文件，方便快捷执行。<br>Windows连接SMB脚本<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">echo 请填写以下信息：</span><br><span class="line">set /p IP=请输入IP地址: </span><br><span class="line">set /p USERNAME=请输入用户名: </span><br><span class="line">set /p PASSWORD=请输入密码: </span><br><span class="line"></span><br><span class="line">:: 删除之前的网络驱动器，如果存在</span><br><span class="line">net use \\%IP%\ /delete /y</span><br><span class="line"></span><br><span class="line">:: 使用cmdkey保存凭证</span><br><span class="line">cmdkey /add:%IP% /user:%USERNAME% /pass:%PASSWORD%</span><br><span class="line"></span><br><span class="line">:: 映射网络驱动器</span><br><span class="line">net use \\%IP%\ /USER:%USERNAME% %PASSWORD% /PERSISTENT:YES</span><br><span class="line"></span><br><span class="line">:: 打开网络共享</span><br><span class="line">start explorer \\%IP%\</span><br><span class="line"></span><br><span class="line">:: 暂停片刻，允许资源管理器打开文件夹</span><br><span class="line">timeout /t 2 /nobreak &gt; NUL</span><br><span class="line"></span><br><span class="line">:: 使用PowerShell刷新文件夹窗口</span><br><span class="line">powershell -Command &quot;</span><br><span class="line">Add-Type -TypeDefinition @&#x27;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">public class WinAPI &#123;</span><br><span class="line">    [DllImport(\&quot;user32.dll\&quot;)]</span><br><span class="line">    public static extern bool SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);</span><br><span class="line">&#125;</span><br><span class="line">&#x27;@</span><br><span class="line">\$HWND = (Get-Process | Where-Object &#123; \$_.MainWindowTitle -match &#x27;%IP%&#x27; &#125;).MainWindowHandle</span><br><span class="line">if (\$HWND -ne [IntPtr]::Zero) &#123;</span><br><span class="line">    [WinAPI]::SendMessage(\$HWND, 0x0111, [IntPtr]0x702C, [IntPtr]0)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    Write-Host \&quot;未找到窗口.\&quot;</span><br><span class="line">&#125;</span><br><span class="line">&quot;</span><br><span class="line"></span><br><span class="line">echo 命令执行成功。</span><br><span class="line">pause</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="MacOS" class="article-heading"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS<a class="article-anchor" href="#MacOS" aria-hidden="true"></a></h3><ol>
+<li>使用Finder连接：</li>
+</ol>
+<ul>
+<li>按<code>Command+K</code>打开“连接服务器”窗口。</li>
+<li>输入<code>smb://USERNAME:PASSWORD@IP/PATH</code>。</li>
+<li>示例：<code>smb://zimaos:zimaos@1.0.0.99/ZimaoS-HD</code>。</li>
+</ul>
+<ol start="2">
+<li>解决macOS 14.x缓存问题：</li>
+</ol>
+<ul>
+<li>如果第一次认证失败，可以尝试改变用户名的大小写，例如：<code>smb://Zimaos:zimaos@1.0.0.99/ZimaoS-HD</code>。</li>
+</ul>
+
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2025-03-24T06:28:37.176Z" itemprop="dateModified">最后更新：2025-03-24</time>
-                <a href="How-to-download-and-install-ZimaClient.html" class="article-footer-prev" title="下载并安装 ZimaClient"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="Immich-Tutorial.html" class="article-footer-next" title="Immich 教程"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+                <time class="article-footer-updated" datetime="2025-03-24T06:28:37.177Z" itemprop="dateModified">最后更新：2025-03-24</time>
+                <a href="ZimaOS-&-QTS-Two-Way-Sync-Guide.html" class="article-footer-prev" title="ZimaOS 和 QTS 双向同步指南"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="set-your-SSH.html" class="article-footer-next" title="SSH"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
             </div>
@@ -262,7 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="toc-text">先决条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-RAID6-%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-text">创建 RAID6 的步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">注意：</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="toc-text">核心问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8SMB%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="toc-text">服务器SMB服务状态检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">客户端解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-10-x2F-11"><span class="toc-text">Windows 10&#x2F;11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MacOS"><span class="toc-text">MacOS</span></a></li></ol></li></ol>
               <a href="#" id="article-toc-top">回到顶部</a>
             </div>
           </aside>
@@ -290,7 +300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="fa fa-chevron-right"></i>
       </h4>
       <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link  current"><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./SMB-Help-Document.html">SMB Help Document</a></li>
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link  current"><a href="./SMB-Help-Document.html">SMB Help Document</a></li>
       </ul>
     </li>
     <li class="">
@@ -584,7 +594,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="fa fa-chevron-right"></i>
       </h4>
       <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link  current"><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./SMB-Help-Document.html">SMB Help Document</a></li>
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link  current"><a href="./SMB-Help-Document.html">SMB Help Document</a></li>
       </ul>
     </li>
     <li class="">
@@ -629,7 +639,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span id="mobile-lang-select-label" style="display:none">
       <i class="fa fa-globe"></i>
       <span>中文</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/Create-Raid6-on-ZimaOS.html">
+    <select id="mobile-lang-select" data-canonical="zimaos/SMB-Help-Document.html">
       
         <option value="en">English</option>
       
