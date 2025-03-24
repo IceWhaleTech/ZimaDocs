@@ -1,5 +1,5 @@
 ---
-title:SMB Help Document
+title: SMB Help Document
 description: 
 type: Docs
 author: admin
@@ -15,7 +15,9 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ## Server SMB service status check
 1. Ensure that the SMB service on the server has started properly.
 - When the server is not started, Windows and macOS will display corresponding error prompts.
-| ![](https://manage.icewhale.io/api/static/docs/1742797263676_image.png) | ![](https://manage.icewhale.io/api/static/docs/1742797274843_image.png) |
+![](https://manage.icewhale.io/api/static/docs/1742798542938_image.png)
+![](https://manage.icewhale.io/api/static/docs/1742798548818_image.png)
+
 -When entering the wrong username for anonymous login, the folder appears blank.
 -When entering the correct username but entering the wrong password, there will be a password error prompt.
 2.The current connected account name can be determined through commands to confirm the login status.
@@ -34,8 +36,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 4. Windows connection SMB script:
 -You can combine the above commands into a batch file for easy and quick execution.
 Windows connection smb script
-```language
-@echo off
+`@echo off
 echo Please enter the following details:
 set /p IP=Enter IP Address: 
 set /p USERNAME=Enter Username: 
@@ -74,8 +75,7 @@ if (\$HWND -ne [IntPtr]::Zero) {
 "
 
 echo Commands executed successfully.
-pause
-```
+pause`
 ### MacOS
 1. Connect using Finder:
 -Press `Command+K` to open the 'Connect Server' window.
