@@ -18,23 +18,23 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ![](https://manage.icewhale.io/api/static/docs/1742798542938_image.png)
 ![](https://manage.icewhale.io/api/static/docs/1742798548818_image.png)
 
--When entering the wrong username for anonymous login, the folder appears blank.
--When entering the correct username but entering the wrong password, there will be a password error prompt.
+- When entering the wrong username for anonymous login, the folder appears blank.
+- When entering the correct username but entering the wrong password, there will be a password error prompt.
 2.The current connected account name can be determined through commands to confirm the login status.
 
 ## Client solution
 ### Windows 10/11
 1. Clear existing connection records:
 - `net use \\%IP%\ /delete /y`
--Example: `net use \\10.0.0.99\ /delete /y`
+- Example: `net use \\10.0.0.99\ /delete /y`
 2. Save connection credentials:
 - `cmdkey /add:% IP% /user:%USERNAME% /pass:%PASSWORD%`
--Example: `cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos`
+- Example: `cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos`
 3. Map network drivers:
 - `net use \\%IP%\ /USER:% USERNAME% %PASSWORD% /PERSISTENT:YES`
--Example: `net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES`
+- Example: `net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES`
 4. Windows connection SMB script:
--You can combine the above commands into a batch file for easy and quick execution.
+- You can combine the above commands into a batch file for easy and quick execution.
 Windows connection smb script
 `@echo off
 echo Please enter the following details:
@@ -78,8 +78,8 @@ echo Commands executed successfully.
 pause`
 ### MacOS
 1. Connect using Finder:
--Press `Command+K` to open the 'Connect Server' window.
--Input `smb://USERNAME:PASSWORD @IP/PATH`.
--Example: `smb://zimaos:zimaos @1.0.0.99/ZimaoS-HD`.
+- Press `Command+K` to open the 'Connect Server' window.
+- Input `smb://USERNAME:PASSWORD @IP/PATH`.
+- Example: `smb://zimaos:zimaos @1.0.0.99/ZimaoS-HD`.
 2. Resolve macOS 14. x cache issue:
--If the first authentication fails, try changing the case of the username, for example: `smb://Zimaos:zimaos @1.0.0.99/ZimaoS-HD`.
+- If the first authentication fails, try changing the case of the username, for example: `smb://Zimaos:zimaos @1.0.0.99/ZimaoS-HD`.
