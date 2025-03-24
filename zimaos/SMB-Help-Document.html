@@ -53,8 +53,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742798542938_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742798548818_image.png">
-<meta property="article:published_time" content="2025-03-24T06:46:02.563Z">
-<meta property="article:modified_time" content="2025-03-24T06:46:02.563Z">
+<meta property="article:published_time" content="2025-03-24T09:17:48.322Z">
+<meta property="article:modified_time" content="2025-03-24T09:17:48.322Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1742798542938_image.png">
@@ -89,7 +89,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "1742798762563"
+      "datePublished": "1742807868322"
     }
     </script>
 
@@ -209,30 +209,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Ensure that the SMB service on the server has started properly.</li>
 </ol>
 <ul>
-<li>When the server is not started, Windows and macOS will display corresponding error prompts.<br><img src="https://manage.icewhale.io/api/static/docs/1742798542938_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1742798548818_image.png"></li>
+<li><p>When the server is not started, Windows and macOS will display corresponding error prompts.<br><img src="https://manage.icewhale.io/api/static/docs/1742798542938_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1742798548818_image.png"></p>
+</li>
+<li><p>When entering the wrong username for anonymous login, the folder appears blank.</p>
+</li>
+<li><p>When entering the correct username but entering the wrong password, there will be a password error prompt.<br>2.The current connected account name can be determined through commands to confirm the login status.</p>
+</li>
 </ul>
-<p>-When entering the wrong username for anonymous login, the folder appears blank.<br>-When entering the correct username but entering the wrong password, there will be a password error prompt.<br>2.The current connected account name can be determined through commands to confirm the login status.</p>
 <h2 id="Client-solution" class="article-heading"><a href="#Client-solution" class="headerlink" title="Client solution"></a>Client solution<a class="article-anchor" href="#Client-solution" aria-hidden="true"></a></h2><h3 id="Windows-10-x2F-11" class="article-heading"><a href="#Windows-10-x2F-11" class="headerlink" title="Windows 10&#x2F;11"></a>Windows 10&#x2F;11<a class="article-anchor" href="#Windows-10-x2F-11" aria-hidden="true"></a></h3><ol>
 <li>Clear existing connection records:</li>
 </ol>
 <ul>
-<li><code>net use \\%IP%\ /delete /y</code><br>-Example: <code>net use \\10.0.0.99\ /delete /y</code></li>
+<li><code>net use \\%IP%\ /delete /y</code></li>
+<li>Example: <code>net use \\10.0.0.99\ /delete /y</code></li>
 </ul>
 <ol start="2">
 <li>Save connection credentials:</li>
 </ol>
 <ul>
-<li><code>cmdkey /add:% IP% /user:%USERNAME% /pass:%PASSWORD%</code><br>-Example: <code>cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos</code></li>
+<li><code>cmdkey /add:% IP% /user:%USERNAME% /pass:%PASSWORD%</code></li>
+<li>Example: <code>cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos</code></li>
 </ul>
 <ol start="3">
 <li>Map network drivers:</li>
 </ol>
 <ul>
-<li><code>net use \\%IP%\ /USER:% USERNAME% %PASSWORD% /PERSISTENT:YES</code><br>-Example: <code>net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES</code></li>
+<li><code>net use \\%IP%\ /USER:% USERNAME% %PASSWORD% /PERSISTENT:YES</code></li>
+<li>Example: <code>net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES</code></li>
 </ul>
 <ol start="4">
-<li>Windows connection SMB script:<br>-You can combine the above commands into a batch file for easy and quick execution.<br>Windows connection smb script<br>&#96;@echo off<br>echo Please enter the following details:<br>set &#x2F;p IP&#x3D;Enter IP Address:<br>set &#x2F;p USERNAME&#x3D;Enter Username:<br>set &#x2F;p PASSWORD&#x3D;Enter Password:</li>
+<li>Windows connection SMB script:</li>
 </ol>
+<ul>
+<li>You can combine the above commands into a batch file for easy and quick execution.<br>Windows connection smb script<br>&#96;@echo off<br>echo Please enter the following details:<br>set &#x2F;p IP&#x3D;Enter IP Address:<br>set &#x2F;p USERNAME&#x3D;Enter Username:<br>set &#x2F;p PASSWORD&#x3D;Enter Password:</li>
+</ul>
 <p>:: Delete previous network drive if exists<br>net use \%IP%\ &#x2F;delete &#x2F;y</p>
 <p>:: Save credentials using cmdkey<br>cmdkey &#x2F;add:%IP% &#x2F;user:%USERNAME% &#x2F;pass:%PASSWORD%</p>
 <p>:: Map the network drive<br>net use \%IP%\ &#x2F;USER:%USERNAME% %PASSWORD% &#x2F;PERSISTENT:YES</p>
@@ -241,13 +251,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>:: Refresh the folder window using PowerShell<br>powershell -Command “<br>Add-Type -TypeDefinition @’<br>using System.Runtime.InteropServices;<br>public class WinAPI {<br>    [DllImport(&quot;user32.dll&quot;)]<br>    public static extern bool SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);<br>}<br>‘@<br>$HWND &#x3D; (Get-Process | Where-Object { $_.MainWindowTitle -match ‘%IP%’ }).MainWindowHandle<br>if ($HWND -ne [IntPtr]::Zero) {<br>    [WinAPI]::SendMessage($HWND, 0x0111, [IntPtr]0x702C, [IntPtr]0)<br>} else {<br>    Write-Host &quot;Window not found.&quot;<br>}<br>“</p>
 <p>echo Commands executed successfully.<br>pause&#96;</p>
 <h3 id="MacOS" class="article-heading"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS<a class="article-anchor" href="#MacOS" aria-hidden="true"></a></h3><ol>
-<li>Connect using Finder:<br>-Press <code>Command+K</code> to open the ‘Connect Server’ window.<br>-Input <code>smb://USERNAME:PASSWORD @IP/PATH</code>.<br>-Example: <code>smb://zimaos:zimaos @1.0.0.99/ZimaoS-HD</code>.</li>
-<li>Resolve macOS 14. x cache issue:<br>-If the first authentication fails, try changing the case of the username, for example: <code>smb://Zimaos:zimaos @1.0.0.99/ZimaoS-HD</code>.</li>
+<li>Connect using Finder:</li>
 </ol>
+<ul>
+<li>Press <code>Command+K</code> to open the ‘Connect Server’ window.</li>
+<li>Input <code>smb://USERNAME:PASSWORD @IP/PATH</code>.</li>
+<li>Example: <code>smb://zimaos:zimaos @1.0.0.99/ZimaoS-HD</code>.</li>
+</ul>
+<ol start="2">
+<li>Resolve macOS 14. x cache issue:</li>
+</ol>
+<ul>
+<li>If the first authentication fails, try changing the case of the username, for example: <code>smb://Zimaos:zimaos @1.0.0.99/ZimaoS-HD</code>.</li>
+</ul>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2025-03-24T06:46:02.563Z" itemprop="dateModified">Last updated: 2025-03-24</time>
+                <time class="article-footer-updated" datetime="2025-03-24T09:17:48.322Z" itemprop="dateModified">Last updated: 2025-03-24</time>
                 <a href="ZimaOS-&-QTS-Two-Way-Sync-Guide.html" class="article-footer-prev" title="ZimaOS QTS Two-Way Sync Guide"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="set-your-SSH.html" class="article-footer-next" title="SSH"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
