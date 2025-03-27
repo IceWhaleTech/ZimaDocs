@@ -1,5 +1,5 @@
 ---
-title:How does ZimaOS-Search work
+title: How does ZimaOS-Search work
 description: 
 type: Docs
 author: admin
