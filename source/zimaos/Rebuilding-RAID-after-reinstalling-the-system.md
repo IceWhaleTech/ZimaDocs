@@ -1,5 +1,5 @@
 ---
-title: 文章标题
+title: Rebuilding RAID after reinstalling the system
 description: 
 type: Docs
 author: admin
