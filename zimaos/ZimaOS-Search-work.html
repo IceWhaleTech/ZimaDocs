@@ -44,15 +44,15 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="System working principleThree layer architecture design Real time file monitoring layer   Real time perception of file system changes (create&#x2F;rename&#x2F;delete)File name index (secon">
+  <meta name="description" content="System Architecture OverviewThree-Layer Design Real-Time File Monitoring Layer   Real-time detection of file system changes (creation&#x2F;renaming&#x2F;deletion)Filename indexing (milisec">
 <meta property="og:type" content="website">
 <meta property="og:title" content="How does ZimaOS-Search work">
 <meta property="og:url" content="https://www.zimaspace.com/docs/zimaos/ZimaOS-Search-work">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="System working principleThree layer architecture design Real time file monitoring layer   Real time perception of file system changes (create&#x2F;rename&#x2F;delete)File name index (secon">
+<meta property="og:description" content="System Architecture OverviewThree-Layer Design Real-Time File Monitoring Layer   Real-time detection of file system changes (creation&#x2F;renaming&#x2F;deletion)Filename indexing (milisec">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-04-02T09:14:46.888Z">
-<meta property="article:modified_time" content="2025-04-02T09:14:46.888Z">
+<meta property="article:published_time" content="2025-04-17T03:23:40.019Z">
+<meta property="article:modified_time" content="2025-04-17T03:23:40.019Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "1743585286888"
+      "datePublished": "1744860220019"
     }
     </script>
 
@@ -201,174 +201,183 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               
               </header>
               <div class="article-content" itemprop="articleBody">
-                <h2 id="System-working-principle" class="article-heading"><a href="#System-working-principle" class="headerlink" title="System working principle"></a>System working principle<a class="article-anchor" href="#System-working-principle" aria-hidden="true"></a></h2><h3 id="Three-layer-architecture-design" class="article-heading"><a href="#Three-layer-architecture-design" class="headerlink" title="Three layer architecture design"></a>Three layer architecture design<a class="article-anchor" href="#Three-layer-architecture-design" aria-hidden="true"></a></h3><ol>
-<li><strong>Real time file monitoring layer</strong></li>
+                <h2 id="System-Architecture-Overview" class="article-heading"><a href="#System-Architecture-Overview" class="headerlink" title="System Architecture Overview"></a>System Architecture Overview<a class="article-anchor" href="#System-Architecture-Overview" aria-hidden="true"></a></h2><h3 id="Three-Layer-Design" class="article-heading"><a href="#Three-Layer-Design" class="headerlink" title="Three-Layer Design"></a>Three-Layer Design<a class="article-anchor" href="#Three-Layer-Design" aria-hidden="true"></a></h3><ol>
+<li><strong>Real-Time File Monitoring Layer</strong></li>
 </ol>
 <ul>
-<li>Real time perception of file system changes (create&#x2F;rename&#x2F;delete)<br>File name index (second level response)<br>File content index (unified processing during low peak hours in the early morning)</li>
-<li>Asynchronous batch processing of index updates (read, write, delete, independent coroutines)</li>
-<li>Daily full audit at midnight to ensure final consistency</li>
+<li>Real-time detection of file system changes (creation&#x2F;renaming&#x2F;deletion)<br>Filename indexing (milisecond-level response)<br>File content indexing (processed uniformly during off-peak hours at midnight)</li>
+<li>Asynchronous batch processing for index updates (separate coroutines for read, write, and delete operations)</li>
+<li>Full audit at 12:00 AM daily to ensure eventual consistency</li>
 </ul>
 <ol start="2">
-<li>Intelligent index construction layer</li>
+<li>Intelligent Indexing Layer</li>
 </ol>
 <ul>
-<li>Snowflake algorithm generates document ID (40w+&#x2F;second generation capability)</li>
-<li>Automatic format recognition supports 70+file types</li>
+<li>Snowflake algorithm for generating document IDs (capable of generating 400,000+ IDs per second)</li>
+<li>Automatic format recognition supporting over 70 file types</li>
 </ul>
 <ol start="3">
-<li>Multimodal search layer<br>  -Four dimensional joint search:<br>Full text search (name&#x2F;content&#x2F;tag&#x2F;abstract)<br>Fuzzy matching of file names<br>Accurate matching of file names<br>Semantic search (currently only supports images)</li>
+<li>Multimodal Search Layer</li>
 </ol>
-<h2 id="Core-advantages" class="article-heading"><a href="#Core-advantages" class="headerlink" title="Core advantages"></a>Core advantages<a class="article-anchor" href="#Core-advantages" aria-hidden="true"></a></h2><h3 id="🚀Rapid-index-construction" class="article-heading"><a href="#🚀Rapid-index-construction" class="headerlink" title="🚀Rapid index construction"></a>🚀Rapid index construction<a class="article-anchor" href="#🚀Rapid-index-construction" aria-hidden="true"></a></h3><ul>
-<li>Test data: Total size 65.5GB, number of files 200000</li>
-<li>Equipment configuration: 4-core N100 CPU, 500GB HDD</li>
+<ul>
+<li>Four-dimensional combined search:<br>Full-text search (name&#x2F;content&#x2F;tags&#x2F;summary)<br>Filename fuzzy matching<br>Filename exact matching<br>Semantic search (currently supports images only)</li>
+</ul>
+<h2 id="Core-Advantages" class="article-heading"><a href="#Core-Advantages" class="headerlink" title="Core Advantages"></a>Core Advantages<a class="article-anchor" href="#Core-Advantages" aria-hidden="true"></a></h2><h3 id="🚀Ultra-Fast-Index-Building" class="article-heading"><a href="#🚀Ultra-Fast-Index-Building" class="headerlink" title="🚀Ultra-Fast Index Building"></a>🚀Ultra-Fast Index Building<a class="article-anchor" href="#🚀Ultra-Fast-Index-Building" aria-hidden="true"></a></h3><ul>
+<li>Test data: Total size 65.5GB, 200,000 files</li>
+<li>Hardware configuration: 4-core N100 CPU, 500GB HDD</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th><strong>Index</strong></th>
-<th><strong>Traditional solution (for a similar system)</strong></th>
+<th><strong>Metric</strong></th>
+<th><strong>Traditional Solution (Similar System)</strong></th>
 <th><strong>This system</strong></th>
-<th><strong>Increase multiplier</strong></th>
+<th><strong>Improvement Multiple</strong></th>
+<th><strong>Notes</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>File name index time</strong></td>
+<td>File name indexing time</td>
 <td>18 minutes</td>
-<td>1.4S</td>
-<td>771 times</td>
+<td>1.4 senconds</td>
+<td>771x</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>File content indexing time (select Office&amp;PDF documents)</strong></td>
-<td>1h 23minutes</td>
-<td>2min21S</td>
-<td><strong>35.2times</strong></td>
+<td>File content indexing time (Office &amp; PDF documents only)</td>
+<td>1hour 23minutes</td>
+<td>2 minutes 21 seconds</td>
+<td>35.2x</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>Index memory usage</strong></td>
+<td>Index memory usage</td>
 <td>176MB</td>
 <td>26MB</td>
-<td><strong>6.77times</strong></td>
+<td>6.77x</td>
+<td>Reduces to 17MB after 1 minute of inactivity, releasing one service</td>
 </tr>
 <tr>
-<td><strong>Index disk occupancy</strong></td>
+<td>Index disk usage</td>
 <td>156MB</td>
 <td>28MB</td>
-<td><strong>5.6times</strong></td>
+<td>5.6x</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>Number of backend services</strong></td>
+<td>Number of background services</td>
 <td>7</td>
 <td>2</td>
-<td><strong>3.5times</strong></td>
+<td>3.5x</td>
+<td>Reduces to 1 service after 1 minute of inactivity</td>
 </tr>
 </tbody></table>
-<h3 id="💡Intelligent-resource-scheduling" class="article-heading"><a href="#💡Intelligent-resource-scheduling" class="headerlink" title="💡Intelligent resource scheduling"></a>💡Intelligent resource scheduling<a class="article-anchor" href="#💡Intelligent-resource-scheduling" aria-hidden="true"></a></h3><ul>
-<li><strong>On demand loading mechanism</strong>: Model files are downloaded according to actual usage needs, with lightweight and fast startup</li>
-<li><strong>Dynamic current limiting strategy</strong>:<br>Single processing limit: 100000 documents&#x2F;type<br>Maximum processing time: 5 minutes&#x2F;type</li>
-<li><strong>Write barrier protection</strong>: prevents high-frequency writing from causing CPU surge</li>
+<h3 id="💡Intelligent-Resource-Scheduling" class="article-heading"><a href="#💡Intelligent-Resource-Scheduling" class="headerlink" title="💡Intelligent Resource Scheduling"></a>💡Intelligent Resource Scheduling<a class="article-anchor" href="#💡Intelligent-Resource-Scheduling" aria-hidden="true"></a></h3><ul>
+<li><strong>On-demand loading mechanism</strong>: Model files are downloaded based on actual usage needs, enabling lightweight and fast startup</li>
+<li><strong>Dynamic throttling strategy</strong>:<br>Maximum documents processed per session: 100,000 per type<br>Maximum processing time: 5 minutes per type</li>
+<li><strong>Write barrier protection</strong>: Prevents CPU spikes caused by high-frequency writes</li>
 </ul>
-<h2 id="Applicable-scenarios" class="article-heading"><a href="#Applicable-scenarios" class="headerlink" title="Applicable scenarios"></a>Applicable scenarios<a class="article-anchor" href="#Applicable-scenarios" aria-hidden="true"></a></h2><ul>
+<h2 id="Use-Cases" class="article-heading"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases<a class="article-anchor" href="#Use-Cases" aria-hidden="true"></a></h2><ul>
 <li><strong>Knowledge Base Management</strong>: Quickly locate documents</li>
-<li><strong>Multimedia Archive</strong>: Search for images&#x2F;videos through content</li>
-<li><strong>Compliance Audit</strong>: Accurately Track Document Change History</li>
-<li><strong>Team collaboration</strong>: Cross format content association retrieval<br>Full text search support format and processing method table</li>
+<li><strong>Multimedia Archiving</strong>: Search for images&#x2F;videos vy content</li>
+<li><strong>Compliance Auditing</strong>: Accurately track file change history</li>
+<li><strong>Team collaboration</strong>: Cross-format content association retrieval<br><strong>Full-Text Search Supported Formats and Processing Methods Table</strong></li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>Category</th>
-<th>Format extension</th>
-<th>Handling method</th>
-<th>Notes</th>
+<th><strong>Category</strong></th>
+<th><strong>File Extensions</strong></th>
+<th><strong>Processing Method</strong></th>
+<th><strong>Notes</strong></th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>Text category</strong></td>
+<td>Text Files</td>
 <td>.txt .md .log .htm .html .mht .mhtml .xml</td>
-<td>1. Direct read 2. HTML based on text density extraction</td>
-<td>Code files are not indexed by default</td>
+<td>1. Direct reading 2. HTML based on text density extraction</td>
+<td>Code files not indexed by default</td>
 </tr>
 <tr>
-<td><strong>PDF Document</strong></td>
+<td>PDF Documents</td>
 <td>.pdf</td>
-<td>1. Pdfium direct parsing 2. The photocopy uses Tesseract OCR</td>
+<td>1. Direct parsing with pdfium 2. Scanned copies use tesseract OCR</td>
 <td>Limit: ≤ 200 pages, OCR result ≤ 800KB</td>
 </tr>
 <tr>
-<td><strong>e-book</strong></td>
+<td>E-books</td>
 <td>.epub .fb2 .djvu</td>
-<td>Doconverter to txt conversion</td>
-<td>. djvu processes scanned documents</td>
+<td>Convert to txt via doconverter</td>
+<td>djvu treated as scanned document</td>
 </tr>
 <tr>
-<td><strong>Word Document</strong></td>
+<td>Word Documents</td>
 <td>.doc .docm .docx .docxf .dot .dotm .dotx .fodt .odt .ott .oxps .rtf .stw .sxw .wps .wpt .xps</td>
-<td>Convert doconverter to docx and parse it</td>
-<td>Support WPS full range format</td>
+<td>Convert to docx via doconverter, then parse</td>
+<td>Supports all WPS formats</td>
 </tr>
 <tr>
-<td><strong>Table Document</strong></td>
+<td>Spreadsheet Documents</td>
 <td>.csv .et .ett .fods .ods .ots .sxc .xls .xlsb .xlsm .xlsx .xlt .xltm .xltx</td>
-<td>Convert doconverter to CSV and read it</td>
-<td></td>
+<td>Convert to CSV via doconverter, then read</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>PPT Document</strong></td>
+<td>Presentation Documents</td>
 <td>.dps .dpt .fodp .odp .otp .pot .potm .potx .pps .ppsm .ppsx .ppt .pptm .pptx .sxi</td>
-<td>Analysis of converting doconverter to pptx</td>
-<td></td>
+<td>Convert to pptx via doconverter, then parse</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>IWork Document</strong></td>
+<td>IWork Documents</td>
 <td>.pages .numbers .key</td>
-<td>Iwork2text conversion (supports OCR recognition)</td>
-<td></td>
+<td>Convert via iwork2text (supports OCR recognition)</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>Picture</strong>★</td>
+<td>Images★</td>
 <td>.bmp .raw .jpg .jpeg .jpe .jfif .png .gif .tif .tiff .webp .mat .pbm .pgm .ppm .pfm .pnm .fits .fit .fts .exr .hdr .v .vips</td>
 <td>OCR recognition using MiniCPM-o-2.6 model</td>
-<td>Restrictions: ≤ 20MB per sheet</td>
+<td>Limit: ≤20MB per image</td>
 </tr>
 <tr>
-<td><strong>Video</strong>★</td>
+<td>Videos★</td>
 <td>.mp4 .wmv .mkv .avi .mov .webm .flv .mpeg .mpg .3gp .asf .rm .rmv .rmvb .m4v .swf</td>
-<td>Faster Whisper Large v3 Subtitle Extraction</td>
-<td></td>
+<td>Subtitle extraction using faster-whisper-large-v3</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>Audio</strong>★</td>
+<td>Audio★</td>
 <td>.mp3 .aac .wav .flac .ogg .m4a .aiff .wma .ape</td>
-<td>Faster Whisper-Large-v3 voice transcription</td>
-<td></td>
+<td>Speech-to-text using faster-whisper-large-v3</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>CAD Document</strong></td>
+<td>CAD Document</td>
 <td>.dwg .dxf</td>
-<td>Content parsing is not currently supported</td>
-<td>Only index metadata</td>
+<td>Metadata indexing only (content parsing not supported)</td>
+<td>-</td>
 </tr>
 <tr>
-<td><strong>Compressed File</strong></td>
+<td>Compressed Files</td>
 <td>.zip .rar .7z .sz .xz .gz .tar .bz2 .br .zz .zst .lz4</td>
-<td>Content decompression and parsing are not currently supported</td>
-<td>Index only compressed packet metadata</td>
+<td>Metadata indexing only (content decompression not supported)</td>
+<td>-</td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>Note: The format marked with ★ requires the ZimaOS AI module to be enabled, and the complete processing capability depends on the hardware configuration. The system continuously updates the support list, please refer to the official documentation for the latest format support.</p>
+<p>Note: Formats marked with ★ require the ZimaOS-AI module to be enabled. Full processing capability depends on hardware configuration. The system continuously updates the supported format list; refer to official documentation for the latest support.</p>
 </blockquote>
-<h3 id="🌐-AI-enhanced-search" class="article-heading"><a href="#🌐-AI-enhanced-search" class="headerlink" title="🌐 AI enhanced search"></a>🌐 AI enhanced search<a class="article-anchor" href="#🌐-AI-enhanced-search" aria-hidden="true"></a></h3><ul>
-<li>Image processing: MiniCPM-o-2.6 OCR+label recognition</li>
-<li>Audio and video processing: Whisper-large-v3 subtitle generation</li>
+<h3 id="🌐-AI-Enhanced-Search" class="article-heading"><a href="#🌐-AI-Enhanced-Search" class="headerlink" title="🌐 AI-Enhanced Search"></a>🌐 AI-Enhanced Search<a class="article-anchor" href="#🌐-AI-Enhanced-Search" aria-hidden="true"></a></h3><ul>
+<li>Image processing: MiniCPM-o-2.6 OCR + tag recognition</li>
+<li>Audio&#x2F;video processing: Whisper-large-v3 subtitle generation</li>
 <li>Semantic analysis: MiniLM-L6 semantic vectorization</li>
 <li>Reference document: <a href="https://www.zimaspace.com/docs/zimaos/Enable-AI">Enable AI search for ZimaOS</a></li>
 </ul>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2025-04-02T09:14:46.888Z" itemprop="dateModified">Last updated: 2025-04-02</time>
+                <time class="article-footer-updated" datetime="2025-04-17T03:23:40.019Z" itemprop="dateModified">Last updated: 2025-04-17</time>
                 <a href="SMB-Help-Document.html" class="article-footer-prev" title="SMB Help Document"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="Rebuilding-RAID-after-reinstalling-the-system.html" class="article-footer-next" title="Rebuilding RAID after reinstalling the system"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
@@ -377,7 +386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">Contents</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#System-working-principle"><span class="toc-text">System working principle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Three-layer-architecture-design"><span class="toc-text">Three layer architecture design</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-advantages"><span class="toc-text">Core advantages</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%80Rapid-index-construction"><span class="toc-text">🚀Rapid index construction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%92%A1Intelligent-resource-scheduling"><span class="toc-text">💡Intelligent resource scheduling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applicable-scenarios"><span class="toc-text">Applicable scenarios</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8C%90-AI-enhanced-search"><span class="toc-text">🌐 AI enhanced search</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#System-Architecture-Overview"><span class="toc-text">System Architecture Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Three-Layer-Design"><span class="toc-text">Three-Layer Design</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-Advantages"><span class="toc-text">Core Advantages</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%80Ultra-Fast-Index-Building"><span class="toc-text">🚀Ultra-Fast Index Building</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%92%A1Intelligent-Resource-Scheduling"><span class="toc-text">💡Intelligent Resource Scheduling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-Cases"><span class="toc-text">Use Cases</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8C%90-AI-Enhanced-Search"><span class="toc-text">🌐 AI-Enhanced Search</span></a></li></ol></li></ol>
               <a href="#" id="article-toc-top">Back to Top</a>
             </div>
           </aside>
