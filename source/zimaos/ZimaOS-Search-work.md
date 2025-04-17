@@ -5,68 +5,67 @@ type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-## System working principle
-### Three layer architecture design
-1. **Real time file monitoring layer**
-- Real time perception of file system changes (create/rename/delete)
-File name index (second level response)
-File content index (unified processing during low peak hours in the early morning)
-- Asynchronous batch processing of index updates (read, write, delete, independent coroutines)
-- Daily full audit at midnight to ensure final consistency
-2. Intelligent index construction layer
-- Snowflake algorithm generates document ID (40w+/second generation capability)
-- Automatic format recognition supports 70+file types
-3. Multimodal search layer
-  -Four dimensional joint search:
-Full text search (name/content/tag/abstract)
-Fuzzy matching of file names
-Accurate matching of file names
-Semantic search (currently only supports images)
+## System Architecture Overview
+### Three-Layer Design
+1. **Real-Time File Monitoring Layer**
+- Real-time detection of file system changes (creation/renaming/deletion) 
+Filename indexing (milisecond-level response)
+File content indexing (processed uniformly during off-peak hours at midnight)
+- Asynchronous batch processing for index updates (separate coroutines for read, write, and delete operations)
+- Full audit at 12:00 AM daily to ensure eventual consistency
+2. Intelligent Indexing Layer
+- Snowflake algorithm for generating document IDs (capable of generating 400,000+ IDs per second)
+- Automatic format recognition supporting over 70 file types
+3. Multimodal Search Layer
+  - Four-dimensional combined search: 
+    Full-text search (name/content/tags/summary)
+    Filename fuzzy matching
+    Filename exact matching
+    Semantic search (currently supports images only)
+## Core Advantages
+### 🚀Ultra-Fast Index Building
+- Test data: Total size 65.5GB, 200,000 files
+- Hardware configuration: 4-core N100 CPU, 500GB HDD
 
-## Core advantages
-### 🚀Rapid index construction
-- Test data: Total size 65.5GB, number of files 200000
-- Equipment configuration: 4-core N100 CPU, 500GB HDD
-
-| **Index** | **Traditional solution (for a similar system)** | **This system** | **Increase multiplier** |
-| - | - | - | - |
-| **File name index time** | 18 minutes | 1.4S | 771 times |
-| **File content indexing time (select Office&PDF documents)** | 1h 23minutes | 2min21S | **35.2times** |
-| **Index memory usage** | 176MB | 26MB | **6.77times** |
-| **Index disk occupancy** | 156MB | 28MB | **5.6times** |
-| **Number of backend services** | 7 | 2 | **3.5times** |
-### 💡Intelligent resource scheduling
-- **On demand loading mechanism**: Model files are downloaded according to actual usage needs, with lightweight and fast startup
-- **Dynamic current limiting strategy**:
-  Single processing limit: 100000 documents/type
-  Maximum processing time: 5 minutes/type
-- **Write barrier protection**: prevents high-frequency writing from causing CPU surge
-## Applicable scenarios
+| **Metric** | **Traditional Solution (Similar System)** | **This system** | **Improvement Multiple** | **Notes** |
+| - | - | - | - | - |
+| File name indexing time | 18 minutes | 1.4 senconds | 771x | - |
+| File content indexing time (Office & PDF documents only) | 1hour 23minutes | 2 minutes 21 seconds | 35.2x | - |
+| Index memory usage | 176MB | 26MB | 6.77x | Reduces to 17MB after 1 minute of inactivity, releasing one service |
+| Index disk usage | 156MB | 28MB | 5.6x | - |
+| Number of background services | 7 | 2 | 3.5x | Reduces to 1 service after 1 minute of inactivity |
+### 💡Intelligent Resource Scheduling
+- **On-demand loading mechanism**: Model files are downloaded based on actual usage needs, enabling lightweight and fast startup
+- **Dynamic throttling strategy**:
+  Maximum documents processed per session: 100,000 per type
+  Maximum processing time: 5 minutes per type
+- **Write barrier protection**: Prevents CPU spikes caused by high-frequency writes
+## Use Cases
 - **Knowledge Base Management**: Quickly locate documents
-- **Multimedia Archive**: Search for images/videos through content
-- **Compliance Audit**: Accurately Track Document Change History
-- **Team collaboration**: Cross format content association retrieval
-Full text search support format and processing method table
-
-| Category | Format extension | Handling method | Notes |
+- **Multimedia Archiving**: Search for images/videos vy content
+- **Compliance Auditing**: Accurately track file change history
+- **Team collaboration**: Cross-format content association retrieval
+**Full-Text Search Supported Formats and Processing Methods Table**
+  
+| **Category** | **File Extensions** | **Processing Method** | **Notes** |
 | - | - | - | - |
-| **Text category** | .txt .md .log .htm .html .mht .mhtml .xml | 1. Direct read 2. HTML based on text density extraction | Code files are not indexed by default |
-| **PDF Document** | .pdf | 1. Pdfium direct parsing 2. The photocopy uses Tesseract OCR | Limit: ≤ 200 pages, OCR result ≤ 800KB |
-| **e-book** | .epub .fb2 .djvu | Doconverter to txt conversion | . djvu processes scanned documents |
-| **Word Document** | .doc .docm .docx .docxf .dot .dotm .dotx .fodt .odt .ott .oxps .rtf .stw .sxw .wps .wpt .xps | Convert doconverter to docx and parse it | Support WPS full range format |
-| **Table Document** | .csv .et .ett .fods .ods .ots .sxc .xls .xlsb .xlsm .xlsx .xlt .xltm .xltx | Convert doconverter to CSV and read it |  |
-| **PPT Document** | .dps .dpt .fodp .odp .otp .pot .potm .potx .pps .ppsm .ppsx .ppt .pptm .pptx .sxi | Analysis of converting doconverter to pptx |  |
-| **IWork Document** | .pages .numbers .key | Iwork2text conversion (supports OCR recognition) |  |
-| **Picture**★ | .bmp .raw .jpg .jpeg .jpe .jfif .png .gif .tif .tiff .webp .mat .pbm .pgm .ppm .pfm .pnm .fits .fit .fts .exr .hdr .v .vips | OCR recognition using MiniCPM-o-2.6 model | Restrictions: ≤ 20MB per sheet |
-| **Video**★ | .mp4 .wmv .mkv .avi .mov .webm .flv .mpeg .mpg .3gp .asf .rm .rmv .rmvb .m4v .swf | Faster Whisper Large v3 Subtitle Extraction |  |
-| **Audio**★ | .mp3 .aac .wav .flac .ogg .m4a .aiff .wma .ape | Faster Whisper-Large-v3 voice transcription |  |
-| **CAD Document** | .dwg .dxf | Content parsing is not currently supported | Only index metadata |
-| **Compressed File** | .zip .rar .7z .sz .xz .gz .tar .bz2 .br .zz .zst .lz4 | Content decompression and parsing are not currently supported | Index only compressed packet metadata |
+| Text Files | .txt .md .log .htm .html .mht .mhtml .xml | 1. Direct reading 2. HTML based on text density extraction | Code files not indexed by default |
+| PDF Documents | .pdf | 1. Direct parsing with pdfium 2. Scanned copies use tesseract OCR | Limit: ≤ 200 pages, OCR result ≤ 800KB |
+| E-books | .epub .fb2 .djvu | Convert to txt via doconverter | djvu treated as scanned document |
+| Word Documents | .doc .docm .docx .docxf .dot .dotm .dotx .fodt .odt .ott .oxps .rtf .stw .sxw .wps .wpt .xps | Convert to docx via doconverter, then parse | Supports all WPS formats |
+| Spreadsheet Documents | .csv .et .ett .fods .ods .ots .sxc .xls .xlsb .xlsm .xlsx .xlt .xltm .xltx | Convert to CSV via doconverter, then read | - |
+| Presentation Documents | .dps .dpt .fodp .odp .otp .pot .potm .potx .pps .ppsm .ppsx .ppt .pptm .pptx .sxi | Convert to pptx via doconverter, then parse | - |
+| IWork Documents | .pages .numbers .key | Convert via iwork2text (supports OCR recognition)| - |
+| Images★ | .bmp .raw .jpg .jpeg .jpe .jfif .png .gif .tif .tiff .webp .mat .pbm .pgm .ppm .pfm .pnm .fits .fit .fts .exr .hdr .v .vips | OCR recognition using MiniCPM-o-2.6 model | Limit: ≤20MB per image |
+| Videos★ | .mp4 .wmv .mkv .avi .mov .webm .flv .mpeg .mpg .3gp .asf .rm .rmv .rmvb .m4v .swf | Subtitle extraction using faster-whisper-large-v3 | - |
+| Audio★ | .mp3 .aac .wav .flac .ogg .m4a .aiff .wma .ape | Speech-to-text using faster-whisper-large-v3 | - |
+| CAD Document | .dwg .dxf | Metadata indexing only (content parsing not supported) | - |
+| Compressed Files | .zip .rar .7z .sz .xz .gz .tar .bz2 .br .zz .zst .lz4 | Metadata indexing only (content decompression not supported) | - |
 
-> Note: The format marked with ★ requires the ZimaOS AI module to be enabled, and the complete processing capability depends on the hardware configuration. The system continuously updates the support list, please refer to the official documentation for the latest format support.
+> Note: Formats marked with ★ require the ZimaOS-AI module to be enabled. Full processing capability depends on hardware configuration. The system continuously updates the supported format list; refer to official documentation for the latest support.
 > 
-### 🌐 AI enhanced search
-- Image processing: MiniCPM-o-2.6 OCR+label recognition
-- Audio and video processing: Whisper-large-v3 subtitle generation
+### 🌐 AI-Enhanced Search
+- Image processing: MiniCPM-o-2.6 OCR + tag recognition
+- Audio/video processing: Whisper-large-v3 subtitle generation
 - Semantic analysis: MiniLM-L6 semantic vectorization
 - Reference document: [Enable AI search for ZimaOS](https://www.zimaspace.com/docs/zimaos/Enable-AI)
