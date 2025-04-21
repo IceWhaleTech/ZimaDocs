@@ -60,7 +60,8 @@ ollama pull llava-llama3
 ![](https://manage.icewhale.io/api/static/docs/1745203508399_image.png)
 3. Click on the 'Import' button.
 4. Import the frigate.yaml configuration file below.
-> name: pure_grace
+```language
+name: pure_grace
 services:
   frigate:
     cpu_shares: 90
@@ -122,6 +123,8 @@ x-casaos:
     custom: ""
     en_us: frigate
 
+```
+
 5. Click on "Submit".
 ![](https://manage.icewhale.io/api/static/docs/1745203744283_image.png)
 6. Click "Install" and wait for the installation to complete.
@@ -176,8 +179,6 @@ cameras:
       threshold: 25
 
     snapshots:
-```
-```language
       enabled: true
       timestamp: true
       bounding_box: true
