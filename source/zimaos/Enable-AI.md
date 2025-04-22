@@ -5,73 +5,104 @@ type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-## What is ZimaOS-AI
-Introducing **ZimaOS-AI**, an AI module that serves the ZimaOS search function. <br>
-Once installed, you can enable AI search capabilities within ZimaOS. The AI module utilizes a local **Large Language Models(LLM)** to extract features from images, audio, and video, assisting in data preparation for AI search. Additionally, it allows you to schedule activation periods based on GPU resource requirements. Beyond serving as an auxiliary component for AI search, it functions as a playground for users to explore during their leisure time. To ensure an uninterrupted experience, you may need to adjust the settings to temporarily disable API Call. <br>
+## ZimaOS-AI  
+ZimaOS-AI is an AI module designed to serve ZimaOS search. After downloading this module, you can enable the AI search functionality in ZimaOS. The AI module will use a local large language model to extract features from images, audio, and video to assist in preparing data for AI searches. It can also automatically set the time periods during which it can be called based on GPU resource usage requirements. In addition to being a supporting module for AI searches, it also serves as a playground, allowing you to experience the capabilities of ZimaOS AI models.  
+### Applicable Versions  
+v1.3.3 stable and later  
+## How to Use  
+### Downloading the ZimaOS AI Module
+1. Ensure you are using the latest version of ZimaOS.  
+2.  Enable the SSH switch in Developer Mode under "General," then click "Web-based Terminal" to enter the web-based terminal.  
+3.  Log in using your ZimaOS account and password (no visual feedback will be shown when entering the password).  
+4. Install the ZimaOS AI module:   
+  - If you have an NVIDIA discrete GPU, run `zpkg install zimaos_ai`. You will see the following screenshot (the service size is approximately 1.8GB, and downloading and installing will consume your network bandwidth).
+    ![](https://manage.icewhale.io/api/static/docs/1745290359434_image.png)
+  - If you are using the ZimaCube Pro version with an Intel integrated GPU but no NVIDIA discrete GPU, run `zpkg install zimaos_ai_intel`. You will see the following screenshot (the service size is approximately 380MB, and downloading and installing will consume your network traffic).     
+![](https://manage.icewhale.io/api/static/docs/1745290380015_image.png)
+5. Go to the Dashboard to see ZimaOS AI.   
+![](https://manage.icewhale.io/api/static/docs/1745290396987_image.png)
+### Waiting for Initial Feature Extraction of Images, Audio, and Video  
+When first used, the ZimaOS AI module will automatically download a large language model, and the AI module will start automatically.  
+The ZimaOS search module will extract features from images and audio/video files for display during searches. API calls occur at 10-minute intervals (and only within the set available time periods, which are open all day by default; you can adjust this in the ZimaOS AI user interface).  
+### Experiencing AI Search  
+Find the search box in the top left corner of the "Files" section. You can try entering some keywords.  
+![](https://manage.icewhale.io/api/static/docs/1745290446562_image.png)
+You can also enter a sentence to try semantic search. 
+![](https://manage.icewhale.io/api/static/docs/1745290463509_image.png)
+## Usage Requirements  
+1. Meet at least one of the following configurations:   
+**Configuration 1: NVIDIA GPU **  
+  - At least 4GB of VRAM (note: if VRAM is less than 8GB, it will use the CPU and additional memory for mixed CPU/GPU inference).   
+  - GTX 16, RTX 20, or A2000 and higher GPUs (must support CUDA 12). 
+**Configuration 2: Intel Integrated GPU **
+  - At least 8GB of free RAM.   
+  - An i5-1235U or higher CPU with integrated graphics recommended.  
+2.  System space requirement: at least 20GB of free space.   
+  - The application will be stored on the system drive (NVIDIA CUDA version: ~1.8GB / Intel integrated GPU version: ~380MB).   
+  - Model files will be stored in `/media/ZimaOS-HD/AppData/.models` (if AppData has been migrated, it will actually occupy the migrated storage space).  
+3.  Must be connected to the internet and able to access huggingface.co normally (for automatic downloading of LLM models).  
+**Compatible Low Profile GPU Card for Direct Insertion into ZimaCube:**
 
-### Compatibility: 
-* **ZimaOS version:** v1.3.1 stable and later versions. <br>
+| **Model** | **Dimensions (L × H)** | **Compute Power** | **VRAM** | **TDP** | **Price (USD)** |
+| - | - | - | - | - | - |
+| **NVIDIA Tesla P4** | 168×69mm | 5.5 TFLOPS | 8GB | 50W | $100 |
+| **NVIDIA GTX 1650 LP** | 168×69mm | 7.1 TFLOPS | 4GB | 75W | $200 |
+| **NVIDIA RTX 3050 LP** | 182×69mm | 9.1 TFLOPS | 6GB | 70W | $250 |
+| **NVIDIA RTX 4060 LP** | 182×69mm | 15.0 TFLOPS | 8GB | 115W★ | $299 |
+| **NVIDIA RTX A2000** | 168×69mm | 8.0 TFLOPS | 6GB/12GB | 70W | $450/$630 |
+| **NVIDIA Tesla T4** | 168×69mm | 8.1 TFLOPS | 16GB | 70W | $650 | 
+| **NVIDIA A2** | 168×69mm | 4.5 TFLOPS | 16GB | 40W/60W | $650 |
+| **NVIDIA RTX 2000 Ada** | 168×69mm | 12.0 TFLOPS | 16GB | 70W | $680|
+| **NVIDIA RTX 4000 SFF Ada** | 168×69mm | 19.2 TFLOPS | 20GB | 70W | $1250 |
+| **NVIDIA L4** | 168×69mm | 29.5 TFLOPS | 24GB | 72W | $1500 |
 
-### System Requirements:
-* **GPU Memory:** Minimum of 12GB VRAM.
-* **Graphics Card:** NVIDIA RTX 30 series or A2000 and above.
-* **Storage Space:** At least 20GB of available system storage.
-* **Internet Connectivity:** Active internet connection with access to huggingface.co for automatic LLM model downloads.
+> ★ DIY additional power supply (ATX preferred): 12V 8-pin GPU power connector, with an output power of no less than 115W.
 
-## How to Use
-###  Step 1.Download the ZimaOS-AI module
-1. **Enable SSH in Developer Mode:** Access the Developer Mode in the General settings and turn on the SSH switch. Click on the Web-based terminal to enter the web terminal. <br><br>
-2. **Login with ZimaOS Credentials:** Use your ZimaOS account and password to log in (note that the password will not be displayed when you type it). <br><br>
-3. **Install ZimaOS AI Module:** Execute the command `zpkg install zimaos_ai`. You should see a screenshot similar to the one provided below.<br>{% note warn %} Please note that the AI module is approximately 5GB in size. Downloading and installing it will consume network bandwidth. {% endnote %}
-![install ZimaOS AI Module](https://manage.icewhale.io/api/static/docs/1735903071409_image.png)<br>
-4. **Initialize the Module:** Run the command `systemctl restart zimaos-ai`. If you do not see any error messages, it indicates that the service has started up successfully. <br><br>
-5. **Access the Dashboard:** Once the initialize is finished, navigate to the Dashboard. You should be able to see the ZimaOS AI module now available for use. <br>
-![ZimaOS-AI in dashboard](https://manage.icewhale.io/api/static/docs/1735903287348_image.png)
-<br>
-### Step 2. Waiting for the first feature extraction of images, audio, and video
+**Full-Height GPUs Connected via Other Methods (e.g., Thunderbolt Docks or PCIe Extenders) (GPUs supporting CUDA 12):**
 
-* The ZimaOS-AI module will **automatically** download the LLM model when used for the first time, and the AI ​​module will automatically start.<br>
-* The AI search module of ZimaOS will utilize local computational resources to perform feature extraction on images and audio/video files for display during your search. The interval between each **API Call** is 10 minutes, occurring only within the designated available time periods (default is 'on', set to 'all day'. You can adjust these settings in the ZimaOS-AI user interface.) <br>
+| **Architecture Code** | **Corresponding Product Series** | **Supported** |
+| - | - | - |
+| **Volta** | Tesla V100 and other data center cards | ✅(Partially supported) |
+| **Turing** | RTX 20 series、GTX 16 series | ✅ |
+| **Ampere** | RTX 30 series、A series data center cards | ✅ |
+| **Ada Lovelace** | RTX 40 series | ✅ |
+| **Hopper** | H100 and other server cards | ✅ |
+| **Blackwell** | RTX 50 series | ✅ |
+## Resource Usage
+### NVIDIA GPUs 
+| **Model** | **VRAM Usage** | **Memory Usage** | **Additional CPU Usage** | **Model Fully Loaded on GPU** |
+| - | - | - | - | - |
+| **GTX 1650 4G** | 3448 MiB | 3.8GB | 3% → 25% | ❌ Partially on CPU |
+| **RTX 3050 6G** | 5210 MiB | 2.1GB | 3% → 17% | ❌ Partially on CPU |
+| **RTX 4060 8G** | 6314 MiB | 1.1GB | 3% → 9% | ✅ Fully on GPU  |
+| **A2000 16G | 9312 MiB** | 1.1GB | 3% → 7% | ✅ Fully on GPU |
+| **RTX 4060Ti 16G** | 9346 MiB | 1.0GB | 3% → 5% | ✅ Fully on GPU |
+## Common Troubleshooting 
+1. **Q: No AI-related results appear during searches**  
+  -  Possible reasons:    
+    - Poor network connection (unable to access huggingface.co); the model is still downloading.     
+    - Currently performing AI feature extraction.     
+    - Check VRAM usage. The minimum requirement here is 5GB (when VRAM is low, it will use CPU and memory resources and a downgraded model. Only when VRAM exceeds 10GB will it use the better Q8 model). Usage may increase slightly depending on image size and complexity.  
 
-### Step 3.Experience AI search
-* In the top left corner of Files, you will find the search box where you can try entering some keywords.<br>
-![search picture with words using AI](https://manage.icewhale.io/api/static/docs/1735903472461_image.png)
-<br>
-* Or，you can also enter a complete sentence to try semantic search.<br>
-![search picture with sentence using AI](https://manage.icewhale.io/api/static/docs/1735903519243_image.png)
+2. **Q: Unknown status of ZimaOS-AI operation**   
+  - Click "Call-History" to check the operation status.  
 
+3. **Q: No download progress visible during model download**   
+  - You can check download speed by monitoring network traffic on the homepage.   
+  - You can also check download progress with `journalctl -xef -u zimaos-ai`.  
 
-### Troubleshooting
-- **Q:** No AI-related results appear during search?
-**A:**
-  It may be due to one of the following reasons:
-   1. Unable to access huggingface.co; model not yet downloaded: Ensure your system can connect to huggingface.co to download the necessary AI models.
-   2. AI feature extraction in progress: The system may still be processing data; please wait for completion.
-   3. Insufficient GPU memory: While 12GB is the minimum requirement, larger or more complex images may demand more memory. Check your GPU's memory usage to ensure it meets the necessary criteria.<br><br>
-         
-- **Q:** I don't know the running status of ZimaOS-AI.
-**A:** Click **Call-History** to check the running status.<br><br>
+4. **Q: Non-English content cannot be searched for AI-related results**   
+  - Currently, AI search only supports English.  
 
-  
-- **Q:** I can't see the download status during the model download process.
-**A:** You can check the download traffic yourself through the network on the homepage to judge the situation<br><br>
+5. **Q: Semantic search only finds images**   
+  -  Currently, semantic search only supports images.  
 
-  
-- **Q:** Non-English content cannot be searched for AI-related information.
-**A:** Currently, the AI ​​Module is temporarily limited to English language support.<br><br>
+6. **Q: Why do I see increased network traffic after running?**
+  - Automatic model downloads will consume network bandwidth, depending on different functions (currently, AI search triggers automatic downloads for the last two items).  
 
-  
-- **Q:** Semantic search can only find images.
-**A:** Currently, semantic search is temporarily limited to image content.<br><br>
+7. **Q: How are ZimaOS-AI resources being used?**  
+  -  Refer to the "Resource Usage" table.  
 
-- **Q:** Why does network traffic increase after running the application?
-**A:** Automatic model downloads consume network bandwidth. For different functions (currently, AI search automatically triggers the download of the latter two):
-
-  - OCR: 1.4GB
-  - <u>Image/Summary/Tag: 4.5GB</u>
-  - <u>Subtitle: 3.09GB</u><br><br>
-- **Q:** ZimaOS-AI consumes too many resources, affecting normal work or entertainment on ZimaOS.
-**A:** You can set the time periods during which GPU resources are available for API Call in the user interface of ZimaOS-AI. For example, you can disable it or schedule AI search feature extraction tasks to run only between 1:00 AM and 7:00 AM.
-<div align="center">
-  <img src="https://manage.icewhale.io/api/static/docs/1736132154512_copyImage.png" alt="Allow Api CAll Time Range" />
-</div>
+8. **Q: I feel ZimaOS-AI is too resource-intensive, affecting normal work or entertainment on ZimaOS**   
+  - You can set the time periods during which GPU resources can be called for API use in the ZimaOS-AI main interface, such as disabling it or limiting AI search feature extraction to between 1 AM and 7 AM.
+![](https://manage.icewhale.io/api/static/docs/1745293019552_image.png)
