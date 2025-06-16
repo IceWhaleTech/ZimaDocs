@@ -1,51 +1,111 @@
 ---
-title: Ligar o Synology e Compartilhamentos SMB  
-description:  
-type: “Docs”  
-tip: Formato fixo na barra superior, por favor, não remova. A descrição é para o artigo; se não preenchida, será capturada a primeira parte do conteúdo.  
----  
-# Como Compartilhar e Obter Arquivos de um NAS? SAMBA pode ser o método mais importante  
-Quando falamos sobre Armazenamento Conectado à Rede (NAS), queremos que nossos arquivos sejam armazenados, gerenciados em um só lugar e acessados de qualquer lugar. Mas como isso funciona?  
-![](https://manage.icewhale.io/api/static/docs/1727149654477_image.png)  
-Você pode sempre acessar seus dados visitando a WebUI do ZimaOS, que possui uma interface organizada e uma experiência fluida. No entanto, quando seu trabalho envolve referências de arquivos ou você precisa de uma operação mais complexa na hierarquia do sistema de arquivos, montar seus drives NAS no sistema cliente usando tecnologias como SMB/SAMBA será uma maneira melhor.  
-![](https://manage.icewhale.io/api/static/docs/1727149678738_image.png)  
-SMB (Server Message Block) é um protocolo integrado ao sistema Windows para compartilhamento de arquivos e outros serviços pela rede. O SAMBA implementa o protocolo SMB, que enriquece os métodos de compartilhamento de arquivos em sistemas *nix-like. O ZimaOS vem com SAMBA, facilitando o compartilhamento e a transferência de arquivos. No conteúdo a seguir, descreveremos tanto o SMB quanto o SAMBA como SMB para fins de conveniência.  
-## Criar uma pasta compartilhada no ZimaOS  
-Abra o aplicativo Files no painel do ZimaOS e encontre a pasta de destino que contém os arquivos que você deseja compartilhar. Clique com o botão direito na pasta e selecione Compartilhar.  
-![](https://manage.icewhale.io/api/static/docs/1727149714447_image.png)  
-Uma janela de diálogo será exibida com os URLs necessários para montar a pasta compartilhada nos sistemas correspondentes.  
-![](https://manage.icewhale.io/api/static/docs/1727149728058_image.png)  
-Esses dois URLs são para usuários profissionais montarem drives manualmente. Além disso, com o [cliente Zima](https://findzima.com/) nos sistemas correspondentes, podemos tornar o processo de montagem mais fácil.  
-![](https://manage.icewhale.io/api/static/docs/1727149849839_image.png)  
-## Montar sua pasta compartilhada SMB no Windows  
-Baixe o Zima-latest setup.exe de [findzima](https://findzima.com/) e abra-o. O processo de instalação será iniciado, e o cliente Zima será lançado automaticamente após a instalação. Você verá o ícone do Zima à direita da sua barra de tarefas, que aparecerá como um ponto de interrogação devido ao estado não conectado.  
-Clique com o botão direito no ícone e selecione Escanear e Conectar ao Zima.  
-![](https://manage.icewhale.io/api/static/docs/1727149936501_image.png)  
-Localize seu dispositivo Zima e clique em Conectar.  
-![](https://manage.icewhale.io/api/static/docs/1727149952959_image.png)  
-O Zima.exe pedirá que você insira seu nome de usuário e senha da WebUI para fazer login. Após isso, o ícone do zima.exe mudará de um ponto de interrogação para o logo ZIMA, indicando que o zima.exe entrou no status de login.  
-![](https://manage.icewhale.io/api/static/docs/1727149972815_image.png)  
-Clique com o botão direito no ícone do Zima e selecione Abrir no Explorador de Arquivos, o que montará sua pasta compartilhada no sistema Windows e a abrirá automaticamente!  
+title: Guia de Implementação do Pi-hole no ZimaOS
+description: 
+type: Docs
+author: icewhale123456
+tip: O formato fixo da barra superior não deve ser removido, description é a descrição do artigo, se não preenchido, será extraído do primeiro parágrafo do conteúdo
+---
+### Introdução
+O Pi-hole é uma poderosa ferramenta de bloqueio de anúncios a nível de rede que pode ajudar a bloquear anúncios e proteger a sua privacidade. Neste tutorial, iremos apresentar como instalar e configurar o Pi-hole no ZimaOS para tornar a sua rede doméstica mais limpa e eficiente.
 
-> Nota: para funcionar corretamente, seu Windows e ZimaOS precisam estar na mesma rede local (LAN).  
-## Montar sua pasta compartilhada SMB no macOS  
-Da mesma forma, também preparamos um aplicativo Zima para usuários de Mac em [findzima](https://findzima.com/). O uso do aplicativo Zima no Mac é praticamente o mesmo que no Windows. Basta seguir as instruções acima.  
+---
+### Pré-requisitos
+- Um dispositivo com ZimaOS instalado.
+- A capacidade de aceder à interface web do ZimaOS ou via SSH.
+- Privilégios de administrador e configuração de rede já definidos.
 
-Você se lembra do que o aplicativo Files exibe quando você termina de criar uma pasta compartilhada? No macOS, usaremos os URLs que você acabou de obter para montar manualmente!  
-![](https://manage.icewhale.io/api/static/docs/1727150063996_image.png)  
-Abra o Finder no seu Mac e pressione CMD+K, depois cole o URL correspondente na caixa de entrada.  
-![](https://manage.icewhale.io/api/static/docs/1727150080211_image.png)  
-Clique em Conectar. Neste momento, na janela de diálogo que aparecer, escolha Convidado e clique em Conectar.  
+---
+### Passo 1: Instalar o Docker Pi-hole
+1. Entre na interface web do ZimaOS.
+2. Aceda à **App Store** e pesquise por Pi-hole para instalar.
+![](https://manage.icewhale.io/api/static/docs/1734678654109_image.png)
 
-> Para usuários do ZimaOS v1.2.3, escolha Usuário Registrado e insira o nome de usuário e a senha corretos.  
-![](https://manage.icewhale.io/api/static/docs/1727150117572_image.png)  
-Agora, você verá sua pasta compartilhada aberta e ela será listada na coluna esquerda do aplicativo Finder.  
-![](https://manage.icewhale.io/api/static/docs/1727150133237_image.png)  
+3. Clique em Instalar.
+4. Antes de iniciar sessão no Pi-hole, clique na interface de configurações da aplicação e encontre a palavra-passe (a palavra-passe de exemplo é your_password).
 
-> E quanto ao URL para o Windows Explorer? Quais são as diferenças entre a montagem automática do Zima e a montagem manual do drive via URL?
+| ![](https://manage.icewhale.io/api/static/docs/1734678694677_image.png) | ![](https://manage.icewhale.io/api/static/docs/1734678703824_image.png) |
+| - | - |
 
-Atualmente, nosso compartilhamento SMB usa a conta de Convidado. Em versões futuras, introduziremos múltiplos usuários para a função de compartilhamento e fortaleceremos a gestão de permissões. Esperamos que isso atenda a necessidades mais diversas de todos.  
-## Não é só LAN  
-Na verdade, não é apenas na LAN, mas também em redes diretas e WAN, você pode facilmente conectar seu dispositivo Zima e mapear o diretório compartilhado como uma unidade de rede. Vamos lançar tutoriais relevantes. Agradecemos sua atenção contínua.  
 
-Se você encontrar qualquer problema durante o uso, fique à vontade para nos avisar a qualquer momento. Você também pode se juntar à nossa [comunidade](https://community.zimaspace.com/) e [Discord](https://discord.com/invite/uuNfKzG5) para discutir mais sobre NAS e ZimaOS. Aguardamos seu feedback!  
+5. Clique na aplicação e insira a palavra-passe para aceder à interface.
+![](https://manage.icewhale.io/api/static/docs/1734678749177_image.png)
+
+![](https://manage.icewhale.io/api/static/docs/1734678754268_image.png)
+
+
+---
+### Passo 2: Configurar a rede
+**2.1 Alterar as definições de DNS do router**
+Benefício: Alterar as definições de DNS do router permitirá que toda a rede de dispositivos use automaticamente o Pi-hole para bloqueio de anúncios, sem necessidade de configurar manualmente cada dispositivo.
+1. Inicie sessão na interface de gestão do router.
+2. Defina o endereço do servidor DNS do router para o endereço IP local do dispositivo ZimaOS onde o Pi-hole está a correr.
+- Exemplo: Se o IP local do ZimaOS for `10.0.201.187`, defina o servidor DNS para `10.0.201.187`.
+**2.2 Configurar manualmente o DNS nos dispositivos clientes**
+- Se não quiser modificar as definições para toda a rede, pode configurar um endereço DNS personalizado num único dispositivo apontando para o IP do ZimaOS.
+**Configurar DNS num dispositivo Windows**
+1. Na janela de configurações, encontre "Mais opções de adaptador" e clique em Editar.
+![](https://manage.icewhale.io/api/static/docs/1734679538566_image.png)
+
+2. Encontre e clique duas vezes em "Protocolo Internet Versão 4 (TCP/IPv4)".
+3. Preencha o seguinte:
+- Servidor DNS preferencial: 10.0.201.187 (IP do seu servidor Pi-hole).
+- Servidor DNS alternativo: 1.1.1.1 (DNS da Cloudflare) ou 8.8.8.8 (DNS do Google, como backup).
+![](https://manage.icewhale.io/api/static/docs/1734679557759_image.png)
+
+4. Clique em "OK" para guardar as definições.
+Dica: Se o bloqueio de anúncios não funcionar, tente limpar o cache DNS:
+No prompt de comando, execute:
+```
+ipconfig /flushdns
+```
+
+Isto forçará o dispositivo a usar as novas definições DNS.
+
+---
+### Passo 3: Otimizar configurações (opcional)
+**3.1 Ativar mais listas de filtros de anúncios**
+1. No painel do Pi-hole, navegue até Adlists.
+![](https://manage.icewhale.io/api/static/docs/1734679945680_image.png)
+
+2. Adicione mais listas de bloqueio de anúncios, por exemplo:
+- [StevenBlack/hosts](https://github.com/StevenBlack/hosts)
+- [oisd.nl](https://oisd.nl/)
+Cole a URL copiada em Endereço, preencha o comentário e clique em adicionar.
+![](https://manage.icewhale.io/api/static/docs/1734680053090_image.png)
+
+**3.2 Configurar cache DNS e reforço da privacidade**
+1. Em Definições > DNS, selecione um servidor DNS a montante confiável (como Cloudflare ou Google).
+![](https://manage.icewhale.io/api/static/docs/1734680136362_image.png)
+
+2. Ative o DNSSEC para maior segurança.
+![](https://manage.icewhale.io/api/static/docs/1734680141523_image.png)
+
+
+---
+Passo 4: Testar o bloqueio de anúncios
+1. Visite um site com muitos anúncios (como um portal de notícias).
+2. Verifique se os anúncios foram bloqueados com sucesso.
+3. Consulte o número de pedidos bloqueados no painel do Pi-hole.
+![](https://manage.icewhale.io/api/static/docs/1734680159332_image.png)
+
+
+---
+### Conclusão
+Agora que implementou com sucesso o Pi-hole no ZimaOS, desfrute de uma experiência na Internet sem anúncios! O Pi-hole não só melhora a velocidade da sua rede, como também protege a sua privacidade. Sinta-se à vontade para ajustar as definições ou adicionar mais funcionalidades conforme as suas necessidades. Se tiver alguma dúvida, participe na nossa comunidade!
+### Perguntas Frequentes
+1. Clique em Instalar para evitar conflito de portas. Basta alterar a porta.
+![](https://manage.icewhale.io/api/static/docs/1734680182479_image.png)
+
+A porta 10443 é normalmente usada para a interface HTTPS de gestão do Pi-hole. Alterar a porta não afetará a função principal de DNS do Pi-hole.
+Não é recomendado alterar a porta 67 pois isso afetará o funcionamento normal do serviço DHCP e impedirá que os clientes obtenham um endereço IP automaticamente. Se houver conflito de portas, a melhor solução é desativar o serviço em conflito.
+- Primeiro, encontre o processo que está a usar a porta 67 na linha de comando e utilize o comando
+```
+sudo ss -ulnp | grep :67
+```
+
+![](https://manage.icewhale.io/api/static/docs/1734680210741_image.png)
+
+- Use o seguinte comando para encerrar o processo em conflito e a instalação será bem-sucedida
+```
+sudo kill -9 <PID>
+```
