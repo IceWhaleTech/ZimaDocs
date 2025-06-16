@@ -2,62 +2,114 @@ Aquí tienes la traducción al español del contenido solicitado:
 
 ---
 
-**Título: Vincular Synology y compartir carpetas SMB**  
-**Descripción:**  
-**Tipo:** “Docs”  
-**Consejo:** No eliminar el formato fijo de la barra superior, la descripción debe ser el texto introductorio del artículo. Si no se proporciona, se tomará el primer párrafo como descripción.
+---
+title: Guía de despliegue de Pi-hole en ZimaOS
+description: 
+type: Docs
+author: icewhale123456
+tip: La barra superior tiene un formato fijo, no la elimines. description es la descripción del artículo. Si no se llena, se tomará el primer párrafo del contenido.
+---
+### Introducción
+Pi-hole es una poderosa herramienta de bloqueo de anuncios a nivel de red que te ayuda a bloquear anuncios y proteger tu privacidad. En este tutorial, te mostraremos cómo instalar y configurar Pi-hole en ZimaOS para hacer tu red doméstica más limpia y eficiente.
 
----  
-# ¿Cómo compartir y obtener archivos desde un NAS? SAMBA podría ser la forma más importante  
-Cuando hablamos de Almacenamiento Conectado a la Red (NAS), queremos que nuestros archivos se almacenen, gestionen en un solo lugar y sean accesibles desde cualquier lugar. Pero, ¿cómo se lleva a cabo esto?  
-![](https://manage.icewhale.io/api/static/docs/1727149654477_image.png)  
-Siempre puedes acceder a tus datos visitando la interfaz web de ZimaOS, que tiene una interfaz bellamente organizada y una experiencia fluida. Sin embargo, cuando tu trabajo involucra hacer referencia a archivos o necesitas realizar operaciones más complejas en la jerarquía del sistema de archivos, montar las unidades NAS en tu sistema cliente mediante tecnologías como SMB/SAMBA será una mejor opción.  
-![](https://manage.icewhale.io/api/static/docs/1727149678738_image.png)  
-SMB (Server Message Block) es un protocolo integrado en el sistema Windows para compartir archivos y otros servicios a través de la red. SAMBA implementa el protocolo SMB, lo que enriquece los métodos de compartición de archivos en sistemas *nix-like. ZimaOS está equipado con SAMBA, lo que hace que compartir y transferir archivos sea muy conveniente. En el siguiente contenido, describiremos tanto SMB como SAMBA como SMB para fines de conveniencia.  
+---
+### Requisitos previos
+- Un dispositivo con ZimaOS instalado.
+- La capacidad de acceder a la interfaz web de ZimaOS o a SSH.
+- Privilegios de red y administrador configurados.
 
-## Crear una carpeta compartida en ZimaOS  
-Lanza la aplicación Archivos en el panel de ZimaOS y busca la carpeta de destino que contiene los archivos que deseas compartir. Haz clic derecho en la carpeta y selecciona "Compartir".  
-![](https://manage.icewhale.io/api/static/docs/1727149714447_image.png)  
-Una ventana de diálogo te mostrará las URLs necesarias para montar la carpeta compartida en los sistemas correspondientes.  
-![](https://manage.icewhale.io/api/static/docs/1727149728058_image.png)  
-Estas dos URLs son para que los usuarios profesionales monten manualmente las unidades. Además, con el [cliente Zima](https://findzima.com/) en los sistemas correspondientes, podemos hacer que el proceso de montaje sea más fácil.  
-![](https://manage.icewhale.io/api/static/docs/1727149849839_image.png)  
+---
+### Paso 1: Instalar Docker Pi-hole
+1. Ingresa a la interfaz web de ZimaOS.
+2. Accede a la **App Store** y busca Pi-hole para instalarlo.
+![](https://manage.icewhale.io/api/static/docs/1734678654109_image.png)
 
-## Montar tu carpeta compartida SMB en Windows  
-Descarga el archivo Zima-latest setup.exe desde [findzima](https://findzima.com/) y ábrelo. Esto iniciará el proceso de instalación y el cliente Zima se abrirá automáticamente después de la instalación. Encontrarás el ícono de Zima a la derecha de la barra de tareas, el cual se mostrará como un signo de interrogación debido al estado de no conexión.  
-Haz clic derecho en el ícono y selecciona "Escanear y Conectar a Zima".  
-![](https://manage.icewhale.io/api/static/docs/1727149936501_image.png)  
-Localiza tu dispositivo Zima y haz clic en "Conectar".  
-![](https://manage.icewhale.io/api/static/docs/1727149952959_image.png)  
-Zima.exe te pedirá que ingreses tu nombre de usuario y contraseña del WebUI para iniciar sesión. Después de esto, el ícono de zima.exe cambiará de un signo de interrogación a un logo de ZIMA, lo que indica que has iniciado sesión.  
-![](https://manage.icewhale.io/api/static/docs/1727149972815_image.png)  
-Haz clic derecho en el ícono de Zima y selecciona "Abrir en el Explorador de Archivos", lo que montará tu carpeta compartida en tu sistema Windows y la abrirá automáticamente.
+3. Haz clic en Instalar.
+4. Antes de iniciar sesión en Pi-hole, haz clic en la interfaz de configuración de la aplicación y encuentra la contraseña (la contraseña de muestra es your_password).
 
-> Nota: Para que funcione correctamente, tanto tu Windows como ZimaOS deben estar en la misma red local (LAN).  
+| ![](https://manage.icewhale.io/api/static/docs/1734678694677_image.png) | ![](https://manage.icewhale.io/api/static/docs/1734678703824_image.png) |
+| - | - |
 
-## Montar tu carpeta compartida SMB en macOS  
-De manera similar, también hemos preparado una aplicación Zima para usuarios de Mac en [findzima](https://findzima.com/). El uso de la aplicación Zima en Mac es muy similar al de Windows. Solo sigue las instrucciones mencionadas anteriormente.
+5. Haz clic en la aplicación e ingresa la contraseña para acceder a la interfaz.
+![](https://manage.icewhale.io/api/static/docs/1734678749177_image.png)
 
-¿Recuerdas qué mensaje te muestra la aplicación Archivos cuando terminas de crear una carpeta compartida? En macOS, utilizaremos las URLs que acabas de obtener para montar manualmente.  
-![](https://manage.icewhale.io/api/static/docs/1727150063996_image.png)  
-Abre Finder en tu Mac y presiona CMD+K, luego copia y pega la URL correspondiente en el cuadro de entrada.  
-![](https://manage.icewhale.io/api/static/docs/1727150080211_image.png)  
-Haz clic en "Conectar". Ahora, en el cuadro de diálogo, selecciona "Invitado" y haz clic en "Conectar".  
+![](https://manage.icewhale.io/api/static/docs/1734678754268_image.png)
 
-> Para usuarios de ZimaOS v1.2.3, selecciona "Usuario Registrado" e ingresa el nombre de usuario y contraseña correctos.  
-![](https://manage.icewhale.io/api/static/docs/1727150117572_image.png)  
-Ahora, tu carpeta compartida se abrirá y aparecerá en la columna izquierda de la aplicación Finder.  
-![](https://manage.icewhale.io/api/static/docs/1727150133237_image.png)  
+---
+### Paso 2: Configurar la red
+**2.1 Cambiar la configuración de DNS del router**
+Beneficio: Cambiar la configuración de DNS del router permitirá que toda la red de dispositivos use automáticamente Pi-hole para bloquear anuncios, sin necesidad de configurarlo manualmente en cada uno.
+1. Inicia sesión en la interfaz de administración del router.
+2. Configura la dirección del servidor DNS del router con la IP local del dispositivo ZimaOS donde está corriendo Pi-hole.
+- Ejemplo: Si la IP local de ZimaOS es `10.0.201.187`, configura la dirección del servidor DNS en `10.0.201.187`.
+**2.2 Configurar DNS manualmente en los dispositivos cliente**
+- Si no deseas modificar la configuración de toda la red, puedes configurar una dirección DNS personalizada en un solo dispositivo con la IP de ZimaOS.
+**Configurar DNS en un dispositivo Windows**
+1. En la ventana de configuración, encuentra "Más opciones de adaptador" y haz clic en Editar.
+![](https://manage.icewhale.io/api/static/docs/1734679538566_image.png)
 
-> ¿Qué pasa con la URL para el Explorador de Archivos de Windows? ¿Cuáles son las diferencias entre el montaje automatizado por Zima y el montaje manual mediante URL?
+2. Encuentra y haz doble clic en "Protocolo de Internet Versión 4 (TCP/IPv4)".
+3. Completa lo siguiente:
+- Servidor DNS preferido: 10.0.201.187 (IP de tu servidor Pi-hole).
+- Servidor DNS alternativo: 1.1.1.1 (DNS de Cloudflare) o 8.8.8.8 (DNS de Google, como respaldo).
+![](https://manage.icewhale.io/api/static/docs/1734679557759_image.png)
 
-Actualmente, nuestra compartición SMB usa la cuenta de invitado. En versiones futuras, introduciremos múltiples usuarios en la función de compartición y reforzaremos la gestión de permisos. Esperamos que estas mejoras satisfagan las necesidades más diversas de los usuarios.  
+4. Haz clic en "OK" para guardar la configuración.
+Consejos: Si el bloqueo de anuncios no funciona, prueba a limpiar la caché DNS:
+En el símbolo del sistema, ejecuta:
+```
+ipconfig /flushdns
+```
 
-## No solo en LAN  
-De hecho, no solo en LAN, sino también en redes directas y WAN, puedes conectar fácilmente tu dispositivo Zima y mapear el directorio compartido como una unidad de red. Publicaremos tutoriales relacionados al respecto. ¡Gracias por seguir prestando atención!
+Esto forzará al dispositivo a usar la nueva configuración de DNS.
 
-Si encuentras algún problema durante el uso, no dudes en avisarnos en cualquier momento. También puedes unirte a nuestra [comunidad](https://community.zimaspace.com/) y [Discord](https://discord.com/invite/uuNfKzG5) para discutir más sobre NAS y ZimaOS. ¡Esperamos tus comentarios!
+---
+### Paso 3: Optimizar la configuración (opcional)
+**3.1 Habilitar más listas de filtrado de anuncios**
+1. En el panel de control de Pi-hole, navega hasta Adlists.
+![](https://manage.icewhale.io/api/static/docs/1734679945680_image.png)
 
----  
+2. Agrega más listas de bloqueo de anuncios, por ejemplo:
+- [StevenBlack/hosts](https://github.com/StevenBlack/hosts)
+- [oisd.nl](https://oisd.nl/)
+Pega la URL copiada en Dirección, completa el comentario y haz clic en añadir para agregarla.
+![](https://manage.icewhale.io/api/static/docs/1734680053090_image.png)
 
-¡Listo! Espero que esta traducción te sea útil.
+**3.2 Configurar el caché de DNS y mejorar la privacidad**
+1. En Configuración > DNS, selecciona un servidor DNS ascendente confiable (como Cloudflare o Google).
+![](https://manage.icewhale.io/api/static/docs/1734680136362_image.png)
+
+2. Activa DNSSEC para mayor seguridad.
+![](https://manage.icewhale.io/api/static/docs/1734680141523_image.png)
+
+---
+Paso 4: Probar el bloqueo de anuncios
+1. Visita un sitio web con muchos anuncios (por ejemplo, un portal de noticias).
+2. Verifica si los anuncios han sido bloqueados con éxito.
+3. Verifica el número de solicitudes bloqueadas en el panel de Pi-hole.
+![](https://manage.icewhale.io/api/static/docs/1734680159332_image.png)
+
+---
+### Conclusión
+¡Ahora que has desplegado con éxito Pi-hole en ZimaOS, disfruta de una experiencia en línea sin anuncios! Pi-hole no solo mejora la velocidad de tu red, sino que también protege tu privacidad. Siéntete libre de ajustar la configuración o agregar más características según tus necesidades. Si tienes alguna pregunta, ¡discutámoslo en nuestra comunidad!
+### Preguntas frecuentes
+1. Haz clic en Instalar para evitar la ocupación de puertos. Simplemente cambia el puerto.
+![](https://manage.icewhale.io/api/static/docs/1734680182479_image.png)
+
+El puerto 10443 generalmente se usa para la interfaz de gestión HTTPS de Pi-hole. Cambiar el puerto no afectará la función principal de DNS de Pi-hole.
+No se recomienda cambiar el puerto 67, ya que afectará el funcionamiento normal del servicio DHCP y causará que el cliente no pueda obtener automáticamente una dirección IP. Si hay un conflicto de puertos, la mejor solución es deshabilitar el servicio conflictivo.
+- Primero, encuentra el proceso que ocupa el puerto 67 en la interfaz de línea de comandos y usa el comando
+```
+sudo ss -ulnp | grep :67
+```
+
+![](https://manage.icewhale.io/api/static/docs/1734680210741_image.png)
+
+- Usa el siguiente comando para finalizar el proceso en conflicto y la instalación será exitosa
+```
+sudo kill -9 <PID>
+```
+
+---
+
+Espero que te sea útil. Si necesitas algún ajuste adicional, ¡avísame!
