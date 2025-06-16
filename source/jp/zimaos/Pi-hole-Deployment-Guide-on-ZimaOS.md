@@ -1,53 +1,110 @@
-以下是您的内容翻译成日语，并保留原有格式：
+---
+title: ZimaOSでのPi-holeデプロイメントガイド
+description: 
+type: Docs
+author: icewhale123456
+tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。未入力の場合は、最初の段落の内容を切り取ります。
+---
+### はじめに
+Pi-holeは、広告をブロックし、プライバシーを保護する強力なネットワークレベルのツールです。このチュートリアルでは、ZimaOS上にPi-holeをインストールし、設定する方法について説明します。これにより、家庭のネットワークがよりクリーンで効率的になります。
 
 ---
-title: SynologyとSMB共有のリンク
-description:
-type: “Docs”
-tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明です。記入しない場合、最初の段落の文字が自動的に取得されます。
+### 前提条件
+- ZimaOSがインストールされたデバイス。
+- ZimaOSのWebインターフェースまたはSSHにアクセスできること。
+- ネットワークと管理者権限が設定されていること。
+
 ---
-# NASからファイルを共有して取得する方法：SAMBAが最も重要な方法かもしれません
-ネットワーク接続ストレージ（NAS）について話すとき、私たちはファイルを一箇所に保存し、管理し、どこからでもアクセスできるようにしたいと考えます。しかし、実際にはどうやってそれを実現するのでしょうか？
-![](https://manage.icewhale.io/api/static/docs/1727149654477_image.png)
-ZimaOSのWebUIにアクセスすれば、整理されたインターフェースとスムーズな体験を得ることができます。しかし、作業がファイルの参照を含む場合や、ファイルシステム階層のより複雑な操作が必要な場合、SMB/SAMBAのような技術を使ってNASドライブをクライアントシステムにマウントする方法がより良い方法となります。
-![](https://manage.icewhale.io/api/static/docs/1727149678738_image.png)
-SMB（Server Message Block）は、ネットワーク越しにファイルやその他のサービスを共有するためにWindowsシステムに組み込まれているプロトコルです。SAMBAは、*nix系システムでSMBプロトコルを実装しており、ファイル共有の方法を豊富にしています。ZimaOSはSAMBAを装備しており、ファイルの共有や転送が非常に便利です。以下では、便宜上、SMBとSAMBAを両方ともSMBとして説明します。
-## ZimaOSで共有フォルダを作成する
-ZimaOSのダッシュボードで「Files」アプリを起動し、共有したいファイルを含むフォルダを探します。フォルダを右クリックし、「Share」を選択します。
-![](https://manage.icewhale.io/api/static/docs/1727149714447_image.png)
-ダイアログウィンドウが表示され、対応するシステムで共有フォルダをマウントするためのURLが提示されます。
-![](https://manage.icewhale.io/api/static/docs/1727149728058_image.png)
-これらの2つのURLは、プロユーザーが手動でドライブをマウントするためのものです。また、[Zimaクライアント](https://findzima.com/)を対応するシステムにインストールすれば、マウントのプロセスが簡単になります。
-![](https://manage.icewhale.io/api/static/docs/1727149849839_image.png)
-## WindowsでSMB共有フォルダをマウントする
-[findzima](https://findzima.com/)からZima-latest setup.exeをダウンロードし、開きます。インストールプロセスが開始され、インストール後にZimaクライアントが自動的に起動します。タスクバーの右側にZimaアイコンが表示されますが、接続されていない状態では「？」マークが表示されます。
-アイコンを右クリックし、「Scan and Connect to Zima」を選択します。
-![](https://manage.icewhale.io/api/static/docs/1727149936501_image.png)
-Zimaデバイスを探し、「Connect」をクリックします。
-![](https://manage.icewhale.io/api/static/docs/1727149952959_image.png)
-Zima.exeがWebUIのユーザー名とパスワードの入力を求めてきます。その後、Zima.exeアイコンが「？」からZIMAマークに変わり、ログイン状態になります。
-![](https://manage.icewhale.io/api/static/docs/1727149972815_image.png)
-Zimaアイコンを右クリックし、「Open in File Explorer」を選択すると、共有フォルダがWindowsシステムにマウントされ、自動的に開きます！
+### ステップ 1: Docker Pi-holeのインストール
+1. ZimaOSのWebインターフェースにアクセスします。
+2. **App Store**に入り、Pi-holeを検索してインストールします。
+![](https://manage.icewhale.io/api/static/docs/1734678654109_image.png)
 
-> 注：正常に動作させるためには、WindowsとZimaOSが同じローカルエリアネットワーク（LAN）内にある必要があります。
-## macOSでSMB共有フォルダをマウントする
-上記のように、Macユーザー向けにも[findzima](https://findzima.com/)でzimaアプリを提供しています。Macのzimaアプリの使用方法は、Windows版とほぼ同じです。上記の内容を参照してください。
+3. 「インストール」をクリックします。
+4. Pi-holeにログインする前に、アプリケーションの設定インターフェースをクリックし、パスワードを確認します（サンプルのパスワードは「your_password」）。
 
-共有フォルダを作成後、Filesアプリが表示するURLを覚えていますか？ macOSでは、手動でマウントするために、先ほど取得したURLを使用します！
-![](https://manage.icewhale.io/api/static/docs/1727150063996_image.png)
-MacのFinderを開き、CMD+Kを押して、対応するURLを入力ボックスにコピー＆ペーストします。
-![](https://manage.icewhale.io/api/static/docs/1727150080211_image.png)
-「Connect」をクリックします。プロンプトダイアログでは、「Guest」を選択して「Connect」をクリックします。
+| ![](https://manage.icewhale.io/api/static/docs/1734678694677_image.png) | ![](https://manage.icewhale.io/api/static/docs/1734678703824_image.png) |
+| - | - |
 
-> ZimaOS v1.2.3のユーザーは、「Registered User」を選択し、正しいユーザー名とパスワードを入力してください。
-![](https://manage.icewhale.io/api/static/docs/1727150117572_image.png)
-これで、共有フォルダが開かれ、Finderアプリの左側の列に表示されます。
-![](https://manage.icewhale.io/api/static/docs/1727150133237_image.png)
-> Windows Explorer用のURLについてはどうですか？ Zimaの自動マウントと、URLを使って手動でドライブをマウントする違いは何ですか？
+5. アプリケーションをクリックし、パスワードを入力してインターフェースにアクセスします。
+![](https://manage.icewhale.io/api/static/docs/1734678749177_image.png)
 
-現在、当社のSMB共有はゲストアカウントを使用しています。将来のバージョンでは、共有機能に複数のユーザーを導入し、権限管理を強化する予定です。これにより、より多様なニーズに対応できるようになることを期待しています。
-## LANだけではない
-実際、LANだけでなく、直接接続のネットワークやWANでも、Zimaデバイスを簡単に接続し、共有ディレクトリをネットワークドライブとしてマッピングできます。関連するチュートリアルを公開予定ですので、引き続きご注目ください。
+![](https://manage.icewhale.io/api/static/docs/1734678754268_image.png)
 
-使用中に問題が発生した場合は、いつでもお知らせください。また、[コミュニティ](https://community.zimaspace.com/)や[Discord](https://discord.com/invite/uuNfKzG5)に参加して、NASやZimaOSについてさらに議論することができます。皆様のフィードバックをお待ちしております！
+---
+### ステップ 2: ネットワークの設定
+**2.1 ルーターのDNS設定の変更**
+利点: ルーターのDNS設定を変更すると、ネットワーク内のすべてのデバイスがPi-holeを使用して広告を自動的にブロックするようになります。各デバイスを手動で設定する必要はありません。
+1. ルーターの管理インターフェースにログインします。
+2. ルーターのDNSサーバーのアドレスを、Pi-holeを実行しているZimaOSデバイスのローカルIPアドレスに設定します。
+- 例: ZimaOSのローカルIPが`10.0.201.187`の場合、DNSサーバーのアドレスを`10.0.201.187`に設定します。
 
+**2.2 クライアントデバイスのDNS設定を手動で設定**
+- ネットワーク全体の設定を変更したくない場合は、単一のデバイスでカスタムDNSアドレスをZimaOSのIPに設定することができます。
+
+**WindowsデバイスのDNS設定**
+1. 設定ウィンドウで「その他のアダプターのオプション」を見つけ、編集をクリックします。
+![](https://manage.icewhale.io/api/static/docs/1734679538566_image.png)
+
+2. 「インターネットプロトコルバージョン4 (TCP/IPv4)」を見つけてダブルクリックします。
+3. 以下の内容を入力します：
+- 優先DNSサーバー: 10.0.201.187（Pi-holeサーバーのIP）。
+- 代替DNSサーバー: 1.1.1.1（Cloudflare DNS）または8.8.8.8（Google DNS、バックアップ）。
+![](https://manage.icewhale.io/api/static/docs/1734679557759_image.png)
+
+4. 「OK」をクリックして設定を保存します。
+ヒント: 広告ブロックが機能しない場合は、DNSキャッシュをクリアしてみてください：
+コマンドプロンプトで次のコマンドを実行します：
+```
+ipconfig /flushdns
+```
+
+これにより、デバイスは新しいDNS設定を使用します。
+
+---
+### ステップ 3: 設定の最適化（オプション）
+**3.1 より多くの広告フィルタリストを有効にする**
+1. Pi-holeのダッシュボードで、「Adlists」に移動します。
+![](https://manage.icewhale.io/api/static/docs/1734679945680_image.png)
+
+2. さらに広告ブロックリストを追加します。例えば：
+- [StevenBlack/hosts](https://github.com/StevenBlack/hosts)
+- [oisd.nl](https://oisd.nl/)
+コピーしたURLを「Address」に貼り付け、「comment」にコメントを入力し、「add」をクリックして追加します。
+![](https://manage.icewhale.io/api/static/docs/1734680053090_image.png)
+
+**3.2 DNSキャッシュとプライバシー強化の設定**
+1. 設定 > DNS で、信頼できる上流DNSサーバー（例：CloudflareやGoogle）を選択します。
+![](https://manage.icewhale.io/api/static/docs/1734680136362_image.png)
+
+2. セキュリティ向上のためにDNSSECを有効にします。
+![](https://manage.icewhale.io/api/static/docs/1734680141523_image.png)
+
+---
+### ステップ 4: 広告ブロックのテスト
+1. 広告が多いウェブサイト（ニュースポータルなど）にアクセスします。
+2. 広告が正常にブロックされているか確認します。
+3. Pi-holeのダッシュボードで、ブロックされたリクエストの数を確認します。
+![](https://manage.icewhale.io/api/static/docs/1734680159332_image.png)
+
+---
+### 結論
+これで、ZimaOSにPi-holeを正常にデプロイしました。広告のないインターネット体験をお楽しみください！Pi-holeはネットワークの速度を向上させるだけでなく、プライバシーを保護します。必要に応じて設定を調整したり、さらに多くの機能を追加したりしてください。質問があれば、ぜひコミュニティでディスカッションしてください！
+
+### よくある質問 (F&Q)
+1. インストールをクリックして、ポートの競合を避けます。ポートを変更するだけです。
+![](https://manage.icewhale.io/api/static/docs/1734680182479_image.png)
+
+ポート10443は通常、Pi-holeのHTTPS管理インターフェースに使用されます。ポートを変更しても、Pi-holeのコアDNS機能には影響ありません。
+ポート67を変更することはお勧めしません。DHCPサービスの正常な動作に影響を与え、クライアントが自動的にIPアドレスを取得できなくなるためです。ポート競合が発生した場合、最良の解決策は競合しているサービスを無効にすることです。
+- まず、コマンドラインインターフェースでポート67を占有しているプロセスを見つけ、次のコマンドを使用します：
+```
+sudo ss -ulnp | grep :67
+```
+
+![](https://manage.icewhale.io/api/static/docs/1734680210741_image.png)
+
+- 次のコマンドを使用して競合するプロセスを終了させ、インストールが成功することを確認します：
+```
+sudo kill -9 <PID>
+```
