@@ -1,7 +1,3 @@
-Aquí tienes la traducción al español del contenido solicitado:
-
----
-
 ---
 title: Guía de despliegue de Pi-hole en ZimaOS
 description: 
