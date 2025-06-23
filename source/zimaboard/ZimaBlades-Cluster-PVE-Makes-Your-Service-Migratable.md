@@ -104,7 +104,7 @@ When installing PVE on the 2 ZimaBlade units, keep these points in mind:
 
 Follow the prompts and wait for the installation to complete.
 
-创建PVE Cluster
+Create PVE Cluster
 -------------
 
 Choose any one of your ZimaBlade units and access the PVE WebUI at `https://PVE1IP:8006`:
