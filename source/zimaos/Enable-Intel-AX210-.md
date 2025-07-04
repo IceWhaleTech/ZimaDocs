@@ -35,11 +35,18 @@ sudo nmtui
 ```
 Then:
 - Select `Activate a connection`
+  ![](https://manage.icewhale.io/api/static/docs/1751618008434_image.png)
+
 - Choose your Wi-Fi network (SSID)
+
+  ![](https://manage.icewhale.io/api/static/docs/1751618013751_image.png)
+
 - Enter the password and press Enter
 
-| ![](https://manage.icewhale.io/api/static/docs/1751616098976_image.png) | ![](https://manage.icewhale.io/api/static/docs/1751616105026_image.png) | ![](https://manage.icewhale.io/api/static/docs/1751616124786_image.png) |
-| :---------------: | :---------------: | :---------------: |
+  ![](https://manage.icewhale.io/api/static/docs/1751618020114_image.png)
+
+
+
 
 ## Step 3: Verify IP address and connectivity
 Check your wireless interface status:
@@ -52,11 +59,9 @@ ip a
 🖥️ **Optional:** View and manage network settings in the ZimaOS dashboard
 If you're using the ZimaOS web UI (Dashboard), you can also view and configure network settings there.
 Example:
-<p align="center">
-  <img src="![](https://manage.icewhale.io/api/static/docs/1751616926003_image.png)" width="45%" />
-  <img src="![](https://manage.icewhale.io/api/static/docs/1751616939282_image.png)" width="45%" />
-</p>
+![a network configuration panel displaying Ethernet, virtual, and wireless connections with their statuses, alongside a remote access section featuring a unique device ID.](https://manage.icewhale.io/api/static/docs/1751618035812_image.png)
 
+![the configuration settings for a wireless interface (wlan0), showing IPv4/IPv6 parameters, DHCP options, and control buttons like Save and Cancel.](https://manage.icewhale.io/api/static/docs/1751618039627_image.png)
 
 
 🎉 **You’re all set!**
