@@ -19,11 +19,8 @@ The Intel AX210 is a high-performance wireless card that supports Wi-Fi 6E. Many
 Run the following command:
 ```language
 lspci | grep -i network
-
 ```
 You should see output similar to:
-
-`Intel Corporation Wi-Fi 6E AX210...`
 
 ![The terminal output confirms Intel AX210 Wi-Fi detection on ZimaOS via lspci.](https://manage.icewhale.io/api/static/docs/1751615644136_image.png)
 
