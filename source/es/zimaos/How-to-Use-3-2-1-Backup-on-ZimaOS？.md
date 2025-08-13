@@ -5,7 +5,6 @@ type: Docs
 author: vicky
 tip: No elimines el formato fijo en la barra superior, description es la descripción del artículo, si no se completa se tomará el primer párrafo como descripción
 ---
-## Título del párrafo
 
 En esta era de explosión de datos, los archivos importantes no solo contienen los frutos de nuestro trabajo, sino que también registran momentos de nuestras vidas. Sin embargo, las fallas en los discos duros, eliminaciones accidentales y desastres imprevistos pueden borrar estos materiales valiosos en un instante.
 
