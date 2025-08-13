@@ -6,18 +6,12 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 # RAID Array Setup
 RAID (Redundant Array of Independent Disks) is a technology that combines multiple hard drives to improve both data storage **reliability** and **performance**. It distributes data across multiple drives to achieve higher read and write speeds, and can maintain data integrity even if some drives fail.
-
-<br/>
-
-
 JBOD simply combines multiple disks into one continuous logical volume, thereby maximizing the use of total capacity.
 
   <br/>
 
 
 **In ZimaOS, complex RAID configurations are simplified into an intuitive user experience.**
-  <br/>
-
 Whether creating or maintaining a RAID array, you don’t need cumbersome commands or configurations — the setup can be completed in just **three steps**.
 
   
