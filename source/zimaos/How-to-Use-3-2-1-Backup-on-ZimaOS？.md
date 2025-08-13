@@ -45,13 +45,13 @@ This method is a widely recognized golden backup strategy, commonly used in both
 3.  Select the Data Source
     
 
-*   ** Cloud** (cloud storage such as Google Drive, Dropbox, etc.)
+*   **Cloud** (cloud storage such as Google Drive, Dropbox, etc.)
     
-*   ** LAN** (shared folders from other devices on the local network)
+*   **LAN** (shared folders from other devices on the local network)
     
-*   **  USB** (external hard drives, USB flash drives, etc.)
+*   **USB** (external hard drives, USB flash drives, etc.)
     
-*   **  Zima** (Files Stored in this ZimaOS)
+*   **Zima** (Files Stored in this ZimaOS)
     
 
 ![](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
@@ -98,27 +98,27 @@ You can sync the data to a local disk, another Zima device, an external hard dri
 
 #### Feature Highlights & Optimizations
 
-*   ** Multi-Task Concurrency** 
+*   **Multi-Task Concurrency** 
 Create multiple backup tasks simultaneously without interference, ensuring efficient data protection.
     
 
 ![](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
 
-*   ** Scheduled Backup**
+*   **Scheduled Backup**
     
 
       Supports setting automatic schedules or manual triggers, allowing backups to run as planned without manual intervention.
 
   
 
-*   ** Version Retention**
+*   **Version Retention**
     
 
      Automatically keeps the latest 5 versions, making it easy to quickly roll back to a previous state after accidental deletion or modification.
 
   
 
-*   ** Resume and Fault Tolerance**
+*   **Resume and Fault Tolerance**
     
 
     If the network is interrupted or a device is disconnected, the system will automatically resume the unfinished portion, avoiding duplicate transfers.
