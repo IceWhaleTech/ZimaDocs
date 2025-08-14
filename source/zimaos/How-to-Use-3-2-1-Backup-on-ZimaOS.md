@@ -13,7 +13,6 @@ In this era of data explosion, important files not only carry the fruits of our 
 To address this, ZimaOS v1.4.3 introduces the brand-new **3-2-1 backup feature**—a globally recognized golden standard for data protection—ensuring that every piece of your important data is safeguarded with multiple layers of protection, leaving nothing to chance.
 
 
-  
 
 ### **What is the 3-2-1 backup rule?**
 
@@ -93,7 +92,8 @@ You can sync the data to a local disk, another Zima device, an external hard dri
   
 
 **Now you’ve completed your 3-2-1 backup!**
-
+Please view the video tutorial: 
+https://www.youtube.com/watch?v=pUVMsS1tcyY
   
 
 #### Feature Highlights & Optimizations
@@ -123,7 +123,9 @@ Create multiple backup tasks simultaneously without interference, ensuring effic
 
     If the network is interrupted or a device is disconnected, the system will automatically resume the unfinished portion, avoiding duplicate transfers.
 
-  
+
+See more guidance on the 3-2-1 backup strategy:
+https://www.zimaspace.com/blog/nas-backup-raid-and-the-3-2-1-strategy-explained.html
 
 ### **Summary:**
 
@@ -132,3 +134,9 @@ Whether it's work files, family photo albums, or treasured archives, 3-2-1 backu
 In ZimaOS, we've not only made this golden strategy accessible, but also made it smarter and more efficient.
 
 Start today and enjoy peace of mind with triple security for your important data.
+
+
+
+
+If you encounter any questions, technical issues, or need further guidance during use, feel free to reach out to our official support team via direct message: X[](http://bit.ly/45Ef2Du) or [](http://bit.ly/3HofnB3). We promise a quick response within 48 hours, along with professional, personalized assistance.
+
