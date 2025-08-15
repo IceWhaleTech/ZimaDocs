@@ -138,5 +138,8 @@ Start today and enjoy peace of mind with triple security for your important data
 
 
 
-If you encounter any questions, technical issues, or need further guidance during use, feel free to reach out to our official support team via direct message: X[](http://bit.ly/45Ef2Du) or [](http://bit.ly/3HofnB3). We promise a quick response within 48 hours, along with professional, personalized assistance.
+If you encounter any questions, technical issues, or need further guidance during use, feel free to reach out to our official support team via direct message: 
+X: http://bit.ly/45Ef2Du or FB: http://bit.ly/3HofnB3. 
+
+We promise a quick response within 48 hours, along with professional, personalized assistance.
 
