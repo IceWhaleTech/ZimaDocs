@@ -16,7 +16,8 @@ The Intel® Wi-Fi 6E AX210 (Gig+) adapter is designed to support Wi-Fi 6E techno
 A. Insert the AX210 card into the ZimaBoard.
 B. Update the AX210 driver.
 C. Open the CasaOS system and connect to Wi-Fi.**
-### 3.1 STA Mode
+
+**STA Mode**
 **Required Equipment:**
 - ZimaBlade / ZimaBoard × 1
 - AX210 Wi-Fi card × 1
@@ -28,7 +29,7 @@ C. Open the CasaOS system and connect to Wi-Fi.**
 - Keyboard × 1
 **Connection Diagram**
 ![Connection Diagram](https://manage.icewhale.io/api/static/docs/1755248150818_image.png)
-#### Step 1: Check if the AX210 Wi-Fi card is detected
+### Step 1: Check if the AX210 Wi-Fi card is detected
 1. Access your device via Terminal.
 ![Terminal](https://manage.icewhale.io/api/static/docs/1755248310999_copyImage.png)
 ![Login Terminal](https://manage.icewhale.io/api/static/docs/1755248335646_image.png)
@@ -41,7 +42,7 @@ C. Open the CasaOS system and connect to Wi-Fi.**
 
    You should see the Intel Device listed, confirming it is connected to the ZimaBoard.
 
-#### Step 2: Install the AX210 driver
+### Step 2: Install the AX210 driver
 <mark style="background-color: #fff9bd">Note:
  If you are using CasaOS pre-installed on ZimaBoard or ZimaBlade with kernel version **5.10**, you can skip directly to **Step 3**.
  You can also get this version from [the provided link](https://www.zimaspace.com/docs/zimaboard/Restore-factory-settings).</mark>
@@ -85,7 +86,7 @@ sudo reboot
 After rebooting, confirm that the kernel version is 6.12 or higher.
 ![](https://manage.icewhale.io/api/static/docs/1755249301302_image.png)
 
-#### Step 3: Connect to Wi-Fi using `nmtui`
+### Step 3: Connect to Wi-Fi using `nmtui`
 We will use the `nmtui` tool to connect.
 ```language
 sudo nmtui
@@ -114,7 +115,7 @@ ip a
 
 ![](https://manage.icewhale.io/api/static/docs/1755249604651_image.png)
 
-#### Compatible Router Operating Systems
+### Compatible Router Operating Systems
 - **OpenWRT**
   1. You should install iwlwifi, which is the official driver for ax210.
   2. go to intel [official website](https://www.intel.com/content/www/us/en/support/articles/000005511/wireless.html 383) to download the firmware.
@@ -144,6 +145,7 @@ config wifi-device 'radio1'
 - **Network Speed Test from Zima device to LAN device**
 ![iperf3](https://manage.icewhale.io/api/static/docs/1755249878561_image.png)
 
+
 - **AP Mode (2.4 GHz Only)**
 
 - 1. Install required packages:
@@ -152,11 +154,11 @@ config wifi-device 'radio1'
 - 2.  Configure the wireless network:
      Edit `/etc/hostapd/hostapd.conf`
 ```language
-interface=wlp1s0  # 根据您的网卡名称进行替换
+interface=wlp1s0  # Replace according to your network adapter name
 driver=nl80211
-ssid=mylove   # 将YourSSID替换为您想要的网络名称
+ssid=mylove   # Replace "YourSSID" with your desired network name
 hw_mode=a
-channel=36      # 选择您希望的频道
+channel=36      # Select your preferred channel
 country_code=US
 ieee80211ac=1
 wmm_enabled=1
@@ -164,7 +166,7 @@ auth_algs=1
 wpa=2
 wpa_key_mgmt=WPA-PSK
 rsn_pairwise=CCMP
-wpa_passphrase=YourPassphrase  # 将YourPassphrase替换为您的Wi-Fi密码
+wpa_passphrase=YourPassphrase  # Replace "YourPassphrase" with your Wi-Fi password
 logger_stdout=-1
 logger_stdout_level=2
 ```
@@ -173,6 +175,7 @@ logger_stdout_level=2
 ![](https://manage.icewhale.io/api/static/docs/1755250711162_image.png)
 
 - 4.  Test your Wi-Fi network by connecting from another device.![](https://manage.icewhale.io/api/static/docs/1755250706664_image.png)
+
  
 - **Installing nmtui Tool**
   `nmtui` is included in the `network-manager` package:
