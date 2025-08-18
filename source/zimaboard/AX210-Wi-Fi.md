@@ -141,7 +141,7 @@ config wifi-device 'radio1'
 ```
   8. reboot ! And you will find the driver works well.
 
-#### FAQ
+## FAQ
 - **Network Speed Test from Zima device to LAN device**
 ![iperf3](https://manage.icewhale.io/api/static/docs/1755249878561_image.png)
 
