@@ -7,7 +7,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 
 **🎯 Goal**
-Enable the AX210 Wi-Fi card on ZimaOS and connect to a wireless network—no graphical interface required.
+Enable [the AX210 Wi-Fi card](https://shop.zimaspace.com/products/intel-ax210-wifi-6e-pcie-card-zimaboard) on ZimaOS and connect to a wireless network—no graphical interface required.
 
 ## For ZimaOS v1.4.2 and above
 The Intel AX210 is a high-performance wireless card that supports Wi-Fi 6E. Many Zima device users rely on it for wireless connectivity. This guide walks you through enabling the AX210 and connecting to Wi-Fi in a command-line-only environment.
