@@ -183,4 +183,5 @@ logger_stdout_level=2
 sudo apt install network-manager
 ```
 
+Want hands-on experience? Get the components you need in [our store](https://shop.zimaspace.com/).
   
