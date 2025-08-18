@@ -6,7 +6,7 @@ author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 ## 1. Introduction
-The Intel® Wi-Fi 6E AX210 (Gig+) adapter is designed to support Wi-Fi 6E technology. The product supports dual-stream Wi-Fi in the 2.4GHz, 5GHz and 6GHz bands as well as Bluetooth® 5.3. Combined with Intel® Core™ processors and exceptional Intel wireless innovations, the Intel® Wi-Fi 6E AX210 module can dramatically improve your connected experience at home, work, or on the go.
+[The Intel® Wi-Fi 6E AX210 (Gig+) adapter](https://shop.zimaspace.com/products/intel-ax210-wifi-6e-pcie-card-zimaboard) is designed to support Wi-Fi 6E technology. The product supports dual-stream Wi-Fi in the 2.4GHz, 5GHz and 6GHz bands as well as Bluetooth® 5.3. Combined with Intel® Core™ processors and exceptional Intel wireless innovations, the Intel® Wi-Fi 6E AX210 module can dramatically improve your connected experience at home, work, or on the go.
 
 ## 2. Specifications
 ![AX210 Wi-Fi Card Spec](https://manage.icewhale.io/api/static/docs/1755248064574_copyImage.png)
