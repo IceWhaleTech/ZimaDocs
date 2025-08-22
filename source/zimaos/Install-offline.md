@@ -28,3 +28,22 @@ This will help update and repair the system in specific scenarios.
 ![](https://manage.icewhale.io/api/static/docs/1723538917096_copyImage.png)
 
 * Wait for the system to complete the update, and you're all set!
+
+
+##### **NOTES：**
+
+**Starting from ZimaOS v1.4.0, the directory for offline update packages has changed:**
+
+
+Older versions (before v1.4.0), Place the installation package in:
+
+`/ZimaOS-HD/rauc/offline/
+`
+
+New versions (v1.4.0 and later), Place the installation package in:
+
+`/ZimaOS-HD/.ota/offline/
+`
+![](https://manage.icewhale.io/api/static/docs/1755847486345_image.png)
+![](https://manage.icewhale.io/api/static/docs/1755847493159_image.png)
+
