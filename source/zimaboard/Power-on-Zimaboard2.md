@@ -17,7 +17,7 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
 - **2 × SATA 3.0 with power** to connect 2.5"/3.5" HDDs/SSDs directly.
 - **2 × USB 3.1** for high-speed peripherals and external drives.
 - **1 × PCIe 3.0 slot** for a **10GbE NIC**,** NVMe adapter**, or a **GPU**.
--** 1 × Mini DisplayPort 1.4**, supports **4K@60Hz** output.
+- **1 × Mini DisplayPort 1.4**, supports **4K@60Hz** output.
 - **Fanless passive cooling** for silent, stable operation.
 
 ## Interface
@@ -28,7 +28,7 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
 ### 2.5"/3.5" SATA HDD/SSD
 - Use the included **SATA data cable + power cable** to connect the drive to the board’s SATA port.
 - Mount the drive in a suitable **NAS bracket** or external tray.
-*Tip: Dual **3.5" drives** require higher spin-up current—ensure a **stable 12V/5A** power supply.*
+<mark>*Tip: Dual **3.5" drives** require higher spin-up current—ensure a **stable 12V/5A** power supply.*</mark>
 ### PCIe Expansion Cards
 - Install a **10GbE NIC** , an **NVMe adapter** , or a **low-power discrete GPU** (Learn more with GPU Compatibility List).
 - If the GPU requires external power, prepare the proper cables and ensure PSU capacity (see the same compatibility doc).
@@ -40,8 +40,8 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
      alt="ZimaBoard 2 rear I/O with 2.5GbE Ethernet and 12V power connected, power LED on—mini NAS first-boot setup."
      width="50%" />
 - ZimaBoard 2 **auto-boots** with **pre-installed ZimaOS** and obtains an IP address automatically.
-  - Find the IP in your **router’s DHCP list** or on a connected **display**.
-  - Or visit https://find.zimaspace.com/ to download **ZimaClient**, scan, and open the device page directly.
+  - Visit https://find.zimaspace.com/ to download **ZimaClient**, scan, and open the device page directly.
+  - Or find the IP in your **router’s DHCP list** or on a connected **display**.
   - **Zima App** is also available now for easier device discovery and management.
 
 ## [Sign In & Use ZimaOS](https://www.zimaspace.com/docs/zimaos/Get-Started)
