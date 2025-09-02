@@ -21,7 +21,7 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
 - **Fanless passive cooling** for silent, stable operation.
 
 ## Interface
-![ZimaBoard 2 interface diagram—dual 2.5GbE, USB 3.1, MiniDP, DC power, PCIe, SATA.](https://manage.icewhale.io/api/static/docs/1756385752551_image.png)
+![ZimaBoard 2 interface diagram—dual 2.5GbE, USB 3.1, MiniDP, DC power, PCIe, SATA.](https://manage.icewhale.io/api/static/docs/1756795953605_zimaboard2-interface-pinout.png)
 
 
 ## Connect Storage & PCIe Devices
@@ -36,9 +36,10 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
 ## First Boot & Network
 - Connect the **power adapter** to ZimaBoard 2.
 - Plug in an **Ethernet cable** to your router or switch.
-<img src="https://manage.icewhale.io/api/static/docs/1756386839952_image.png"
+<img src="https://manage.icewhale.io/api/static/docs/1756796033890_zimaboard2-power-network.png"
      alt="ZimaBoard 2 rear I/O with 2.5GbE Ethernet and 12V power connected, power LED on—mini NAS first-boot setup."
      width="50%" />
+
 - ZimaBoard 2 **auto-boots** with **pre-installed ZimaOS** and obtains an IP address automatically.
   - Visit https://find.zimaspace.com/ to download **ZimaClient**, scan, and open the device page directly.
   - Or find the IP in your **router’s DHCP list** or on a connected **display**.
