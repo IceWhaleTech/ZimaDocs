@@ -1,6 +1,6 @@
 ---
 title: 开始使用 ZimaBoard 2  
-description:  
+description: ZimaBoard 2 是一款高性能单板服务器，支持 NAS、家庭服务器、软件路由等多场景，搭载 Intel 四核 CPU、双 2.5GbE、PCIe 插槽、SATA 与 USB 扩展，预装 ZimaOS，轻松实现存储、网络和本地 AI 应用。
 type: “Docs”  
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字  
 ---
