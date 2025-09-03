@@ -12,11 +12,11 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
  ## Features
 - **Intel® N150 quad-core CPU**, up to **3.6 GHz** for responsive performance.
 - **8GB** or **16GB LPDDR5x** memory to handle multitasking.
-- **32GB** or** 64GB eMMC** for fast system boot.
+- **32GB** or **64GB eMMC** for fast system boot.
 - **2 × 2.5GbE LAN ports** for high-speed networking.
 - **2 × SATA 3.0 with power** to connect 2.5"/3.5" HDDs/SSDs directly.
 - **2 × USB 3.1** for high-speed peripherals and external drives.
-- **1 × PCIe 3.0 slot** for a **10GbE NIC**,** NVMe adapter**, or a **GPU**.
+- **1 × PCIe 3.0 slot** for a **10GbE NIC**, **NVMe adapter**, or a **GPU**.
 - **1 × Mini DisplayPort 1.4**, supports **4K@60Hz** output.
 - **Fanless passive cooling** for silent, stable operation.
 
@@ -55,9 +55,11 @@ A **Hyper-Performance Single-Board Server** designed for makers and creators. Co
 - **Enable WOL (Wake on LAN)**: Turn on in BIOS and OS (see [Tutorial：enable WOL](https://www.zimaspace.com/docs/zimaboard/Enable-WOL-on-Zimaboard)).
 - **Use a Wi-Fi module**: Follow the driver/setup guide for ZimaOS or your chosen OS ([Tutorial：AX210 user guide](https://www.zimaspace.com/docs/zimaboard/AX210-Wi-Fi)).
 - **Add a cooling module**: See the Cooling Module Installation guide if you plan heavy workloads.
+-  **Download the 3D model**:[Google Drive](https://drive.google.com/file/d/1paE2loHLjRjftefT0xsKo4lIFok9-Itc/view?usp=sharing)
 
 ## FAQ
 - **How do I recover or reinstall ZimaOS?**
  See the ZimaOS Recovery/Reinstall Guide to create a bootable media and run the installer.
 - **How do I clear/initialize CMOS?**
  Power off, Press the reset button (or remove the battery for several seconds), then restore power and load BIOS defaults. See the CMOS Initialization Guide for details.
+
