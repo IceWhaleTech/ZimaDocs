@@ -1,6 +1,6 @@
 ---
 title: More RAID Options
-description:ZimaOS supports RAID 0/1/5/6 and JBOD, balancing high performance, data redundancy, capacity utilization, and flexibility to meet diverse storage needs.
+description: ZimaOS supports RAID 0/1/5/6 and JBOD, balancing high performance, data redundancy, capacity utilization, and flexibility to meet diverse storage needs.
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
