@@ -1,6 +1,6 @@
 ---
 title: ZimaBoard 2 Fan Installation Guide | PWM Control, T5/T10 Torx, Mini NAS Cooling
-description: Install a PWM fan on ZimaBoard 2: T5 rear-cover removal, 4-pin fan cable, cable routing, fan mounting with T10, and BIOS fan control for mini NAS, home server, self-hosted, NVMe, 10GbE, and local AI workloads.
+description: Install a PWM fan on ZimaBoard 2, T5 rear-cover removal, 4-pin fan cable, cable routing, fan mounting with T10, and BIOS fan control for mini NAS, home server, self-hosted, NVMe, 10GbE, and local AI workloads.
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
