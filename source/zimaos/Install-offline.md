@@ -32,15 +32,15 @@ This will help update and repair the system in specific scenarios.
 
 ##### **NOTES：**
 
-**Starting from ZimaOS v1.4.0, the directory for offline update packages has changed:**
+**Starting from ZimaOS v1.4.1, the directory for offline update packages has changed:**
 
 
-Older versions (before v1.4.0), Place the installation package in:
+Older versions (before v1.4.1), Place the installation package in:
 
 `/ZimaOS-HD/rauc/offline/
 `
 
-New versions (v1.4.0 and later), Place the installation package in:
+New versions (v1.4.1 and later), Place the installation package in:
 
 `/ZimaOS-HD/.ota/offline/
 `
