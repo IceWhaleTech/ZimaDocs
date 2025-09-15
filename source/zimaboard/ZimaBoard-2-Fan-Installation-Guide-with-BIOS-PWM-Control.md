@@ -1,5 +1,5 @@
 ---
-title: ZimaBoard 2 Fan Installation Guide | PWM Control, T5/T10 Torx, Mini NAS Cooling
+title: ZimaBoard 2 Fan Installation Guide & PWM Control
 description: Install a PWM fan on ZimaBoard 2, T5 rear-cover removal, 4-pin fan cable, cable routing, fan mounting with T10, and BIOS fan control for mini NAS, home server, self-hosted, NVMe, 10GbE, and local AI workloads.
 type: Docs
 author: admin
@@ -17,7 +17,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
   <img src="https://manage.icewhale.io/api/static/docs/1757316597042_zimaboard-2-fan-installation-shipping-list-pwm-fan-module-t5-t10-torx.jpg"
      alt="ZimaBoard 2 fan installation kit—PWM fan module with 4-pin cable and T5/T10 Torx screwdrivers (shipping list)"
      width="50%" />
-  <br/><em>Installation complete</em>
+  <br/><em></em>
 </p>
 
 ## Fan Installation
@@ -73,7 +73,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 <p align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1757319311018_zimaboard-2-bios-hardware-monitor-fan-control-menu.png"
      alt="ZimaBoard 2 BIOS—Advanced > Hardware Monitor screen for fan control and PWM settings (AMI Aptio)."
-     width="50%" />
+     width="100%" />
   <br/><em></em>
 </p>
 
@@ -81,7 +81,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 <p align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1757319415157_zimaboard-2-bios-fan-control-mode-pwm-settings-automatic-fixed.png"
      alt="ZimaBoard 2 BIOS—CPU Fan Control mode with PWM settings: Start Temperature, Full-Speed Temperature, Fan Start PWM, and PWM Slope (AMI Aptio)."
-     width="50%" />
+     width="100%" />
   <br/><em></em>
 </p>
 
@@ -89,7 +89,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 <p align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1757319507155_zimaboard-2-bios-save-and-exit-f10-save-changes-fan-pwm-settings.png"
      alt="ZimaBoard 2 BIOS—Save & Exit (F10) screen; choose “Save Changes and Exit” to apply fan/PWM settings (AMI Aptio)."
-     width="50%" />
+     width="100%" />
   <br/><em></em>
 </p>
 
@@ -102,7 +102,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 <p align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1757319591823_zimaboard-2-bios-pwm-auto-mode-fan-control-start-temp-full-speed-pwm-slope.png"
      alt="ZimaBoard 2 BIOS—CPU Fan Control in PWM Auto Mode: start temperature limit, full-speed temperature limit, fan start PWM, and PWM slope setting (AMI Aptio)."
-     width="50%" />
+     width="100%" />
   <br/><em></em>
 </p>
 
@@ -112,7 +112,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 <p align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1757319699717_zimaboard-2-bios-fixed-duty-mode-manual-pwm-setting-0-255.png"
      alt="ZimaBoard 2 BIOS—CPU Fan Control in Fixed Duty (Manual) Mode: set Manual PWM value (0–255, 255=100%) (AMI Aptio)."
-     width="50%" />
+     width="100%" />
   <br/><em></em>
 </p>
 
