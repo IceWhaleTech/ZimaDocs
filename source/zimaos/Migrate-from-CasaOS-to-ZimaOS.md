@@ -5,7 +5,7 @@ type: Docs
 author: Lauren
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-This guide focuses on **migrating from CasaOS to ZimaOS** in just two simple steps. If you’re curious about a full system comparison, check out this blog – [link].
+This guide focuses on **migrating from CasaOS to ZimaOS** in just two simple steps. If you’re curious about a full system comparison, check out this blog – [link](https://www.zimaspace.com/blog/casaos-vs-zimaos-which-one-will-be-your-choice.html).
 
 Ready to upgrade from **CasaOS** to the more powerful **ZimaOS**? Don’t worry—the migration process is easier than you think! To help you plan clearly, we’ve broken the journey into **three stages**, and you can choose the ones that fit your needs:
 
