@@ -4,7 +4,7 @@ description:
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-ZimaOS is a NAS operating system. Here are the detailed steps to help you successfully install ZimaOS V1.2.2.
+ZimaOS is a NAS operating system. Here are the detailed steps to help you successfully install ZimaOS.
 
 ## Step 1: Download ZimaOS Image
 First, you need to download the ZimaOS latest `.img` file. You can download the image from the following link:
