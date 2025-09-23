@@ -78,9 +78,9 @@ Aquí tienes algunas ideas sobre qué hacer a continuación:
 - ☁️ **Realiza copias de seguridad de datos importantes** a unidades externas o la nube.  
 
 👉 ¿Listo para desbloquear más funciones?  
-- Visita la [Documentación de ZimaOS](https://github.com/IceWhaleTech/ZimaOS/wiki)  
-- Únete a nuestro [Foro Comunitario](https://github.com/IceWhaleTech/ZimaOS/discussions)  
-- Explora la [Tienda de Aplicaciones](https://github.com/IceWhaleTech/ZimaOS) para ampliar tu configuración  
+- Visita la [Documentación de ZimaOS](https://www.zimaspace.com/docs/zimaos/Romote-Access)  
+- Únete a nuestro [Foro Comunitario](https://community.zimaspace.com/)  
+- Explora la [Tienda de Aplicaciones](https://awesome.casaos.io/content/3rd-party-app-stores/list.html) para ampliar tu configuración  
 
 💡 **Consejo útil**: Marca esta guía para futuras actualizaciones. Las nuevas versiones de ZimaOS a menudo incluyen mejoras en el rendimiento y nuevas aplicaciones.  
 
