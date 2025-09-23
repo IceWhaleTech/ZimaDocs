@@ -78,9 +78,9 @@ ZimaOS 是一款为 ZimaCube 和其他家庭服务器设备设计的轻量级 NA
 - ☁️ **将重要数据备份** 到外部硬盘或云端。  
 
 👉 准备解锁更多功能？  
-- 浏览 [ZimaOS 文档](https://github.com/IceWhaleTech/ZimaOS/wiki)  
-- 加入 [社区论坛](https://github.com/IceWhaleTech/ZimaOS/discussions)  
-- 探索 [应用商店](https://github.com/IceWhaleTech/ZimaOS) 扩展你的系统  
+- 浏览 [ZimaOS 文档](https://www.zimaspace.com/docs/zimaos/Romote-Access)  
+- 加入 [社区论坛](https://community.zimaspace.com/)  
+- 探索 [应用商店](https://awesome.casaos.io/content/3rd-party-app-stores/list.html) 扩展你的系统  
 
 💡 **专业提示**：收藏此指南以便日后查看更新。新的 ZimaOS 版本通常包含性能优化和新应用。  
 
