@@ -32,7 +32,7 @@ You need to flash the ZimaOS image to a USB drive. The easiest tool for this is 
 1. Download and install [**Balena Etcher**](https://etcher.balena.io/#download-etcher)  
 2. Open Etcher and select the ZimaOS `.img` file.  
 3. Insert your USB drive and select it as the target.  
-4. Click **Flash** to start writing the image.  
+4. Click **Flash** to start writing the image.
 
 ![balena etcher tool open zimaos installer image file](https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png)
 ![balena etcher select flash device as a target to install zimaos](https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png)
@@ -43,10 +43,15 @@ You need to flash the ZimaOS image to a USB drive. The easiest tool for this is 
 ### Step 3: Boot your device from USB
 1. Insert the bootable USB drive into your device.  
 2. Enter the BIOS/boot menu and choose **Boot from USB**.
+
 ![main memu of zimaos installation tool to choose install zimaos or reboot](https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png)
+
 ![quick install memu to select a device or space or location to install zimaos](https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png)
+
 ![confirmation before istalling and choose yes.](https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png)
-![last chance to abort install and choose yes.]](https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png)
+
+![last chance to abort install and choose yes.](https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png)
+
 ![Installation progress bar displayed. Please wait patiently at this time.](https://manage.icewhale.io/api/static/docs/1758611912717_installing.png)
 
 
