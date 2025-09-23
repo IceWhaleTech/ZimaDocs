@@ -79,9 +79,9 @@ ZimaOSをスマートサーバーにインストールしたら、パーソナ�
 - ☁️ **重要なデータを外付けドライブやクラウドにバックアップ**  
 
 👉 さらに多くの機能を活用する準備はできましたか？  
-- [ZimaOS ドキュメント](https://github.com/IceWhaleTech/ZimaOS/wiki) を参照  
-- [コミュニティフォーラム](https://github.com/IceWhaleTech/ZimaOS/discussions) に参加  
-- [アプリストア](https://github.com/IceWhaleTech/ZimaOS) を探索して環境を拡張  
+- [ZimaOS ドキュメント](https://www.zimaspace.com/docs/zimaos/Romote-Access) を参照  
+- [コミュニティフォーラム](https://community.zimaspace.com/) に参加  
+- [アプリストア](https://awesome.casaos.io/content/3rd-party-app-stores/list.html) を探索して環境を拡張  
 
 💡 **プロのヒント**: このガイドをブックマークしてください。新しいZimaOSリリースには、パフォーマンス改善や新しいアプリが追加されることがよくあります。  
 
