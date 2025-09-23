@@ -43,4 +43,4 @@ immich surpasses traditional** file systems **with powerful features. For exampl
 immich offers a richer set of features compared to other photo album apps. Check the feature **comparison** here.
 ![](https://manage.icewhale.io/api/static/docs/1726651848750_image.png)
 Welcome to experience immich and ZimaOS and explore your favorite features!
-If you encounter any issues during use, feel free to let us know. You can also join our [community](https://community.zimaspace.com/) and [Discord](https://discord.com/invite/f9nzbmpMtU) to discuss more about NAS and ZimaOS. We look forward to your feedback!
+If you encounter any issues during use, feel free to let us know. You can also join our [community](https://community.zimaspace.com/) and [Discord](https://www.zimaboard.com/discord) to discuss more about NAS and ZimaOS. We look forward to your feedback!
