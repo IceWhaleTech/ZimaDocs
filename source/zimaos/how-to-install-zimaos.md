@@ -29,7 +29,7 @@ To get started, download the latest ZimaOS `.img` file from the official GitHub 
 ### Step 2: Create a Bootable USB Drive
 You need to flash the ZimaOS image to a USB drive. The easiest tool for this is **Balena Etcher**.
 
-1. Download and install [**Balena Etcher**](https://etcher.balena.io/#download-etcher)  
+1. Download and install [Balena Etcher](https://etcher.balena.io/#download-etcher)  
 2. Open Etcher and select the ZimaOS `.img` file.  
 3. Insert your USB drive and select it as the target.  
 4. Click **Flash** to start writing the image.
