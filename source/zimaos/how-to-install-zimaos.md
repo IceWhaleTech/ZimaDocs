@@ -91,9 +91,9 @@ Here are some ideas for what to do next:
 - ☁️ **Backup important data** to external drives or the cloud.  
 
 👉 Ready to unlock more features?  
-- Visit the [ZimaOS Documentation](https://github.com/IceWhaleTech/ZimaOS/wiki)  
-- Join our [Community Forum](https://github.com/IceWhaleTech/ZimaOS/discussions)  
-- Explore the [App Store](https://github.com/IceWhaleTech/ZimaOS) to expand your setup  
+- Visit the [ZimaOS Documentation](https://www.zimaspace.com/docs/zimaos/Romote-Access)  
+- Join our [Community Forum](https://community.zimaspace.com/)  
+- Explore the [Awesome App Store](https://awesome.casaos.io/content/3rd-party-app-stores/list.html) to expand your setup  
 
 💡 **Pro Tip**: Bookmark this guide for future updates. New ZimaOS releases often include performance improvements and new apps.  
 
