@@ -120,6 +120,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ## Troubleshooting
 - **Fan won’t spin**:
   - Reseat the **4-pin connector**; ensure the header/mode is enabled.
-  - Verify the fan’s **minimum PWM start threshold** (don’t set duty too low).
+  - Verify the fan’s **minimum PWM start threshold** (don’t set duty too low, each fan has a different minimum starting PWM).
 - **Noise / vibration**: Re-align the fan and tighten the screws.
 - **Won’t power on after install**: Remove the **fan PWM lead** and try again. If the **CMOS reset** button was pressed accidentally, the **first boot may take ~2 minutes** for POST/self-test.
+- **Fan doesn't stop at PWM 0**：This is by design to prevent stalling and ensure minimum cooling. Many fans have a hardware-enforced minimum PWM speed.
