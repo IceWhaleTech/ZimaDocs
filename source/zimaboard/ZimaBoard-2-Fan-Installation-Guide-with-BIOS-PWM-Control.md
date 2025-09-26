@@ -99,7 +99,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
   - **Fan Full-Speed Temperature**: When **CPU temp ≥ this point**, the fan jumps to **100%** (range: 0–100 °C; must be **greater** than Start Temperature).
   - **Fan Start PWM**: Initial (minimum) fan speed after ZimaBoard 2 powers on (range: 0–255; 255 = 100%).
 `Example: To set “Fan off when temperature is below Fan Start Temperature”, set to 0.`
-  - **PWM SLOPE SEETING**: **Duty increment** for each **+1 °C** rise (select from predefined step options).
+  - **PWM SLOPE SEETING**: **Duty increment** for each **+1 °C** rise (range: 0-15).
 <p align="center">
   <img src="https://manage.icewhale.io/api/static/docs/1757319591823_zimaboard-2-bios-pwm-auto-mode-fan-control-start-temp-full-speed-pwm-slope.png"
      alt="ZimaBoard 2 BIOS—CPU Fan Control in PWM Auto Mode: start temperature limit, full-speed temperature limit, fan start PWM, and PWM slope setting (AMI Aptio)."
