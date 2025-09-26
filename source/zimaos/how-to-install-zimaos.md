@@ -7,7 +7,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 
 ## What you’ll learn
-ZimaOS is a lightweight NAS operating system designed for ZimaCube and other home server devices.  
+ZimaOS is a lightweight NAS operating system designed for generic x86-64.
 This guide provides a complete step-by-step process to help you **download, flash, and install ZimaOS** quickly and successfully.
 
 ---
