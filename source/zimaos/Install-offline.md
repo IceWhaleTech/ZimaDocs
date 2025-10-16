@@ -5,6 +5,26 @@ type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 
+##### **NOTES：**
+
+**Starting from ZimaOS v1.4.1, the directory for offline update packages has changed:**
+
+
+Older versions (before v1.4.1), Place the installation package in:
+
+`/ZimaOS-HD/rauc/offline/
+`
+
+New versions (v1.4.1 and later), Place the installation package in:
+
+`/ZimaOS-HD/.ota/offline/
+`
+![](https://manage.icewhale.io/api/static/docs/1755847486345_image.png)
+![](https://manage.icewhale.io/api/static/docs/1755847493159_image.png)
+
+
+
+
 This tutorial will guide you through the steps to update ZimaOS in an offline environment.
 This will help update and repair the system in specific scenarios.
 * Download the RAUCB installation package from the [ZimaOS GitHub](https://github.com/IceWhaleTech/ZimaOS) .
@@ -29,21 +49,4 @@ This will help update and repair the system in specific scenarios.
 
 * Wait for the system to complete the update, and you're all set!
 
-
-##### **NOTES：**
-
-**Starting from ZimaOS v1.4.1, the directory for offline update packages has changed:**
-
-
-Older versions (before v1.4.1), Place the installation package in:
-
-`/ZimaOS-HD/rauc/offline/
-`
-
-New versions (v1.4.1 and later), Place the installation package in:
-
-`/ZimaOS-HD/.ota/offline/
-`
-![](https://manage.icewhale.io/api/static/docs/1755847486345_image.png)
-![](https://manage.icewhale.io/api/static/docs/1755847493159_image.png)
 
