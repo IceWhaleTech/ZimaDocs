@@ -1,4 +1,4 @@
-# 1.介绍
+## 1.介绍
 
 ![OpenWrt官方logo](https://manage.icewhale.io/api/static/docs/1763713194262_copyImage.png)
 
@@ -19,7 +19,7 @@ OpenWrt 的主要特点包括：
 
 ---
 
-# **2.准备工作**
+## **2.准备工作**
 
 请提前准备以下硬件和工具，以确保顺利完成安装过程：
 
@@ -35,9 +35,9 @@ OpenWrt 的主要特点包括：
 
 ---
 
-# 3.安装步骤
+## 3.安装步骤
 
-## **步骤 1：创建 OpenWrt 启动 USB 驱动器**
+### **步骤 1：创建 OpenWrt 启动 USB 驱动器**
 
 **下载固件**
 
@@ -48,7 +48,7 @@ OpenWrt 的主要特点包括：
     ![下载 OpenWrt 官方固件](https://manage.icewhale.io/api/static/docs/1763713196060_copyImage.png)
     
 
-## 步骤 2：使用 balenaEtcher 将镜像刷入 USB 驱动器
+### 步骤 2：使用 balenaEtcher 将镜像刷入 USB 驱动器
 
 1. 准备一块空白 USB 驱动器
 
@@ -75,7 +75,7 @@ OpenWrt 的主要特点包括：
 
 ![balenaEtcher 刷写完成](https://manage.icewhale.io/api/static/docs/1763713197464_copyImage.png)
 
-## **步骤 3：从 USB 驱动器启动 ZimaBoard 2**
+### **步骤 3：从 USB 驱动器启动 ZimaBoard 2**
 
 **1. 准备并连接硬件**
 
@@ -109,7 +109,7 @@ OpenWrt 的主要特点包括：
 
 ![OpenWrt 启动成功](https://manage.icewhale.io/api/static/docs/1763713201272_copyImage.png)
 
-## **步骤 4：通过浏览器访问 OpenWrt Web 界面**
+### **步骤 4：通过浏览器访问 OpenWrt Web 界面**
 
 **1. 确保您的计算机已连接到 ZimaBoard 2**
 
@@ -130,7 +130,7 @@ OpenWrt 的主要特点包括：
 
 ![OpenWrt 主界面](https://manage.icewhale.io/api/static/docs/1763713203997_copyImage.png)
 
-# **4.最终说明**
+## **4.最终说明**
 
 至此，您已经完成了在 ZimaBoard 2 上安装 OpenWrt 的基本过程。
 
