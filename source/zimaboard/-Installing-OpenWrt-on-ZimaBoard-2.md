@@ -1,4 +1,4 @@
-# 1.Introduction
+##  1.Introduction
 
 ![The official logo of openwrt](https://manage.icewhale.io/api/static/docs/1763713194262_copyImage.png)
 
@@ -19,7 +19,7 @@ This tutorial aims to demonstrate how to use the ZimaBoard 2 to build a high-per
 
 * * *
 
-# **2.Preparation**
+## **2.Preparation**
 
 Please prepare the following hardware and tools in advance to ensure a smooth installation process:
 
@@ -35,9 +35,9 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
 * * *
 
-# 3.Installation Steps
+## 3.Installation Steps
 
-## **Step 1: Create an OpenWrt Bootable USB Drive**
+### **Step 1: Create an OpenWrt Bootable USB Drive**
 
 **Download the firmware**
 
@@ -48,7 +48,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
     ![Download the official firmware of openwrt](https://manage.icewhale.io/api/static/docs/1763713196060_copyImage.png)
     
 
-## Step 2: Flash the Image to the USB Drive Using balenaEtcher
+### Step 2: Flash the Image to the USB Drive Using balenaEtcher
 
 1.Prepare an empty USB drive on your computer
 
@@ -75,7 +75,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
 ![The burning of balenaEtcher is complete](https://manage.icewhale.io/api/static/docs/1763713197464_copyImage.png)
 
-## **Step 3: Boot the ZimaBoard 2 from the USB Drive**
+### **Step 3: Boot the ZimaBoard 2 from the USB Drive**
 
 **1.Prepare and connect the hardware**
 
@@ -109,7 +109,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
 ![openwrt has been launched successfully](https://manage.icewhale.io/api/static/docs/1763713201272_copyImage.png)
 
-## **Step 4: Access the OpenWrt Web Interface via Browser**
+### **Step 4: Access the OpenWrt Web Interface via Browser**
 
 **1.Ensure your computer is connected to the ZimaBoard 2**
 
@@ -130,7 +130,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
 ![The main interface of openwrt](https://manage.icewhale.io/api/static/docs/1763713203997_copyImage.png)
 
-# **4.Final Notes**
+## **4.Final Notes**
 
 At this point, you have completed the basic process of installing OpenWrt on the ZimaBoard 2.
 
