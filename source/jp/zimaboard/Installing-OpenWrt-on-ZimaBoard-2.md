@@ -1,3 +1,10 @@
+---
+title: ZimaBoard 2 に OpenWrt をインストール
+description: 
+type: Docs
+author: admin
+tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+---
 # 1. はじめに
 
 ![The official logo of openwrt](https://manage.icewhale.io/api/static/docs/1763713194262_copyImage.png)
