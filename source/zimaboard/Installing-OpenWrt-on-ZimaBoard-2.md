@@ -34,7 +34,7 @@ Please prepare the following hardware and tools in advance to ensure a smooth in
 
 * **ZimaBoard 2 device**
 
-* **2.USB drive (≥16GB)** for creating the bootable installer
+* **USB drive (≥16GB)** for creating the bootable installer
 
   {% note warn Tips %}
 
@@ -42,9 +42,9 @@ The flashing process will erase all data on the USB drive. Please back up any im
 {% endnote %}
 
 
-* **3.PC (Windows / macOS)** for downloading the firmware and flashing it to the USB drive
+* **PC (Windows / macOS)** for downloading the firmware and flashing it to the USB drive
 
-* **4.Monitor + MiniDP to HDMI/DP adapter + keyboard + Ethernet cable**
+* **Monitor + MiniDP to HDMI/DP adapter + keyboard + Ethernet cable**
 
 * * *
 
@@ -77,7 +77,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
 ![balenaEtcher burning](https://manage.icewhale.io/api/static/docs/1764309100941_balenaEtcher_burning.png)
 
 
-3.**Open balenaEtcher**(If you don’t have it installed, you can download it from [the official website](https://etcher.balena.io/) .)
+**3.Open balenaEtcher**(If you don’t have it installed, you can download it from [the official website](https://etcher.balena.io/) .)
 
 **4.Start flashing**
 
