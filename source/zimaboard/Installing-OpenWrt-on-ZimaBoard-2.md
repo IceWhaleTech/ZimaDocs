@@ -7,9 +7,11 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 ##  1.Introduction
 
-![The official logo of openwrt](https://manage.icewhale.io/api/static/docs/1763713194262_copyImage.png)
+![The official logo of openwrt](https://manage.icewhale.io/api/static/docs/1764298451910_The_official_logo_of_openwrt.png)
 
-OpenWrt is an open-source, Linux-based router operating system widely used on home routers, enterprise routers, soft routers, NAS devices, and other network equipment. It offers high flexibility and customization, allowing users to manage their network devices just like operating a small Linux server.
+
+
+OpenWrt is an open-source, Linux-based router operating system widely used on home routers, enterprise routers, soft routers, NAS devices, and other network equipment. It offers high flexibility and customization, allowing users to manage their network devices just like operating a small Linux server.  
 
 Key features of OpenWrt include:
 
@@ -63,7 +65,8 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
 2.Insert the USB drive into your PC
 
-![balenaEtcher burning](https://manage.icewhale.io/api/static/docs/1763713196652_copyImage.png)
+![balenaEtcher burning]!(https://manage.icewhale.io/api/static/docs/1764298541089_balenaEtcher_burning.png)
+
 
 3.Open balenaEtcher(If you don’t have it installed, you can download it from [the official website](https://etcher.balena.io/) .)
 
@@ -80,7 +83,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
   Once Etcher displays **“Flash Complete!”**, you can safely eject the USB drive. Your USB drive is now a bootable OpenWrt installation medium.
 
-![The burning of balenaEtcher is complete](https://manage.icewhale.io/api/static/docs/1763713197464_copyImage.png)
+![The burning of balenaEtcher is complete](https://manage.icewhale.io/api/static/docs/1764299872754_The_burning_of_balenaEtcher_is_complete.png)
 
 ### **Step 3: Boot the ZimaBoard 2 from the USB Drive**
 
@@ -107,14 +110,16 @@ The flashing process will erase all data on the USB drive. Please back up any im
 *   Press **Enter** to confirm and boot from the USB drive
     
 
-![Startup sequence option](https://manage.icewhale.io/api/static/docs/1763713198322_copyImage.png)
+![Startup sequence option](https://manage.icewhale.io/api/static/docs/1764300015325_Startup_sequence_option.png)
+
 
 **4.Confirm that OpenWrt has booted successfully**
 
 *   If everything is working correctly, the ZimaBoard 2 will boot from the USB drive and enter the OpenWrt system (usually a command-line interface)
     
 
-![openwrt has been launched successfully](https://manage.icewhale.io/api/static/docs/1763713201272_copyImage.png)
+![openwrt has been launched successfully](https://manage.icewhale.io/api/static/docs/1764300101135_openwrt_has_been_launched_successfully.png)
+
 
 ### **Step 4: Access the OpenWrt Web Interface via Browser**
 
@@ -133,9 +138,12 @@ The flashing process will erase all data on the USB drive. Please back up any im
 
 **3.Log in to OpenWrt** Default username: **root** Default password: **password**
 
-![openwrt login interface](https://manage.icewhale.io/api/static/docs/1763713201956_copyImage.png)
 
-![The main interface of openwrt](https://manage.icewhale.io/api/static/docs/1763713203997_copyImage.png)
+
+![openwrt login interface](https://manage.icewhale.io/api/static/docs/1764301256473_openwrt_login_interface.png)
+
+![](https://manage.icewhale.io/api/static/docs/1764301317557_The_main_interface_of_openwrt.png)
+
 
 ## **4.Final Notes**
 
