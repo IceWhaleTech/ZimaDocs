@@ -1,157 +1,130 @@
 ---
-title: ZimaBoard 2 に OpenWrt をインストール
+title: ZimaBoard 2へのOpenWrtインストール
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: 上部のバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。入力しない場合は最初の段落の内容が自動的に取り込まれます。
 ---
-# 1. はじめに
+## 1.はじめに
 
-![The official logo of openwrt](https://manage.icewhale.io/api/static/docs/1763713194262_copyImage.png)
+![OpenWrtの公式ロゴ](https://manage.icewhale.io/api/static/docs/1764298451910_The_official_logo_of_openwrt.png)
 
-OpenWrtは、家庭用ルーター、企業用ルーター、ソフトルーター、NASデバイスなどのネットワーク機器で広く使用されているオープンソースのLinuxベースのルーターOSです。高い柔軟性とカスタマイズ性を提供し、ユーザーはネットワーク機器を小規模なLinuxサーバーのように管理できます。
+OpenWrtは、家庭用ルーター、企業用ルーター、ソフトルーター、NASデバイス、その他のネットワーク機器で広く使用されているオープンソースのLinuxベースのルーターOSです。高い柔軟性とカスタマイズ性を提供し、ユーザーはネットワークデバイスを小さなLinuxサーバーを操作するように管理できます。
 
 OpenWrtの主な特徴は以下の通りです：
 
-*   **オープンソースで透明性が高い**：ブラックボックスコンポーネントなしで完全に制御可能。
-    
-*   **高い拡張性**：VPN、AdGuard、Dockerなどの追加パッケージをインストール可能。
-    
-*   **高性能**：ギガビットネットワークや高性能ソフトルーターハードウェアに適している。
-    
-*   **柔軟なネットワーキング**：VLAN、マルチWAN、バイパスルーティングなどの高度な機能に対応。
-    
+* **オープンソースで透明性あり**：ブラックボックスコンポーネントなしで完全に制御可能。
+* **高い拡張性**：VPN、AdGuard、Dockerなどの追加パッケージをインストール可能。
+* **高パフォーマンス**：ギガビットネットワークや強力なソフトルーター向けに最適。
+* **柔軟なネットワーキング**：VLAN、マルチWAN、バイパスルーティングなどの高度な機能をサポート。
 
-このチュートリアルでは、ZimaBoard 2を使用して高性能ソフトルーターを構築する方法を示し、OpenWrtのインストールプロセスを段階的にガイドします。
+このチュートリアルでは、ZimaBoard 2を使用して高性能なソフトルーターを構築し、OpenWrtのインストール手順を詳しく説明します。
 
 * * *
 
-# **2. 準備**
+## **2.準備**
 
-スムーズなインストールを行うために、以下のハードウェアとツールを事前に準備してください：
+インストール手順がスムーズに進むよう、以下のハードウェアとツールを事前に準備してください：
 
-**1.ZimaBoard 2デバイス**
-
-**2.USBドライブ (≥16GB)** ブータブルインストーラー作成用
-
-フラッシュ中にUSBドライブ内のデータはすべて消去されます。重要なファイルは事前にバックアップしてください！
-
-**3.PC (Windows / macOS)** ファームウェアのダウンロードおよびUSBドライブへの書き込み用
-
-**4.モニター + MiniDP to HDMI/DPアダプタ + キーボード + イーサネットケーブル**
+* **ZimaBoard 2デバイス**
+* **USBドライブ（≥16GB）**：ブータブルインストーラーを作成するため
+  {% note warn Tips %}
+  フラッシュ作業はUSBドライブ上のすべてのデータを消去します。重要なファイルは事前にバックアップしてください！
+  {% endnote %}
+* **PC（Windows / macOS）**：ファームウェアをダウンロードし、USBドライブにフラッシュするため
+* **モニター + MiniDP to HDMI/DPアダプター + キーボード + イーサネットケーブル**
 
 * * *
 
-# 3. インストール手順
+## 3.インストール手順
 
-## **ステップ1：OpenWrtブータブルUSBドライブの作成**
+### **ステップ1：OpenWrtのブータブルUSBドライブの作成**
 
 **ファームウェアのダウンロード**
 
-*   公式ダウンロードページにアクセス：[OpenWrt公式ファームウェアのダウンロード](https://firmware-selector.openwrt.org/?version=24.10.4&target=x86%2F64&id=generic)
+*   公式ダウンロードページにアクセス：[OpenWrt公式ファームウェアをダウンロード](https://firmware-selector.openwrt.org/?version=24.10.4&target=x86%2F64&id=generic)
     
-*   推奨イメージタイプを選択：**COMBINED-EFI (SQUASHFS)** バージョンを選択。x86\_64デバイス向けの完全ブータブルイメージで、UEFIブートに対応し、ZimaBoard 2 BIOS環境と完全互換。
+*   推奨されるイメージタイプを選択：**COMBINED-EFI (SQUASHFS)** バージョンを選択します。これはx86\_64デバイス向けの完全なブータブルイメージで、UEFIブートをサポートし、ZimaBoard 2のBIOS環境に完全に対応しています。
     
-    ![Download the official firmware of openwrt](https://manage.icewhale.io/api/static/docs/1763713196060_copyImage.png)
-    
+    ![OpenWrt公式ファームウェアをダウンロード](https://manage.icewhale.io/api/static/docs/1764302027764_Download_the_official_firmware_of_openwrt.png)
+   
 
-## ステップ2：balenaEtcherでUSBドライブにイメージを書き込む
+### ステップ2：balenaEtcherを使用してUSBドライブにイメージをフラッシュ
 
-1. コンピュータ上で空のUSBドライブを準備
+**1.空のUSBドライブをPCに準備**
 
-フラッシュ中にUSBドライブ内のデータはすべて消去されます。重要なファイルは事前にバックアップしてください！
+  {% note warn Tips %}
+  フラッシュ作業はUSBドライブ上のすべてのデータを消去します。重要なファイルは事前にバックアップしてください！
+  {% endnote %}
 
-2. USBドライブをPCに挿入
+**2.USBドライブをPCに挿入**
 
-![balenaEtcher burning](https://manage.icewhale.io/api/static/docs/1763713196652_copyImage.png)
+![balenaEtcherでの書き込み](https://manage.icewhale.io/api/static/docs/1764309100941_balenaEtcher_burning.png)
 
-3. balenaEtcherを開く（未インストールの場合は[公式サイト](https://etcher.balena.io/)からダウンロード可能）
+**3. balenaEtcherを開く**（インストールされていない場合は、[公式ウェブサイト](https://etcher.balena.io/)からダウンロードできます。）
 
-4. フラッシュ開始
+**4. フラッシュを開始**
 
-*   **Flash from file** をクリックし、ダウンロードしたOpenWrt x86イメージを選択
-    
-*   **Select target** をクリックし、USBドライブを選択
-    
-*   フラッシュには通常 **1〜3分** かかります。完了までしばらく待機
-    
+*   **Flash from file**をクリックし、ダウンロードしたOpenWrt x86イメージを選択
+*   **Select target**をクリックし、USBドライブを選択
+*   フラッシュ作業は通常**1〜3分**かかりますので、少し待ってください
 
-5. フラッシュ完了 — USBドライブを取り外す
+**5. フラッシュ完了 — USBドライブを取り外す**
 
-  Etcherで **「Flash Complete!」** が表示されたら、安全にUSBドライブを取り外せます。これでUSBドライブはブータブルなOpenWrtインストールメディアになりました。
+　　Etcherが**「Flash Complete!」**と表示したら、安全にUSBドライブを取り外してください。これでUSBドライブはブータブルOpenWrtインストールメディアに変わりました。
 
-![The burning of balenaEtcher is complete](https://manage.icewhale.io/api/static/docs/1763713197464_copyImage.png)
+![balenaEtcherの書き込み完了](https://manage.icewhale.io/api/static/docs/1764299872754_The_burning_of_balenaEtcher_is_complete.png)
 
-## **ステップ3：USBドライブからZimaBoard 2を起動**
+### **ステップ3：ZimaBoard 2をUSBドライブから起動**
 
-**1. ハードウェアの準備と接続**
+**1. ハードウェアを準備し接続**
 
-*   作成したOpenWrtブータブルUSBドライブをZimaBoard 2のUSBポートの1つに挿入
-    
-*   イーサネットケーブルで **LANポート（電源コネクタに最も近いポート）** をPCに接続
-    
-*   電源を接続し、キーボードとモニター（または他の操作方法）を準備
-    
+*   作成したOpenWrtブータブルUSBドライブをZimaBoard 2のUSBポートに挿入
+*   イーサネットケーブルを使って、**LANポート（電源コネクタに最も近いポート）**をコンピュータに接続
+*   電源を接続し、キーボードとモニター（または他の操作方法）が準備できていることを確認
 
 **2. ブートメニューに入る**
 
-*   電源ボタンを押してZimaBoard 2を起動
-    
-*   ブート画面が表示されたら、**F11** を繰り返し押して **Boot Menu** に入る
-    
+*   ZimaBoard 2の電源ボタンを押して起動
+*   起動画面が表示されたら、**F11**キーを繰り返し押して**ブートメニュー**に入る
 
 **3. USBドライブをブートデバイスとして選択**
 
-*   Boot Menuで矢印キーを使用してUSBドライブを選択
-    
-*   **Enter** を押して確認し、USBドライブからブート
-    
+*   ブートメニューで矢印キーを使ってUSBドライブを選択
+*   **Enter**キーを押して、USBドライブから起動を確認
 
-![Startup sequence option](https://manage.icewhale.io/api/static/docs/1763713198322_copyImage.png)
+![起動シーケンスオプション](https://manage.icewhale.io/api/static/docs/1764300015325_Startup_sequence_option.png)
 
 **4. OpenWrtが正常に起動したことを確認**
 
-*   正常に動作していれば、ZimaBoard 2はUSBドライブからブートし、OpenWrtシステムに入ります（通常はコマンドラインインターフェイス）
-    
+*   正常に動作していれば、ZimaBoard 2はUSBドライブから起動し、OpenWrtシステム（通常はコマンドラインインターフェース）に入ります。
 
-![openwrt has been launched successfully](https://manage.icewhale.io/api/static/docs/1763713201272_copyImage.png)
+![openwrtの起動成功](https://manage.icewhale.io/api/static/docs/1764300101135_openwrt_has_been_launched_successfully.png)
 
-## **ステップ4：ブラウザからOpenWrt Webインターフェイスにアクセス**
+### **ステップ4：ブラウザでOpenWrtウェブインターフェースにアクセス**
 
-**1. PCがZimaBoard 2に接続されていることを確認**
+**1. コンピュータがZimaBoard 2に接続されていることを確認**
 
-*   PCからのイーサネットケーブルは **LANポート（電源コネクタに最も近いポート）** に接続
-    
-*   PCのネットワークアダプタは **IPアドレスを自動取得 (DHCP)** に設定
-    
-*   通常、OpenWrtはPCに **192.168.1.x** の範囲のアドレスを割り当てます（例：192.168.1.100）
-    
+*   コンピュータからのイーサネットケーブルは、ZimaBoard 2の**LANポート（電源コネクタに最も近いポート）**に接続されている必要があります
+*   コンピュータのネットワークアダプタは**IPアドレスを自動的に取得する（DHCP）**に設定する必要があります
+*   OpenWrtは通常、コンピュータに**192.168.1.x**の範囲内（例：192.168.1.100）のアドレスを割り当てます
 
-**2. ブラウザでOpenWrt管理ページを開く** PCで任意のブラウザ（Chrome、Edge、Firefoxなど）を開き、URLバーに以下を入力：
+**2. ブラウザでOpenWrt管理ページを開く** コンピュータで任意のブラウザ（Chrome、Edge、Firefoxなど）を開き、URLバーに以下のアドレスを入力：
 
     http://192.168.1.1
 
-**3. OpenWrtにログイン** デフォルトユーザー名：**root** デフォルトパスワード：**password**
+**3. OpenWrtにログイン** デフォルトのユーザー名：**root** デフォルトのパスワード：**password**
 
-![openwrt login interface](https://manage.icewhale.io/api/static/docs/1763713201956_copyImage.png)
+![openwrtログインインターフェース](https://manage.icewhale.io/api/static/docs/1764301256473_openwrt_login_interface.png)
 
-![The main interface of openwrt](https://manage.icewhale.io/api/static/docs/1763713203997_copyImage.png)
+![](https://manage.icewhale.io/api/static/docs/1764301317557_The_main_interface_of_openwrt.png)
 
-# **4. 最後の注意点**
+## **4.最終メモ**
 
-これで、ZimaBoard 2へのOpenWrtの基本インストールプロセスが完了しました。
+これで、ZimaBoard 2にOpenWrtをインストールする基本的な手順は完了です。
 
-ファームウェアのダウンロード、ブータブルUSBドライブの作成、USBドライブからの起動、Webインターフェイスへのログインまで、コンパクトなボードを強力なソフトルーターに変換しました。
+ファームウェアをダウンロードしてブータブルUSBドライブを作成し、それから起動してウェブインターフェースに正常にログインすることで、このコンパクトなボードを強力なソフトルーターに変えました。
 
-ここからは、以下のようにニーズに応じてカスタマイズ可能です：
+ここからは、必要に応じてセットアップをカスタマイズできます。例えば：
 
-*   PPPoEの設定やバイパス（ブリッジ）ルーターの構築
-    
-*   共通プラグインのインストール（Docker、広告ブロックツール、プロキシサービスなど）
-    
-*   リモートアクセス、NAS、メディアサーバーの設定など
-    
-
-**ZimaBoard 2 + OpenWrt** の組み合わせは無限の可能性を提供します—このチュートリアルはその始まりに過ぎません。
-
-作業中に問題が発生した場合は、状況やエラーメッセージをコミュニティで共有してサポートを受けてください。
+*   PPPoEの設定やバイパス（ブリ
