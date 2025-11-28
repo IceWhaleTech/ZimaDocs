@@ -32,15 +32,19 @@ This tutorial aims to demonstrate how to use the ZimaBoard 2 to build a high-per
 
 Please prepare the following hardware and tools in advance to ensure a smooth installation process:
 
-**1.ZimaBoard 2 device**
+* **ZimaBoard 2 device**
 
-**2.USB drive (≥16GB)** for creating the bootable installer
+* **2.USB drive (≥16GB)** for creating the bootable installer
+
+* {% note warn Tips %}
 
 The flashing process will erase all data on the USB drive. Please back up any important files beforehand!
+{% endnote %}
 
-**3.PC (Windows / macOS)** for downloading the firmware and flashing it to the USB drive
 
-**4.Monitor + MiniDP to HDMI/DP adapter + keyboard + Ethernet cable**
+* **3.PC (Windows / macOS)** for downloading the firmware and flashing it to the USB drive
+
+* **4.Monitor + MiniDP to HDMI/DP adapter + keyboard + Ethernet cable**
 
 * * *
 
