@@ -36,7 +36,7 @@ Please prepare the following hardware and tools in advance to ensure a smooth in
 
 * **2.USB drive (≥16GB)** for creating the bootable installer
 
-* {% note warn Tips %}
+  {% note warn Tips %}
 
 The flashing process will erase all data on the USB drive. Please back up any important files beforehand!
 {% endnote %}
@@ -58,23 +58,28 @@ The flashing process will erase all data on the USB drive. Please back up any im
     
 *   Select the recommended image type: Choose the **COMBINED-EFI (SQUASHFS)** version. This is a complete bootable image designed for x86\_64 devices, supports UEFI boot, and is fully compatible with the ZimaBoard 2 BIOS environment.
     
-    ![Download the official firmware of openwrt](https://manage.icewhale.io/api/static/docs/1763713196060_copyImage.png)
-    
+    ![Download the official firmware of openwrt](https://manage.icewhale.io/api/static/docs/1764302027764_Download_the_official_firmware_of_openwrt.png)
+   
 
 ### Step 2: Flash the Image to the USB Drive Using balenaEtcher
 
-1.Prepare an empty USB drive on your computer
+**1.Prepare an empty USB drive on your computer**
+
+  {% note warn Tips %}
+
 
 The flashing process will erase all data on the USB drive. Please back up any important files beforehand!
-
-2.Insert the USB drive into your PC
-
-![balenaEtcher burning]!(https://manage.icewhale.io/api/static/docs/1764298541089_balenaEtcher_burning.png)
+{% endnote %}
 
 
-3.Open balenaEtcher(If you don’t have it installed, you can download it from [the official website](https://etcher.balena.io/) .)
+**2.Insert the USB drive into your PC**
 
-4.Start flashing
+![balenaEtcher burning](https://manage.icewhale.io/api/static/docs/1764309100941_balenaEtcher_burning.png)
+
+
+3.**Open balenaEtcher**(If you don’t have it installed, you can download it from [the official website](https://etcher.balena.io/) .)
+
+**4.Start flashing**
 
 *   Click **Flash from file** and select the downloaded OpenWrt x86 image
     
@@ -83,7 +88,7 @@ The flashing process will erase all data on the USB drive. Please back up any im
 *   The flashing process typically takes **1–3 minutes**, so please wait patiently
     
 
-5.Flash complete — remove the USB drive
+**5.Flash complete — remove the USB drive**
 
   Once Etcher displays **“Flash Complete!”**, you can safely eject the USB drive. Your USB drive is now a bootable OpenWrt installation medium.
 
