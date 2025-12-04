@@ -17,7 +17,7 @@ Currently, **ZimaOS only supports UPS devices that:**
 
 Any UPS that meets these two conditions can generally be recognized and used by ZimaOS for features such as power status monitoring and automatic shutdown.
 
-Below is a **non-exhaustive list** of UPS models that have been verified to work with ZimaOS. Actual supported devices are **not limited to this table**, and we will continue to expand and update this compatibility list over time.
+Below is a **non-exhaustive list** of UPS models that are known or reported to work with ZimaOS based on device specifications and community feedback. Actual supported devices are **not limited to this list**, and we will continue to refine and update this compatibility information over time.
 
 
 ## Compatibility List
