@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>文章标题 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="段落标题I. 概述Arch Linux 长期以来一直受到开发者和高级用户的青睐，因其简约的设计、滚动发布模式以及高度的可定制性。 ZimaBoard 2 是一款基于 x86 的单板服务器，兼具性能和扩展性，是部署 Arch Linux 的优秀平台，适用于家庭服务器、自托管服务、开发或测试环境等场景。 本文将提供完整的 ZimaBoard 2 上安装 Arch Linux 并">
+<meta property="og:type" content="website">
+<meta property="og:title" content="文章标题">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="段落标题I. 概述Arch Linux 长期以来一直受到开发者和高级用户的青睐，因其简约的设计、滚动发布模式以及高度的可定制性。 ZimaBoard 2 是一款基于 x86 的单板服务器，兼具性能和扩展性，是部署 Arch Linux 的优秀平台，适用于家庭服务器、自托管服务、开发或测试环境等场景。 本文将提供完整的 ZimaBoard 2 上安装 Arch Linux 并">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567150367_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567151194_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567151645_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567152384_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567153730_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567154188_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567155139_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567156058_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567156700_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567157176_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567157797_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567158616_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567159383_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567160155_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567161097_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567162104_copyImage.png">
+<meta property="article:published_time" content="2025-12-24T09:53:47.397Z">
+<meta property="article:modified_time" content="2025-12-24T09:53:47.397Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "文章标题",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "admin"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1766570027397"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">商店</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="搜索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">文章标题</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="段落标题" class="article-heading"><a href="#段落标题" class="headerlink" title="段落标题"></a>段落标题<a class="article-anchor" href="#段落标题" aria-hidden="true"></a></h2><h2 id="I-概述" class="article-heading"><a href="#I-概述" class="headerlink" title="I. 概述"></a><strong>I. 概述</strong><a class="article-anchor" href="#I-概述" aria-hidden="true"></a></h2><p>Arch Linux 长期以来一直受到开发者和高级用户的青睐，因其简约的设计、滚动发布模式以及高度的可定制性。</p>
+<p>ZimaBoard 2 是一款基于 x86 的单板服务器，兼具性能和扩展性，是部署 Arch Linux 的优秀平台，适用于家庭服务器、自托管服务、开发或测试环境等场景。</p>
+<p>本文将提供完整的 ZimaBoard 2 上安装 Arch Linux 并进行基本系统配置的步骤。所有步骤均清晰展示，设计上便于复现，适合作为首次在此平台上部署 Arch Linux 的用户参考。</p>
+<hr>
+<h2 id="II-准备工作" class="article-heading"><a href="#II-准备工作" class="headerlink" title="II. 准备工作"></a><strong>II. 准备工作</strong><a class="article-anchor" href="#II-准备工作" aria-hidden="true"></a></h2><ol>
+<li><h3 id="硬件清单" class="article-heading"><a href="#硬件清单" class="headerlink" title="硬件清单"></a>硬件清单<a class="article-anchor" href="#硬件清单" aria-hidden="true"></a></h3><blockquote>
+<ul>
+<li><strong>ZimaBoard 2 主板</strong> ⚠️ 本指南假设系统安装在板载 eMMC 上，安装过程将对 eMMC 进行分区和格式化，请确保其中没有重要数据。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><strong>HDMI 显示器 + USB 键盘</strong><blockquote>
+<ul>
+<li><strong>USB 闪存驱动器 (≥ 8 GB)</strong> （用于创建启动安装盘）⚠️ 创建启动盘时，USB 驱动器将被格式化，所有现有数据将被删除，请提前备份重要文件。</li>
+<li><strong>有线网络连接</strong> （推荐，因安装过程中需要网络连接）</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ol start="2">
+<li><h3 id="软件准备" class="article-heading"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备<a class="article-anchor" href="#软件准备" aria-hidden="true"></a></h3></li>
+</ol>
+<ul>
+<li><strong>用于创建启动 USB 的计算机</strong> （Windows、macOS 或 Linux）</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://archlinux.org/download/">- 官方 Arch Linux ISO 镜像（2025.12.01）</a></li>
+<li><strong>启动 USB 创建工具</strong> （选择一个）：<ul>
+<li><strong>balenaEtcher</strong> （跨平台，图形界面，推荐）</li>
+<li><strong>Rufus</strong> （Windows 用户使用）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="III-创建启动-USB（以-balenaEtcher-为例）" class="article-heading"><a href="#III-创建启动-USB（以-balenaEtcher-为例）" class="headerlink" title="III. 创建启动 USB（以 balenaEtcher 为例）"></a><strong>III. 创建启动 USB（以 balenaEtcher 为例）</strong><a class="article-anchor" href="#III-创建启动-USB（以-balenaEtcher-为例）" aria-hidden="true"></a></h2><p><img src="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png" alt="balenaEtcher 烧录过程"></p>
+<blockquote>
+<p>⚠️ 创建启动 USB 时会格式化闪存驱动器并删除所有现有数据，请提前备份重要文件。</p>
+</blockquote>
+<ol>
+<li>插入 USB 闪存驱动器。</li>
+<li>启动 <strong>balenaEtcher</strong>。</li>
+<li>点击 <strong>“从文件烧录”</strong> 并选择已下载的 <code>archlinux-2025.12.01-x86_64.iso</code>。</li>
+<li>点击 <strong>“选择目标”</strong> 并选择你的 USB 闪存驱动器（确保选择正确的设备）。</li>
+<li>点击 <strong>“烧录！”</strong> 并等待写入过程完成。</li>
+<li>安全弹出 USB 闪存驱动器。</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567150367_copyImage.png" alt="balenaEtcher 烧录完成"></p>
+<hr>
+<h2 id="IV-从-USB-启动-ZimaBoard-2" class="article-heading"><a href="#IV-从-USB-启动-ZimaBoard-2" class="headerlink" title="IV. 从 USB 启动 ZimaBoard 2"></a><strong>IV. 从 USB 启动 ZimaBoard 2</strong><a class="article-anchor" href="#IV-从-USB-启动-ZimaBoard-2" aria-hidden="true"></a></h2><ol>
+<li>将准备好的 Arch Linux 启动 USB 驱动器插入 ZimaBoard 2 的 USB 端口。</li>
+<li>连接 HDMI 显示器、键盘和以太网电缆。</li>
+<li>开机。看到 <strong>ZIMA</strong> logo 时，反复按 <strong>F11</strong> 进入 <strong>启动菜单</strong>。</li>
+<li>使用方向键选择你的 USB 闪存驱动器。</li>
+<li>按 <strong>Enter</strong> 确认并从 USB 启动。</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567151194_copyImage.png" alt="启动选项"></p>
+<hr>
+<h2 id="V-进入安装环境并进行初始配置" class="article-heading"><a href="#V-进入安装环境并进行初始配置" class="headerlink" title="V. 进入安装环境并进行初始配置"></a><strong>V. 进入安装环境并进行初始配置</strong><a class="article-anchor" href="#V-进入安装环境并进行初始配置" aria-hidden="true"></a></h2><ol>
+<li><h3 id="启动进入-Arch-Linux-安装环境" class="article-heading"><a href="#启动进入-Arch-Linux-安装环境" class="headerlink" title="启动进入 Arch Linux 安装环境"></a>启动进入 Arch Linux 安装环境<a class="article-anchor" href="#启动进入-Arch-Linux-安装环境" aria-hidden="true"></a></h3></li>
+</ol>
+<p>从启动菜单中选择第一个选项：</p>
+<pre><code>Arch Linux install medium (x86_64)
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567151645_copyImage.png" alt="Arch 启动选项"></p>
+<p>启动过程完成后，你将进入一个 root shell：</p>
+<pre><code>root@archiso ~ #
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567152384_copyImage.png" alt="Arch 安装环境"></p>
+<p>这意味着你已经进入了 Arch Linux 安装环境。</p>
+<hr>
+<ol start="2">
+<li><h3 id="验证网络连接" class="article-heading"><a href="#验证网络连接" class="headerlink" title="验证网络连接"></a><strong>验证网络连接</strong><a class="article-anchor" href="#验证网络连接" aria-hidden="true"></a></h3></li>
+</ol>
+<p>首先，检查系统是否检测到了网络接口：</p>
+<pre><code>ip link
+</code></pre>
+<p>如果你能看到类似 <strong>enp*</strong> 的接口，说明网络接口卡已成功检测到。</p>
+<hr>
+<ol start="3">
+<li><h3 id="测试网络连接" class="article-heading"><a href="#测试网络连接" class="headerlink" title="测试网络连接"></a><strong>测试网络连接</strong><a class="article-anchor" href="#测试网络连接" aria-hidden="true"></a></h3></li>
+</ol>
+<p>接下来，测试网络连接：</p>
+<pre><code>ping archlinux.org
+</code></pre>
+<p>如果 ping 测试成功，说明网络连接正常。按<code>Ctrl + C</code> 停止测试。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567153730_copyImage.png" alt="网络连接测试"></p>
+<hr>
+<ol start="4">
+<li><h3 id="同步系统时间" class="article-heading"><a href="#同步系统时间" class="headerlink" title="同步系统时间"></a><strong>同步系统时间</strong><a class="article-anchor" href="#同步系统时间" aria-hidden="true"></a></h3></li>
+</ol>
+<p>在安装之前，建议启用网络时间同步，以确保系统时间的准确性。</p>
+<p>启用 NTP 以允许自动时间同步：</p>
+<pre><code>timedatectl set-ntp true
+</code></pre>
+<p>检查同步状态：</p>
+<pre><code>timedatectl
+</code></pre>
+<p>如果时间显示正确，系统时间同步完成。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567154188_copyImage.png" alt="同步系统时间"></p>
+<hr>
+<ol start="5">
+<li><h3 id="磁盘分区（GPT）" class="article-heading"><a href="#磁盘分区（GPT）" class="headerlink" title="磁盘分区（GPT）"></a><strong>磁盘分区（GPT）</strong><a class="article-anchor" href="#磁盘分区（GPT）" aria-hidden="true"></a></h3></li>
+</ol>
+<p>本指南假设系统将安装在 <strong>板载 eMMC 设备</strong> 上。</p>
+<blockquote>
+<p>⚠️ 安装过程将对板载 eMMC 进行分区和格式化，请确保 eMMC 上没有重要数据。</p>
+</blockquote>
+<hr>
+<h4 id="查看磁盘信息" class="article-heading"><a href="#查看磁盘信息" class="headerlink" title="查看磁盘信息"></a>查看磁盘信息<a class="article-anchor" href="#查看磁盘信息" aria-hidden="true"></a></h4><pre><code>lsblk
+</code></pre>
+<p>运行以下命令查看磁盘和分区信息：</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567155139_copyImage.png" alt="查看磁盘信息"></p>
+<h4 id="使用-cfdisk-创建-GPT-分区表" class="article-heading"><a href="#使用-cfdisk-创建-GPT-分区表" class="headerlink" title="使用 cfdisk 创建 GPT 分区表"></a>使用 <code>cfdisk</code> 创建 GPT 分区表<a class="article-anchor" href="#使用-cfdisk-创建-GPT-分区表" aria-hidden="true"></a></h4><h5 id="启动分区工具：" class="article-heading"><a href="#启动分区工具：" class="headerlink" title="启动分区工具："></a>启动分区工具：<a class="article-anchor" href="#启动分区工具：" aria-hidden="true"></a></h5><pre><code>cfdisk /dev/mmcblk0
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567156058_copyImage.png" alt="进入分区工具"></p>
+<h5 id="选择分区表类型" class="article-heading"><a href="#选择分区表类型" class="headerlink" title="选择分区表类型"></a>选择分区表类型<a class="article-anchor" href="#选择分区表类型" aria-hidden="true"></a></h5><p>首次进入 <code>cfdisk</code> 时，系统会提示选择分区表类型。选择：<code>GPT</code></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567156700_copyImage.png" alt="选择分区表类型"></p>
+<h5 id="创建第一个分区（EFI-系统）" class="article-heading"><a href="#创建第一个分区（EFI-系统）" class="headerlink" title="创建第一个分区（EFI 系统）"></a>创建第一个分区（EFI 系统）<a class="article-anchor" href="#创建第一个分区（EFI-系统）" aria-hidden="true"></a></h5><h6 id="①-创建新分区" class="article-heading"><a href="#①-创建新分区" class="headerlink" title="① 创建新分区"></a>① 创建新分区<a class="article-anchor" href="#①-创建新分区" aria-hidden="true"></a></h6><p>在主界面中，执行以下步骤：</p>
+<ol>
+<li>使用 **右箭头键 (→)**。</li>
+<li>将光标移到底部菜单，选择 **[NEW]**。</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567157176_copyImage.png" alt="创建新分区"></p>
+<ol start="3">
+<li>按 <strong>Enter</strong> 创建新分区。</li>
+</ol>
+<h6 id="②-指定分区大小" class="article-heading"><a href="#②-指定分区大小" class="headerlink" title="② 指定分区大小"></a>② 指定分区大小<a class="article-anchor" href="#②-指定分区大小" aria-hidden="true"></a></h6><p>当系统提示分区大小时，输入：<code>512M</code></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567157797_copyImage.png" alt="输入 512M"></p>
+<p>然后按 <strong>Enter</strong>。</p>
+<h6 id="③-设置分区类型" class="article-heading"><a href="#③-设置分区类型" class="headerlink" title="③ 设置分区类型"></a>③ 设置分区类型<a class="article-anchor" href="#③-设置分区类型" aria-hidden="true"></a></h6><p>创建新分区后：</p>
+<ol>
+<li>确保新创建的分区被选中。</li>
+<li>使用 <strong>右箭头键 (→)</strong> 移动到底部菜单。</li>
+<li>选择 **[Type]**。</li>
+<li>按 <strong>Enter</strong>。</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567158616_copyImage.png" alt="查看分区类型"></p>
+<h6 id="④-选择-EFI-系统类型" class="article-heading"><a href="#④-选择-EFI-系统类型" class="headerlink" title="④ 选择 EFI 系统类型"></a>④ 选择 EFI 系统类型<a class="article-anchor" href="#④-选择-EFI-系统类型" aria-hidden="true"></a></h6><p>从分区类型列表中：</p>
+<ol>
+<li>使用 <strong>↑ &#x2F; ↓</strong> 键。</li>
+<li>找到 <strong>EFI System</strong>。</li>
+<li>按 <strong>Enter</strong> 确认。</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567159383_copyImage.png" alt="选择分区类型"></p>
+<h6 id="⑤-验证结果" class="article-heading"><a href="#⑤-验证结果" class="headerlink" title="⑤ 验证结果"></a>⑤ 验证结果<a class="article-anchor" href="#⑤-验证结果" aria-hidden="true"></a></h6><p>返回主界面后，你应该看到类似的条目：</p>
+<p><code>/dev/mmcblk0p1 512M EFI System</code></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567160155_copyImage.png" alt="确认分区结果"></p>
+<hr>
+<h5 id="创建第二个分区（Swap）" class="article-heading"><a href="#创建第二个分区（Swap）" class="headerlink" title="创建第二个分区（Swap）"></a><strong>创建第二个分区（Swap）</strong><a class="article-anchor" href="#创建第二个分区（Swap）" aria-hidden="true"></a></h5><h6 id="①-选择空闲空间" class="article-heading"><a href="#①-选择空闲空间" class="headerlink" title="① 选择空闲空间"></a>① 选择空闲空间<a class="article-anchor" href="#①-选择空闲空间" aria-hidden="true"></a></h6><p>使用 <strong>↓</strong> 键选择：<code>Free space 28.6G</code></p>
+<h6 id="②-创建新分区" class="article-heading"><a href="#②-创建新分区" class="headerlink" title="② 创建新分区"></a>② 创建新分区<a class="article-anchor" href="#②-创建新分区" aria-hidden="true"></a></h6><ul>
+<li>使用 <strong>右箭头键 (→)</strong> 移动到底部菜单。</li>
+<li>选择 **[NEW]**。</li>
+<li>按 <strong>Enter</strong>。</li>
+</ul>
+<h6 id="③-指定分区大小" class="article-heading"><a href="#③-指定分区大小" class="headerlink" title="③ 指定分区大小"></a>③ 指定分区大小<a class="article-anchor" href="#③-指定分区大小" aria-hidden="true"></a></h6><p>当提示分区大小时，输入：<code>2G</code></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567161097_copyImage.png" alt="输入 2G"></p>
+<h6 id="④-设置分区类型为-Linux-Swap" class="article-heading"><a href="#④-设置分区类型为-Linux-Swap" class="headerlink" title="④ 设置分区类型为 Linux Swap"></a>④ 设置分区类型为 Linux Swap<a class="article-anchor" href="#④-设置分区类型为-Linux-Swap" aria-hidden="true"></a></h6><ul>
+<li>选择新创建的约 2GB 分区。</li>
+<li>输入 **[Type]**。</li>
+<li>选择 <strong>Linux swap</strong>。</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567162104_copyImage.png" alt="设置分区类型为 Linux swap"></p>
+<hr>
+<h5 id="创建第三个分区（Root）" class="article-heading"><a href="#创建第三个分区（Root）" class="headerlink" title="创建第三个分区（Root）"></a>创建第三个分区（Root）<a class="article-anchor" href="#创建第三个分区（Root）" aria-hidden="true"></a></h5><h6 id="①-选择剩余的空闲空间" class="article-heading"><a href="#①-选择剩余的空闲空间" class="headerlink" title="① 选择剩余的空闲空间"></a>① 选择剩余的空闲空间<a class="article-anchor" href="#①-选择剩余的空闲空间" aria-hidden="true"></a></h6>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2025-12-24T09:53:47.397Z" itemprop="dateModified">最后更新：2025-12-24</time>
+                <a href="Installing-OpenWrt-on-ZimaBoard-2.html" class="article-footer-prev" title="在 ZimaBoard 2 上安装 OpenWrt"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="Power-on-Zimablade.html" class="article-footer-next" title="开机"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD%E6%A0%87%E9%A2%98"><span class="toc-text">段落标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-%E6%A6%82%E8%BF%B0"><span class="toc-text">I. 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#II-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">II. 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="toc-text">硬件清单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%87%86%E5%A4%87"><span class="toc-text">软件准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#III-%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8-USB%EF%BC%88%E4%BB%A5-balenaEtcher-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-text">III. 创建启动 USB（以 balenaEtcher 为例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IV-%E4%BB%8E-USB-%E5%90%AF%E5%8A%A8-ZimaBoard-2"><span class="toc-text">IV. 从 USB 启动 ZimaBoard 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V-%E8%BF%9B%E5%85%A5%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE"><span class="toc-text">V. 进入安装环境并进行初始配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%BF%9B%E5%85%A5-Arch-Linux-%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="toc-text">启动进入 Arch Linux 安装环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="toc-text">验证网络连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="toc-text">测试网络连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4"><span class="toc-text">同步系统时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%EF%BC%88GPT%EF%BC%89"><span class="toc-text">磁盘分区（GPT）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E4%BF%A1%E6%81%AF"><span class="toc-text">查看磁盘信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-cfdisk-%E5%88%9B%E5%BB%BA-GPT-%E5%88%86%E5%8C%BA%E8%A1%A8"><span class="toc-text">使用 cfdisk 创建 GPT 分区表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%88%86%E5%8C%BA%E5%B7%A5%E5%85%B7%EF%BC%9A"><span class="toc-text">启动分区工具：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%88%86%E5%8C%BA%E8%A1%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text">选择分区表类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%88%86%E5%8C%BA%EF%BC%88EFI-%E7%B3%BB%E7%BB%9F%EF%BC%89"><span class="toc-text">创建第一个分区（EFI 系统）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-%E5%88%9B%E5%BB%BA%E6%96%B0%E5%88%86%E5%8C%BA"><span class="toc-text">① 创建新分区</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-%E6%8C%87%E5%AE%9A%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="toc-text">② 指定分区大小</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-%E8%AE%BE%E7%BD%AE%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8B"><span class="toc-text">③ 设置分区类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-%E9%80%89%E6%8B%A9-EFI-%E7%B3%BB%E7%BB%9F%E7%B1%BB%E5%9E%8B"><span class="toc-text">④ 选择 EFI 系统类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A4-%E9%AA%8C%E8%AF%81%E7%BB%93%E6%9E%9C"><span class="toc-text">⑤ 验证结果</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%BA%8C%E4%B8%AA%E5%88%86%E5%8C%BA%EF%BC%88Swap%EF%BC%89"><span class="toc-text">创建第二个分区（Swap）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-%E9%80%89%E6%8B%A9%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4"><span class="toc-text">① 选择空闲空间</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-%E5%88%9B%E5%BB%BA%E6%96%B0%E5%88%86%E5%8C%BA"><span class="toc-text">② 创建新分区</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-%E6%8C%87%E5%AE%9A%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="toc-text">③ 指定分区大小</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-%E8%AE%BE%E7%BD%AE%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8B%E4%B8%BA-Linux-Swap"><span class="toc-text">④ 设置分区类型为 Linux Swap</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%88%86%E5%8C%BA%EF%BC%88Root%EF%BC%89"><span class="toc-text">创建第三个分区（Root）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-%E9%80%89%E6%8B%A9%E5%89%A9%E4%BD%99%E7%9A%84%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4"><span class="toc-text">① 选择剩余的空闲空间</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html">在 ZimaBoard 2 上安装 OpenWrt</a></li><li class="sidebar-link  current"><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Arch Linux Installation on ZimaBoard 2</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>托管应用</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Minecraft 服务器应用</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">设置双盘 NAS</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">安装 OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMV 配置</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">安装 OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMC 上的 OpenWRT</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">安装通用第三方操作系统</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfin 服务器</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">安装复古游戏</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">启用 ZimaBoard 上的 WOL</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">通过 Proxmox 进行迁移</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 无线网络适配器</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">恢复 ZimaBoard CasaOS 出厂设置</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">升级主板 BIOS 版本</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">如何检查 IP 地址</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/media-servers">媒体服务器</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/personal-nas">个人 NAS</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/ad-blocker">广告拦截器</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html">在 ZimaBoard 2 上安装 OpenWrt</a></li><li class="sidebar-link  current"><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Arch Linux Installation on ZimaBoard 2</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>托管应用</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Minecraft 服务器应用</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">设置双盘 NAS</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">安装 OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMV 配置</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">安装 OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMC 上的 OpenWRT</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">安装通用第三方操作系统</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfin 服务器</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">安装复古游戏</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">启用 ZimaBoard 上的 WOL</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">通过 Proxmox 进行迁移</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 无线网络适配器</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">恢复 ZimaBoard CasaOS 出厂设置</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">升级主板 BIOS 版本</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">如何检查 IP 地址</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>中文</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaboard/Arch-Linux-Installation-on-ZimaBoard-2.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh" selected>中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es">Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
