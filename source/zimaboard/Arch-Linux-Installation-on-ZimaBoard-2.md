@@ -21,13 +21,16 @@ This article provides a complete walkthrough of installing Arch Linux on ZimaBoa
 1.  ### Hardware Checklist
     
 
-> *   **ZimaBoard 2 main board** ⚠️ In this guide, the system is installed on the onboard eMMC. The installation process will partition and format the eMMC. Please ensure there is no important data stored on it.
+*   **ZimaBoard 2 main board**
+*   > ⚠️ In this guide, the system is installed on the onboard eMMC. The installation process will partition and format the eMMC. Please ensure there is no important data stored on it.
 >     
 
 *   **HDMI monitor + USB keyboard**
     
 
-> *   **USB flash drive (≥ 8 GB)** (for creating the bootable installer) ⚠️ The USB drive will be formatted during the creation of the bootable media. All existing data will be erased. Be sure to back up any important files in advance.
+ *   **USB flash drive (≥ 8 GB)** (for creating the bootable installer)
+
+ *   >⚠️ The USB drive will be formatted during the creation of the bootable media. All existing data will be erased. Be sure to back up any important files in advance.  
 >     
 
 *   **Wired network connection** (recommended, as an internet connection is required during installation)
