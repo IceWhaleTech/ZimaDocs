@@ -1,5 +1,5 @@
 ---
-title: 文章タイトル
+title: Arch Linux Installation on ZimaBoard 2
 description: 
 type: Docs
 author: admin
