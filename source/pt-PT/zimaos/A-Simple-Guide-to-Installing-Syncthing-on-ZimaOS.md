@@ -1,6 +1,6 @@
 ---
 
-**título**: Título do Artigo  
+**título**:Um Guia Simples para Instalar o Syncthing no ZimaOS
 **descrição**:  
 **tipo**: Docs  
 **autor**: admin  
