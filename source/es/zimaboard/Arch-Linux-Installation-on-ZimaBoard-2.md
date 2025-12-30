@@ -5,7 +5,6 @@ type: Docs
 author: admin
 tip: No elimine el encabezado; description es la descripción del artículo. Si está vacío, se tomará el primer párrafo.
 ---
-## Título de sección
 ## **I. Visión general**
 
 Arch Linux ha sido durante mucho tiempo la preferencia de desarrolladores y usuarios avanzados por su diseño minimalista, modelo de lanzamiento continuo y alto grado de personalización.
