@@ -1,11 +1,11 @@
 ---
-title: 記事タイトル  
+title: ZimaOSへのSyncthingのインストール方法ガイド
 description:  
 type: Docs  
 author: admin  
 tip: 上部のバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、記入しない場合は最初の段落が表示されます。  
 ---  
-> _元々IceWhaleコミュニティフォーラムにて公開された記事_ _**Muditha Liyanagama (コミュニティ貢献者)**:_ _[https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
+> _元々IceWhaleコミュニティフォーラムにて公開された記事_ _**Muditha Liyanagama (コミュニティ貢献者)**:_ _[https://community.zimaspace.com](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 
 こんにちは、ZimaOSとZimaboardの愛好者の皆さん！
 
