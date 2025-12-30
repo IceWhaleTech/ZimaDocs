@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>文章タイトル | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="段落タイトルI. 概要Arch Linux は、そのミニマルな設計、ローリングリリースモデル、および高いカスタマイズ性により、長年にわたり開発者や上級ユーザーに好まれてきました。 ZimaBoard 2 は x86 ベースのシングルボードサーバで、性能と拡張性のバランスが取れており、ホームサーバ、自家ホスティングサービス、開発やテスト環境で Arch Linux を展開する">
+<meta property="og:type" content="website">
+<meta property="og:title" content="文章タイトル">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="段落タイトルI. 概要Arch Linux は、そのミニマルな設計、ローリングリリースモデル、および高いカスタマイズ性により、長年にわたり開発者や上級ユーザーに好まれてきました。 ZimaBoard 2 は x86 ベースのシングルボードサーバで、性能と拡張性のバランスが取れており、ホームサーバ、自家ホスティングサービス、開発やテスト環境で Arch Linux を展開する">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567150367_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567151194_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567151645_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567152384_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567153730_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567154188_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567155139_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567156058_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567156700_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567157176_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567157797_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567158616_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567159383_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567160155_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567161097_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567162104_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567162844_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567163775_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567164682_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567165509_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567166450_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567167219_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567168020_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567168969_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567169740_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567170625_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567171361_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567172129_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567172894_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567174214_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567175220_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567175932_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567176716_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567177777_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567178733_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567179497_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567180239_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567180931_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567181830_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567182309_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567182798_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567183538_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567184534_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567185486_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567186422_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567187080_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567187556_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567188512_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567189421_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567190046_copyImage.png">
+<meta property="article:published_time" content="2025-12-30T06:06:08.942Z">
+<meta property="article:modified_time" content="2025-12-30T06:06:08.942Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "文章タイトル",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "admin"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1767074768942"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/jp/zimaos/" class="main-nav-link ">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimacube/" class="main-nav-link ">ジマキューブ</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaboard/" class="main-nav-link ">ジマボード</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">フォーラム</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaboard/Arch-Linux-Installation-on-ZimaBoard-2">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">ストア</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="検索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">文章タイトル</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="本ドキュメントに関する問題がございましたら、お問い合わせください。迅速に対応いたします。">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="本ドキュメントに関する問題がございましたら、お問い合わせください。迅速に対応いたします。">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="段落タイトル" class="article-heading"><a href="#段落タイトル" class="headerlink" title="段落タイトル"></a>段落タイトル<a class="article-anchor" href="#段落タイトル" aria-hidden="true"></a></h2><h2 id="I-概要" class="article-heading"><a href="#I-概要" class="headerlink" title="I. 概要"></a><strong>I. 概要</strong><a class="article-anchor" href="#I-概要" aria-hidden="true"></a></h2><p>Arch Linux は、そのミニマルな設計、ローリングリリースモデル、および高いカスタマイズ性により、長年にわたり開発者や上級ユーザーに好まれてきました。</p>
+<p>ZimaBoard 2 は x86 ベースのシングルボードサーバで、性能と拡張性のバランスが取れており、ホームサーバ、自家ホスティングサービス、開発やテスト環境で Arch Linux を展開するのに適したプラットフォームです。</p>
+<p>本記事は ZimaBoard 2 に Arch Linux をインストールし、基本的なシステム設定を行うための完全な手順を示します。手順は明確で再現可能となるよう記載しており、このプラットフォームに初めて Arch Linux を導入するユーザー向けの実用的なリファレンスになります。</p>
+<hr>
+<h2 id="II-準備" class="article-heading"><a href="#II-準備" class="headerlink" title="II. 準備"></a><strong>II. 準備</strong><a class="article-anchor" href="#II-準備" aria-hidden="true"></a></h2><ol>
+<li><h3 id="ハードウェアチェックリスト" class="article-heading"><a href="#ハードウェアチェックリスト" class="headerlink" title="ハードウェアチェックリスト"></a>ハードウェアチェックリスト<a class="article-anchor" href="#ハードウェアチェックリスト" aria-hidden="true"></a></h3></li>
+</ol>
+<ul>
+<li><p><strong>ZimaBoard 2 本体</strong></p>
+</li>
+<li><blockquote>
+<p>⚠️ 本ガイドではシステムをオンボード eMMC にインストールします。インストール中に eMMC のパーティション作成とフォーマットが行われます。重要なデータが保存されていないことを必ず確認してください。<br>+&gt;</p>
+</blockquote>
+</li>
+<li><p><strong>HDMI モニタ + USB キーボード</strong></p>
+</li>
+<li><p><strong>USB フラッシュドライブ（≥ 8 GB）</strong>（インストーラー起動用）</p>
+</li>
+<li><blockquote>
+<p>⚠️ ブートメディア作成時に USB ドライブはフォーマットされ、既存のデータは消去されます。重要なファイルは事前にバックアップしてください。<br>+&gt;    </p>
+</blockquote>
+</li>
+<li><p><strong>有線ネットワーク接続</strong>（推奨。インストール中にインターネット接続が必要です）</p>
+</li>
+</ul>
+<ol start="2">
+<li><h3 id="ソフトウェア準備" class="article-heading"><a href="#ソフトウェア準備" class="headerlink" title="ソフトウェア準備"></a>ソフトウェア準備<a class="article-anchor" href="#ソフトウェア準備" aria-hidden="true"></a></h3></li>
+</ol>
+<ul>
+<li><p><strong>ブート用 USB を作成するための PC</strong>（Windows、macOS、または Linux）</p>
+</li>
+<li><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://archlinux.org/download/">- 公式 Arch Linux ISO イメージ (2025.12.01)</a></p>
+</li>
+<li><p><strong>ブータブル USB 作成ツール</strong>（いずれかを選択）：</p>
+<ul>
+<li><p><strong>balenaEtcher</strong>（クロスプラットフォーム、GUI、推奨）</p>
+</li>
+<li><p><strong>Rufus</strong>（Windows 向け）</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="III-ブータブル-USB-の作成（balenaEtcher-を例に）" class="article-heading"><a href="#III-ブータブル-USB-の作成（balenaEtcher-を例に）" class="headerlink" title="III. ブータブル USB の作成（balenaEtcher を例に）"></a><strong>III. ブータブル USB の作成（balenaEtcher を例に）</strong><a class="article-anchor" href="#III-ブータブル-USB-の作成（balenaEtcher-を例に）" aria-hidden="true"></a></h2><p><img src="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png" alt="balenaEtcher burning process"></p>
+<blockquote>
+<p>⚠️ ブータブル USB を作成するとフラッシュドライブがフォーマットされ、既存データは消去されます。重要なファイルは事前にバックアップしてください。</p>
+</blockquote>
+<ol>
+<li><p>USB フラッシュドライブを差し込みます。 </p>
+</li>
+<li><p><strong>balenaEtcher</strong> を起動します。</p>
+</li>
+<li><p><strong>“Flash from file”</strong> をクリックし、ダウンロードした <code>archlinux-2025.12.01-x86_64.iso</code> を選択します。</p>
+</li>
+<li><p><strong>“Select target”</strong> をクリックして USB ドライブを選択します（誤ったデバイスを選ばないよう注意）。</p>
+</li>
+<li><p><strong>“Flash!”</strong> をクリックし、書き込みが完了するまで待ちます。</p>
+</li>
+<li><p>USB ドライブを安全に取り外します。</p>
+</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567150367_copyImage.png" alt="balenaEtcher burning complete">  </p>
+<hr>
+<h2 id="IV-ZimaBoard-2-を-USB-から起動する" class="article-heading"><a href="#IV-ZimaBoard-2-を-USB-から起動する" class="headerlink" title="IV. ZimaBoard 2 を USB から起動する"></a><strong>IV. ZimaBoard 2 を USB から起動する</strong><a class="article-anchor" href="#IV-ZimaBoard-2-を-USB-から起動する" aria-hidden="true"></a></h2><ol>
+<li><p>作成した Arch Linux ブータブル USB を ZimaBoard 2 の USB ポートに挿入します。</p>
+</li>
+<li><p>HDMI モニタ、キーボード、イーサネットケーブルを接続します。</p>
+</li>
+<li><p>電源を入れます。<strong>ZIMA</strong> ロゴが表示されたら、<strong>F11</strong> を繰り返し押して <strong>Boot Menu</strong> に入ります。</p>
+</li>
+<li><p>矢印キーで USB ドライブを選択します。</p>
+</li>
+<li><p><strong>Enter</strong> を押して USB から起動します。</p>
+</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567151194_copyImage.png" alt="boot options"></p>
+<hr>
+<h2 id="V-インストール環境に入り初期設定を行う" class="article-heading"><a href="#V-インストール環境に入り初期設定を行う" class="headerlink" title="V. インストール環境に入り初期設定を行う"></a><strong>V. インストール環境に入り初期設定を行う</strong><a class="article-anchor" href="#V-インストール環境に入り初期設定を行う" aria-hidden="true"></a></h2><ol>
+<li><h3 id="Arch-Linux-インストール環境へのブート" class="article-heading"><a href="#Arch-Linux-インストール環境へのブート" class="headerlink" title="Arch Linux インストール環境へのブート"></a>Arch Linux インストール環境へのブート<a class="article-anchor" href="#Arch-Linux-インストール環境へのブート" aria-hidden="true"></a></h3></li>
+</ol>
+<p>ブートメニューで最初の項目を選択します：</p>
+<pre><code>Arch Linux install medium (x86_64)
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567151645_copyImage.png" alt="arch startup options"></p>
+<p>ブートが完了すると root シェルに入ります：</p>
+<pre><code>root@archiso ~ #
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567152384_copyImage.png" alt="
+Arch installation environment"></p>
+<p>これで Arch Linux のインストール環境に入っています。</p>
+<hr>
+<ol start="2">
+<li><h3 id="ネットワークインターフェースの確認" class="article-heading"><a href="#ネットワークインターフェースの確認" class="headerlink" title="ネットワークインターフェースの確認"></a>ネットワークインターフェースの確認<a class="article-anchor" href="#ネットワークインターフェースの確認" aria-hidden="true"></a></h3></li>
+</ol>
+<p>まず、システムがネットワークインターフェースを検出しているか確認します：</p>
+<pre><code>ip link
+</code></pre>
+<p><code>enp*</code> のようなインターフェースが表示されれば、ネットワークインターフェースは正常に認識されています。</p>
+<hr>
+<ol start="3">
+<li><h3 id="ネットワーク接続のテスト" class="article-heading"><a href="#ネットワーク接続のテスト" class="headerlink" title="ネットワーク接続のテスト"></a>ネットワーク接続のテスト<a class="article-anchor" href="#ネットワーク接続のテスト" aria-hidden="true"></a></h3></li>
+</ol>
+<p>次にネット接続をテストします：</p>
+<pre><code>ping archlinux.org
+</code></pre>
+<p>ping が成功すればネット接続は正常です。テストを停止するには <code>Ctrl + C</code> を押します。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567153730_copyImage.png" alt="Network connectivity test"></p>
+<hr>
+<ol start="4">
+<li><h3 id="システム時刻の同期" class="article-heading"><a href="#システム時刻の同期" class="headerlink" title="システム時刻の同期"></a>システム時刻の同期<a class="article-anchor" href="#システム時刻の同期" aria-hidden="true"></a></h3></li>
+</ol>
+<p>インストールを進める前に、NTP を有効にして正しい時刻に同期しておくことを推奨します。</p>
+<p>NTP を有効にするコマンド：</p>
+<pre><code>timedatectl set-ntp true
+</code></pre>
+<p>同期状態を確認するには：</p>
+<pre><code>timedatectl
+</code></pre>
+<p>時刻が正しく表示されていれば同期は完了しています。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567154188_copyImage.png" alt="Synchronize system time"></p>
+<hr>
+<ol start="5">
+<li><h3 id="ディスクのパーティショニング（GPT）" class="article-heading"><a href="#ディスクのパーティショニング（GPT）" class="headerlink" title="ディスクのパーティショニング（GPT）"></a>ディスクのパーティショニング（GPT）<a class="article-anchor" href="#ディスクのパーティショニング（GPT）" aria-hidden="true"></a></h3></li>
+</ol>
+<p>本ガイドではシステムを <strong>オンボード eMMC デバイス</strong> にインストールする前提です。</p>
+<blockquote>
+<p>⚠️ インストール手順はオンボード eMMC のパーティション作成とフォーマットを行います。重要なデータが eMMC に含まれていないことを事前に必ず確認してください。</p>
+</blockquote>
+<hr>
+<h4 id="ディスク情報の表示" class="article-heading"><a href="#ディスク情報の表示" class="headerlink" title="ディスク情報の表示"></a>ディスク情報の表示<a class="article-anchor" href="#ディスク情報の表示" aria-hidden="true"></a></h4><pre><code>lsblk
+</code></pre>
+<p>上記コマンドでディスクとパーティションをツリー形式で確認します：</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567155139_copyImage.png" alt="View disk information"></p>
+<h4 id="cfdisk-で-GPT-パーティションテーブルを作成する" class="article-heading"><a href="#cfdisk-で-GPT-パーティションテーブルを作成する" class="headerlink" title="cfdisk で GPT パーティションテーブルを作成する"></a><code>cfdisk</code> で GPT パーティションテーブルを作成する<a class="article-anchor" href="#cfdisk-で-GPT-パーティションテーブルを作成する" aria-hidden="true"></a></h4><h5 id="パーティションツールを起動：" class="article-heading"><a href="#パーティションツールを起動：" class="headerlink" title="パーティションツールを起動："></a>パーティションツールを起動：<a class="article-anchor" href="#パーティションツールを起動：" aria-hidden="true"></a></h5><pre><code>cfdisk /dev/mmcblk0
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567156058_copyImage.png" alt="Enter the partition tool"></p>
+<h5 id="パーティションテーブルの種類を選択" class="article-heading"><a href="#パーティションテーブルの種類を選択" class="headerlink" title="パーティションテーブルの種類を選択"></a>パーティションテーブルの種類を選択<a class="article-anchor" href="#パーティションテーブルの種類を選択" aria-hidden="true"></a></h5><p>初回起動時にパーティションテーブルの種類を選択するよう求められます。<code>GPT</code> を選択してください。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567156700_copyImage.png" alt="Select partition table type"></p>
+<h5 id="最初のパーティションを作成（EFI-システムパーティション）" class="article-heading"><a href="#最初のパーティションを作成（EFI-システムパーティション）" class="headerlink" title="最初のパーティションを作成（EFI システムパーティション）"></a>最初のパーティションを作成（EFI システムパーティション）<a class="article-anchor" href="#最初のパーティションを作成（EFI-システムパーティション）" aria-hidden="true"></a></h5><h6 id="①-新規パーティション作成" class="article-heading"><a href="#①-新規パーティション作成" class="headerlink" title="① 新規パーティション作成"></a>① 新規パーティション作成<a class="article-anchor" href="#①-新規パーティション作成" aria-hidden="true"></a></h6><p><code>cfdisk</code> のメイン画面で以下を操作します：</p>
+<ol>
+<li><strong>→（右矢印）</strong> を使用</li>
+<li>画面下部メニューで <strong>[NEW]</strong> を選択</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567157176_copyImage.png" alt="Create new partition"></p>
+<ol start="3">
+<li><strong>Enter</strong> を押して新規パーティションを作成します。</li>
+</ol>
+<h6 id="②-パーティションサイズを指定" class="article-heading"><a href="#②-パーティションサイズを指定" class="headerlink" title="② パーティションサイズを指定"></a>② パーティションサイズを指定<a class="article-anchor" href="#②-パーティションサイズを指定" aria-hidden="true"></a></h6><p>サイズ入力を求められたら <code>512M</code> を入力します。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567157797_copyImage.png" alt="Input 512M"></p>
+<p>その後 <strong>Enter</strong> を押します。</p>
+<h6 id="③-パーティションタイプの設定" class="article-heading"><a href="#③-パーティションタイプの設定" class="headerlink" title="③ パーティションタイプの設定"></a>③ パーティションタイプの設定<a class="article-anchor" href="#③-パーティションタイプの設定" aria-hidden="true"></a></h6><p>新しいパーティションが作成されたら：</p>
+<ol>
+<li>そのパーティションが選択されていることを確認</li>
+<li><strong>→（右矢印）</strong> で下部メニューへ移動</li>
+<li><strong>[Type]</strong> を選択</li>
+<li><strong>Enter</strong> を押す</li>
+</ol>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567158616_copyImage.png" alt="View partition type"></p>
+<h6 id="④-EFI-システムタイプを選ぶ" class="article-heading"><a href="#④-EFI-システムタイプを選ぶ" class="headerlink" title="④ EFI システムタイプを選ぶ"></a>④ EFI システムタイプを選ぶ<a class="article-anchor" href="#④-EFI-システムタイプを選ぶ" aria-hidden="true"></a></h6><p>パーティションタイプ一覧から <strong>EFI System</strong> を見つけ、<strong>Enter</strong> で確定します。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567159383_copyImage.png" alt="Select partition type"></p>
+<h6 id="⑤-結果の確認" class="article-heading"><a href="#⑤-結果の確認" class="headerlink" title="⑤ 結果の確認"></a>⑤ 結果の確認<a class="article-anchor" href="#⑤-結果の確認" aria-hidden="true"></a></h6><p>メイン画面に戻ると次のようなエントリが表示されるはずです：</p>
+<p><code>/dev/mmcblk0p1 512M EFI System</code></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567160155_copyImage.png" alt="Confirm partition results"></p>
+<hr>
+<h5 id="2-番目のパーティションを作成（スワップ）" class="article-heading"><a href="#2-番目のパーティションを作成（スワップ）" class="headerlink" title="2 番目のパーティションを作成（スワップ）"></a>2 番目のパーティションを作成（スワップ）<a class="article-anchor" href="#2-番目のパーティションを作成（スワップ）" aria-hidden="true"></a></h5><h6 id="①-空き領域を選択" class="article-heading"><a href="#①-空き領域を選択" class="headerlink" title="① 空き領域を選択"></a>① 空き領域を選択<a class="article-anchor" href="#①-空き領域を選択" aria-hidden="true"></a></h6><p><strong>↓</strong> を使って <code>Free space 28.6G</code> を選択します。</p>
+<h6 id="②-新規パーティション作成" class="article-heading"><a href="#②-新規パーティション作成" class="headerlink" title="② 新規パーティション作成"></a>② 新規パーティション作成<a class="article-anchor" href="#②-新規パーティション作成" aria-hidden="true"></a></h6><ul>
+<li><strong>→（右矢印）</strong> を使い下部メニューへ移動</li>
+<li><strong>[NEW]</strong> を選択</li>
+<li><strong>Enter</strong> を押す</li>
+</ul>
+<h6 id="③-サイズ指定" class="article-heading"><a href="#③-サイズ指定" class="headerlink" title="③ サイズ指定"></a>③ サイズ指定<a class="article-anchor" href="#③-サイズ指定" aria-hidden="true"></a></h6><p>サイズ入力で <code>2G</code> を入力します。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567161097_copyImage.png" alt="Enter 2G"></p>
+<h6 id="④-タイプを-Linux-swap-に設定" class="article-heading"><a href="#④-タイプを-Linux-swap-に設定" class="headerlink" title="④ タイプを Linux swap に設定"></a>④ タイプを Linux swap に設定<a class="article-anchor" href="#④-タイプを-Linux-swap-に設定" aria-hidden="true"></a></h6><ul>
+<li>作成された約 2 GB のパーティションを選択</li>
+<li><strong>[Type]</strong> を選ぶ</li>
+<li><strong>Linux swap</strong> を指定</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567162104_copyImage.png" alt="Set the partition type to Linux swap."></p>
+<hr>
+<h5 id="3-番目のパーティションを作成（ルート）" class="article-heading"><a href="#3-番目のパーティションを作成（ルート）" class="headerlink" title="3 番目のパーティションを作成（ルート）"></a>3 番目のパーティションを作成（ルート）<a class="article-anchor" href="#3-番目のパーティションを作成（ルート）" aria-hidden="true"></a></h5><h6 id="①-残りの空き領域を選択" class="article-heading"><a href="#①-残りの空き領域を選択" class="headerlink" title="① 残りの空き領域を選択"></a>① 残りの空き領域を選択<a class="article-anchor" href="#①-残りの空き領域を選択" aria-hidden="true"></a></h6><p><code>Free space 26.6G</code> が表示されているはずです。これを選択します。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567162844_copyImage.png" alt="Create the third partition (Root)."></p>
+<h6 id="②-新規パーティション作成-1" class="article-heading"><a href="#②-新規パーティション作成-1" class="headerlink" title="② 新規パーティション作成"></a>② 新規パーティション作成<a class="article-anchor" href="#②-新規パーティション作成-1" aria-hidden="true"></a></h6><ul>
+<li><strong>→（右矢印）</strong> を使って下部メニューへ移動</li>
+<li><strong>[NEW]</strong> を選択</li>
+<li><strong>Enter</strong> を押す</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567163775_copyImage.png" alt="
+Select the 3rd partition (Root)."></p>
+<h6 id="③-残り全てを使用" class="article-heading"><a href="#③-残り全てを使用" class="headerlink" title="③ 残り全てを使用"></a>③ 残り全てを使用<a class="article-anchor" href="#③-残り全てを使用" aria-hidden="true"></a></h6><p>サイズ指定を求められたら何も入力せず <strong>Enter</strong> を押し、残り全領域を使用します。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567164682_copyImage.png" alt="Create new partition"></p>
+<h6 id="④-パーティションタイプの設定" class="article-heading"><a href="#④-パーティションタイプの設定" class="headerlink" title="④ パーティションタイプの設定"></a>④ パーティションタイプの設定<a class="article-anchor" href="#④-パーティションタイプの設定" aria-hidden="true"></a></h6><p>作成後のデフォルトタイプは <strong>Linux filesystem</strong> です。通常は変更せずにそのままにします。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567165509_copyImage.png" alt="Default partition type"></p>
+<hr>
+<h5 id="パーティションテーブルを書き込み、終了する" class="article-heading"><a href="#パーティションテーブルを書き込み、終了する" class="headerlink" title="パーティションテーブルを書き込み、終了する"></a>パーティションテーブルを書き込み、終了する<a class="article-anchor" href="#パーティションテーブルを書き込み、終了する" aria-hidden="true"></a></h5><h6 id="書き込み" class="article-heading"><a href="#書き込み" class="headerlink" title="書き込み"></a>書き込み<a class="article-anchor" href="#書き込み" aria-hidden="true"></a></h6><ul>
+<li><strong>[Write]</strong> を選択</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567166450_copyImage.png" alt="Write to partition table"></p>
+<ul>
+<li><strong>Enter</strong> を押す</li>
+<li>確認プロンプトで <code>yes</code> を入力</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567167219_copyImage.png" alt="Confirm writing">  </p>
+<h6 id="cfdisk-を終了" class="article-heading"><a href="#cfdisk-を終了" class="headerlink" title="cfdisk を終了"></a><code>cfdisk</code> を終了<a class="article-anchor" href="#cfdisk-を終了" aria-hidden="true"></a></h6><ul>
+<li><strong>[Quit]</strong> を選択</li>
+</ul>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567168020_copyImage.png" alt="Exit cfdisk"></p>
+<ul>
+<li><strong>Enter</strong> を押す</li>
+</ul>
+<hr>
+<h5 id="パーティション概要" class="article-heading"><a href="#パーティション概要" class="headerlink" title="パーティション概要"></a>パーティション概要<a class="article-anchor" href="#パーティション概要" aria-hidden="true"></a></h5><p>これでディスクのパーティショニングが完了しました。レイアウトは次の通りです：</p>
+<table>
+<thead>
+<tr>
+<th>Size</th>
+<th>Partition</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mmcblk0p1</td>
+<td>512M</td>
+<td>EFI System</td>
+</tr>
+<tr>
+<td>mmcblk0p2</td>
+<td>2G</td>
+<td>Linux swap</td>
+</tr>
+<tr>
+<td>mmcblk0p3</td>
+<td>26.6G</td>
+<td>Linux filesystem</td>
+</tr>
+</tbody></table>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567168969_copyImage.png" alt="Partition completed"></p>
+<p>ここまでで、Arch Linux インストール中の最もミスが起きやすい工程を完了したことになります。</p>
+<hr>
+<ol start="6">
+<li><h3 id="パーティションのフォーマット" class="article-heading"><a href="#パーティションのフォーマット" class="headerlink" title="パーティションのフォーマット"></a>パーティションのフォーマット<a class="article-anchor" href="#パーティションのフォーマット" aria-hidden="true"></a></h3></li>
+</ol>
+<p>簡単な説明：</p>
+<ul>
+<li><strong>フォーマット（Formatting）</strong> &#x3D; パーティションを初期化してファイルシステムを作成すること</li>
+<li><strong>マウント（Mounting）</strong> &#x3D; システムにそのパーティションの使用方法を教えること</li>
+</ul>
+<hr>
+<h4 id="①-EFI-パーティションを-FAT32-でフォーマット" class="article-heading"><a href="#①-EFI-パーティションを-FAT32-でフォーマット" class="headerlink" title="① EFI パーティションを FAT32 でフォーマット"></a>① EFI パーティションを FAT32 でフォーマット<a class="article-anchor" href="#①-EFI-パーティションを-FAT32-でフォーマット" aria-hidden="true"></a></h4><p>次のコマンドで <code>mmcblk0p1</code> をフォーマットします：</p>
+<pre><code>mkfs.fat -F32 /dev/mmcblk0p1
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567169740_copyImage.png" alt="Format partition"></p>
+<h4 id="②-スワップ領域の初期化と有効化" class="article-heading"><a href="#②-スワップ領域の初期化と有効化" class="headerlink" title="② スワップ領域の初期化と有効化"></a>② スワップ領域の初期化と有効化<a class="article-anchor" href="#②-スワップ領域の初期化と有効化" aria-hidden="true"></a></h4><pre><code>mkswap /dev/mmcblk0p2
+swapon /dev/mmcblk0p2
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567170625_copyImage.png" alt="Initialize and enable partitions"></p>
+<h4 id="③-ルートパーティションを-ext4-でフォーマット" class="article-heading"><a href="#③-ルートパーティションを-ext4-でフォーマット" class="headerlink" title="③ ルートパーティションを ext4 でフォーマット"></a>③ ルートパーティションを ext4 でフォーマット<a class="article-anchor" href="#③-ルートパーティションを-ext4-でフォーマット" aria-hidden="true"></a></h4><pre><code>mkfs.ext4 /dev/mmcblk0p3
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567171361_copyImage.png" alt="Format root partition"></p>
+<hr>
+<ol start="7">
+<li><h3 id="パーティションのマウント" class="article-heading"><a href="#パーティションのマウント" class="headerlink" title="パーティションのマウント"></a>パーティションのマウント<a class="article-anchor" href="#パーティションのマウント" aria-hidden="true"></a></h3></li>
+</ol>
+<h4 id="ルートパーティションを-mnt-にマウント" class="article-heading"><a href="#ルートパーティションを-mnt-にマウント" class="headerlink" title="ルートパーティションを /mnt にマウント"></a>ルートパーティションを <code>/mnt</code> にマウント<a class="article-anchor" href="#ルートパーティションを-mnt-にマウント" aria-hidden="true"></a></h4><pre><code>mount /dev/mmcblk0p3 /mnt
+</code></pre>
+<h4 id="EFI-パーティションを作成してマウント" class="article-heading"><a href="#EFI-パーティションを作成してマウント" class="headerlink" title="EFI パーティションを作成してマウント"></a>EFI パーティションを作成してマウント<a class="article-anchor" href="#EFI-パーティションを作成してマウント" aria-hidden="true"></a></h4><pre><code>mkdir /mnt/boot
+mount /dev/mmcblk0p1 /mnt/boot
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567172129_copyImage.png" alt="Create and mount the EFI partition"></p>
+<hr>
+<h2 id="VI-Arch-Linux-のインストール（pacstrap）" class="article-heading"><a href="#VI-Arch-Linux-のインストール（pacstrap）" class="headerlink" title="VI. Arch Linux のインストール（pacstrap）"></a>VI. Arch Linux のインストール（pacstrap）<a class="article-anchor" href="#VI-Arch-Linux-のインストール（pacstrap）" aria-hidden="true"></a></h2><ol>
+<li><h3 id="pacstrap-を実行" class="article-heading"><a href="#pacstrap-を実行" class="headerlink" title="pacstrap を実行"></a><code>pacstrap</code> を実行<a class="article-anchor" href="#pacstrap-を実行" aria-hidden="true"></a></h3>pacstrap &#x2F;mnt base linux linux-firmware networkmanager sudo vim</li>
+</ol>
+<p><strong>パラメータ説明（参考）：</strong></p>
+<ul>
+<li><strong>base</strong>：最小限の Arch Linux システム</li>
+<li><strong>linux</strong>：標準の Linux カーネル</li>
+<li><strong>linux-firmware</strong>：ハードウェア用ファームウェア（必須）</li>
+<li><strong>networkmanager</strong>：ネットワーク管理ツール</li>
+<li><strong>sudo</strong>：root 以外のユーザーに権限を付与するため</li>
+<li><strong>vim</strong>：後続の設定で使用するテキストエディタ</li>
+</ul>
+<p>このステップではパッケージのダウンロードとインストールが行われます。所要時間はネットワーク速度に依存し、処理中は大量の出力が表示されるのが通常です。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567172894_copyImage.png" alt="Execute pacstrap"></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567174214_copyImage.png" alt="pacstrap execution complete"></p>
+<hr>
+<ol start="2">
+<li><h3 id="fstab-ファイルの生成" class="article-heading"><a href="#fstab-ファイルの生成" class="headerlink" title="fstab ファイルの生成"></a><code>fstab</code> ファイルの生成<a class="article-anchor" href="#fstab-ファイルの生成" aria-hidden="true"></a></h3></li>
+</ol>
+<p>新システム用のファイルシステムマウント表を生成します：</p>
+<pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567175220_copyImage.png" alt="Generate fstab file"></p>
+<hr>
+<ol start="3">
+<li><h3 id="新しくインストールしたシステムに入る（chroot）" class="article-heading"><a href="#新しくインストールしたシステムに入る（chroot）" class="headerlink" title="新しくインストールしたシステムに入る（chroot）"></a>新しくインストールしたシステムに入る（chroot）<a class="article-anchor" href="#新しくインストールしたシステムに入る（chroot）" aria-hidden="true"></a></h3></li>
+</ol>
+<ul>
+<li>新システムの環境へ切り替えます：</li>
+</ul>
+<p><code>arch-chroot /mnt</code></p>
+<ul>
+<li>切り替えに成功すると、プロンプトが次のように変わります：</li>
+</ul>
+<p><code>[root@arch /]#</code></p>
+<p><strong>これによりインストール環境を抜け、新しくインストールした Arch Linux システム内に入ったことを示します。</strong></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567175932_copyImage.png" alt="Enter the newly installed system (chroot)"></p>
+<hr>
+<h2 id="VII-基本的なシステム設定" class="article-heading"><a href="#VII-基本的なシステム設定" class="headerlink" title="VII. 基本的なシステム設定"></a>VII. 基本的なシステム設定<a class="article-anchor" href="#VII-基本的なシステム設定" aria-hidden="true"></a></h2><ol>
+<li><h3 id="タイムゾーンの設定" class="article-heading"><a href="#タイムゾーンの設定" class="headerlink" title="タイムゾーンの設定"></a>タイムゾーンの設定<a class="article-anchor" href="#タイムゾーンの設定" aria-hidden="true"></a></h3></li>
+</ol>
+<p>香港を例に：</p>
+<pre><code>ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+</code></pre>
+<p>ハードウェアクロックを同期（非常に重要）：</p>
+<pre><code>hwclock --systohc
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567176716_copyImage.png" alt="Synchronizing hardware clock"></p>
+<p>動作確認（任意）：</p>
+<p>時刻が <strong>UTC+8（香港時間）</strong> と表示されれば設定は成功しています。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567177777_copyImage.png" alt="Hardware clock synchronization successful"></p>
+<hr>
+<ol start="2">
+<li><h3 id="ロケール（言語）の設定" class="article-heading"><a href="#ロケール（言語）の設定" class="headerlink" title="ロケール（言語）の設定"></a>ロケール（言語）の設定<a class="article-anchor" href="#ロケール（言語）の設定" aria-hidden="true"></a></h3></li>
+</ol>
+<h4 id="①-locale-リストの編集" class="article-heading"><a href="#①-locale-リストの編集" class="headerlink" title="① locale リストの編集"></a>① locale リストの編集<a class="article-anchor" href="#①-locale-リストの編集" aria-hidden="true"></a></h4><p>ロケール設定ファイルを開きます：</p>
+<pre><code>vim /etc/locale.gen
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567178733_copyImage.png" alt="Set language"></p>
+<p>希望する言語の行の先頭にある <code>#</code> を外してコメントを解除します。例：英語（米国）の場合：</p>
+<pre><code>en_US.UTF-8 UTF-8
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567179497_copyImage.png" alt="Set language en_US"></p>
+<p>保存して終了：</p>
+<ul>
+<li><strong>Esc</strong> を押す</li>
+<li><code>:wq</code> を入力</li>
+<li><strong>Enter</strong> を押す</li>
+</ul>
+<h4 id="②-ロケールを生成" class="article-heading"><a href="#②-ロケールを生成" class="headerlink" title="② ロケールを生成"></a>② ロケールを生成<a class="article-anchor" href="#②-ロケールを生成" aria-hidden="true"></a></h4><pre><code>locale-gen
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567180239_copyImage.png" alt="Generate locale">  </p>
+<ol start="3">
+<li><h3 id="ホスト名の設定" class="article-heading"><a href="#ホスト名の設定" class="headerlink" title="ホスト名の設定"></a>ホスト名の設定<a class="article-anchor" href="#ホスト名の設定" aria-hidden="true"></a></h3></li>
+</ol>
+<p>システムのホスト名を設定します。任意の名前に変更可能ですが、ここでは例として <code>arch</code> を使用します。</p>
+<pre><code>echo &quot;arch&quot; &gt; /etc/hostname
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567180931_copyImage.png" alt="Set system hostname"></p>
+<p>続いて <code>hosts</code> ファイルを設定します：</p>
+<pre><code>vim /etc/hosts
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567181830_copyImage.png" alt="vim hosts"></p>
+<p>ファイルの内容を次のように編集してください：</p>
+<pre><code>127.0.0.1   localhost
+::1         localhost
+127.0.1.1   arch.localdomain arch
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567182309_copyImage.png" alt="hosts example"></p>
+<p>⚠️ ホスト名が <code>arch</code> でない場合は、上記の <code>arch</code> を実際に設定したホスト名に置き換えてください。</p>
+<p>保存して終了：</p>
+<ul>
+<li><strong>Esc</strong> を押す</li>
+<li><code>:wq</code> を入力</li>
+<li><strong>Enter</strong> を押す</li>
+</ul>
+<hr>
+<ol start="4">
+<li><h3 id="root-パスワードの設定" class="article-heading"><a href="#root-パスワードの設定" class="headerlink" title="root パスワードの設定"></a>root パスワードの設定<a class="article-anchor" href="#root-パスワードの設定" aria-hidden="true"></a></h3></li>
+</ol>
+<p><code>root</code> ユーザーのログインパスワードを設定します：</p>
+<pre><code>passwd
+</code></pre>
+<p>システムはパスワードを 2 回入力するよう促します：</p>
+<ol>
+<li>新しいパスワードを入力</li>
+<li>確認のため再度入力</li>
+</ol>
+<p>⚠️ パスワード入力中は端末に何も表示されません（<code>*</code> も表示されません）。これは正常です。両方の入力が一致していることを確認してください。</p>
+<p>完了後、そのパスワードで <code>root</code> としてログインできます。</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567182798_copyImage.png" alt="Set root password"></p>
+<hr>
+<ol start="5">
+<li><h3 id="ネットワークサービスの有効化" class="article-heading"><a href="#ネットワークサービスの有効化" class="headerlink" title="ネットワークサービスの有効化"></a>ネットワークサービスの有効化<a class="article-anchor" href="#ネットワークサービスの有効化" aria-hidden="true"></a></h3></li>
+</ol>
+<p>NetworkManager を起動時に自動実行するよう有効化します：</p>
+<pre><code>systemctl enable NetworkManager
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567183538_copyImage.png" alt="Enable network services"></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567184534_copyImage.png" alt="Network service enabled successfully"></p>
+<hr>
+<h2 id="VIII-systemd-boot-ブートローダのインストールと設定" class="article-heading"><a href="#VIII-systemd-boot-ブートローダのインストールと設定" class="headerlink" title="VIII. systemd-boot ブートローダのインストールと設定"></a>VIII. systemd-boot ブートローダのインストールと設定<a class="article-anchor" href="#VIII-systemd-boot-ブートローダのインストールと設定" aria-hidden="true"></a></h2><ol>
+<li><h3 id="systemd-boot-のインストール" class="article-heading"><a href="#systemd-boot-のインストール" class="headerlink" title="systemd-boot のインストール"></a>systemd-boot のインストール<a class="article-anchor" href="#systemd-boot-のインストール" aria-hidden="true"></a></h3></li>
+</ol>
+<p>次のコマンドを実行します：</p>
+<pre><code>bootctl install
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567185486_copyImage.png" alt="Install systemd-boot"></p>
+<hr>
+<ol start="2">
+<li><h3 id="Arch-Linux-のブートエントリを作成" class="article-heading"><a href="#Arch-Linux-のブートエントリを作成" class="headerlink" title="Arch Linux のブートエントリを作成"></a>Arch Linux のブートエントリを作成<a class="article-anchor" href="#Arch-Linux-のブートエントリを作成" aria-hidden="true"></a></h3></li>
+</ol>
+<p>次のファイルを作成する必要があります：</p>
+<p><code>/boot/loader/entries/arch.conf</code></p>
+<p>このファイルは systemd-boot に対して次の情報を伝えます：</p>
+<ul>
+<li>カーネルの場所</li>
+<li>initramfs の場所</li>
+<li>ルートファイルシステムのあるパーティション</li>
+</ul>
+<h4 id="①-ルートパーティションの-PARTUUID-を取得" class="article-heading"><a href="#①-ルートパーティションの-PARTUUID-を取得" class="headerlink" title="① ルートパーティションの PARTUUID を取得"></a>① ルートパーティションの PARTUUID を取得<a class="article-anchor" href="#①-ルートパーティションの-PARTUUID-を取得" aria-hidden="true"></a></h4><pre><code>blkid /dev/mmcblk0p3
+</code></pre>
+<p>次のような出力が得られるはずです：</p>
+<pre><code>/dev/mmcblk0p3: PARTUUID=&quot;12345678-9abc-def0-1234-56789abcdef0&quot;
+</code></pre>
+<blockquote>
+<p>引用符内の値をメモしてコピーしてください。</p>
+</blockquote>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567186422_copyImage.png" alt="Write down PARTUUID."></p>
+<hr>
+<h4 id="②-ブートエントリ設定ファイルを作成" class="article-heading"><a href="#②-ブートエントリ設定ファイルを作成" class="headerlink" title="② ブートエントリ設定ファイルを作成"></a>② ブートエントリ設定ファイルを作成<a class="article-anchor" href="#②-ブートエントリ設定ファイルを作成" aria-hidden="true"></a></h4><pre><code>vi /boot/loader/entries/arch.conf
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567187080_copyImage.png" alt="Create startup configuration file"></p>
+<p>挿入モードに入り（<code>i</code> を押す）、以下の内容を入力します：</p>
+<p>⚠️ <code>YOUR_PARTUUID</code> を前の手順で取得した実際の値に置き換えてください。</p>
+<pre><code>title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=PARTUUID=YOUR_PARTUUID rw
+</code></pre>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567187556_copyImage.png" alt="arch.conf example"></p>
+<p>保存して終了：</p>
+<ul>
+<li><strong>Esc</strong> を押す</li>
+<li><code>:wq</code> を入力</li>
+<li><strong>Enter</strong> を押す</li>
+</ul>
+<hr>
+<h2 id="IX-インストールの完了と再起動" class="article-heading"><a href="#IX-インストールの完了と再起動" class="headerlink" title="IX. インストールの完了と再起動"></a>IX. インストールの完了と再起動<a class="article-anchor" href="#IX-インストールの完了と再起動" aria-hidden="true"></a></h2><h3 id="chroot-からの退出" class="article-heading"><a href="#chroot-からの退出" class="headerlink" title="chroot からの退出"></a>chroot からの退出<a class="article-anchor" href="#chroot-からの退出" aria-hidden="true"></a></h3><p>chroot 環境を終了します：<code>exit</code></p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567188512_copyImage.png" alt="Exit the chroot environment"></p>
+<h3 id="システムの再起動" class="article-heading"><a href="#システムの再起動" class="headerlink" title="システムの再起動"></a>システムの再起動<a class="article-anchor" href="#システムの再起動" aria-hidden="true"></a></h3><p><code>reboot</code></p>
+<blockquote>
+<p>⚠️ 再起動する前にインストールメディア（USB ドライブ &#x2F; ISO）を必ず取り外してください。</p>
+</blockquote>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567189421_copyImage.png" alt="Restart the system"></p>
+<hr>
+<h3 id="インストール完了" class="article-heading"><a href="#インストール完了" class="headerlink" title="インストール完了"></a>インストール完了<a class="article-anchor" href="#インストール完了" aria-hidden="true"></a></h3><p>正常に起動すると、次のような画面が表示されるはずです：</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1766567190046_copyImage.png" alt="Installation completed"></p>
+<p>🎉 以上で <strong>Arch Linux</strong> の基本インストールは完了です。システムはクリーンで拡張可能な出発点になります。</p>
+<h3 id="次に検討する事項：" class="article-heading"><a href="#次に検討する事項：" class="headerlink" title="次に検討する事項："></a>次に検討する事項：<a class="article-anchor" href="#次に検討する事項：" aria-hidden="true"></a></h3><ul>
+<li>ネットワークの追加設定</li>
+<li>デスクトップ環境の導入</li>
+</ul>
+<p>さらなる案内は公式 Arch Wiki を参照してください：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.archlinux.org/title/General_recommendations">https://wiki.archlinux.org/title/General_recommendations</a></p>
+<p>この基盤の上に必要な設定を順次構築していけます。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2025-12-30T06:06:08.942Z" itemprop="dateModified">最終更新日: 2025-12-30</time>
+                <a href="Installing-OpenWrt-on-ZimaBoard-2.html" class="article-footer-prev" title="ZimaBoard 2 に OpenWrt をインストールする"><i class="fa fa-chevron-left"></i><span>前へ</span></a><a href="Power-on-Zimablade.html" class="article-footer-next" title="電源オン"><span>次へ</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目次</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB"><span class="toc-text">段落タイトル</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-%E6%A6%82%E8%A6%81"><span class="toc-text">I. 概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#II-%E6%BA%96%E5%82%99"><span class="toc-text">II. 準備</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88"><span class="toc-text">ハードウェアチェックリスト</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E6%BA%96%E5%82%99"><span class="toc-text">ソフトウェア準備</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#III-%E3%83%96%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB-USB-%E3%81%AE%E4%BD%9C%E6%88%90%EF%BC%88balenaEtcher-%E3%82%92%E4%BE%8B%E3%81%AB%EF%BC%89"><span class="toc-text">III. ブータブル USB の作成（balenaEtcher を例に）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IV-ZimaBoard-2-%E3%82%92-USB-%E3%81%8B%E3%82%89%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B"><span class="toc-text">IV. ZimaBoard 2 を USB から起動する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%92%B0%E5%A2%83%E3%81%AB%E5%85%A5%E3%82%8A%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%82%92%E8%A1%8C%E3%81%86"><span class="toc-text">V. インストール環境に入り初期設定を行う</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Arch-Linux-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%92%B0%E5%A2%83%E3%81%B8%E3%81%AE%E3%83%96%E3%83%BC%E3%83%88"><span class="toc-text">Arch Linux インストール環境へのブート</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%AE%E7%A2%BA%E8%AA%8D"><span class="toc-text">ネットワークインターフェースの確認</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E6%8E%A5%E7%B6%9A%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88"><span class="toc-text">ネットワーク接続のテスト</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%99%82%E5%88%BB%E3%81%AE%E5%90%8C%E6%9C%9F"><span class="toc-text">システム時刻の同期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%AE%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%EF%BC%88GPT%EF%BC%89"><span class="toc-text">ディスクのパーティショニング（GPT）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E6%83%85%E5%A0%B1%E3%81%AE%E8%A1%A8%E7%A4%BA"><span class="toc-text">ディスク情報の表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cfdisk-%E3%81%A7-GPT-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><span class="toc-text">cfdisk で GPT パーティションテーブルを作成する</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%84%E3%83%BC%E3%83%AB%E3%82%92%E8%B5%B7%E5%8B%95%EF%BC%9A"><span class="toc-text">パーティションツールを起動：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%82%92%E9%81%B8%E6%8A%9E"><span class="toc-text">パーティションテーブルの種類を選択</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90%EF%BC%88EFI-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%EF%BC%89"><span class="toc-text">最初のパーティションを作成（EFI システムパーティション）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-%E6%96%B0%E8%A6%8F%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E4%BD%9C%E6%88%90"><span class="toc-text">① 新規パーティション作成</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B5%E3%82%A4%E3%82%BA%E3%82%92%E6%8C%87%E5%AE%9A"><span class="toc-text">② パーティションサイズを指定</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">③ パーティションタイプの設定</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-EFI-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%BF%E3%82%A4%E3%83%97%E3%82%92%E9%81%B8%E3%81%B6"><span class="toc-text">④ EFI システムタイプを選ぶ</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A4-%E7%B5%90%E6%9E%9C%E3%81%AE%E7%A2%BA%E8%AA%8D"><span class="toc-text">⑤ 結果の確認</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%95%AA%E7%9B%AE%E3%81%AE%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90%EF%BC%88%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%EF%BC%89"><span class="toc-text">2 番目のパーティションを作成（スワップ）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-%E7%A9%BA%E3%81%8D%E9%A0%98%E5%9F%9F%E3%82%92%E9%81%B8%E6%8A%9E"><span class="toc-text">① 空き領域を選択</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-%E6%96%B0%E8%A6%8F%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E4%BD%9C%E6%88%90"><span class="toc-text">② 新規パーティション作成</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-%E3%82%B5%E3%82%A4%E3%82%BA%E6%8C%87%E5%AE%9A"><span class="toc-text">③ サイズ指定</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-%E3%82%BF%E3%82%A4%E3%83%97%E3%82%92-Linux-swap-%E3%81%AB%E8%A8%AD%E5%AE%9A"><span class="toc-text">④ タイプを Linux swap に設定</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E7%95%AA%E7%9B%AE%E3%81%AE%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90%EF%BC%88%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%89"><span class="toc-text">3 番目のパーティションを作成（ルート）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-%E6%AE%8B%E3%82%8A%E3%81%AE%E7%A9%BA%E3%81%8D%E9%A0%98%E5%9F%9F%E3%82%92%E9%81%B8%E6%8A%9E"><span class="toc-text">① 残りの空き領域を選択</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-%E6%96%B0%E8%A6%8F%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E4%BD%9C%E6%88%90-1"><span class="toc-text">② 新規パーティション作成</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-%E6%AE%8B%E3%82%8A%E5%85%A8%E3%81%A6%E3%82%92%E4%BD%BF%E7%94%A8"><span class="toc-text">③ 残り全てを使用</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">④ パーティションタイプの設定</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E3%80%81%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B"><span class="toc-text">パーティションテーブルを書き込み、終了する</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF"><span class="toc-text">書き込み</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#cfdisk-%E3%82%92%E7%B5%82%E4%BA%86"><span class="toc-text">cfdisk を終了</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E6%A6%82%E8%A6%81"><span class="toc-text">パーティション概要</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88"><span class="toc-text">パーティションのフォーマット</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-EFI-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92-FAT32-%E3%81%A7%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88"><span class="toc-text">① EFI パーティションを FAT32 でフォーマット</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E9%A0%98%E5%9F%9F%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96%E3%81%A8%E6%9C%89%E5%8A%B9%E5%8C%96"><span class="toc-text">② スワップ領域の初期化と有効化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2-%E3%83%AB%E3%83%BC%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92-ext4-%E3%81%A7%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88"><span class="toc-text">③ ルートパーティションを ext4 でフォーマット</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88"><span class="toc-text">パーティションのマウント</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%83%AB%E3%83%BC%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92-mnt-%E3%81%AB%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88"><span class="toc-text">ルートパーティションを &#x2F;mnt にマウント</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EFI-%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88"><span class="toc-text">EFI パーティションを作成してマウント</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VI-Arch-Linux-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%EF%BC%88pacstrap%EF%BC%89"><span class="toc-text">VI. Arch Linux のインストール（pacstrap）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pacstrap-%E3%82%92%E5%AE%9F%E8%A1%8C"><span class="toc-text">pacstrap を実行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fstab-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%94%9F%E6%88%90"><span class="toc-text">fstab ファイルの生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E3%81%97%E3%81%8F%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%97%E3%81%9F%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AB%E5%85%A5%E3%82%8B%EF%BC%88chroot%EF%BC%89"><span class="toc-text">新しくインストールしたシステムに入る（chroot）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VII-%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A8%AD%E5%AE%9A"><span class="toc-text">VII. 基本的なシステム設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">タイムゾーンの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB%EF%BC%88%E8%A8%80%E8%AA%9E%EF%BC%89%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">ロケール（言語）の設定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-locale-%E3%83%AA%E3%82%B9%E3%83%88%E3%81%AE%E7%B7%A8%E9%9B%86"><span class="toc-text">① locale リストの編集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%92%E7%94%9F%E6%88%90"><span class="toc-text">② ロケールを生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%9B%E3%82%B9%E3%83%88%E5%90%8D%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">ホスト名の設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">root パスワードの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96"><span class="toc-text">ネットワークサービスの有効化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIII-systemd-boot-%E3%83%96%E3%83%BC%E3%83%88%E3%83%AD%E3%83%BC%E3%83%80%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E8%A8%AD%E5%AE%9A"><span class="toc-text">VIII. systemd-boot ブートローダのインストールと設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#systemd-boot-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">systemd-boot のインストール</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Arch-Linux-%E3%81%AE%E3%83%96%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%82%92%E4%BD%9C%E6%88%90"><span class="toc-text">Arch Linux のブートエントリを作成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-%E3%83%AB%E3%83%BC%E3%83%88%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE-PARTUUID-%E3%82%92%E5%8F%96%E5%BE%97"><span class="toc-text">① ルートパーティションの PARTUUID を取得</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-%E3%83%96%E3%83%BC%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90"><span class="toc-text">② ブートエントリ設定ファイルを作成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IX-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%AE%E5%AE%8C%E4%BA%86%E3%81%A8%E5%86%8D%E8%B5%B7%E5%8B%95"><span class="toc-text">IX. インストールの完了と再起動</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#chroot-%E3%81%8B%E3%82%89%E3%81%AE%E9%80%80%E5%87%BA"><span class="toc-text">chroot からの退出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AE%E5%86%8D%E8%B5%B7%E5%8B%95"><span class="toc-text">システムの再起動</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E5%AE%8C%E4%BA%86"><span class="toc-text">インストール完了</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A1%E3%81%AB%E6%A4%9C%E8%A8%8E%E3%81%99%E3%82%8B%E4%BA%8B%E9%A0%85%EF%BC%9A"><span class="toc-text">次に検討する事項：</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">トップに戻る</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">電源オン</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">ハードウェアの概要</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html">ZimaBoard 2 に OpenWrt をインストールする</a></li><li class="sidebar-link  current"><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Arch Linux Installation on ZimaBoard 2</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">電源オン</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">ハードウェアの概要</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>アプリのホスティング</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">MineCraftサーバーアプリ</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">2ベイNASのセットアップ</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">OMVのインストール</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMVの設定</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">$129でのUnRAIDの最初の体験</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">OpenWRTのインストール</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMc上のOpenwrt</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">ユニバーサルOSのインストール</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfinサーバー</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">75インチ4Kアーケードの構築</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">ZimaboardでWOLを有効にする</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Proxmoxを使用したマイグレーション</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi (AX210 ワイファイ)</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>よくある質問</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">ZimaBoard CasaOSの工場リカバリ</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">マザーボードのBIOSバージョンのアップグレード</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">IPアドレスの確認方法</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/media-servers">メディアサーバー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/personal-nas">個人用NAS</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/ad-blocker">広告ブロッカー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link ">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimacube/" class="mobile-nav-link ">ジマキューブ</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaboard/" class="mobile-nav-link ">ジマボード</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">フォーラム</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">電源オン</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">ハードウェアの概要</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html">ZimaBoard 2 に OpenWrt をインストールする</a></li><li class="sidebar-link  current"><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Arch Linux Installation on ZimaBoard 2</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">電源オン</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">ハードウェアの概要</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>アプリのホスティング</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">MineCraftサーバーアプリ</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">2ベイNASのセットアップ</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">OMVのインストール</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMVの設定</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">$129でのUnRAIDの最初の体験</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">OpenWRTのインストール</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMc上のOpenwrt</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">ユニバーサルOSのインストール</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfinサーバー</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">75インチ4Kアーケードの構築</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">ZimaboardでWOLを有効にする</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Proxmoxを使用したマイグレーション</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi (AX210 ワイファイ)</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>よくある質問</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">ZimaBoard CasaOSの工場リカバリ</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">マザーボードのBIOSバージョンのアップグレード</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">IPアドレスの確認方法</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>日本語</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaboard/Arch-Linux-Installation-on-ZimaBoard-2.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh">中文</option>
+      
+        <option value="jp" selected>日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es">Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
