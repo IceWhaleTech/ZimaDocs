@@ -1,5 +1,5 @@
 ---
-title: 文章标题  
+title:在ZimaOS上安装Syncthing的简易指南
 description:  
 type: Docs  
 author: admin  
