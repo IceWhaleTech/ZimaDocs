@@ -1,11 +1,11 @@
 ---
-title: Título del artículo  
+title: Una guía sencilla para instalar Syncthing en ZimaOS
 description:  
 type: Docs  
 author: admin  
 tip: El formato fijo en la barra superior no debe ser eliminado, description es la descripción del artículo, si no se rellena se tomará el primer párrafo del contenido como descripción.  
 ---  
-> _Publicado originalmente en el foro de la Comunidad IceWhale por_ _**Muditha Liyanagama (Contribuyente de la Comunidad)**:_ _[https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
+> _Publicado originalmente en el foro de la Comunidad IceWhale por_ _**Muditha Liyanagama (Contribuyente de la Comunidad)**:_ _[https://community.zimaspace.com](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 
 ¡Hola, entusiastas de ZimaOS y Zimaboard!
 
