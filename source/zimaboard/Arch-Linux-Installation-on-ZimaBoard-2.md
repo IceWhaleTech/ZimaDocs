@@ -5,7 +5,6 @@ type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-## 段落标题
 ## **I. Overview**
 
 Arch Linux has long been favored by developers and advanced users for its minimalist design, rolling release model, and high degree of customizability.
