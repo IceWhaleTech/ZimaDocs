@@ -1,5 +1,5 @@
 ---
-title: Título do artigo
+title:Instalação do Arch Linux no ZimaBoard 2
 description: 
 type: Docs
 author: admin
