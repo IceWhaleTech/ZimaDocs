@@ -1,11 +1,10 @@
 ---
-title: 文章标题
+title: 在 ZimaBoard 2 上安装 Arch Linux
 description: 
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-## 段落标题
 ## **I. 概述**
 
 长期以来，Arch Linux 以其极简设计、滚动更新模型以及高度可定制性而深受开发者和高级用户的喜爱。
