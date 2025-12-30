@@ -1,11 +1,11 @@
 ---
-title: 文章标题
+title: A Simple Guide to Installing Syncthing on ZimaOS
 description: 
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-> _Originally published on the IceWhale Community Forum by_ _**Muditha Liyanagama (Community Contributor)**:_ _[https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
+> _Originally published on the IceWhale Community Forum by_ _**Muditha Liyanagama (Community Contributor)**:_ _[https://community.zimaspace.com/](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 
 Hello fellow ZimaOS and Zimaboard enthusiasts!
 
