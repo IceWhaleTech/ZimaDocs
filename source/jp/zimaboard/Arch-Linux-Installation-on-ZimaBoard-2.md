@@ -1,5 +1,5 @@
 ---
-title: Arch Linux Installation on ZimaBoard 2
+title: ZimaBoard 2でのArch Linuxのインストール
 description: 
 type: Docs
 author: admin
