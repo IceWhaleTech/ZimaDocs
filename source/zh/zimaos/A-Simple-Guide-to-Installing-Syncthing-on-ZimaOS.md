@@ -1,10 +1,10 @@
 ---
-title:在ZimaOS上安装Syncthing的简易指南
-description:  
-type: Docs  
-author: admin  
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字  
----  
+title: 在ZimaOS上安装Syncthing的简易指南
+description: 
+type: Docs
+author: admin
+tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+---
 
 > _最初由_ _**Muditha Liyanagama (社区贡献者)**_ _在IceWhale社区论坛发布:_ _[https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 
