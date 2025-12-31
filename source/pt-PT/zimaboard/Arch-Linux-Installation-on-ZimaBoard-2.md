@@ -1,10 +1,11 @@
 ---
-title:Instalação do Arch Linux no ZimaBoard 2
+title: Instalação do Arch Linux no ZimaBoard 2
 description: 
 type: Docs
 author: admin
 tip: Não remova o cabeçalho; description é a descrição do artigo. Se estiver vazio, será extraído o primeiro parágrafo.
 ---
+
 ## **I. Visão geral**
 
 O Arch Linux tem sido há muito tempo a escolha de desenvolvedores e usuários avançados devido ao seu design minimalista, modelo de lançamento contínuo (rolling release) e alto grau de personalização.
