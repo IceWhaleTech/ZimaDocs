@@ -1,4 +1,3 @@
-Aquí está la traducción del contenido solicitado al español:
 
 ---
 title: Guía completa para instalar Paperless-ngx en ZimaOS
