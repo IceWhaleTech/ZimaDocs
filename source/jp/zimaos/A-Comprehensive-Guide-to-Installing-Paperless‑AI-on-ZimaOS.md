@@ -1,5 +1,3 @@
-こちらが日本語に翻訳された内容です：
-
 ---
 title: ZimaOSにPaperless‑AIをインストールするための包括的ガイド
 description: 
