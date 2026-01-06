@@ -96,6 +96,7 @@ Below is a **non-exhaustive list** of UPS models that are expected or reported t
 | Value 600E USB |
 | Value 800E USB |
 | VP1200ELCD (ValueII_1200E) USB |
+| VP700ELCD USB |
 | CP 1500C USB |
 | CP1000PFCLCD USB |
 | CP1500EPFCLCD USB |
