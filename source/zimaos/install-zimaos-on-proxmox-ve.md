@@ -60,13 +60,13 @@ https://github.com/IceWhaleTech/ZimaOS/releases
 ![](https://manage.icewhale.io/api/static/docs/1767616715004_image.png)
 4. On the **CPU** page, adjust the number of CPU cores
 
-{% note warn  %} **Purpose**:Allocating more CPU cores improves multi-threaded performance and helps ensure smooth operation under load.
+{% note warn  %} **Purpose:** Allocating more CPU cores improves multi-threaded performance and helps ensure smooth operation under load.
 **Recommended**: 4 CPU cores or more
 {% endnote %}
 
 ![](https://manage.icewhale.io/api/static/docs/1767616752746_image.png)
 5. On the **Memory** page, adjust the memory size
-{% note warn  %} **Purpose**:More memory allows ZimaOS to run additional services, improves multitasking performance, and reduces slowdowns during frequent operations.
+{% note warn  %} **Purpose:** More memory allows ZimaOS to run additional services, improves multitasking performance, and reduces slowdowns during frequent operations.
 **Recommended**: 8 GB (8192 MB) or more 
 {% endnote %}
 
