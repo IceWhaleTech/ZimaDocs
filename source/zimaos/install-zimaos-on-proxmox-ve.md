@@ -36,9 +36,11 @@ Software & System Requirements
 
 ---
 ## Installation Steps
-Note:
+
+{% note warn Note: %}
  The ZimaOS ISO image required for this tutorial can be downloaded from:
 https://github.com/IceWhaleTech/ZimaOS/releases
+{% endnote %}
 
 ### Upload the ZimaOS ISO Image
 1. Log in to the Proxmox VE web interface
@@ -57,12 +59,17 @@ https://github.com/IceWhaleTech/ZimaOS/releases
   - Uncheck Add EFI Disk
 ![](https://manage.icewhale.io/api/static/docs/1767616715004_image.png)
 4. On the **CPU** page, adjust the number of CPU cores
-**Purpose**:Allocating more CPU cores improves multi-threaded performance and helps ensure smooth operation under load.
+
+{% note warn  %} **Purpose**:Allocating more CPU cores improves multi-threaded performance and helps ensure smooth operation under load.
 **Recommended**: 4 CPU cores or more
+{% endnote %}
+
 ![](https://manage.icewhale.io/api/static/docs/1767616752746_image.png)
 5. On the **Memory** page, adjust the memory size
-**Purpose**:More memory allows ZimaOS to run additional services, improves multitasking performance, and reduces slowdowns during frequent operations.
-**Recommended**: 8 GB (8192 MB) or more
+{% note warn  %} **Purpose**:More memory allows ZimaOS to run additional services, improves multitasking performance, and reduces slowdowns during frequent operations.
+**Recommended**: 8 GB (8192 MB) or more 
+{% endnote %}
+
 ![](https://manage.icewhale.io/api/static/docs/1767616800421_image.png)
 
 ### Install ZimaOS
