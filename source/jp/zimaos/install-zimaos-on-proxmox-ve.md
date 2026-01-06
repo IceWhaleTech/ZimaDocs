@@ -1,115 +1,124 @@
 ---
-title: Proxmox VEにZimaOSをISOイメージを使用してインストールする方法
+title: Proxmox VEにISOイメージを使用してZimaOSをインストールする
 description: 
 type: Docs
 author: icewhale123456
-tip: トップバーのフォーマットは固定されていますので、削除しないでください。descriptionは記事の説明です。記入しない場合は、記事の最初の段落を引用します。
+tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、記入しない場合は内容の最初の段落を切り取ります。
 ---
-**ZimaOS ISOイメージ**の公式リリースにより、**Proxmox VE (PVE)**のような仮想化環境にZimaOSをより簡単にインストールして展開できるようになりました。このISOイメージは**仮想マシンのインストールに特化して最適化**されており、物理的なハードウェアなしでZimaOSを展開し、その主要な機能を迅速に探索できます。このインストール方法は**テスト、学習、評価、軽量使用シナリオ**に最適です。
+**ZimaOS ISOイメージ** の公式リリースにより、**Proxmox VE (PVE)** のような仮想化環境でZimaOSをより簡単にインストールして展開できるようになりました。  
+このISOイメージは**仮想マシンインストール向けに最適化されており**、物理的なハードウェアなしでZimaOSを展開し、そのコア機能を迅速に探索できます。  
+このインストール方法は、**テスト、学習、評価、および軽量な使用シナリオ**に最適です。
 
 ## はじめに
-Proxmox VE（PVE）にZimaOSをインストールすることは、物理的なハードウェアに直接インストールするのではなく、**ISOイメージを使用して仮想マシンとしてZimaOSを実行**することを意味します。このアプローチにより、標準的な仮想化環境内でZimaOSのシステムとWebベースの管理インターフェースを体験できます。
-ZimaOSをPVEに展開することで、既存のサーバーやホームラボに迅速にZimaOSインスタンスを作成できます。ベアメタルインストールと比較して、この方法にはいくつかの利点があります：
-- より高速なセットアップと学習曲線の短縮
-- 物理ハードウェアへのインストールに比べてリスクが低い
-- スナップショットとバックアップを使用した簡単な環境複製
+Proxmox VE (PVE) にZimaOSをインストールするということは、ZimaOSを物理ハードウェアに直接インストールするのではなく、**ISOイメージを使用して仮想マシンとして実行する**ということです。このアプローチにより、標準の仮想化環境内でZimaOSシステムとWebベースの管理インターフェースを体験できます。  
+PVEにZimaOSを展開することで、既存のサーバーやホームラボで迅速に孤立したZimaOSインスタンスを作成できます。ベアメタルインストールと比較して、この方法にはいくつかの利点があります：
+- より高速なセットアップと低い学習曲線
+- 物理ハードウェアインストールに比べてリスクが低い
+- スナップショットとバックアップによる環境の複製が簡単
 - 柔軟なリソース割り当て（CPU、メモリ、ストレージ）
-特に**機能評価、ソリューションの検証、軽量サービスの展開**に適しています。
+特に、**機能評価、ソリューション検証、および軽量サービス展開**に適しています。
+
 ---
 
-## 要件
+## 必要条件
 ### ハードウェアおよび環境要件
-- 稼働中でアクセス可能なProxmox VE (PVE) 環境
-- 仮想化サポートが有効なx86_64 CPU
-推奨される最小構成：
-- CPU：2コア以上（推奨4コア）
-- メモリ：4GB以上（推奨8GB）
-- ストレージ：少なくとも32GBの空きディスク容量
+- 動作しているアクセス可能なProxmox VE (PVE) 環境
+- 仮想化サポートが有効なx86_64 CPU  
+  推奨最小構成：
+  - CPU: 2コア以上（4コア推奨）
+  - メモリ: 4GB以上（8GB推奨）
+  - ストレージ: 少なくとも32GBの空きディスクスペース
 
 ### ソフトウェアおよびシステム要件
 - ZimaOS ISOインストールイメージ
 - Proxmox VE 6.x / 7.x / 8.x / 9.x
-- 仮想マシンの起動モード：UEFI
-- VM BIOSタイプ：OVMF（UEFI）
+- 仮想マシンブートモード: UEFI
+- VM BIOSタイプ: OVMF（UEFI）
 
 ---
-## インストール手順
-注意：
-このチュートリアルに必要なZimaOS ISOイメージは、以下からダウンロードできます：
-https://github.com/IceWhaleTech/ZimaOS/releases
 
-### ZimaOS ISOイメージをアップロードする
-1. Proxmox VEのWebインターフェースにログインします
-2. **local → ISO Images → Upload** に移動します
+## インストール手順
+
+{% note warn 注意: %}
+ このチュートリアルに必要なZimaOS ISOイメージは、以下からダウンロードできます：
+https://github.com/IceWhaleTech/ZimaOS/releases
+{% endnote %}
+
+### ZimaOS ISOイメージをアップロード
+1. Proxmox VEのWebインターフェースにログイン
+2. **local → ISO Images → Upload** に移動
 ![](https://manage.icewhale.io/api/static/docs/1767616598247_copyImage.png)
-3. ダウンロードした**ZimaOS ISOイメージ**を選択し、**Upload**をクリックします
+3. ダウンロードした**ZimaOS ISOイメージ**を選択し、**Upload**をクリック
 ![](https://manage.icewhale.io/api/static/docs/1767616612358_image.png)
 
-### 仮想マシンを作成する
-1. **Create VM**ボタンをクリックします
+### 仮想マシンを作成
+1. **Create VM**ボタンをクリック
 ![](https://manage.icewhale.io/api/static/docs/1767616679913_image.png)
-2. **OS**ページで、ZimaOS ISOイメージを選択します
+2. OSページでZimaOS ISOイメージを選択
 ![](https://manage.icewhale.io/api/static/docs/1767616694612_image.png)
-3. **System**ページで：
-   - BIOSをUEFIに設定します
-   - Add EFI Diskのチェックを外します
+3. システムページで：
+  - BIOSをUEFIに設定
+  - Add EFI Diskのチェックを外す
 ![](https://manage.icewhale.io/api/static/docs/1767616715004_image.png)
-4. **CPU**ページで、CPUコア数を調整します  
-**目的**：  
-より多くのCPUコアを割り当てることで、マルチスレッド性能が向上し、負荷時のスムーズな操作が確保されます。  
-**推奨**：4CPUコア以上
+4. **CPU**ページで、CPUコアの数を調整
+
+{% note warn  %} **目的**: より多くのCPUコアを割り当てることで、マルチスレッドのパフォーマンスが向上し、負荷時のスムーズな動作が確保されます。  
+**推奨**: 4CPUコア以上
+{% endnote %}
+
 ![](https://manage.icewhale.io/api/static/docs/1767616752746_image.png)
-5. **Memory**ページで、メモリサイズを調整します  
-**目的**：  
-より多くのメモリがあれば、ZimaOSは追加のサービスを実行でき、マルチタスク性能が向上し、頻繁な操作時の遅延を減らすことができます。  
-**推奨**：8GB（8192MB）以上
+5. **Memory**ページで、メモリサイズを調整
+{% note warn  %} **目的**: より多くのメモリを割り当てることで、ZimaOSは追加のサービスを実行でき、マルチタスクのパフォーマンスが向上し、頻繁な操作時の遅延を減らします。  
+**推奨**: 8GB（8192MB）以上
+{% endnote %}
+
 ![](https://manage.icewhale.io/api/static/docs/1767616800421_image.png)
 
-### ZimaOSをインストールする
-1. 仮想マシン作成後、**Start**をクリックします
+### ZimaOSをインストール
+1. 仮想マシンを作成した後、**Start**をクリック
 ![](https://manage.icewhale.io/api/static/docs/1767616824433_image.png)
-2. **Console**をクリックして、VMのコンソールを開きます
+2. **Console**をクリックしてVMコンソールを開く
 ![](https://manage.icewhale.io/api/static/docs/1767616843275_image.png)
-3. **Enter**を押して、ZimaOSのインストールプロセスを開始します
+3. `Enter`を押してZimaOSインストールプロセスを開始
 ![](https://manage.icewhale.io/api/static/docs/1767616860449_image.png)
-4. **Install ZimaOS**を選択し、**Enter**を押します
+4. `Install ZimaOS`を選択し、`Enter`を押す
 ![](https://manage.icewhale.io/api/static/docs/1767616872278_image.png)
-5. インストール先のディスクを選択し、**Enter**を押します
+5. インストール先のディスクを選択し、`Enter`を押す
 ![](https://manage.icewhale.io/api/static/docs/1767616901998_image.png)
-6. 選択したディスクを確認し、Yesを選択して**Enter**を押します
+6. 選択したディスクを確認し、`Yes`を選んで`Enter`を押す
 ![](https://manage.icewhale.io/api/static/docs/1767616916757_image.png)
-7. インストールを進めるためにもう一度確認を求められたら、**Enter**を押します
+7. 再度確認してインストールを進める
 ![](https://manage.icewhale.io/api/static/docs/1767616933805_image.png)
 8. インストールが完了すると、完了画面が表示されます
 ![](https://manage.icewhale.io/api/static/docs/1767616945992_image.png)
 
 ---
-### ISOイメージを取り外す
-1. Proxmox VEインターフェースに戻ります
-2. 仮想マシンを選択し、**CD**を選んで**Edit**をクリックします
+### ISOイメージを削除
+1. Proxmox VEインターフェースに戻る
+2. 仮想マシンを選択し、**CD**を選択して**Edit**をクリック
 ![](https://manage.icewhale.io/api/static/docs/1767616981489_image.png)
-3. **Do not use any media**を選択し、**OK**をクリックします
+3. **Do not use any media**を選択して**OK**をクリック
 ![](https://manage.icewhale.io/api/static/docs/1767616998638_image.png)
-4. 変更後、構成が以下のように表示されます
+4. 変更後、設定が以下のように表示されます
 ![](https://manage.icewhale.io/api/static/docs/1767617011570_image.png)
 
 ---
 
-### ZimaOSを起動してアクセスする
-1. ZimaOS仮想マシンを起動します
-2. **Console**をクリックしてVMのコンソールにアクセスします
-3. システムの起動が完了するまで待機します
-4. IPアドレスがコンソールに表示されます
-Webブラウザを開き、IPアドレスを入力してZimaOSのWeb管理インターフェースにアクセスします。
+### ZimaOSを起動してアクセス
+1. ZimaOS仮想マシンを起動
+2. ConsoleをクリックしてVMコンソールにアクセス
+3. システムのブートが完了するまで待機
+4. コンソールにIPアドレスが表示されます  
+ブラウザを開き、IPアドレスを入力してZimaOSのWeb管理インターフェースにアクセスします。
 ![](https://manage.icewhale.io/api/static/docs/1767617057004_image.png)
 
 ---
 
 ## ZimaOSの探索を続ける
 
-ZimaOSが仮想マシンで実行されているので、引き続きその機能やワークフローを自分のペースで探索できます。  
-システムセットアップ、ストレージ管理、アプリケーションの展開を始める方法については、以下のガイドをご覧ください：
+ZimaOSが仮想マシンで実行されているので、システムのセットアップ、ストレージ管理、アプリケーションの展開方法を自分のペースで探索できます。  
+次のガイドでさらに学ぶことができます：
 
-👉 **[ZimaOSの開始方法](https://www.zimaspace.com/docs/zimaos/Get-Started)**
+👉[ZimaOSの始め方](https://www.zimaspace.com/docs/zimaos/Get-Started)
 
-このガイドは、次のステップを進め、ZimaOS環境を最大限に活用する手助けをします。
+このガイドを通じて、ZimaOS環境を最大限に活用するための次のステップを踏むことができます。
