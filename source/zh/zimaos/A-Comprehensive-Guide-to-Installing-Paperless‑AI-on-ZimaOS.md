@@ -5,7 +5,7 @@ type: Docs
 author: admin  
 tip: 顶部栏固定格式请勿删除, description为文章描述，不填时将截取内容最前一段文字  
 ---  
-> _原文发表于IceWhale社区论坛_ _**Muditha Liyanagama**_ _：_ _[https://community.zimaspace.com/](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ai-on-zimaos/7557)_
+> _原文发表于IceWhale社区论坛_ _**Muditha Liyanagama**_ _：_ _[原文地址](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ai-on-zimaos/7557)_
 
 大家好，ZimaOS和Zimaboard的爱好者们！
 
