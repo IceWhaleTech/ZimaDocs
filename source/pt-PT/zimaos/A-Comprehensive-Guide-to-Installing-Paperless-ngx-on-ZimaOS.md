@@ -5,7 +5,7 @@ type: Docs
 author: icewhale123456
 tip: A formatação da barra superior deve ser mantida, e a descrição deve ser preenchida, caso contrário, será extraído o primeiro parágrafo do conteúdo.
 ---
-> _Publicado originalmente no Fórum da Comunidade IceWhale por_ _**Muditha Liyanagama**_ _:_ _[https://community.zimaspace.com/](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_
+> _Publicado originalmente no Fórum da Comunidade IceWhale por_ _**Muditha Liyanagama**_ _:_ _[Fonte original](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_
 
 Olá, entusiastas do ZimaOS e Zimaboard!
 
