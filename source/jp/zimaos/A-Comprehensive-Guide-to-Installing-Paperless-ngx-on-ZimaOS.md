@@ -5,7 +5,7 @@ type: Docs
 author: icewhale123456
 tip: トップバーの固定フォーマットを削除しないでください。descriptionは記事の説明で、記入しない場合は最初の段落が切り取られます。
 ---
-> _元々、IceWhale Community Forumにて公開された_ _**Muditha Liyanagama**_ _による記事:_ _[https://community.zimaspace.com/](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_
+> _元々、IceWhale Community Forumにて公開された_ _**Muditha Liyanagama**_ _による記事:_ _[原文リンク](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_
 
 こんにちは、ZimaOSとZimaboardの愛好者の皆さん！
 
