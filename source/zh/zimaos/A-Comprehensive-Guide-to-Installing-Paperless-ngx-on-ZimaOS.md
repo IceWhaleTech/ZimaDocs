@@ -5,7 +5,7 @@ type: Docs
 author: icewhale123456  
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字  
 ---  
-> _最初由_ _**Muditha Liyanagama**_ _发布在 IceWhale 社区论坛上:_ _[https://community.zimaspace.com/](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_  
+> _最初由_ _**Muditha Liyanagama**_ _发布在 IceWhale 社区论坛上:_ _[原文地址](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_  
 
 大家好，ZimaOS 和 Zimaboard 的爱好者们！  
 
