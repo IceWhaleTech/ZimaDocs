@@ -5,7 +5,7 @@ type: Docs
 author: admin
 tip: Formato fixo na barra superior, não apague. A descrição é para o artigo, se não preenchida, será capturada a primeira seção do conteúdo.
 ---
-> _Originalmente publicado no Fórum da Comunidade IceWhale por_ _**Muditha Liyanagama (Contribuidor da Comunidade)**:_ _[https://community.zimaspace.com/](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
+> _Originalmente publicado no Fórum da Comunidade IceWhale por_ _**Muditha Liyanagama (Contribuidor da Comunidade)**:_ _[Fonte original](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 
 Olá, entusiastas do ZimaOS e Zimaboard!
 
