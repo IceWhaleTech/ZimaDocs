@@ -6,7 +6,7 @@ author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 
-> _最初由_ _**Muditha Liyanagama (社区贡献者)**_ _在IceWhale社区论坛发布:_ _[https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
+> _最初由_ _**Muditha Liyanagama (社区贡献者)**_ _在IceWhale社区论坛发布:_ _[原文地址](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 
 大家好，ZimaOS和Zimaboard的爱好者们！
 
