@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/Zabbix-Install-Guide">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaos/Zabbix-Install-Guide">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaos/Zabbix-Install-Guide">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaos/Zabbix-Install-Guide">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaos/Zabbix-Install-Guide">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaos/Zabbix-Install-Guide">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="标题：ZimaOS的Zabbix安装指南描述：将你的ZimaOS设备转变为一个强大的、集中式的网络监控服务器。类型：文档作者：icewhale123456提示：顶部栏固定格式请勿删除，描述为文章描述，不填时将截取内容最前一段文字    版本信息 Zabbix版本： 7.0 LTS   指南版本： 1.8   最后更新： 2026年1月   测试平台： ZimaOS（基于B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zimaspace Docs">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/Zabbix-Install-Guide">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="标题：ZimaOS的Zabbix安装指南描述：将你的ZimaOS设备转变为一个强大的、集中式的网络监控服务器。类型：文档作者：icewhale123456提示：顶部栏固定格式请勿删除，描述为文章描述，不填时将截取内容最前一段文字    版本信息 Zabbix版本： 7.0 LTS   指南版本： 1.8   最后更新： 2026年1月   测试平台： ZimaOS（基于B">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-01-16T06:47:41.877Z">
+<meta property="article:modified_time" content="2026-01-16T06:47:41.877Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "ZimaSpace"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1768546061877"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaos/Zabbix-Install-Guide">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaos/Zabbix-Install-Guide">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaos/Zabbix-Install-Guide">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaos/Zabbix-Install-Guide">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaos/Zabbix-Install-Guide">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">商店</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="搜索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name"></h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <hr>
+<p>标题：ZimaOS的Zabbix安装指南<br>描述：将你的ZimaOS设备转变为一个强大的、集中式的网络监控服务器。<br>类型：文档<br>作者：icewhale123456<br>提示：顶部栏固定格式请勿删除，描述为文章描述，不填时将截取内容最前一段文字  </p>
+<hr>
+<h2 id="版本信息" class="article-heading"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息<a class="article-anchor" href="#版本信息" aria-hidden="true"></a></h2><ul>
+<li><strong>Zabbix版本：</strong> 7.0 LTS  </li>
+<li><strong>指南版本：</strong> 1.8  </li>
+<li><strong>最后更新：</strong> 2026年1月  </li>
+<li><strong>测试平台：</strong> ZimaOS（基于Buildroot）  </li>
+<li><strong>创建者：</strong> Holger Kuehn aka Lintuxer</li>
+</ul>
+<hr>
+<h2 id="为什么选择ZimaOS作为你的监控平台？" class="article-heading"><a href="#为什么选择ZimaOS作为你的监控平台？" class="headerlink" title="为什么选择ZimaOS作为你的监控平台？"></a>为什么选择ZimaOS作为你的监控平台？<a class="article-anchor" href="#为什么选择ZimaOS作为你的监控平台？" aria-hidden="true"></a></h2><p>ZimaOS设备（如ZimaBoard、ZimaCube）非常适合运行Zabbix监控：</p>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>全天候</strong></td>
+<td>低功耗设计，适合24&#x2F;7运行</td>
+</tr>
+<tr>
+<td><strong>紧凑</strong></td>
+<td>小巧的外形，适合放置在网络中的任何地方</td>
+</tr>
+<tr>
+<td><strong>原生Docker支持</strong></td>
+<td>完美支持容器化服务，如Zabbix</td>
+</tr>
+<tr>
+<td><strong>高性价比</strong></td>
+<td>不需要专门的服务器硬件</td>
+</tr>
+<tr>
+<td><strong>静音</strong></td>
+<td>无风扇或安静运行</td>
+</tr>
+</tbody></table>
+<p>你无需为监控专门配置一台昂贵的服务器，ZimaOS设备可以作为一个中央监控中心，监控：</p>
+<ul>
+<li><strong>Windows服务器</strong> — 域控制器、文件服务器、应用服务器  </li>
+<li><strong>Linux服务器</strong> — Web服务器、数据库、Docker主机  </li>
+<li><strong>网络设备</strong> — 交换机、路由器、接入点（通过SNMP）  </li>
+<li><strong>物联网与智能家居</strong> — 所有具备网络连接的设备  </li>
+<li><strong>ZimaOS设备本身</strong> — 包含自我监控</li>
+</ul>
+<h2 id="概述" class="article-heading"><a href="#概述" class="headerlink" title="概述"></a>概述<a class="article-anchor" href="#概述" aria-hidden="true"></a></h2><p>本指南包括：</p>
+<ul>
+<li>在ZimaOS上部署Zabbix服务器作为中央监控平台</li>
+<li>配置Docker容器之间的网络通信</li>
+<li>监控ZimaOS主机本身</li>
+<li>添加Windows服务器进行监控（包括VLAN隔离环境）</li>
+<li>添加Linux服务器及其他网络设备</li>
+<li>备份、恢复以及保持Zabbix更新</li>
+</ul>
+<h2 id="使用案例示例" class="article-heading"><a href="#使用案例示例" class="headerlink" title="使用案例示例"></a>使用案例示例<a class="article-anchor" href="#使用案例示例" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                      ┌─────────────────────────────┐</span><br><span class="line">                      │        ZimaOS Device        │</span><br><span class="line">                      │    (Monitoring Platform)    │</span><br><span class="line">                      │                             │</span><br><span class="line">                      │  ┌───────────────────────┐  │</span><br><span class="line">                      │  │   Zabbix Server       │  │</span><br><span class="line">                      │  │   + Web Interface     │  │</span><br><span class="line">                      │  │   + PostgreSQL        │  │</span><br><span class="line">                      │  └───────────────────────┘  │</span><br><span class="line">                      └──────────────┬──────────────┘</span><br><span class="line">                                     │</span><br><span class="line">         ┌───────────────────────────┼───────────────────────────┐</span><br><span class="line">         │                           │                           │</span><br><span class="line">         ▼                           ▼                           ▼</span><br><span class="line">┌─────────────────┐        ┌─────────────────┐        ┌─────────────────┐</span><br><span class="line">│ Windows Server  │        │  Linux Server   │        │ Network Devices │</span><br><span class="line">│ (Active Agent)  │        │ (Active Agent)  │        │    (SNMP)       │</span><br><span class="line">│                 │        │                 │        │                 │</span><br><span class="line">│ • File Server   │        │ • Web Server    │        │ • UniFi Switch  │</span><br><span class="line">│ • Domain Ctrl   │        │ • Docker Host   │        │ • Access Points │</span><br><span class="line">│ • SQL Server    │        │ • NAS           │        │ • Router        │</span><br><span class="line">└─────────────────┘        └─────────────────┘        └─────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>VLAN隔离网络的活动模式：</strong> 代理从Zabbix发起连接，无需在受保护的VLAN中配置入站防火墙规则。</p>
+<h2 id="先决条件" class="article-heading"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件<a class="article-anchor" href="#先决条件" aria-hidden="true"></a></h2><ul>
+<li>已安装并运行ZimaOS</li>
+<li>可以通过SSH访问ZimaOS设备</li>
+<li>基础的Docker概念了解</li>
+<li>监控目标和Zabbix服务器之间的网络访问</li>
+</ul>
+<h2 id="为什么在ZimaOS上选择Docker安装？" class="article-heading"><a href="#为什么在ZimaOS上选择Docker安装？" class="headerlink" title="为什么在ZimaOS上选择Docker安装？"></a>为什么在ZimaOS上选择Docker安装？<a class="article-anchor" href="#为什么在ZimaOS上选择Docker安装？" aria-hidden="true"></a></h2><p>有两种主要方式可以安装Zabbix：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>最适合对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>传统方式</strong></td>
+<td>通过apt&#x2F;yum直接在操作系统上安装包</td>
+<td>Debian、Ubuntu、RHEL服务器</td>
+</tr>
+<tr>
+<td><strong>Docker方式</strong></td>
+<td>将服务作为容器运行</td>
+<td>ZimaOS、以容器为优先的环境</td>
+</tr>
+</tbody></table>
+<p><strong>对于ZimaOS，Docker是唯一实际可行的选项，原因如下：</strong></p>
+<ol>
+<li><strong>没有包管理器</strong> — ZimaOS使用Buildroot，未包含apt、yum等工具</li>
+<li><strong>不可变的基础系统</strong> — ZimaOS旨在保持不变，应用程序作为容器运行</li>
+<li><strong>简便的更新</strong> — 通过拉取新的镜像而非复杂的包升级</li>
+<li><strong>清晰的隔离</strong> — 每个服务独立运行，易于备份&#x2F;恢复</li>
+<li><strong>ZimaOS原生支持</strong> — CasaOS&#x2F;ZimaOS是围绕Docker构建的</li>
+</ol>
+<p><strong>为什么默认的“Zabbix服务器”主机不可用：</strong></p>
+<p>传统的Zabbix安装将服务器和代理运行在同一台机器上，所以<code>127.0.0.1:10050</code>能连接到本地代理。在Docker中，每个服务在其独立的容器中运行，具有自己的网络命名空间。服务器容器的<code>127.0.0.1</code>指向的是自己（没有代理运行），而不是代理容器。因此，我们删除这个默认主机，创建一个新的，指向通过Docker DNS解析的<code>zabbix-agent</code>。</p>
+<h2 id="架构" class="article-heading"><a href="#架构" class="headerlink" title="架构"></a>架构<a class="article-anchor" href="#架构" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────┐</span><br><span class="line">│              zabbix-net（Docker网络）              │</span><br><span class="line">│                                                     │</span><br><span class="line">│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  │</span><br><span class="line">│  │  postgres   │  │zabbix-server│  │ zabbix-web  │  │</span><br><span class="line">│  │ 端口5432    │  │ 端口10051   │  │ 端口8080    │  │</span><br><span class="line">│  │  (内部)    │  │  (外部暴露) │  │  (外部暴露) │  │</span><br><span class="line">│  └─────────────┘  └─────────────┘  └─────────────┘  │</span><br><span class="line">└─────────────────────────────────────────────────────┘</span><br><span class="line">                          │</span><br><span class="line">                          ▼</span><br><span class="line">             ┌─────────────────────────┐</span><br><span class="line">             │   Zabbix代理            │</span><br><span class="line">             │   - ZimaOS（容器）      │</span><br><span class="line">             │   - Windows（活动代理） │</span><br><span class="line">             │   - Linux（活动代理）   │</span><br><span class="line">             └─────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h2 id="部分1：Zabbix服务器安装" class="article-heading"><a href="#部分1：Zabbix服务器安装" class="headerlink" title="部分1：Zabbix服务器安装"></a>部分1：Zabbix服务器安装<a class="article-anchor" href="#部分1：Zabbix服务器安装" aria-hidden="true"></a></h2><h3 id="步骤1：创建Docker网络" class="article-heading"><a href="#步骤1：创建Docker网络" class="headerlink" title="步骤1：创建Docker网络"></a>步骤1：创建Docker网络<a class="article-anchor" href="#步骤1：创建Docker网络" aria-hidden="true"></a></h3><p>ZimaOS使用默认的Docker桥接网络，而<strong>该网络不支持容器间的DNS解析</strong>。你必须创建一个自定义网络。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker network create zabbix-net</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤2：部署PostgreSQL数据库" class="article-heading"><a href="#步骤2：部署PostgreSQL数据库" class="headerlink" title="步骤2：部署PostgreSQL数据库"></a>步骤2：部署PostgreSQL数据库<a class="article-anchor" href="#步骤2：部署PostgreSQL数据库" aria-hidden="true"></a></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker run -d \</span><br><span class="line">  --name zabbix-postgres \</span><br><span class="line">  --network zabbix-net \</span><br><span class="line">  --network-alias postgres \</span><br><span class="line">  -e POSTGRES_USER=zabbix \</span><br><span class="line">  -e POSTGRES_PASSWORD=zabbix \</span><br><span class="line">  -e POSTGRES_DB=zabbix \</span><br><span class="line">  -v zabbix-postgres-data:/var/lib/postgresql/data \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  postgres:15-alpine</span><br></pre></td></tr></table></figure>
+
+<p><strong>重要提示：</strong> <code>--network-alias postgres</code>非常关键——其他容器将使用这个主机名进行连接。</p>
+<p><strong>等待PostgreSQL初始化：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 等待15秒以初始化数据库</span></span><br><span class="line"><span class="built_in">sleep</span> 15</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看PostgreSQL是否正在运行</span></span><br><span class="line">sudo docker logs zabbix-postgres 2&gt;&amp;1 | <span class="built_in">tail</span> -5</span><br></pre></td></tr></table></figure>
+
+<p>你应该能看到：<code>database system is ready to accept connections</code></p>
+<h3 id="步骤3：部署Zabbix服务器" class="article-heading"><a href="#步骤3：部署Zabbix服务器" class="headerlink" title="步骤3：部署Zabbix服务器"></a>步骤3：部署Zabbix服务器<a class="article-anchor" href="#步骤3：部署Zabbix服务器" aria-hidden="true"></a></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker run -d \</span><br><span class="line">  --name zabbix-server \</span><br><span class="line">  --network zabbix-net \</span><br><span class="line">  --network-alias zabbix-server \</span><br><span class="line">  -e DB_SERVER_HOST=postgres \</span><br><span class="line">  -e POSTGRES_USER=zabbix \</span><br><span class="line">  -e POSTGRES_PASSWORD=zabbix \</span><br><span class="line">  -e POSTGRES_DB=zabbix \</span><br><span class="line">  -p 10051:10051 \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  zabbix/zabbix-server-pgsql:alpine-7.0-latest</span><br></pre></td></tr></table></figure>
+
+<p><strong>等待Zabbix服务器初始化：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 等待10秒以初始化服务器</span></span><br><span class="line"><span class="built_in">sleep</span> 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看服务器启动情况（可能会显示一些警告，正常）</span></span><br><span class="line">sudo docker logs zabbix-server 2&gt;&amp;1 | <span class="built_in">tail</span> -5</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤4：部署Zabbix-Web界面" class="article-heading"><a href="#步骤4：部署Zabbix-Web界面" class="headerlink" title="步骤4：部署Zabbix Web界面"></a>步骤4：部署Zabbix Web界面<a class="article-anchor" href="#步骤4：部署Zabbix-Web界面" aria-hidden="true"></a></h3><p>&#96;&#96;&#96;bash<br>sudo docker run -d <br>  –name zabbix-web <br>  –network zabb</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-01-16T06:47:41.877Z" itemprop="dateModified">最后更新：2026-01-16</time>
+                <a href="AzuraCast-Install-Guide.html" class="article-footer-prev" title="《AzuraCast 安装指南》"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="v-1.4.3.html" class="article-footer-next" title="版本 1.4.3"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-text">版本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9ZimaOS%E4%BD%9C%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0%EF%BC%9F"><span class="toc-text">为什么选择ZimaOS作为你的监控平台？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B%E7%A4%BA%E4%BE%8B"><span class="toc-text">使用案例示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="toc-text">先决条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8ZimaOS%E4%B8%8A%E9%80%89%E6%8B%A9Docker%E5%AE%89%E8%A3%85%EF%BC%9F"><span class="toc-text">为什么在ZimaOS上选择Docker安装？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-text">架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E5%88%861%EF%BC%9AZabbix%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85"><span class="toc-text">部分1：Zabbix服务器安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E5%88%9B%E5%BB%BADocker%E7%BD%91%E7%BB%9C"><span class="toc-text">步骤1：创建Docker网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E9%83%A8%E7%BD%B2PostgreSQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">步骤2：部署PostgreSQL数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E9%83%A8%E7%BD%B2Zabbix%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">步骤3：部署Zabbix服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9A%E9%83%A8%E7%BD%B2Zabbix-Web%E7%95%8C%E9%9D%A2"><span class="toc-text">步骤4：部署Zabbix Web界面</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    
+    <h4 class="category-list-link sidebar-title " style="border:none"> 
+      <a href="./index.html">什么是Zima</a>
+    </h4>
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./how-to-install-zimaos.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Get-Started.html">开始使用</a></li><li class="sidebar-link "><a href="./Features.html">功能</a></li><li class="sidebar-link "><a href="./Romote-Access.html">远程访问</a></li><li class="sidebar-link "><a href="./Thunderbolt-PC-Direct.html">Thunderbolt PC 直连</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./SMB-Help-Document.html">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./ZimaOS-Search-work.html">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./Rebuilding-RAID-after-reinstalling-the-system.html">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./AI-Description-with-ZimaOS.html">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./Enable-AI.html">启用AI搜索</a></li><li class="sidebar-link "><a href="./Enable-Intel-AX210.html">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./How-to-Use-3-2-1-Backup-on-ZimaOS.html">3-2-1备份</a></li><li class="sidebar-link "><a href="./Migrate-from-CasaOS-to-ZimaOS.html">从 CasaOS 迁移到 ZimaOS</a></li><li class="sidebar-link "><a href="./UPS-Setup.html">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve.html">在Proxmox VE上安装ZimaOS</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>开发者</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./set-your-SSH.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Networking.html">网络</a></li><li class="sidebar-link "><a href="./Setup-Python.html">设置 Python</a></li><li class="sidebar-link "><a href="./Build-Apps.html">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-Bay-LED.html">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./Install-offline.html">离线更新</a></li><li class="sidebar-link "><a href="./Disk-Format-Supported.html">支持的磁盘格式</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./How-to-Contribute.html">如何贡献</a></li><li class="sidebar-link "><a href="./A-list-of-Contributions.html">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./A-Simple-Guide-to-Installing-Syncthing-on-ZimaOS.html">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless-ngx-on-ZimaOS.html">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless‑AI-on-ZimaOS.html">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./AzuraCast-Install-Guide.html">《AzuraCast 安装指南》</a></li><li class="sidebar-link  current"><a href="./Zabbix-Install-Guide.html">Zabbix安装指南</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>版本记录</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./v-1.4.3.html">版本 1.4.3</a></li><li class="sidebar-link "><a href="./v-1.4.2.html">v 1.4.2 </a></li><li class="sidebar-link "><a href="./v-1.4.1.html">版本 1.4.1</a></li><li class="sidebar-link "><a href="./v-1.4.0.html">v 1.4.0</a></li><li class="sidebar-link "><a href="./v1.3.3.html">v1.3.3</a></li><li class="sidebar-link "><a href="./v-1.3.2.html">版本 1.3.2</a></li><li class="sidebar-link "><a href="./v-1.3.1-.html">版本 1.3.1</a></li><li class="sidebar-link "><a href="./v1.3.0.html">v1.3.0</a></li><li class="sidebar-link "><a href="./ZimaOS-v1.2.5-Available!.html">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1.2.4.html">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1.2.3.html">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1.2.2.html">v 1.2.2</a></li><li class="sidebar-link "><a href="./v-1.4.4.html">版本 1.4.4
+
+注：其中 “v” 常表示 “版本”，也可写成“版本号 1.4.4”。</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./UPS-Compatibility-List.html">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./Encryption-Folder.html">加密文件夹</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/media-servers">媒体服务器</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/personal-nas">个人 NAS</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/category/ad-blocker">广告拦截器</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/blog/">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+    </ul>
+    
+      
+    <h4 class="category-list-link sidebar-title " style="border:none"> 
+      <a href="./index.html">什么是Zima</a>
+    </h4>
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./how-to-install-zimaos.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Get-Started.html">开始使用</a></li><li class="sidebar-link "><a href="./Features.html">功能</a></li><li class="sidebar-link "><a href="./Romote-Access.html">远程访问</a></li><li class="sidebar-link "><a href="./Thunderbolt-PC-Direct.html">Thunderbolt PC 直连</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./SMB-Help-Document.html">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./ZimaOS-Search-work.html">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./Rebuilding-RAID-after-reinstalling-the-system.html">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./AI-Description-with-ZimaOS.html">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./Enable-AI.html">启用AI搜索</a></li><li class="sidebar-link "><a href="./Enable-Intel-AX210.html">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./How-to-Use-3-2-1-Backup-on-ZimaOS.html">3-2-1备份</a></li><li class="sidebar-link "><a href="./Migrate-from-CasaOS-to-ZimaOS.html">从 CasaOS 迁移到 ZimaOS</a></li><li class="sidebar-link "><a href="./UPS-Setup.html">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve.html">在Proxmox VE上安装ZimaOS</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>开发者</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./set-your-SSH.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Networking.html">网络</a></li><li class="sidebar-link "><a href="./Setup-Python.html">设置 Python</a></li><li class="sidebar-link "><a href="./Build-Apps.html">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-Bay-LED.html">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./Install-offline.html">离线更新</a></li><li class="sidebar-link "><a href="./Disk-Format-Supported.html">支持的磁盘格式</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./How-to-Contribute.html">如何贡献</a></li><li class="sidebar-link "><a href="./A-list-of-Contributions.html">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./A-Simple-Guide-to-Installing-Syncthing-on-ZimaOS.html">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless-ngx-on-ZimaOS.html">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless‑AI-on-ZimaOS.html">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./AzuraCast-Install-Guide.html">《AzuraCast 安装指南》</a></li><li class="sidebar-link  current"><a href="./Zabbix-Install-Guide.html">Zabbix安装指南</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>版本记录</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./v-1.4.3.html">版本 1.4.3</a></li><li class="sidebar-link "><a href="./v-1.4.2.html">v 1.4.2 </a></li><li class="sidebar-link "><a href="./v-1.4.1.html">版本 1.4.1</a></li><li class="sidebar-link "><a href="./v-1.4.0.html">v 1.4.0</a></li><li class="sidebar-link "><a href="./v1.3.3.html">v1.3.3</a></li><li class="sidebar-link "><a href="./v-1.3.2.html">版本 1.3.2</a></li><li class="sidebar-link "><a href="./v-1.3.1-.html">版本 1.3.1</a></li><li class="sidebar-link "><a href="./v1.3.0.html">v1.3.0</a></li><li class="sidebar-link "><a href="./ZimaOS-v1.2.5-Available!.html">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1.2.4.html">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1.2.3.html">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1.2.2.html">v 1.2.2</a></li><li class="sidebar-link "><a href="./v-1.4.4.html">版本 1.4.4
+
+注：其中 “v” 常表示 “版本”，也可写成“版本号 1.4.4”。</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./UPS-Compatibility-List.html">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./Encryption-Folder.html">加密文件夹</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>中文</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaos/Zabbix-Install-Guide.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh" selected>中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es">Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
