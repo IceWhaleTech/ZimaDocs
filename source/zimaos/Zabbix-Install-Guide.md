@@ -5,18 +5,10 @@ type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-
-## Version Information
-
-- **Zabbix Version:** 7.0 LTS
-- **Guide Version:** 1.8
-- **Last Updated:** January 2026
-- **Tested On:** ZimaOS (Buildroot-based)
--**Created by:** Holger Kuehn aka Lintuxer
+> Created by: **Holger Kuehn aka Lintuxer**
 
 ---
   
-
 ## Why Use ZimaOS as Your Monitoring Platform?
 
 ZimaOS devices (ZimaBoard, ZimaCube) are ideal candidates for running Zabbix monitoring:
@@ -46,6 +38,15 @@ This guide covers:
 - Adding Windows Servers to monitoring (including VLAN-isolated environments)
 - Adding Linux servers and other network devices
 - Backup, restore, and keeping Zabbix updated
+
+---
+## Version Information
+
+- **Zabbix Version:** 7.0 LTS
+- **Guide Version:** 1.8
+- **Last Updated:** January 2026
+- **Tested On:** ZimaOS (Buildroot-based)
+---
 
 ## Use Case Example
 
@@ -353,9 +354,9 @@ Zabbix comes with a pre-configured "Zabbix server" host that tries to monitor it
 
 > **Note:** This only removes the monitoring entry, not the actual Zabbix server! Your Zabbix installation will continue to work normally.
 
-### Available Metrics
+<u>**Available Metrics**</u>
 
-#### System Metrics (Linux by Zabbix agent)
+**System Metrics (Linux by Zabbix agent)**
 
 | Category | Metrics |
 |----------|---------|
@@ -366,7 +367,7 @@ Zabbix comes with a pre-configured "Zabbix server" host that tries to monitor it
 | **System** | Uptime, boot time, number of processes, logged in users |
 | **File Systems** | Inode usage, mount point status |
 
-#### Docker Metrics (Docker by Zabbix agent 2)
+**Docker Metrics (Docker by Zabbix agent 2)**
 
 | Category | Metrics |
 |----------|---------|
@@ -375,9 +376,9 @@ Zabbix comes with a pre-configured "Zabbix server" host that tries to monitor it
 | **Images** | Total images, size |
 | **Volumes** | Volume count and usage |
 
-### Step 5: Customize Monitoring (Optional)
+### Step 6: Customize Monitoring (Optional)
 
-#### Add Custom Items
+**Add Custom Items**
 
 You can monitor ZimaOS-specific items. Example - monitor CasaOS app status:
 
@@ -388,7 +389,7 @@ You can monitor ZimaOS-specific items. Example - monitor CasaOS app status:
    - **Key:** `system.run["docker ps --filter name=casaos --format '{{.Status}}'"]`
    - **Type of information:** Text
 
-#### Create Custom Dashboard
+**Create Custom Dashboard**
 
 1. Dashboards → Create dashboard
 2. Add widgets:
@@ -399,58 +400,58 @@ You can monitor ZimaOS-specific items. Example - monitor CasaOS app status:
 
 ### Troubleshooting ZimaOS Agent
 
-#### Problem: Agent container not starting
+- **Problem: Agent container not starting**
 
-**Check logs:**
+  - **Check logs:**
 ```bash
 sudo docker logs zabbix-agent
 ```
 
-**Common causes:**
+  - **Common causes:**
 - Network `zabbix-net` doesn't exist
 - Port conflict on 10050
 
-#### Problem: No data in Zabbix UI
+- **Problem: No data in Zabbix UI**
 
-**Verify network connectivity:**
+  - **Verify network connectivity:**
 ```bash
 # From agent container, test connection to server
 sudo docker exec zabbix-agent zabbix_agent2 -t agent.ping
 ```
 
-**Check if agent is in correct network:**
+  - **Check if agent is in correct network:**
 ```bash
 sudo docker network inspect zabbix-net --format '{{range .Containers}}{{.Name}} {{end}}'
 ```
 
 Should include: `zabbix-agent`
 
-#### Problem: "Get value from agent failed: cannot connect"
+- **Problem: "Get value from agent failed: cannot connect"**
 
-**Solution:** Ensure the agent has the network alias:
+  - **Solution:** Ensure the agent has the network alias:
 ```bash
 sudo docker network disconnect zabbix-net zabbix-agent
 sudo docker network connect --alias zabbix-agent zabbix-net zabbix-agent
 sudo docker restart zabbix-agent
 ```
 
-#### Problem: Docker metrics not appearing
+- **Problem: Docker metrics not appearing**
 
-**Verify Docker socket access:**
+  - **Verify Docker socket access:**
 ```bash
 sudo docker exec zabbix-agent ls -la /var/run/docker.sock
 ```
 
-**Test Docker discovery:**
+  - **Test Docker discovery:**
 ```bash
 sudo docker exec zabbix-agent zabbix_agent2 -t docker.containers.discovery
 ```
 
-### Monitoring Multiple ZimaOS Devices
+- **Monitoring Multiple ZimaOS Devices**
 
 If you have multiple ZimaOS devices (e.g., ZimaBoard, ZimaCube), deploy an agent on each:
 
-**On second device:**
+  - **On second device:**
 ```bash
 sudo docker run -d \
   --name zabbix-agent \
@@ -469,7 +470,7 @@ sudo docker run -d \
   zabbix/zabbix-agent2:alpine-7.0-latest
 ```
 
-**Note:** For remote ZimaOS devices, use `ZBX_ACTIVESERVERS` for Active Mode if they're in different VLANs (see Windows Server section for VLAN considerations).
+  - **Note:** For remote ZimaOS devices, use `ZBX_ACTIVESERVERS` for Active Mode if they're in different VLANs (see Windows Server section for VLAN considerations).
 
 Then add each device as a separate host in Zabbix UI with matching hostname.
 
@@ -477,7 +478,7 @@ Then add each device as a separate host in Zabbix UI with matching hostname.
 
 ## Part 3: Monitoring Windows Servers
 
-### Scenario: VLAN-Isolated Windows Server
+**Scenario: VLAN-Isolated Windows Server**
 
 For environments with VLAN isolation where the Zabbix server cannot initiate connections to monitored hosts, use **Active Mode**. The Windows agent initiates the connection outbound.
 
