@@ -1,11 +1,9 @@
-这里是你要求的翻译：
-
 ---
-ZimaBoard 教程：Ubuntu LTS 最小化安装、镜像磁盘和 Docker 引擎  
-描述：  
-类型：文档  
-作者：icewhale123456  
-提示：顶部栏固定格式请勿删除，description 为文章描述，若不填写则会截取内容的最前一段文字  
+title: Ubuntu LTS 最小化安装、镜像磁盘和 Docker 引擎  
+description: 
+type: Docs
+author: icewhale123456
+tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
 
 > 本教程最初由 **<u>ZaNgA</u>** 创建，我们感谢他的贡献。

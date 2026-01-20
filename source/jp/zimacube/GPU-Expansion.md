@@ -1,5 +1,3 @@
-以下是您要求的日语翻译：
-
 ---
 title: GPU拡張
 description:

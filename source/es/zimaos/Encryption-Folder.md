@@ -1,10 +1,10 @@
 ---
 
-**Título:** Carpeta de Cifrado en ZimaOS  
-**Descripción:** Aprende cómo la Carpeta de Cifrado de ZimaOS protege tus datos privados con cifrado AES-256-GCM, el sistema de archivos Zima-OFS y un diseño avanzado de seguridad tanto para principiantes como para desarrolladores.  
-**Tipo:** Documentos  
-**Autor:** icewhale123456  
-**Consejo:** El formato fijo en la barra superior no debe ser eliminado, la descripción es el resumen del artículo, si no se completa, se tomará el primer párrafo del contenido como descripción.  
+title: Carpeta de Cifrado en ZimaOS  
+Descripción: Aprende cómo la Carpeta de Cifrado de ZimaOS protege tus datos privados con cifrado AES-256-GCM, el sistema de archivos Zima-OFS y un diseño avanzado de seguridad tanto para principiantes como para desarrolladores.  
+type: Documentos  
+author: icewhale123456  
+tip: El formato fijo en la barra superior no debe ser eliminado, la descripción es el resumen del artículo, si no se completa, se tomará el primer párrafo del contenido como descripción.  
 ---
 
 ## Carpeta de Cifrado en ZimaOS  

@@ -1,5 +1,5 @@
 ---
-ZimaBoard Tutorial: Ubuntu LTS Minimal, Mirrored Disks, and Docker Engine
+title: Ubuntu LTS Minimal, Mirrored Disks, and Docker Engine
 description: 
 type: Docs
 author: icewhale123456

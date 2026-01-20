@@ -1,5 +1,5 @@
 ---
-title: ZimaBoard チュートリアル: Ubuntu LTS Minimal、ミラーリングディスク、Dockerエンジン
+title: Ubuntu LTS Minimal、ミラーリングディスク、Dockerエンジン
 description: 
 type: Docs
 author: icewhale123456
