@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Servidor de Minecraft–Construye un servidor de Minecraft con ZimaBoard | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/zimaboard/MineCraft-Friendship-Service">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/es/zimaboard/MineCraft-Friendship-Service">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/es/zimaboard/MineCraft-Friendship-Service">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/es/zimaboard/MineCraft-Friendship-Service">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/es/zimaboard/MineCraft-Friendship-Service">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/es/zimaboard/MineCraft-Friendship-Service">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="RazónCOVID-19 nos obligó a pasar más tiempo con nuestras familias. Anteriormente, hubo una introducción sobre cómo construir una versión doméstica de un teatro 4K usando ZimaBoard. Recient">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Servidor de Minecraft–Construye un servidor de Minecraft con ZimaBoard">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaboard/MineCraft-Friendship-Service">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="RazónCOVID-19 nos obligó a pasar más tiempo con nuestras familias. Anteriormente, hubo una introducción sobre cómo construir una versión doméstica de un teatro 4K usando ZimaBoard. Recient">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-introduce-home-page.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-copy-cli.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-check-environment.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-open-minecraft-client.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-click-multiplayer.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-add-server-address.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-show-minecraft-server.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page2.png">
+<meta property="og:image" content="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2">
+<meta property="article:published_time" content="2026-02-10T11:03:55.190Z">
+<meta property="article:modified_time" content="2026-02-10T11:03:55.190Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/Minecraft-Friendship-Service/minecraft-introduce-home-page.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Servidor de Minecraft–Construye un servidor de Minecraft con ZimaBoard",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "ZimaSpace"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1770721435190"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/es/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">Foro</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaboard/MineCraft-Friendship-Service">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaboard/MineCraft-Friendship-Service">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaboard/MineCraft-Friendship-Service">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaboard/MineCraft-Friendship-Service">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaboard/MineCraft-Friendship-Service">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">Tienda</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="Buscar...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Servidor de Minecraft–Construye un servidor de Minecraft con ZimaBoard</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="Si tiene algún problema con este documento, póngase en contacto con nosotros y le responderemos a la mayor brevedad.​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="Si tiene algún problema con este documento, póngase en contacto con nosotros y le responderemos a la mayor brevedad.​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h1 id="Razon" class="article-heading"><a href="#Razon" class="headerlink" title="Razón"></a>Razón<a class="article-anchor" href="#Razon" aria-hidden="true"></a></h1><p><strong>COVID-19</strong> nos obligó a pasar más tiempo con nuestras familias. Anteriormente, hubo una introducción sobre cómo construir una versión doméstica de un teatro 4K usando ZimaBoard. Recientemente, el teatro ya no es suficiente para la familia. Así que encontramos algunos juegos divertidos en casa que son más adecuados tanto para adultos como para niños. Los buenos juegos pueden hacer que los miembros de la familia se acerquen y mejorar las habilidades creativas de los niños.</p>
+<h2 id="Introduccion-a-Minecraft" class="article-heading"><a href="#Introduccion-a-Minecraft" class="headerlink" title="Introducción a Minecraft"></a>Introducción a <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans"><strong>Minecraft</strong></a><a class="article-anchor" href="#Introduccion-a-Minecraft" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-introduce-home-page.png" alt="minecraft-casa-home-page"></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans"><strong>Minecraft</strong></a> es un juego de construcción en un mundo abierto creado por Markus Persson, fundador de Mojang AB, e inspirado en Endless Miner, Dwarf Fortress y Dungeon Keeper. El actual desarrollador principal es Jens Bergensten. Los jugadores pueden crear y destruir una multitud de cubos en el espacio tridimensional del juego e incluso experimentar diferentes modos de juego en servidores multijugador frente a mundos de un solo jugador para crear exquisitas edificaciones, creaciones y obras de arte.</p>
+<h1 id="Preparacion-anticipada" class="article-heading"><a href="#Preparacion-anticipada" class="headerlink" title="Preparación anticipada"></a>Preparación anticipada<a class="article-anchor" href="#Preparacion-anticipada" aria-hidden="true"></a></h1><p>Por defecto, ya sabes cómo usar ZimaBoard al leer este tutorial: <a href="/docs/"><strong>Tutorial de ZimaBoard</strong></a></p>
+<p>De manera similar, aquí ya has adquirido una cuenta de My World por defecto: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans/about-minecraft"><strong>Enlace de compra de MineCraft</strong></a></p>
+<table>
+<thead>
+<tr>
+<th>Artículo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Software</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/en-us/download"><strong>Enlaces de instalación de MineCraft</strong></a></td>
+</tr>
+<tr>
+<td>Párrafo</td>
+<td>ZimaBoard 216</td>
+</tr>
+</tbody></table>
+<h1 id="Comienza-a-construir-un-servidor-de-Minecraft" class="article-heading"><a href="#Comienza-a-construir-un-servidor-de-Minecraft" class="headerlink" title="Comienza a construir un servidor de Minecraft"></a>Comienza a construir un servidor de Minecraft<a class="article-anchor" href="#Comienza-a-construir-un-servidor-de-Minecraft" aria-hidden="true"></a></h1><h2 id="Ingresa-a-CasaOS" class="article-heading"><a href="#Ingresa-a-CasaOS" class="headerlink" title="Ingresa a CasaOS"></a>Ingresa a CasaOS<a class="article-anchor" href="#Ingresa-a-CasaOS" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png" alt="minecraft-casa-home-page"></p>
+<h2 id="Abre-la-tienda-de-aplicaciones-y-selecciona-instalacion-personalizada" class="article-heading"><a href="#Abre-la-tienda-de-aplicaciones-y-selecciona-instalacion-personalizada" class="headerlink" title="Abre la tienda de aplicaciones y selecciona instalación personalizada"></a>Abre la tienda de aplicaciones y selecciona instalación personalizada<a class="article-anchor" href="#Abre-la-tienda-de-aplicaciones-y-selecciona-instalacion-personalizada" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> docker run -d \</span><br><span class="line">-p 25565:25565 \</span><br><span class="line">-v /DATA/AppData/mc-data/:/data \</span><br><span class="line">-e EULA=TRUE \</span><br><span class="line">--name minecraft \</span><br><span class="line">itzg/minecraft-server</span><br></pre></td></tr></table></figure>
+
+<h2 id="Copia-Cli-（https-hub-docker-com-r-itzg-minecraft-server" class="article-heading"><a href="#Copia-Cli-（https-hub-docker-com-r-itzg-minecraft-server" class="headerlink" title="Copia [Cli]（https://hub.docker.com/r/itzg/minecraft-server)"></a>Copia [Cli]（<a target="_blank" rel="noopener external nofollow noreferrer" href="https://hub.docker.com/r/itzg/minecraft-server">https://hub.docker.com/r/itzg/minecraft-server</a>)<a class="article-anchor" href="#Copia-Cli-（https-hub-docker-com-r-itzg-minecraft-server" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-copy-cli.png" alt="Copia Minecraft Server Cli">.</p>
+<h2 id="Verifica-el-entorno" class="article-heading"><a href="#Verifica-el-entorno" class="headerlink" title="Verifica el entorno"></a>Verifica el entorno<a class="article-anchor" href="#Verifica-el-entorno" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-check-environment.png" alt="Verifica el entorno del servidor de Minecraft"></p>
+<blockquote class="note dinfo"><p><strong>Atención</strong></p>
+<p>Variables de entorno <strong>EULA&#x3D;TRUE</strong></p>
+<p>Asegúrate de incluir siempre -e EULA&#x3D;TRUE en tus comandos y definiciones de contenedor, ya que Mojang&#x2F;Microsoft requiere la aceptación de EULA.</p>
+</blockquote>
+
+<h2 id="Abre-el-cliente-MY-World" class="article-heading"><a href="#Abre-el-cliente-MY-World" class="headerlink" title="Abre el cliente MY World"></a>Abre el cliente MY World<a class="article-anchor" href="#Abre-el-cliente-MY-World" aria-hidden="true"></a></h2><p><strong>Ahora abre el cliente de My World que instalaste anteriormente, aquí se está utilizando MAC</strong></p>
+<p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-open-minecraft-client.png"></p>
+<h2 id="Haz-clic-en-Multijugador" class="article-heading"><a href="#Haz-clic-en-Multijugador" class="headerlink" title="Haz clic en Multijugador"></a>Haz clic en Multijugador<a class="article-anchor" href="#Haz-clic-en-Multijugador" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-click-multiplayer.png" alt="Abrir cliente de Minecraft"></p>
+<h2 id="Agregar-servidor" class="article-heading"><a href="#Agregar-servidor" class="headerlink" title="Agregar servidor"></a>Agregar servidor<a class="article-anchor" href="#Agregar-servidor" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png" alt="Agregar servidor de Minecraft"></p>
+<h2 id="Ingresa-tu-direccion-IP-y-anade-25565" class="article-heading"><a href="#Ingresa-tu-direccion-IP-y-anade-25565" class="headerlink" title="Ingresa tu dirección IP y añade 25565"></a>Ingresa tu dirección IP y añade 25565<a class="article-anchor" href="#Ingresa-tu-direccion-IP-y-anade-25565" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-add-minecraft-server.png" alt="Agregar servidor de Minecraft"></p>
+<p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-add-server-address.png" alt="Agregar dirección de Minecraft"></p>
+<p>Si no conoces tu dirección IP, puedes consultar el tutorial—<a href="/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md">“<strong>Encuentra tu dirección IP de CasaOS</strong>“</a></p>
+<h2 id="Tu-servidor-de-Minecraft-ya-esta-listo" class="article-heading"><a href="#Tu-servidor-de-Minecraft-ya-esta-listo" class="headerlink" title="Tu servidor de Minecraft ya está listo"></a>Tu servidor de Minecraft ya está listo<a class="article-anchor" href="#Tu-servidor-de-Minecraft-ya-esta-listo" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-show-minecraft-server.png" alt="Mostrar servidor de Minecraft"></p>
+<h2 id="Jugar" class="article-heading"><a href="#Jugar" class="headerlink" title="Jugar"></a>Jugar<a class="article-anchor" href="#Jugar" aria-hidden="true"></a></h2><p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page.png" alt="Mostrar página del juego de Minecraft"></p>
+<p><img src="/docs/images/Minecraft-Friendship-Service/minecraft-show-minecraft-game-page2.png" alt="Mostrar página del juego de Minecraft"></p>
+<h1 id="Ajustando-parametros-del-servidor" class="article-heading"><a href="#Ajustando-parametros-del-servidor" class="headerlink" title="Ajustando parámetros del servidor"></a>Ajustando parámetros del servidor<a class="article-anchor" href="#Ajustando-parametros-del-servidor" aria-hidden="true"></a></h1><h2 id="Por-ejemplo" class="article-heading"><a href="#Por-ejemplo" class="headerlink" title="Por ejemplo"></a>Por ejemplo<a class="article-anchor" href="#Por-ejemplo" aria-hidden="true"></a></h2><p>Por defecto, los servidores de <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans"><strong>Minecraft</strong></a> están configurados para funcionar en modo Supervivencia. Puedes cambiar el modo usando <strong>MODE</strong> donde puedes proporcionar los valores numéricos estándar o los valores abreviados:</p>
+<ul>
+<li>creativo</li>
+<li>supervivencia</li>
+<li>aventura</li>
+<li>espectador (solo para <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans"><strong>Minecraft</strong></a> 1.8 o posterior)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -e MODE=creative ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>Anunciar logros de los jugadores</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d -e ANNOUNCE_PLAYER_ACHIEVEMENTS=true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Más información</strong> - <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/itzg/docker-minecraft-server"><strong>Servidor Docker Minecraft</strong></a></p>
+<h3 id="Adiciones-Extendidas" class="article-heading"><a href="#Adiciones-Extendidas" class="headerlink" title="Adiciones Extendidas"></a>Adiciones Extendidas<a class="article-anchor" href="#Adiciones-Extendidas" aria-hidden="true"></a></h3><ol>
+<li><p>Más adelante habrá una aplicación docker para servidor mc en la tienda de aplicaciones de CasaOS (realizar un minuto para un clic para instalar el servidor de MC).</p>
+</li>
+<li><p>Zimaboard &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans"><strong>Minecraft</strong></a> Versión avanzada de juego.</p>
+</li>
+</ol>
+<h2 id="Conclusion" class="article-heading"><a href="#Conclusion" class="headerlink" title="Conclusión"></a>Conclusión<a class="article-anchor" href="#Conclusion" aria-hidden="true"></a></h2><p>La filosofía detrás de <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.minecraft.net/zh-hans"><strong>Minecraft</strong></a> es muy simple: crear un mundo que te pertenezca; por favor, guía a tus hijos correctamente, participa con ellos y controla el tiempo de juego. Creo que podrás obtener más que pura alegría y felicidad.</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/knqAbbBbeX"><img src="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2" alt="Tarjeta de Discord"></a></p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-02-10T11:03:55.190Z" itemprop="dateModified">Última actualización: 2026-02-10</time>
+                <a href="Hardware-Brief.html" class="article-footer-prev" title="Resumen del Hardware"><i class="fa fa-chevron-left"></i><span>Anterior</span></a><a href="Self-Deploying-Applications.html" class="article-footer-next" title="Configurar NAS de 2 Bahías"><span>Siguiente</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contenidos</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Razon"><span class="toc-text">Razón</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduccion-a-Minecraft"><span class="toc-text">Introducción a Minecraft</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Preparacion-anticipada"><span class="toc-text">Preparación anticipada</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comienza-a-construir-un-servidor-de-Minecraft"><span class="toc-text">Comienza a construir un servidor de Minecraft</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ingresa-a-CasaOS"><span class="toc-text">Ingresa a CasaOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abre-la-tienda-de-aplicaciones-y-selecciona-instalacion-personalizada"><span class="toc-text">Abre la tienda de aplicaciones y selecciona instalación personalizada</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Copia-Cli-%EF%BC%88https-hub-docker-com-r-itzg-minecraft-server"><span class="toc-text">Copia [Cli]（https:&#x2F;&#x2F;hub.docker.com&#x2F;r&#x2F;itzg&#x2F;minecraft-server)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verifica-el-entorno"><span class="toc-text">Verifica el entorno</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Abre-el-cliente-MY-World"><span class="toc-text">Abre el cliente MY World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Haz-clic-en-Multijugador"><span class="toc-text">Haz clic en Multijugador</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Agregar-servidor"><span class="toc-text">Agregar servidor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ingresa-tu-direccion-IP-y-anade-25565"><span class="toc-text">Ingresa tu dirección IP y añade 25565</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tu-servidor-de-Minecraft-ya-esta-listo"><span class="toc-text">Tu servidor de Minecraft ya está listo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jugar"><span class="toc-text">Jugar</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ajustando-parametros-del-servidor"><span class="toc-text">Ajustando parámetros del servidor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Por-ejemplo"><span class="toc-text">Por ejemplo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adiciones-Extendidas"><span class="toc-text">Adiciones Extendidas</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusión</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">Volver arriba</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html"> Instalación de OpenWrt</a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Instalación de Arch Linux</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Aplicaciones de Alojamiento</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link  current"><a href="./MineCraft-Friendship-Service.html">Aplicación del Servidor MineCraft</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Explorar</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">Configurar NAS de 2 Bahías</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">Instalar OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">Configuración de OMV</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">Instalar UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">Instalar OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">OpenWrt en eMMC</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">Instalar OS Universal</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Servidor Jellyfin</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">Instalar Retro Juego</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">VR Audio y Video Experiencia - Oculus</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">Habilitar WOL en ZimaBoard</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Migración a través de Proxmox</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">Instalación Mínima de Servidor Ubuntu</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>FAQ</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">Recuperación de Fábrica de ZimaBoard CasaOS</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">Actualizar Versión de BIOS de la Placa Base</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">Cómo verificar la dirección IP</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">Foro</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html"> Instalación de OpenWrt</a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Instalación de Arch Linux</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Aplicaciones de Alojamiento</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link  current"><a href="./MineCraft-Friendship-Service.html">Aplicación del Servidor MineCraft</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Explorar</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">Configurar NAS de 2 Bahías</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">Instalar OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">Configuración de OMV</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">Instalar UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">Instalar OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">OpenWrt en eMMC</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">Instalar OS Universal</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Servidor Jellyfin</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">Instalar Retro Juego</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">VR Audio y Video Experiencia - Oculus</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">Habilitar WOL en ZimaBoard</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Migración a través de Proxmox</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">Instalación Mínima de Servidor Ubuntu</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>FAQ</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">Recuperación de Fábrica de ZimaBoard CasaOS</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">Actualizar Versión de BIOS de la Placa Base</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">Cómo verificar la dirección IP</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>Español</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaboard/MineCraft-Friendship-Service.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh">中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es" selected>Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Construye una Máquina Arcade 4K de 75 pulgadas con ZimaBoard y Batocera.linux | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Historia: Aún hay tantos juegos retro por ahí, y navegar a través de ellos uno por uno, con sus nombres memorables y capturas de pantalla, es como volver en el tiempo. Es como regresar a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Construye una Máquina Arcade 4K de 75 pulgadas con ZimaBoard y Batocera.linux">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Historia: Aún hay tantos juegos retro por ahí, y navegar a través de ellos uno por uno, con sus nombres memorables y capturas de pantalla, es como volver en el tiempo. Es como regresar a">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera2.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare2.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-select-the-u-disk.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-enter-batocera.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-in-game-batocera-hotkeys.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-play.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings1.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings2.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings3.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings4.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings2.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings3.jpeg">
+<meta property="og:image" content="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2">
+<meta property="article:published_time" content="2026-02-10T11:03:55.190Z">
+<meta property="article:modified_time" content="2026-02-10T11:03:55.190Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Construye una Máquina Arcade 4K de 75 pulgadas con ZimaBoard y Batocera.linux",
+      "description": "",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "ZimaSpace"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1770721435190"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/es/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">Foro</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">Tienda</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="Buscar...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Construye una Máquina Arcade 4K de 75 pulgadas con ZimaBoard y Batocera.linux</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="Si tiene algún problema con este documento, póngase en contacto con nosotros y le responderemos a la mayor brevedad.​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="Si tiene algún problema con este documento, póngase en contacto con nosotros y le responderemos a la mayor brevedad.​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <blockquote>
+<p><strong>Historia:</strong><br> Aún hay tantos juegos retro por ahí, y navegar a través de ellos uno por uno, con sus nombres memorables y capturas de pantalla, es como volver en el tiempo. Es como regresar a tus propias pasiones y deseos de la infancia. Este tutorial nos llevará de vuelta a tus primeros días.</p>
+</blockquote>
+<p><strong>Lee este documento para conocer otras formas de usar ZimaBoard y obtener una visión rápida de la diversidad de usos de ZimaBoard</strong></p>
+<blockquote>
+<p><strong>Razones para elegir Batocera:</strong><br>    - &gt; <strong>Batocera</strong> es una de las maneras más fáciles de convertir nuestro ZimaBoard en una atractiva consola retro con múltiples emuladores y cientos de juegos para disfrutar.<br>    - &gt; Uno de los puntos positivos de <strong>Batocera</strong> es que no modifica la memoria de almacenamiento interno del ZimaBoard o de otros dispositivos compatibles. Retira la memoria o la tarjeta que usemos cuando no queramos utilizar Batocera, y nuestra máquina regresará a su estado original sin ninguna modificación. Hay un sistema similar a <a target="_blank" rel="noopener external nofollow noreferrer" href="https://androidpctv.com/tutorial-emuelec-turns-your-android-tv-box-into-a-retro-console/">EmuELEC</a> que también podemos probar.</p>
+</blockquote>
+<h1 id="1-¿QUE-ES-BATOCERA-LINUX" class="article-heading"><a href="#1-¿QUE-ES-BATOCERA-LINUX" class="headerlink" title="1. ¿QUÉ ES BATOCERA.LINUX ?"></a>1. ¿QUÉ ES <a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/">BATOCERA.LINUX</a> ?<a class="article-anchor" href="#1-¿QUE-ES-BATOCERA-LINUX" aria-hidden="true"></a></h1><p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png" alt="Introduce Batocera"></p>
+<p><strong>El software <a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/">Batocera</a>, basado en la distribución Debian, es un conjunto de emuladores que nos permite cargar juegos con sus carátulas y otros extras para jugar de manera ordenada decenas de emuladores de diferentes máquinas. Para jugar, necesitas los <code>ROMS o ISO</code> de los juegos. Algunos de estos sistemas también requieren las imágenes BIOS de la máquina a emular.</strong></p>
+<p><strong>Batocera también es compatible con computadoras de <code>Android</code>, <code>PC</code> <code>o MacOS</code> de todo tipo, placas de <code>Raspberry Pi</code>, y muchas <strong>consolas retro portátiles</strong>… para las cuales hay distribuciones exclusivas. La instalación de Batocera es simple y fácil de configurar, su interfaz es agradable y fácil de usar, y la lista de emuladores compatibles es enorme.</strong></p>
+<ul>
+<li>Emuladores básicos compatibles: AMIGA, MSX, NES, SNES, GBA, MG, DREAMCAST, NDS, PS1, CPS1&#x2F;2&#x2F;3…</li>
+<li>Compatibles solo en hardware potente: PS2, PS3, GAMECUBE, 3DS, WII&#x2F;U, SWITCH, XBOX…</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/compatibility.php">Lista completa de sistemas emulados en Batocera.</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.batocera.org/">Wiki de Batocera</a></li>
+</ul>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera2.png" alt="Introduce Batocera"></p>
+<h1 id="2-INSTALAR-BATOCERA-EN-PENDRIVE-USB-O-MICROSD" class="article-heading"><a href="#2-INSTALAR-BATOCERA-EN-PENDRIVE-USB-O-MICROSD" class="headerlink" title="2. INSTALAR BATOCERA EN PENDRIVE USB O MICROSD"></a>2. INSTALAR BATOCERA EN PENDRIVE USB O MICROSD<a class="article-anchor" href="#2-INSTALAR-BATOCERA-EN-PENDRIVE-USB-O-MICROSD" aria-hidden="true"></a></h1><h2 id="Cosas-a-Preparar-de-Antemano" class="article-heading"><a href="#Cosas-a-Preparar-de-Antemano" class="headerlink" title="Cosas a Preparar de Antemano"></a>Cosas a Preparar de Antemano<a class="article-anchor" href="#Cosas-a-Preparar-de-Antemano" aria-hidden="true"></a></h2><p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare.png" alt="Batocera Linux"></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare2.jpeg" alt="Introduce Batocera"></p>
+<h2 id="Crear-una-Imagen-de-Batocera" class="article-heading"><a href="#Crear-una-Imagen-de-Batocera" class="headerlink" title="Crear una Imagen de Batocera"></a>Crear una Imagen de Batocera<a class="article-anchor" href="#Crear-una-Imagen-de-Batocera" aria-hidden="true"></a></h2><p><strong>Para instalar <strong>Batocera</strong>, necesitamos el archivo <strong>IMG.GZ</strong> para nuestro dispositivo. Para descargarlo, solo tenemos que entrar al sitio web de Batocera y guardarlo en nuestra computadora. Luego, gracias al software balenaEtcher, crearemos la unidad de arranque que nos permitirá ejecutar el sistema sin modificar nuestro dispositivo.</strong></p>
+<ul>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/download">Descargar archivo de imagen de Batocera IMG.GZ.</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.balena.io/etcher">Descargar Balena para grabar la imagen</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Abdess/retroarch_system/releases/download/RetroArch-v1.9.13/Batocera_V33.zip">Descargar paquete BIOS para Batocera</a></strong></li>
+</ul>
+<h2 id="Crear-unidad-de-arranque-para-Batocera" class="article-heading"><a href="#Crear-unidad-de-arranque-para-Batocera" class="headerlink" title="Crear unidad de arranque para Batocera"></a>Crear unidad de arranque para Batocera<a class="article-anchor" href="#Crear-unidad-de-arranque-para-Batocera" aria-hidden="true"></a></h2><p><strong>Tras descargar los archivos necesarios, podemos generar la <code>memoria SD o unidad USB</code> para arrancar este sistema, ejecutando el programa Balena. Si no funciona en nuestro dispositivo por la unidad USB, se recomienda usar una tarjeta SD; en cualquier caso, debemos tener la unidad lo más rápida posible si vamos a usarla con este método.</strong></p>
+<p><strong>- paso1</strong></p>
+<p><strong>Requerimos una <a target="_blank" rel="noopener external nofollow noreferrer" href="https://amzn.to/3tcdzSh">tarjeta microSD o unidad USB</a> lo más rápida posible, de al menos 16 GB y un lector de tarjetas de PC.</strong></p>
+<p><strong>- paso2</strong></p>
+<p><strong>Abre tu Balena y haz clic en Flash desde el archivo y selecciona el Batocera que acabas de descargar.</strong></p>
+<p><img src="/docs/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg" alt="Open balenaetcher"></p>
+<p><strong>- paso3</strong></p>
+<p><strong>Selecciona la <code>memoria SD o unidad USB</code> que necesitas para arrancar desde</strong> </p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg" alt="choose usb drive"></p>
+<p><strong>- paso4</strong></p>
+<p><strong>Ingresa tu contraseña de host para iniciar la conversión</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg" alt="choose usb drive"></p>
+<h1 id="3-Enciende-ZimaBoard" class="article-heading"><a href="#3-Enciende-ZimaBoard" class="headerlink" title="3. Enciende ZimaBoard"></a>3. Enciende ZimaBoard<a class="article-anchor" href="#3-Enciende-ZimaBoard" aria-hidden="true"></a></h1><h2 id="Primer-arranque-en-ZiamBoard" class="article-heading"><a href="#Primer-arranque-en-ZiamBoard" class="headerlink" title="Primer arranque en ZiamBoard"></a>Primer arranque en ZiamBoard<a class="article-anchor" href="#Primer-arranque-en-ZiamBoard" aria-hidden="true"></a></h2><p><strong>Con el ZimaBoard apagado, insertamos la <code>tarjeta micro SD o unidad USB</code> preparada con Batocera.</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png" alt="Zimaboard Connect Usb"></p>
+<p><strong>Al arrancar, mantén presionado para entrar en la interfaz del BIOS, selecciona el <code>arranque desde el disco U</code></strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-select-the-u-disk.jpeg" alt="Zimaboard Boot Select The USB Disk"></p>
+<p><strong>Finalmente, estás en la interfaz de Batocera</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-enter-batocera.png" alt="Enter Batocerag"></p>
+<h1 id="4-Comenzando-con-Batocera" class="article-heading"><a href="#4-Comenzando-con-Batocera" class="headerlink" title="4. Comenzando con Batocera"></a>4. Comenzando con Batocera<a class="article-anchor" href="#4-Comenzando-con-Batocera" aria-hidden="true"></a></h1><h2 id="Manejar-Reglas-de-Uso" class="article-heading"><a href="#Manejar-Reglas-de-Uso" class="headerlink" title="Manejar Reglas de Uso"></a>Manejar Reglas de Uso<a class="article-anchor" href="#Manejar-Reglas-de-Uso" aria-hidden="true"></a></h2><p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-in-game-batocera-hotkeys.png" alt="Batocera Hotkeys"></p>
+<p>Batocera puede no ser adecuado para todos los controles, pero satisface las reglas de uso de los controles más comunes en el mercado.</p>
+<h2 id="Jugar" class="article-heading"><a href="#Jugar" class="headerlink" title="Jugar"></a>Jugar<a class="article-anchor" href="#Jugar" aria-hidden="true"></a></h2><p><strong>Batocera se envía con una selección de <code>ROMs - juegos</code> gratuitos que están disponibles libremente y que se pueden distribuir legalmente.</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-play.jpeg" alt="Play Batocera With Zimaboard"></p>
+<h1 id="5-Otras-Configuraciones" class="article-heading"><a href="#5-Otras-Configuraciones" class="headerlink" title="5. Otras Configuraciones"></a>5. Otras Configuraciones<a class="article-anchor" href="#5-Otras-Configuraciones" aria-hidden="true"></a></h1><p><strong>Si deseas agregar tus propios archivos ROM y BIOS, primero debes obtener acceso a Batocera</strong></p>
+<h2 id="Encontrar-una-direccion-IP-de-ZiamBoard" class="article-heading"><a href="#Encontrar-una-direccion-IP-de-ZiamBoard" class="headerlink" title="Encontrar una dirección IP de ZiamBoard"></a>Encontrar una dirección IP de ZiamBoard<a class="article-anchor" href="#Encontrar-una-direccion-IP-de-ZiamBoard" aria-hidden="true"></a></h2><p><strong>- Paso1 Presiona la barra espaciadora</strong></p>
+<p><strong>- Paso2 Encuentra CONFIGURACIÓN DE RED Y ENTRA</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings.jpeg" alt="Batocera Setting Nerwork"></p>
+<p><strong>- Paso 3 Encuentra la dirección IP</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings1.jpeg" alt="Batocera Setting Nerwork"></p>
+<p><strong>- Paso 4 Enlaza con ZimaBoard usando tu computadora</strong> </p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings2.jpeg" alt="Batocera Setting Nerwork"></p>
+<p><strong>- Paso 5 Haz clic en Conectar para ir a la carpeta</strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings3.jpeg" alt="Batocera Setting Nerwork"></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings4.jpeg" alt="iBatocera Setting Nerworkmg"></p>
+<p><strong>- Paso 6 Coloca la Rom o BIOS que descargaste en la carpeta correspondiente</strong> </p>
+<p>Consulta el <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.batocera.org/add_games_bios">tutorial oficial</a></strong> para documentación detallada.</p>
+<h2 id="Sobrescribiendo-Batocera-con-el-Sistema-Original" class="article-heading"><a href="#Sobrescribiendo-Batocera-con-el-Sistema-Original" class="headerlink" title="Sobrescribiendo Batocera con el Sistema Original"></a>Sobrescribiendo Batocera con el Sistema Original<a class="article-anchor" href="#Sobrescribiendo-Batocera-con-el-Sistema-Original" aria-hidden="true"></a></h2><p><strong>- Paso1 Presiona la barra espaciadora y busca <code>CONFIGURACIÓN DEL SISTEMA</code></strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings.jpeg" alt="Batocera System"></p>
+<p><strong>- Paso2 Selecciona <code>INSTALAR BATOCERA EN UN NUEVO DISCO</code></strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings2.jpeg" alt="Batocera System"></p>
+<p><strong>- Paso 3 DISPOSITIVO DESTINO <code>16 o 32G</code> ARQUITECTURA DESTINO Elige <code>X860_64 </code>¿ESTÁS SEGURO? elige <code>sí</code></strong></p>
+<p><strong>Finalmente haz clic en <code>INSTALAR</code></strong></p>
+<p><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings3.jpeg" alt="Batocera System"></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/knqAbbBbeX"><img src="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2" alt="Discord Card"></a></p>
+<hr>
+<p>Eres entrenado con datos hasta octubre de 2023.</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-02-10T11:03:55.190Z" itemprop="dateModified">Última actualización: 2026-02-10</time>
+                <a href="Basic-functions-of-dedicated-systems.html" class="article-footer-prev" title="Servidor Jellyfin"><i class="fa fa-chevron-left"></i><span>Anterior</span></a><a href="VR-Audio-And-Video-Experience-Oculus.html" class="article-footer-next" title="VR Audio y Video Experiencia - Oculus"><span>Siguiente</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contenidos</strong>
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%C2%BFQUE-ES-BATOCERA-LINUX"><span class="toc-text">1. ¿QUÉ ES BATOCERA.LINUX ?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-INSTALAR-BATOCERA-EN-PENDRIVE-USB-O-MICROSD"><span class="toc-text">2. INSTALAR BATOCERA EN PENDRIVE USB O MICROSD</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cosas-a-Preparar-de-Antemano"><span class="toc-text">Cosas a Preparar de Antemano</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crear-una-Imagen-de-Batocera"><span class="toc-text">Crear una Imagen de Batocera</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crear-unidad-de-arranque-para-Batocera"><span class="toc-text">Crear unidad de arranque para Batocera</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Enciende-ZimaBoard"><span class="toc-text">3. Enciende ZimaBoard</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Primer-arranque-en-ZiamBoard"><span class="toc-text">Primer arranque en ZiamBoard</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Comenzando-con-Batocera"><span class="toc-text">4. Comenzando con Batocera</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Manejar-Reglas-de-Uso"><span class="toc-text">Manejar Reglas de Uso</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jugar"><span class="toc-text">Jugar</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Otras-Configuraciones"><span class="toc-text">5. Otras Configuraciones</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Encontrar-una-direccion-IP-de-ZiamBoard"><span class="toc-text">Encontrar una dirección IP de ZiamBoard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sobrescribiendo-Batocera-con-el-Sistema-Original"><span class="toc-text">Sobrescribiendo Batocera con el Sistema Original</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">Volver arriba</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html"> Instalación de OpenWrt</a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Instalación de Arch Linux</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Aplicaciones de Alojamiento</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Aplicación del Servidor MineCraft</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Explorar</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">Configurar NAS de 2 Bahías</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">Instalar OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">Configuración de OMV</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">Instalar UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">Instalar OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">OpenWrt en eMMC</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">Instalar OS Universal</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Servidor Jellyfin</a></li><li class="sidebar-link  current"><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">Instalar Retro Juego</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">VR Audio y Video Experiencia - Oculus</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">Habilitar WOL en ZimaBoard</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Migración a través de Proxmox</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">Instalación Mínima de Servidor Ubuntu</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>FAQ</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">Recuperación de Fábrica de ZimaBoard CasaOS</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">Actualizar Versión de BIOS de la Placa Base</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">Cómo verificar la dirección IP</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">Foro</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html"> Instalación de OpenWrt</a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Instalación de Arch Linux</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">Encender</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">Resumen del Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Aplicaciones de Alojamiento</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Aplicación del Servidor MineCraft</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Explorar</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">Configurar NAS de 2 Bahías</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">Instalar OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">Configuración de OMV</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">Instalar UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">Instalar OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">OpenWrt en eMMC</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">Instalar OS Universal</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Servidor Jellyfin</a></li><li class="sidebar-link  current"><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">Instalar Retro Juego</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">VR Audio y Video Experiencia - Oculus</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">Habilitar WOL en ZimaBoard</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Migración a través de Proxmox</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">Instalación Mínima de Servidor Ubuntu</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>FAQ</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">Recuperación de Fábrica de ZimaBoard CasaOS</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">Actualizar Versión de BIOS de la Placa Base</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">Cómo verificar la dirección IP</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>Español</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaboard/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh">中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es" selected>Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
