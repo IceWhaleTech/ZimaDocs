@@ -6,7 +6,7 @@ title: ZimaBoard CasaOS 工場リカバリ
 
 公式のZimaBoard CasaOSイメージをダウンロード
 
-- [**ZimaBoard CasaOSイメージ -832/432**](https://drive.google.com/file/d/1b-k7d1LzPHNUtem-hOrHB5dDt0_AC6mK/view)
+- [**ZimaBoard CasaOSイメージ -832/432**](https://drive.google.com/file/d/19w03lNFgRSbU9f_xNJQXZcJXRmDRchKF/view?usp=sharing)
 
 - [**ZimaBoard CasaOSイメージ -216**](https://drive.google.com/file/d/1PFw1JXoimwUvOX9kgkmOSUM0evi_GGxv/view)
 
