@@ -6,7 +6,7 @@ title: Recuperación de Fábrica de ZimaBoard CasaOS
 
 Descargue la imagen oficial de ZimaBoard CasaOS
 
-- Para [**imagen ZimaBoard CasaOS -832/432**](https://drive.google.com/file/d/1b-k7d1LzPHNUtem-hOrHB5dDt0_AC6mK/view)
+- Para [**imagen ZimaBoard CasaOS -832/432**](https://drive.google.com/file/d/19w03lNFgRSbU9f_xNJQXZcJXRmDRchKF/view?usp=sharing)
 
 - Para [**imagen ZimaBoard CasaOS -216**](https://drive.google.com/file/d/1PFw1JXoimwUvOX9kgkmOSUM0evi_GGxv/view)
 ## Crear una Imagen Usando una Memoria USB
