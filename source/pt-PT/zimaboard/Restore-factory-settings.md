@@ -6,7 +6,7 @@ title: Recuperação de Fábrica do ZimaBoard CasaOS
 
 Baixe a imagem oficial do ZimaBoard CasaOS
 
-- Para [**imagem ZimaBoard CasaOS -832/432**](https://drive.google.com/file/d/1b-k7d1LzPHNUtem-hOrHB5dDt0_AC6mK/view)
+- Para [**imagem ZimaBoard CasaOS -832/432**](https://drive.google.com/file/d/19w03lNFgRSbU9f_xNJQXZcJXRmDRchKF/view?usp=sharing)
 
 - Para [**imagem ZimaBoard CasaOS -216**](https://drive.google.com/file/d/1PFw1JXoimwUvOX9kgkmOSUM0evi_GGxv/view)
 
