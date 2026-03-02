@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>在Debian上运行Proxmox VE以支持i226网卡 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaboard/PVE-on-Debian-for-i226">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaboard/PVE-on-Debian-for-i226">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="在Debian上为i226网卡运行Proxmox VE虚拟化环境">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在Debian上运行Proxmox VE以支持i226网卡">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaboard/PVE-on-Debian-for-i226">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="在Debian上为i226网卡运行Proxmox VE虚拟化环境">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-03-02T09:24:15.647Z">
+<meta property="article:modified_time" content="2026-03-02T09:24:15.647Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "在Debian上运行Proxmox VE以支持i226网卡",
+      "description": "在Debian上为i226网卡运行Proxmox VE虚拟化环境",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "icewhale123456"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1772443455647"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaboard/PVE-on-Debian-for-i226">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaboard/PVE-on-Debian-for-i226">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaboard/PVE-on-Debian-for-i226">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaboard/PVE-on-Debian-for-i226">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaboard/PVE-on-Debian-for-i226">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">商店</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="搜索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">在Debian上运行Proxmox VE以支持i226网卡</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="在Debian上运行Proxmox-VE以支持i226网卡" class="article-heading"><a href="#在Debian上运行Proxmox-VE以支持i226网卡" class="headerlink" title="在Debian上运行Proxmox VE以支持i226网卡"></a>在Debian上运行Proxmox VE以支持i226网卡<a class="article-anchor" href="#在Debian上运行Proxmox-VE以支持i226网卡" aria-hidden="true"></a></h2><h3 id="1-解决方案概述" class="article-heading"><a href="#1-解决方案概述" class="headerlink" title="1. 解决方案概述"></a>1. 解决方案概述<a class="article-anchor" href="#1-解决方案概述" aria-hidden="true"></a></h3><p>本解决方案旨在为ZimaBoard 2平台的Intel i226系列网卡部署Proxmox VE虚拟化环境。目标是解决在高版本Linux内核下，PCIe ASPM电源管理引发的网卡驱动空指针解引用问题，从而避免内核恐慌和系统无响应。</p>
+<ul>
+<li><strong>硬件平台</strong>: ZimaBoard 2  </li>
+<li><strong>软件版本</strong>: Debian 12.8.0  </li>
+<li><strong>网络环境</strong>: 推荐整个过程中使用有线连接。准备好路由器子网信息（本指南中的示例子网：<code>10.0.0.1/16</code>）。  </li>
+<li><strong>核心目标</strong>: 解决i226网卡在高版本Linux内核下的ASPM电源管理冲突和内核恐慌问题，并构建一个稳定的虚拟化环境。  </li>
+<li><strong>先决知识</strong>: 当PCIe ASPM（尤其是L1子状态）在Intel i226-V网卡上启用时，通常会在物理链路的上下变化、驱动重载或链路重新协商期间，触发igc驱动的空指针解引用，从而导致内核恐慌或系统冻结。此解决方案采用“Debian基础+PVE内核”的部署模式，在引入Proxmox内核之前，先约束并对齐电源管理和固件环境，从而实现更高的硬件兼容性和调优灵活性。</li>
+</ul>
+<h4 id="关键操作步骤" class="article-heading"><a href="#关键操作步骤" class="headerlink" title="关键操作步骤"></a>关键操作步骤<a class="article-anchor" href="#关键操作步骤" aria-hidden="true"></a></h4><ol>
+<li>安装Debian 12.8：使用网络安装ISO，选择整个磁盘，UEFI启动。  </li>
+<li>禁用ASPM：编辑<code>/etc/default/grub</code>，将<code>pcie_aspm=off</code>添加到<code>GRUB_CMDLINE_LINUX_DEFAULT</code>，运行<code>update-grub</code>并重启。  </li>
+<li>基本配置：切换到国内镜像，安装<code>firmware-intel-misc</code>；临时配置IP并测试连接性。  </li>
+<li>准备Proxmox：配置<code>/etc/hosts</code>，添加Proxmox无订阅仓库和GPG密钥。  </li>
+<li>安装Proxmox：<code>apt install proxmox-ve postfix open-iscsi</code>；若出现<code>pve-firmware</code>冲突，运行<code>dpkg --force-overwrite</code>强制安装，然后使用<code>apt install -f</code>修复依赖问题。  </li>
+<li>配置桥接网络：编辑<code>/etc/network/interfaces</code>，将物理网卡（例如<code>enp1s0</code>）加入桥接<code>vmbr0</code>，设置静态IP&#x2F;网关，并重启网络。  </li>
+<li>验证访问：重启后，访问<code>https://&lt;IP&gt;:8006</code>。</li>
+</ol>
+<h3 id="2-操作步骤" class="article-heading"><a href="#2-操作步骤" class="headerlink" title="2. 操作步骤"></a>2. 操作步骤<a class="article-anchor" href="#2-操作步骤" aria-hidden="true"></a></h3><p>以下所有命令均在Debian系统下以root或sudo权限执行。</p>
+<h4 id="2-1-烧录并安装Debian" class="article-heading"><a href="#2-1-烧录并安装Debian" class="headerlink" title="2.1 烧录并安装Debian"></a>2.1 烧录并安装Debian<a class="article-anchor" href="#2-1-烧录并安装Debian" aria-hidden="true"></a></h4><p>为了确保基础系统的稳定性和可控性，本解决方案使用Debian 12.8作为基础。</p>
+<ol>
+<li><p><strong>软件下载资源</strong>  </p>
+<ul>
+<li>Debian 12.8.0: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso">https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso</a>  </li>
+<li>烧录工具balenaEtcher: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/">https://etcher.balena.io/</a></li>
+</ul>
+</li>
+<li><p><strong>创建启动U盘</strong>  </p>
+<ul>
+<li>插入至少8GB的USB驱动器。  </li>
+<li>打开balenaEtcher，选择USB驱动器作为目标设备。  </li>
+<li>点击“Flash from file”，选择下载的<code>debian-12.8.0-amd64-netinst.iso</code>；软件会自动选择磁盘。  </li>
+<li>点击“Flash!”并等待完成，完成后安全弹出USB驱动器。</li>
+</ul>
+</li>
+<li><p><strong>BIOS启动</strong>  </p>
+<ul>
+<li>将准备好的USB驱动器插入ZimaBoard的USB端口。  </li>
+<li>开机并反复按<strong>F11</strong>键（某些机器可能使用ESC或Delete，但ZimaBoard 2默认使用F11）。  </li>
+<li>在启动菜单中，选择带有“UEFI”名称的USB驱动器。</li>
+</ul>
+</li>
+<li><p><strong>安装程序摘要</strong><br>进入Debian的蓝色欢迎屏幕后，按照以下步骤进行安装：  </p>
+<ul>
+<li>安装模式：建议选择<strong>图形化安装</strong>（对初学者最为友好）。  </li>
+<li>语言和地区：选择“English”或您偏好的语言；键盘选择“American English”。  </li>
+<li>磁盘分区：选择<strong>“使用整个磁盘”</strong>，选择ZimaBoard内置的eMMC或安装的SSD，然后选择<strong>“所有文件在一个分区”</strong>作为分区方案。</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-2-在干净的Debian系统上调试网卡" class="article-heading"><a href="#2-2-在干净的Debian系统上调试网卡" class="headerlink" title="2.2 在干净的Debian系统上调试网卡"></a>2.2 在干净的Debian系统上调试网卡<a class="article-anchor" href="#2-2-在干净的Debian系统上调试网卡" aria-hidden="true"></a></h4><ol>
+<li><p><strong>禁用PCIe高级电源管理（ASPM）</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/default/grub</span><br></pre></td></tr></table></figure>
+<p>修改该行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on iommu=pt pcie_aspm=off&quot;</span><br></pre></td></tr></table></figure>
+<p>保存并退出，然后更新GRUB并重启：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-grub</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>切换到更稳定的DNS服务器（临时）</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<p>添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>安装固件</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清除缓存</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># 更新并安装Intel网卡固件</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>临时配置网卡接口</strong><br>在此示例中，接口名称为<code>enp8s0</code>，路由器地址为<code>10.0.0.1</code>。  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清除现有IP设置</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># 关闭接口</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># 设置IP地址和网关</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># 启动接口</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>测试连接性</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping -I enp8s0 8.8.8.8</span><br></pre></td></tr></table></figure>
+<p>如果成功，说明网卡正常工作。</p>
+</li>
+</ol>
+<h4 id="2-3-安装Proxmox-VE内核" class="article-heading"><a href="#2-3-安装Proxmox-VE内核" class="headerlink" title="2.3 安装Proxmox VE内核"></a>2.3 安装Proxmox VE内核<a class="article-anchor" href="#2-3-安装Proxmox-VE内核" aria-hidden="true"></a></h4><ol>
+<li><p><strong>配置hosts文件</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 确认主机名（本例中主机名为“debian”）</span></span><br><span class="line">hostname</span><br><span class="line">nano /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>确保文件中包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1       localhost</span><br><span class="line">10.0.1.21       debian.proxmox.com debian</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>添加Proxmox软件仓库</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装curl（如果尚未安装）</span></span><br><span class="line">apt update &amp;&amp; apt install curl -y</span><br><span class="line"><span class="comment"># 添加GPG密钥</span></span><br><span class="line">curl -fSsL http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -o /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg</span><br><span class="line"><span class="comment"># 编辑pve-no-subscription.list</span></span><br><span class="line">nano /etc/apt/sources.list.d/pve-no-subscription.list</span><br><span class="line"><span class="comment"># 添加以下行</span></span><br><span class="line">deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>安装PVE内核和核心组件</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新并进行完整升级</span></span><br><span class="line">apt update</span><br><span class="line">apt full-upgrade -y</span><br><span class="line"><span class="comment"># 安装Proxmox VE核心包</span></span><br><span class="line">apt install proxmox-ve postfix open-iscsi -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装过程中，如果出现Postfix配置窗口，按Tab选择“仅本地”并继续。</li>
+</ul>
+<p>由于之前安装了Debian固件包，可能会与<code>pve-firmware</code>发生文件冲突，强制覆盖它们：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i --force-overwrite /var/cache/apt/archives/pve-firmware_*.deb</span><br><span class="line"><span class="comment"># 修复任何剩余的依赖问题，并根据需要重新安装核心</span></span><br><span class="line">apt install -f</span><br><span class="line">apt install proxmox-ve</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，重启并检查内核版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br><span class="line"><span class="comment"># 重启后</span></span><br><span class="line"><span class="built_in">uname</span> -a</span><br></pre></td></tr></table></figure>
+<p>如果输出显示类似<code>6.8.x-pve</code>，则说明安装成功。</p>
+</li>
+</ol>
+<h4 id="2-4-配置网络" class="article-heading"><a href="#2-4-配置网络" class="headerlink" title="2.4 配置网络"></a>2.4 配置网络<a class="article-anchor" href="#2-4-配置网络" aria-hidden="true"></a></h4><p>在安装<code>proxmox-ve</code>期间，系统会删除原有的网络管理工具并引入Proxmox的网络模型。因此，我们需要手动配置主接口。</p>
+<p>编辑接口文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/network/interfaces</span><br></pre></td></tr></table></figure>
+
+<p>假设物理网卡为<code>enp1s0</code>，并且我们希望使用静态IP<code>10.0.1.21/16</code>和网关<code>10.0.0.1</code>，修改文件如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iface enp1s0 inet manual</span><br><span class="line"></span><br><span class="line">auto vmbr0</span><br><span class="line">iface vmbr0 inet static</span><br><span class="line">    address 10.0.1.21/16</span><br><span class="line">    gateway 10.0.0.1</span><br><span class="line">    bridge-ports enp1s0</span><br><span class="line">    bridge-stp off</span><br><span class="line">    bridge-fd 0</span><br></pre></td></tr></table></figure>
+
+<p>保存并退出，然后重启网络：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart networking</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-验证和Web界面访问" class="article-heading"><a href="#2-5-验证和Web界面访问" class="headerlink" title="2.5 验证和Web界面访问"></a>2.5 验证和Web界面访问<a class="article-anchor" href="#2-5-验证和Web界面访问" aria-hidden="true"></a></h4><p>在浏览器中访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://10.0.1.21:8006</span><br></pre></td></tr></table></figure>
+<p>点击“高级” -&gt; “继续前往10.0.1.21（不安全）”，然后使用Debian系统的root凭证登录。您现在应该可以访问Proxmox VE的Web界面。</p>
+<h3 id="3-故障排除" class="article-heading"><a href="#3-故障排除" class="headerlink" title="3. 故障排除"></a>3. 故障排除<a class="article-anchor" href="#3-故障排除" aria-hidden="true"></a></h3><p><strong>Q: 官方下载源慢或无法访问？</strong>  </p>
+<ul>
+<li><strong>Debian</strong>: 访问<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.debian.org/mirror/list">官方镜像列表</a>，选择您所在国家或地区的镜像，并将教程中的<code>deb.debian.org</code>和<code>security.debian.org</code>替换为该镜像的域名。  </li>
+<li><strong>Proxmox</strong>: Proxmox没有官方的镜像列表，但您可以使用知名的第三方镜像或搜索“proxmox镜像”。将教程中的<code>download.proxmox.com</code>替换为镜像地址。</li>
+</ul>
+<p>更新源后，运行<code>apt update</code>以应用更改。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-03-02T09:24:15.647Z" itemprop="dateModified">最后更新：2026-03-02</time>
+                <a href="How-to-check-IP-address.html" class="article-footer-prev" title="如何检查 IP 地址"><i class="fa fa-chevron-left"></i><span>上一页</span></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Debian%E4%B8%8A%E8%BF%90%E8%A1%8CProxmox-VE%E4%BB%A5%E6%94%AF%E6%8C%81i226%E7%BD%91%E5%8D%A1"><span class="toc-text">在Debian上运行Proxmox VE以支持i226网卡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 解决方案概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">关键操作步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">2. 操作步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E7%83%A7%E5%BD%95%E5%B9%B6%E5%AE%89%E8%A3%85Debian"><span class="toc-text">2.1 烧录并安装Debian</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%9C%A8%E5%B9%B2%E5%87%80%E7%9A%84Debian%E7%B3%BB%E7%BB%9F%E4%B8%8A%E8%B0%83%E8%AF%95%E7%BD%91%E5%8D%A1"><span class="toc-text">2.2 在干净的Debian系统上调试网卡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E5%AE%89%E8%A3%85Proxmox-VE%E5%86%85%E6%A0%B8"><span class="toc-text">2.3 安装Proxmox VE内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="toc-text">2.4 配置网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E9%AA%8C%E8%AF%81%E5%92%8CWeb%E7%95%8C%E9%9D%A2%E8%AE%BF%E9%97%AE"><span class="toc-text">2.5 验证和Web界面访问</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4"><span class="toc-text">3. 故障排除</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html">OpenWrt 安装 </a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Arch Linux 安装</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>托管应用</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Minecraft 服务器应用</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">设置双盘 NAS</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">安装 OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMV 配置</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">安装 OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMC 上的 OpenWRT</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">安装通用第三方操作系统</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfin 服务器</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">安装复古游戏</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">启用 ZimaBoard 上的 WOL</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">通过 Proxmox 进行迁移</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 无线网络适配器</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">最小化 Ubuntu 服务器构建</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">恢复 ZimaBoard CasaOS 出厂设置</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">升级主板 BIOS 版本</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">如何检查 IP 地址</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">Debian上为i226配置PVE</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html">OpenWrt 安装 </a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Arch Linux 安装</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">开机</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">硬件简介</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>托管应用</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Minecraft 服务器应用</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">设置双盘 NAS</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">安装 OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMV 配置</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">安装 UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">安装 OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMC 上的 OpenWRT</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">安装通用第三方操作系统</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfin 服务器</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">安装复古游戏</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">启用 ZimaBoard 上的 WOL</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">通过 Proxmox 进行迁移</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 无线网络适配器</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">最小化 Ubuntu 服务器构建</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">恢复 ZimaBoard CasaOS 出厂设置</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">升级主板 BIOS 版本</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">如何检查 IP 地址</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">Debian上为i226配置PVE</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>中文</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaboard/PVE-on-Debian-for-i226.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh" selected>中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es">Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
