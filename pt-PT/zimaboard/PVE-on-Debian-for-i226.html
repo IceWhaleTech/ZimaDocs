@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>PVE em Debian para i226 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Executando Proxmox VE em Debian para NICs i226">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PVE em Debian para i226">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaboard/PVE-on-Debian-for-i226">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Executando Proxmox VE em Debian para NICs i226">
+<meta property="og:locale" content="pt_PT">
+<meta property="article:published_time" content="2026-03-02T09:25:36.716Z">
+<meta property="article:modified_time" content="2026-03-02T09:25:36.716Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "PVE em Debian para i226",
+      "description": "Executando Proxmox VE em Debian para NICs i226",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "icewhale123456"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1772443536716"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">Fórum</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaboard/PVE-on-Debian-for-i226">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaboard/PVE-on-Debian-for-i226">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaboard/PVE-on-Debian-for-i226">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaboard/PVE-on-Debian-for-i226">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaboard/PVE-on-Debian-for-i226">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">Loja</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="Pesquisa...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">PVE em Debian para i226</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="Se tiver algum problema com este documento, contacte-nos e responderemos prontamente.​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="Se tiver algum problema com este documento, contacte-nos e responderemos prontamente.​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="Executando-Proxmox-VE-em-Debian-para-NICs-i226" class="article-heading"><a href="#Executando-Proxmox-VE-em-Debian-para-NICs-i226" class="headerlink" title="Executando Proxmox VE em Debian para NICs i226"></a>Executando Proxmox VE em Debian para NICs i226<a class="article-anchor" href="#Executando-Proxmox-VE-em-Debian-para-NICs-i226" aria-hidden="true"></a></h2><h3 id="1-Visao-Geral-da-Solucao" class="article-heading"><a href="#1-Visao-Geral-da-Solucao" class="headerlink" title="1. Visão Geral da Solução"></a>1. Visão Geral da Solução<a class="article-anchor" href="#1-Visao-Geral-da-Solucao" aria-hidden="true"></a></h3><p>Esta solução foi projetada para implantar um ambiente de virtualização Proxmox VE na plataforma ZimaBoard 2 com NICs Intel i226. O objetivo é resolver o problema de desreferência de ponteiro nulo do driver de NIC causado pela gestão de energia PCIe ASPM em kernels Linux de versão mais alta, evitando assim o Kernel Panic e a falta de resposta do sistema.</p>
+<ul>
+<li><strong>Plataforma de Hardware</strong>: ZimaBoard 2  </li>
+<li><strong>Versão do Software</strong>: Debian 12.8.0  </li>
+<li><strong>Ambiente de Rede</strong>: Recomenda-se usar uma conexão cabeada durante todo o processo. Prepare as informações da sub-rede do roteador (exemplo de sub-rede neste guia: <code>10.0.0.1/16</code>).  </li>
+<li><strong>Objetivo Principal</strong>: Resolver o conflito de gerenciamento de energia ASPM e o problema de Kernel Panic da NIC i226 em kernels Linux de versão alta, criando um ambiente de virtualização estável.  </li>
+<li><strong>Conhecimento Prévio Necessário</strong>: Quando o PCIe ASPM (especialmente os Subestados L1) é ativado na NIC Intel i226-V, ele frequentemente desencadeia uma desreferência de ponteiro NULL no driver igc durante eventos de subida&#x2F;descida de link físico, recarregamentos de driver ou renegociação de link, resultando em kernel panic ou congelamento do sistema. Esta solução adota um modelo de implantação “Base Debian + Kernel PVE”, restringindo e alinhando o ambiente de gerenciamento de energia e firmware antes de introduzir o kernel Proxmox, garantindo maior compatibilidade de hardware e flexibilidade de ajustes.</li>
+</ul>
+<h4 id="Etapas-Principais-de-Operacao" class="article-heading"><a href="#Etapas-Principais-de-Operacao" class="headerlink" title="Etapas Principais de Operação"></a>Etapas Principais de Operação<a class="article-anchor" href="#Etapas-Principais-de-Operacao" aria-hidden="true"></a></h4><ol>
+<li>Instale o Debian 12.8: ISO de instalação de rede, use o disco inteiro, inicialize via UEFI.  </li>
+<li>Desative o ASPM: Edite <code>/etc/default/grub</code>, adicione <code>pcie_aspm=off</code> a <code>GRUB_CMDLINE_LINUX_DEFAULT</code>, execute <code>update-grub</code> e reinicie.  </li>
+<li>Configuração básica: Troque para espelhos nacionais, instale <code>firmware-intel-misc</code>; configure temporariamente o IP e teste a conectividade.  </li>
+<li>Prepare o Proxmox: Configure <code>/etc/hosts</code>, adicione o repositório sem assinatura do Proxmox e a chave GPG.  </li>
+<li>Instale o Proxmox: <code>apt install proxmox-ve postfix open-iscsi</code>; se houver conflito com <code>pve-firmware</code>, execute <code>dpkg --force-overwrite</code> para forçar a instalação, depois <code>apt install -f</code> para corrigir dependências.  </li>
+<li>Configure a rede em bridge: Edite <code>/etc/network/interfaces</code>, adicione a NIC física (por exemplo, <code>enp1s0</code>) à bridge <code>vmbr0</code>, defina IP&#x2F;gateway estático e reinicie a rede.  </li>
+<li>Verifique o acesso: Após reiniciar, acesse <code>https://&lt;IP&gt;:8006</code>.</li>
+</ol>
+<h3 id="2-Etapas-de-Operacao" class="article-heading"><a href="#2-Etapas-de-Operacao" class="headerlink" title="2. Etapas de Operação"></a>2. Etapas de Operação<a class="article-anchor" href="#2-Etapas-de-Operacao" aria-hidden="true"></a></h3><p>Todos os comandos abaixo são executados no sistema Debian com privilégios de root ou sudo.</p>
+<h4 id="2-1-Gravar-e-Instalar-o-Debian" class="article-heading"><a href="#2-1-Gravar-e-Instalar-o-Debian" class="headerlink" title="2.1 Gravar e Instalar o Debian"></a>2.1 Gravar e Instalar o Debian<a class="article-anchor" href="#2-1-Gravar-e-Instalar-o-Debian" aria-hidden="true"></a></h4><p>Para garantir a estabilidade e controlabilidade do sistema base, esta solução utiliza o Debian 12.8 como base.</p>
+<ol>
+<li><p><strong>Download dos Recursos de Software</strong>  </p>
+<ul>
+<li>Debian 12.8.0: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso">https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso</a>  </li>
+<li>Ferramenta de gravação balenaEtcher: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/">https://etcher.balena.io/</a></li>
+</ul>
+</li>
+<li><p><strong>Criar um Pen Drive Inicializável</strong>  </p>
+<ul>
+<li>Insira um pen drive de pelo menos 8GB.  </li>
+<li>Abra o balenaEtcher, selecione seu pen drive como dispositivo de destino.  </li>
+<li>Clique em “Flash from file”, localize o arquivo <code>debian-12.8.0-amd64-netinst.iso</code> baixado; o software selecionará automaticamente o disco.  </li>
+<li>Clique em “Flash!” e aguarde a conclusão, depois ejete com segurança o pen drive.</li>
+</ul>
+</li>
+<li><p><strong>Inicialização pelo BIOS</strong>  </p>
+<ul>
+<li>Insira o pen drive preparado em uma porta USB do ZimaBoard.  </li>
+<li>Ligue o computador e pressione repetidamente a tecla <strong>F11</strong> (alguns modelos podem usar ESC ou Delete, mas o ZimaBoard 2 usa F11 por padrão).  </li>
+<li>No Menu de Inicialização, selecione a entrada do pen drive com “UEFI” no nome.</li>
+</ul>
+</li>
+<li><p><strong>Resumo do Procedimento de Instalação</strong><br>Após acessar a tela azul de boas-vindas do Debian, siga estas orientações:  </p>
+<ul>
+<li>Modo de instalação: Recomenda-se selecionar <strong>Graphical Install</strong> (mais amigável para iniciantes).  </li>
+<li>Idioma e região: Escolha “Inglês” ou seu idioma preferido; selecione o teclado “American English”.  </li>
+<li>Particionamento de disco: Selecione <strong>“Use entire disk”</strong>, escolha o eMMC embutido ou SSD instalado no ZimaBoard e depois selecione <strong>“All files in one partition”</strong> como esquema de particionamento.</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo" class="article-heading"><a href="#2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo" class="headerlink" title="2.2 Depuração da NIC em um Sistema Debian Limpo"></a>2.2 Depuração da NIC em um Sistema Debian Limpo<a class="article-anchor" href="#2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo" aria-hidden="true"></a></h4><ol>
+<li><p><strong>Desativar o Gerenciamento Avançado de Energia PCIe (ASPM)</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/default/grub</span><br></pre></td></tr></table></figure>
+<p>Modifique a linha:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on iommu=pt pcie_aspm=off&quot;</span><br></pre></td></tr></table></figure>
+<p>Salve e saia, depois atualize o GRUB e reinicie:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-grub</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Trocar para Servidores DNS Mais Estáveis (Temporariamente)</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+<p>Adicione:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Instalar Firmware</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpar cache</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># Atualizar e instalar o firmware da NIC Intel</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Configurar Temporariamente a Interface da NIC</strong><br>Neste exemplo, o nome da interface é <code>enp8s0</code> e o endereço do roteador é <code>10.0.0.1</code>.  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpar configurações de IP existentes</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># Derrubar a interface</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># Configurar IP e gateway</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># Subir a interface</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Testar Conectividade</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping -I enp8s0 8.8.8.8</span><br></pre></td></tr></table></figure>
+<p>Se bem-sucedido, a NIC está funcionando corretamente.</p>
+</li>
+</ol>
+<h4 id="2-3-Instalar-o-Kernel-Proxmox-VE" class="article-heading"><a href="#2-3-Instalar-o-Kernel-Proxmox-VE" class="headerlink" title="2.3 Instalar o Kernel Proxmox VE"></a>2.3 Instalar o Kernel Proxmox VE<a class="article-anchor" href="#2-3-Instalar-o-Kernel-Proxmox-VE" aria-hidden="true"></a></h4><ol>
+<li><p><strong>Configurar o Arquivo de Hosts</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Confirmar o nome do host (neste exemplo, o nome é &quot;debian&quot;)</span></span><br><span class="line">hostname</span><br><span class="line">nano /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>Certifique-se de que o arquivo contenha:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1       localhost</span><br><span class="line">10.0.1.21       debian.proxmox.com debian</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Adicionar Repositório de Software do Proxmox</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Instalar curl se não presente</span></span><br><span class="line">apt update &amp;&amp; apt install curl -y</span><br><span class="line"><span class="comment"># Adicionar chave GPG</span></span><br><span class="line">curl -fSsL http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -o /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg</span><br><span class="line"><span class="comment"># Editar pve-no-subscription.list</span></span><br><span class="line">nano /etc/apt/sources.list.d/pve-no-subscription.list</span><br><span class="line"><span class="comment"># Adicionar a seguinte linha</span></span><br><span class="line">deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Instalar o Kernel PVE e Componentes Principais</strong><br>&#96;&#96;&#96;bash</p>
+<h1 id="Atualizar-e-realizar-uma-atualizacao-completa" class="article-heading"><a href="#Atualizar-e-realizar-uma-atualizacao-completa" class="headerlink" title="Atualizar e realizar uma atualização completa"></a>Atualizar e realizar uma atualização completa<a class="article-anchor" href="#Atualizar-e-realizar-uma-atualizacao-completa" aria-hidden="true"></a></h1><p>apt update<br>apt full-upgrade -y</p>
+<h1 id="Instalar-pacotes-principais-do-Proxmox-VE" class="article-heading"><a href="#Instalar-pacotes-principais-do-Proxmox-VE" class="headerlink" title="Instalar pacotes principais do Proxmox VE"></a>Instalar pacotes principais do Proxmox VE<a class="article-anchor" href="#Instalar-pacotes-principais-do-Proxmox-VE" aria-hidden="true"></a></h1></li>
+</ol>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-03-02T09:25:36.716Z" itemprop="dateModified">Última atualização: 2026-03-02</time>
+                <a href="How-to-check-IP-address.html" class="article-footer-prev" title="Como verificar o endereço IP"><i class="fa fa-chevron-left"></i><span>Anterior</span></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Conteúdos</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Executando-Proxmox-VE-em-Debian-para-NICs-i226"><span class="toc-text">Executando Proxmox VE em Debian para NICs i226</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Visao-Geral-da-Solucao"><span class="toc-text">1. Visão Geral da Solução</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Etapas-Principais-de-Operacao"><span class="toc-text">Etapas Principais de Operação</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Etapas-de-Operacao"><span class="toc-text">2. Etapas de Operação</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Gravar-e-Instalar-o-Debian"><span class="toc-text">2.1 Gravar e Instalar o Debian</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo"><span class="toc-text">2.2 Depuração da NIC em um Sistema Debian Limpo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Instalar-o-Kernel-Proxmox-VE"><span class="toc-text">2.3 Instalar o Kernel Proxmox VE</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Atualizar-e-realizar-uma-atualizacao-completa"><span class="toc-text">Atualizar e realizar uma atualização completa</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Instalar-pacotes-principais-do-Proxmox-VE"><span class="toc-text">Instalar pacotes principais do Proxmox VE</span></a>
+              <a href="#" id="article-toc-top">Voltar ao Topo</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">Ligar</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">Breve Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html"> Instalando o OpenWrt</a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Instalação do Arch Linux</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">Ligar</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">Breve Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Aplicativos de Hospedagem</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Aplicativo de Servidor MineCraft</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Explorar</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">Configurar NAS de 2 Baías</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">Instalar OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">Configuração do OMV</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">Instalar UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">Instalar OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">OpenWrt na eMMc</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">Instalar Sistema Universal</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Servidor Jellyfin</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">Instalar Jogo Retro</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">Ativar WOL no ZimaBoard</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Migração via Proxmox</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">Instalação Mínima do Servidor Ubuntu</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>FAQ</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">Recuperação de Fábrica do ZimaBoard CasaOS</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">Atualizar Versão da BIOS da Placa-mãe</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">Como verificar o endereço IP</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">PVE on Debian for i226</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">Fórum</a></li>
+    </ul>
+    
+      <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./index.html">Ligar</a></li><li class="sidebar-link "><a href="./Hardware-Interface-Introduction.html">Breve Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBoard 2</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimaboard2.html">Power On</a></li><li class="sidebar-link "><a href="./ZimaBoard-2-Fan-Installation-Guide-with-BIOS-PWM-Control.html">Fan Setup</a></li><li class="sidebar-link "><a href="./Installing-OpenWrt-on-ZimaBoard-2.html"> Instalando o OpenWrt</a></li><li class="sidebar-link "><a href="./Arch-Linux-Installation-on-ZimaBoard-2.html">Instalação do Arch Linux</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>ZimaBlade</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Power-on-Zimablade.html">Ligar</a></li><li class="sidebar-link "><a href="./Hardware-Brief.html">Breve Hardware</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Aplicativos de Hospedagem</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./MineCraft-Friendship-Service.html">Aplicativo de Servidor MineCraft</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>Explorar</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">Configurar NAS de 2 Baías</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">Instalar OMV</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">Configuração do OMV</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">Instalar UnRAID</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">Instalar OpenWRT</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">OpenWrt na eMMc</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">Instalar Sistema Universal</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Servidor Jellyfin</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">Instalar Jogo Retro</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">Ativar WOL no ZimaBoard</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Migração via Proxmox</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">Instalação Mínima do Servidor Ubuntu</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>FAQ</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Restore-factory-settings.html">Recuperação de Fábrica do ZimaBoard CasaOS</a></li><li class="sidebar-link "><a href="./Upgrade-Motherboard-BIOS-Version.html">Atualizar Versão da BIOS da Placa-mãe</a></li><li class="sidebar-link "><a href="./How-to-check-IP-address.html">Como verificar o endereço IP</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">PVE on Debian for i226</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>Português</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaboard/PVE-on-Debian-for-i226.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh">中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT" selected>Português</option>
+      
+        <option value="es">Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
