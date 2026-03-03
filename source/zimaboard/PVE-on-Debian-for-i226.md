@@ -1,6 +1,6 @@
 ---
-title: PVE on Debian for i226
-description: Running Proxmox VE on Debian for i226 NICs
+title: Fixing i226 NIC Issues in PVE
+description: Resolve kernel panic and network instability issues on PVE environments for Intel NICs.
 type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
