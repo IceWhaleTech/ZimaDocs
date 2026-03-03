@@ -1,5 +1,5 @@
 ---
-title: Fixing i226 NIC Issues in PVE
+title: Fixing NIC Issues in PVE
 description: Resolve kernel panic and network instability issues on PVE environments for Intel NICs.
 type: Docs
 author: icewhale123456
