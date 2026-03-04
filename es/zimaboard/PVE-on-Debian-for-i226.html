@@ -2,7 +2,7 @@
 <html lang="es">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>PVE en Debian para i226 | Zimaspace Docs</title>
+  <title>Solucionando problemas de NIC en PVE | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
@@ -44,15 +44,15 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="Ejecutando Proxmox VE en Debian para NICs i226">
+  <meta name="description" content="Resolver los problemas de pánico del núcleo e inestabilidad de la red en entornos PVE para NICs Intel.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PVE en Debian para i226">
+<meta property="og:title" content="Solucionando problemas de NIC en PVE">
 <meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaboard/PVE-on-Debian-for-i226">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="Ejecutando Proxmox VE en Debian para NICs i226">
+<meta property="og:description" content="Resolver los problemas de pánico del núcleo e inestabilidad de la red en entornos PVE para NICs Intel.">
 <meta property="og:locale" content="es_ES">
-<meta property="article:published_time" content="2026-03-04T06:42:50.097Z">
-<meta property="article:modified_time" content="2026-03-04T06:42:50.097Z">
+<meta property="article:published_time" content="2026-03-04T06:44:09.748Z">
+<meta property="article:modified_time" content="2026-03-04T06:44:09.748Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -71,8 +71,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "PVE en Debian para i226",
-      "description": "Ejecutando Proxmox VE en Debian para NICs i226",
+      "headline": "Solucionando problemas de NIC en PVE",
+      "description": "Resolver los problemas de pánico del núcleo e inestabilidad de la red en entornos PVE para NICs Intel.",
       "image": "",
       "author": {
         "@type": "Person",
@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "1772606570097"
+      "datePublished": "1772606649748"
     }
     </script>
 
@@ -190,7 +190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">PVE en Debian para i226</h1>
+                <h1 class="article-title" itemprop="name">Solucionando problemas de NIC en PVE</h1>
                 
               
                 
@@ -204,124 +204,124 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <h2 id="Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226" class="article-heading"><a href="#Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226" class="headerlink" title="Ejecutando Proxmox VE en Debian para NICs i226"></a>Ejecutando Proxmox VE en Debian para NICs i226<a class="article-anchor" href="#Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226" aria-hidden="true"></a></h2><h3 id="1-Descripcion-General-de-la-Solucion" class="article-heading"><a href="#1-Descripcion-General-de-la-Solucion" class="headerlink" title="1. Descripción General de la Solución"></a>1. Descripción General de la Solución<a class="article-anchor" href="#1-Descripcion-General-de-la-Solucion" aria-hidden="true"></a></h3><p>Esta solución está diseñada para desplegar un entorno de virtualización Proxmox VE en la plataforma ZimaBoard 2 con NICs de la serie Intel i226. El objetivo es resolver el problema de desreferencia de punteros nulos en los controladores de NICs, provocado por la gestión de energía PCIe ASPM en los núcleos de Linux de versión alta, evitando así el Kernel Panic y la falta de respuesta del sistema.</p>
+                <h2 id="Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226" class="article-heading"><a href="#Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226" class="headerlink" title="Ejecutando Proxmox VE en Debian para NICs i226"></a>Ejecutando Proxmox VE en Debian para NICs i226<a class="article-anchor" href="#Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226" aria-hidden="true"></a></h2><h3 id="1-Descripcion-general-de-la-solucion" class="article-heading"><a href="#1-Descripcion-general-de-la-solucion" class="headerlink" title="1. Descripción general de la solución"></a>1. Descripción general de la solución<a class="article-anchor" href="#1-Descripcion-general-de-la-solucion" aria-hidden="true"></a></h3><p>Esta solución está diseñada para desplegar un entorno de virtualización Proxmox VE en la plataforma ZimaBoard 2 con NICs Intel de la serie i226. El objetivo es resolver el problema de desreferencia de puntero nulo en el controlador de NIC provocado por la gestión de energía PCIe ASPM en los núcleos de Linux de versión alta, evitando así el pánico del núcleo y la falta de respuesta del sistema.</p>
 <ul>
-<li><strong>Plataforma de Hardware</strong>: ZimaBoard 2  </li>
-<li><strong>Versión de Software</strong>: Debian 12.8.0  </li>
-<li><strong>Entorno de Red</strong>: Se recomienda utilizar una conexión por cable durante todo el proceso. Prepare la información de subred del enrutador (ejemplo de subred en esta guía: <code>10.0.0.1/16</code>).  </li>
-<li><strong>Objetivo Principal</strong>: Resolver el conflicto de gestión de energía ASPM y el problema del Kernel Panic de la NIC i226 en núcleos de Linux de versión alta, y construir un entorno de virtualización estable.  </li>
-<li><strong>Conocimiento Previo Requerido</strong>: Cuando PCIe ASPM (especialmente L1 Substates) está habilitado en la NIC Intel i226-V, a menudo provoca una desreferencia de puntero nulo en el controlador igc durante los eventos de enlace físico, recargas de controladores o renegociación de enlace, lo que resulta en un Kernel Panic o bloqueo del sistema. Esta solución adopta un modelo de implementación “Base Debian + Kernel PVE”, restringiendo y alineando el entorno de gestión de energía y el firmware antes de introducir el kernel de Proxmox, logrando una mayor compatibilidad de hardware y flexibilidad de ajuste.</li>
+<li><strong>Plataforma de hardware</strong>: ZimaBoard 2  </li>
+<li><strong>Versión de software</strong>: Debian 12.8.0  </li>
+<li><strong>Entorno de red</strong>: Se recomienda utilizar una conexión por cable durante todo el proceso. Prepare la información de la subred del enrutador (ejemplo de subred en esta guía: <code>10.0.0.1/16</code>).  </li>
+<li><strong>Objetivo principal</strong>: Resolver el conflicto de gestión de energía ASPM y el problema de pánico del núcleo (Kernel Panic) de la NIC i226 bajo núcleos de Linux de versión alta, y construir un entorno de virtualización estable.  </li>
+<li><strong>Conocimientos previos necesarios</strong>: Cuando se habilita PCIe ASPM (especialmente L1 Substates) en la NIC Intel i226-V, a menudo se produce una desreferencia de puntero NULL en el controlador igc durante eventos de enlace físico arriba&#x2F;abajo, recargas del controlador o renegociación de enlace, lo que resulta en pánico del núcleo o congelamiento del sistema. Esta solución adopta un modelo de despliegue “Base Debian + Núcleo PVE”, limitando y alineando el entorno de gestión de energía y firmware antes de introducir el núcleo Proxmox, logrando una mayor compatibilidad de hardware y flexibilidad de ajuste.</li>
 </ul>
-<h4 id="Pasos-Clave-de-Operacion" class="article-heading"><a href="#Pasos-Clave-de-Operacion" class="headerlink" title="Pasos Clave de Operación"></a>Pasos Clave de Operación<a class="article-anchor" href="#Pasos-Clave-de-Operacion" aria-hidden="true"></a></h4><ol>
-<li>Instalar Debian 12.8: ISO de instalación de red, usar disco completo, arranque UEFI.  </li>
-<li>Deshabilitar ASPM: Editar <code>/etc/default/grub</code>, agregar <code>pcie_aspm=off</code> a <code>GRUB_CMDLINE_LINUX_DEFAULT</code>, ejecutar <code>update-grub</code> y reiniciar.  </li>
-<li>Configuración básica: Cambiar a espejos nacionales, instalar <code>firmware-intel-misc</code>; configurar temporalmente IP y probar conectividad.  </li>
+<h4 id="Pasos-clave-de-operacion" class="article-heading"><a href="#Pasos-clave-de-operacion" class="headerlink" title="Pasos clave de operación"></a>Pasos clave de operación<a class="article-anchor" href="#Pasos-clave-de-operacion" aria-hidden="true"></a></h4><ol>
+<li>Instalar Debian 12.8: ISO de instalación de red, usar todo el disco, arranque UEFI.  </li>
+<li>Desactivar ASPM: Editar <code>/etc/default/grub</code>, añadir <code>pcie_aspm=off</code> a <code>GRUB_CMDLINE_LINUX_DEFAULT</code>, ejecutar <code>update-grub</code> y reiniciar.  </li>
+<li>Configuración básica: Cambiar a espejos nacionales, instalar <code>firmware-intel-misc</code>; configurar temporalmente la IP y probar la conectividad.  </li>
 <li>Preparar Proxmox: Configurar <code>/etc/hosts</code>, agregar el repositorio sin suscripción de Proxmox y la clave GPG.  </li>
-<li>Instalar Proxmox: <code>apt install proxmox-ve postfix open-iscsi</code>; si hay conflictos con <code>pve-firmware</code>, ejecutar <code>dpkg --force-overwrite</code> para forzar la instalación, luego <code>apt install -f</code> para corregir dependencias.  </li>
-<li>Configurar red puente: Editar <code>/etc/network/interfaces</code>, agregar la NIC física (por ejemplo, <code>enp1s0</code>) al puente <code>vmbr0</code>, configurar IP&#x2F;gateway estáticos y reiniciar la red.  </li>
+<li>Instalar Proxmox: <code>apt install proxmox-ve postfix open-iscsi</code>; si hay conflictos con <code>pve-firmware</code>, ejecutar <code>dpkg --force-overwrite</code> para forzar la instalación, luego <code>apt install -f</code> para solucionar dependencias.  </li>
+<li>Configurar red puenteada: Editar <code>/etc/network/interfaces</code>, agregar la NIC física (por ejemplo, <code>enp1s0</code>) al puente <code>vmbr0</code>, configurar IP&#x2F;gateway estático y reiniciar la red.  </li>
 <li>Verificar acceso: Después del reinicio, acceder a <code>https://&lt;IP&gt;:8006</code>.</li>
 </ol>
-<h3 id="2-Pasos-de-Operacion" class="article-heading"><a href="#2-Pasos-de-Operacion" class="headerlink" title="2. Pasos de Operación"></a>2. Pasos de Operación<a class="article-anchor" href="#2-Pasos-de-Operacion" aria-hidden="true"></a></h3><p>Todos los comandos a continuación se ejecutan bajo el sistema Debian con privilegios de root o sudo.</p>
-<h4 id="2-1-Quemar-e-Instalar-Debian" class="article-heading"><a href="#2-1-Quemar-e-Instalar-Debian" class="headerlink" title="2.1 Quemar e Instalar Debian"></a>2.1 Quemar e Instalar Debian<a class="article-anchor" href="#2-1-Quemar-e-Instalar-Debian" aria-hidden="true"></a></h4><p>Para asegurar la estabilidad y controlabilidad del sistema base, esta solución utiliza Debian 12.8 como base.</p>
+<h3 id="2-Pasos-de-operacion" class="article-heading"><a href="#2-Pasos-de-operacion" class="headerlink" title="2. Pasos de operación"></a>2. Pasos de operación<a class="article-anchor" href="#2-Pasos-de-operacion" aria-hidden="true"></a></h3><p>Todos los comandos a continuación se ejecutan bajo el sistema Debian con privilegios de root o sudo.</p>
+<h4 id="2-1-Grabar-e-instalar-Debian" class="article-heading"><a href="#2-1-Grabar-e-instalar-Debian" class="headerlink" title="2.1 Grabar e instalar Debian"></a>2.1 Grabar e instalar Debian<a class="article-anchor" href="#2-1-Grabar-e-instalar-Debian" aria-hidden="true"></a></h4><p>Para garantizar la estabilidad y controlabilidad del sistema base, esta solución usa Debian 12.8 como base.</p>
 <ol>
-<li><p><strong>Descarga de Recursos de Software</strong>  </p>
+<li><p><strong>Descargar recursos de software</strong>  </p>
 <ul>
 <li>Debian 12.8.0: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso">https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso</a>  </li>
-<li>Herramienta de grabado balenaEtcher: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/">https://etcher.balena.io/</a></li>
+<li>Herramienta de grabación balenaEtcher: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/">https://etcher.balena.io/</a></li>
 </ul>
 </li>
-<li><p><strong>Crear un USB Booteable</strong>  </p>
+<li><p><strong>Crear una unidad USB de arranque</strong>  </p>
 <ul>
 <li>Inserte una unidad USB de al menos 8GB.  </li>
-<li>Abra balenaEtcher, seleccione su unidad USB como dispositivo de destino.  </li>
-<li>Haga clic en “Flash from file”, localice el archivo <code>debian-12.8.0-amd64-netinst.iso</code> descargado; el software seleccionará automáticamente el disco.  </li>
-<li>Haga clic en “Flash!” y espere a que se complete, luego expulse de forma segura la unidad USB.</li>
+<li>Abra balenaEtcher, seleccione la unidad USB como dispositivo de destino.  </li>
+<li>Haga clic en “Flash from file”, localice el archivo descargado <code>debian-12.8.0-amd64-netinst.iso</code>; el software seleccionará automáticamente el disco.  </li>
+<li>Haga clic en “Flash!” y espere a que termine, luego expulse de manera segura la unidad USB.</li>
 </ul>
 </li>
-<li><p><strong>Arranque desde BIOS</strong>  </p>
+<li><p><strong>Arranque en BIOS</strong>  </p>
 <ul>
-<li>Inserte la unidad USB preparada en un puerto USB del ZimaBoard.  </li>
-<li>Encienda el dispositivo y presione repetidamente la tecla <strong>F11</strong> (en algunas máquinas puede ser ESC o Supr, pero el ZimaBoard 2 usa F11 por defecto).  </li>
+<li>Inserte la unidad USB preparada en un puerto USB de la ZimaBoard.  </li>
+<li>Encienda y presione repetidamente la tecla <strong>F11</strong> (algunas máquinas pueden usar ESC o Delete, pero la ZimaBoard 2 por defecto usa F11).  </li>
 <li>En el menú de arranque, seleccione la entrada de la unidad USB con “UEFI” en su nombre.</li>
 </ul>
 </li>
-<li><p><strong>Resumen del Procedimiento de Instalación</strong><br>Después de entrar en la pantalla de bienvenida azul de Debian, siga estas pautas:  </p>
+<li><p><strong>Resumen del procedimiento de instalación</strong><br>Después de ingresar a la pantalla de bienvenida azul de Debian, siga estas pautas:  </p>
 <ul>
-<li>Modo de instalación: Se recomienda seleccionar <strong>Instalación Gráfica</strong> (la más amigable para principiantes).  </li>
-<li>Idioma y región: Elija “Inglés” o su idioma preferido; teclado seleccione “Inglés Americano”.  </li>
-<li>Particionamiento del disco: Seleccione <strong>“Usar todo el disco”</strong>, elija el eMMC integrado del ZimaBoard o el SSD instalado, y luego seleccione <strong>“Todos los archivos en una partición”</strong> como el esquema de particionamiento.</li>
+<li>Modo de instalación: Se recomienda seleccionar <strong>Instalación Gráfica</strong> (más amigable para principiantes).  </li>
+<li>Idioma y región: Elija “Inglés” o su idioma preferido; selección de teclado “Inglés estadounidense”.  </li>
+<li>Particionamiento de disco: Seleccione <strong>“Usar todo el disco”</strong>, elija la eMMC integrada de la ZimaBoard o SSD instalado, y luego seleccione <strong>“Todos los archivos en una partición”</strong> como esquema de particionamiento.</li>
 </ul>
 </li>
 </ol>
-<h4 id="2-2-Depuracion-de-la-NIC-en-un-Sistema-Debian-Limpio" class="article-heading"><a href="#2-2-Depuracion-de-la-NIC-en-un-Sistema-Debian-Limpio" class="headerlink" title="2.2 Depuración de la NIC en un Sistema Debian Limpio"></a>2.2 Depuración de la NIC en un Sistema Debian Limpio<a class="article-anchor" href="#2-2-Depuracion-de-la-NIC-en-un-Sistema-Debian-Limpio" aria-hidden="true"></a></h4><ol>
-<li><p><strong>Deshabilitar la Gestión Avanzada de Energía PCIe (ASPM)</strong>  </p>
+<h4 id="2-2-Depuracion-de-la-NIC-en-un-sistema-Debian-limpio" class="article-heading"><a href="#2-2-Depuracion-de-la-NIC-en-un-sistema-Debian-limpio" class="headerlink" title="2.2 Depuración de la NIC en un sistema Debian limpio"></a>2.2 Depuración de la NIC en un sistema Debian limpio<a class="article-anchor" href="#2-2-Depuracion-de-la-NIC-en-un-sistema-Debian-limpio" aria-hidden="true"></a></h4><ol>
+<li><p><strong>Desactivar PCIe Advanced Power Management (ASPM)</strong>  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/default/grub</span><br></pre></td></tr></table></figure>
 <p>Modifique la línea:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on iommu=pt pcie_aspm=off&quot;</span><br></pre></td></tr></table></figure>
-<p>Guarde y cierre, luego actualice GRUB y reinicie:</p>
+<p>Guarde y salga, luego actualice GRUB y reinicie:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-grub</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Cambiar a Servidores DNS Más Estables (Temporalmente)</strong>  </p>
+<li><p><strong>Cambiar a servidores DNS más estables (temporalmente)</strong>  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/resolv.conf</span><br></pre></td></tr></table></figure>
 <p>Agregue:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Instalar Firmware</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpiar caché</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># Actualizar e instalar firmware para NIC Intel</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></figure>
+<li><p><strong>Instalar firmware</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpiar caché</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># Actualizar e instalar firmware de la NIC Intel</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Configurar Temporalmente la Interfaz de la NIC</strong><br>En este ejemplo, el nombre de la interfaz es <code>enp8s0</code> y la dirección del enrutador es <code>10.0.0.1</code>.  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpiar configuraciones IP existentes</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># Apagar la interfaz</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># Configurar IP y gateway</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># Encender la interfaz</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></figure>
+<li><p><strong>Configurar temporalmente la interfaz de la NIC</strong><br>En este ejemplo, el nombre de la interfaz es <code>enp8s0</code> y la dirección del enrutador es <code>10.0.0.1</code>.  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpiar configuraciones de IP existentes</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># Apagar la interfaz</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># Configurar IP y gateway</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># Encender la interfaz</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Probar Conectividad</strong>  </p>
+<li><p><strong>Probar conectividad</strong>  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping -I enp8s0 8.8.8.8</span><br></pre></td></tr></table></figure>
-<p>Si es exitoso, la NIC está funcionando correctamente.</p>
+<p>Si tiene éxito, la NIC está funcionando correctamente.</p>
 </li>
 </ol>
-<h4 id="2-3-Instalar-el-Kernel-de-Proxmox-VE" class="article-heading"><a href="#2-3-Instalar-el-Kernel-de-Proxmox-VE" class="headerlink" title="2.3 Instalar el Kernel de Proxmox VE"></a>2.3 Instalar el Kernel de Proxmox VE<a class="article-anchor" href="#2-3-Instalar-el-Kernel-de-Proxmox-VE" aria-hidden="true"></a></h4><ol>
-<li><p><strong>Configurar el Archivo de Hosts</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Confirmar nombre de host (en este ejemplo, el nombre del host es &quot;debian&quot;)</span></span><br><span class="line">hostname</span><br><span class="line">nano /etc/hosts</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-Instalar-el-nucleo-de-Proxmox-VE" class="article-heading"><a href="#2-3-Instalar-el-nucleo-de-Proxmox-VE" class="headerlink" title="2.3 Instalar el núcleo de Proxmox VE"></a>2.3 Instalar el núcleo de Proxmox VE<a class="article-anchor" href="#2-3-Instalar-el-nucleo-de-Proxmox-VE" aria-hidden="true"></a></h4><ol>
+<li><p><strong>Configurar el archivo de hosts</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Confirmar el nombre de host (en este ejemplo, el nombre de host es &quot;debian&quot;)</span></span><br><span class="line">hostname</span><br><span class="line">nano /etc/hosts</span><br></pre></td></tr></table></figure>
 <p>Asegúrese de que el archivo contenga:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1       localhost</span><br><span class="line">10.0.1.21       debian.proxmox.com debian</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Agregar Repositorio de Software de Proxmox</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Instalar curl si no está presente</span></span><br><span class="line">apt update &amp;&amp; apt install curl -y</span><br><span class="line"><span class="comment"># Agregar clave GPG</span></span><br><span class="line">curl -fSsL http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -o /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg</span><br><span class="line"><span class="comment"># Editar pve-no-subscription.list</span></span><br><span class="line">nano /etc/apt/sources.list.d/pve-no-subscription.list</span><br><span class="line"><span class="comment"># Agregar la siguiente línea</span></span><br><span class="line">deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription</span><br></pre></td></tr></table></figure>
+<li><p><strong>Agregar el repositorio de software de Proxmox</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Instalar curl si no está presente</span></span><br><span class="line">apt update &amp;&amp; apt install curl -y</span><br><span class="line"><span class="comment"># Agregar la clave GPG</span></span><br><span class="line">curl -fSsL http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -o /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg</span><br><span class="line"><span class="comment"># Editar pve-no-subscription.list</span></span><br><span class="line">nano /etc/apt/sources.list.d/pve-no-subscription.list</span><br><span class="line"><span class="comment"># Agregar la siguiente línea</span></span><br><span class="line">deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Instalar Kernel PVE y Componentes Principales</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Actualizar y realizar una actualización completa</span></span><br><span class="line">apt update</span><br><span class="line">apt full-upgrade -y</span><br><span class="line"><span class="comment"># Instalar los paquetes principales de Proxmox VE</span></span><br><span class="line">apt install proxmox-ve postfix open-iscsi -y</span><br></pre></td></tr></table></figure>
+<li><p><strong>Instalar el núcleo PVE y los componentes principales</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Actualizar e instalar una actualización completa</span></span><br><span class="line">apt update</span><br><span class="line">apt full-upgrade -y</span><br><span class="line"><span class="comment"># Instalar paquetes principales de Proxmox VE</span></span><br><span class="line">apt install proxmox-ve postfix open-iscsi -y</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Durante la instalación, si aparece una ventana de configuración de Postfix, presione Tab para seleccionar “Solo local” y continuar.</li>
+<li>Durante la instalación, si aparece una ventana de configuración de Postfix, presione Tab para seleccionar “Solo local” y continúe.</li>
 </ul>
-<p>Debido a que previamente instalamos los paquetes de firmware de Debian, puede haber conflictos de archivos con <code>pve-firmware</code>. Sobreescríbalos:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i --force-overwrite /var/cache/apt/archives/pve-firmware_*.deb</span><br><span class="line"><span class="comment"># Corregir cualquier problema restante de dependencias y reinstalar el núcleo si es necesario</span></span><br><span class="line">apt install -f</span><br><span class="line">apt install proxmox-ve</span><br></pre></td></tr></table></figure>
+<p>Debido a que previamente instalamos los paquetes de firmware de Debian, puede haber conflictos de archivos con <code>pve-firmware</code>. Sobrescríbalos:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i --force-overwrite /var/cache/apt/archives/pve-firmware_*.deb</span><br><span class="line"><span class="comment"># Solucionar problemas de dependencias restantes e instalar el núcleo si es necesario</span></span><br><span class="line">apt install -f</span><br><span class="line">apt install proxmox-ve</span><br></pre></td></tr></table></figure>
 
 <p>Después de la instalación, reinicie y verifique la versión del núcleo:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br><span class="line"><span class="comment"># Después del reinicio</span></span><br><span class="line"><span class="built_in">uname</span> -a</span><br></pre></td></tr></table></figure>
 <p>Si la salida muestra algo como <code>6.8.x-pve</code>, la instalación fue exitosa.</p>
 </li>
 </ol>
-<h4 id="2-4-Configurar-Red" class="article-heading"><a href="#2-4-Configurar-Red" class="headerlink" title="2.4 Configurar Red"></a>2.4 Configurar Red<a class="article-anchor" href="#2-4-Configurar-Red" aria-hidden="true"></a></h4><p>Durante la instalación de <code>proxmox-ve</code>, el sistema elimina las herramientas de gestión de red originales e introduce el modelo de red de Proxmox. Por lo tanto, debemos configurar manualmente la interfaz principal.</p>
+<h4 id="2-4-Configurar-la-red" class="article-heading"><a href="#2-4-Configurar-la-red" class="headerlink" title="2.4 Configurar la red"></a>2.4 Configurar la red<a class="article-anchor" href="#2-4-Configurar-la-red" aria-hidden="true"></a></h4><p>Durante la instalación de <code>proxmox-ve</code>, el sistema elimina las herramientas originales de gestión de redes e introduce el modelo de red de Proxmox. Por lo tanto, necesitamos configurar manualmente la interfaz principal.</p>
 <p>Edite el archivo de interfaces:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/network/interfaces</span><br></pre></td></tr></table></figure>
 
-<p>Suponiendo que la NIC física sea <code>enp1s0</code>, y queramos una IP estática <code>10.0.1.21/16</code> con gateway <code>10.0.0.1</code>, modifique el archivo para que se vea así:</p>
+<p>Suponiendo que la NIC física sea <code>enp1s0</code>, y queramos una IP estática <code>10.0.1.21/16</code> con gateway <code>10.0.0.1</code>, modifique el archivo de la siguiente manera:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iface enp1s0 inet manual</span><br><span class="line"></span><br><span class="line">auto vmbr0</span><br><span class="line">iface vmbr0 inet static</span><br><span class="line">    address 10.0.1.21/16</span><br><span class="line">    gateway 10.0.0.1</span><br><span class="line">    bridge-ports enp1s0</span><br><span class="line">    bridge-stp off</span><br><span class="line">    bridge-fd 0</span><br></pre></td></tr></table></figure>
 
-<p>Guarde y cierre, luego reinicie la red:</p>
+<p>Guarde y salga, luego reinicie la red:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart networking</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-5-Verificacion-y-Acceso-a-la-Interfaz-Web" class="article-heading"><a href="#2-5-Verificacion-y-Acceso-a-la-Interfaz-Web" class="headerlink" title="2.5 Verificación y Acceso a la Interfaz Web"></a>2.5 Verificación y Acceso a la Interfaz Web<a class="article-anchor" href="#2-5-Verificacion-y-Acceso-a-la-Interfaz-Web" aria-hidden="true"></a></h4><p>Abra un navegador web y navegue a:  </p>
+<h4 id="2-5-Verificacion-y-acceso-a-la-interfaz-web" class="article-heading"><a href="#2-5-Verificacion-y-acceso-a-la-interfaz-web" class="headerlink" title="2.5 Verificación y acceso a la interfaz web"></a>2.5 Verificación y acceso a la interfaz web<a class="article-anchor" href="#2-5-Verificacion-y-acceso-a-la-interfaz-web" aria-hidden="true"></a></h4><p>Abra un navegador web y navegue a:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://10.0.1.21:8006</span><br></pre></td></tr></table></figure>
-<p>Haga clic en “Advanced” -&gt; “Proceed to 10.0.1.21 (unsafe)”, luego inicie sesión con las credenciales root del sistema Debian. Ahora debería tener acceso a la interfaz web de Proxmox VE.</p>
-<h3 id="3-Solucion-de-Problemas" class="article-heading"><a href="#3-Solucion-de-Problemas" class="headerlink" title="3. Solución de Problemas"></a>3. Solución de Problemas<a class="article-anchor" href="#3-Solucion-de-Problemas" aria-hidden="true"></a></h3><p><strong>P: ¿Las fuentes de descarga oficiales son lentas o inalcanzables?</strong>  </p>
+<p>Haga clic en “Advanced” -&gt; “Proceed to 10.0.1.21 (unsafe)”, luego inicie sesión con las credenciales de root del sistema Debian. Ahora debería tener acceso a la interfaz web de Proxmox VE.</p>
+<h3 id="3-Resolucion-de-problemas" class="article-heading"><a href="#3-Resolucion-de-problemas" class="headerlink" title="3. Resolución de problemas"></a>3. Resolución de problemas<a class="article-anchor" href="#3-Resolucion-de-problemas" aria-hidden="true"></a></h3><p><strong>P: ¿Las fuentes de descarga oficiales son lentas o inalcanzables?</strong></p>
 <ul>
-<li><strong>Debian</strong>: Visite la <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.debian.org/mirror/list">lista oficial de espejos</a>, elija un espejo en su país o región, y reemplace <code>deb.debian.org</code> y <code>security.debian.org</code> en el tutorial por el dominio del espejo seleccionado.  </li>
-<li><strong>Proxmox</strong>: No existe una lista oficial de espejos para Proxmox, pero puede utilizar espejos de terceros conocidos o buscar “espejo proxmox”. Reemplace <code>download.proxmox.com</code> en el tutorial con la dirección del espejo.</li>
+<li><strong>Debian</strong>: Visite la <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.debian.org/mirror/list">lista oficial de espejos</a>, elija un espejo de su país o región, y reemplace <code>deb.debian.org</code> y <code>security.debian.org</code> en el tutorial con el dominio de ese espejo.  </li>
+<li><strong>Proxmox</strong>: No hay lista oficial de espejos para Proxmox, pero puede usar espejos de terceros bien conocidos o buscar “proxmox mirror”. Reemplace <code>download.proxmox.com</code> en el tutorial con la dirección del espejo.</li>
 </ul>
 <p>Después de actualizar las fuentes, ejecute <code>apt update</code> para aplicar los cambios.</p>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-03-04T06:42:50.097Z" itemprop="dateModified">Última actualización: 2026-03-04</time>
+                <time class="article-footer-updated" datetime="2026-03-04T06:44:09.748Z" itemprop="dateModified">Última actualización: 2026-03-04</time>
                 <a href="Minimal-Ubuntu-Server-Build.html" class="article-footer-prev" title="Instalación Mínima de Servidor Ubuntu"><i class="fa fa-chevron-left"></i><span>Anterior</span></a><a href="Restore-factory-settings.html" class="article-footer-next" title="Recuperación de Fábrica de ZimaBoard CasaOS"><span>Siguiente</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
@@ -330,7 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">Contenidos</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226"><span class="toc-text">Ejecutando Proxmox VE en Debian para NICs i226</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Descripcion-General-de-la-Solucion"><span class="toc-text">1. Descripción General de la Solución</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pasos-Clave-de-Operacion"><span class="toc-text">Pasos Clave de Operación</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Pasos-de-Operacion"><span class="toc-text">2. Pasos de Operación</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Quemar-e-Instalar-Debian"><span class="toc-text">2.1 Quemar e Instalar Debian</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Depuracion-de-la-NIC-en-un-Sistema-Debian-Limpio"><span class="toc-text">2.2 Depuración de la NIC en un Sistema Debian Limpio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Instalar-el-Kernel-de-Proxmox-VE"><span class="toc-text">2.3 Instalar el Kernel de Proxmox VE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Configurar-Red"><span class="toc-text">2.4 Configurar Red</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-Verificacion-y-Acceso-a-la-Interfaz-Web"><span class="toc-text">2.5 Verificación y Acceso a la Interfaz Web</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Solucion-de-Problemas"><span class="toc-text">3. Solución de Problemas</span></a></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ejecutando-Proxmox-VE-en-Debian-para-NICs-i226"><span class="toc-text">Ejecutando Proxmox VE en Debian para NICs i226</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Descripcion-general-de-la-solucion"><span class="toc-text">1. Descripción general de la solución</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pasos-clave-de-operacion"><span class="toc-text">Pasos clave de operación</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Pasos-de-operacion"><span class="toc-text">2. Pasos de operación</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Grabar-e-instalar-Debian"><span class="toc-text">2.1 Grabar e instalar Debian</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Depuracion-de-la-NIC-en-un-sistema-Debian-limpio"><span class="toc-text">2.2 Depuración de la NIC en un sistema Debian limpio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Instalar-el-nucleo-de-Proxmox-VE"><span class="toc-text">2.3 Instalar el núcleo de Proxmox VE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Configurar-la-red"><span class="toc-text">2.4 Configurar la red</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-Verificacion-y-acceso-a-la-interfaz-web"><span class="toc-text">2.5 Verificación y acceso a la interfaz web</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Resolucion-de-problemas"><span class="toc-text">3. Resolución de problemas</span></a></li></ol></li></ol>
               <a href="#" id="article-toc-top">Volver arriba</a>
             </div>
           </aside>
