@@ -2,7 +2,7 @@
 <html lang="jp">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>i226用のDebianでのPVEの実行 | Zimaspace Docs</title>
+  <title>PVEにおけるNIC問題の修正 | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Canonical links -->
@@ -44,15 +44,15 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="i226 NICに対してDebian上でProxmox VEを実行する">
+  <meta name="description" content="Intel NICにおけるPVE環境でのカーネルパニックおよびネットワークの不安定性問題を解決する。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="i226用のDebianでのPVEの実行">
+<meta property="og:title" content="PVEにおけるNIC問題の修正">
 <meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaboard/PVE-on-Debian-for-i226">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="i226 NICに対してDebian上でProxmox VEを実行する">
+<meta property="og:description" content="Intel NICにおけるPVE環境でのカーネルパニックおよびネットワークの不安定性問題を解決する。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-03-04T02:49:50.347Z">
-<meta property="article:modified_time" content="2026-03-04T02:49:50.347Z">
+<meta property="article:published_time" content="2026-03-04T06:42:50.657Z">
+<meta property="article:modified_time" content="2026-03-04T06:42:50.657Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -71,8 +71,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "i226用のDebianでのPVEの実行",
-      "description": "i226 NICに対してDebian上でProxmox VEを実行する",
+      "headline": "PVEにおけるNIC問題の修正",
+      "description": "Intel NICにおけるPVE環境でのカーネルパニックおよびネットワークの不安定性問題を解決する。",
       "image": "",
       "author": {
         "@type": "Person",
@@ -86,7 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "1772592590347"
+      "datePublished": "1772606570657"
     }
     </script>
 
@@ -190,7 +190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="article">
             <div class="inner">
               <header class="article-header">
-                <h1 class="article-title" itemprop="name">i226用のDebianでのPVEの実行</h1>
+                <h1 class="article-title" itemprop="name">PVEにおけるNIC問題の修正</h1>
                 
               
                 
@@ -204,81 +204,124 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </a>
               </header>
               <div class="article-content" itemprop="articleBody">
-                <h2 id="i226-NIC用のDebianでProxmox-VEを実行する" class="article-heading"><a href="#i226-NIC用のDebianでProxmox-VEを実行する" class="headerlink" title="i226 NIC用のDebianでProxmox VEを実行する"></a>i226 NIC用のDebianでProxmox VEを実行する<a class="article-anchor" href="#i226-NIC用のDebianでProxmox-VEを実行する" aria-hidden="true"></a></h2><h3 id="1-解決策の概要" class="article-heading"><a href="#1-解決策の概要" class="headerlink" title="1. 解決策の概要"></a>1. 解決策の概要<a class="article-anchor" href="#1-解決策の概要" aria-hidden="true"></a></h3><p>この解決策は、Intel i226シリーズのNICを搭載したZimaBoard 2プラットフォームでProxmox VE仮想化環境を展開するために設計されています。目標は、高バージョンのLinuxカーネルでPCIe ASPM電力管理によって引き起こされるNICドライバのヌルポインタ逆参照の問題を解決し、カーネルパニックやシステムの応答なしの状態を回避することです。</p>
+                <h2 id="i226-NIC用のDebian上でのProxmox-VEの実行" class="article-heading"><a href="#i226-NIC用のDebian上でのProxmox-VEの実行" class="headerlink" title="i226 NIC用のDebian上でのProxmox VEの実行"></a>i226 NIC用のDebian上でのProxmox VEの実行<a class="article-anchor" href="#i226-NIC用のDebian上でのProxmox-VEの実行" aria-hidden="true"></a></h2><h3 id="1-解決策の概要" class="article-heading"><a href="#1-解決策の概要" class="headerlink" title="1. 解決策の概要"></a>1. 解決策の概要<a class="article-anchor" href="#1-解決策の概要" aria-hidden="true"></a></h3><p>この解決策は、ZimaBoard 2プラットフォームでIntel i226シリーズNICを使用したProxmox VE仮想化環境の展開に関するものです。目標は、高バージョンLinuxカーネルにおけるPCIe ASPM電力管理によって引き起こされるNICドライバのNULLポインタ逆参照問題を解決し、カーネルパニックやシステムの応答なしを回避することです。</p>
 <ul>
 <li><strong>ハードウェアプラットフォーム</strong>: ZimaBoard 2  </li>
 <li><strong>ソフトウェアバージョン</strong>: Debian 12.8.0  </li>
-<li><strong>ネットワーク環境</strong>: このプロセス全体で有線接続を使用することを推奨します。ルーターのサブネット情報（例: 本ガイドでのサブネット：<code>10.0.0.1/16</code>）を準備してください。  </li>
-<li><strong>主な目的</strong>: 高バージョンのLinuxカーネル下でのi226 NICのASPM電力管理の競合とカーネルパニックの問題を解決し、安定した仮想化環境を構築すること。  </li>
-<li><strong>前提知識</strong>: PCIe ASPM（特にL1サブステート）がIntel i226-V NICで有効になっていると、物理リンクのアップ&#x2F;ダウンイベントやドライバのリロード、リンクの再交渉時にigcドライバでヌルポインタ逆参照が発生することがよくあります。これによりカーネルパニックやシステムフリーズが発生します。この解決策は「Debianベース + PVEカーネル」の展開モデルを採用し、Proxmoxカーネルを導入する前に電力管理とファームウェア環境を制約し、調整し、より高いハードウェア互換性と調整の柔軟性を実現します。</li>
+<li><strong>ネットワーク環境</strong>: プロセス全体で有線接続を使用することを推奨します。ルーターのサブネット情報（このガイドのサブネット例: <code>10.0.0.1/16</code>）を準備してください。  </li>
+<li><strong>核心目的</strong>: i226 NICの高バージョンLinuxカーネルにおけるASPM電力管理の競合およびカーネルパニック（Kernel Panic）の問題を解決し、安定した仮想化環境を構築すること。  </li>
+<li><strong>前提知識</strong>: PCIe ASPM（特にL1サブステート）がIntel i226-V NICで有効になると、物理リンクのアップ&#x2F;ダウンイベント、ドライバのリロード、またはリンクの再交渉時にigcドライバでNULLポインタ逆参照が発生することがあり、これがカーネルパニックやシステムのフリーズを引き起こします。この解決策は、「Debianベース+PVEカーネル」の展開モデルを採用しており、Proxmoxカーネルを導入する前に電力管理とファームウェア環境を調整し、高いハードウェア互換性とチューニングの柔軟性を実現します。</li>
 </ul>
-<h4 id="主要操作手順" class="article-heading"><a href="#主要操作手順" class="headerlink" title="主要操作手順"></a>主要操作手順<a class="article-anchor" href="#主要操作手順" aria-hidden="true"></a></h4><ol>
-<li>Debian 12.8をインストール: ネットワークインストールISO、ディスク全体使用、UEFIブート。  </li>
-<li>ASPMを無効化: <code>/etc/default/grub</code>を編集し、<code>GRUB_CMDLINE_LINUX_DEFAULT</code>に<code>pcie_aspm=off</code>を追加し、<code>update-grub</code>を実行して再起動。  </li>
-<li>基本設定: 国内ミラーに切り替え、<code>firmware-intel-misc</code>をインストール; 一時的にIPを設定し、接続をテスト。  </li>
-<li>Proxmox準備: <code>/etc/hosts</code>を設定し、ProxmoxのサブスクリプションなしリポジトリとGPGキーを追加。  </li>
-<li>Proxmoxインストール: <code>apt install proxmox-ve postfix open-iscsi</code>を実行; <code>pve-firmware</code>に衝突があれば、<code>dpkg --force-overwrite</code>で強制インストールし、<code>apt install -f</code>で依存関係を修正。  </li>
-<li>ブリッジネットワークの設定: <code>/etc/network/interfaces</code>を編集し、物理NIC（例: <code>enp1s0</code>）をブリッジ<code>vmbr0</code>に追加、静的IP&#x2F;ゲートウェイを設定し、ネットワークを再起動。  </li>
-<li>アクセス確認: 再起動後、<code>https://&lt;IP&gt;:8006</code>にアクセス。</li>
+<h4 id="主な操作手順" class="article-heading"><a href="#主な操作手順" class="headerlink" title="主な操作手順"></a>主な操作手順<a class="article-anchor" href="#主な操作手順" aria-hidden="true"></a></h4><ol>
+<li>Debian 12.8のインストール: ネットワークインストールISOを使用し、ディスク全体を使用してUEFIブートを行います。  </li>
+<li>ASPMの無効化: <code>/etc/default/grub</code>を編集し、<code>GRUB_CMDLINE_LINUX_DEFAULT</code>に<code>pcie_aspm=off</code>を追加し、<code>update-grub</code>を実行して再起動します。  </li>
+<li>基本設定: 国内ミラーに切り替え、<code>firmware-intel-misc</code>をインストール。IP設定を一時的に構成し、接続テストを行います。  </li>
+<li>Proxmoxの準備: <code>/etc/hosts</code>を設定し、Proxmoxのno-subscriptionリポジトリとGPGキーを追加します。  </li>
+<li>Proxmoxのインストール: <code>apt install proxmox-ve postfix open-iscsi</code>を実行。<code>pve-firmware</code>との競合があれば、<code>dpkg --force-overwrite</code>を使って強制インストールし、<code>apt install -f</code>で依存関係を修正します。  </li>
+<li>ブリッジネットワークの設定: <code>/etc/network/interfaces</code>を編集し、物理NIC（例: <code>enp1s0</code>）をブリッジ<code>vmbr0</code>に追加、静的IPとゲートウェイを設定してネットワークを再起動します。  </li>
+<li>アクセスの確認: 再起動後、<code>https://&lt;IP&gt;:8006</code>にアクセスします。</li>
 </ol>
-<h3 id="2-操作手順" class="article-heading"><a href="#2-操作手順" class="headerlink" title="2. 操作手順"></a>2. 操作手順<a class="article-anchor" href="#2-操作手順" aria-hidden="true"></a></h3><p>以下のコマンドは、Debianシステムでrootまたはsudo権限を持つユーザーで実行します。</p>
-<h4 id="2-1-Debianのインストールと作成" class="article-heading"><a href="#2-1-Debianのインストールと作成" class="headerlink" title="2.1 Debianのインストールと作成"></a>2.1 Debianのインストールと作成<a class="article-anchor" href="#2-1-Debianのインストールと作成" aria-hidden="true"></a></h4><p>基盤となるシステムの安定性と管理可能性を確保するため、この解決策ではDebian 12.8を基盤として使用します。</p>
+<h3 id="2-操作手順" class="article-heading"><a href="#2-操作手順" class="headerlink" title="2. 操作手順"></a>2. 操作手順<a class="article-anchor" href="#2-操作手順" aria-hidden="true"></a></h3><p>以下のコマンドは、Debianシステムでrootまたはsudo権限で実行されます。</p>
+<h4 id="2-1-Debianのインストールと作成" class="article-heading"><a href="#2-1-Debianのインストールと作成" class="headerlink" title="2.1 Debianのインストールと作成"></a>2.1 Debianのインストールと作成<a class="article-anchor" href="#2-1-Debianのインストールと作成" aria-hidden="true"></a></h4><p>ベースシステムの安定性と制御性を確保するため、この解決策ではDebian 12.8を基盤として使用します。</p>
 <ol>
 <li><p><strong>ソフトウェアリソースのダウンロード</strong>  </p>
 <ul>
 <li>Debian 12.8.0: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso">https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso</a>  </li>
-<li>書き込みツール balenaEtcher: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/">https://etcher.balena.io/</a></li>
+<li>バーレナEtcherツール: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/">https://etcher.balena.io/</a></li>
 </ul>
 </li>
 <li><p><strong>ブータブルUSBドライブの作成</strong>  </p>
 <ul>
-<li>最低8GBのUSBドライブを挿入します。  </li>
-<li>balenaEtcherを開き、ターゲットデバイスとしてUSBドライブを選択。  </li>
-<li>「Flash from file」をクリックし、ダウンロードした<code>debian-12.8.0-amd64-netinst.iso</code>を選択。  </li>
-<li>「Flash!」をクリックし、完了を待ってからUSBドライブを安全に取り出します。</li>
+<li>少なくとも8GBのUSBドライブを挿入します。  </li>
+<li>balenaEtcherを開き、USBドライブをターゲットデバイスとして選択します。  </li>
+<li>「ファイルからフラッシュ」をクリックし、ダウンロードした<code>debian-12.8.0-amd64-netinst.iso</code>を選択します。ソフトウェアが自動的にディスクを選択します。  </li>
+<li>「フラッシュ！」をクリックして完了まで待ち、USBドライブを安全に取り外します。</li>
 </ul>
 </li>
 <li><p><strong>BIOSブート</strong>  </p>
 <ul>
-<li>用意したUSBドライブをZimaBoardのUSBポートに挿入。  </li>
-<li>電源を入れ、<strong>F11</strong>キーを繰り返し押します（一部の機種ではESCやDeleteキーですが、ZimaBoard 2はF11がデフォルトです）。  </li>
-<li>ブートメニューで、「UEFI」付きのUSBドライブのエントリを選択。</li>
+<li>準備したUSBドライブをZimaBoardのUSBポートに挿入します。  </li>
+<li>電源を入れ、<strong>F11</strong>キーを繰り返し押します（一部の機種ではESCまたはDeleteキーを使用する場合もありますが、ZimaBoard 2はデフォルトでF11です）。  </li>
+<li>ブートメニューで、「UEFI」と名前に付いたUSBドライブエントリを選択します。</li>
 </ul>
 </li>
-<li><p><strong>インストール手順概要</strong><br>Debianの青いウェルカム画面に入った後、以下のガイドラインに従って進めます。  </p>
+<li><p><strong>インストール手順の概要</strong><br>Debianの青いウェルカム画面に入った後、以下のガイドラインに従ってください:  </p>
 <ul>
-<li>インストールモード: <strong>Graphical Install</strong>を選択することを推奨（初心者に最適）。  </li>
-<li>言語と地域: 「English」または希望の言語を選択し、キーボードは「American English」を選択。  </li>
-<li>ディスクのパーティション設定: **”Use entire disk”<strong>を選択し、ZimaBoardの内蔵eMMCまたはインストール済みのSSDを選び、パーティションスキームは</strong>“All files in one partition”**を選択。</li>
+<li>インストールモード: <strong>グラフィカルインストール</strong>を選択することを推奨します（初心者に最も使いやすい）。  </li>
+<li>言語と地域: 「英語」または好ましい言語を選択し、キーボードは「アメリカ英語」を選択します。  </li>
+<li>ディスクのパーティション設定: <strong>「ディスク全体を使用」</strong>を選択し、ZimaBoard内蔵のeMMCまたはインストールしたSSDを選択、その後<strong>「すべてのファイルを1つのパーティションに」</strong>としてパーティションスキームを設定します。</li>
 </ul>
 </li>
 </ol>
-<h4 id="2-2-クリーンインストールされたDebianシステムでのNICのデバッグ" class="article-heading"><a href="#2-2-クリーンインストールされたDebianシステムでのNICのデバッグ" class="headerlink" title="2.2 クリーンインストールされたDebianシステムでのNICのデバッグ"></a>2.2 クリーンインストールされたDebianシステムでのNICのデバッグ<a class="article-anchor" href="#2-2-クリーンインストールされたDebianシステムでのNICのデバッグ" aria-hidden="true"></a></h4><ol>
-<li><p><strong>PCIe先進電力管理（ASPM）の無効化</strong>  </p>
+<h4 id="2-2-クリーンDebianシステムでのNICのデバッグ" class="article-heading"><a href="#2-2-クリーンDebianシステムでのNICのデバッグ" class="headerlink" title="2.2 クリーンDebianシステムでのNICのデバッグ"></a>2.2 クリーンDebianシステムでのNICのデバッグ<a class="article-anchor" href="#2-2-クリーンDebianシステムでのNICのデバッグ" aria-hidden="true"></a></h4><ol>
+<li><p><strong>PCIe高度電力管理（ASPM）の無効化</strong>  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/default/grub</span><br></pre></td></tr></table></figure>
-<p>以下の行を修正:</p>
+<p>以下の行を変更します:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on iommu=pt pcie_aspm=off&quot;</span><br></pre></td></tr></table></figure>
-<p>保存して終了し、GRUBを更新して再起動:</p>
+<p>保存して終了後、GRUBを更新して再起動します:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-grub</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>より安定したDNSサーバへの切り替え（仮）</strong>  </p>
+<li><p><strong>安定したDNSサーバーへの切り替え（仮）</strong>  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/resolv.conf</span><br></pre></td></tr></table></figure>
-<p>以下を追加:</p>
+<p>以下を追加します:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>ファームウェアのインストール</strong>  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># キャッシュのクリア</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># 更新してIntel NICファームウェアをインストール</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># キャッシュをクリア</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># 更新してIntel NICファームウェアをインストール</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>NICインターフェースの一時的設定</strong><br>この例では、インターフェース名は<code>enp8s0</code>、ルーターアドレスは<code>10.0.0.1</code>です。  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 既存のIP設定をフラッシュ</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># インターフェースを下げる</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># IPアドレスとゲートウェイを設定</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># インターフェースを上げる</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></figure>
+<li><p><strong>NICインターフェースの仮設定</strong><br>この例では、インターフェース名は<code>enp8s0</code>、ルーターアドレスは<code>10.0.0.1</code>です。  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 既存のIP設定をクリア</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># インターフェースをダウン</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># IPアドレスとゲートウェイを設定</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># インターフェースをアップ</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>接続確認</strong><br>&#96;&#96;&#96;bash<br>ping -I enp8s</p>
+<li><p><strong>接続テスト</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping -I enp8s0 8.8.8.8</span><br></pre></td></tr></table></figure>
+<p>成功すれば、NICは正常に機能しています。</p>
 </li>
 </ol>
+<h4 id="2-3-Proxmox-VEカーネルのインストール" class="article-heading"><a href="#2-3-Proxmox-VEカーネルのインストール" class="headerlink" title="2.3 Proxmox VEカーネルのインストール"></a>2.3 Proxmox VEカーネルのインストール<a class="article-anchor" href="#2-3-Proxmox-VEカーネルのインストール" aria-hidden="true"></a></h4><ol>
+<li><p><strong>ホストファイルの設定</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ホスト名を確認（この例ではホスト名は&quot;debian&quot;です）</span></span><br><span class="line">hostname</span><br><span class="line">nano /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>ファイルに以下を追加:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1       localhost</span><br><span class="line">10.0.1.21       debian.proxmox.com debian</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Proxmoxソフトウェアリポジトリの追加</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># curlがない場合はインストール</span></span><br><span class="line">apt update &amp;&amp; apt install curl -y</span><br><span class="line"><span class="comment"># GPGキーを追加</span></span><br><span class="line">curl -fSsL http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -o /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg</span><br><span class="line"><span class="comment"># pve-no-subscription.listを編集</span></span><br><span class="line">nano /etc/apt/sources.list.d/pve-no-subscription.list</span><br><span class="line"><span class="comment"># 以下を追加</span></span><br><span class="line">deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>PVEカーネルとコアコンポーネントのインストール</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新してフルアップグレードを実行</span></span><br><span class="line">apt update</span><br><span class="line">apt full-upgrade -y</span><br><span class="line"><span class="comment"># Proxmox VEのコアパッケージをインストール</span></span><br><span class="line">apt install proxmox-ve postfix open-iscsi -y</span><br></pre></td></tr></table></figure>
+<ul>
+<li>インストール中にPostfix設定ウィンドウが表示されたら、Tabキーで「ローカルのみ」を選択し続行。</li>
+</ul>
+<p>前回インストールしたDebianファームウェアパッケージと<code>pve-firmware</code>が競合する可能性があります。上書きします:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -i --force-overwrite /var/cache/apt/archives/pve-firmware_*.deb</span><br><span class="line"><span class="comment"># 残りの依存関係問題を修正し、必要であればコアパッケージを再インストール</span></span><br><span class="line">apt install -f</span><br><span class="line">apt install proxmox-ve</span><br></pre></td></tr></table></figure>
+
+<p>インストール後、再起動しカーネルバージョンを確認します:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br><span class="line"><span class="comment"># 再起動後</span></span><br><span class="line"><span class="built_in">uname</span> -a</span><br></pre></td></tr></table></figure>
+<p>出力に<code>6.8.x-pve</code>が表示されれば、インストールは成功です。</p>
+</li>
+</ol>
+<h4 id="2-4-ネットワークの設定" class="article-heading"><a href="#2-4-ネットワークの設定" class="headerlink" title="2.4 ネットワークの設定"></a>2.4 ネットワークの設定<a class="article-anchor" href="#2-4-ネットワークの設定" aria-hidden="true"></a></h4><p><code>proxmox-ve</code>をインストールすると、元のネットワーク管理ツールが削除され、Proxmoxのネットワークモデルが導入されます。そのため、メインインターフェースの手動設定が必要です。</p>
+<p>インターフェースファイルを編集します:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano /etc/network/interfaces</span><br></pre></td></tr></table></figure>
+
+<p>物理NICが<code>enp1s0</code>で、静的IP<code>10.0.1.21/16</code>とゲートウェイ<code>10.0.0.1</code>を設定する場合、ファイルを以下のように変更します:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iface enp1s0 inet manual</span><br><span class="line"></span><br><span class="line">auto vmbr0</span><br><span class="line">iface vmbr0 inet static</span><br><span class="line">    address 10.0.1.21/16</span><br><span class="line">    gateway 10.0.0.1</span><br><span class="line">    bridge-ports enp1s0</span><br><span class="line">    bridge-stp off</span><br><span class="line">    bridge-fd 0</span><br></pre></td></tr></table></figure>
+
+<p>保存して終了し、ネットワークを再起動します:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart networking</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-検証とWebインターフェースアクセス" class="article-heading"><a href="#2-5-検証とWebインターフェースアクセス" class="headerlink" title="2.5 検証とWebインターフェースアクセス"></a>2.5 検証とWebインターフェースアクセス<a class="article-anchor" href="#2-5-検証とWebインターフェースアクセス" aria-hidden="true"></a></h4><p>Webブラウザを開き、次のアドレスにアクセスします:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://10.0.1.21:8006</span><br></pre></td></tr></table></figure>
+<p>「詳細設定」をクリックし、「10.0.1.21に進む（安全でない）」を選択後、Debianシステムのroot資格情報でログインします。Proxmox VEのWebインターフェースにアクセスできるはずです。</p>
+<h3 id="3-トラブルシューティング" class="article-heading"><a href="#3-トラブルシューティング" class="headerlink" title="3. トラブルシューティング"></a>3. トラブルシューティング<a class="article-anchor" href="#3-トラブルシューティング" aria-hidden="true"></a></h3><p><strong>Q: 公式のダウンロードソースが遅い、またはアクセスできない場合は？</strong>  </p>
+<ul>
+<li><strong>Debian</strong>: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.debian.org/mirror/list">公式ミラーリスト</a>を訪れ、自国または地域のミラーを選択し、チュートリアル内の<code>deb.debian.org</code>および<code>security.debian.org</code>をそのミラーのドメインに置き換えてください。  </li>
+<li><strong>Proxmox</strong>: Proxmoxには公式ミラーリストはありませんが、よく知られたサードパーティのミラーを使用するか、「proxmox mirror」を検索してミラーアドレスを探してください。</li>
+</ul>
+<p>ソースを更新した後、<code>apt update</code>を実行して変更を適用します。</p>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-03-04T02:49:50.347Z" itemprop="dateModified">最終更新日: 2026-03-04</time>
+                <time class="article-footer-updated" datetime="2026-03-04T06:42:50.657Z" itemprop="dateModified">最終更新日: 2026-03-04</time>
                 <a href="Minimal-Ubuntu-Server-Build.html" class="article-footer-prev" title="最小限のUbuntuサーバービルド"><i class="fa fa-chevron-left"></i><span>前へ</span></a><a href="Restore-factory-settings.html" class="article-footer-next" title="ZimaBoard CasaOSの工場リカバリ"><span>次へ</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
@@ -287,7 +330,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">目次</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#i226-NIC%E7%94%A8%E3%81%AEDebian%E3%81%A7Proxmox-VE%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B"><span class="toc-text">i226 NIC用のDebianでProxmox VEを実行する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%A3%E6%B1%BA%E7%AD%96%E3%81%AE%E6%A6%82%E8%A6%81"><span class="toc-text">1. 解決策の概要</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%93%8D%E4%BD%9C%E6%89%8B%E9%A0%86"><span class="toc-text">主要操作手順</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%89%8B%E9%A0%86"><span class="toc-text">2. 操作手順</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Debian%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E4%BD%9C%E6%88%90"><span class="toc-text">2.1 Debianのインストールと作成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%9FDebian%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7%E3%81%AENIC%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0"><span class="toc-text">2.2 クリーンインストールされたDebianシステムでのNICのデバッグ</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#i226-NIC%E7%94%A8%E3%81%AEDebian%E4%B8%8A%E3%81%A7%E3%81%AEProxmox-VE%E3%81%AE%E5%AE%9F%E8%A1%8C"><span class="toc-text">i226 NIC用のDebian上でのProxmox VEの実行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%A3%E6%B1%BA%E7%AD%96%E3%81%AE%E6%A6%82%E8%A6%81"><span class="toc-text">1. 解決策の概要</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E3%81%AA%E6%93%8D%E4%BD%9C%E6%89%8B%E9%A0%86"><span class="toc-text">主な操作手順</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%93%8D%E4%BD%9C%E6%89%8B%E9%A0%86"><span class="toc-text">2. 操作手順</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Debian%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E4%BD%9C%E6%88%90"><span class="toc-text">2.1 Debianのインストールと作成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3Debian%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7%E3%81%AENIC%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0"><span class="toc-text">2.2 クリーンDebianシステムでのNICのデバッグ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Proxmox-VE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">2.3 Proxmox VEカーネルのインストール</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">2.4 ネットワークの設定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E6%A4%9C%E8%A8%BC%E3%81%A8Web%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9"><span class="toc-text">2.5 検証とWebインターフェースアクセス</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><span class="toc-text">3. トラブルシューティング</span></a></li></ol></li></ol>
               <a href="#" id="article-toc-top">トップに戻る</a>
             </div>
           </aside>
@@ -338,7 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="fa fa-chevron-right"></i>
       </h4>
       <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">2ベイNASのセットアップ</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">OMVのインストール</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMVの設定</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">$129でのUnRAIDの最初の体験</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">OpenWRTのインストール</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMc上のOpenwrt</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">ユニバーサルOSのインストール</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfinサーバー</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">75インチ4Kアーケードの構築</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">ZimaboardでWOLを有効にする</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Proxmoxを使用したマイグレーション</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi (AX210 ワイファイ)</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">最小限のUbuntuサーバービルド</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">「i226用のDebianでのPVE」</a></li>
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">2ベイNASのセットアップ</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">OMVのインストール</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMVの設定</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">$129でのUnRAIDの最初の体験</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">OpenWRTのインストール</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMc上のOpenwrt</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">ユニバーサルOSのインストール</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfinサーバー</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">75インチ4Kアーケードの構築</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">ZimaboardでWOLを有効にする</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Proxmoxを使用したマイグレーション</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi (AX210 ワイファイ)</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">最小限のUbuntuサーバービルド</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">PVEにおけるNICの問題を修正する</a></li>
       </ul>
     </li>
     <li class="">
@@ -616,7 +659,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <i class="fa fa-chevron-right"></i>
       </h4>
       <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">2ベイNASのセットアップ</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">OMVのインストール</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMVの設定</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">$129でのUnRAIDの最初の体験</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">OpenWRTのインストール</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMc上のOpenwrt</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">ユニバーサルOSのインストール</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfinサーバー</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">75インチ4Kアーケードの構築</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">ZimaboardでWOLを有効にする</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Proxmoxを使用したマイグレーション</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi (AX210 ワイファイ)</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">最小限のUbuntuサーバービルド</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">「i226用のDebianでのPVE」</a></li>
+      <li class="sidebar-link "><a href="./Self-Deploying-Applications.html">2ベイNASのセットアップ</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-install.html">OMVのインストール</a></li><li class="sidebar-link "><a href="./Small-body-Big-applications-OMV-First-Experience.html">OMVの設定</a></li><li class="sidebar-link "><a href="./Unraid-First-Experience-at-$129-Installation.html">$129でのUnRAIDの最初の体験</a></li><li class="sidebar-link "><a href="./All-in-one-routing-system-OpenWRT.html">OpenWRTのインストール</a></li><li class="sidebar-link "><a href="./Openwrt-eMMc-boot.html">eMMc上のOpenwrt</a></li><li class="sidebar-link "><a href="./Universal-third-party-system-installation-tutorial.html">ユニバーサルOSのインストール</a></li><li class="sidebar-link "><a href="./Basic-functions-of-dedicated-systems.html">Jellyfinサーバー</a></li><li class="sidebar-link "><a href="./Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera.html">75インチ4Kアーケードの構築</a></li><li class="sidebar-link "><a href="./VR-Audio-And-Video-Experience-Oculus.html">Oculus VR</a></li><li class="sidebar-link "><a href="./Syncthing.html">Syncthing</a></li><li class="sidebar-link "><a href="./Enable-WOL-on-Zimaboard.html">ZimaboardでWOLを有効にする</a></li><li class="sidebar-link "><a href="./ZimaBlades-Cluster-PVE-Makes-Your-Service-Migratable.html">Proxmoxを使用したマイグレーション</a></li><li class="sidebar-link "><a href="./AX210-Wi-Fi.html">AX210 Wi-Fi (AX210 ワイファイ)</a></li><li class="sidebar-link "><a href="./Minimal-Ubuntu-Server-Build.html">最小限のUbuntuサーバービルド</a></li><li class="sidebar-link  current"><a href="./PVE-on-Debian-for-i226.html">PVEにおけるNICの問題を修正する</a></li>
       </ul>
     </li>
     <li class="">
