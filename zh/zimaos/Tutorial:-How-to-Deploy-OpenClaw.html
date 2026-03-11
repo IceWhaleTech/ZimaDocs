@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>如何部署 OpenClaw | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+  <!-- Alternative links -->
+  
+    
+  <link rel="alternative" hreflang="en" href="https://www.zimaspace.com/docs/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+    
+  <link rel="alternative" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+    
+  <link rel="alternative" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+    
+  <link rel="alternative" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+    
+  <link rel="alternative" hreflang="es" href="https://www.zimaspace.com/docs/es/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <!-- endbuild -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="本指南解释了如何在 CasaOS&#x2F;ZimaOS 设备上部署 OpenClaw，配置自定义 AI 模型，链接 Telegram 机器人，并访问 Web UI 以管理和与 AI 互动。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="如何部署 OpenClaw">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="本指南解释了如何在 CasaOS&#x2F;ZimaOS 设备上部署 OpenClaw，配置自定义 AI 模型，链接 Telegram 机器人，并访问 Web UI 以管理和与 AI 互动。">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220372637_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220537700_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220664655_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220692606_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220726788_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220763191_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220810816_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220830104_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220843480_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220866935_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220891482_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220923167_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220933540_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220953934_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221077004_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221116186_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221130505_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221160225_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221182974_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221202944_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221237858_image.png">
+<meta property="article:published_time" content="2026-03-11T09:35:12.647Z">
+<meta property="article:modified_time" content="2026-03-11T09:35:12.647Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1773220372637_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "如何部署 OpenClaw",
+      "description": "本指南解释了如何在 CasaOS/ZimaOS 设备上部署 OpenClaw，配置自定义 AI 模型，链接 Telegram 机器人，并访问 Web UI 以管理和与 AI 互动。",
+      "image": "",
+      "author": {
+        "@type": "Person",
+        "name": "icewhale123456"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zima",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "1773221712647"
+    }
+    </script>
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <div id="header_outer">
+  <header id="header" >
+    <div id="header-inner" class="inner">
+      <div class="logo-container">
+        <h2 id="logo-wrap">
+          
+          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
+        </h2>
+      </div>
+      <div class="nav-container">
+        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
+          <ul id="menu-main-menu" class="maxmenu-list">
+
+            <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
+            <li class="menu-item menu-item-has-children">
+              <span class="maxmenu-click">
+                <i class="maxmenu-arrow"></i>
+              </span>
+              <a href="#">
+                <img src="/docs/img/lang.svg" />
+              </a>
+              <ul class="sub-menu">
+                
+                  <li class="menu-item">
+                    <a href="/docs/zimaos/Tutorial:-How-to-Deploy-OpenClaw">English</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/zh/zimaos/Tutorial:-How-to-Deploy-OpenClaw">中文</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/jp/zimaos/Tutorial:-How-to-Deploy-OpenClaw">日本語</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/pt-PT/zimaos/Tutorial:-How-to-Deploy-OpenClaw">Português</a>
+                  </li>
+                
+                  <li class="menu-item">
+                    <a href="/docs/es/zimaos/Tutorial:-How-to-Deploy-OpenClaw">Español</a>
+                  </li>
+                
+              </ul>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+
+      <div class="search-icon-container">
+        <div id="search-container-icon">
+          <i class="fa fa-search" id="showSearch"></i>
+        </div>
+        <a class="shop" href="https://shop.zimaspace.com/" rel="external nofollow noreferrer" target="_blank">商店</a>
+      </div>
+
+      <a id="mobile-nav-toggle">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </a>
+    </div>
+  </header>
+</div>
+
+<div id="search-container">
+  <div id="search-container-close">
+    <i class="fa fa-close" id="hideSearch"></i>
+  </div>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <div id="search-input-icon">
+        
+      </div>
+      <input type="search" id="search-input" placeholder="搜索...">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+
+</div>
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">如何部署 OpenClaw</h1>
+                
+              
+                
+                <!-- facebook -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
+                </a>
+                <!-- x twitter -->
+                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
+                </a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="1-概述" class="article-heading"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述<a class="article-anchor" href="#1-概述" aria-hidden="true"></a></h2><p>本教程将指导您如何在运行 CasaOS 的设备上部署 OpenClaw，完成基本配置，并通过 Telegram 启用 AI 模型互动。本教程以 Telegram 机器人为例，涵盖了从模型提供商设置到机器人配对的整个过程。</p>
+<h3 id="1-1-环境" class="article-heading"><a href="#1-1-环境" class="headerlink" title="1.1 环境"></a>1.1 环境<a class="article-anchor" href="#1-1-环境" aria-hidden="true"></a></h3><ul>
+<li><p>软件：CasaOS v0.4.15 &#x2F; ZimaOS v1.5.4（最新版本）</p>
+</li>
+<li><p>网络：设备必须连接到互联网，并能够访问 Telegram API。建议使用有线连接以确保稳定。</p>
+</li>
+</ul>
+<h3 id="1-2-目标" class="article-heading"><a href="#1-2-目标" class="headerlink" title="1.2 目标"></a>1.2 目标<a class="article-anchor" href="#1-2-目标" aria-hidden="true"></a></h3><p>完成初始 OpenClaw 设置，包括：</p>
+<ul>
+<li><p>连接自定义 AI 模型提供商</p>
+</li>
+<li><p>创建并链接 Telegram 机器人，通过直接消息启用 AI 聊天</p>
+</li>
+<li><p>通过 Web UI 查看和管理 OpenClaw 状态</p>
+</li>
+</ul>
+<h3 id="1-3-前提条件" class="article-heading"><a href="#1-3-前提条件" class="headerlink" title="1.3 前提条件"></a>1.3 前提条件<a class="article-anchor" href="#1-3-前提条件" aria-hidden="true"></a></h3><ul>
+<li><p>您设备的 IP 地址，用于替换命令中的 <code>&lt;ip&gt;</code> 占位符。</p>
+<p>请参阅 <a href="https://www.zimaspace.com/docs/zimaboard/Power-on-Zimablade">https://www.zimaspace.com/docs/zimaboard/Power-on-Zimablade</a> 第 3 步了解如何查找 IP。</p>
+</li>
+<li><p>AI 模型 API 密钥及基本使用方法。</p>
+</li>
+<li><p>一个 Telegram 账户。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> 在 OpenClaw 配置界面中，使用 <strong>空格键</strong> 选择选项，使用 <strong>回车键</strong> 确认。</p>
+</blockquote>
+<h3 id="1-4-快速步骤概览" class="article-heading"><a href="#1-4-快速步骤概览" class="headerlink" title="1.4 快速步骤概览"></a>1.4 快速步骤概览<a class="article-anchor" href="#1-4-快速步骤概览" aria-hidden="true"></a></h3><ul>
+<li><p>从 CasaOS &#x2F; ZimaOS 应用商店安装 OpenClaw。</p>
+</li>
+<li><p>打开终端 — 通过 SSH 连接（推荐）或使用 CasaOS 终端。</p>
+</li>
+<li><p>切换到管理员模式：运行 <code>su</code> 并输入默认密码 <code>casaos</code>。</p>
+</li>
+<li><p>进入 OpenClaw 容器：<code>docker exec -it openclaw bash</code></p>
+</li>
+<li><p>启动配置向导：<code>node /app/dist/index.js config</code></p>
+</li>
+<li><p>配置模型提供商：选择 <strong>Model</strong>，选择 <strong>custom provider</strong>，然后输入基础 URL、API 密钥和模型 ID。</p>
+</li>
+<li><p>配置 Telegram 渠道：选择 <strong>Channels → Configure&#x2F;link → Telegram</strong>，通过 BotFather 创建一个机器人，输入 Token，并将 DM 策略设置为 <strong>Pairing</strong>（推荐）。</p>
+</li>
+<li><p>完成配对：在 Telegram 里向您的机器人发送 <code>/start</code>，收到配对代码后，在终端中运行 <code>openclaw pairing approve telegram &lt;pairing-code&gt;</code>。</p>
+</li>
+<li><p>访问 Web UI：<code>https://&lt;ip&gt;:24190?token=casaos</code>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-详细步骤" class="article-heading"><a href="#2-详细步骤" class="headerlink" title="2. 详细步骤"></a>2. 详细步骤<a class="article-anchor" href="#2-详细步骤" aria-hidden="true"></a></h2><h3 id="2-1-打开终端" class="article-heading"><a href="#2-1-打开终端" class="headerlink" title="2.1 打开终端"></a>2.1 打开终端<a class="article-anchor" href="#2-1-打开终端" aria-hidden="true"></a></h3><p>在 CasaOS Web UI 安装 OpenClaw 后，打开终端开始配置。可以通过以下两种方式：</p>
+<p><strong>A. 从计算机 SSH 连接（推荐 — 便于复制粘贴命令）</strong></p>
+<p>按 <strong>Win + X</strong> 打开快速访问菜单，选择 <strong>Terminal</strong>。<br>运行以下命令：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh &lt;username&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></figure>
+<p>例如：<code>ssh casaos@10.0.1.7</code><br><img src="https://manage.icewhale.io/api/static/docs/1773220372637_image.png" alt="终端显示 SSH 命令正在输入"><br>如果是第一次连接，您会看到提示：  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+<p>输入 <code>yes</code> 并按回车。</p>
+<p><strong>B. 直接在 ZimaBlade 上输入</strong></p>
+<p>将键盘和显示器连接到 ZimaBlade，使用本地终端。</p>
+<hr>
+<h3 id="2-2-切换到管理员模式" class="article-heading"><a href="#2-2-切换到管理员模式" class="headerlink" title="2.2 切换到管理员模式"></a>2.2 切换到管理员模式<a class="article-anchor" href="#2-2-切换到管理员模式" aria-hidden="true"></a></h3><p>运行以下命令并按回车：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+<p>输入默认密码 <code>casaos</code>。  </p>
+<blockquote>
+<p>密码输入时不会显示，这是正常的。</p>
+</blockquote>
+<p><img src="https://manage.icewhale.io/api/static/docs/1773220537700_image.png" alt="终端显示提示已切换到 root 用户"></p>
+<p>现在，您已获得修改系统设置所需的管理员权限。</p>
+<hr>
+<h3 id="2-3-进入配置向导" class="article-heading"><a href="#2-3-进入配置向导" class="headerlink" title="2.3 进入配置向导"></a>2.3 进入配置向导<a class="article-anchor" href="#2-3-进入配置向导" aria-hidden="true"></a></h3><p><strong>步骤 1 — 进入 OpenClaw 容器：</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it openclaw bash</span><br></pre></td></tr></table></figure>
+<p><img src="https://manage.icewhale.io/api/static/docs/1773220664655_image.png" alt="终端提示符已切换到 root@openclaw:/app"></p>
+<p>当提示符变为 <code>root@openclaw:/app</code> 时，表示您已成功进入容器。所有后续配置必须在此容器内进行。如果意外退出，只需重新运行此命令。</p>
+<p><strong>步骤 2 — 启动配置向导：</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node /app/dist/index.js config</span><br></pre></td></tr></table></figure>
+<p><img src="https://manage.icewhale.io/api/static/docs/1773220692606_image.png" alt="配置向导的初始界面"></p>
+<p><strong>步骤 3 — 选择网关位置：</strong></p>
+<p>当提示 <strong>Where will the Gateway run?</strong> 时，选择 **Local (this machine)**。<br><img src="https://manage.icewhale.io/api/static/docs/1773220726788_image.png" alt="Local (this machine) 在选择菜单中被突出显示"></p>
+<p>选中的选项会被高亮显示。按 <strong>回车键</strong> 确认。</p>
+<hr>
+<h3 id="2-4-配置模型" class="article-heading"><a href="#2-4-配置模型" class="headerlink" title="2.4 配置模型"></a>2.4 配置模型<a class="article-anchor" href="#2-4-配置模型" aria-hidden="true"></a></h3><h4 id="1-选择提供商" class="article-heading"><a href="#1-选择提供商" class="headerlink" title="1. 选择提供商"></a>1. 选择提供商<a class="article-anchor" href="#1-选择提供商" aria-hidden="true"></a></h4><p>在 <strong>Select sections to configure</strong> 中，选择 <strong>Model</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220763191_image.png" alt="光标指向 Model 选项"></p>
+<p>在 <strong>Model &#x2F; auth provider</strong> 中，选择 <strong>custom provider</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220810816_image.png" alt="custom provider 被突出显示"></p>
+<h4 id="2-输入模型参数" class="article-heading"><a href="#2-输入模型参数" class="headerlink" title="2. 输入模型参数"></a>2. 输入模型参数<a class="article-anchor" href="#2-输入模型参数" aria-hidden="true"></a></h4><p>输入 <strong>Base URL</strong>（例如 <code>https://api.openai.com/v1</code>）。<br><img src="https://manage.icewhale.io/api/static/docs/1773220830104_image.png" alt="Base URL 输入框"></p>
+<p>输入您的 <strong>API Key</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220843480_image.png" alt="API Key 输入框"></p>
+<p>选择 <strong>API 格式</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220866935_image.png" alt="API 格式选择菜单"></p>
+<p>选择您要使用的 <strong>Model ID</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220891482_image.png" alt="Model ID 选择列表"></p>
+<hr>
+<h3 id="2-5-配置频道（以-Telegram-为例）" class="article-heading"><a href="#2-5-配置频道（以-Telegram-为例）" class="headerlink" title="2.5 配置频道（以 Telegram 为例）"></a>2.5 配置频道（以 Telegram 为例）<a class="article-anchor" href="#2-5-配置频道（以-Telegram-为例）" aria-hidden="true"></a></h3><h4 id="1-打开频道设置" class="article-heading"><a href="#1-打开频道设置" class="headerlink" title="1. 打开频道设置"></a>1. 打开频道设置<a class="article-anchor" href="#1-打开频道设置" aria-hidden="true"></a></h4><p>在 <strong>Select sections to configure</strong> 中，选择 <strong>Channels</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220923167_image.png" alt="光标指向 Channels 选项"></p>
+<p>选择 <strong>Configure &#x2F; link</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220933540_image.png" alt="Channels 子菜单显示 &quot;Telegram: needs token&quot; 状态"></p>
+<p>选择 <strong>Telegram</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773220953934_image.png" alt="在频道列表中选择 Telegram"></p>
+<h4 id="2-获取机器人-Token" class="article-heading"><a href="#2-获取机器人-Token" class="headerlink" title="2. 获取机器人 Token"></a>2. 获取机器人 Token<a class="article-anchor" href="#2-获取机器人-Token" aria-hidden="true"></a></h4><p>在 Telegram 中与 <strong>@BotFather</strong> 开始对话并发送 <code>/newbot</code> 创建一个新机器人。<br>BotFather 会要求您提供：</p>
+<blockquote>
+<p><strong>Bot 名称：</strong> 机器人的显示名称<br><strong>用户名：</strong> 必须以 <code>bot</code> 结尾的唯一标识符</p>
+</blockquote>
+<p>创建后，BotFather 会返回一个 <strong>HTTP API Token</strong><br><img src="https://manage.icewhale.io/api/static/docs/1773221077004_image.png" alt="BotFather 对话"></p>
+<blockquote>
+<p><strong>保存此 Token</strong> — 您将在下一步中使用它。</p>
+</blockquote>
+<h4 id="3-输入机器人-Token" class="article-heading"><a href="#3-输入机器人-Token" class="headerlink" title="3. 输入机器人 Token"></a>3. 输入机器人 Token<a class="article-anchor" href="#3-输入机器人-Token" aria-hidden="true"></a></h4><p>选择 <strong>Enter Telegram bot token</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773221116186_image.png" alt="Token 输入选项"></p>
+<p>粘贴或输入从 BotFather 获取的 Token。<br><img src="https://manage.icewhale.io/api/static/docs/1773221130505_image.png" alt="Token 输入框"></p>
+<h4 id="4-设置-DM-访问策略" class="article-heading"><a href="#4-设置-DM-访问策略" class="headerlink" title="4. 设置 DM 访问策略"></a>4. 设置 DM 访问策略<a class="article-anchor" href="#4-设置-DM-访问策略" aria-hidden="true"></a></h4><p>当提示 <strong>Configure DM access policies now? (default: pairing)</strong> 时，选择 <strong>Yes</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1773221160225_image.png" alt="策略配置提示"></p>
+<p>在 <strong>Telegram DM policy</strong> 中，选择 **Pairing (recommended)**。<br><img src="https://manage.icewhale.io/api/static/docs/1773221182974_image.png" alt="Pairing 选项被突出显示"></p>
+<p>返回到 <strong>Select sections to configure</strong>，选择 <strong>Continue (Done)</strong> 完成 Telegram 设置。<br><img src="https://manage.icewhale.io/api/static/docs/1773221202944_image.png" alt="Continue (Done) 选项被突出显示"></p>
+<h4 id="5-完成配对" class="article-heading"><a href="#5-完成配对" class="headerlink" title="5. 完成配对"></a>5. 完成配对<a class="article-anchor" href="#5-完成配对" aria-hidden="true"></a></h4><p>打开 Telegram 中机器人对话框并发送 <code>/start</code>，等待机器人回复配对代码。<br><img src="https://manage.icewhale.io/api/static/docs/1773221237858_image.png" alt="Telegram 对话框显示机器人的配对代码回复"></p>
+<p>在终端中运行以下命令，将 <code>&lt;your-pairing-code&gt;</code> 替换为您收到的配对代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openclaw pairing approve telegram &lt;your-pairing-code&gt;</span><br></pre></td></tr></table></figure>
+
+<p>成功消息确认配对完成。现在，您可以通过 Telegram 机器人直接与 AI 聊天。</p>
+<hr>
+<h3 id="2-6-访问-Web-界面" class="article-heading"><a href="#2-6-访问-Web-界面" class="headerlink" title="2.6 访问 Web 界面"></a>2.6 访问 Web 界面<a class="article-anchor" href="#2-6-访问-Web-界面" aria-hidden="true"></a></h3><p>配置完成后，打开浏览器并导航至：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://&lt;ip&gt;:24190?token=casaos</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>&lt;ip&gt;</code> 替换为您设备的 IP 地址。此页面可以让您查看 OpenClaw 的运行状态、日志和当前配置。</p>
+<p>最后，享受 OpenClaw！</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-03-11T09:35:12.647Z" itemprop="dateModified">最后更新：2026-03-11</time>
+                <a href="install-zimaos-on-proxmox-ve.html" class="article-footer-prev" title="在Proxmox VE上安装ZimaOS"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="set-your-SSH.html" class="article-footer-next" title="如何安装 ZimaOS"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%8E%AF%E5%A2%83"><span class="toc-text">1.1 环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%9B%AE%E6%A0%87"><span class="toc-text">1.2 目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-text">1.3 前提条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%BF%AB%E9%80%9F%E6%AD%A5%E9%AA%A4%E6%A6%82%E8%A7%88"><span class="toc-text">1.4 快速步骤概览</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="toc-text">2. 详细步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF"><span class="toc-text">2.1 打开终端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%88%87%E6%8D%A2%E5%88%B0%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F"><span class="toc-text">2.2 切换到管理员模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%BF%9B%E5%85%A5%E9%85%8D%E7%BD%AE%E5%90%91%E5%AF%BC"><span class="toc-text">2.3 进入配置向导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.4 配置模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E6%8F%90%E4%BE%9B%E5%95%86"><span class="toc-text">1. 选择提供商</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="toc-text">2. 输入模型参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E9%85%8D%E7%BD%AE%E9%A2%91%E9%81%93%EF%BC%88%E4%BB%A5-Telegram-%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-text">2.5 配置频道（以 Telegram 为例）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%89%93%E5%BC%80%E9%A2%91%E9%81%93%E8%AE%BE%E7%BD%AE"><span class="toc-text">1. 打开频道设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%8E%B7%E5%8F%96%E6%9C%BA%E5%99%A8%E4%BA%BA-Token"><span class="toc-text">2. 获取机器人 Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%BE%93%E5%85%A5%E6%9C%BA%E5%99%A8%E4%BA%BA-Token"><span class="toc-text">3. 输入机器人 Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%AE%BE%E7%BD%AE-DM-%E8%AE%BF%E9%97%AE%E7%AD%96%E7%95%A5"><span class="toc-text">4. 设置 DM 访问策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%AE%8C%E6%88%90%E9%85%8D%E5%AF%B9"><span class="toc-text">5. 完成配对</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E8%AE%BF%E9%97%AE-Web-%E7%95%8C%E9%9D%A2"><span class="toc-text">2.6 访问 Web 界面</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    
+    <h4 class="category-list-link sidebar-title " style="border:none"> 
+      <a href="./index.html">什么是Zima</a>
+    </h4>
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./how-to-install-zimaos.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Get-Started.html">开始使用</a></li><li class="sidebar-link "><a href="./Features.html">功能</a></li><li class="sidebar-link "><a href="./Romote-Access.html">远程访问</a></li><li class="sidebar-link "><a href="./Thunderbolt-PC-Direct.html">Thunderbolt PC 直连</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./SMB-Help-Document.html">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./ZimaOS-Search-work.html">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./Rebuilding-RAID-after-reinstalling-the-system.html">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./AI-Description-with-ZimaOS.html">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./Enable-AI.html">启用AI搜索</a></li><li class="sidebar-link "><a href="./Enable-Intel-AX210.html">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./How-to-Use-3-2-1-Backup-on-ZimaOS.html">3-2-1备份</a></li><li class="sidebar-link "><a href="./Migrate-from-CasaOS-to-ZimaOS.html">从 CasaOS 迁移到 ZimaOS</a></li><li class="sidebar-link "><a href="./UPS-Setup.html">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve.html">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link  current"><a href="./Tutorial:-How-to-Deploy-OpenClaw.html">教程：如何部署 OpenClaw</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>开发者</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./set-your-SSH.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Networking.html">网络</a></li><li class="sidebar-link "><a href="./Setup-Python.html">设置 Python</a></li><li class="sidebar-link "><a href="./Build-Apps.html">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-Bay-LED.html">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./Install-offline.html">离线更新</a></li><li class="sidebar-link "><a href="./Disk-Format-Supported.html">支持的磁盘格式</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./How-to-Contribute.html">如何贡献</a></li><li class="sidebar-link "><a href="./A-list-of-Contributions.html">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./A-Simple-Guide-to-Installing-Syncthing-on-ZimaOS.html">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless-ngx-on-ZimaOS.html">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless‑AI-on-ZimaOS.html">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./AzuraCast-Install-Guide.html">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./Zabbix-Install-Guide.html">Zabbix安装指南</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>版本记录</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./v-1.4.3.html">版本 1.4.3</a></li><li class="sidebar-link "><a href="./v-1.4.2.html">v 1.4.2 </a></li><li class="sidebar-link "><a href="./v-1.4.1.html">版本 1.4.1</a></li><li class="sidebar-link "><a href="./v-1.4.0.html">v 1.4.0</a></li><li class="sidebar-link "><a href="./v1.3.3.html">v1.3.3</a></li><li class="sidebar-link "><a href="./v-1.3.2.html">版本 1.3.2</a></li><li class="sidebar-link "><a href="./v-1.3.1-.html">版本 1.3.1</a></li><li class="sidebar-link "><a href="./v1.3.0.html">v1.3.0</a></li><li class="sidebar-link "><a href="./ZimaOS-v1.2.5-Available!.html">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1.2.4.html">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1.2.3.html">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1.2.2.html">v 1.2.2</a></li><li class="sidebar-link "><a href="./v-1.4.4.html">版本 1.4.4
+
+注：其中 “v” 常表示 “版本”，也可写成“版本号 1.4.4”。</a></li><li class="sidebar-link "><a href="./v-1.5.0.html">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1.5.1.html">“v 1.5.1” 这个标题看起来像是某个软件或版本的标识。如果您想要翻译为中文，它的意思就是“版本 1.5.1”。</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./UPS-Compatibility-List.html">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./Encryption-Folder.html">加密文件夹</a></li>
+      </ul>
+    </li></ul>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+    </ul>
+    
+      
+    <h4 class="category-list-link sidebar-title " style="border:none"> 
+      <a href="./index.html">什么是Zima</a>
+    </h4>
+    <ul class="category-list">
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>概述</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./how-to-install-zimaos.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Get-Started.html">开始使用</a></li><li class="sidebar-link "><a href="./Features.html">功能</a></li><li class="sidebar-link "><a href="./Romote-Access.html">远程访问</a></li><li class="sidebar-link "><a href="./Thunderbolt-PC-Direct.html">Thunderbolt PC 直连</a></li>
+      </ul>
+    </li>
+    <li class="show-children">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>探索</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./Sync-Photos-with-Immich.html">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./Media-Server-Setup-with-Jellyfin.html">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./NVR-Camera-Server.html">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./Link-Synology-and-SMB-Shares.html">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./Sync-Photos-via-Configurable-CLI.html">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./Connect-with-Cloud-Drives.html">连接云盘</a></li><li class="sidebar-link "><a href="./Build-Multiple-Clones-using-rsync.html">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./Data-Migration.html">数据迁移</a></li><li class="sidebar-link "><a href="./ZFS-Setup.html">ZFS 设置</a></li><li class="sidebar-link "><a href="./More-RAID-Options.html">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./migrate-files-from-Synology-to-ZimaCube.html">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./How-to-Open-SSH-in-ZimaOS.html">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./How-to-understand-Docker-App's-paths-On-ZimaOS.html">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./Detailed-Plex-Operation-Guide.html">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature.html">通过链接共享</a></li><li class="sidebar-link "><a href="./How-to-Manually-Download-the-Large-Language-Model.html">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./Recover-Your-Password.html">恢复密码</a></li><li class="sidebar-link "><a href="./Get-Network-ID.html">获取网络 ID</a></li><li class="sidebar-link "><a href="./Achieve-Fastest-Transfer-Speed.html">实现最快传输速度</a></li><li class="sidebar-link "><a href="./Using-Samba-as-a-Member.html">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./How-to-download-and-install-ZimaClient.html">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./Create-Raid6-on-ZimaOS.html">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./Immich-Tutorial.html">Immich 教程</a></li><li class="sidebar-link "><a href="./iSCSI-usage-tutorial.html">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./resetnetworksettings.html">重置网络设置</a></li><li class="sidebar-link "><a href="./setup-emby-server.html">开启电源</a></li><li class="sidebar-link "><a href="./Pi-hole-Deployment-Guide-on-ZimaOS.html">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./Deploy-Radarr-in-ZimaOS.html">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./System-Quick-Recovery-Guide.html">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./Setting-Up-ZimaCube-as-DLNA-Server.html">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./Time-Machine-Features.html">时间机器功能</a></li><li class="sidebar-link "><a href="./NFS-on-ZimaOS.html">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./Deploy-Deepseek-R1.html">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iSCSI-on-ZimaOS.html">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./ZimaOS-&-QTS-Two-Way-Sync-Guide.html">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./SMB-Help-Document.html">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./ZimaOS-Search-work.html">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./Rebuilding-RAID-after-reinstalling-the-system.html">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./AI-Description-with-ZimaOS.html">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./Enable-AI.html">启用AI搜索</a></li><li class="sidebar-link "><a href="./Enable-Intel-AX210.html">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./How-to-Use-3-2-1-Backup-on-ZimaOS.html">3-2-1备份</a></li><li class="sidebar-link "><a href="./Migrate-from-CasaOS-to-ZimaOS.html">从 CasaOS 迁移到 ZimaOS</a></li><li class="sidebar-link "><a href="./UPS-Setup.html">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve.html">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link  current"><a href="./Tutorial:-How-to-Deploy-OpenClaw.html">教程：如何部署 OpenClaw</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>开发者</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./set-your-SSH.html">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./Networking.html">网络</a></li><li class="sidebar-link "><a href="./Setup-Python.html">设置 Python</a></li><li class="sidebar-link "><a href="./Build-Apps.html">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-Bay-LED.html">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./Install-offline.html">离线更新</a></li><li class="sidebar-link "><a href="./Disk-Format-Supported.html">支持的磁盘格式</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>社区作品</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./How-to-Contribute.html">如何贡献</a></li><li class="sidebar-link "><a href="./A-list-of-Contributions.html">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./A-Simple-Guide-to-Installing-Syncthing-on-ZimaOS.html">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless-ngx-on-ZimaOS.html">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./A-Comprehensive-Guide-to-Installing-Paperless‑AI-on-ZimaOS.html">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./AzuraCast-Install-Guide.html">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./Zabbix-Install-Guide.html">Zabbix安装指南</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>版本记录</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./v-1.4.3.html">版本 1.4.3</a></li><li class="sidebar-link "><a href="./v-1.4.2.html">v 1.4.2 </a></li><li class="sidebar-link "><a href="./v-1.4.1.html">版本 1.4.1</a></li><li class="sidebar-link "><a href="./v-1.4.0.html">v 1.4.0</a></li><li class="sidebar-link "><a href="./v1.3.3.html">v1.3.3</a></li><li class="sidebar-link "><a href="./v-1.3.2.html">版本 1.3.2</a></li><li class="sidebar-link "><a href="./v-1.3.1-.html">版本 1.3.1</a></li><li class="sidebar-link "><a href="./v1.3.0.html">v1.3.0</a></li><li class="sidebar-link "><a href="./ZimaOS-v1.2.5-Available!.html">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1.2.4.html">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1.2.3.html">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1.2.2.html">v 1.2.2</a></li><li class="sidebar-link "><a href="./v-1.4.4.html">版本 1.4.4
+
+注：其中 “v” 常表示 “版本”，也可写成“版本号 1.4.4”。</a></li><li class="sidebar-link "><a href="./v-1.5.0.html">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1.5.1.html">“v 1.5.1” 这个标题看起来像是某个软件或版本的标识。如果您想要翻译为中文，它的意思就是“版本 1.5.1”。</a></li>
+      </ul>
+    </li>
+    <li class="">
+      <h4 class="category-list-link sidebar-title"> 
+        <span>常见问题</span>
+        <i class="fa fa-chevron-right"></i>
+      </h4>
+      <ul class="category-list-children">
+      <li class="sidebar-link "><a href="./UPS-Compatibility-List.html">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./Encryption-Folder.html">加密文件夹</a></li>
+      </ul>
+    </li></ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label" style="display:none">
+      <i class="fa fa-globe"></i>
+      <span>中文</span></span>
+    <select id="mobile-lang-select" data-canonical="zimaos/Tutorial:-How-to-Deploy-OpenClaw.html">
+      
+        <option value="en">English</option>
+      
+        <option value="zh" selected>中文</option>
+      
+        <option value="jp">日本語</option>
+      
+        <option value="pt-PT">Português</option>
+      
+        <option value="es">Español</option>
+      
+    </select>
+  </div>
+</nav>
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
