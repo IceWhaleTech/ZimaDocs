@@ -24,6 +24,11 @@ Complete the initial OpenClaw setup, including:
 - Creating and linking a Telegram bot to enable AI chat via direct messages
 
 - Viewing and managing OpenClaw status through the Web UI
+### 1.3 Usage Notes
+
+- **Continuous Operation:** OpenClaw is designed to run 24/7. Place your ZimaBlade in a well-ventilated area with a stable ambient temperature to ensure reliable long-term performance and prevent thermal throttling.
+
+- **Storage Expansion:** The ZimaBlade's built-in storage is limited. If you plan to use memory or logging features extensively, it is strongly recommended to attach an external drive for storing conversation history and application data.
 
 ### 1.3 Prerequisites
 
