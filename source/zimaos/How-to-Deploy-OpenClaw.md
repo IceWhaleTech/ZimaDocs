@@ -7,9 +7,13 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 ---
 ## 1. Overview
 
-This tutorial guides you through deploying OpenClaw on a device running CasaOS, completing the basic configuration, and enabling AI model interaction via Telegram. Using a Telegram bot as the example, this tutorial covers the entire process from model provider setup to bot pairing.
+This tutorial guides you through deploying OpenClaw on a device running CasaOS/ZimaOS, completing the basic configuration, and enabling AI model interaction via Telegram. Using a Telegram bot as the example, this tutorial covers the entire process from model provider setup to bot pairing.
 
 ### 1.1 Environment
+
+- Recommended Hardware Specifications: 
+  - 4 GB RAM
+  - 20 GB Storage
 
 - Software：CasaOS v0.4.15 / ZimaOS v1.5.4 (latest)
 
@@ -24,6 +28,7 @@ Complete the initial OpenClaw setup, including:
 - Creating and linking a Telegram bot to enable AI chat via direct messages
 
 - Viewing and managing OpenClaw status through the Web UI
+
 ### 1.3 Usage Notes
 
 - **Continuous Operation:** OpenClaw is designed to run 24/7. Place your ZimaBlade in a well-ventilated area with a stable ambient temperature to ensure reliable long-term performance and prevent thermal throttling.
@@ -46,7 +51,7 @@ Complete the initial OpenClaw setup, including:
 
 - Install OpenClaw from the CasaOS / ZimaOS App Store.
 
-- Open a terminal — connect via SSH (recommended) or use the CasaOS terminal.
+- Open a terminal — connect via SSH (recommended) or use the terminal.
 
 - Switch to administrator mode: run `su` and enter the default password `casaos`.
 
@@ -72,7 +77,7 @@ After installing OpenClaw via the CasaOS Web UI, open a terminal to begin config
 
 **A. SSH from your computer (recommended — easier to copy and paste commands)**
 
-Press **Win + X** on your computer to open the quick-access menu and select **Terminal**.
+Please open the **Terminal**.
 Run the following command:
 ```bash
    ssh <username>@<ip>
@@ -98,7 +103,9 @@ Run the following command and press Enter:
    su
 ```
 Enter the default password `casaos`.
+
    > The password will not be displayed as you type — this is normal.
+> If you are using ZimaOS, no password is required.
 
 ![Terminal showing the prompt has switched to the root user](https://manage.icewhale.io/api/static/docs/1773220537700_image.png)
 
