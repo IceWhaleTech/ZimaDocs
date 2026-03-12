@@ -9,7 +9,17 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 
 This tutorial guides you through deploying OpenClaw on a device running CasaOS/ZimaOS, completing the basic configuration, and enabling AI model interaction via Telegram. Using a Telegram bot as the example, this tutorial covers the entire process from model provider setup to bot pairing.
 
-### 1.1 Environment
+### 1.1 Goals
+
+- Complete the initial OpenClaw setup, including:
+
+- Connecting a custom AI model provider
+
+- Creating and linking a Telegram bot to enable AI chat via direct messages
+
+- Viewing and managing OpenClaw status through the Web UI
+
+### 1.2 Environment
 
 - Recommended Hardware Specifications: 
   - 4 GB RAM
@@ -18,16 +28,6 @@ This tutorial guides you through deploying OpenClaw on a device running CasaOS/Z
 - Software：CasaOS v0.4.15 / ZimaOS v1.5.4 (latest)
 
 - Network：Must  The device must be connected to the internet and able to reach the Telegram API. A wired connection is recommended for stability.
-
-### 1.2 Goals
-
-Complete the initial OpenClaw setup, including:
-
-- Connecting a custom AI model provider
-
-- Creating and linking a Telegram bot to enable AI chat via direct messages
-
-- Viewing and managing OpenClaw status through the Web UI
 
 ### 1.3 Usage Notes
 
@@ -69,9 +69,9 @@ Complete the initial OpenClaw setup, including:
 
 ---
 
-## 2. Detailed Steps
+## 2. Detailed Steps (CasaOs Example)
 
-### 2.1 Open a Terminal
+### 2.1 Open a Terminal 
 
 After installing OpenClaw via the CasaOS Web UI, open a terminal to begin configuration. There are two ways to do this:
 
