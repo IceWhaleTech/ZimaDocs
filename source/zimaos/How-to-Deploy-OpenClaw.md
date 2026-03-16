@@ -239,3 +239,10 @@ https://<ip>:24190?token=casaos
 Replace `<ip>` with your device's IP address. This page lets you view OpenClaw's running status, logs, and current configuration.
 
 Finally, enjoy OpenClaw!
+## 3. Troubleshooting
+**Q:** How to handle the "paired required" prompt?
+**A:** 
+- Re-enter the container terminal and run the following command to list devices:  
+  `node /app/dist/index.js devices list`
+- If there is an unpaired device, note its request_id, then run the approval command:  
+  `node /app/dist/index.js devices approve <request_id>`
