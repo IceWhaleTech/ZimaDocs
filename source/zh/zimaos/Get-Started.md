@@ -15,7 +15,7 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 请访问 https://find.zimaspace.com/ 并安装 ZimaClient。它将自动扫描可用设备。
 ### 快速搜索
 如果您更喜欢使用网页界面，可以访问该网站。请确保您的设备连接到与 ZimaCube 相同的网络。在网页上扫描，扫描完成后，您将看到可用的 ZimaCube 设备列表。只需点击相应的设备即可连接到 ZimaOS。
-![](https://manage.icewhale.io/api/static/docs/1727082045246_image.png)
+![](https://manage.icewhale.io/api/static/docs/1773888170981_20260318-185643.jpeg)
 
 ## 登录 ZimaOS
 成功连接到 ZimaCube 后，输入相应的 IP 地址以进入 ZimaOS 初始化界面，在这里您可以开始配置您的 ZimaCube。
