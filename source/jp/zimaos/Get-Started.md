@@ -15,7 +15,7 @@ ZimaOSの始め方は非常に簡単です。全体のシステムは**シンプ
 https://find.zimaspace.com/ にアクセスし、ZimaClientをインストールします。利用可能なデバイスを自動的にスキャンします。
 ### クイック検索
 ウェブインターフェースを使用する場合は、ウェブサイトを訪問できます。デバイスがZimaCubeと同じネットワークに接続されていることを確認してください。ウェブページ上でスキャンし、スキャンが完了すると利用可能なZimaCubeデバイスのリストが表示されます。該当するデバイスをクリックしてZimaOSに接続します。
-![](https://manage.icewhale.io/api/static/docs/1727082045246_image.png)
+![](https://manage.icewhale.io/api/static/docs/1773888170981_20260318-185643.jpeg)
 
 ## ZimaOSにログイン
 ZimaCubeへの接続に成功したら、対応するIPアドレスを入力してZimaOSの初期化インターフェースに入ります。ここでZimaCubeの設定を開始できます。
