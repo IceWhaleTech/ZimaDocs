@@ -8,7 +8,8 @@ tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将
 # Remote Access
 ##  Your Gateway to Remote Access
 **Enter ZimaCube’s Remote feature**[ (click here to learn more)](/docs/zimaos/Romote-Access) , a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
-![](https://manage.icewhale.io/api/static/docs/1731556707120_image.png)
+![](https://manage.icewhale.io/api/static/docs/1773989011331_img_v3_02vt_5e8ddcb9-5708-41d3-be12-7392938caaeg.jpg)
+
 
 ## Second host device access:
 If you have another computer in the office, but the zimacube is not with you, you can still use Connect ID.
