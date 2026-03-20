@@ -8,6 +8,8 @@ tip: A barra superior é um formato fixo e não deve ser removida, a descrição
 # Acesso Remoto
 ##  Seu Portal para Acesso Remoto
 [Entre na funcionalidade Remota do ZimaCube](/zimaos/Romote-Access), uma solução poderosa que permite aos usuários gerenciar e acessar seus dados de qualquer lugar do mundo. Quer você esteja lidando com documentos urgentes remotamente ou aproveitando sua biblioteca de mídia em casa, o ZimaCube garante que seus dados estejam sempre ao seu alcance, de forma eficiente e segura.
+![](https://manage.icewhale.io/api/static/docs/1773989011331_img_v3_02vt_5e8ddcb9-5708-41d3-be12-7392938caaeg.jpg)
+
 
 ## Acesso a segundo dispositivo anfitrião:
 Se você tiver outro computador no escritório, mas o ZimaCube não estiver com você, ainda pode usar o ID de Conexão.
