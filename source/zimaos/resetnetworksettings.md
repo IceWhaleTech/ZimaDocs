@@ -5,8 +5,12 @@ type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---
-## Scenario
 If you have set a static IP in ZimaOS and need to reset the network IP settings due to network changes, you can use this tutorial to reset the set IP binding.
+
+{% note warn  %} 
+**Note:** Before attempting the USB reset procedure below, please try connecting to a different network port and then use ZimaClient to search for the network again.
+{% endnote %}
+
 ### Format USB drive
 Win formatting can be done by right-clicking the USB drive and selecting exFAT to format
 ![](https://manage.icewhale.io/api/static/docs/1730802271117_image.png)
