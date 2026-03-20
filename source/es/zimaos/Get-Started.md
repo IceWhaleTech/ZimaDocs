@@ -15,7 +15,7 @@ A lo largo del proceso de configuración, la **aplicación cliente de Zima estab
 https://find.zimaspace.com/ e instala ZimaClient. Se escaneará automáticamente en busca de dispositivos disponibles.
 ### Búsqueda Rápida
 Si prefieres usar la interfaz web, puedes visitar el sitio web. Asegúrate de que tu dispositivo esté conectado a la misma red que ZimaCube. Escanea en la página web, y después de que el escaneo se haya completado, verás una lista de dispositivos ZimaCube disponibles. Solo haz clic en el dispositivo correspondiente para conectarte a ZimaOS.
-![](https://manage.icewhale.io/api/static/docs/1727082045246_image.png)
+![](https://manage.icewhale.io/api/static/docs/1773888170981_20260318-185643.jpeg)
 
 ## Iniciar sesión en ZimaOS
 Después de conectarte exitosamente a ZimaCube, ingresa la dirección IP correspondiente para acceder a la interfaz de inicialización de ZimaOS, donde puedes comenzar a configurar tu ZimaCube.
