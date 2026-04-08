@@ -1,6 +1,6 @@
 ---
 title: How to Use 3-2-1 Backup on ZimaOS？
-description: Quickly learn how to use 3-2-1 backup on ZimaOS
+description: "Set up 3-2-1 backup on ZimaOS to protect your data with three copies, two media types and one offsite location. Covers backup configuration and scheduling."
 type: Docs
 author: vicky
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

@@ -1,5 +1,6 @@
 ---
 title: VR Audio and Video Experience Oculus
+description: "Use ZimaBoard as a VR media server for Oculus headsets. Stream high-quality audio and video files wirelessly for an immersive VR entertainment experience."
 ---
 # Oculus Quest 2 Meet ZimaBoard
 

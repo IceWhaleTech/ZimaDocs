@@ -1,5 +1,6 @@
 ---
 title: Hardware-Interface-Introduction
+description: "ZimaBoard hardware interface guide. Detailed overview of all ports including SATA, PCIe, USB, HDMI, GbE, and GPIO connector locations and use cases."
 ---
 
 The content of this article is to introduce ZimaBoard interface information and some interfaces with docs links — For more details, please check the official website-[zimaboard](https://www.zimaboard.com/).

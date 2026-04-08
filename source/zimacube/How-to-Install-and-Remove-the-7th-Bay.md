@@ -1,6 +1,6 @@
 ---
 title: How to Install and Remove the 7th Bay
-description:
+description: "Step-by-step guide to install and remove the ZimaCube 7th bay drive. Includes panel removal, screw instructions, and safe drive handling."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

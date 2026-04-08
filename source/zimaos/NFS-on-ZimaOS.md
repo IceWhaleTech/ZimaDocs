@@ -1,6 +1,6 @@
 ---
 title: How to use NFS on ZimaOS
-description: 
+description: "Configure NFS file sharing on ZimaOS to mount ZimaCube storage on Linux or macOS clients. Covers server setup, exports, and client mount commands."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

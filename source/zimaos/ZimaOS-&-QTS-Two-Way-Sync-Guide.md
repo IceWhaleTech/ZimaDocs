@@ -1,6 +1,6 @@
 ---
 title: ZimaOS & QTS Two-Way Sync Guide
-description: 
+description: "Sync files between ZimaOS and QNAP QTS NAS using two-way synchronization. Step-by-step guide to keep data consistent across both NAS systems."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

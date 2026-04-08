@@ -1,6 +1,6 @@
 ---
 title: Auto Power-On Solution For ZimaCube
-description:
+description: "Set up ZimaCube auto power-on by modifying mainboard jumper pins. Follow this step-by-step tutorial to enable automatic startup on power."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

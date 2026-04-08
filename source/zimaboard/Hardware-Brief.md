@@ -1,6 +1,6 @@
 ---
 title: Hardware Brief
-description: 
+description: "ZimaBoard hardware overview and key specifications. Quick reference for the single-board server's CPU, RAM, storage, PCIe slot, and connectivity options."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

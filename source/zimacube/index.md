@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-description:
+description: "Get started with ZimaCube NAS setup in three simple steps. Unbox, connect, and access your ZimaOS storage system with this quick start guide."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

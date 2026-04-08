@@ -1,6 +1,6 @@
 ---
 title: How to Experience immich on ZimaOS
-description:
+description: “Sync photos and videos from your phone to ZimaOS using Immich. Experience Google Photos-style automatic backup with full privacy on your ZimaCube.”
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

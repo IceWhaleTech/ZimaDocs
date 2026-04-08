@@ -1,6 +1,6 @@
 ---
 title: ZimaCube Resets CMOS
-description:
+description: "Learn how to reset the ZimaCube CMOS to restore BIOS defaults. Step-by-step guide to fix configuration issues and resolve boot problems."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

@@ -1,6 +1,6 @@
 ---
 title: Enable AI search
-description: 
+description: "Enable AI-powered search on ZimaOS to find files using natural language. Set up the local AI model for private, on-device intelligent file search."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

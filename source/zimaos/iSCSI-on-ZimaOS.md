@@ -1,6 +1,6 @@
 ---
 title: Getting Started with iSCSI on ZimaOS
-description: 
+description: "Get started with iSCSI on ZimaOS to map remote storage as local disks, ideal for virtualization and high-performance block storage."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

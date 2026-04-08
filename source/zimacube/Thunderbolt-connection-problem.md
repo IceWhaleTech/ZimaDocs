@@ -1,6 +1,6 @@
 ---
 title: Checking the Thunderbolt connection problem
-description: 
+description: "Troubleshoot ZimaCube Thunderbolt connection issues. Check port compatibility, cable requirements, and BIOS settings to fix problems."
 type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

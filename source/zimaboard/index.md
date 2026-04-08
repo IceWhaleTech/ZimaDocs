@@ -1,6 +1,6 @@
 ---
 title: Get Started with ZimaBoard
-description:
+description: "ZimaBoard documentation index. Find guides for hardware setup, OS installation, networking, Docker apps, and single-board server use cases."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

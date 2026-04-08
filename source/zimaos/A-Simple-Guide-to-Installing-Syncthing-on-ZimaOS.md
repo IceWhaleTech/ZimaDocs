@@ -1,6 +1,6 @@
 ---
 title: A Simple Guide to Installing Syncthing on ZimaOS
-description: 
+description: "Install Syncthing on ZimaOS for real-time, peer-to-peer file synchronization across devices. Step-by-step setup guide with no cloud required."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

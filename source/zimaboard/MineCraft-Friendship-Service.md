@@ -1,5 +1,6 @@
 ---
 title: Minecraft Server–Build a Minecraft Server with ZimaBoard
+description: "Run a private Minecraft server on ZimaBoard for you and your friends. Install Java Edition server, configure settings, and invite players to your local world."
 ---
 
 We have experience using a **ZimaCube/ZimaBoard** to build a home 4K theater, but simply watching movies no longer meets our family’s entertainment needs. As a result, we started looking for engaging games that appeal to both adults and children. A truly captivating game not only brings family members closer but also nurtures children’s creativity.

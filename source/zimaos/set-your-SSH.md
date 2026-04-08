@@ -1,6 +1,6 @@
 ---
 title: SSH Setting
-description:
+description: "Learn how to enable and configure SSH on ZimaOS, set up the root password, and use the built-in web terminal for remote access."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

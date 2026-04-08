@@ -1,6 +1,6 @@
 ---
 title: AX210 Wi-Fi Card User Guide
-description: 
+description: "Install and enable the Intel AX210 Wi-Fi 6E card on ZimaBoard. Step-by-step guide for hardware installation, driver setup, and wireless network connection."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

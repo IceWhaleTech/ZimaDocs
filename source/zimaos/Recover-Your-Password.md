@@ -1,6 +1,6 @@
 ---
 title: How to recover your password
-description: 
+description: "Recover your forgotten ZimaOS password and regain access to your system. Step-by-step guide using recovery mode or SSH to reset credentials."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

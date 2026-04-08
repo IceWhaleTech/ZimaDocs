@@ -1,6 +1,6 @@
 ---
 title: How to Create Raid6 on ZimaOS?
-description: 
+description: "Create a RAID 6 array on ZimaOS for double-parity redundancy and data protection. Step-by-step guide to configure storage with ZimaCube drives."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

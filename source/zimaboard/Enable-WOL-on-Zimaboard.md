@@ -1,6 +1,6 @@
 ---
 title: How to Enable Wake-on-LAN (WOL) on Zimaboard
-description: 
+description: "Enable Wake-on-LAN on ZimaBoard to remotely power it on from sleep. Configure BIOS and network settings for WOL support on your single-board server."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

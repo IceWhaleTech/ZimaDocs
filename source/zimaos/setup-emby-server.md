@@ -1,6 +1,6 @@
 ---
 title: How to setup an emby server on ZimaOS?
-description: 
+description: "Step-by-step guide to setting up an Emby media server on ZimaOS for streaming movies, TV shows, and music across all your devices."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

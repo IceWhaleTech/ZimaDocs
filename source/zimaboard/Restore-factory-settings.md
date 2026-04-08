@@ -1,5 +1,6 @@
 ---
 title: ZimaBoard CasaOS Factory Recovery
+description: "Restore ZimaBoard to factory settings to fix software issues or prepare for resale. Step-by-step guide to reflash the OS and reset all configurations."
 ---
 
 # Preparation

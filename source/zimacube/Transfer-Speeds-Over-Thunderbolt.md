@@ -1,6 +1,6 @@
 ---
 title: ZimaCube Transfer Speeds Over Thunderbolt Connections Explained
-description: 
+description: "Discover ZimaCube Thunderbolt transfer speeds reaching 2GB/s. See performance benchmarks and tips for optimizing file transfers."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

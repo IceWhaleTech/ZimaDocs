@@ -1,6 +1,6 @@
 ---
 title: iSCSI usage tutorial
-description: 
+description: "Tutorial on configuring and using iSCSI in ZimaOS for centralized network storage management, including server and client setup steps."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

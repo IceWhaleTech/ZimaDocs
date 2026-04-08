@@ -1,6 +1,6 @@
 ---
 title: ZimaOS System Quick Recovery Guide
-description: 
+description: "Quickly recover a non-bootable ZimaOS system using the recovery partition. Restore your NAS without losing data using this step-by-step guide."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

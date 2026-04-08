@@ -1,6 +1,6 @@
 ---
 title: Seamlessly Integrate Cloud and Edge for Total Data Management
-description:
+description: “Connect Google Drive, OneDrive, and Dropbox to ZimaOS for unified cloud and local storage management. Access all your files from one interface.”
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

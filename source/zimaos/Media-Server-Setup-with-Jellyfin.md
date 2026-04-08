@@ -1,6 +1,6 @@
 ---
-title: How to Watching Videos Anywhere with Jellyfin Media Server
-description:
+title: How to Watch Videos Anywhere with Jellyfin Media Server
+description: "Set up Jellyfin media server on ZimaOS to stream movies and TV shows to any device. Covers installation, library setup, hardware transcoding and remote access."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

@@ -1,6 +1,6 @@
 ---
 title: From Synology to ZimaCube，migrate all files!
-description:
+description: "Migrate all your files from Synology NAS to ZimaCube. Step-by-step guide using ZimaOS data migration tools for a smooth and complete transfer."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

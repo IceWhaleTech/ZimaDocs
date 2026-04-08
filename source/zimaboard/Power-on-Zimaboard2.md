@@ -1,6 +1,6 @@
 ---
 title: Get Started with ZimaBoard 2
-description:
+description: "Unbox and set up your ZimaBoard 2 single-board server. Covers hardware overview, first boot, connecting peripherals and accessing the system dashboard."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

@@ -1,5 +1,6 @@
 ---
 title: 2 ZimaBlades, 1 Cluster? PVE makes your service Migratable!
+description: “Build a ZimaBlade cluster with Proxmox VE (PVE) for live VM migration. Create a high-availability home lab with multiple ZimaBlade nodes.”
 type: “Docs”
 tip: 顶部栏固定格式请勿删除
 ---

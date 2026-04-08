@@ -1,6 +1,6 @@
 ---
 title: Title
-description:
+description: "View ZimaOS release notes with the latest updates, bug fixes, and new features. Stay current with every ZimaOS version improvement."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

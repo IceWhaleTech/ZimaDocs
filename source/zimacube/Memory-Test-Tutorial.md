@@ -1,6 +1,6 @@
 ---
 title: Memory Test Tutorial
-description: 
+description: "Run a ZimaCube memory test using Memtest86 to diagnose boot failures, screen distortion, and freezes. Step-by-step USB tutorial included."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

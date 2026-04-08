@@ -1,6 +1,6 @@
 ---
 title: Install ZimaOS on Proxmox VE Using the ISO Image
-description: 
+description: "Guide to installing ZimaOS on Proxmox VE using the official ISO image for virtual machine testing, evaluation, and lightweight use."
 type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

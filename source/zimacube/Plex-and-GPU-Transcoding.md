@@ -1,6 +1,6 @@
 ---
 title: How to enable Plex hardware transcoding on ZimaCube?
-description:
+description: "Enable Plex hardware transcoding on ZimaCube with Intel or NVIDIA GPU acceleration. Stream HD and 4K video smoothly using Docker."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

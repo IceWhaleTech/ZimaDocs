@@ -1,6 +1,6 @@
 ---
 title: Installing OpenWrt on ZimaBoard 2
-description: 
+description: "Install OpenWrt on ZimaBoard 2 for a powerful home router and network appliance. Step-by-step flashing guide with package manager and LAN configuration."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

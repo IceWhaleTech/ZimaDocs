@@ -1,6 +1,6 @@
 ---
 title: How to use CLI to wander on ZimaOS
-description:
+description: "Use the ZimaOS command-line interface for advanced file management and photo sync. Covers CLI basics, configuration options and terminal operations on ZimaOS."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

@@ -1,6 +1,6 @@
 ---
 title: Auto Power-On Solution For ZimaCube
-description:
+description: "Configure ZimaCube to power on automatically after a power outage. Step-by-step guide to enable auto power-on via BIOS or mainboard jumper settings."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

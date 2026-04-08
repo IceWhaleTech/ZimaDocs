@@ -1,6 +1,6 @@
 ---
 title: ZimaOS OpenAPI Live Preview
-description:
+description: "Explore ZimaOS OpenAPI endpoints interactively with the Live Preview tool. Visualize API structure and test requests before building your integrations."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

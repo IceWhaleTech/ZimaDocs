@@ -1,6 +1,6 @@
 ---
 title: Pi-hole Deployment Guide on ZimaOS
-description: 
+description: "Deploy Pi-hole on ZimaOS to block ads across your entire network. Step-by-step Docker installation, DNS configuration and dashboard setup guide."
 type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

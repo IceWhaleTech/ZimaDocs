@@ -1,6 +1,6 @@
 ---
 title: PC Direct
-description:
+description: "Connect ZimaCube directly to your PC via Thunderbolt or 10GbE for fast local file transfer. Setup guide for PC Direct mode without a router."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

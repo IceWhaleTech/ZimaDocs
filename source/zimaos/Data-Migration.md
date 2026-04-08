@@ -1,6 +1,6 @@
 ---
 title: Data Migration Guide
-description:
+description: “Migrate Docker images, app data, and user folders to a new storage location on ZimaOS. Free up space and keep your system organized with ease.”
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

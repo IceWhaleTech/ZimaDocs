@@ -1,6 +1,6 @@
 ---
 title: A Comprehensive Guide to Installing Paperless‑AI on ZimaOS
-description: 
+description: "Install Paperless-AI on ZimaOS to automate document sorting and tagging with AI. Community guide covering Docker setup, configuration, and first-run experience."
 type: Docs
 author: admin
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

@@ -1,6 +1,6 @@
 ---
 title: How to use ZimaOS OpenAPI
-description:
+description: "Use ZimaOS OpenAPI to automate file management, user control, and system settings. Developer guide covering authentication, endpoints, and integration examples."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

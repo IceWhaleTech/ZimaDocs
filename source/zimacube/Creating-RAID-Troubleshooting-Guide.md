@@ -1,6 +1,6 @@
 ---
 title: Creating RAID Troubleshooting Guide
-description:
+description: "Troubleshoot ZimaCube RAID creation errors on ZimaOS. Fix common issues with drive detection, RAID type selection, and array initialization failures."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

@@ -1,6 +1,6 @@
 ---
 title: Update offline
-description: update ZimaOS in an offline environment
+description: "Update ZimaOS without internet access. Download the offline update package, transfer it to your device and apply the system update manually."
 type: "Docs"
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

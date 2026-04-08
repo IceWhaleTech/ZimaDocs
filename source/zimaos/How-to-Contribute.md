@@ -1,6 +1,6 @@
 ---
 title: How to Contribute
-description:
+description: “Learn how to contribute to ZimaOS open source development. Guidelines for submitting code, reporting bugs, and improving documentation on GitHub.”
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

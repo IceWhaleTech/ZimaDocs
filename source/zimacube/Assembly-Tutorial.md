@@ -1,6 +1,6 @@
 ---
 title: Disassembly and assembly machine tutorial
-description: 
+description: "ZimaCube assembly tutorial with step-by-step instructions. Learn how to install drives, seat the GPU, and assemble your ZimaCube hardware before first boot."
 type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

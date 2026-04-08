@@ -1,6 +1,6 @@
 ---
 title: ZimaCube Troubleshooting Self-Test Guide
-description: 
+description: "Diagnose and fix common ZimaCube issues with this self-test troubleshooting guide. Covers hardware, boot, network, and storage problems."
 type: Docs
 author: icewhale123456
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字

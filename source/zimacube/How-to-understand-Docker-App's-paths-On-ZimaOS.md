@@ -1,6 +1,6 @@
 ---
 title: How to understand Docker App's paths On ZimaOS
-description:
+description: "Understand Docker app paths on ZimaOS and learn to distinguish between host and container paths for proper volume mapping and configuration."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

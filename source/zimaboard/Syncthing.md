@@ -1,6 +1,6 @@
 ---
 title: ZimaBoard + Syncthing!
-description:
+description: "Set up Syncthing on ZimaBoard for decentralized file synchronization. Sync files across devices privately without any cloud or central server."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

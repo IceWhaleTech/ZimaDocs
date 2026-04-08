@@ -1,6 +1,6 @@
 ---
 title: How to Manually Download the Large Language Model
-description:
+description: “Manually download large language models for ZimaOS AI features without internet. Covers model selection, transfer via USB, and local installation steps.”
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

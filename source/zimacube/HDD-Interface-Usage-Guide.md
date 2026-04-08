@@ -1,6 +1,6 @@
 ---
 title: Install Your Disk
-description:
+description: "ZimaCube HDD interface usage guide. Learn how to connect SATA and NVMe drives, check drive health, and maximize storage capacity on your NAS."
 type: “Docs”
 tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
 ---

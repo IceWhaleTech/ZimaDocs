@@ -1,5 +1,6 @@
 ---
 title: Find CasaOS IP Address 
+description: "Find your ZimaBoard IP address on the local network. Multiple methods including terminal commands, router admin panel, and ZimaClient discovery."
 ---
 
 # Find Your CasaOS IP Address #
