@@ -15,7 +15,7 @@ tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时
 直接连接非常适合快速和简单的设置，提供了一种快速且安全的方式来连接设备，而无需更广泛的网络。这种方法非常适合文件传输或使用需要高速访问的特定应用程序。
 
 {% note warn 提示: %}
-如果在使用 Thunderbolt 时遇到任何问题，您可以在 [这里](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html) 获取更多详细信息。
+如果在使用 Thunderbolt 时遇到任何问题，您可以在 [这里](/zimacube/Thunderbolt-connection-problem) 获取更多详细信息。
 {% endnote %}
 
 **您需要准备的：**

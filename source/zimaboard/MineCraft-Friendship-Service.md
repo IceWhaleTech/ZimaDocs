@@ -13,7 +13,7 @@ Minecraft is a sandbox building game created by Markus Persson, founder of Mojan
 
 ## Prepare in Advance
 
-By default, we assume you already know how to use ZimaBoard when following this tutorial:[**ZimaBoard Tutorial**](/docs/zimaboard/)
+By default, we assume you already know how to use ZimaBoard when following this tutorial:[**ZimaBoard Tutorial**](/zimaboard/)
 
 Similarly, we assume you have already purchased a “My World” account (refer to the [**MineCraft purchase link**](https://www.minecraft.net/about-minecraft))
 
@@ -76,7 +76,7 @@ Now open the My World client you installed earlier. In this example, we are usin
 
 ![Add Minecraft Address](/images/Minecraft-Friendship-Service/minecraft-add-server-address.png)
 
-If you don’t know your IP address, refer to the tutorial—["**Find Your CasaOS IP Address**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)
+If you don’t know your IP address, refer to the tutorial—["**Find Your CasaOS IP Address**"](/zimaboard/How-to-check-IP-address)
 
 *  **Congratulations! Your Minecraft server is ready to host your adventures.**
 

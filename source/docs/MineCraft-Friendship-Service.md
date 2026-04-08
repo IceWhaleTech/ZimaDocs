@@ -14,7 +14,7 @@ title: Minecraft Server–Build a Minecraft Server with ZimaBoard
 
 # Prepare in advance
 
-By default, you know how to use ZimaBoard when reading this tutorial:[**ZimaBoard Tutorial**](/docs/)
+By default, you know how to use ZimaBoard when reading this tutorial:[**ZimaBoard Tutorial**](/zimaboard/)
 
 Similarly, here you have already purchased a My World account by default:[**MineCraft purchase link**](https://www.minecraft.net/zh-hans/about-minecraft)
 
@@ -76,7 +76,7 @@ Be sure to always include -e EULA=TRUE in your commands and container definition
 
 ![Add Minecraft Address](/images/Minecraft-Friendship-Service/minecraft-add-server-address.png)
 
-If you don’t know your IP address, you can refer to the tutorial—["**Find Your CasaOS IP Address**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)
+If you don’t know your IP address, you can refer to the tutorial—["**Find Your CasaOS IP Address**"](/zimaboard/How-to-check-IP-address)
 
 ## Your Minecraft Server is Now Ready ##
 

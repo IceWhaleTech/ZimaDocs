@@ -15,7 +15,7 @@ Este artigo é para entender conexões sob diferentes redes.
 As conexões diretas são ideais para configurações rápidas e simples, oferecendo uma maneira rápida e segura de ligar dispositivos sem precisar de uma rede mais ampla. Este método é perfeito para transferências de arquivos ou para usar aplicações específicas que requerem acesso de alta velocidade.
 
 {% note warn Dicas: %}
-Se você encontrar algum problema durante o uso do Thunderbolt, pode obter mais informações detalhadas [aqui](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
+Se você encontrar algum problema durante o uso do Thunderbolt, pode obter mais informações detalhadas [aqui](/zimacube/Thunderbolt-connection-problem)
 {% endnote %}
 
 **O Que Você Precisa:**
