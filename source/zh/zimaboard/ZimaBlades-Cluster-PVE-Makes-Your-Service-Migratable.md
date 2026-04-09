@@ -1,7 +1,7 @@
 ---
 title: 2 ZimaBlades, 1 集群？PVE使你的服务可迁移！
 type: “文档”
-tip: 顶部栏固定格式请勿删除
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 想象一下你的家庭服务器上运行着像VPN、媒体转码、DNS，甚至是游戏服务器等重要服务。你是否曾经想过有一天将这些服务迁移到一台新机器上？在不同机器之间迁移服务是一个常见的需求，如果服务器发生故障时，你能自动迁移服务到新设备，那就更好了。我们如何通过ZimaBlade实现这一目标？
 

@@ -3,7 +3,7 @@ title: ZimaOS 支持的 UPS 设备兼容性列表
 description: ZimaOS UPS 兼容性文档，适用于版本 1.5.3 及更高版本。了解哪些通过 USB 连接的 UPS 设备使用 usbhid-ups 驱动程序，并得到关于选择可靠 UPS 的指导，帮助您为 ZimaOS NAS 或家庭服务器选择合适的 UPS。  
 type: 文档  
 author: icewhale123456  
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字  
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 ## 说明

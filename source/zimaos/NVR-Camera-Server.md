@@ -1,8 +1,8 @@
 ---
 title: NVR Camera Server
-description:
+description: "Build a home NVR security camera system with ZimaOS. Deploy Kerberos.io via Docker for video surveillance, motion detection and camera management."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Introduce
 This tutorial will guide you through how to create a home video surveillance system on CasaOS using Kerberos.io and ZimaBoard. We will use CasaOS's Docker custom installation feature to simplify the installation and configuration process, and will also explain in detail how to configure an RTSP camera.

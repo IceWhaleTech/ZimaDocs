@@ -1,8 +1,8 @@
 ---
 title: How to Enable Wake-on-LAN (WOL) on Zimaboard
-description: 
+description: "Enable Wake-on-LAN on ZimaBoard to remotely power it on from sleep. Configure BIOS and network settings for WOL support on your single-board server."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 LAN Wake-on-LAN (WOL) is a very important part of system and computer processing, especially if you are dealing with a SBS (Single Board Server) like Zimaboard.
 To meet your needs, our Zimaboard product provides support for WOL, out of the box, and you just need to enable it.

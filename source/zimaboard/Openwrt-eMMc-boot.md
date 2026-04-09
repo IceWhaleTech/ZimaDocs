@@ -1,5 +1,6 @@
 ---
 title: OpenWRT is the Perfect Companion for the ZimaBoard eMMC Burn-in Version
+description: "Boot OpenWrt from ZimaBoard's eMMC storage for faster performance and persistent configuration. Step-by-step flashing guide for eMMC-based OS installation."
 ---
 
 # Topics

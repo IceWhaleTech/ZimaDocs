@@ -1,8 +1,8 @@
 ---
 title: How to achieve the fastest transfer speed with the Zima device
-description: 
+description: "Maximize file transfer speeds on your ZimaCube or ZimaBoard with network optimization tips covering 10GbE, Thunderbolt, SMB, and NFS configuration."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ### If you find that the transfer speed achieved by the Zima device is lower than its maximum speed, for example in the following cases:
 ![ZimaOS Network status](https://manage.icewhale.io/api/static/docs/1734591491179_image.png)

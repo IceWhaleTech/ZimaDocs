@@ -3,7 +3,7 @@ title: AX210 Wi-Fi 卡用户指南
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除, description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 1. 介绍
 Intel® Wi-Fi 6E AX210 (Gig+) 适配器设计用于支持 Wi-Fi 6E 技术。该产品支持在 2.4GHz、5GHz 和 6GHz 频段的双流 Wi-Fi，以及蓝牙® 5.3。结合 Intel® Core™ 处理器和卓越的 Intel 无线创新，Intel® Wi-Fi 6E AX210 模块可以显著提升您在家中、工作中或外出时的连接体验。

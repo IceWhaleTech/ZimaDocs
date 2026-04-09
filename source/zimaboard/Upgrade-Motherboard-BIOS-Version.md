@@ -1,5 +1,6 @@
 ---
 titel: Upgrade-Motherboard-BIOS-Version
+description: "Upgrade the BIOS firmware on your ZimaBoard motherboard. Step-by-step guide using a USB drive to flash the latest BIOS version for bug fixes and new features."
 --- 
 
 # BIOS - Latest Version

@@ -3,7 +3,7 @@ title: 欢迎来到 Zima Space
 description: "欢迎来到 Zima Space！了解 ZimaCube、ZimaOS、ZimaBoard 和 ZimaBlade。探索我们的旗舰私人云设备、完整个人云操作系统、紧凑型服务器和 DIY NAS 解决方案。发现 Zima 产品如何为数据资产管理、隐私和人工智能能力提供专业、用户友好的解决方案。加入我们的社区，为我们的硬件和软件的演变做出贡献。今天就开始探索 Zima 硬件和 ZimaOS！"
 type: “Docs”
 author: Lauren Pan
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 什么是 Zima
 -----------

@@ -2,7 +2,7 @@
 title: 如何通过Thunderbolt线连接ZimaCube
 description: 
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 如果您想通过Thunderbolt线将计算机连接到ZimaCube以获得更快的连接速度，可以按照以下步骤进行操作：

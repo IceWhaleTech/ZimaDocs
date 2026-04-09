@@ -1,5 +1,6 @@
 ---
 title: Unraid’s First Experience - Installation
+description: "Install and first experience UnRAID on ZimaBoard at $129. Quick setup guide covering bootable USB, initial configuration, and storage array creation."
 ---
 
 # Introducing Unraid

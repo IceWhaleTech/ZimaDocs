@@ -2,7 +2,7 @@
 title: 如何在 ZimaOS 中启用 SSH
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除, description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 根据社区反馈，我们已简化了在 ZimaOS 中启用 SSH 的过程。为了让这一功能更加方便易用，我们将其直接集成到了 UI 中。现在，访问 SSH 和使用终端变得更加快捷和简单。

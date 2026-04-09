@@ -3,7 +3,7 @@ title: Ubuntu LTS 最小化安装、镜像磁盘和 Docker 引擎
 description: 
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 > 本教程最初由 **<u>ZaNgA</u>** 创建，我们感谢他的贡献。

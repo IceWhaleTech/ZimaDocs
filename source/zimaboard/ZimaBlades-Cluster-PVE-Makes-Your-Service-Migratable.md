@@ -1,7 +1,8 @@
 ---
 title: 2 ZimaBlades, 1 Cluster? PVE makes your service Migratable!
+description: “Build a ZimaBlade cluster with Proxmox VE (PVE) for live VM migration. Create a high-availability home lab with multiple ZimaBlade nodes.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 Imagine your home server running essential services like VPN, media transcoding, DNS, or even a game server. Have you ever thought about migrating these services to a new machine one day? Migrating services between different machines is a common need, and it would be even better if you could automatically migrate services to a new device in case of a server failure. How can we achieve this with ZimaBlade?
 

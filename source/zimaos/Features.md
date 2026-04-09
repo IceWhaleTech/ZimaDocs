@@ -1,13 +1,13 @@
 ---
 title: Features-Build Data Station 
-description:
+description: "Explore ZimaOS features including remote access, ZimaClient connectivity, and multi-device data management for your ZimaCube."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 # Remote Access
 ##  Your Gateway to Remote Access
-**Enter ZimaCube’s Remote feature**[ (click here to learn more)](/docs/zimaos/Romote-Access) , a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
+**Enter ZimaCube’s Remote feature**[ (click here to learn more)](/zimaos/Romote-Access) , a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
 ![](https://manage.icewhale.io/api/static/docs/1773989011331_img_v3_02vt_5e8ddcb9-5708-41d3-be12-7392938caaeg.jpg)
 
 

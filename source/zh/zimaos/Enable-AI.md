@@ -3,7 +3,7 @@ title: 为ZimaOS启用AI搜索
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除, description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 什么是ZimaOS-AI
 引入**ZimaOS-AI**，一个为ZimaOS搜索功能服务的AI模块。一旦下载此模块，您就可以启用ZimaOS的AI搜索功能。AI模块将利用本地LLM（大型语言模型）从图像、音频和视频中提取特征，以帮助准备AI搜索的数据，并允许您根据显卡资源要求设置可用调用时间。

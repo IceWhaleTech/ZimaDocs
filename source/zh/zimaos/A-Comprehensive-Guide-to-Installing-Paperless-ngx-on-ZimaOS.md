@@ -3,7 +3,7 @@ title: 在ZimaOS上安装Paperless-ngx的完整指南
 description:  
 type: Docs  
 author: icewhale123456  
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字  
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.  
 ---  
 > _最初由_ _**Muditha Liyanagama**_ _发布在 IceWhale 社区论坛上:_ _[原文地址](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_  
 

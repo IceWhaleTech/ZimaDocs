@@ -3,7 +3,7 @@ title: 如何在ZimaOS上启用Intel AX210 Wi-Fi模块？
 description:  
 type: 文档
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 **🎯 目标**

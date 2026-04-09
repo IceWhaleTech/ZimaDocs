@@ -2,7 +2,7 @@
 title: 如何在 ZimaOS 上创建 Raid6？
 description: 
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 介绍
 目前，ZimaOS 支持 RAID0/1/5，但我们理解许多用户需要 RAID6 以增强冗余。为此，我们准备了一份通过命令行创建 RAID6 的逐步指南。请按照以下说明操作。

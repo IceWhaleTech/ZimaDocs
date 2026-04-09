@@ -1,8 +1,8 @@
 ---
 title: How to Enable SSH in ZimaOS
-description:
+description: "Enable SSH on ZimaOS in a few clicks. Step-by-step guide to turn on SSH access from the Settings UI, connect via terminal and manage your NAS remotely."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 Based on feedback from our community, we’ve made it easier to enable SSH in ZimaOS. To simplify the process and make it more accessible, we’ve integrated this functionality directly into the UI. Now, it’s quicker and simpler to access SSH and use the terminal.

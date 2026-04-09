@@ -3,7 +3,7 @@ title: SMB帮助文档
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除，description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 核心问题
 - **认证方式错误：** 直接输入`smb://IP`连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。

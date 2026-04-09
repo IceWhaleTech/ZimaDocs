@@ -1,8 +1,8 @@
 ---
 title: How to connect ZimaCube via Thunderbolt Cable
-description: 
+description: "Connect ZimaCube directly to your Mac or PC via Thunderbolt cable for 2GB/s transfer speeds. Setup guide for Thunderbolt PC Direct mode on ZimaOS."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 If you want to connect your computer to the ZimaCube using a Thunderbolt cable for faster connection speeds, you can follow these steps:

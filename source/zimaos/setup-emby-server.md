@@ -1,9 +1,9 @@
 ---
 title: How to setup an emby server on ZimaOS?
-description: 
+description: "Step-by-step guide to setting up an Emby media server on ZimaOS for streaming movies, TV shows, and music across all your devices."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 John, a movie enthusiast, wanted to build his dream home theater. However, he struggled to organize his growing collection of films and TV shows across multiple devices.
  He found existing solutions either too complex to set up or lacking the performance needed for smooth playback. That’s when he discovered Emby, a powerful media server that not only simplified his setup but also enhanced his viewing experience. 

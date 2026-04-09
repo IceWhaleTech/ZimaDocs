@@ -2,7 +2,7 @@
 title: 第七个硬盘位的使用 
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 安装和移除第七个硬盘位
 ## 准备工作:

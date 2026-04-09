@@ -1,8 +1,8 @@
 ---
 title: How to understand Docker App's paths On ZimaOS
-description:
+description: "Understand Docker container path mapping on ZimaOS. Learn how app data directories, volume mounts and storage paths work for Docker applications."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Docker and ZimaOS
 Docker is platform that enables users to automate the deployment, scaling, and management of applications in lightweight containers. These containers bundle an application with all its dependencies, ensuring consistent performance across various environments. Docker’s efficiency lies in its ability to isolate applications, making them more portable and scalable.

@@ -2,7 +2,7 @@
 title: 如何在 Zimaboard 上启用 Wake-on-LAN (WOL)
 description: 
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 LAN Wake-on-LAN (WOL) 是系统和计算机处理的重要部分，尤其是当您处理像 Zimaboard 这样的单板服务器 (SBS) 时。
 为了满足您的需求，我们的 Zimaboard 产品开箱即用地支持 WOL，您只需要启用它。

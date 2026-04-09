@@ -1,7 +1,7 @@
 ---
 title: Build Multiple Clones using rsync
-description:
+description: “Use rsync on ZimaOS to build multiple disk clones and backups. Automate incremental file synchronization for reliable data protection.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 Under Construction

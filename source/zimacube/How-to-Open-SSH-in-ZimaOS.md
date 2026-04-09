@@ -1,8 +1,8 @@
 ---
 title: How to Open SSH in ZimaOS
-description:
+description: "Enable SSH access on ZimaOS by creating a root password and configuring remote access. Step-by-step guide with keyboard and monitor setup."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # By default, SSH is disabled. Please connect a keyboard and mouse to the device. You will see a message asking you to create a root password. Then enable SSH.
 ![](https://manage.icewhale.io/api/static/docs/1722492895687_image.png)

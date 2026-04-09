@@ -14,7 +14,7 @@ title: Minecraft サーバー - ZimaBoardでMinecraftサーバーを構築する
 
 # 事前準備
 
-このチュートリアルを読んでいる時点で、ZimaBoardの使い方をすでに知っている前提です：[**ZimaBoardチュートリアル**](/docs/)
+このチュートリアルを読んでいる時点で、ZimaBoardの使い方をすでに知っている前提です：[**ZimaBoardチュートリアル**](/zimaboard/)
 
 同様に、ここではデフォルトでMy Worldアカウントを購入している前提です：[**MineCraft購入リンク**](https://www.minecraft.net/zh-hans/about-minecraft)
 
@@ -76,7 +76,7 @@ Mojang/MicrosoftがEULAへの同意を要求するため、常にコマンドや
 
 ![Add Minecraft Address](/images/Minecraft-Friendship-Service/minecraft-add-server-address.png)
 
-IPアドレスがわからない場合は、チュートリアル—["**CasaOSのIPアドレスを見つける**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)を参照してください。
+IPアドレスがわからない場合は、チュートリアル—["**CasaOSのIPアドレスを見つける**"](/zimaboard/How-to-check-IP-address)を参照してください。
 
 ## あなたのMinecraftサーバーは今や準備完了です ##
 

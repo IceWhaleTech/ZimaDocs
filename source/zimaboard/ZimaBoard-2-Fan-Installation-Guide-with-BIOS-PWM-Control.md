@@ -3,7 +3,7 @@ title: ZimaBoard 2 Fan Installation Guide & PWM Control
 description: Install a PWM fan on ZimaBoard 2, T5 rear-cover removal, 4-pin fan cable, cable routing, fan mounting with T10, and BIOS fan control for mini NAS, home server, self-hosted, NVMe, 10GbE, and local AI workloads.
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 **One-sentence overview**: From the **shipping list**, to **wiring & installation**, then set **PWM in BIOS**—all in one go.
  Add active cooling to your **[ZimaBoard 2](https://www.zimaspace.com/docs/zimaboard/Power-on-Zimaboard2)** **mini NAS** / **home server** / **self-hosted node f**or sustained **NVMe**, **10GbE**, and **local AI** workloads.

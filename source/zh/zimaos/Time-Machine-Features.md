@@ -3,7 +3,7 @@ title: 如何使用 Time Machine 将文件从我的 Mac 备份到 ZimaCube？
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 想要保护你的 Mac 文件吗？使用 ZimaOS 的新 Time Machine 功能，你可以轻松地将文件备份到 ZimaCube。这一强大的功能不仅快速简单，而且确保你的重要数据始终受到保护。以下是快速设置备份的简单步骤。
 

@@ -3,7 +3,7 @@ title: 如何安装 ZimaOS
 description: 通过这份逐步指南学习如何安装 ZimaOS。内容包括下载镜像、写入 U 盘、安装过程，以及通过 ZimaClient 或 IP 地址登录。  
 type: Docs  
 author: admin  
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字  
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.  
 ---
 
 ## 你将学到什么

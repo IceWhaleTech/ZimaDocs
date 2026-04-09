@@ -2,7 +2,7 @@
 title: PC 直连
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 不同的设置方式
 无论您是出于个人还是专业目的使用 ZimaOS 设备，了解如何通过各种网络连接到设备是至关重要的。本文将涵盖三种主要的网络连接类型：直接连接、本地局域网（LAN），以及广域网（WAN）。每种方法都有独特的优势和应用，确保您可以无缝访问和管理您的数据，无论您是在家中还是在外出时。
@@ -15,7 +15,7 @@ tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时
 直接连接非常适合快速和简单的设置，提供了一种快速且安全的方式来连接设备，而无需更广泛的网络。这种方法非常适合文件传输或使用需要高速访问的特定应用程序。
 
 {% note warn 提示: %}
-如果在使用 Thunderbolt 时遇到任何问题，您可以在 [这里](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html) 获取更多详细信息。
+如果在使用 Thunderbolt 时遇到任何问题，您可以在 [这里](/zimacube/Thunderbolt-connection-problem) 获取更多详细信息。
 {% endnote %}
 
 **您需要准备的：**

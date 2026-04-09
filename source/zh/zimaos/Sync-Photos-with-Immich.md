@@ -2,7 +2,7 @@
 title: 如何在ZimaOS上体验immich
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 引言
 [**Immich**](https://immich.app/) 提供了一个无缝、现代的平台，用于组织、分享和访问您的照片和视频。它凭借其流畅的基于Web的界面，便于媒体浏览，以及面部识别和物体检测等高级功能脱颖而出。

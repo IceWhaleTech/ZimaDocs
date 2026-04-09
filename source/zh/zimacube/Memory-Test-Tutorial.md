@@ -2,7 +2,7 @@
 title: 内存测试教程
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 如果主板无法正常启动，或者在使用过程中出现屏幕失真或冻结，请按照以下步骤排查内存问题。
 ## 硬件环境：

@@ -2,7 +2,7 @@
 title: 如何手动下载大型语言模型
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 Assist 目前默认使用 “TheBloke/Llama-2-13b-Chat-GPTQ” 作为 ZimaOS。

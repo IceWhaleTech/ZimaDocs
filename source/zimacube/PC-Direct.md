@@ -1,8 +1,8 @@
 ---
 title: PC Direct
-description:
+description: "Connect ZimaCube directly to your PC via Thunderbolt or 10GbE for fast local file transfer. Setup guide for PC Direct mode without a router."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # A Different Way to Setup
 Whether you’re using a ZimaOS device for personal or professional purposes, understanding how to connect to it through various networks is essential. This guide will cover three main types of network connections: direct connection, Local Area Network (LAN), and Wide Area Network (WAN). Each method has unique benefits and applications, ensuring you can access and manage your data seamlessly, whether you’re at home or on the go.
@@ -15,7 +15,7 @@ This article is for understanding connections under different networks.
 Direct connections are ideal for quick and straightforward setups, offering a fast and secure way to link devices without needing a broader network. This method is perfect for file transfers or using specific applications that require high-speed access.
 
 {% note warn Tips: %}
-If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Connecting-ZimaCube-via-Thunderbolt.html)
+If you encounter any problems during using Thounderbolt , you can get more detailed information [here](/zimacube/Thunderbolt-connection-problem)
 {% endnote %}
 
 **What You Need:**

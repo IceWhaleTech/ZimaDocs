@@ -2,7 +2,7 @@
 title: 设置 Python
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 修改 /etc/profile
 在 profile 中添加以下两行

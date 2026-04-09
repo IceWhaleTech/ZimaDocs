@@ -3,7 +3,7 @@ title: 如何使用 ZimaCube 和 DLNA 创建家庭媒体中心？
 description: 
 type: 文档
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 介绍
 在这个数字时代，家庭娱乐系统变得越来越智能和互联。作为一款高性能的个人云存储设备，ZimaCube 不仅提供大容量存储解决方案，还支持 DLNA（数字生活网络联盟）协议，让您可以轻松共享和播放家庭网络中的任何多媒体内容。

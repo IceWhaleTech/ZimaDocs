@@ -1,8 +1,8 @@
 ---
 title: How to Create Raid6 on ZimaOS?
-description: 
+description: "Create a RAID 6 array on ZimaOS for double-parity redundancy and data protection. Step-by-step guide to configure storage with ZimaCube drives."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## Introduction
 Currently, ZimaOS supports RAID0/1/5, but we understand that many users require RAID6 for enhanced redundancy. To address this, we've prepared a step-by-step guide for creating RAID6 through the command line. Please follow the instructions below.

@@ -1,8 +1,8 @@
 ---
 title: Get Network ID
-description: 
+description: "Find your ZimaOS Network ID for remote access and ZimaClient connectivity. Step-by-step guide to locate and use your device's unique network identifier."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 ### The NetworkID is one of the ways to uniquely identify a Zima device and connect to it.

@@ -2,7 +2,7 @@
 title: 开始使用 ZimaBoard
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除, description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 首次查看家庭服务器
 

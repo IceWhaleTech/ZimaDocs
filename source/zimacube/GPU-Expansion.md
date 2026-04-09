@@ -1,8 +1,8 @@
 ---
 title: GPU Expansion
-description:
+description: "Add a GPU to your ZimaCube for hardware transcoding, AI workloads and parallel computing. Covers compatible GPUs, PCIe installation and driver setup."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 **Introduction**
   ZimaCube is a computing device that can meet your professional work needs. Through its modular design, it allows users to expand hardware according to personal requirements, including the installation of a Graphics Processing Unit (GPU). A GPU is crucial for users who need to handle extensive graphical processing and parallel computing tasks.

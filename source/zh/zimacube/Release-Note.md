@@ -2,7 +2,7 @@
 title: 标题
 description:
 type: "文档"
-tip: 顶部栏固定格式请勿删除，description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 我们真诚感谢我们的社区用户积极参与和提供宝贵建议，使我们能够不断改进和完善ZimaOS！欢迎您分享更多想法！

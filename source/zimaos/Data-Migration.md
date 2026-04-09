@@ -1,8 +1,8 @@
 ---
 title: Data Migration Guide
-description:
+description: “Migrate Docker images, app data, and user folders to a new storage location on ZimaOS. Free up space and keep your system organized with ease.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Purpose
 Data migration is the process of transferring specified directories to another storage space to optimize and reduce the size of your current storage. This ensures that your system remains efficient and organized, allowing for better performance and easier management of your files.

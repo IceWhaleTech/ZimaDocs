@@ -2,7 +2,7 @@
 title: 如何理解 ZimaOS 上 Docker App 的路径
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Docker 和 ZimaOS
 Docker 是一个让用户能够自动化部署、扩展和管理轻量级容器中应用程序的平台。这些容器将应用程序及其所有依赖项打包在一起，确保在各种环境中都能保持一致的性能。Docker 的效率在于其能够隔离应用程序，使其更具可移植性和可扩展性。

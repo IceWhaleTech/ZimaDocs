@@ -2,7 +2,7 @@
 title: iSCSI 使用教程
 description: 
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 iSCSI（互联网小型计算机系统接口）是一种通过网络传输 SCSI 命令的协议，允许存储设备通过网络进行通信，类似于直接连接的存储。它可以虚拟化存储资源，实现集中管理、网络共享和远程访问，适用于数据中心、虚拟化环境、备份和恢复等场景。

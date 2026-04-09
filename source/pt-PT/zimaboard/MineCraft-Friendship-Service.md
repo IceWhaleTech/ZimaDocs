@@ -14,7 +14,7 @@ title: Servidor Minecraft–Construa um Servidor Minecraft com ZimaBoard
 
 # Prepare-se com antecedência
 
-Por padrão, você sabe como usar o ZimaBoard ao ler este tutorial: [**Tutorial ZimaBoard**](/docs/)
+Por padrão, você sabe como usar o ZimaBoard ao ler este tutorial: [**Tutorial ZimaBoard**](/zimaboard/)
 
 Da mesma forma, aqui você já comprou uma conta My World por padrão: [**Link de compra do MineCraft**](https://www.minecraft.net/zh-hans/about-minecraft)
 
@@ -76,7 +76,7 @@ Certifique-se de sempre incluir -e EULA=TRUE em seus comandos e definições de 
 
 ![Adicionar Endereço Minecraft](/images/Minecraft-Friendship-Service/minecraft-add-server-address.png)
 
-Se você não souber seu endereço IP, pode consultar o tutorial—["**Encontre seu Endereço IP do CasaOS**"](/Users/lijian/Documents/GitHub/ZimaDocs/zimaboard/02-get-started/09-find-casaos-ip-address.md)
+Se você não souber seu endereço IP, pode consultar o tutorial—["**Encontre seu Endereço IP do CasaOS**"](/zimaboard/How-to-check-IP-address)
 
 ## Seu Servidor Minecraft Agora Está Pronto ##
 

@@ -2,7 +2,7 @@
 title: Drivers suggested by community users have been implemented
 description: ZimaOS drivers grow from community input, shaping the roadmap. This doc shows a live, expanding list of supported hardware and upcoming work. Share what you want next via forums or Discord.
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 Your requests and conversations don't just go into a suggestion box—they **are** our development roadmap. We are constantly listening and building based on what you need.
 

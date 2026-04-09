@@ -1,8 +1,8 @@
 ---
 title: ZimaCube Transfer Speeds Over Thunderbolt Connections Explained
-description: 
+description: "Discover ZimaCube Thunderbolt transfer speeds reaching 2GB/s. See performance benchmarks and tips for optimizing file transfers."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 This guide focuses on the fastest file transfer speeds achieved over a Thunderbolt connection on the ZimaCube, providing users with specific data from performance tests and optimization tips.
 Ensure that you have referred to the [How to connect ZimaCube via Thunderbolt Cable](https://www.zimaspace.com/docs/zimaos/Thunderbolt-PC-Direct).

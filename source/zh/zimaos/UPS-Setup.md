@@ -3,7 +3,7 @@ title: 如何在 ZimaOS 中使用 UPS（不间断电源）
 description: 学习如何在 ZimaOS 1.5.3 及更高版本中连接、启用和配置 USB UPS，以便在停电时让您的 NAS 安全关闭，避免数据丢失。
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 介绍
 从 **ZimaOS v1.5.3** 开始，ZimaOS 正式支持 **UPS（不间断电源）**，允许您的 NAS 在停电时继续运行，并在需要时安全关闭。连接兼容的 USB UPS 后，ZimaOS 可以实现以下功能：

@@ -1,5 +1,6 @@
 ---
 title: Build a 75-inch 4K Arcade Machine with ZimaBoard and Batocera.linux
+description: "Build a 75-inch 4K retro arcade with ZimaBoard and Batocera Linux. Complete guide from hardware setup to game library management for the ultimate home arcade."
 ---
 >**Story:**
  There are still so many retro games out there, and browsing through them one by one, with their memorable names and screenshots, is like going back in time. It’s like going back in time to your own childhood passions and desires)This tutorial will take us back to your early days.

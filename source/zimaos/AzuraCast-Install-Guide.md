@@ -1,9 +1,9 @@
 ---
 title: A Comprehensive Guide to Installing AzuraCast on ZimaOS via the Command Line
-description: 
+description: "Install AzuraCast internet radio station on ZimaOS via command line. Step-by-step Docker setup guide for self-hosted audio streaming."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 > _This guide is adapted from the original article, [A Comprehensive Guide to Installing AzuraCast on ZimaOS via the Command Line](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818), by community member **Muditha Liyanagama**. We extend our sincere thanks for their work._
 
