@@ -2,7 +2,7 @@
 title: ZimaOS OpenAPI 实时预览
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除，description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 介绍
 ZimaOS OpenAPI中的**实时预览**功能允许用户直观地探索API端点的结构和可用的请求。它帮助开发者理解API的功能以及如何与不同组件进行交互。此功能对于那些希望在实施前清晰了解ZimaOS能力的用户尤为有用。

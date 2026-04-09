@@ -2,7 +2,7 @@
 title: How to enable Plex hardware transcoding on ZimaCube?
 description: "Enable Plex hardware transcoding on ZimaCube with Intel or NVIDIA GPU acceleration. Stream HD and 4K video smoothly using Docker."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Plex and GPU Transcoding
 Plex Media Server is a versatile and popular platform for managing and streaming your media library. One way to significantly enhance its performance and transcoding capabilities is by harnessing the power of an Intel / NVIDIA GPU. In this guide, we’ll walk you through the steps to set up Docker Plex with Intel / NVIDIA GPU acceleration, allowing for efficient hardware transcoding and improved media streaming.

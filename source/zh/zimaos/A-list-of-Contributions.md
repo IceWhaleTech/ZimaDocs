@@ -2,7 +2,7 @@
 title: 社区用户建议的驱动程序已被实现
 description: ZimaOS 的驱动程序源自社区的反馈，塑造了开发路线图。本文展示了一个实时、不断扩展的支持硬件列表和即将完成的工作。通过论坛或 Discord 分享你希望接下来支持的硬件。
 type: “文档”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 您的请求和对话不仅仅是进入建议箱，它们**是**我们的开发路线图。我们一直在倾听，并根据您的需求进行开发。
 

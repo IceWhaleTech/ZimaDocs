@@ -3,7 +3,7 @@ title: Arch Linux Installation on ZimaBoard 2
 description: "Install Arch Linux on ZimaBoard 2 with this step-by-step guide. Covers bootable USB creation, partitioning, base system install, and first boot setup."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## **I. Overview**
 

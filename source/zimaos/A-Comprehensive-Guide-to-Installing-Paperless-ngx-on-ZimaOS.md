@@ -3,7 +3,7 @@ title: A Comprehensive Guide to Installing Paperless-ngx on ZimaOS
 description: "Install Paperless-ngx on ZimaOS to digitize and organize your documents. Step-by-step guide covering Docker setup, scanner integration, and OCR configuration."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 > _Originally published on the IceWhale Community Forum by_ _**Muditha Liyanagama**_ _:_ _[Source URL](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_
 

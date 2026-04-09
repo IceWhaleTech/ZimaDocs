@@ -2,7 +2,7 @@
 title: 如何在 ZimaOS 中开启 SSH
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除, description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 默认情况下，SSH 是禁用的。请连接键盘和鼠标到设备上。您会看到一条消息，提示您创建一个根用户密码。然后启用 SSH。
 ![](https://manage.icewhale.io/api/static/docs/1722492895687_image.png)

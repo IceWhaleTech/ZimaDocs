@@ -3,7 +3,7 @@ title: How to Enable the Intel AX210 Wi-Fi Module on ZimaOS？
 description: "Enable the Intel AX210 Wi-Fi 6E module on ZimaOS. Step-by-step guide to install the PCIe card, load drivers and connect your ZimaCube to a wireless network."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 **🎯 Goal**

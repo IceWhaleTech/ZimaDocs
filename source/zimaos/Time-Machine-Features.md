@@ -3,7 +3,7 @@ title: How do I back up files from my Mac to ZimaCube using Time Machine?
 description: "Back up your Mac to ZimaCube using Time Machine and ZimaOS. Set up AFP/SMB Time Machine share and schedule automatic macOS backups to your NAS."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 Want to keep your Mac files safe? With ZimaOS's new Time Machine feature, you can easily back up your files to ZimaCube. This powerful feature is not only quick and easy, but also ensures that your important data is always protected. Here are the easy-to-follow steps to quickly set up a backup.
 

@@ -2,7 +2,7 @@
 title: Title
 description: "View ZimaOS release notes with the latest updates, bug fixes, and new features. Stay current with every ZimaOS version improvement."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 We sincerely thank our community users for their active participation and valuable suggestions, which enable us to continuously improve and refine ZimaOS! We welcome you to share more ideas please!

@@ -3,7 +3,7 @@ title: 如何部署 OpenClaw
 description: 本指南解释了如何在 CasaOS/ZimaOS 设备上部署 OpenClaw，配置自定义 AI 模型，链接 Telegram 机器人，并访问 Web UI 以管理和与 AI 互动。  
 type: 文档  
 author: icewhale123456  
-tip: 顶部栏固定格式请勿删除，description 为文章描述，未填写时将截取内容最前一段文字  
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---  
 
 ## 1. 概述

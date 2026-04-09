@@ -3,7 +3,7 @@ title: ZimaOS系统快速恢复指南
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 引言
 ZimaOS是一个轻量级的NAS操作系统，采用双分区设计（插槽A和插槽B），每个分区大小约为6GB。当一个分区发生故障时，您可以轻松切换到备用分区，以确保系统继续运行。本教程将指导您在系统出现问题时如何切换到备用分区。

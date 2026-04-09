@@ -2,7 +2,7 @@
 title: ZimaCube Motherboard DIY Fan Guide and Specifications
 description: “ZimaCube motherboard fan specifications and DIY replacement guide. Compatible fan sizes, connector types, and step-by-step installation instructions.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 Background
 ----------

@@ -3,7 +3,7 @@ title: 文章标题
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 目的
 本教程将指导您使用 `Files` 应用程序下载并替换 `local-storage.db` 文件，使您能够在重新安装系统后迁移或恢复 RAID 配置数据。

@@ -2,7 +2,7 @@
 title: NVR摄像头服务器
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 介绍
 本教程将指导您如何使用Kerberos.io和ZimaBoard在CasaOS上创建一个家庭视频监控系统。我们将使用CasaOS的Docker自定义安装功能来简化安装和配置过程，同时详细解释如何配置RTSP摄像头。

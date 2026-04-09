@@ -2,7 +2,7 @@
 title: 硬件详情
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 功耗
 ZimaCube 设计时考虑了能源效率，最小化功耗的同时提供强大的性能。该设备标配 19V/11.58A 电源，功率总计为 220W。这确保了 ZimaCube 即使连接多个硬盘和配件也能持续工作。系统还包含先进的热管理功能，优化能源使用，使其成为 24/7 操作的实用解决方案，例如家庭或办公室 NAS 环境。

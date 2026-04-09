@@ -2,7 +2,7 @@
 title: 连接Synology与SMB共享
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 如何分享和获取NAS上的文件？SAMBA可能是最重要的方式
 当我们谈论网络附加存储时，我们希望我们的文件能够存储、管理在一个地方，并在任何地方都能访问。但是，这一切是如何实现的呢？

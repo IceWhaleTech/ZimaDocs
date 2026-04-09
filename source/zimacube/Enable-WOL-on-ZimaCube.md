@@ -3,7 +3,7 @@ title: How to Enable Wake-on-LAN (WOL) on ZimaCube
 description: "Enable Wake-on-LAN (WOL) on your ZimaCube to remotely power it on over the network. Configure BIOS and ZimaOS network settings for WOL support."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 WOL (Wake-on-LAN) is a remote wake-up technology that allows users to start devices that are in sleep or shutdown mode by sending a specific "magic packet" over the network. This feature is particularly suitable for scenarios where devices need to be managed remotely, such as starting a NAS server at home or performing remote maintenance on computers in an office environment. With WOL, users can efficiently manage ZimaCube anytime and anywhere without having to operate the switch themselves, greatly improving convenience and work efficiency.Here are the specific steps to achieve this functionL:
 ## Item List：

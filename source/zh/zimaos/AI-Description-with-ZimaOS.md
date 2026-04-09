@@ -3,7 +3,7 @@ title: 使用ZimaOS实现Frigate+Olama屏幕AI描述
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除，description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 背景
 在日常生活中，监控摄像头已经成为家庭和企业中重要的工具。然而，传统的监控系统通常只记录图像或简单地检测运动，无法提供图像内容的详细解释。这通常需要用户自己判断，观看视频或接收通知时，判断发生了什么。

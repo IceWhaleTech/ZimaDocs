@@ -2,7 +2,7 @@
 title: ZimaOS OpenAPI Live Preview
 description: "Explore ZimaOS OpenAPI endpoints interactively with the Live Preview tool. Visualize API structure and test requests before building your integrations."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Introduction
 The **Live Preview** feature in ZimaOS OpenAPI allows users to visually explore the structure of API endpoints and available requests. It helps developers understand the API's functionalities and how to interact with different components. This feature is particularly useful for those looking to get a clear overview of ZimaOS's capabilities before implementation.

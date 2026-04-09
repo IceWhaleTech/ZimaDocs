@@ -2,7 +2,7 @@
 title: 数据迁移指南
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 目的
 数据迁移是将指定目录转移到另一个存储空间的过程，以优化并减少您当前存储的大小。这确保您的系统保持高效和有序，从而实现更好的性能和更容易管理您的文件。

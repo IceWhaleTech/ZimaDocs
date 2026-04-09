@@ -3,7 +3,7 @@ title: Migrar de CasaOS a ZimaOS
 description: Guía paso a paso para migrar de CasaOS a ZimaOS. Aprende cómo transferir archivos, mover aplicaciones Docker con CTOZ y configurar tu nuevo servidor doméstico sin problemas.  
 type: Docs  
 author: Lauren  
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字  
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.  
 ---
 
 Esta guía se centra en **migrar de CasaOS a ZimaOS** en solo dos sencillos pasos. Si tienes curiosidad por una comparación completa del sistema, consulta este blog – [link].

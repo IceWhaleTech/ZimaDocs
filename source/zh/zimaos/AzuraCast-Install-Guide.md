@@ -3,7 +3,7 @@ title: 在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南
 description: 
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除, description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 > _本指南改编自社区成员 **Muditha Liyanagama** 的原文，[在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818)，我们对他们的工作表示衷心的感谢。_
 

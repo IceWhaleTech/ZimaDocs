@@ -3,7 +3,7 @@ title: ZimaOS 和 QTS 双向同步指南
 description: 
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ![](https://manage.icewhale.io/api/static/docs/1742550303202_image.png)
 ## 实际痛点：跨 NAS 同步挑战

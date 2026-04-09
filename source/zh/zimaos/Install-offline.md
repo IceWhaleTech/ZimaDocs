@@ -2,7 +2,7 @@
 title: 离线更新
 description: 在离线环境中更新 ZimaOS
 type: "文档"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 本教程将指引您在离线环境中更新 ZimaOS 的步骤。

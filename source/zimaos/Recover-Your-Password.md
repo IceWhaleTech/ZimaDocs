@@ -2,7 +2,7 @@
 title: How to recover your password
 description: "Recover your forgotten ZimaOS password and regain access to your system. Step-by-step guide using recovery mode or SSH to reset credentials."
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ### If you forget your ZimaOS password, please follow the steps below:
 1. Connect ZimaCube to a monitor via HDMI cable

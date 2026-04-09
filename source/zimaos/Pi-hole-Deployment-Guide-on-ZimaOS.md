@@ -3,7 +3,7 @@ title: Pi-hole Deployment Guide on ZimaOS
 description: "Deploy Pi-hole on ZimaOS to block ads across your entire network. Step-by-step Docker installation, DNS configuration and dashboard setup guide."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ### Introduction
 Pi-hole is a powerful network-level ad blocking tool that can help you block ads and protect your privacy. In this tutorial, we will introduce how to install and configure Pi-hole on ZimaOS to make your home network cleaner and more efficient.

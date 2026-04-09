@@ -2,7 +2,7 @@
 title: Quick Start
 description: "Get started with ZimaCube NAS setup in three simple steps. Unbox, connect, and access your ZimaOS storage system with this quick start guide."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 **Welcome to Zima Space!** This guide is designed for anyone using ZimaCube for the first time, guiding you through three simple steps to access the system. Whether you're tech-savvy or not, we'll patiently help you get started with ease and enjoy the convenience of our storage solution.
 

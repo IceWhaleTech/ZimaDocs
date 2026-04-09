@@ -3,7 +3,7 @@ title: List of disk formats supported
 description: "Complete list of disk formats and file systems supported by ZimaOS. Check compatibility for ext4, NTFS, Btrfs, ZFS, exFAT and other formats before setup."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## Introduction
 As user demands for storage devices diversify, ZimaOS continually optimizes and expands its file system support. This document aims to provide users with a comprehensive overview of the disk format support in the current version (v1.5.1), helping users manage and utilize storage resources more efficiently.

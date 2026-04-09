@@ -3,7 +3,7 @@ title: Enable AI search
 description: "Enable AI-powered search on ZimaOS to find files using natural language. Set up the local AI model for private, on-device intelligent file search."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## ZimaOS-AI  
 ZimaOS-AI is an AI module designed to serve ZimaOS search. After downloading this module, you can enable the AI search functionality in ZimaOS. The AI module will use a local large language model to extract features from images, audio, and video to assist in preparing data for AI searches. It can also automatically set the time periods during which it can be called based on GPU resource usage requirements. In addition to being a supporting module for AI searches, it also serves as a playground, allowing you to experience the capabilities of ZimaOS AI models.  

@@ -2,7 +2,7 @@
 title: Setup Python
 description: “Set up a Python development environment on ZimaOS. Install Python, manage packages with pip, and run scripts on your ZimaCube NAS device.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Modify /etc/profile
 Add the following two lines to the profile

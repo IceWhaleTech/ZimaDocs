@@ -3,7 +3,7 @@ title: Install ZimaOS on Proxmox VE Using the ISO Image
 description: "Guide to installing ZimaOS on Proxmox VE using the official ISO image for virtual machine testing, evaluation, and lightweight use."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 **W**ith the official release of the **ZimaOS ISO image** , you can now install and deploy ZimaOS more easily in virtualized environments such as **Proxmox VE (PVE)** .
  This ISO image is **specifically optimized for virtual machine installation**, allowing you to deploy ZimaOS without physical hardware and quickly explore its core features.

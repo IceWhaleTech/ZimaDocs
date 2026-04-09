@@ -3,7 +3,7 @@ title: Ubuntu LTS Minimal, Discos em Espelho, e Docker Engine
 description:
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 >Este guia foi originalmente criado por **<u>ZaNgA</u>**. Agradecemos sinceramente a sua contribuição.

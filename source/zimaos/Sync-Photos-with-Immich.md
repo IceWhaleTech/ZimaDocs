@@ -2,7 +2,7 @@
 title: How to Experience immich on ZimaOS
 description: “Sync photos and videos from your phone to ZimaOS using Immich. Experience Google Photos-style automatic backup with full privacy on your ZimaCube.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Introduction
 [**Immich**](https://immich.app/) offers a seamless, modern platform for organizing, sharing, and accessing your photos and videos. It stands out with its sleek web-based interface for easy media browsing and advanced features like face recognition and object detection.

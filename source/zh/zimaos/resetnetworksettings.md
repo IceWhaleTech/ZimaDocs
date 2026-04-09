@@ -3,7 +3,7 @@ title: Reset Network Settings
 description: 
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 如果你在 ZimaOS 中设置了静态 IP，并且由于网络变动需要重置网络 IP 设置，可以使用本教程来重置已设置的 IP 绑定。
 

@@ -3,7 +3,7 @@ title: How to Create a Home Media Center with ZimaCube and DLNA？
 description: "Turn your ZimaCube into a DLNA media server with ZimaOS. Stream movies, music, and photos to Smart TVs, game consoles, and media players."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## Introduction
 In this digital age, home entertainment systems are becoming more and more intelligent and interconnected. As a high-performance personal cloud storage device, ZimaCube not only provides a large-capacity storage solution, but also supports the DLNA (Digital Living Network Alliance) protocol, allowing you to easily share and play any multimedia content in your home network.

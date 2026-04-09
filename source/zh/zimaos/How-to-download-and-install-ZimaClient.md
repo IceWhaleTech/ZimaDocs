@@ -2,7 +2,7 @@
 title: 如何下载和安装ZimaClient
 description: 
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 介绍：
 ZimaClient旨在作为一个静默客户端，但其功能足够强大，以至于一些核心体验发生在你可能不会注意的地方——安静而自然。

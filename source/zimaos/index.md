@@ -3,7 +3,7 @@ title: Welcome to Zima Space
 description: "Welcome to Zima Space! Learn about ZimaCube, ZimaOS, ZimaBoard, and ZimaBlade. Explore our flagship private cloud device, our full personal cloud OS, our compact server, and our DIY NAS solution. Discover how Zima products provide professional, user-friendly solutions for data asset management, privacy, and AI capabilities. Join our community and contribute to the evolution of our hardware and software. Start your exploration of Zima hardware and ZimaOS today!"
 type: “Docs”
 author: Lauren Pan
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## What's Zima
 -----------

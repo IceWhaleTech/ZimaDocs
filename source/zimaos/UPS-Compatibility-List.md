@@ -3,7 +3,7 @@ title: ZimaOS Supported UPS Devices Compatibility List
 description: ZimaOS UPS compatibility documentation for version 1.5.3 and later. Learn which USB-connected UPS devices using the usbhid-ups driver are supported by ZimaOS, browse the verified compatibility list, and get guidance on choosing a reliable UPS for your ZimaOS NAS or home server.
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## Instructions
 

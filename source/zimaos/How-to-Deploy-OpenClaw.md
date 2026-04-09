@@ -3,7 +3,7 @@ title: How to Deploy OpenClaw
 description: This guide explains deploying OpenClaw on CasaOS/ZimaOS devices, configuring a custom AI model, linking a Telegram bot, and accessing the Web UI to manage and interact with the AI.
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## 1. Overview
 

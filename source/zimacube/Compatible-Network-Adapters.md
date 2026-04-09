@@ -3,7 +3,7 @@ title: ZimaCube & ZimaOS Compatible Network Adapters
 description: "List of compatible network adapters for ZimaCube including 10GbE and Wi-Fi 6 options. Find verified NICs for maximum network throughput on your NAS."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 Here’s a list of network adapters compatible with ZimaCube and ZimaOS. Based on community feedback, we have ensured compatibility with the following adapters, providing seamless integration for optimal performance:
 ### Compatible Network Adapter List

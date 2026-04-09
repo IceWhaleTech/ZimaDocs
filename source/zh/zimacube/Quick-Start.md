@@ -2,7 +2,7 @@
 title: 快速入门
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 **欢迎来到 Zima Space！** 本指南旨在帮助首次使用 ZimaCube 的用户，带您通过三个简单的步骤来访问系统。无论您是否精通技术，我们都会耐心地帮助您轻松入门，享受我们的存储解决方案带来的便利。
 # 开箱

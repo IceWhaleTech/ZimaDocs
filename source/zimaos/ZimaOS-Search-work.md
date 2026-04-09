@@ -3,7 +3,7 @@ title: How does ZimaOS-Search work
 description: "Learn how ZimaOS Search works with its three-layer architecture: real-time file monitoring, filename indexing, and content indexing."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## System Architecture Overview
 ### Three-Layer Design

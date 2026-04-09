@@ -3,7 +3,7 @@ title: Reset Network Settings
 description: "How to reset ZimaOS network settings and static IP configuration using a USB drive when network changes cause connectivity issues."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 If you have set a static IP in ZimaOS and need to reset the network IP settings due to network changes, you can use this tutorial to reset the set IP binding.
 

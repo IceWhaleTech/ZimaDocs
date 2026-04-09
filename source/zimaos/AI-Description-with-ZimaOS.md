@@ -3,7 +3,7 @@ title: Implementing Frigate+Olama Screen AI Description with ZimaOS
 description: "Set up AI-powered security camera descriptions on ZimaOS using Frigate and Ollama. Local AI object detection with no cloud dependency."
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 ## Background
 In daily life, surveillance cameras have become important tools for both households and businesses. However, traditional monitoring systems usually only record images or simply detect motion, and cannot provide detailed explanations of the content of the images. This often requires users to judge for themselves what happened when viewing videos or receiving notifications.

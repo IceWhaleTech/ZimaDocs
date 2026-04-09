@@ -2,7 +2,7 @@
 title: More RAID Options
 description: ZimaOS supports RAID 0/1/5/6 and JBOD, balancing high performance, data redundancy, capacity utilization, and flexibility to meet diverse storage needs.
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # RAID Array Setup
 RAID (Redundant Array of Independent Disks) is a technology that combines multiple hard drives to improve both data storage **reliability** and **performance**. It distributes data across multiple drives to achieve higher read and write speeds, and can maintain data integrity even if some drives fail.

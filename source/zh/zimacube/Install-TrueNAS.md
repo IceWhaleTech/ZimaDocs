@@ -2,7 +2,7 @@
 title: 安装 TrueNAS
 description:
 type: “文档”
-tip: 顶部栏固定格式请勿删除，description 为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # ZimaCube 安装 TrueNAS 指南
 ![](https://manage.icewhale.io/api/static/docs/1727244342954_image.png)

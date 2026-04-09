@@ -2,7 +2,7 @@
 title: 远程访问
 description: 
 type: "Docs"
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # 随时随地的数据访问
 是否曾希望在旅行时检查家庭安全摄像头或访问家用服务器上的文件，却因数据无法访问而受阻？社区成员 Grandil 成功地在挪威访问了 ZimaOS，连接到爱尔兰的服务器，尽管是在移动漫游中，仍然体验到了无缝的连接。请查看他的评测 [这里](https://www.youtube.com/watch?v=ZDmO2h0tE0c)。

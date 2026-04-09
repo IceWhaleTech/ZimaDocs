@@ -2,7 +2,7 @@
 title: Enlazar Synology y SMB Compartidos
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # ¿Cómo compartir y obtener archivos de un NAS? SAMBA puede ser la forma más importante
 Cuando hablamos de Almacenamiento Conectado a la Red, queremos que nuestros archivos estén almacenados, gestionados en un solo lugar y accesibles desde cualquier lugar. Pero, ¿cómo se hace eso?

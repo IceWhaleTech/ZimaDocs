@@ -2,7 +2,7 @@
 title: Install TrueNAS
 description: "Install TrueNAS on your ZimaCube with this step-by-step guide. Covers hardware setup, USB boot drive creation, and full installation."
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # ZimaCube Install TrueNAS Guide
 ![](https://manage.icewhale.io/api/static/docs/1727244342954_image.png)

@@ -3,7 +3,7 @@ title: Ubuntu LTS Minimal, Mirrored Disks, and Docker Engine
 description: "Build a minimal Ubuntu Server setup on ZimaBoard. Install Ubuntu headless, configure networking, and set up SSH for a lightweight home server platform."
 type: Docs
 author: icewhale123456
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 >This guide was originally created by **<u>ZaNgA</u>**. We gratefully acknowledge his contribution.

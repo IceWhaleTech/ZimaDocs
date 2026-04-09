@@ -2,7 +2,7 @@
 title: How to Manually Download the Large Language Model
 description: “Manually download large language models for ZimaOS AI features without internet. Covers model selection, transfer via USB, and local installation steps.”
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 Assist currently uses the “TheBloke/Llama-2-13b-Chat-GPTQ” by default for ZimaOS.

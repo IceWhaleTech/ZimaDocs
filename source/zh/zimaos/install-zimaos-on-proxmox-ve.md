@@ -3,7 +3,7 @@ title: 在Proxmox VE上使用ISO镜像安装ZimaOS
 description:  
 type: Docs  
 author: icewhale123456  
-tip: 顶部栏固定格式请勿删除，description为文章描述，不填时将截取内容最前一段文字  
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---  
 **随着ZimaOS ISO镜像的正式发布**，现在可以在虚拟化环境中更轻松地安装和部署ZimaOS，例如**Proxmox VE (PVE)**。  
 该ISO镜像**特别针对虚拟机安装进行了优化**，允许您在没有物理硬件的情况下部署ZimaOS，并快速探索其核心功能。  

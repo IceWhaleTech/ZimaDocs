@@ -3,7 +3,7 @@ title: Como Instalar o ZimaOS
 description: Aprenda a instalar o ZimaOS com este guia passo a passo. Inclui download da imagem, gravação numa pen USB, processo de instalação e início de sessão via ZimaClient ou endereço IP.
 type: Docs
 author: admin
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
 ## O que vai aprender

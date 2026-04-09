@@ -2,7 +2,7 @@
 title: 如何在 ZimaCube 上启用 Plex 硬件转码？
 description:
 type: “Docs”
-tip: 顶部栏固定格式请勿删除,description为文章描述，不填时将截取内容最前一段文字
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 # Plex 和 GPU 转码
 Plex 媒体服务器是一个多功能且受到广泛欢迎的平台，用于管理和流媒体传输您的媒体库。通过利用 Intel / NVIDIA GPU 的强大功能，可以显著提升其性能和转码能力。在本指南中，我们将为您详细讲解如何设置 Docker Plex 以实现 Intel / NVIDIA GPU 加速，从而实现高效的硬件转码和更好的媒体流传输。
