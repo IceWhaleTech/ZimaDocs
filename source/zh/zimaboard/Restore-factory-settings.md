@@ -1,5 +1,6 @@
 ---
 title: ZimaBoard CasaOS 工厂恢复
+permalink: /zh/zimaboard/restore-factory-settings.html
 ---
 
 # 准备工作

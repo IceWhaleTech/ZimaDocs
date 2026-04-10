@@ -1,5 +1,6 @@
 ---
-title: 查找 CasaOS IP 地址 
+title: 查找 CasaOS IP 地址
+permalink: /zh/zimaboard/how-to-check-ip-address.html
 ---
 
 # 查找您的 CasaOS IP 地址 #
