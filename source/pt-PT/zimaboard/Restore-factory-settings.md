@@ -1,5 +1,6 @@
 ---
 title: Recuperação de Fábrica do ZimaBoard CasaOS
+permalink: /pt-PT/zimaboard/restore-factory-settings.html
 ---
 
 # Preparação

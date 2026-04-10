@@ -1,5 +1,6 @@
 ---
-title: CasaOSのIPアドレスを見つける 
+title: CasaOSのIPアドレスを見つける
+permalink: /jp/zimaboard/how-to-check-ip-address.html
 ---
 
 # あなたのCasaOSのIPアドレスを見つける #
