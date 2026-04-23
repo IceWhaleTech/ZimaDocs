@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: A formatação fixa da barra superior não deve ser excluída. A descrição é um resumo do artigo, se não for preenchida, será extraído o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimaboard/ax210-wifi-6e.html
 ---
 ## 1. Introdução
 O adaptador Intel® Wi-Fi 6E AX210 (Gig+) foi projetado para suportar a tecnologia Wi-Fi 6E. O produto suporta Wi-Fi de duas faixas nos canais de 2,4GHz, 5GHz e 6GHz, além de Bluetooth® 5.3. Combinado com os processadores Intel® Core™ e inovações excepcionais em tecnologia sem fio da Intel®, o módulo Intel® Wi-Fi 6E AX210 pode melhorar drasticamente sua experiência de conexão em casa, no trabalho ou em movimento.

@@ -1,5 +1,6 @@
 ---
 title: Experiência de Áudio e Vídeo em VR Oculus
+permalink: /pt-PT/zimaboard/oculus-quest-media-server.html
 ---
 # Oculus Quest 2 Conhecer ZimaBoard
 

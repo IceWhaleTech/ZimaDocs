@@ -2,6 +2,7 @@
 title: Self-Deploying-Applications
 description: "Deploy self-hosted applications on ZimaBoard using Docker and CasaOS. Run media servers, home automation, VPN, and more on your personal server."
 typora-root-url: ..
+permalink: /zimaboard/self-hosted-apps.html
 ---
 # Reason
 

@@ -1,6 +1,7 @@
 ---
 title: Basic Functions of Dedicated Systems
 description: "Overview of dedicated OS functions available for ZimaBoard. Learn how to install and use purpose-built operating systems for your single-board server."
+permalink: /zimaboard/jellyfin-setup.html
 ---
 
 # Watching Videos Anywhere with Jellyfin

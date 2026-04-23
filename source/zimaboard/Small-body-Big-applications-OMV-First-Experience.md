@@ -1,6 +1,7 @@
 ---
 title: Exploring OMV
 description: "First experience using OpenMediaVault on ZimaBoard. Explore OMV's web interface, storage management, and NAS features on a compact single-board server."
+permalink: /zimaboard/openmediavault-setup.html
 ---
 
 # First Login

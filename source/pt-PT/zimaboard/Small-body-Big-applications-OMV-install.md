@@ -1,5 +1,6 @@
 ---
 title: Tamanho Pequeno, Grandes Aplicações (OMV+ZimaBoard)
+permalink: /pt-PT/zimaboard/openmediavault-install.html
 ---
 # Introdução ao OMV
 

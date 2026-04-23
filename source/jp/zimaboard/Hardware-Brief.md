@@ -3,6 +3,7 @@ title: ハードウェア概要
 description: 
 type: "Docs"
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明で、未記入の場合は内容の最初の段落の文字を切り取ります。
+permalink: /jp/zimaboard/hardware-overview.html
 ---
 
 この記事の内容は、ZimaBladeのインターフェース情報と機能を紹介するものであり、詳細な情報については公式ウェブサイト[ZimaBlade](https://www.zimaspace.com/zh/products/blade-personal-nas)を参照してください。

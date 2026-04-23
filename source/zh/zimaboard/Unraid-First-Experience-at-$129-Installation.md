@@ -1,5 +1,6 @@
 ---
 title: Unraid的首次体验$129 - 安装
+permalink: /zh/zimaboard/unraid-install.html
 ---
 
 # 介绍Unraid

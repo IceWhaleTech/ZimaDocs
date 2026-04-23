@@ -4,6 +4,7 @@ description: "Build a minimal Ubuntu Server setup on ZimaBoard. Install Ubuntu h
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/minimal-ubuntu-server-build.html
 ---
 
 >This guide was originally created by **<u>ZaNgA</u>**. We gratefully acknowledge his contribution.

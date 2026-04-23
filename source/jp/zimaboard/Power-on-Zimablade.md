@@ -3,6 +3,7 @@ title: ZimaBladeでNASを設定する方法
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、未記入の場合は内容の最初の段落が切り取られます。
+permalink: /jp/zimaboard/power-on-zimablade.html
 ---
 NASは、あなたの貴重なデータ資産が存在するデジタルの聖域です。
 --------------------------------------------------------------

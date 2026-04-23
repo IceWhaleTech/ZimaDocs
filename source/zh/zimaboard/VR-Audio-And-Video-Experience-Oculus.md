@@ -1,5 +1,6 @@
 ---
 title: VR音频和视频体验Oculus
+permalink: /zh/zimaboard/oculus-quest-media-server.html
 ---
 # Oculus Quest 2遇见ZimaBoard
 

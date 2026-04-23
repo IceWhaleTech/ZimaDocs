@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部メタ情報を削除しないでください。descriptionは記事の説明で、未記入の場合は最初の段落が抜粋されます。
+permalink: /jp/zimaboard/arch-linux-installation-on-zimaboard-2.html
 ---
 ## **I. 概要**
 

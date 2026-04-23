@@ -1,5 +1,6 @@
 ---
 title: 専用システムの基本機能
+permalink: /jp/zimaboard/jellyfin-setup.html
 ---
 
 # Jellyfinでどこでも動画を視聴する

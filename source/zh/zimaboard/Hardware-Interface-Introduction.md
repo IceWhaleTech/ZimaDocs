@@ -1,5 +1,6 @@
 ---
 title: 硬件接口介绍
+permalink: /zh/zimaboard/hardware-interface.html
 ---
 
 本文内容旨在介绍ZimaBoard接口信息及部分接口的文档链接 — 如需更多详情，请查看官方网站-[zimaboard](https://www.zimaboard.com/)。

@@ -1,6 +1,7 @@
 ---
 title: 通用第三方系统安装
 typora-root-url: ..
+permalink: /zh/zimaboard/third-party-os-install.html
 ---
 ## 原因
 

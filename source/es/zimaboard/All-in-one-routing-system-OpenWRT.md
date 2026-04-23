@@ -1,6 +1,7 @@
 ---
 title: Sistema de enrutamiento todo en uno - Instalar OpenWRT
 typora-root-url: ..
+permalink: /es/zimaboard/openwrt-usb-install.html
 ---
 
 # Introduciendo OpenWRT

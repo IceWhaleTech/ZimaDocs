@@ -3,6 +3,7 @@ title: ZimaBoard + Syncthing!
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição deve ser uma descrição do artigo, se não preenchida, será capturada a primeira parte do texto.
+permalink: /pt-PT/zimaboard/syncthing-setup.html
 ---
 **Proteja os seus dados e desfrute de uma experiência de backup e sincronização sem preocupações 
 Backup e Sincronização Sem Esforço, Deixe Seus Dados Fluírem Livremente!

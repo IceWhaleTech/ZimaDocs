@@ -1,5 +1,6 @@
 ---
 title: ZimaBoard eMMC バーンインバージョンに最適な相棒、OpenWRT
+permalink: /jp/zimaboard/openwrt-emmc-boot.html
 ---
 
 # トピック

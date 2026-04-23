@@ -2,6 +2,7 @@
 title: Aplicações de Auto-implantação
 description:
 typora-root-url: ..
+permalink: /pt-PT/zimaboard/self-hosted-apps.html
 ---
 # Razão
 

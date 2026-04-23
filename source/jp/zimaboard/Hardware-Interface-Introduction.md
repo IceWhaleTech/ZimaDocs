@@ -1,5 +1,6 @@
 ---
 title: ハードウェアインターフェース入門
+permalink: /jp/zimaboard/hardware-interface.html
 ---
 
 この記事の内容は、ZimaBoardのインターフェース情報とドキュメントリンクが記載された一部のインターフェースを紹介するものです — 詳細については公式ウェブサイト-[zimaboard](https://www.zimaboard.com/)を確認してください。

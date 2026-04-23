@@ -1,6 +1,6 @@
 ---
 titel: 升级主板BIOS版本
-permalink: /zh/zimaboard/upgrade-motherboard-bios-version.html
+permalink: /zh/zimaboard/bios-upgrade.html
 --- 
 
 # BIOS - 最新版本

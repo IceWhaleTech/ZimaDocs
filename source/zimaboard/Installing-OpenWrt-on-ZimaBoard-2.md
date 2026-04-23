@@ -4,6 +4,7 @@ description: "Install OpenWrt on ZimaBoard 2 for a powerful home router and netw
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/openwrt-x86-install.html
 ---
 ##  1.Introduction
 
