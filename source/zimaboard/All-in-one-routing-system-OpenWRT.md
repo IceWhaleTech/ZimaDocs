@@ -2,6 +2,7 @@
 title: All-in-one routing system- Install OpenWRT
 description: "Turn ZimaBoard into an all-in-one router with OpenWRT. Install and configure OpenWRT for DHCP, firewall, VPN, and home network management."
 typora-root-url: ..
+permalink: /zimaboard/openwrt-usb-install.html
 ---
 
 # Introducing OpenWRT

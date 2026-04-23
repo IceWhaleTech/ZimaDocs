@@ -1,5 +1,6 @@
 ---
 title: OpenWRT 是 ZimaBoard eMMC 烧录版的完美伴侣
+permalink: /zh/zimaboard/openwrt-emmc-boot.html
 ---
 
 # 主题

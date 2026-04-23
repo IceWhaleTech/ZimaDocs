@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: No elimine el formato fijo de la barra superior, la descripción es el resumen del artículo, si no se llena, se tomará el primer párrafo.
+permalink: /es/zimaboard/openwrt-x86-install.html
 ---
 ##  1.Introducción
 

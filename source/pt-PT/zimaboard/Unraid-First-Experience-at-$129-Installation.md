@@ -1,5 +1,6 @@
 ---
 title: A Primeira Experiência com Unraid a $129 - Instalação
+permalink: /pt-PT/zimaboard/unraid-install.html
 ---
 
 # Introduzindo o Unraid

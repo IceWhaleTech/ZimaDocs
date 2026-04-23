@@ -4,6 +4,7 @@ description: Resolve kernel panic and network instability issues on PVE environm
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/pve-on-debian-for-i226.html
 ---
 ## Running Proxmox VE on Debian for i226 NICs
 

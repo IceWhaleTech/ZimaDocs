@@ -2,6 +2,7 @@
 title: ¿2 ZimaBlades, 1 Clúster? ¡PVE hace que tu servicio sea migrable!
 type: “Docs”
 tip: Formato fijo de la barra superior, no lo elimines
+permalink: /es/zimaboard/zimablade-cluster-pve.html
 ---
 Imagina que tu servidor local ejecuta servicios esenciales como VPN, transcodificación de medios, DNS, o incluso un servidor de juegos. ¿Alguna vez has pensado en migrar estos servicios a una nueva máquina algún día? Migrar servicios entre diferentes máquinas es una necesidad común, ¡y sería aún mejor si pudieras migrar automáticamente los servicios a un nuevo dispositivo en caso de que falle el servidor! ¿Cómo podemos lograr esto con ZimaBlade?
 

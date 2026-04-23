@@ -1,6 +1,6 @@
 ---
 title: Encontrar o Endereço IP do CasaOS
-permalink: /pt-PT/zimaboard/how-to-check-ip-address.html
+permalink: /pt-PT/zimaboard/find-ip-address.html
 ---
 
 # Encontre o Seu Endereço IP do CasaOS #

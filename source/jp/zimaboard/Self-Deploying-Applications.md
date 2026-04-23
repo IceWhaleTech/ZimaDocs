@@ -2,6 +2,7 @@
 title: 自動デプロイアプリケーション
 description:
 typora-root-url: ..
+permalink: /jp/zimaboard/self-hosted-apps.html
 ---
 # 理由
 

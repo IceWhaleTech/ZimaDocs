@@ -1,5 +1,6 @@
 ---
 title: Servidor Minecraft–Construa um Servidor Minecraft com ZimaBoard
+permalink: /pt-PT/zimaboard/minecraft-friendship-service.html
 ---
 
 # Razão

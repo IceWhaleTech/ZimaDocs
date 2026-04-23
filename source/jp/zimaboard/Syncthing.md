@@ -3,6 +3,7 @@ title: ZimaBoard + Syncthing!
 description:
 type: “Docs”
 tip: 上部のバーの固定フォーマットは削除しないでください, descriptionは記事の説明であり、未記入の場合は内容の最初の段落のテキストを切り取ります
+permalink: /jp/zimaboard/syncthing-setup.html
 ---
 **データを保護し、心配のないバックアップと同期の体験を楽しむ
 楽々バックアップと同期、あなたのデータを自由に流れさせましょう！

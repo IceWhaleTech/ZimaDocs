@@ -2,6 +2,7 @@
 title: Aplicaciones de Auto-Despliegue
 description:
 typora-root-url: ..
+permalink: /es/zimaboard/self-hosted-apps.html
 ---
 # Razón
 

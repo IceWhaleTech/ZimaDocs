@@ -1,5 +1,6 @@
 ---
 title: Funções Básicas de Sistemas Dedicados
+permalink: /pt-PT/zimaboard/jellyfin-setup.html
 ---
 
 # Assistindo Vídeos em Qualquer Lugar com Jellyfin

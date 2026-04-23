@@ -3,6 +3,7 @@ title: ZimaboardでのWake-on-LAN (WOL)の有効化方法
 description: 
 type: "Docs"
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明です。未入力の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaboard/wake-on-lan-setup.html
 ---
 LAN Wake-on-LAN (WOL)は、特にZimaboardのようなSBS（シングルボードサーバー）を扱う場合において、システムやコンピュータの処理において非常に重要な部分です。
 お客様のニーズに応えるために、当社のZimaboard製品は、WOLを標準でサポートしており、設定を有効にするだけで使用できます。

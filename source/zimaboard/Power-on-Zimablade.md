@@ -3,6 +3,7 @@ title: How to set up a NAS with ZimaBlade
 description: "Power on your ZimaBlade single-board server for the first time. Unboxing guide covering hardware connections, boot process, and initial system access."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/power-on-zimablade.html
 ---
 NAS is a digital haven where your precious data assets reside.
 --------------------------------------------------------------

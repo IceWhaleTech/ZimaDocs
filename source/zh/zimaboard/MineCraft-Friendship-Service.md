@@ -1,5 +1,6 @@
 ---
 title: 我的世界服务器–使用 ZimaBoard 构建一个我的世界服务器
+permalink: /zh/zimaboard/minecraft-friendship-service.html
 ---
 
 # 理由

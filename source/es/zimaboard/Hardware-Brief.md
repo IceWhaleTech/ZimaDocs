@@ -3,6 +3,7 @@ title: Resumen de Hardware
 description: 
 type: "Docs"
 tip: La barra superior tiene un formato fijo, por favor no lo elimine; la descripción es para describir el artículo. Si no se rellena, se tomará el primer párrafo del contenido.
+permalink: /es/zimaboard/hardware-overview.html
 ---
 
 El contenido de este artículo es para introducir la información de la interfaz y las funciones de ZimaBlade - para más información detallada, por favor consulte el sitio web oficial [ZimaBlade](https://www.zimaspace.com/zh/products/blade-personal-nas).

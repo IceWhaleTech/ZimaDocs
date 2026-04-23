@@ -1,5 +1,6 @@
 ---
 title: OMVの探求
+permalink: /jp/zimaboard/openmediavault-setup.html
 ---
 
 # 初回ログイン

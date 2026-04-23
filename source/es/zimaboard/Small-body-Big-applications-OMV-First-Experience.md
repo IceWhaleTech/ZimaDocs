@@ -1,5 +1,6 @@
 ---
 title: Explorando OMV
+permalink: /es/zimaboard/openmediavault-setup.html
 ---
 
 # Primer Inicio de Sesión

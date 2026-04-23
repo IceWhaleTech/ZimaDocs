@@ -2,6 +2,7 @@
 title: 自部署应用
 description:
 typora-root-url: ..
+permalink: /zh/zimaboard/self-hosted-apps.html
 ---
 # 理由
 

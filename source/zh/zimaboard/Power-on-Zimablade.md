@@ -3,6 +3,7 @@ title: 如何设置NAS与ZimaBlade
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaboard/power-on-zimablade.html
 ---
 NAS是一个数字避风港，存放着您珍贵的数据资产。
 --------------------------------------------------------------

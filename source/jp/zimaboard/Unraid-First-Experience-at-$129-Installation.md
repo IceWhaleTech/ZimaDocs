@@ -1,5 +1,6 @@
 ---
 title: Unraidの最初の体験 - $129でのインストール
+permalink: /jp/zimaboard/unraid-install.html
 ---
 
 # Unraidの紹介

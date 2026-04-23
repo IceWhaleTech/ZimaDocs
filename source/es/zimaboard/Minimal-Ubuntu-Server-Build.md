@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /es/zimaboard/minimal-ubuntu-server-build.html
 ---
 
 >Esta guía fue creada originalmente por **<u>ZaNgA</u>**. Agradecemos sinceramente su contribución.

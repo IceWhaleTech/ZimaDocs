@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaboard/ax210-wifi-6e.html
 ---
 ## 1. 介绍
 Intel® Wi-Fi 6E AX210 (Gig+) 适配器设计用于支持 Wi-Fi 6E 技术。该产品支持在 2.4GHz、5GHz 和 6GHz 频段的双流 Wi-Fi，以及蓝牙® 5.3。结合 Intel® Core™ 处理器和卓越的 Intel 无线创新，Intel® Wi-Fi 6E AX210 模块可以显著提升您在家中、工作中或外出时的连接体验。

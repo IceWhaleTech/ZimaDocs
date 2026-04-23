@@ -3,6 +3,7 @@ title: Get Started with ZimaBoard 2
 description: "Unbox and set up your ZimaBoard 2 single-board server. Covers hardware overview, first boot, connecting peripherals and accessing the system dashboard."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/power-on-zimaboard-2.html
 ---
 ## Introduction
 **ZimaBoard 2 — Hack Out New Rules**

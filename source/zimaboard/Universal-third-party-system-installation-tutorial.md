@@ -2,6 +2,7 @@
 title: Universal Third-party System Installation
 description: "Install any third-party OS on ZimaBoard using a universal flashing tutorial. Works with Ubuntu, Debian, Arch, and other x86-64 compatible Linux distributions."
 typora-root-url: ..
+permalink: /zimaboard/third-party-os-install.html
 ---
 ## Reason
 

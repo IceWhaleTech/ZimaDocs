@@ -1,3 +1,8 @@
+---
+title: 修复 PVE 中的 NIC 问题
+permalink: /zh/zimaboard/pve-on-debian-for-i226.html
+---
+
 ### 修复 PVE 中的 NIC 问题
 解决 Intel NIC 在 PVE 环境中的内核恐慌和网络不稳定问题。
 
