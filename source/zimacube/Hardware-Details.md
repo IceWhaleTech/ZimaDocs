@@ -3,6 +3,7 @@ title: Hardware Details
 description: "Detailed ZimaCube hardware specifications including motherboard, processor, memory slots, PCIe lanes, and storage interface technical documentation."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/hardware-details.html
 ---
 # Power Consumption
 ZimaCube is designed with energy efficiency in mind, minimizing power consumption while delivering powerful performance. The device comes standard with a 19V/11.58A power supply for a total of 220W. This ensures that ZimaCube can keep working even with multiple drives and accessories connected. The system also includes advanced thermal management features that optimize energy use, making it a practical solution for 24/7 operation, such as a home or office NAS environment.

@@ -3,6 +3,7 @@ title: Atualização offline
 description: atualizar o ZimaOS em um ambiente offline
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, e se não preenchida, o conteúdo será cortado na primeira parte do texto.
+permalink: /pt-PT/zimaos/offline-install.html
 ---
 
 Este tutorial irá guiá-lo através dos passos para atualizar o ZimaOS em um ambiente offline.  

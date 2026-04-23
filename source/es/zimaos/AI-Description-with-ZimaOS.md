@@ -7,6 +7,7 @@ description:
 type: Docs  
 author: admin  
 tip: No eliminar el formato fijo de la barra superior, la descripción es para la descripción del artículo, si no se llena, se tomará el primer párrafo del contenido.  
+permalink: /es/zimaos/frigate-ollama-setup.html
 ---  
 
 ## Background  

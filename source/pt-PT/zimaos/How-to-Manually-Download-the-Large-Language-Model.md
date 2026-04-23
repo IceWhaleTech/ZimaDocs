@@ -3,6 +3,7 @@ title: Como Baixar Manualmente o Grande Modelo de Linguagem
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não preenchida irá capturar o texto do início do conteúdo
+permalink: /pt-PT/zimaos/llm-manual-download.html
 ---
 
 Assist atualmente utiliza o “TheBloke/Llama-2-13b-Chat-GPTQ” por padrão no ZimaOS.

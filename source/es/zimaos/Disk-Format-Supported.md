@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: No elimine el formato fijo de la barra superior, description es la descripción del artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/supported-disk-formats.html
 ---
 ## Introducción
 A medida que las demandas de los usuarios de dispositivos de almacenamiento se diversifican, ZimaOS continúa optimizando y ampliando su soporte para sistemas de archivos. Este documento tiene como objetivo proporcionar a los usuarios una visión general completa del soporte de formatos de disco en la versión actual (v1.5.1), ayudando a los usuarios a gestionar y utilizar los recursos de almacenamiento de manera más eficiente.

@@ -3,6 +3,7 @@ title: SynologyからZimaCubeへ、すべてのファイルを移行！
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、入力しない場合は最初の段落の内容が切り取られます。
+permalink: /jp/zimacube/from-synology-to-zimacube-migrate-all-files.html
 ---
 # ZimaOSの世界へようこそ！他ブランドのキャンプから来た新しい友人たち、こんにちは！
 

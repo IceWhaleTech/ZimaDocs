@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: A formatação fixa da barra superior não deve ser removida, a descrição é para o artigo, se não for preenchida, será capturado o texto do primeiro parágrafo
+permalink: /pt-PT/zimacube/compatible-network-adapters.html
 ---
 Aqui está uma lista de adaptadores de rede compatíveis com ZimaCube e ZimaOS. Com base no feedback da comunidade, garantimos a compatibilidade com os seguintes adaptadores, proporcionando uma integração fluida para um desempenho ideal:
 ### Lista de Adaptadores de Rede Compatíveis

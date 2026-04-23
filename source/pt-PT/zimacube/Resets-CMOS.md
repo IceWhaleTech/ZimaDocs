@@ -3,6 +3,7 @@ title: ZimaCube Restaura CMOS
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não for preenchida, o conteúdo será cortado na primeira parte do texto.
+permalink: /pt-PT/zimacube/resets-cmos.html
 ---
 # Por que precisamos restaurar o CMOS?
 Restaurar o CMOS é, na verdade, devolver as configurações da BIOS ao estado de fábrica, o que pode resolver muitos problemas causados por configurações incorretas, definições danificadas ou mudanças de hardware. É um método de resolução de problemas relativamente seguro e simples, geralmente como o primeiro passo para resolver problemas complexos do sistema.

@@ -4,6 +4,7 @@ description:
 type: Docs  
 author: admin  
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/paperless-ai-install.html
 ---  
 > _原文发表于IceWhale社区论坛_ _**Muditha Liyanagama**_ _：_ _[原文地址](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ai-on-zimaos/7557)_
 

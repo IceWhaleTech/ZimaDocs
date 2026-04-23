@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es una descripción del artículo, si no se llena, se cortará el primer párrafo del contenido
+permalink: /es/zimaos/time-machine-backup.html
 ---
 ¿Quieres mantener tus archivos de Mac seguros? Con la nueva función de Time Machine de ZimaOS, puedes hacer una copia de seguridad de tus archivos en ZimaCube de manera fácil. Esta poderosa función no solo es rápida y sencilla, sino que también garantiza que tus datos importantes estén siempre protegidos. Aquí tienes los pasos fáciles de seguir para configurar rápidamente una copia de seguridad.
 

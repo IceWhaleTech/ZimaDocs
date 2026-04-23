@@ -3,6 +3,7 @@ title: 安装 TrueNAS
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/install-truenas.html
 ---
 # ZimaCube 安装 TrueNAS 指南
 ![](https://manage.icewhale.io/api/static/docs/1727244342954_image.png)

@@ -3,6 +3,7 @@ title: How to download and install ZimaClient
 description: "Download and install ZimaClient on Windows or Mac to access your ZimaCube from anywhere. Setup guide for remote access, file browsing, and seamless device connection."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/zimaclient-install.html
 ---
 ## Introduction:
 The ZimaClient is designed to be a silent client, but its functionality is substantial enough that some core experiences occur in places you might not even notice—quietly and naturally.

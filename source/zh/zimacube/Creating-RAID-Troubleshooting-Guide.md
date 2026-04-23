@@ -3,6 +3,7 @@ title: 创建RAID故障排除指南
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/raid-troubleshooting.html
 ---
 # 当遇到无法创建RAID的问题时，建议按照以下故障排除步骤进行处理：
 

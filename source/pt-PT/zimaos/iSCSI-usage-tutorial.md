@@ -3,6 +3,7 @@ title: Tutorial de uso do iSCSI
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não preenchida, será cortada a primeira parte do conteúdo.
+permalink: /pt-PT/zimaos/iscsi-guide.html
 ---
 
 iSCSI (Internet Small Computer System Interface) é um protocolo para transmitir comandos SCSI através de uma rede, permitindo que dispositivos de armazenamento se comuniquem sobre uma rede, semelhante ao armazenamento diretamente conectado. Ele pode virtualizar recursos de armazenamento, alcançar gerenciamento centralizado, compartilhamento em rede e acesso remoto, sendo adequado para cenários como data centers, ambientes virtualizados e backup e recuperação. 

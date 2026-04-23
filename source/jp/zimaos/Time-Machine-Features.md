@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明です。未記入の場合、内容の最初の段落の文字が切り取られます。
+permalink: /jp/zimaos/time-machine-backup.html
 ---
 Macのファイルを安全に保ちたいですか？ZimaOSの新しいTime Machine機能を使えば、簡単にファイルをZimaCubeにバックアップできます。この強力な機能は、迅速かつ簡単で、重要なデータを常に保護します。バックアップを迅速に設定するための簡単な手順は以下の通りです。
 

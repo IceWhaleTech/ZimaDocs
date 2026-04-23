@@ -4,6 +4,7 @@ description: "Deploy Pi-hole on ZimaOS to block ads across your entire network. 
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/pi-hole-setup.html
 ---
 ### Introduction
 Pi-hole is a powerful network-level ad blocking tool that can help you block ads and protect your privacy. In this tutorial, we will introduce how to install and configure Pi-hole on ZimaOS to make your home network cleaner and more efficient.

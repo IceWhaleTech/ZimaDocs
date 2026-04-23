@@ -3,6 +3,7 @@ title: 7th Bay Usage
 description: "Learn how to install and use the ZimaCube 7th bay for additional storage. Step-by-step guide for drive installation and removal."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/7th-bay-guide.html
 ---
 # Install and Remove the 7th Bay
 ## Preparations:

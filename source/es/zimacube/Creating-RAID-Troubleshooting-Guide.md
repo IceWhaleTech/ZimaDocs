@@ -3,6 +3,7 @@ title: Guía de Solución de Problemas de Creación de RAID
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, por favor no la elimines. La descripción es para el artículo; si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/raid-troubleshooting.html
 ---
 # Al tratar problemas relacionados con la imposibilidad de crear RAID, se recomienda seguir estos pasos de solución de problemas:
 

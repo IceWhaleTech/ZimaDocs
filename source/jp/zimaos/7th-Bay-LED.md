@@ -3,6 +3,7 @@ title: 7th Bay LED
 description:
 type: “Docs”
 tip: ヘッダーバーの固定フォーマットを削除しないでください。descriptionは記事の説明です。記入しない場合、内容の最初の段落を切り取ります。
+permalink: /jp/zimaos/7th-bay-led.html
 ---
 # はじめに
 ## プロジェクト概要

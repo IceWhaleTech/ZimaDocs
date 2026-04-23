@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/azuracast-install.html
 ---
 > _本指南改编自社区成员 **Muditha Liyanagama** 的原文，[在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818)，我们对他们的工作表示衷心的感谢。_
 

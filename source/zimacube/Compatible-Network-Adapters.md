@@ -4,6 +4,7 @@ description: "List of compatible network adapters for ZimaCube including 10GbE a
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/compatible-network-adapters.html
 ---
 Here’s a list of network adapters compatible with ZimaCube and ZimaOS. Based on community feedback, we have ensured compatibility with the following adapters, providing seamless integration for optimal performance:
 ### Compatible Network Adapter List

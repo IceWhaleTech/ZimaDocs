@@ -1,5 +1,6 @@
 ---
 标题: 升级主板BIOS版本
+permalink: /zh/zimacube/enable-wol-on-zimacube.html
 ---
 
 # BIOS - 最新版本

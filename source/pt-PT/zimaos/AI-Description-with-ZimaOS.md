@@ -5,6 +5,7 @@ description:
 type: Docs  
 author: admin  
 tip: A formatação fixa da barra superior não deve ser excluída. A descrição é para descrever o artigo, se não for preenchida, será capturada a primeira parte do conteúdo.  
+permalink: /pt-PT/zimaos/frigate-ollama-setup.html
 ---  
 ## Background  
 Na vida diária, as câmeras de vigilância tornaram-se ferramentas importantes tanto para residências quanto para empresas. No entanto, os sistemas de monitoramento tradicionais geralmente apenas gravam imagens ou simplesmente detectam movimento, e não conseguem fornecer explicações detalhadas sobre o conteúdo das imagens. Isso frequentemente exige que os usuários julguem por si mesmos o que aconteceu ao visualizar vídeos ou receber notificações.  

@@ -3,6 +3,7 @@ title: Vista previa en vivo de ZimaOS OpenAPI
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, por favor no la elimines, description es la descripción del artículo, si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/openapi-live-preview.html
 ---
 # Introducción
 La función de **Vista previa en vivo** en ZimaOS OpenAPI permite a los usuarios explorar visualmente la estructura de los puntos finales de la API y las solicitudes disponibles. Ayuda a los desarrolladores a comprender las funcionalidades de la API y cómo interactuar con los diferentes componentes. Esta función es particularmente útil para aquellos que buscan obtener una clara visión general de las capacidades de ZimaOS antes de la implementación.

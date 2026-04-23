@@ -3,6 +3,7 @@ title: Build Apps
 description: "Publish and adapt Docker applications for ZimaOS. Includes Docker app packaging, PC application compilation, cloud app migration and recommended configuration checklist."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/docker-app-publishing.html
 ---
 # ZimaOS Docker Application Adaptation Manual
 How to publish applications to ZimaOS

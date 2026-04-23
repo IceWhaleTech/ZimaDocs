@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。記入しない場合は、記事の最初の段落を自動的に抜粋します。
+permalink: /jp/zimaos/paperless-ai-install.html
 ---
 > _元々IceWhaleコミュニティのフォーラムに公開されたもの_ _**Muditha Liyanagama**_ _による:_ _[原文リンク](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ai-on-zimaos/7557)_
 

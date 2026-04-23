@@ -3,6 +3,7 @@ title: ZimaOS V1.2.5
 description: "ZimaOS V1.2.5 release notes. Key updates include Share via link, Disk Standby mode, and expanded language support."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/zimaos-v1-2-5-available.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1730184763693_image.png)
 

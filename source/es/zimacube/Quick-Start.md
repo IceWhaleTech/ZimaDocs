@@ -3,6 +3,7 @@ title: Guía Rápida
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es la descripción del artículo, si no se llena, se tomará como contenido el primer párrafo.
+permalink: /es/zimacube/quick-start.html
 ---
 **¡Bienvenido a Zima Space!** Esta guía está diseñada para cualquier persona que use ZimaCube por primera vez, guiándote a través de tres pasos simples para acceder al sistema. Ya seas un experto en tecnología o no, te ayudaremos pacientemente a comenzar con facilidad y disfrutar de la conveniencia de nuestra solución de almacenamiento.
 # Desembalando

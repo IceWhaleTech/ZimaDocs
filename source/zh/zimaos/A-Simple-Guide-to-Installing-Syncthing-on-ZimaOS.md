@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/syncthing-install.html
 ---
 
 > _最初由_ _**Muditha Liyanagama (社区贡献者)**_ _在IceWhale社区论坛发布:_ _[原文地址](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_

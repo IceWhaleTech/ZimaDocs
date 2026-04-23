@@ -3,6 +3,7 @@ title: ZimaCube Restablece CMOS
 description:
 type: “Docs”
 tip: La barra superior fija el formato, por favor no eliminar. La descripción es un resumen del artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/resets-cmos.html
 ---
 # ¿Por qué necesitamos restablecer CMOS?
 Restablecer CMOS es, en realidad, restaurar los ajustes de BIOS al estado de fábrica, lo que puede resolver muchos problemas causados por configuraciones incorrectas, ajustes dañados o cambios de hardware. Es un método de solución de problemas relativamente seguro y simple, generalmente como el primer paso para resolver problemas complejos del sistema.

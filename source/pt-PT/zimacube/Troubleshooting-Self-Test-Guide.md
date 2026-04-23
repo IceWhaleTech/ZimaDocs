@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: O formato fixo da barra superior não deve ser removido, a descrição é uma descrição do artigo, se não preenchida, será extraída a primeira parte do conteúdo
+permalink: /pt-PT/zimacube/troubleshooting-self-test-guide.html
 ---
 
 Como um produto NAS de alto desempenho, o ZimaCube foi projetado para fornecer uma solução confiável para profissionais criativos e entusiastas da tecnologia. No entanto, no uso diário, os usuários podem encontrar vários problemas técnicos ou falhas, que geralmente podem ser resolvidos por si mesmos através de passos simples de resolução de problemas. O objetivo deste guia é ajudar os usuários a identificar e resolver rapidamente problemas comuns do ZimaCube para evitar inatividade desnecessária.

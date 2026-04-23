@@ -4,6 +4,7 @@ description: "Install AzuraCast internet radio station on ZimaOS via command lin
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/azuracast-install.html
 ---
 > _This guide is adapted from the original article, [A Comprehensive Guide to Installing AzuraCast on ZimaOS via the Command Line](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818), by community member **Muditha Liyanagama**. We extend our sincere thanks for their work._
 

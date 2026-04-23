@@ -4,6 +4,7 @@ description:
 type: Docs  
 author: icewhale123456  
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.  
+permalink: /zh/zimaos/paperless-ngx-install.html
 ---  
 > _最初由_ _**Muditha Liyanagama**_ _发布在 IceWhale 社区论坛上:_ _[原文地址](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_  
 

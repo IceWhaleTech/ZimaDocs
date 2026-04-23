@@ -4,6 +4,7 @@ description:
 type: Docs  
 author: icewhale123456  
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.  
+permalink: /zh/zimaos/pi-hole-setup.html
 ---  
 ### 介绍  
 Pi-hole 是一个强大的网络级广告拦截工具，能够帮助你屏蔽广告并保护隐私。在本教程中，我们将介绍如何在 ZimaOS 上安装和配置 Pi-hole，使你的家庭网络更清洁、更高效。

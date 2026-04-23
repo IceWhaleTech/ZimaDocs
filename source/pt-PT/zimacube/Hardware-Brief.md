@@ -3,6 +3,7 @@ title: Resumo de Hardware
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição são as descrições dos artigos, caso não preenchido, será cortado o primeiro parágrafo do conteúdo
+permalink: /pt-PT/zimacube/hardware-overview.html
 ---
 
 # Visão Geral de Desempenho do ZimaCube

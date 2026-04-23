@@ -4,6 +4,7 @@ description: "Troubleshoot and configure SMB file sharing on ZimaOS. Covers Wind
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/smb-troubleshooting.html
 ---
 ## Core issues
 -**Incorrect authentication method:** entered directly `smb://IP` When connecting, the system defaults to using anonymous or system users, resulting in authentication failure and excessively long connection response times.

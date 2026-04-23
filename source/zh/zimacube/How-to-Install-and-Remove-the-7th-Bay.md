@@ -3,6 +3,7 @@ title: 如何安装和移除第七个硬盘槽
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/7th-bay-install.html
 ---
 # 准备工作：
 确保ZimaCube已关闭电源并拔掉插头。

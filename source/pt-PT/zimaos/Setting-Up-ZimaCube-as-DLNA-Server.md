@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo do cabeçalho não deve ser removido, a descrição é para o artigo, e caso não seja preenchida, o conteúdo será cortado a partir do primeiro parágrafo.
+permalink: /pt-PT/zimaos/dlna-server-setup.html
 ---
 ## Introdução
 Nesta era digital, os sistemas de entretenimento em casa estão se tornando cada vez mais inteligentes e interconectados. Como um dispositivo de armazenamento em nuvem pessoal de alto desempenho, o ZimaCube não só fornece uma solução de armazenamento de grande capacidade, mas também suporta o protocolo DLNA (Digital Living Network Alliance), permitindo que você compartilhe e reproduza facilmente qualquer conteúdo multimídia na sua rede doméstica.

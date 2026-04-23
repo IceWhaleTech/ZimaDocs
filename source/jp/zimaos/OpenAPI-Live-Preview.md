@@ -3,6 +3,7 @@ title: ZimaOS OpenAPI ライブプレビュー
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、未入力の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaos/openapi-live-preview.html
 ---
 # はじめに
 ZimaOS OpenAPIの**ライブプレビュー**機能により、ユーザーはAPIエンドポイントの構造と利用可能なリクエストを視覚的に探求できます。これにより、開発者はAPIの機能とさまざまなコンポーネントとのインタラクション方法を理解するのに役立ちます。この機能は、実装前にZimaOSの機能を明確に把握したい人に特に便利です。

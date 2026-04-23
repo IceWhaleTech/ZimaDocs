@@ -3,6 +3,7 @@ title: アプリの作成
 description:
 type: “Docs”
 tip: 上部のバーの固定形式は削除しないでください。descriptionは記事の説明であり、記入しない場合は最初の段落が自動的に使用されます。
+permalink: /jp/zimaos/docker-app-publishing.html
 ---
 # ZimaOS Docker アプリケーション適応マニュアル
 ZimaOS へのアプリケーションの公開方法

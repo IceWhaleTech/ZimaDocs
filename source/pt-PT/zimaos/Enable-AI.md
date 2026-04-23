@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, e se não for preenchida, o conteúdo será extraído do primeiro parágrafo.
+permalink: /pt-PT/zimaos/enable-ai.html
 ---
 ## Introdução
 À medida que as demandas dos usuários por dispositivos de armazenamento se diversificam, o ZimaOS continua a otimizar e expandir o suporte ao seu sistema de arquivos. Este documento pretende fornecer aos usuários uma visão abrangente do suporte aos formatos de disco na versão atual (v1.3.0), ajudando-os a gerenciar e utilizar os recursos de armazenamento de maneira mais eficiente.

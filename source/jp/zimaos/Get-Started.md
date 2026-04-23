@@ -3,6 +3,7 @@ title: 始める
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。未記入の場合はコンテンツの最初の段落を切り取ります。
+permalink: /jp/zimaos/get-started.html
 ---
 
 # オンボーディング

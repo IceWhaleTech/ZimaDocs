@@ -3,6 +3,7 @@ title: Método de Atualização do BIOS do ZimaCube
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não preenchida, será capturada a primeira parte do texto
+permalink: /pt-PT/zimacube/zimacube-bios-update-method.html
 ---
 ## Pré-preparação:
 - Pen drive USB (sem conteúdos) X1

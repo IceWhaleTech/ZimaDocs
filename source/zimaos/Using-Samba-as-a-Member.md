@@ -3,6 +3,7 @@ title: Samba with Multi-User
 description: "Use Samba multi-user sharing on ZimaOS to manage file access permissions. Set up user accounts, groups, and folder sharing for your household or team."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/samba-member-setup.html
 ---
 
 ## What Can Samba do?

@@ -3,6 +3,7 @@ title: SSH设置
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/ssh-setup.html
 ---
 # 介绍
 ZimaOS 支持连接三种类型的终端：计算机、移动设备和网络附属存储 (NAS) 系统，确保对您的数据进行多元化访问和管理。

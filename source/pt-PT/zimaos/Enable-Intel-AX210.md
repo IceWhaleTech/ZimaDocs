@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não preenchida, será cortada a primeira parte do texto
+permalink: /pt-PT/zimaos/enable-intel-ax210.html
 ---
 
 **🎯 Objetivo**

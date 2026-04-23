@@ -3,6 +3,7 @@ title: 7ª Baía LED
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para descrever o artigo, se não preenchido, o conteúdo será cortado da primeira parte do texto.
+permalink: /pt-PT/zimaos/7th-bay-led.html
 ---
 # Introdução
 ## Visão Geral do Projeto

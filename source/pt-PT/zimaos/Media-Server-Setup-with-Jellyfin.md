@@ -3,7 +3,7 @@ title: Como Assistir Vídeos em Qualquer Lugar com o Servidor de Mídia Jellyfin
 description:  
 tipo: "Docs"  
 dica: A barra superior é fixa, não a exclua. A descrição é o resumo do artigo, e caso não seja preenchida, será utilizada a primeira parte do conteúdo.
-
+permalink: /pt-PT/zimaos/media-server-setup-with-jellyfin.html
 ---
 
 # Introdução

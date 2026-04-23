@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: 上部バーの固定形式を削除しないでください。descriptionは記事の説明です。未記入の場合、内容の最初の段落が切り取られます。
+permalink: /jp/zimacube/assembly-guide.html
 ---
 
 ## ツールの準備

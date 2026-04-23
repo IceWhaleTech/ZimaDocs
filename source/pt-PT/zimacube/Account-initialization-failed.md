@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo da barra superior não deve ser removido, description é a descrição do artigo, se não preenchido, será capturada a primeira parte do texto.
+permalink: /pt-PT/zimacube/account-initialization-failed.html
 ---
 ## Corrigir o Erro "Inicialização de Conta Falhou": Guia Rápido  
 

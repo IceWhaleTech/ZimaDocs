@@ -3,6 +3,7 @@ title: ZimaCubeをThunderboltケーブルで接続する方法
 description: 
 type: "Docs"
 tip: 上部のバーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、記入しない場合は内容の最初の段落の文字を切り取ります。
+permalink: /jp/zimaos/thunderbolt-direct-connect.html
 ---
 
 コンピュータをThunderboltケーブルを使用してZimaCubeに接続し、より高速な接続速度を得たい場合は、次の手順に従ってください：

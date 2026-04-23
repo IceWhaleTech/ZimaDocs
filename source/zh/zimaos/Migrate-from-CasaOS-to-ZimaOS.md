@@ -4,6 +4,7 @@ description: 从 CasaOS 迁移到 ZimaOS 的分步指南。学习如何传输文
 type: Docs
 author: Lauren
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/casaos-to-zimaos-migration.html
 ---
 本指南聚焦于仅用**两个简单步骤完成 CasaOS 到 ZimaOS 的迁移**。如果你对完整的系统对比感兴趣，可以查看这篇博客 – [链接]。
 

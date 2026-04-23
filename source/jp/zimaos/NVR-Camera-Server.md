@@ -3,6 +3,7 @@ title: NVRカメラサーバー
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未記入の場合は内容の最初の段落を切り取ります
+permalink: /jp/zimaos/nvr-camera-server.html
 ---
 # はじめに
 このチュートリアルでは、Kerberos.ioとZimaBoardを使用して、CasaOS上に家庭用ビデオ監視システムを作成する方法を案内します。CasaOSのDockerカスタムインストール機能を使用して、インストールと設定プロセスを簡素化し、RTSPカメラの設定方法についても詳しく説明します。

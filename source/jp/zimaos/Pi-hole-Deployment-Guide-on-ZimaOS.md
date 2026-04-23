@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。未入力の場合は、最初の段落の内容を切り取ります。
+permalink: /jp/zimaos/pi-hole-setup.html
 ---
 ### はじめに
 Pi-holeは、広告をブロックし、プライバシーを保護する強力なネットワークレベルのツールです。このチュートリアルでは、ZimaOS上にPi-holeをインストールし、設定する方法について説明します。これにより、家庭のネットワークがよりクリーンで効率的になります。

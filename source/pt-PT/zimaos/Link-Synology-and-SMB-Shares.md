@@ -3,6 +3,7 @@ title: Ligar Synology e Compartilhamentos SMB
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não preenchido, será cortado o texto mais à frente.
+permalink: /pt-PT/zimaos/synology-smb-connect.html
 ---
 # Como Compartilhar e Obter arquivos de um NAS? SAMBA pode ser a maneira mais importante
 Quando falamos sobre Armazenamento Conectado à Rede, queremos que nossos arquivos sejam armazenados, geridos em um só lugar e acessados de qualquer lugar. Mas como isso acontece?

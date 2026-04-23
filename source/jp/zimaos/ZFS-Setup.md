@@ -3,6 +3,7 @@ title: ZFS on ZimaCube
 description:
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明です。記入しない場合、最初の段落の内容が切り取られます。
+permalink: /jp/zimaos/zfs-setup.html
 ---
 # ストレージプールの確立
 ZimaCubeに外部ドライブを接続します。lsblkツールを使用してすべてのドライブをリストします。接続したばかりのドライブを変数を制御して見つけることができます。

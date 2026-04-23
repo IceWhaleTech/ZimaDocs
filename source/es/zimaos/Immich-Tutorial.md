@@ -3,6 +3,7 @@ title: Guía de Immich： ¡Paso a paso para una copia de seguridad eficiente de
 description: 
 type: "Docs"
 tip: El formato de la barra superior es fijo, no lo elimine, la descripción es la descripción del artículo, si no se completa, se cortará el texto más al inicio
+permalink: /es/zimaos/immich-photo-backup.html
 ---
 
 ## Introducción

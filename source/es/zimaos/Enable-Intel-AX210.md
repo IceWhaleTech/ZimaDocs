@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Formato fijo en la barra superior, por favor no eliminar, description es la descripción del artículo, si no se completa se tomará el primer párrafo del contenido
+permalink: /es/zimaos/enable-intel-ax210.html
 ---
 
 **🎯 Objetivo**

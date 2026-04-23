@@ -3,6 +3,7 @@ title: Configuración de SSH
 description:
 type: “Docs”
 tip: La barra superior tiene formato fijo, por favor no la elimines, description es la descripción del artículo, si no se llena se tomará el primer párrafo del contenido
+permalink: /es/zimaos/ssh-setup.html
 ---
 # Introducción
 ZimaOS admite conexiones para tres tipos de terminales: computadoras, dispositivos móviles y sistemas de almacenamiento conectado a la red (NAS), asegurando un acceso y gestión versátil de tus datos.

@@ -3,6 +3,7 @@ title: Update offline
 description: "Update ZimaOS without internet access. Download the offline update package, transfer it to your device and apply the system update manually."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/offline-install.html
 ---
 
 This tutorial will guide you through the steps to update ZimaOS in an offline environment.

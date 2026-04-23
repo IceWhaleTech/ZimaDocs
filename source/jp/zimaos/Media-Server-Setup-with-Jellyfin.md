@@ -1,12 +1,9 @@
-以下是将您提供的文本翻译成日语并保留原本格式的版本：
-
 ---
-
 title: Jellyfin メディアサーバーでどこでも動画を見る方法  
 description:  
-type: “Docs”  
+type: "Docs"  
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明です。入力しない場合、最初の段落を自動的に使用します。
-
+permalink: /jp/zimaos/media-server-setup-with-jellyfin.html
 ---
 
 # はじめに  

@@ -4,6 +4,7 @@ description: "Rebuild your RAID array on ZimaOS after a system reinstall without
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/raid-rebuild-after-reinstall.html
 ---
 ## Purpose
 This tutorial will guide you through using the `Files` application to download and replace the `local-storage.db` file, enabling you to migrate or restore RAID configuration data after reinstalling the system.

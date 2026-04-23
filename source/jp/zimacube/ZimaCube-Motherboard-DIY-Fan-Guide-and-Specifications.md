@@ -2,6 +2,7 @@
 title: ZimaCube マザーボード DIY ファンガイドと仕様
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください
+permalink: /jp/zimacube/zimacube-fan-diy.html
 ---
 背景
 ----------

@@ -3,6 +3,7 @@ title: 离线更新
 description: 在离线环境中更新 ZimaOS
 type: "文档"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/offline-install.html
 ---
 
 本教程将指引您在离线环境中更新 ZimaOS 的步骤。

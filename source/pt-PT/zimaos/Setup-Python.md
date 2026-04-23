@@ -3,6 +3,7 @@ title: Configurar Python
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não preenchida, será cortada a primeira parte do conteúdo
+permalink: /pt-PT/zimaos/python-setup.html
 ---
 # Modificar /etc/profile
 Adicione as seguintes duas linhas ao perfil

@@ -3,6 +3,7 @@ title: SSH設定
 description:
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明で、未入力の場合は内容の最初の段落が切り取られます。
+permalink: /jp/zimaos/ssh-setup.html
 ---
 # はじめに
 ZimaOSは、コンピュータ、モバイルデバイス、ネットワーク接続ストレージ（NAS）システムの3種類の端末への接続をサポートし、データの多様なアクセスと管理を保証します。

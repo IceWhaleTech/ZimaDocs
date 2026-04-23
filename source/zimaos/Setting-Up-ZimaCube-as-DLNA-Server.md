@@ -4,6 +4,7 @@ description: "Turn your ZimaCube into a DLNA media server with ZimaOS. Stream mo
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/dlna-server-setup.html
 ---
 ## Introduction
 In this digital age, home entertainment systems are becoming more and more intelligent and interconnected. As a high-performance personal cloud storage device, ZimaCube not only provides a large-capacity storage solution, but also supports the DLNA (Digital Living Network Alliance) protocol, allowing you to easily share and play any multimedia content in your home network.

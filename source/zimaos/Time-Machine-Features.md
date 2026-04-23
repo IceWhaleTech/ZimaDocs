@@ -4,6 +4,7 @@ description: "Back up your Mac to ZimaCube using Time Machine and ZimaOS. Set up
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/time-machine-backup.html
 ---
 Want to keep your Mac files safe? With ZimaOS's new Time Machine feature, you can easily back up your files to ZimaCube. This powerful feature is not only quick and easy, but also ensures that your important data is always protected. Here are the easy-to-follow steps to quickly set up a backup.
 

@@ -3,6 +3,7 @@ title: iSCSI 使用教程
 description: 
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/iscsi-guide.html
 ---
 
 iSCSI（互联网小型计算机系统接口）是一种通过网络传输 SCSI 命令的协议，允许存储设备通过网络进行通信，类似于直接连接的存储。它可以虚拟化存储资源，实现集中管理、网络共享和远程访问，适用于数据中心、虚拟化环境、备份和恢复等场景。

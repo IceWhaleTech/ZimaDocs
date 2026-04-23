@@ -4,6 +4,7 @@ description: "Learn how ZimaOS Search works with its three-layer architecture: r
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/zimaos-search.html
 ---
 ## System Architecture Overview
 ### Three-Layer Design

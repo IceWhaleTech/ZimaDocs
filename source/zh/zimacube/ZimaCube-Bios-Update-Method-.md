@@ -3,6 +3,7 @@ title: ZimaCube BIOS 更新方法
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/zimacube-bios-update-method.html
 ---
 ## 前期准备：
 - USB闪存驱动器（无内容）X1

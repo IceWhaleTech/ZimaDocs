@@ -4,6 +4,7 @@ description: "Set up 3-2-1 backup on ZimaOS to protect your data with three copi
 type: Docs
 author: vicky
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/how-to-use-3-2-1-backup-on-zimaos.html
 ---
 
 In this era of data explosion, important files not only carry the fruits of our work but also record moments of our lives. However, hard drive failures, accidental deletions, and unforeseen disasters can wipe out these precious materials in an instant.

@@ -3,6 +3,7 @@ title: Creating RAID Troubleshooting Guide
 description: "Troubleshoot ZimaCube RAID creation errors on ZimaOS. Fix common issues with drive detection, RAID type selection, and array initialization failures."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/raid-troubleshooting.html
 ---
 # When dealing with issues related to the inability to create RAID, it is recommended to follow these troubleshooting steps:
 

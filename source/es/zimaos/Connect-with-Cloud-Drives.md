@@ -3,6 +3,7 @@ title: Integrar Sin Problemas la Nube y el Edge para una Gestión de Datos Total
 description:
 type: “Docs”
 tip: La barra superior fija del formato no debe ser eliminada, la descripción es para el artículo, si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/cloud-drive-connect.html
 ---
 # Introducción: 
 ## El Dilema de Datos de Jojo

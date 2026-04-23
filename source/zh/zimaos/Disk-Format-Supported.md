@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/supported-disk-formats.html
 ---
 ## 引言
 随着用户对存储设备需求的多样化，ZimaOS不断优化和扩展其文件系统的支持。本文档旨在为用户提供当前版本（v1.5.1）中磁盘格式支持的全面概述，帮助用户更高效地管理和利用存储资源。

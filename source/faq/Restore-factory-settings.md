@@ -1,5 +1,6 @@
 ---
 title: ZimaBoard CasaOS Factory Recovery
+permalink: /faq/restore-factory-settings.html
 ---
 
 # Preparation

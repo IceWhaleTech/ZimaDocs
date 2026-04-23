@@ -3,6 +3,7 @@ title: ZimaCube BIOS更新方法
 description: 
 type: "Docs"
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、未入力の場合は内容の最初の段落をキャプチャします
+permalink: /jp/zimacube/zimacube-bios-update-method.html
 ---
 ## 前準備：
 - USBフラッシュドライブ（内容なし） X1

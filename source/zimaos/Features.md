@@ -3,6 +3,7 @@ title: Features-Build Data Station
 description: "Explore ZimaOS features including remote access, ZimaClient connectivity, and multi-device data management for your ZimaCube."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/features.html
 ---
 
 # Remote Access

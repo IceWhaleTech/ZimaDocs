@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo na barra superior não deve ser excluído. A descrição é para o artigo; se não for preenchida, será capturada a primeira parte do conteúdo.
+permalink: /pt-PT/zimaos/smb-troubleshooting.html
 ---
 ## Problemas principais
 - **Método de autenticação incorreto:** ao digitar diretamente `smb://IP` ao se conectar, o sistema usa, por padrão, usuários anônimos ou do sistema, resultando em falha de autenticação e tempos de resposta excessivamente longos.

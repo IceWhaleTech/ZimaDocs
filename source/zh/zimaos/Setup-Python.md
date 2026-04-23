@@ -3,6 +3,7 @@ title: 设置 Python
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/python-setup.html
 ---
 # 修改 /etc/profile
 在 profile 中添加以下两行

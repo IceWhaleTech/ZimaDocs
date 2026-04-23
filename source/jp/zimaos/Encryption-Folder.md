@@ -4,6 +4,7 @@ description: ZimaOSの暗号化フォルダがAES-256-GCM暗号化、Zima-OFSフ
 type: Docs
 author: icewhale123456
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明です。未入力の場合は内容の最初の段落が使用されます。
+permalink: /jp/zimaos/folder-encryption.html
 ---
 ## ZimaOSの暗号化フォルダ
 **v1.5.4**以降、ZimaOSは最も重要なデータを保護するための強力な**暗号化フォルダ**機能を提供しています。  

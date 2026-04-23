@@ -3,6 +3,7 @@ title: De Synology para ZimaCube, migrar todos os arquivos!
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição deve ser preenchida, caso contrário, será cortada a primeira parte do texto
+permalink: /pt-PT/zimaos/synology-to-zimacube-migration.html
 ---
 # Bem-vindo ao mundo do ZimaOS! Quero dizer, novos amigos que vêm de outros camps de marcas, como Synology, olá!
 

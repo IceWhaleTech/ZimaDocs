@@ -3,6 +3,7 @@ title: Enlace de Synology y comparticiones SMB
 description:  
 type: "Docs"  
 tip: No elimine el formato fijo de la barra superior, la descripción debe ser un resumen del artículo, si no se llena se tomará el primer párrafo como descripción  
+permalink: /es/zimaos/radarr-setup.html
 ---  
 
 # ¿Cómo compartir y obtener archivos desde un NAS? SAMBA puede ser la forma más importante  

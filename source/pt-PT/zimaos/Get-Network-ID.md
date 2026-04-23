@@ -3,6 +3,7 @@ title: Obter ID da Rede
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para a descrição do artigo. Se não preenchido, será cortado o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimaos/remote-id.html
 ---
 
 ### O NetworkID é uma das maneiras de identificar exclusivamente um dispositivo Zima e conectar-se a ele.

@@ -7,7 +7,7 @@ Claro! Aqui está a tradução para o português de Portugal:
 **type**: Docs  
 **author**: icewhale123456  
 **tip**: A barra superior tem formato fixo, não a apague. A descrição é o resumo do artigo; caso não seja preenchida, será utilizada a primeira parte do conteúdo.
-
+permalink: /pt-PT/zimaos/ups-setup.html
 ---
 
 ## Introdução  

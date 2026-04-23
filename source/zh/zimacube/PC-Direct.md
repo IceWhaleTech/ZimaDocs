@@ -3,6 +3,7 @@ title: PC 直连
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/pc-direct.html
 ---
 # 不同的设置方式
 无论您是出于个人还是专业目的使用 ZimaOS 设备，了解如何通过各种网络连接到设备是至关重要的。本文将涵盖三种主要的网络连接类型：直接连接、本地局域网（LAN），以及广域网（WAN）。每种方法都有独特的优势和应用，确保您可以无缝访问和管理您的数据，无论您是在家中还是在外出时。

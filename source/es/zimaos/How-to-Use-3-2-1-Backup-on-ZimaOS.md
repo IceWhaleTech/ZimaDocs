@@ -4,6 +4,7 @@ description: Aprende rápidamente cómo usar la copia de seguridad 3-2-1 en Zima
 type: Docs
 author: vicky
 tip: No elimines el formato fijo en la barra superior, description es la descripción del artículo, si no se completa se tomará el primer párrafo como descripción
+permalink: /es/zimaos/how-to-use-3-2-1-backup-on-zimaos.html
 ---
 
 En esta era de explosión de datos, los archivos importantes no solo contienen los frutos de nuestro trabajo, sino que también registran momentos de nuestras vidas. Sin embargo, las fallas en los discos duros, eliminaciones accidentales y desastres imprevistos pueden borrar estos materiales valiosos en un instante.

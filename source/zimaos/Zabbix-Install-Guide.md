@@ -4,6 +4,7 @@ description: Turn your ZimaOS device into a powerful, centralized monitoring ser
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/zabbix-install-guide.html
 ---
 > Created by: **Holger Kuehn aka Lintuxer**
 

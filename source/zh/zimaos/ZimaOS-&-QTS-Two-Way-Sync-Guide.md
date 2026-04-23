@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/zimaos-qts-two-way-sync-guide.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1742550303202_image.png)
 ## 实际痛点：跨 NAS 同步挑战

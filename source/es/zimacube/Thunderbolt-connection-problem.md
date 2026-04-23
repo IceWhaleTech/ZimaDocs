@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es el resumen del artículo. Si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/thunderbolt-connection-problem.html
 ---
 Si no hay respuesta después de la conexión Thunderbolt, puede verificar según los siguientes ítems:
 

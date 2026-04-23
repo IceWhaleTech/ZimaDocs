@@ -3,6 +3,7 @@ title: 7º Bay LED
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se llena se cortará el texto en el primer párrafo.
+permalink: /es/zimaos/7th-bay-led.html
 ---
 # Introducción
 ## Visión General del Proyecto

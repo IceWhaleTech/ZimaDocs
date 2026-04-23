@@ -3,6 +3,7 @@ title: 如何在 ZimaCube 上安装 UnRAID
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/install-unraid.html
 ---
 # ZimaCube 安装 TrueNAS 指南
 ![](https://manage.icewhale.io/api/static/docs/1727249736896_image.png)

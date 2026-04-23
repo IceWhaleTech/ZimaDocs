@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/smb-troubleshooting.html
 ---
 ## 核心问题
 - **认证方式错误：** 直接输入`smb://IP`连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。

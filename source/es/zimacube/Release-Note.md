@@ -3,6 +3,7 @@ title: Título
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción será el resumen del artículo; si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/release-note.html
 ---
 
 Agradecemos sinceramente a nuestros usuarios de la comunidad por su activa participación y valiosas sugerencias, ¡lo que nos permite mejorar y perfeccionar ZimaOS continuamente! ¡Les damos la bienvenida a compartir más ideas, por favor!

@@ -4,6 +4,7 @@ description: Aprenda rapidamente a usar o backup 3-2-1 no ZimaOS
 type: Docs
 author: vicky
 tip: A barra superior fixa, por favor, não a exclua. A descrição é o resumo do artigo; se não for preenchida, o conteúdo da primeira seção será automaticamente usado.
+permalink: /pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos.html
 ---
 
 Nesta era de explosão de dados, arquivos importantes não apenas carregam os frutos do nosso trabalho, mas também registram momentos das nossas vidas. No entanto, falhas no disco rígido, exclusões acidentais e desastres imprevistos podem apagar esses materiais preciosos instantaneamente.

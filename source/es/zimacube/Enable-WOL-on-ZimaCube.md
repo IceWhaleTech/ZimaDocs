@@ -1,5 +1,6 @@
 ---
 titel: Versión del BIOS de la placa base de actualización
+permalink: /es/zimacube/enable-wol-on-zimacube.html
 --- 
 
 # BIOS - Última versión

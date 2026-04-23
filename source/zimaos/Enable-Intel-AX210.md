@@ -4,6 +4,7 @@ description: "Enable the Intel AX210 Wi-Fi 6E module on ZimaOS. Step-by-step gui
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/enable-intel-ax210.html
 ---
 
 **🎯 Goal**

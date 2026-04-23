@@ -3,6 +3,7 @@ title: Como Criar RAID6 no ZimaOS?
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, e se não preenchido, o conteúdo será cortado na primeira parte do texto.
+permalink: /pt-PT/zimaos/raid6-setup.html
 ---
 ## Introdução
 Atualmente, o ZimaOS suporta RAID0/1/5, mas entendemos que muitos usuários necessitam de RAID6 para uma maior redundância. Para resolver isso, preparamos um guia passo a passo para criar RAID6 através da linha de comando. Por favor, siga as instruções abaixo.

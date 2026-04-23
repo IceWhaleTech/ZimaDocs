@@ -3,6 +3,7 @@ title: 7番目のベイを取り付けて取り外す方法
 description:
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未記入の場合は内容の最初の段落を切り取ります
+permalink: /jp/zimacube/7th-bay-install.html
 ---
 # 準備:
 ZimaCubeの電源がオフで、プラグが抜かれていることを確認してください。

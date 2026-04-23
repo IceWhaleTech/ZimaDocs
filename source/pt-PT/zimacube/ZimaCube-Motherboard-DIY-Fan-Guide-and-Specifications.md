@@ -2,6 +2,7 @@
 title: Guia e Especificações do Ventilador DIY da Placa Mãe ZimaCube
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido
+permalink: /pt-PT/zimacube/zimacube-fan-diy.html
 ---
 Fundo
 ----------

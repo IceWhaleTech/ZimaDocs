@@ -3,6 +3,7 @@ title: RAIDトラブルシューティングガイドの作成
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未入力の場合は内容の最初の段落の文字を切り取ります
+permalink: /jp/zimacube/raid-troubleshooting.html
 ---
 # RAIDの作成に関する問題を扱う際は、以下のトラブルシューティング手順に従うことをお勧めします。
 

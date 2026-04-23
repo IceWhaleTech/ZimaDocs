@@ -4,6 +4,7 @@ description: "Deploy Radarr on ZimaOS to automate movie downloads and manage you
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/radarr-setup.html
 ---
 ### What is Radarr?
 

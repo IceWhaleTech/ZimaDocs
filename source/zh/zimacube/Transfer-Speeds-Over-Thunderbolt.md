@@ -3,6 +3,7 @@ title: ZimaCube通过Thunderbolt连接的传输速度说明
 description:
 type: "文档"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/transfer-speeds-over-thunderbolt.html
 ---
 本指南重点介绍ZimaCube通过Thunderbolt连接所实现的最快文件传输速度，为用户提供性能测试的具体数据和优化建议。
 请确保您已参考[如何通过Thunderbolt电缆连接ZimaCube](https://www.zimaspace.com/docs/zimaos/Thunderbolt-PC-Direct)。

@@ -3,6 +3,7 @@ title: Memory Test Tutorial
 description: "Run a ZimaCube memory test using Memtest86 to diagnose boot failures, screen distortion, and freezes. Step-by-step USB tutorial included."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/memory-test-tutorial.html
 ---
 **If the motherboard fails to boot properly, or there is a screen distortion or freeze during use, follow the steps below to troubleshoot the memory problem.**
 ## Hardware environment：

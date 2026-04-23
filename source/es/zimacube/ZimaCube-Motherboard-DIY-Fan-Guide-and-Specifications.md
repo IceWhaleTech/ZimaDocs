@@ -2,6 +2,7 @@
 title: Guía de ventiladores DIY y especificaciones de la placa base ZimaCube
 type: “Docs”
 tip: Fija el formato de la barra superior, no lo elimines
+permalink: /es/zimacube/zimacube-fan-diy.html
 ---
 Antecedentes
 ------------

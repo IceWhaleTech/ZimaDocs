@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/iscsi-setup.html
 ---
 ZimaOS提供了多种网络共享协议，以满足不同的存储和文件共享需求，包括NFS、SAMBA和iSCSI：
 

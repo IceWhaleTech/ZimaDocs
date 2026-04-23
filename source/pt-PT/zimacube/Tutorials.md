@@ -3,6 +3,7 @@ title: Solução de Auto-Ligação para ZimaCube
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o conteúdo do artigo, se não preenchido, será capturada a primeira parte do texto
+permalink: /pt-PT/zimacube/auto-power-on-setup.html
 ---
 # Descrição dos Requisitos
 Atualmente, o ZimaCube requer a pressão do botão de energia para iniciar após ser ligado. Alguns utilizadores desejam uma função de arranque automático quando a energia é fornecida.

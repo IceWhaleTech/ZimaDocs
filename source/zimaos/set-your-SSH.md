@@ -3,6 +3,7 @@ title: SSH Setting
 description: "Learn how to enable and configure SSH on ZimaOS, set up the root password, and use the built-in web terminal for remote access."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/ssh-setup.html
 ---
 # Introduction
 ZimaOS supports connections for three types of terminals: computers, mobile devices, and network-attached storage (NAS) systems, ensuring versatile access and management of your data.

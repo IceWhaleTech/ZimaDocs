@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/deploy-deepseek-r1.html
 ---
 **Deepseek** 的发布引起了广泛关注，其强大的性能和开源精神使更多人能够体验前沿的大型语言模型。想亲自探索 Deepseek 的强大能力吗？**ZimaOS** 简化并优化了大型模型的部署和使用！
 本教程将引导你通过 OpenWebUI 在 ZimaOS 上实现 Deepseek R1 模型的一键部署，帮助你快速建立自己的本地 AI 助手。

@@ -3,6 +3,7 @@ title: Velocidades de Transferência do ZimaCube Sobre Conexões Thunderbolt Exp
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não preenchida será capturada a primeira parte do texto.
+permalink: /pt-PT/zimacube/transfer-speeds-over-thunderbolt.html
 ---
 Este guia foca nas velocidades de transferência de arquivo mais rápidas alcançadas através de uma conexão Thunderbolt no ZimaCube, fornecendo aos usuários dados específicos de testes de desempenho e dicas de otimização.
 Certifique-se de ter lido o [Como conectar o ZimaCube via Cabo Thunderbolt](https://www.zimaspace.com/docs/zimaos/Thunderbolt-PC-Direct).

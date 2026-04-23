@@ -3,6 +3,7 @@ title: Tutorial de Prueba de Memoria
 description: 
 type: "Docs"
 tip: El formato fijo de la barra superior no debe eliminarse, description es la descripción del artículo, si no se completa se cortará el texto del primer párrafo.
+permalink: /es/zimacube/memory-test-tutorial.html
 ---
 # Si la placa base no arranca correctamente, o hay distorsión o congelamiento de la pantalla durante el uso, siga los pasos a continuación para solucionar el problema de la memoria.
 ## Entorno hardware:

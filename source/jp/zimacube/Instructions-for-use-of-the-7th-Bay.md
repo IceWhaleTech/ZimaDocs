@@ -3,6 +3,7 @@ title: 7番ベイの利用
 description:
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明で、記入しない場合は内容の最初の段落が切り取られます
+permalink: /jp/zimacube/7th-bay-guide.html
 ---
 # 7番ベイの取り付けと取り外し
 ## 準備:

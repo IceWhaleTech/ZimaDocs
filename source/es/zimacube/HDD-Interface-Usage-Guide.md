@@ -5,6 +5,7 @@ title: Instalar tu disco
 description:
 type: "Docs"
 tip: No elimines el formato fijo de la barra superior, "description" es la descripción del artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/hdd-interface-guide.html
 ---
 # Desbloquear el dispositivo
 1. **Retirar el panel frontal**

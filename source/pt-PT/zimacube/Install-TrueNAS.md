@@ -3,6 +3,7 @@ title: Instalar TrueNAS
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não preenchida, o conteúdo será cortado na primeira parte do texto
+permalink: /pt-PT/zimacube/install-truenas.html
 ---
 # Guia de Instalação do TrueNAS no ZimaCube
 ![](https://manage.icewhale.io/api/static/docs/1727244342954_image.png)

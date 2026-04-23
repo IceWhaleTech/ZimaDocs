@@ -3,6 +3,7 @@ title: 无缝整合云和边缘以实现全面的数据管理
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/cloud-drive-connect.html
 ---
 # 引言：
 ## Jojo的数据困境

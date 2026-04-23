@@ -1,9 +1,10 @@
 ---
-标题：ZimaOS的Zabbix安装指南  
-描述：将你的ZimaOS设备转变为一个强大的、集中式的网络监控服务器。  
-类型：文档  
-作者：icewhale123456  
-提示：顶部栏固定格式请勿删除，描述为文章描述，不填时将截取内容最前一段文字  
+title: ZimaOS的Zabbix安装指南  
+description: 将你的ZimaOS设备转变为一个强大的、集中式的网络监控服务器。  
+type: 文档  
+author: icewhale123456  
+tip: 顶部栏固定格式请勿删除，描述为文章描述，不填时将截取内容最前一段文字  
+permalink: /zh/zimaos/zabbix-install-guide.html
 ---
 
 ## 版本信息

@@ -3,6 +3,7 @@ title: ZimaOS OpenAPI Pré-visualização Ao Vivo
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição deve ser preenchida com uma breve descrição do artigo; se não preenchida, será extraído o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimaos/openapi-live-preview.html
 ---
 # Introdução
 A funcionalidade **Pré-visualização Ao Vivo** no ZimaOS OpenAPI permite que os usuários explorem visualmente a estrutura dos endpoints da API e as requisições disponíveis. Ajuda os desenvolvedores a entender as funcionalidades da API e como interagir com diferentes componentes. Esta funcionalidade é particularmente útil para aqueles que buscam ter uma visão clara das capacidades do ZimaOS antes da implementação.

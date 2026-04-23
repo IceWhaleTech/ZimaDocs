@@ -3,6 +3,7 @@ title: 大規模言語モデルの手動ダウンロード方法
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、記入しない場合は内容の最初の段落が切り取られます
+permalink: /jp/zimaos/llm-manual-download.html
 ---
 
 Assistは現在、ZimaOSのデフォルトで「TheBloke/Llama-2-13b-Chat-GPTQ」を使用しています。

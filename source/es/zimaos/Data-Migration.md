@@ -3,6 +3,7 @@ title: Guía de Migración de Datos
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se completa, se tomará el texto del primer párrafo
+permalink: /es/zimaos/data-migration.html
 ---
 # Propósito
 La migración de datos es el proceso de transferir directorios especificados a otro espacio de almacenamiento para optimizar y reducir el tamaño de su almacenamiento actual. Esto asegura que su sistema se mantenga eficiente y organizado, permitiendo un mejor rendimiento y una gestión más fácil de sus archivos.

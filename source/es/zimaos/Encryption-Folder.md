@@ -5,6 +5,7 @@ Descripción: Aprende cómo la Carpeta de Cifrado de ZimaOS protege tus datos pr
 type: Documentos  
 author: icewhale123456  
 tip: El formato fijo en la barra superior no debe ser eliminado, la descripción es el resumen del artículo, si no se completa, se tomará el primer párrafo del contenido como descripción.  
+permalink: /es/zimaos/folder-encryption.html
 ---
 
 ## Carpeta de Cifrado en ZimaOS  

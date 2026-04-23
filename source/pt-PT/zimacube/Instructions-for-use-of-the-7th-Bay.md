@@ -3,6 +3,7 @@ title: 7ª Baía de Uso
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é uma descrição do artigo, se não preenchida, será cortada a primeira parte do conteúdo
+permalink: /pt-PT/zimacube/7th-bay-guide.html
 ---
 # Instalar e Remover a 7ª Baía
 ## Preparativos:

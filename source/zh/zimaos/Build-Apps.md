@@ -3,6 +3,7 @@ title: 构建应用
 description:
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/docker-app-publishing.html
 ---
 # ZimaOS Docker应用适配手册
 如何将应用发布到ZimaOS

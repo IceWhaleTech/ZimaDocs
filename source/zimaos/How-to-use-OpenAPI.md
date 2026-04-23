@@ -3,6 +3,7 @@ title: How to use ZimaOS OpenAPI
 description: "Use ZimaOS OpenAPI to automate file management, user control, and system settings. Developer guide covering authentication, endpoints, and integration examples."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/openapi-developer-guide.html
 ---
 # Introduction 
 ZimaOS offers an OpenAPI to enable developers and users to integrate, automate, and extend the functionalities of their ZimaOS systems. With this API, users can interact programmatically with ZimaOS services, allowing for seamless integration into existing workflows and third-party applications. It supports various operations, such as managing files, users, and system settings, providing a flexible solution for both customization and automation.
