@@ -1,5 +1,6 @@
 ---
 title: Minecraft サーバー - ZimaBoardでMinecraftサーバーを構築する
+permalink: /jp/zimaboard/minecraft-friendship-service.html
 ---
 
 # 理由

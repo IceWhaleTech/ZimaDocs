@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定形式は削除しないでください、descriptionは記事の説明で、入力しない場合は最初の段落が表示されます。
+permalink: /jp/zimaboard/ax210-wifi-6e.html
 ---
 ## 1. はじめに
 Intel® Wi-Fi 6E AX210 (Gig+) アダプターは、Wi-Fi 6E 技術に対応するように設計されています。この製品は、2.4GHz、5GHz、6GHz帯域でのデュアルストリームWi-FiとBluetooth® 5.3をサポートしています。Intel® Core™ プロセッサと優れたIntel無線技術を組み合わせることで、Intel® Wi-Fi 6E AX210モジュールは、家庭、仕事、外出先での接続体験を大幅に向上させます。

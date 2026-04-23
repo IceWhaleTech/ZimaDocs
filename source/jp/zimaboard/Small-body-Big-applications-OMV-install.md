@@ -1,5 +1,6 @@
 ---
 title: 小さなサイズ、大きなアプリケーション (OMV+ZimaBoard)
+permalink: /jp/zimaboard/openmediavault-install.html
 ---
 # OMVの紹介
 

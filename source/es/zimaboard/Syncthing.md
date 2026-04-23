@@ -3,6 +3,7 @@ title: ¡ZimaBoard + Syncthing!
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, por favor no la elimine. La descripción es para el artículo, si no se llena se tomará el primer párrafo del contenido.
+permalink: /es/zimaboard/syncthing-setup.html
 ---
 **Protege tus datos y disfruta de una experiencia de copia de seguridad y sincronización sin preocupaciones
 ¡Copia de seguridad y sincronización sin esfuerzo, deja que tus datos fluyan libremente!**

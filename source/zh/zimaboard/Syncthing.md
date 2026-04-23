@@ -3,6 +3,7 @@ title: ZimaBoard + Syncthing!
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaboard/syncthing-setup.html
 ---
 **保护您的数据，享受无忧的备份和同步体验 
 轻松备份和同步，让您的数据自由流动！**

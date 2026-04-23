@@ -3,6 +3,7 @@ title: Hardware Brief
 description: "ZimaBoard hardware overview and key specifications. Quick reference for the single-board server's CPU, RAM, storage, PCIe slot, and connectivity options."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/hardware-overview.html
 ---
 
 The content of this article is to introduce the interface information and functions of ZimaBlade - for more detailed information, please refer to the official website [ZimaBlade](https://www.zimaspace.com/zh/products/blade-personal-nas).

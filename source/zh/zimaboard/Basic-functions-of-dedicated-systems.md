@@ -1,5 +1,6 @@
 ---
 title: 专用系统的基本功能
+permalink: /zh/zimaboard/jellyfin-setup.html
 ---
 
 # 随时随地观看视频与Jellyfin

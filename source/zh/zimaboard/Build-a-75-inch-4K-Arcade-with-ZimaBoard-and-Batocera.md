@@ -1,5 +1,6 @@
 ---
 title: 使用ZimaBoard和Batocera.linux构建75英寸4K街机
+permalink: /zh/zimaboard/batocera-arcade-setup.html
 ---
 > **故事：**
   仍然有很多复古游戏在等待我们去探索，逐一浏览它们的经典名字和截图，就像回到过去。这就像回到你自己童年时期的激情与愿望。这个教程将带我们回到你早年的日子。

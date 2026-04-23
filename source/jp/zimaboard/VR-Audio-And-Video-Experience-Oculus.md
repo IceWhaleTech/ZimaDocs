@@ -1,5 +1,6 @@
 ---
 title: VRオーディオおよびビデオ体験Oculus
+permalink: /jp/zimaboard/oculus-quest-media-server.html
 ---
 # Oculus Quest 2とZimaBoardを紹介
 

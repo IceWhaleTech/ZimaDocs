@@ -1,6 +1,7 @@
 ---
 title: Instalação do Sistema Universal de Terceiros
 typora-root-url: ..
+permalink: /pt-PT/zimaboard/third-party-os-install.html
 ---
 ## Razão
 

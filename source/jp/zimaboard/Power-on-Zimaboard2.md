@@ -3,6 +3,7 @@ title: ZimaBoard 2 を始めよう
 description:
 type: “Docs”
 tip: 上部バーは固定フォーマットです。削除しないでください。description は記事の説明文で、未記入の場合は本文冒頭の段落が自動的に抽出されます。
+permalink: /jp/zimaboard/power-on-zimaboard-2.html
 ---
 ## はじめに
 **ZimaBoard 2 — 新しいルールをハックする**

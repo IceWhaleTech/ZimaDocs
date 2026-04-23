@@ -1,6 +1,7 @@
 ---
 title: Sistema de roteamento tudo-em-um - Instalar OpenWRT
 typora-root-url: ..
+permalink: /pt-PT/zimaboard/openwrt-usb-install.html
 ---
 
 # Apresentando o OpenWRT

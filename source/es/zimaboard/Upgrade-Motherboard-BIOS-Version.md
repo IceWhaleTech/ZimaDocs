@@ -1,6 +1,6 @@
 ---
 titel: Actualizar-Version-BIOS-Motherboard
-permalink: /es/zimaboard/upgrade-motherboard-bios-version.html
+permalink: /es/zimaboard/bios-upgrade.html
 --- 
 
 # BIOS - Última Versión

@@ -1,6 +1,7 @@
 ---
 title: ユニバーサルサードパーティシステムインストール
 typora-root-url: ..
+permalink: /jp/zimaboard/third-party-os-install.html
 ---
 ## 理由
 

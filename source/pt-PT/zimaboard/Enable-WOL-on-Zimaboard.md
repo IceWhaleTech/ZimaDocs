@@ -3,6 +3,7 @@ title: Como Ativar Wake-on-LAN (WOL) no Zimaboard
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para descrever o artigo; se não preenchida, será capturada a primeira parte do texto.
+permalink: /pt-PT/zimaboard/wake-on-lan-setup.html
 ---
 LAN Wake-on-LAN (WOL) é uma parte muito importante do processamento de sistemas e computadores, especialmente se você estiver lidando com um SBS (Servidor de Placa Única) como o Zimaboard. 
 Para atender às suas necessidades, nosso produto Zimaboard oferece suporte ao WOL, pronto para uso, e você só precisa ativá-lo. 

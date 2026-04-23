@@ -4,6 +4,7 @@ description: Resolver los problemas de pánico del núcleo e inestabilidad de la
 type: Docs  
 author: icewhale123456  
 tip: No elimine el formato fijo en la barra superior, description es la descripción del artículo, si no se llena, se tomará el primer párrafo del contenido como descripción.  
+permalink: /es/zimaboard/pve-on-debian-for-i226.html
 ---  
 ## Ejecutando Proxmox VE en Debian para NICs i226
 

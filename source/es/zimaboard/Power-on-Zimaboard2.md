@@ -3,6 +3,7 @@ title: Comienza con ZimaBoard 2
 description:  
 type: “Docs”  
 tip: Formato fijo de la barra superior, no eliminar. *description* es la descripción del artículo; si no se rellena, se tomará el primer párrafo del contenido.  
+permalink: /es/zimaboard/power-on-zimaboard-2.html
 ---
 ## Introducción  
 **ZimaBoard 2 — Hackea Nuevas Reglas**  

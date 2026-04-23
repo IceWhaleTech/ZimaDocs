@@ -1,5 +1,6 @@
 ---
 title: Construa uma máquina arcade 4K de 75 polegadas com ZimaBoard e Batocera.linux
+permalink: /pt-PT/zimaboard/batocera-arcade-setup.html
 ---
 >**História:**
  Existem ainda tantos jogos retrô por aí, e navegar por eles um a um, com seus nomes e capturas de tela memoráveis, é como voltar no tempo. É como voltar à sua própria infância e paixões) Este tutorial nos levará de volta aos seus primeiros dias.

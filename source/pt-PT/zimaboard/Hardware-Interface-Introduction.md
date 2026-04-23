@@ -1,5 +1,6 @@
 ---
 title: Introdução à Interface de Hardware
+permalink: /pt-PT/zimaboard/hardware-interface.html
 ---
 
 O conteúdo deste artigo é para apresentar informações sobre a interface ZimaBoard e algumas interfaces com links para documentos - Para mais detalhes, por favor, verifique o site oficial - [zimaboard](https://www.zimaboard.com/).

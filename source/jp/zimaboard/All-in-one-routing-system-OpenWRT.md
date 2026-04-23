@@ -1,6 +1,7 @@
 ---
 title: オールインワンルーティングシステム - OpenWRTのインストール
 typora-root-url: ..
+permalink: /jp/zimaboard/openwrt-usb-install.html
 ---
 
 # OpenWRTの紹介

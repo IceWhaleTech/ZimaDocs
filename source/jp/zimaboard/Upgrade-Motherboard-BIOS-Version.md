@@ -1,6 +1,6 @@
 ---
 titel: マザーボードBIOSバージョンのアップグレード
-permalink: /jp/zimaboard/upgrade-motherboard-bios-version.html
+permalink: /jp/zimaboard/bios-upgrade.html
 --- 
 
 # BIOS - 最新バージョン

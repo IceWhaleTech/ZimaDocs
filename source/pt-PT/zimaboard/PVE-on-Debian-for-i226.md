@@ -4,6 +4,7 @@ description: Executando Proxmox VE em Debian para NICs i226
 type: Docs  
 author: icewhale123456  
 tip: O formato fixo da barra superior não deve ser removido, a descrição deve ser preenchida com o conteúdo do artigo. Caso não preencha, o conteúdo será extraído da primeira seção do artigo.  
+permalink: /pt-PT/zimaboard/pve-on-debian-for-i226.html
 ---  
 ## Executando Proxmox VE em Debian para NICs i226  
 

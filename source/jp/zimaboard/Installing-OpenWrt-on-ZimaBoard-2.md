@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部のバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。入力しない場合は最初の段落の内容が自動的に取り込まれます。
+permalink: /jp/zimaboard/openwrt-x86-install.html
 ---
 ## 1.はじめに
 

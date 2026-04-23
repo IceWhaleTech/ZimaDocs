@@ -4,6 +4,7 @@ description: "Install Arch Linux on ZimaBoard 2 with this step-by-step guide. Co
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/arch-linux-installation-on-zimaboard-2.html
 ---
 ## **I. Overview**
 

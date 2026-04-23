@@ -4,6 +4,7 @@ description: "Install and enable the Intel AX210 Wi-Fi 6E card on ZimaBoard. Ste
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaboard/ax210-wifi-6e.html
 ---
 ## 1. Introduction
 [The Intel® Wi-Fi 6E AX210 (Gig+) adapter](https://shop.zimaspace.com/products/intel-ax210-wifi-6e-pcie-card-zimaboard) is designed to support Wi-Fi 6E technology. The product supports dual-stream Wi-Fi in the 2.4GHz, 5GHz and 6GHz bands as well as Bluetooth® 5.3. Combined with Intel® Core™ processors and exceptional Intel wireless innovations, the Intel® Wi-Fi 6E AX210 module can dramatically improve your connected experience at home, work, or on the go.

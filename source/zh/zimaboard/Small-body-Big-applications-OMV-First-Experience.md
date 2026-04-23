@@ -1,5 +1,6 @@
 ---
 title: 探索 OMV
+permalink: /zh/zimaboard/openmediavault-setup.html
 ---
 
 # 首次登录

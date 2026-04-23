@@ -1,5 +1,6 @@
 ---
 title: 小尺寸，大应用（OMV+ZimaBoard）
+permalink: /zh/zimaboard/openmediavault-install.html
 ---
 # OMV 介绍
 

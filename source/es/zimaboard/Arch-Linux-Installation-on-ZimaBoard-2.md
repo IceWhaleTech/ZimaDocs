@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: No elimine el encabezado; description es la descripción del artículo. Si está vacío, se tomará el primer párrafo.
+permalink: /es/zimaboard/arch-linux-installation-on-zimaboard-2.html
 ---
 ## **I. Visión general**
 

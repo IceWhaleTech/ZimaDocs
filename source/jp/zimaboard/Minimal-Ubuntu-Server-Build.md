@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: 上部のバーは固定形式で削除しないでください。descriptionは記事の説明で、記入しない場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaboard/minimal-ubuntu-server-build.html
 ---
 
 >This guide was originally created by **ZaNgA**. We gratefully acknowledge his contribution.

@@ -3,6 +3,7 @@ title: Cómo configurar un NAS con ZimaBlade
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido
+permalink: /es/zimaboard/power-on-zimablade.html
 ---
 NAS es un refugio digital donde residen tus valiosos activos de datos.
 --------------------------------------------------------------

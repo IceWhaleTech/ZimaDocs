@@ -1,6 +1,7 @@
 ---
 title: Small Size, Big Applications (OMV+ZimaBoard)
 description: "Install OpenMediaVault (OMV) on ZimaBoard to create a full-featured NAS. Step-by-step installation and configuration guide for the OMV network storage OS."
+permalink: /zimaboard/openmediavault-install.html
 ---
 # OMV Introduction
 

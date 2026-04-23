@@ -1,6 +1,7 @@
 ---
 title: 一体化路由系统 - 安装 OpenWRT
 typora-root-url: ..
+permalink: /zh/zimaboard/openwrt-usb-install.html
 ---
 
 # 介绍 OpenWRT

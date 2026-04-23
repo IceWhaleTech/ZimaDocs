@@ -1,5 +1,6 @@
 ---
 title: OpenWRT es el compañero perfecto para la versión de Burn-in eMMC de ZimaBoard
+permalink: /es/zimaboard/openwrt-emmc-boot.html
 ---
 
 # Temas
