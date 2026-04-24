@@ -3,6 +3,7 @@ title: Immichのガイド： 効率的な写真バックアップのためのス
 description: 
 type: "Docs"
 tip: 上部バー固定フォーマットは削除しないでください, descriptionは記事の説明です。入力しない場合は、内容の最初の段落のテキストが切り取られます。
+permalink: /jp/zimaos/immich-photo-backup.html
 ---
 
 ## はじめに

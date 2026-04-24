@@ -6,6 +6,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明です。入力しない場合、最初の段落の内容が自動的に使用されます。
+permalink: /jp/zimaos/nfs-on-zimaos.html
 ---
 ネットワークファイル共有プロトコルを使用すると、コンピューターのファイルやディレクトリをネットワーク上の他のデバイスと共有できます。一般的なプロトコルには、SAMBA、NFS、FTPがあります。  
 ネットワーク共有の利点:

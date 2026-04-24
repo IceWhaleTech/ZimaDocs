@@ -3,6 +3,7 @@ title: Funcionalidades
 description:
 type: “Docs”
 tip: A barra superior é um formato fixo e não deve ser removida, a descrição é para o artigo, e se não preenchida, será cortada a partir do primeiro parágrafo do texto
+permalink: /pt-PT/zimaos/features.html
 ---
 # Construir Estação de Dados
 # Acesso Remoto

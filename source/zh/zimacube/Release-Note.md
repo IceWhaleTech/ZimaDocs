@@ -3,6 +3,7 @@ title: 标题
 description:
 type: "文档"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/release-note.html
 ---
 
 我们真诚感谢我们的社区用户积极参与和提供宝贵建议，使我们能够不断改进和完善ZimaOS！欢迎您分享更多想法！

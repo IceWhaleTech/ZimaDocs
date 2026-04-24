@@ -3,6 +3,7 @@ title: Link Synology and SMB Shares
 description: “Connect Synology NAS and SMB network shares to ZimaOS Files. Mount remote storage and access shared folders alongside your ZimaCube data.”
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/synology-smb-connect.html
 ---
 How to Share and Get files from a NAS? **SAMBA** may be the most important way
 

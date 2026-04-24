@@ -3,6 +3,7 @@ title: ZFS on ZimaCube
 description: “Set up ZFS storage on ZimaCube with ZimaOS for advanced data integrity, snapshots, and compression. Step-by-step ZFS pool creation and configuration guide.”
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/zfs-setup.html
 ---
 # Establish storage pool
 Connect an external drive to ZimaCube. Use the lsblk tool to list all the drives. You can find the drive you just connected by controlling the variables.

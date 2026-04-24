@@ -3,6 +3,7 @@ title: Sincronizar Cómo experimentar immich en ZimaOS
 description:
 type: “Docs”
 tip: La barra superior es un formato fijo, por favor no la elimine, la descripción es para el artículo, si no se completa, se tomará el texto del primer párrafo.
+permalink: /es/zimaos/sync-photos-with-immich.html
 ---
 # Introducción
 [**Immich**](https://immich.app/) ofrece una plataforma moderna y fluida para organizar, compartir y acceder a tus fotos y videos. Se destaca por su interfaz web elegante que facilita la exploración de medios y funciones avanzadas como el reconocimiento facial y la detección de objetos.

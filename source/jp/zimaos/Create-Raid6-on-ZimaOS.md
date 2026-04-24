@@ -3,6 +3,7 @@ title: ZimaOSでRAID6を作成する方法
 description: 
 type: "Docs"
 tip: トップバーの固定形式は削除しないでください。descriptionは記事の説明であり、入力しない場合は内容の最初の段落が切り取られます。
+permalink: /jp/zimaos/raid6-setup.html
 ---
 ## はじめに
 現在、ZimaOSはRAID0/1/5をサポートしていますが、多くのユーザーが冗長性を向上させるためにRAID6を必要としていることを理解しています。それに応じて、コマンドラインを使用してRAID6を作成する手順を準備しました。以下の指示に従ってください。

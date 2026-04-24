@@ -1,5 +1,6 @@
 ---
 titel: Upgrade-Motherboard-BIOS-Version
+permalink: /faq/upgrade-motherboard-bios-version.html
 --- 
 
 # BIOS - Latest Version

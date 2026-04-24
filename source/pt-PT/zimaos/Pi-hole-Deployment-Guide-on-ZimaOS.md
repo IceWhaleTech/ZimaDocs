@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: O formato fixo da barra superior não deve ser removido, description é a descrição do artigo, se não preenchido, será extraído do primeiro parágrafo do conteúdo
+permalink: /pt-PT/zimaos/pi-hole-setup.html
 ---
 ### Introdução
 O Pi-hole é uma poderosa ferramenta de bloqueio de anúncios a nível de rede que pode ajudar a bloquear anúncios e proteger a sua privacidade. Neste tutorial, iremos apresentar como instalar e configurar o Pi-hole no ZimaOS para tornar a sua rede doméstica mais limpa e eficiente.

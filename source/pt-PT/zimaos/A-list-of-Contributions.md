@@ -5,7 +5,7 @@ Aqui está a tradução para o português de Portugal:
 **Descrição:** Os drivers do ZimaOS crescem a partir das contribuições da comunidade, moldando o roadmap. Este documento mostra uma lista ao vivo e em expansão de hardware suportado e do trabalho futuro. Partilhe o que gostaria de ver a seguir através dos fóruns ou Discord.  
 **Tipo:** "Docs"  
 **Dica:** Não apague o formato fixo da barra superior, a descrição é a descrição do artigo. Se não for preenchida, será capturada a primeira parte do conteúdo.
-
+permalink: /pt-PT/zimaos/contributions.html
 ---
 
 As suas solicitações e conversas não entram apenas numa caixa de sugestões — **elas** são o nosso roadmap de desenvolvimento. Estamos sempre a ouvir e a construir com base nas suas necessidades.

@@ -4,6 +4,7 @@ description:
 type: Docs  
 author: admin  
 tip: El formato fijo en la barra superior no debe ser eliminado, description es la descripción del artículo, si no se rellena se tomará el primer párrafo del contenido como descripción.  
+permalink: /es/zimaos/syncthing-install.html
 ---  
 > _Publicado originalmente en el foro de la Comunidad IceWhale por_ _**Muditha Liyanagama (Contribuyente de la Comunidad)**:_ _[Fuente original](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 

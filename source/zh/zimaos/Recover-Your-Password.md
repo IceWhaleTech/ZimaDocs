@@ -3,6 +3,7 @@ title: 如何找回您的密码
 description: 
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/password-recovery.html
 ---
 ### 如果您忘记了 ZimaOS 密码，请按照以下步骤操作：
 1. 通过 HDMI 电缆将 ZimaCube 连接到显示器

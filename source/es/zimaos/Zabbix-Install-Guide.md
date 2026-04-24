@@ -5,7 +5,7 @@ description: Convierte tu dispositivo ZimaOS en un potente servidor de monitoreo
 type: Docs  
 author: icewhale123456  
 tip: La barra superior con formato fijo no debe eliminarse, "description" es la descripción del artículo. Si no se llena, se tomará el primer párrafo del contenido como descripción.  
-
+permalink: /es/zimaos/zabbix-install-guide.html
 ---
 
 ## Información de la versión

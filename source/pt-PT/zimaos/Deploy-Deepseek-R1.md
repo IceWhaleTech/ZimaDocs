@@ -7,6 +7,7 @@ description:
 type: Docs  
 author: admin  
 tip: O formato fixo da barra superior não deve ser excluído, a descrição é para o conteúdo do artigo. Se não for preenchida, o início do texto será usado como descrição.  
+permalink: /pt-PT/zimaos/deploy-deepseek-r1.html
 ---  
 
 O lançamento do **Deepseek** atraiu grande atenção, com seu desempenho robusto e filosofia de código aberto permitindo que mais pessoas experimentem modelos de linguagem de ponta. Tem vontade de explorar pessoalmente as poderosas capacidades do Deepseek? O **ZimaOS** simplifica e agiliza o processo de implantação e utilização de grandes modelos!  

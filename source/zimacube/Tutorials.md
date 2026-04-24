@@ -3,6 +3,7 @@ title: Auto Power-On Solution For ZimaCube
 description: "Set up ZimaCube auto power-on by modifying mainboard jumper pins. Follow this step-by-step tutorial to enable automatic startup on power."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/auto-power-on-setup.html
 ---
 # Requirement Description
 Currently, ZimaCube requires pressing the power button to start after being plugged in. Some users desire an auto-start function upon power being supplied.

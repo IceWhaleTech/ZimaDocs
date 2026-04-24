@@ -5,6 +5,7 @@ title: SynologyとSMB共有をリンクする
 description:  
 type: “Docs”  
 tip: 頂部の固定フォーマットは削除しないでください。descriptionは記事の説明です。記入しない場合、最初の段落が自動的に表示されます。  
+permalink: /jp/zimaos/radarr-setup.html
 ---  
 
 # NASからファイルを共有および取得する方法？ SAMBAは最も重要な方法かもしれません  

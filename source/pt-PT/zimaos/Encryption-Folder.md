@@ -4,6 +4,7 @@ description: Saiba como a Pasta de Criptografia do ZimaOS protege seus dados pri
 type: Docs
 author: icewhale123456
 tip: A formatação fixa da barra superior não deve ser removida. A descrição é o resumo do artigo, caso não seja preenchida, será extraído o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimaos/folder-encryption.html
 ---
 ## Pasta de Criptografia no ZimaOS
 A partir da versão **v1.5.4**, o ZimaOS oferece um poderoso recurso de **Pasta de Criptografia**, projetado para proteger seus dados mais sensíveis.  

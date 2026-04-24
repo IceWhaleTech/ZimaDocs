@@ -3,6 +3,7 @@ title: ZFS en ZimaCube
 description:
 type: “Docs”
 tip: La barra superior tiene formato fijo, por favor no la elimines, la descripción es para el artículo, si no se llena se tomará el texto de la primera parte del contenido.
+permalink: /es/zimaos/zfs-setup.html
 ---
 # Establecer el grupo de almacenamiento
 Conecta una unidad externa a ZimaCube. Utiliza la herramienta lsblk para listar todas las unidades. Puedes encontrar la unidad que acabas de conectar controlando las variables.

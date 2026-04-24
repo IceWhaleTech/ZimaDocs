@@ -4,6 +4,7 @@ description: "Troubleshoot ZimaCube Thunderbolt connection issues. Check port co
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/thunderbolt-connection-problem.html
 ---
 If there is no response after Thunderbolt connection, you can check according to the following items
 

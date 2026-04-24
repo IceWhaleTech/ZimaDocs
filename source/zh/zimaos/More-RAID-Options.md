@@ -3,6 +3,7 @@ title: 更多RAID选项
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/raid-options.html
 ---
 # RAID阵列设置
 简而言之，RAID是一种在长时间使用后为磁盘提供冗余备份的解决方案。虽然如今许多人选择云存储和多个本地存储备份解决方案，但RAID仍然是NAS行业主流的存储配置技术，它提升了数据存储的可靠性和性能。通过将多个磁盘驱动器合并为一个或多个单元，它提高了容错性和读写速度。

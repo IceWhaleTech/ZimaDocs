@@ -4,6 +4,7 @@ description: "Set up AI-powered security camera descriptions on ZimaOS using Fri
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/frigate-ollama-setup.html
 ---
 ## Background
 In daily life, surveillance cameras have become important tools for both households and businesses. However, traditional monitoring systems usually only record images or simply detect motion, and cannot provide detailed explanations of the content of the images. This often requires users to judge for themselves what happened when viewing videos or receiving notifications.

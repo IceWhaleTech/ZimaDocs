@@ -3,6 +3,7 @@ title: Los controladores sugeridos por los usuarios de la comunidad han sido imp
 description: Los controladores de ZimaOS crecen a partir de las contribuciones de la comunidad, dando forma a la hoja de ruta. Este documento muestra una lista en vivo y en expansión de hardware compatible y trabajos futuros. Comparte lo que deseas a continuación a través de los foros o Discord.  
 type: “Docs”  
 tip: No elimines el formato fijo de la barra superior, la descripción es el texto del artículo, si no se rellena, se tomará el primer párrafo del contenido.  
+permalink: /es/zimaos/contributions.html
 ---  
 
 Tus solicitudes y conversaciones no solo van a una caja de sugerencias, ¡son nuestra hoja de ruta de desarrollo! Estamos constantemente escuchando y construyendo en función de lo que necesitas.

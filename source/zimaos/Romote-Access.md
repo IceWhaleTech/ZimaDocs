@@ -3,6 +3,7 @@ title: Remote Access
 description: "Access your ZimaOS data from anywhere. Learn how to set up remote access via Cloudflare tunnel and ZimaClient for secure file management on the go."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/remote-access.html
 ---
 # Data On-the-Go
 Ever wished you could check your home security cameras or access files from your home server while traveling, but were hindered by inaccessible data? Community member Grandil successfully accessed ZimaOS from Norway, connecting to servers in Ireland, and despite being on mobile roaming, experienced a seamless connection. See his review [here](https://www.youtube.com/watch?v=ZDmO2h0tE0c).

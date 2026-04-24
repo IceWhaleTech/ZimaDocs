@@ -4,6 +4,7 @@ description: "Sync files between ZimaOS and QNAP QTS NAS using two-way synchroni
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/zimaos-qts-two-way-sync-guide.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1742550303202_image.png)
 ## Real-World Pain Point: Cross-NAS Synchronization Challenges

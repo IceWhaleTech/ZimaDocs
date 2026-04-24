@@ -3,6 +3,7 @@ title: Samba com Multi-Utilizador
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não preenchida será capturada a primeira parte do conteúdo
+permalink: /pt-PT/zimaos/samba-member-setup.html
 ---
 
 ## O Que Pode Fazer o Samba?

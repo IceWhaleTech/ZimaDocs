@@ -3,6 +3,7 @@ title: ZimaCube Resets CMOS
 description: "Learn how to reset the ZimaCube CMOS to restore BIOS defaults. Step-by-step guide to fix configuration issues and resolve boot problems."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/resets-cmos.html
 ---
 # Why do we need to reset CMOS?
 Resetting CMOS is actually restoring BIOS settings to the factory default state, which can solve many problems caused by incorrect configuration, damaged settings, or hardware changes. It is a relatively safe and simple troubleshooting method, usually as the first step in solving complex system problems.

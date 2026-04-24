@@ -3,6 +3,7 @@ title: ZimaCube 自动开机解决方案
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/auto-power-on-setup.html
 ---
 # 需求描述
 目前，ZimaCube 需要在插电后按下电源按钮才能启动。一些用户希望在供电时自动启动的功能。

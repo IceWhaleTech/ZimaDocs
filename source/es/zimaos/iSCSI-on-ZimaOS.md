@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: La barra superior con formato fijo no debe eliminarse, la descripción es el resumen del artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/iscsi-setup.html
 ---
 ZimaOS ofrece una variedad de protocolos de compartición de red para satisfacer diferentes necesidades de almacenamiento y compartición de archivos, incluyendo NFS, SAMBA e iSCSI:
 

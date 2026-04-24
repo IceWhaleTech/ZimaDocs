@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/thunderbolt-connection-problem.html
 ---
 如果Thunderbolt连接后没有响应，可以根据以下项目进行检查
 

@@ -3,6 +3,7 @@ title: Como entender os caminhos das Apps Docker no ZimaOS
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é uma descrição do artigo, se não for preenchida, o conteúdo será cortado na primeira parte do texto
+permalink: /pt-PT/zimaos/docker-app-paths.html
 ---
 # Docker e ZimaOS
 Docker é uma plataforma que permite aos usuários automatizar a implantação, escalabilidade e gerenciamento de aplicações em contêineres leves. Esses contêineres agrupam uma aplicação com todas as suas dependências, garantindo um desempenho consistente em vários ambientes. A eficiência do Docker reside na sua capacidade de isolar aplicações, tornando-as mais portáteis e escaláveis.

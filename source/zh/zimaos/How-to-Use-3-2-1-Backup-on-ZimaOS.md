@@ -4,6 +4,7 @@ description: 快速了解如何在 ZimaOS 上使用 3-2-1 备份
 type: 文档
 author: vicky
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/how-to-use-3-2-1-backup-on-zimaos.html
 ---
 
 在这个数据爆炸的时代，重要的文件不仅承载着我们工作的成果，还记录着生活中的点滴时刻。然而，硬盘故障、意外删除以及不可预见的灾难可能会瞬间抹去这些珍贵的资料。

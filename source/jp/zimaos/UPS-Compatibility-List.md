@@ -4,6 +4,7 @@ description: ZimaOS UPS の互換性に関するドキュメント (バージョ
 type: Docs
 author: icewhale123456
 tip: トップバーの固定フォーマットは削除しないでください。description は記事の説明で、未入力の場合は内容の最初の段落が切り取られます。
+permalink: /jp/zimaos/ups-compatibility-list.html
 ---
 ## ZimaOS 対応 UPS デバイスの互換性リスト
 

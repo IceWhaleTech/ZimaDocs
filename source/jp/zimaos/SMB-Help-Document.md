@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定形式は削除しないでください。descriptionは記事の説明です。記入しない場合、最初の段落が自動的に抽出されます。
+permalink: /jp/zimaos/smb-troubleshooting.html
 ---
 ## 主な問題
 -**認証方法が間違っている:** `smb://IP`を直接入力して接続すると、システムは匿名またはシステムユーザーを使用するため、認証に失敗し、接続応答が非常に遅くなります。

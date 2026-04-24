@@ -6,6 +6,7 @@ description: Esta guía explica cómo desplegar OpenClaw en dispositivos CasaOS/
 type: Docs  
 author: icewhale123456  
 tip: El formato fijo en la barra superior no debe eliminarse, la descripción es el resumen del artículo. Si no se rellena, se tomará el primer párrafo del contenido.  
+permalink: /es/zimaos/openclaw-agent-setup.html
 ---  
 
 ## 1. Visión General  

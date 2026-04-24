@@ -3,6 +3,7 @@ title: How to Watch Videos Anywhere with Jellyfin Media Server
 description: "Set up Jellyfin media server on ZimaOS to stream movies and TV shows to any device. Covers installation, library setup, hardware transcoding and remote access."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/media-server-setup-with-jellyfin.html
 ---
 # Introduction
 Nowadays, the consumption of media has experienced a significant shift. Gone are the days of physical media formats like DVDs and Blu-rays dominating the entertainment landscape. With the proliferation of high-speed internet connections and the advent of streaming services, people now prefer to access their favorite movies, TV shows, and videos digitally.

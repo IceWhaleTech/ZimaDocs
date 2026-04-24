@@ -5,7 +5,7 @@ Aqui está a tradução do texto para o português (Portugal), mantendo o format
 **Descrição:**  
 **Tipo:** “Docs”  
 **Dica:** O formato fixo da barra superior não deve ser excluído. A descrição é um resumo do artigo; se não for preenchida, será usada a primeira parte do conteúdo.
-
+permalink: /pt-PT/zimacube/gpu-expansion.html
 ---
 
 # Introdução  

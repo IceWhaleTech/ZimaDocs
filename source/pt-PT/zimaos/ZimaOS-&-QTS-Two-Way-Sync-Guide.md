@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo da barra superior não deve ser removido, a descrição é uma descrição do artigo, que será cortada caso não esteja preenchida.
+permalink: /pt-PT/zimaos/zimaos-qts-two-way-sync-guide.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1742550303202_image.png)
 ## Ponto de Dor no Mundo Real: Desafios de Sincronização entre NAS

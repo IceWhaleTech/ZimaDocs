@@ -3,6 +3,7 @@ title: Integração Fluida de Nuvem e Edge para Gestão Total de Dados
 description:
 type: “Docs”
 tip: A formatação fixa da barra superior não deve ser removida, a descrição é a descrição do artigo, se não preenchida, o conteúdo da primeira parte do texto será capturado.
+permalink: /pt-PT/zimaos/cloud-drive-connect.html
 ---
 # Introdução:
 ## O Dilema de Dados do Jojo

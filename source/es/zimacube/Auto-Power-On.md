@@ -3,6 +3,7 @@ title: Solución de Encendido Automático para ZimaCube
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, no lo elimine, la descripción es para el artículo, si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/auto-power-on.html
 ---
 # Descripción del Requerimiento
 Actualmente, ZimaCube requiere presionar el botón de encendido para iniciar después de ser conectado. Algunos usuarios desean una función de inicio automático al suministrar energía.

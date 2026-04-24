@@ -3,6 +3,7 @@ title: Como alcançar a velocidade de transferência mais rápida com o disposit
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido; a descrição é da artigo, que será cortado se não preenchido.
+permalink: /pt-PT/zimaos/nas-transfer-speed-troubleshooting.html
 ---
 ### Se você perceber que a velocidade de transferência alcançada pelo dispositivo Zima é inferior à sua velocidade máxima, por exemplo, nos seguintes casos:
 ![](https://manage.icewhale.io/api/static/docs/1728369466092_3.1.PNG)

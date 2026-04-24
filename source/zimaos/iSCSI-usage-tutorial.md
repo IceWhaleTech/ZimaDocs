@@ -3,6 +3,7 @@ title: iSCSI usage tutorial
 description: "Tutorial on configuring and using iSCSI in ZimaOS for centralized network storage management, including server and client setup steps."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/iscsi-guide.html
 ---
 
 iSCSI (Internet Small Computer System Interface) is a protocol for transmitting SCSI commands over a network, allowing storage devices to communicate over a network, similar to directly connected storage. It can virtualize storage resources, achieve centralized management, network sharing, and remote access, and is suitable for scenarios such as data centers, virtualized environments, and backup and recovery. 

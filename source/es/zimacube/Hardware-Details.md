@@ -3,6 +3,7 @@ title: Detalles del Hardware
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, por favor no lo elimine, la descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/hardware-details.html
 ---
 # Consumo de Energía
 ZimaCube está diseñado con eficiencia energética en mente, minimizando el consumo de energía mientras ofrece un rendimiento potente. El dispositivo viene estándar con un suministro de energía de 19V/11.58A para un total de 220W. Esto asegura que ZimaCube pueda seguir funcionando incluso con múltiples unidades y accesorios conectados. El sistema también incluye características avanzadas de gestión térmica que optimizan el uso de energía, lo que lo convierte en una solución práctica para operación 24/7, como en un entorno NAS en casa u oficina.

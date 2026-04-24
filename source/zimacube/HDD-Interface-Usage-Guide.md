@@ -3,6 +3,7 @@ title: Install Your Disk
 description: "ZimaCube HDD interface usage guide. Learn how to connect SATA and NVMe drives, check drive health, and maximize storage capacity on your NAS."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/hdd-interface-guide.html
 ---
 ## Unlock the device
 1. **Remove the the front panel**

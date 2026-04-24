@@ -3,6 +3,7 @@ title: Guia detalhado de operação do Plex
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, e se não for preenchida, será cortada a primeira parte do conteúdo.
+permalink: /pt-PT/zimaos/plex-setup-guide.html
 ---
 Bem-vindo ao guia do usuário detalhado para o Plex. Este guia o levará pelas etapas abrangentes necessárias para configurar, configurar e usar o Plex em todo o seu potencial. Seja você um novo usuário ou esteja procurando aprofundar sua compreensão, este guia fornece todas as informações necessárias para aproveitar ao máximo sua experiência com o Plex.
 # 1. Adicionar um volume nas configurações

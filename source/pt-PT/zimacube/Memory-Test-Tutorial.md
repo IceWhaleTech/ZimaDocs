@@ -3,6 +3,7 @@ title: Tutorial de Teste de Memória
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido; a descrição é para a descrição do artigo, que, se não preenchida, será cortada da primeira parte do conteúdo.
+permalink: /pt-PT/zimacube/memory-test-tutorial.html
 ---
 # Se a placa-mãe falhar ao iniciar corretamente ou houver distorção ou congelamento da tela durante o uso, siga os passos abaixo para solucionar o problema de memória.
 ## Ambiente de hardware：

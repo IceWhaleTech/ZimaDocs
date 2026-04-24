@@ -3,6 +3,7 @@ title: Quick Start
 description: "ZimaCube quick start guide for first-time users. Unbox, set up hardware, and access ZimaOS in three simple steps to start storing files."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/quick-start.html
 ---
 **Welcome to Zima Space!** This guide is designed for anyone using ZimaCube for the first time, guiding you through three simple steps to access the system. Whether you're tech-savvy or not, we'll patiently help you get started with ease and enjoy the convenience of our storage solution.
 # Unbox-ing

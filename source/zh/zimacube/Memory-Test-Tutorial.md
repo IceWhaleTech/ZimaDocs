@@ -3,6 +3,7 @@ title: 内存测试教程
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/memory-test-tutorial.html
 ---
 # 如果主板无法正常启动，或者在使用过程中出现屏幕失真或冻结，请按照以下步骤排查内存问题。
 ## 硬件环境：

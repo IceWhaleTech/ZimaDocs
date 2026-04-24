@@ -3,6 +3,7 @@ title: ZFS no ZimaCube
 description:
 type: “Docs”
 tip: A barra superior tem um formato fixo, por favor não a delete, a descrição é para o artigo, se não preencher, será retirada a primeira parte do texto.
+permalink: /pt-PT/zimaos/zfs-setup.html
 ---
 # Estabelecer pool de armazenamento
 Conecte uma unidade externa ao ZimaCube. Use a ferramenta lsblk para listar todas as unidades. Você pode encontrar a unidade que acabou de conectar controlando as variáveis.

@@ -3,6 +3,7 @@ title: Expansión de GPU
 description:  
 type: "Docs"  
 tip: La barra superior tiene un formato fijo, no debe eliminarse. La descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido.  
+permalink: /es/zimacube/gpu-expansion.html
 ---  
 # Introducción  
 ZimaCube es un dispositivo de computación que puede satisfacer las necesidades de trabajo profesional. A través de su diseño modular, permite a los usuarios ampliar el hardware según los requisitos personales, incluida la instalación de una Unidad de Procesamiento Gráfico (GPU). Una GPU es crucial para los usuarios que necesitan manejar tareas extensas de procesamiento gráfico y computación en paralelo.  

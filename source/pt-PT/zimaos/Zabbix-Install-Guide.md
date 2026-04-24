@@ -9,7 +9,7 @@ Aqui está a tradução para o português de Portugal do guia de instalação do
 **Tipo:** Documentação  
 **Autor:** icewhale123456  
 **Dica:** O formato da barra superior é fixo, não deve ser removido, e a descrição deve ser uma breve descrição do artigo. Se não for preenchida, a primeira parte do conteúdo será utilizada como descrição.
-
+permalink: /pt-PT/zimaos/zabbix-install-guide.html
 ---
 
 ## Informações da Versão

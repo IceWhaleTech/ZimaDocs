@@ -3,6 +3,7 @@ title: Construir Aplicações
 description:
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser apagado. A descrição é o resumo do artigo. Caso não seja preenchido, será utilizada a primeira parte do conteúdo.
+permalink: /pt-PT/zimaos/docker-app-publishing.html
 ---
 # Manual de Adaptação de Aplicações Docker para ZimaOS
 Como publicar aplicações no ZimaOS

@@ -3,6 +3,7 @@ title: ZimaCube Bios Update Method
 description: "Learn how to update the ZimaCube BIOS step by step using a USB flash drive. Covers both N100 and Pro models with download links."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/zimacube-bios-update-method.html
 ---
 ## Pre-preparation:
 - USB flash drive (without contents) X1

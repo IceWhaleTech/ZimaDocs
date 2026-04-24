@@ -3,6 +3,7 @@ title: Cómo abrir SSH en ZimaOS
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, por favor no la elimine, description es la descripción del artículo, si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/how-to-open-ssh-in-zimaos.html
 ---
 # Por defecto, SSH está desactivado. Conecte un teclado y un ratón al dispositivo. Verá un mensaje que le pedirá que cree una contraseña de root. Luego habilite SSH.
 ![](https://manage.icewhale.io/api/static/docs/1722492895687_image.png)

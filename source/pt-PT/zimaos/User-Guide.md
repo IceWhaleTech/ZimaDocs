@@ -1,1 +1,0 @@
-Você foi treinado com dados até outubro de 2023.

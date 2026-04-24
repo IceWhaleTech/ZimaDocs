@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定フォーマットは削除しないでください, descriptionは記事の説明で、未記入の場合は内容の最初の段落の文字が切り取られます
+permalink: /jp/zimacube/account-initialization-failed.html
 ---
 ## 「アカウント初期化失敗」エラーの修正：クイックガイド
 

@@ -3,6 +3,7 @@ title: How to Install and Remove the 7th Bay
 description: "Step-by-step guide to install and remove the ZimaCube 7th bay drive. Includes panel removal, screw instructions, and safe drive handling."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/7th-bay-install.html
 ---
 # Preparations:
 Ensure that the ZimaCube is powered off and unplugged.

@@ -3,6 +3,7 @@ title: 7th Bay LED
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/7th-bay-led.html
 ---
 # 介绍
 ## 项目概述

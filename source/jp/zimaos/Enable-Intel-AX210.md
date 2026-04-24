@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定形式は削除しないでください。descriptionは記事の説明です。未記入の場合、コンテンツの最初の段落の文が切り取られます。
+permalink: /jp/zimaos/enable-intel-ax210.html
 ---
 
 **🎯 目的**

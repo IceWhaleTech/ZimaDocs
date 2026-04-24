@@ -1,5 +1,6 @@
 ---
 title: Find CasaOS IP Address 
+permalink: /faq/how-to-check-ip-address.html
 ---
 
 # Find Your CasaOS IP Address #

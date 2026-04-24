@@ -3,6 +3,7 @@ title: ハードウェアブリーフ
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、記入しないと内容の最初の段落のテキストが切り取られます。
+permalink: /jp/zimacube/hardware-overview.html
 ---
 
 # ZimaCube パフォーマンス概要

@@ -3,6 +3,7 @@ title: パスワードを回復する方法
 description: 
 type: "Docs"
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明で、未入力の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaos/password-recovery.html
 ---
 ### ZimaOSのパスワードを忘れた場合は、以下の手順に従ってください：
 1. HDMIケーブルを介してZimaCubeをモニターに接続します

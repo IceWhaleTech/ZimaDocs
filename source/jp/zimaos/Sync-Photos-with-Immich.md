@@ -3,6 +3,7 @@ title: ZimaOSでimmichを体験する方法
 description:
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明です。未記入の場合、内容の最初の段落の文字が切り取られます。
+permalink: /jp/zimaos/sync-photos-with-immich.html
 ---
 # はじめに
 [**Immich**](https://immich.app/)は、写真やビデオを整理、共有、アクセスするためのシームレスでモダンなプラットフォームを提供します。顔認識や物体検出などの高度な機能を備えた洗練されたウェブベースのインターフェースで、簡単にメディアを閲覧できます。

@@ -3,6 +3,7 @@ title: Samba con Multi-Usuario
 description: 
 type: "Docs"
 tip: La barra superior tiene un formato fijo, no la elimines. La descripción es para el artículo, si no se llena se cortará el texto de la primera párrafo.
+permalink: /es/zimaos/samba-member-setup.html
 ---
 
 ## ¿Qué puede hacer Samba?

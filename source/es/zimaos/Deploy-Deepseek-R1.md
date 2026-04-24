@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: No elimine el formato fijo de la barra superior. La descripción es el texto introductorio del artículo; si no se completa, se tomará el primer párrafo del contenido como descripción.
+permalink: /es/zimaos/deploy-deepseek-r1.html
 ---
 El lanzamiento de **Deepseek** ha generado una gran atención, con su sólido rendimiento y su enfoque de código abierto, lo que permite que más personas experimenten con los modelos de lenguaje de vanguardia. ¿Estás ansioso por explorar personalmente las potentes capacidades de Deepseek? ¡**ZimaOS** simplifica y agiliza el despliegue y uso de modelos grandes!
 Este tutorial completo te guiará a través del despliegue sin problemas del modelo Deepseek R1 en ZimaOS mediante OpenWebUI, permitiéndote establecer rápidamente tu propio asistente AI local.

@@ -3,6 +3,7 @@ title: Más Opciones de RAID
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, no la elimine, la descripción es una descripción del artículo; si no se rellena, se cortará el texto en el primer párrafo.
+permalink: /es/zimaos/raid-options.html
 ---
 # Configuración de Conjunto RAID
 En resumen, RAID es una solución de respaldo por redundancia para discos después de un uso prolongado. Aunque hoy en día, muchos optan por soluciones de respaldo en la nube y múltiples almacenamiento local, RAID sigue siendo una tecnología de configuración de almacenamiento en el NAS, mejorando la fiabilidad del almacenamiento de datos y el rendimiento. Mejora la tolerancia a fallos y las velocidades de lectura/escritura al combinar múltiples unidades de disco en una o más unidades.

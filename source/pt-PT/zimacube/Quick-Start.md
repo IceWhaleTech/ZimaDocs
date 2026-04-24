@@ -3,6 +3,7 @@ title: Início Rápido
 description:
 type: “Docs”
 tip: A formatação fixa da barra superior não deve ser removida, a descrição é a descrição do artigo, se não for preenchida, será extraído o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimacube/quick-start.html
 ---
 **Bem-vindo ao Zima Space!** Este guia foi projetado para qualquer pessoa que esteja usando o ZimaCube pela primeira vez, guiando você através de três etapas simples para acessar o sistema. Quer você seja experiente em tecnologia ou não, vamos ajudá-lo pacientemente a começar com facilidade e desfrutar da conveniência da nossa solução de armazenamento.
 # Desembalando

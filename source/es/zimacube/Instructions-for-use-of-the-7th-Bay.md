@@ -3,6 +3,7 @@ title: Uso del 7º Bahía
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/7th-bay-guide.html
 ---
 # Instalar y quitar la 7ª bahía
 ## Preparativos:

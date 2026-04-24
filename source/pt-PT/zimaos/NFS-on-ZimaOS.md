@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: A barra superior fixada não deve ser excluída, a descrição será extraída do primeiro parágrafo caso não seja preenchida.
+permalink: /pt-PT/zimaos/nfs-on-zimaos.html
 ---
 Os protocolos de compartilhamento de arquivos em rede permitem compartilhar arquivos e diretórios do seu computador com outros dispositivos na rede. Os protocolos comuns incluem SAMBA, NFS e FTP. 
 Vantagens do compartilhamento em rede:

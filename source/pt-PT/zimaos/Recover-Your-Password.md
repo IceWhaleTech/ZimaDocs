@@ -3,6 +3,7 @@ title: Como recuperar a sua palavra-passe
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser eliminado, a descrição é para o artigo, se não preenchido, será capturada a primeira parte do texto
+permalink: /pt-PT/zimaos/password-recovery.html
 ---
 ### Se você esquecer a sua palavra-passe do ZimaOS, por favor siga os passos abaixo:
 1. Conecte o ZimaCube a um monitor via cabo HDMI

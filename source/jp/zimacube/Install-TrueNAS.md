@@ -3,6 +3,7 @@ title: TrueNASのインストール
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明です。記入しない場合、内容の最初の段落が切り取られます
+permalink: /jp/zimacube/install-truenas.html
 ---
 # ZimaCubeにTrueNASをインストールするガイド
 ![](https://manage.icewhale.io/api/static/docs/1727244342954_image.png)

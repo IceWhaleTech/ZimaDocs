@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定形式は削除しないでください。descriptionは記事の説明であり、入力しない場合は内容の最初の段落の文字が切り取られます。
+permalink: /jp/zimaos/raid-rebuild-after-reinstall.html
 ---
 ## 目的
 このチュートリアルは、`Files`アプリケーションを使用して`local-storage.db`ファイルをダウンロードおよび置き換える方法を案内し、システムを再インストールした後にRAID構成データを移行または復元できるようにします。

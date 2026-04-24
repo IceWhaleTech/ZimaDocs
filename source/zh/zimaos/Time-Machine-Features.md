@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/time-machine-backup.html
 ---
 想要保护你的 Mac 文件吗？使用 ZimaOS 的新 Time Machine 功能，你可以轻松地将文件备份到 ZimaCube。这一强大的功能不仅快速简单，而且确保你的重要数据始终受到保护。以下是快速设置备份的简单步骤。
 

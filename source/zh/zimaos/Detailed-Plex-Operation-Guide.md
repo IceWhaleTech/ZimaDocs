@@ -3,6 +3,7 @@ title: 详细的Plex操作指南
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/plex-setup-guide.html
 ---
 欢迎来到Plex的详细用户指南。本指南将为您提供设置、配置和充分利用Plex所需的综合步骤。无论您是新用户还是希望加深理解，本指南都提供了充分的信息，以便您充分利用Plex体验。
 # 1. 在设置中添加一个卷

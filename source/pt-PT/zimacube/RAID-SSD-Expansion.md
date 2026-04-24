@@ -3,5 +3,6 @@ title: Título
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição deve ser a descrição do artigo, se não preenchida, será cortada a primeira parte do texto
+permalink: /pt-PT/zimacube/raid-ssd-expansion.html
 ---
 # Seção

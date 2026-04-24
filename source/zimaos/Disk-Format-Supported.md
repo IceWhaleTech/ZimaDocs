@@ -4,6 +4,7 @@ description: "Complete list of disk formats and file systems supported by ZimaOS
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/supported-disk-formats.html
 ---
 ## Introduction
 As user demands for storage devices diversify, ZimaOS continually optimizes and expands its file system support. This document aims to provide users with a comprehensive overview of the disk format support in the current version (v1.5.1), helping users manage and utilize storage resources more efficiently.

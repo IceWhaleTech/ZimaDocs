@@ -3,6 +3,7 @@ title: ZimaOS V1.2.5
 description: 
 type: "Docs"
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se completa se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/zimaos-v1-2-5-available.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1730184763693_image.png)
 

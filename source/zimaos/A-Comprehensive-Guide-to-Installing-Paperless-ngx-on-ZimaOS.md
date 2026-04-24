@@ -4,6 +4,7 @@ description: "Install Paperless-ngx on ZimaOS to digitize and organize your docu
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/paperless-ngx-install.html
 ---
 > _Originally published on the IceWhale Community Forum by_ _**Muditha Liyanagama**_ _:_ _[Source URL](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474)_
 

@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: A barra superior é um formato fixo, por favor, não a exclua. A descrição será extraída do primeiro parágrafo do conteúdo se não for fornecida.
+permalink: /pt-PT/zimaos/azuracast-install.html
 ---
 > _Este guia é adaptado do artigo original, [Um Guia Completo para Instalar AzuraCast no ZimaOS via Linha de Comando](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818), por **Muditha Liyanagama**, membro da comunidade. Agradecemos sinceramente pelo trabalho deles._
 

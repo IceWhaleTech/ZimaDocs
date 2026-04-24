@@ -4,6 +4,7 @@ description: "Install Paperless-AI on ZimaOS to automate document sorting and ta
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/paperless-ai-install.html
 ---
 > _Publicado originalmente en el foro de la Comunidad IceWhale por_ _**Muditha Liyanagama**_ _:_ _[Source URL](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ai-on-zimaos/7557)_  
 

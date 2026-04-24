@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo; se não preenchida, será extraído o primeiro parágrafo do conteúdo
+permalink: /pt-PT/zimaos/time-machine-backup.html
 ---
 Quer manter seus arquivos do Mac seguros? Com o novo recurso Time Machine do ZimaOS, você pode facilmente fazer backup dos seus arquivos para o ZimaCube. Este poderoso recurso não só é rápido e fácil, mas também garante que seus dados importantes estejam sempre protegidos. Aqui estão os passos fáceis de seguir para configurar rapidamente um backup.
 

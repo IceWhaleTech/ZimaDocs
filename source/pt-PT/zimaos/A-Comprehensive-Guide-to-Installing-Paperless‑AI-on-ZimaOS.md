@@ -4,6 +4,7 @@ description:
 type: Docs  
 author: admin  
 tip: Formato fixo da barra superior, por favor, não apague. A descrição é sobre o artigo; se não for preenchida, será extraída o primeiro parágrafo do conteúdo.  
+permalink: /pt-PT/zimaos/paperless-ai-install.html
 ---  
 > _Publicado originalmente no fórum da Comunidade IceWhale por_ _**Muditha Liyanagama**_ _:_ _[Fonte original](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ai-on-zimaos/7557)_
 

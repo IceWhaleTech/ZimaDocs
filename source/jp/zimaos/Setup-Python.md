@@ -3,6 +3,7 @@ title: Pythonのセットアップ
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未入力の場合は内容の最初の段落のテキストが切り取られます
+permalink: /jp/zimaos/python-setup.html
 ---
 # /etc/profileの修正
 プロファイルに以下の2行を追加します

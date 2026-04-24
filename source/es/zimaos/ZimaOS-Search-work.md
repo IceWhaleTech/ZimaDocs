@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: No elimine el formato fijo en la barra superior, la descripción es para el artículo, si no se llena, se cortará el primer párrafo del contenido.
+permalink: /es/zimaos/zimaos-search.html
 ---
 ## Principio de funcionamiento del sistema
 ### Diseño de arquitectura en tres capas

@@ -1,5 +1,6 @@
 ---
 titel: Upgrade-Versão-BIOS-Motherboard
+permalink: /pt-PT/zimacube/enable-wol-on-zimacube.html
 --- 
 
 # BIOS - Última Versão

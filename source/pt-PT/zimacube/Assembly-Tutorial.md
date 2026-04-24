@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: O formato da barra superior é fixo, por favor, não o remova. A descrição deve ser preenchida, caso contrário, será capturada a primeira parte do texto.
+permalink: /pt-PT/zimacube/assembly-guide.html
 ---
 
 ## Preparar ferramentas

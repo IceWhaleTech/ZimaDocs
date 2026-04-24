@@ -3,6 +3,7 @@ title: ZimaCube 主板 DIY 风扇指南与规格
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/zimacube-fan-diy.html
 ---
 背景
 ----------

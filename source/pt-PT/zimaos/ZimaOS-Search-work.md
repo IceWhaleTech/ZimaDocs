@@ -7,7 +7,7 @@ description:
 type: Docs  
 author: admin  
 tip: O formato fixo da barra superior não deve ser apagado. A descrição é o texto explicativo do artigo, se não for preenchido, será extraída a primeira parte do conteúdo.
-
+permalink: /pt-PT/zimaos/zimaos-search.html
 ---  
 ## Princípio de funcionamento do sistema  
 ### Design de arquitetura em três camadas  

@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: El formato de la barra superior es fijo, no lo elimine; la descripción es la descripción del artículo, y si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/raid-rebuild-after-reinstall.html
 ---
 ## Propósito
 Este tutorial te guiará a través del uso de la aplicación `Archivos` para descargar y reemplazar el archivo `local-storage.db`, lo que te permitirá migrar o restaurar datos de configuración de RAID después de reinstalar el sistema.

@@ -5,6 +5,7 @@ title: Ligar Synology e Partilhas SMB
 description:  
 type: “Docs”  
 tip: Formato fixo da barra superior, por favor, não o apague. A descrição será a descrição do artigo; caso não seja preenchida, será capturado o primeiro parágrafo do conteúdo.  
+permalink: /pt-PT/zimaos/radarr-setup.html
 ---  
 # Como Partilhar e Obter Ficheiros de um NAS? SAMBA pode ser a forma mais importante  
 Quando falamos sobre Armazenamento em Rede (NAS), queremos que os nossos ficheiros sejam armazenados, geridos num único local e acedidos a partir de qualquer lugar. Mas como é que isso funciona?  

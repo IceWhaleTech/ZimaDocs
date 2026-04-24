@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、記入しない場合は最初の段落が自動的に選ばれます。
+permalink: /jp/zimaos/iscsi-setup.html
 ---
 ZimaOSは、NFS、SAMBA、iSCSIなど、さまざまなネットワーク共有プロトコルを提供し、異なるストレージおよびファイル共有のニーズに対応しています。
 

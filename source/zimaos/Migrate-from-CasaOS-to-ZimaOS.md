@@ -4,6 +4,7 @@ description: Step-by-step guide on migrating from CasaOS to ZimaOS. Learn how to
 type: Docs
 author: Lauren
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/casaos-to-zimaos-migration.html
 ---
 This guide focuses on **migrating from CasaOS to ZimaOS** in just two simple steps. If you’re curious about a full system comparison, check out this blog – [link](https://www.zimaspace.com/blog/casaos-vs-zimaos-which-one-will-be-your-choice.html).
 

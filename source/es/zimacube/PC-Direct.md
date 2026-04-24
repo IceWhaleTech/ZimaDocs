@@ -3,6 +3,7 @@ title: PC Direct
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, no la elimines, la descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/pc-direct.html
 ---
 # Una Manera Diferente de Configurarse
 Ya sea que estés utilizando un dispositivo ZimaOS para fines personales o profesionales, entender cómo conectarse a él a través de varias redes es esencial. Esta guía cubrirá tres tipos principales de conexiones de red: conexión directa, Red de área local (LAN) y Red de área amplia (WAN). Cada método tiene beneficios y aplicaciones únicos, asegurando que puedas acceder y gestionar tus datos sin problemas, ya estés en casa o en movimiento.

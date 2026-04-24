@@ -3,6 +3,7 @@ title: Guia do Immich： Passo a passo para backup eficiente de fotos!
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para descrever o artigo. Se não preenchido, será capturada a primeira parte do conteúdo.
+permalink: /pt-PT/zimaos/immich-photo-backup.html
 ---
 
 ## Introdução

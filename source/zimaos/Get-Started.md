@@ -3,6 +3,7 @@ title: Get Started
 description: "Get started with ZimaOS in minutes. Install ZimaClient, connect to your ZimaCube, and complete the initial setup with this quick onboarding guide."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/get-started.html
 ---
 
 # Onboarding

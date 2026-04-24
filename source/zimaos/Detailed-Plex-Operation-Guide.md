@@ -3,6 +3,7 @@ title: Detailed Plex Operation Guide
 description: “Detailed Plex setup guide for ZimaOS. Configure media libraries, hardware transcoding, remote access, and user sharing on your ZimaCube.”
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/plex-setup-guide.html
 ---
 Welcome to the detailed user guide for Plex. This guide will walk you through the comprehensive steps required to set up, configure, and use Plex to its full potential. Whether you are a new user or looking to deepen your understanding, this guide provides all the necessary information to make the most out of your Plex experience.
 # 1. Add a volume in the settings

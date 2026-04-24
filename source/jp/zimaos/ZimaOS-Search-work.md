@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、記入しない場合、最初の段落の文字が切り取られます。
+permalink: /jp/zimaos/zimaos-search.html
 ---
 ## システムの動作原理
 ### 三層アーキテクチャ設計

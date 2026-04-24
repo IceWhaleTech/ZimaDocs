@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/raid-rebuild-after-reinstall.html
 ---
 ## 目的
 本教程将指导您使用 `Files` 应用程序下载并替换 `local-storage.db` 文件，使您能够在重新安装系统后迁移或恢复 RAID 配置数据。

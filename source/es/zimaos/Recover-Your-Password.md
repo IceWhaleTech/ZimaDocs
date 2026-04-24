@@ -3,6 +3,7 @@ title: Cómo recuperar tu contraseña
 description: 
 type: "Docs"
 tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido
+permalink: /es/zimaos/password-recovery.html
 ---
 ### Si olvidas tu contraseña de ZimaOS, por favor sigue los pasos a continuación:
 1. Conecta ZimaCube a un monitor mediante un cable HDMI

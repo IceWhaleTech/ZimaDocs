@@ -3,6 +3,7 @@ title: 从Synology迁移到ZimaCube，迁移所有文件！
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/synology-to-zimacube-migration.html
 ---
 # 欢迎来到ZimaOS的世界！我指的是来自其他品牌阵营（如Synology）的新朋友们，您好！
 

@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未入力の場合は内容の最初の段落の文字が切り取られます
+permalink: /jp/zimaos/zimaos-qts-two-way-sync-guide.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1742550303202_image.png)
 ## 実際の痛点: クロスNAS同期の課題

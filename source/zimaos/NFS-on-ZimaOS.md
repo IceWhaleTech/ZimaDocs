@@ -4,6 +4,7 @@ description: "Configure NFS file sharing on ZimaOS to mount ZimaCube storage on 
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/nfs-on-zimaos.html
 ---
 Network file sharing protocols allow you to share files and directories from your computer with other devices on the network. Common protocols include SAMBA, NFS, and FTP. 
 Advantages of network sharing:

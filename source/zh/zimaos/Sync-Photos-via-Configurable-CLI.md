@@ -3,6 +3,7 @@ title: 如何使用CLI在ZimaOS上漫游
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/cli-guide.html
 ---
 ZimaOS 3是NAS爱好者、专业用户和工作室用户的游戏规则改变者。其直观的界面简化了数据备份和管理，确保您的关键文件始终安全。ZimaOS在Docker应用程序安装方面表现出色，只需几次点击即可简化该过程。
 

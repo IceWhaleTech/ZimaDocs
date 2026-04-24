@@ -3,6 +3,7 @@ title: ZimaCubeのサンダーボルト接続を介した転送速度の説明
 description: 
 type: "Docs"
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、未入力の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimacube/transfer-speeds-over-thunderbolt.html
 ---
 このガイドは、ZimaCubeのサンダーボルト接続を介して達成される最速のファイル転送速度に焦点を当てており、パフォーマンステストからの具体的なデータと最適化のヒントをユーザーに提供します。
 [Thunderboltケーブル経由でZimaCubeを接続する方法](https://www.zimaspace.com/docs/zimaos/Thunderbolt-PC-Direct)を確認してください。

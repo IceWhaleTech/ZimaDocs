@@ -3,6 +3,7 @@ title: Actualización fuera de línea
 description: actualizar ZimaOS en un entorno fuera de línea
 type: "Docs"
 tip: El formato fijo de la barra superior no debe eliminarse, la descripción es para el artículo; si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/offline-install.html
 ---
 
 Este tutorial te guiará a través de los pasos para actualizar ZimaOS en un entorno fuera de línea.  

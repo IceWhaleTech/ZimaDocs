@@ -3,6 +3,7 @@ title: ZimaCubeにUnRAIDをインストールする方法
 description:
 type: “Docs”
 tip: トップバーの固定形式は削除しないでください。descriptionは記事の説明であり、未記入の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimacube/install-unraid.html
 ---
 # ZimaCubeにTrueNASをインストールするガイド
 ![](https://manage.icewhale.io/api/static/docs/1727249736896_image.png)

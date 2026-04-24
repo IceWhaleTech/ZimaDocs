@@ -7,6 +7,7 @@ Aqui está a tradução do seu texto para o português (Portugal), mantendo o fo
 **Tipo:** Docs  
 **Autor:** icewhale123456  
 **Dica:** O formato fixo da barra superior não deve ser removido. A descrição é para o conteúdo do artigo; se não for preenchida, será capturada a primeira parte do conteúdo.  
+permalink: /pt-PT/zimaos/ups-compatibility-list.html
 ---
 
 ## Lista de Dispositivos UPS Suportados pelo ZimaOS

@@ -3,6 +3,7 @@ title: ZimaClientのダウンロードとインストール方法
 description: 
 type: "Docs"
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未入力の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaos/zimaclient-install.html
 ---
 ## はじめに:
 ZimaClientはサイレントクライアントとして設計されていますが、その機能は十分に充実しており、核心的な体験は、あなたが気づかない場所でも静かに自然に発生します。

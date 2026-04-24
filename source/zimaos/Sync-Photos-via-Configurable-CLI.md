@@ -3,6 +3,7 @@ title: How to use CLI to wander on ZimaOS
 description: "Use the ZimaOS command-line interface for advanced file management and photo sync. Covers CLI basics, configuration options and terminal operations on ZimaOS."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/cli-guide.html
 ---
 ZimaOS 3 is a game-changer for NAS enthusiasts, pro users and studio users. Its intuitive interface simplifies data backup and management, ensuring your critical files are always secure. ZimaOS excels in Docker application installation, streamlining the process with just a few clicks.
 

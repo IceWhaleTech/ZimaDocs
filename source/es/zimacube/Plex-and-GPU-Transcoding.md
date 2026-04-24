@@ -3,6 +3,7 @@ title: ¿Cómo habilitar la transcodificación de hardware de Plex en ZimaCube?
 description:
 type: “Docs”
 tip: La barra superior tiene un formato fijo, por favor no la elimine, la descripción es para el artículo, si no se llena, se tomará el texto del primer párrafo.
+permalink: /es/zimacube/plex-and-gpu-transcoding.html
 ---
 # Plex y Transcodificación por GPU
 Plex Media Server es una plataforma versátil y popular para gestionar y transmitir su biblioteca de medios. Una forma de mejorar significativamente su rendimiento y capacidades de transcodificación es aprovechando la potencia de una GPU Intel / NVIDIA. En esta guía, le mostraremos los pasos para configurar Docker Plex con aceleración de GPU Intel / NVIDIA, lo que permite una transcodificación de hardware eficiente y una mejor transmisión de medios.

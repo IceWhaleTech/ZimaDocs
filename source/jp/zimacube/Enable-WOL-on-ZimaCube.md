@@ -1,5 +1,6 @@
 ---
 titel: マザーボードのBIOSバージョンのアップグレード
+permalink: /jp/zimacube/enable-wol-on-zimacube.html
 --- 
 
 # BIOS - 最新バージョン

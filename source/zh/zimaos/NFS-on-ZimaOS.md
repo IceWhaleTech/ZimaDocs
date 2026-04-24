@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/nfs-on-zimaos.html
 ---
 网络文件共享协议允许你将计算机上的文件和目录与网络中的其他设备共享。常见的协议包括SAMBA、NFS和FTP。  
 网络共享的优势：

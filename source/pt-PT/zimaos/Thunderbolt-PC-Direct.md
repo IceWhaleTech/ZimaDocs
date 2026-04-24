@@ -3,6 +3,7 @@ title: Como conectar o ZimaCube via Cabo Thunderbolt
 description: 
 type: "Docs"
 tip: Formato fixo da barra superior, por favor não deletar, description é a descrição do artigo, se não for preenchido, será cortado o texto da primeira parte
+permalink: /pt-PT/zimaos/thunderbolt-direct-connect.html
 ---
 
 Se você deseja conectar seu computador ao ZimaCube usando um cabo Thunderbolt para velocidades de conexão mais rápidas, pode seguir estes passos:

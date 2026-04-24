@@ -3,6 +3,7 @@ title: ZimaOS V1.2.5
 description: 
 type: "Docs"
 tip: 上部バーの固定形式は削除しないでください、descriptionは記事の説明です。記入しない場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaos/zimaos-v1-2-5-available.html
 ---
 ![](https://manage.icewhale.io/api/static/docs/1730184763693_image.png)
 

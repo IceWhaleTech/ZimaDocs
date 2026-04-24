@@ -3,6 +3,7 @@ title: SynologyとSMB共有をリンクする
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、未記入の場合は内容の最初の段落の文字を切り取ります。
+permalink: /jp/zimaos/synology-smb-connect.html
 ---
 # NASからファイルを共有して取得するには？SAMBAが最も重要な方法かもしれません
 ネットワーク接続ストレージについて話すとき、私たちはファイルが一か所に保存され、管理され、どこからでもアクセスできることを望みます。でも、それはどのように実現されるのでしょうか？

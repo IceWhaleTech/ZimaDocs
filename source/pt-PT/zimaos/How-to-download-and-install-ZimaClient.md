@@ -3,6 +3,7 @@ title: Como baixar e instalar o ZimaClient
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não preenchida será cortada a primeira parte do texto
+permalink: /pt-PT/zimaos/zimaclient-install.html
 ---
 ## Introdução:
 O ZimaClient foi projetado para ser um cliente silencioso, mas sua funcionalidade é substancial o suficiente para que algumas experiências principais ocorram em lugares que você pode nem perceber - de maneira silenciosa e natural.

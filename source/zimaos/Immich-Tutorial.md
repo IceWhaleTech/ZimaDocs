@@ -3,6 +3,7 @@ title: Immich's Guide： Step-by-step to efficient photo backup!
 description: "Set up Immich on ZimaOS for automatic photo and video backup. Step-by-step guide covering installation, mobile app sync, album management and smart search features."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/immich-photo-backup.html
 ---
 
 ## Introduction

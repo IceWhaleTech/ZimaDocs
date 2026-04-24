@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/account-initialization-failed.html
 ---
 ## 修复 “账户初始化失败” 错误：快速指南  
 

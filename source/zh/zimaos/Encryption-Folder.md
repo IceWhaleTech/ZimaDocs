@@ -4,6 +4,7 @@ description: 了解ZimaOS加密文件夹如何通过AES-256-GCM加密、Zima-OFS
 type: 文档  
 author: icewhale123456  
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/folder-encryption.html
 ---  
 ## ZimaOS中的加密文件夹  
 从**v1.5.4**版本开始，ZimaOS提供了一项强大的**加密文件夹**功能，旨在保护您的最敏感数据。  

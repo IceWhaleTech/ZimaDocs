@@ -4,6 +4,7 @@ description: "Install Syncthing on ZimaOS for real-time, peer-to-peer file synch
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/syncthing-install.html
 ---
 > _Originally published on the IceWhale Community Forum by_ _**Muditha Liyanagama (Community Contributor)**:_ _[Source URL](https://community.zimaspace.com/t/a-simple-guide-to-installing-syncthing-on-zimaos/7456?utm_source=chatgpt.com)_
 

@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: 上部バーの固定フォーマットは削除しないでください。description は記事の説明であり、記入しない場合は内容の最初の段落が切り取られます。
+permalink: /jp/zimaos/deploy-deepseek-r1.html
 ---
 **Deepseek** の発売は広く注目されており、その優れたパフォーマンスとオープンソースの精神が、より多くの人々に最先端の大規模言語モデルを体験させています。Deepseek の強力な機能を個人的に探求したいですか？ **ZimaOS** は、大規模なモデルのデプロイと活用を簡素化し、効率化します！
 この包括的なチュートリアルでは、OpenWebUI を通じて ZimaOS に Deepseek R1 モデルをワンクリックでデプロイする方法を説明し、迅速に独自のローカル AI アシスタントを構築する手助けをします。

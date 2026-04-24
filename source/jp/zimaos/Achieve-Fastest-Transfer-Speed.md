@@ -3,6 +3,7 @@ title: Zimaデバイスで最速の転送速度を達成する方法
 description: 
 type: "Docs"
 tip: トップバーの固定フォーマットは削除しないでください、descriptionは記事の説明です。記入しない場合は内容の最初の段落の文章を切り取ります。
+permalink: /jp/zimaos/nas-transfer-speed-troubleshooting.html
 ---
 ### Zimaデバイスで達成できる転送速度が最大速度よりも低い場合は、以下のようなケースが考えられます：
 ![](https://manage.icewhale.io/api/static/docs/1728369466092_3.1.PNG)

@@ -4,6 +4,7 @@ description: Documentación de compatibilidad de UPS de ZimaOS para la versión 
 type: Docs
 author: icewhale123456
 tip: No elimine el formato fijo de la barra superior; description es la descripción del artículo, si no se completa, se tomará el primer párrafo del contenido
+permalink: /es/zimaos/ups-compatibility-list.html
 ---
 ## Lista de compatibilidad de dispositivos UPS compatibles con ZimaOS
 

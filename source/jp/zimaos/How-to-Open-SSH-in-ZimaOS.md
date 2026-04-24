@@ -3,6 +3,7 @@ title: ZimaOSでSSHを有効にする方法
 description:
 type: “Docs”
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。記入しない場合は、最初の段落の文字を抜粋します。
+permalink: /jp/zimaos/how-to-open-ssh-in-zimaos.html
 ---
 
 コミュニティからのフィードバックを元に、ZimaOSでSSHを有効にする方法が簡単になりました。プロセスを簡素化し、よりアクセスしやすくするために、この機能をUIに直接統合しました。これで、SSHにアクセスし、ターミナルを使用するのがより迅速かつ簡単になりました。

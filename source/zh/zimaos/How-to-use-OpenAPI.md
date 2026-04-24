@@ -3,6 +3,7 @@ title: 如何使用 ZimaOS OpenAPI
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/openapi-developer-guide.html
 ---
 # 引言
 ZimaOS 提供了一个 OpenAPI，使开发人员和用户能够集成、自动化和扩展其 ZimaOS 系统的功能。通过该 API，用户可以以编程方式与 ZimaOS 服务进行交互，从而实现与现有工作流程和第三方应用程序的无缝集成。它支持各种操作，例如管理文件、用户和系统设置，为定制和自动化提供灵活的解决方案。

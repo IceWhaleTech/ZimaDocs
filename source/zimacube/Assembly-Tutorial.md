@@ -4,6 +4,7 @@ description: "ZimaCube assembly tutorial with step-by-step instructions. Learn h
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/assembly-guide.html
 ---
 
 ## Prepare tools

@@ -3,6 +3,7 @@ title: Acesso Remoto
 description: 
 type: "Docs"
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para o artigo, se não preenchida, será extraído o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimaos/remote-access.html
 ---
 # Dados em Movimento
 Já desejou poder verificar as câmaras de segurança da sua casa ou aceder a arquivos do seu servidor doméstico enquanto viajava, mas foi impedido por dados inacessíveis? O membro da comunidade Grandil conseguiu aceder ao ZimaOS da Noruega, ligando-se a servidores na Irlanda, e apesar de estar em roaming móvel, teve uma conexão sem interrupções. Veja a sua análise [aqui](https://www.youtube.com/watch?v=ZDmO2h0tE0c).

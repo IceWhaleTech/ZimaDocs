@@ -7,7 +7,7 @@ description: Guia passo a passo sobre como migrar do CasaOS para o ZimaOS. Apren
 type: Docs  
 author: Lauren  
 tip: O formato fixo da barra superior não deve ser eliminado, e a descrição deve ser preenchida com o texto inicial do artigo, caso não seja fornecido nenhum conteúdo.
-
+permalink: /pt-PT/zimaos/casaos-to-zimaos-migration.html
 ---  
 
 Este guia foca-se em **migrar do CasaOS para o ZimaOS** em apenas dois passos simples. Se tiver curiosidade sobre uma comparação completa entre os sistemas, consulte este blog – [link].

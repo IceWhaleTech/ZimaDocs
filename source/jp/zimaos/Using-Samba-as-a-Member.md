@@ -3,6 +3,7 @@ title: 複数ユーザーとのSamba
 description:
 type: "Docs"
 tip: 上部バーの固定形式は削除しないでください、descriptionは記事の説明です。未記入の場合は内容の最初の段落を切り取ります。
+permalink: /jp/zimaos/samba-member-setup.html
 ---
 
 ## Sambaは何ができる？

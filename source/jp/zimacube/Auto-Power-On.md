@@ -3,6 +3,7 @@ title: ZimaCubeの自動電源オンソリューション
 description:
 type: “Docs”
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明であり、未記入の場合は最初の段落の内容を切り取ります
+permalink: /jp/zimacube/auto-power-on.html
 ---
 # 要件説明
 現在、ZimaCubeは接続されると電源ボタンを押して起動する必要があります。一部のユーザーは、電源が供給されると自動的に起動する機能を望んでいます。

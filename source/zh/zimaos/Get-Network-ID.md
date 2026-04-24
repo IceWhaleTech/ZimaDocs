@@ -3,6 +3,7 @@ title: 获取网络ID
 description: 
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimaos/remote-id.html
 ---
 
 ### 网络ID是唯一识别Zima设备并与其连接的方式之一。

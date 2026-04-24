@@ -3,6 +3,7 @@ title: GPU拡張
 description:
 type: "Docs"
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。記入しない場合、最初の段落の内容が自動的に取得されます。
+permalink: /jp/zimacube/gpu-expansion.html
 ---
 # はじめに
   ZimaCubeは、プロフェッショナルな作業ニーズに対応できるコンピュータデバイスです。モジュール設計により、ユーザーは個々の要件に応じてハードウェアを拡張でき、Graphics Processing Unit（GPU）のインストールも可能です。GPUは、大規模なグラフィック処理や並列計算タスクを扱う必要があるユーザーにとって非常に重要です。

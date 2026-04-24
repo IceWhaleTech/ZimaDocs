@@ -3,6 +3,7 @@ title: ZimaCube 重置 CMOS
 description:
 type: "文档"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/resets-cmos.html
 ---
 # 为什么我们需要重置 CMOS？
 重置 CMOS 实际上是将 BIOS 设置恢复到出厂默认状态，这可以解决由不正确的配置、损坏的设置或硬件更改引起的许多问题。这是一种相对安全和简单的故障排除方法，通常作为解决复杂系统问题的第一步。

@@ -3,5 +3,6 @@ title: タイトル
 description:
 type: “ドキュメント”
 tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、未記入の場合は内容の最初の段落の文字を切り取ります。
+permalink: /jp/zimacube/about-zimaos.html
 ---
 # セクション

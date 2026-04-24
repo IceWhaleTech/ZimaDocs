@@ -4,6 +4,7 @@ description: "Fix ZimaCube account initialization failure. Troubleshooting guide
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/account-initialization-failed.html
 ---
 
 ## **Option 1: Reinstall ZimaOS**  

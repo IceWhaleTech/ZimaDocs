@@ -3,6 +3,7 @@ title: Hardware Brief
 description: "ZimaCube hardware overview and specifications. Quick reference for CPU, RAM, storage bays, network ports, and expansion options on the ZimaCube NAS."
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimacube/hardware-overview.html
 ---
 
 # ZimaCube Performance Overview

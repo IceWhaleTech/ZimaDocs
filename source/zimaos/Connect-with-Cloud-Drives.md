@@ -3,6 +3,7 @@ title: Seamlessly Integrate Cloud and Edge for Total Data Management
 description: “Connect Google Drive, OneDrive, and Dropbox to ZimaOS for unified cloud and local storage management. Access all your files from one interface.”
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/cloud-drive-connect.html
 ---
 # Introduction: 
 ## Jojo’s Data Dilemma

@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não for preenchida, o conteúdo será cortado na primeira parte do texto
+permalink: /pt-PT/zimaos/system-recovery.html
 ---
 ## Introdução
 ZimaOS é um sistema operativo NAS leve que utiliza um design de duas partições (Slot A e Slot B), cada partição tem cerca de 6GB de tamanho. Quando uma partição falha, você pode facilmente alternar para a partição de backup para garantir que o sistema continue a funcionar. Este tutorial irá guiá-lo sobre como alternar para a partição de backup quando houver um problema com o sistema.

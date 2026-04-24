@@ -4,6 +4,7 @@ description: "Get started with iSCSI on ZimaOS to map remote storage as local di
 type: Docs
 author: admin
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/iscsi-setup.html
 ---
 ZimaOS offers a variety of network sharing protocols to meet different storage and file-sharing needs, including NFS, SAMBA, and iSCSI:
 

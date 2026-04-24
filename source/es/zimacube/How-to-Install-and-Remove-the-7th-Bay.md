@@ -3,6 +3,7 @@ title: Cómo instalar y quitar la séptima bahía
 description:
 type: “Docs”
 tip: El formato fijo de la barra superior no debe eliminarse, la descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido.
+permalink: /es/zimacube/7th-bay-install.html
 ---
 # Preparativos:
 Asegúrese de que el ZimaCube esté apagado y desconectado.

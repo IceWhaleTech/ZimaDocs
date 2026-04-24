@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: 上部バーの固定フォーマットは削除しないでください、descriptionは記事の説明で、未入力の場合は内容の最初の段落を切り取ります
+permalink: /jp/zimacube/thunderbolt-connection-problem.html
 ---
 Thunderbolt接続後に反応がない場合、以下の項目に従って確認できます。
 

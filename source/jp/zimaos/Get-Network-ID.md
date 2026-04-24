@@ -3,6 +3,7 @@ title: ネットワークIDの取得
 description: 
 type: "Docs"
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明であり、未記入の場合は内容の最初の段落が切り取られます。
+permalink: /jp/zimaos/remote-id.html
 ---
 
 ### ネットワークIDは、Zimaデバイスを一意に識別し、接続する方法の一つです。

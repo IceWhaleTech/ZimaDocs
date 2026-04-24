@@ -7,6 +7,7 @@ description: Aprende cómo conectar, habilitar y configurar una UPS USB en ZimaO
 type: Docs  
 author: icewhale123456  
 tip: La barra superior tiene un formato fijo, no lo elimines, la descripción es el resumen del artículo. Si no se rellena, se tomará el primer párrafo del contenido.  
+permalink: /es/zimaos/ups-setup.html
 ---  
 ## Introducción  
 A partir de **ZimaOS v1.5.3**, ZimaOS soporta oficialmente **UPS (Fuente de Alimentación Ininterrumpida)**, lo que permite que tu NAS continúe funcionando durante cortes de energía y se apague de manera segura cuando sea necesario. Tras conectar una UPS USB compatible, ZimaOS puede:  

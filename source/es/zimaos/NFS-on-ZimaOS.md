@@ -4,6 +4,7 @@ description:
 type: Docs
 author: admin
 tip: No elimine el formato fijo en la barra superior, description es la descripción del artículo, si no se completa, se tomará el primer párrafo del contenido.
+permalink: /es/zimaos/nfs-on-zimaos.html
 ---
 Los protocolos de intercambio de archivos en red permiten compartir archivos y directorios desde tu computadora con otros dispositivos en la red. Los protocolos comunes incluyen SAMBA, NFS y FTP. 
 Ventajas del intercambio en red:

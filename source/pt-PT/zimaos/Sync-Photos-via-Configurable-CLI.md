@@ -3,6 +3,7 @@ title: Como usar a CLI para explorar o ZimaOS
 description:
 type: “Docs”
 tip: O formato fixo da barra superior não deve ser removido, a descrição é para a descrição do artigo, se não preenchido, o conteúdo será extraído do início do texto
+permalink: /pt-PT/zimaos/cli-guide.html
 ---
 ZimaOS 3 é uma revolução para entusiastas de NAS, usuários profissionais e usuários de estúdio. Sua interface intuitiva simplifica o backup e o gerenciamento de dados, garantindo que seus arquivos críticos estejam sempre seguros. O ZimaOS se destaca na instalação de aplicativos Docker, tornando o processo simples com apenas alguns cliques.
 

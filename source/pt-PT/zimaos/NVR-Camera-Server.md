@@ -3,6 +3,7 @@ title: Servidor de Câmera NVR
 description:
 type: “Docs”
 tip: A formatação da barra superior é fixa, por favor não a delete, a descrição é para o artigo, se não for preenchida, será extraído o texto do primeiro parágrafo
+permalink: /pt-PT/zimaos/nvr-camera-server.html
 ---
 # Introdução
 Este tutorial irá guiá-lo sobre como criar um sistema de vigilância por vídeo em casa no CasaOS usando Kerberos.io e ZimaBoard. Usaremos o recurso de instalação personalizada do Docker do CasaOS para simplificar o processo de instalação e configuração, e também explicaremos em detalhe como configurar uma câmera RTSP.

@@ -4,6 +4,7 @@ description:
 type: Docs
 author: icewhale123456
 tip: El formato fijo de la barra superior no debe eliminarse, la descripción es una descripción del artículo, si no se completa, se cortará el texto de la primera sección.
+permalink: /es/zimacube/assembly-guide.html
 ---
 
 ## Preparar herramientas

@@ -3,6 +3,7 @@ title: 第七个硬盘位的使用
 description:
 type: “文档”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zh/zimacube/7th-bay-guide.html
 ---
 # 安装和移除第七个硬盘位
 ## 准备工作:
