@@ -117,10 +117,20 @@ hexo.extend.helper.register('header_menu', function(className) {
 });
 
 hexo.extend.helper.register('canonical_url', function(lang) {
-  let path = this.page.path;
-  if (lang && lang !== 'en') path = lang + '/' + path;
+  const canonicalPath = this.page.canonical_path || this.page.path || '';
+  const parts = canonicalPath.split('/').filter(Boolean);
+  const langs = Object.keys(this.site.data.languages || {});
+  const hasLangPrefix = parts.length > 0 && langs.includes(parts[0]);
 
-  return full_url_for(path);
+  if (hasLangPrefix) {
+    parts.shift();
+  }
+
+  const localizedPath = lang && lang !== 'en'
+    ? [lang, ...parts].join('/')
+    : parts.join('/');
+
+  return full_url_for(localizedPath);
 });
 
 hexo.extend.helper.register('url_for_lang', function(path) {
