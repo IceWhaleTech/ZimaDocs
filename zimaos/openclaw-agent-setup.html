@@ -72,8 +72,10 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221182974_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221202944_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221237858_image.png">
-<meta property="article:published_time" content="2026-04-28T03:00:47.994Z">
-<meta property="article:modified_time" content="2026-04-28T03:00:47.994Z">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1778125516229_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1778125603653_image.png">
+<meta property="article:published_time" content="2026-05-07T03:49:57.744Z">
+<meta property="article:modified_time" content="2026-05-07T03:49:57.744Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1773220372637_image.png">
@@ -109,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "1777345247994"
+      "datePublished": "1778125797744"
     }
   </script>
 
@@ -118,6 +120,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
   
   
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zimaos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Deploy OpenClaw"
+        }
+      ]
+    }
+  </script>
   
   
 
@@ -359,17 +387,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h3 id="2-6-Access-the-Web-Interface" class="article-heading"><a href="#2-6-Access-the-Web-Interface" class="headerlink" title="2.6 Access the Web Interface"></a>2.6 Access the Web Interface<a class="article-anchor" href="#2-6-Access-the-Web-Interface" aria-hidden="true"></a></h3><p>Once configuration is complete, open a browser and navigate to:</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://&lt;ip&gt;:24190?token=casaos</span><br></pre></td></tr></table></figure>
 
-<p>Replace <code>&lt;ip&gt;</code> with your device’s IP address. This page lets you view OpenClaw’s running status, logs, and current configuration.</p>
-<p>Finally, enjoy OpenClaw!</p>
-<h2 id="3-Troubleshooting" class="article-heading"><a href="#3-Troubleshooting" class="headerlink" title="3. Troubleshooting"></a>3. Troubleshooting<a class="article-anchor" href="#3-Troubleshooting" aria-hidden="true"></a></h2><p><strong>Q:</strong> How to handle the “paired required” prompt?<br><strong>A:</strong> </p>
-<ul>
-<li>Re-enter the container terminal and run the following command to list devices:<br><code>node /app/dist/index.js devices list</code></li>
-<li>If there is an unpaired device, note its request_id, then run the approval command:<br><code>node /app/dist/index.js devices approve &lt;request_id&gt;</code></li>
-</ul>
+<p>Replace <code>&lt;ip&gt;</code> with your device’s IP address.<br>After opening the Web UI for the first time, you may see a <strong>“pairing required”</strong> message on the Gateway dashboard instead of connecting directly.<br><img src="https://manage.icewhale.io/api/static/docs/1778125516229_image.png"><br>This is expected behavior in newer OpenClaw versions. The Web UI device must first be approved from inside the container.</p>
+<p><img src="https://manage.icewhale.io/api/static/docs/1778125603653_image.png"></p>
+<h4 id="1-Enter-the-OpenClaw-container" class="article-heading"><a href="#1-Enter-the-OpenClaw-container" class="headerlink" title="1. Enter the OpenClaw container"></a>1. Enter the OpenClaw container<a class="article-anchor" href="#1-Enter-the-OpenClaw-container" aria-hidden="true"></a></h4><p>Run:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it openclaw bash</span><br></pre></td></tr></table></figure>
+<h4 id="2-List-pending-devices" class="article-heading"><a href="#2-List-pending-devices" class="headerlink" title="2. List pending devices"></a>2. List pending devices<a class="article-anchor" href="#2-List-pending-devices" aria-hidden="true"></a></h4><p>Inside the container, run:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node /app/dist/index.js devices list</span><br></pre></td></tr></table></figure>
+<p>If an unpaired device exists, OpenClaw will display a request_id.</p>
+<h4 id="3-Approve-the-device" class="article-heading"><a href="#3-Approve-the-device" class="headerlink" title="3. Approve the device"></a>3. Approve the device<a class="article-anchor" href="#3-Approve-the-device" aria-hidden="true"></a></h4><p>Run the following command and replace <request_id> with the actual ID shown above:</request_id></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node /app/dist/index.js devices approve &lt;request_id&gt;</span><br></pre></td></tr></table></figure>
+<p>After approval succeeds, refresh the Web UI page and reconnect.<br>The <strong>“pairing required”</strong> warning should disappear, and the dashboard will connect normally.<br>Finally, enjoy OpenClaw!</p>
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-04-28T03:00:47.994Z" itemprop="dateModified">Last updated: 2026-04-28</time>
+                <time class="article-footer-updated" datetime="2026-05-07T03:49:57.744Z" itemprop="dateModified">Last updated: 2026-05-07</time>
                 <a href="install-zimaos-on-proxmox-ve.html" class="article-footer-prev" title="ISO on PVE"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="ssh-setup.html" class="article-footer-next" title="Install Guide"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
 
@@ -378,7 +409,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <aside id="article-toc" role="navigation">
             <div id="article-toc-inner">
               <strong class="sidebar-title">Contents</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Overview"><span class="toc-text">1. Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Goals"><span class="toc-text">1.1 Goals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Environment"><span class="toc-text">1.2 Environment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Usage-Notes"><span class="toc-text">1.3 Usage Notes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Prerequisites"><span class="toc-text">1.3 Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Steps-at-a-Glance"><span class="toc-text">1.4 Steps at a Glance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Detailed-Steps-CasaOs-Example"><span class="toc-text">2. Detailed Steps (CasaOs Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Open-a-Terminal"><span class="toc-text">2.1 Open a Terminal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Switch-to-Administrator-Mode"><span class="toc-text">2.2 Switch to Administrator Mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Enter-the-Configuration-Wizard"><span class="toc-text">2.3 Enter the Configuration Wizard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Configure-the-Model"><span class="toc-text">2.4 Configure the Model</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Select-a-Provider"><span class="toc-text">1. Select a Provider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Enter-Model-Parameters"><span class="toc-text">2. Enter Model Parameters</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Configure-a-Channel-Telegram-Example"><span class="toc-text">2.5 Configure a Channel (Telegram Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Open-Channel-Settings"><span class="toc-text">1. Open Channel Settings</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Get-a-Bot-Token"><span class="toc-text">2. Get a Bot Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Enter-the-Bot-Token"><span class="toc-text">3. Enter the Bot Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Set-the-DM-Access-Policy"><span class="toc-text">4. Set the DM Access Policy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Complete-Pairing"><span class="toc-text">5. Complete Pairing</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Access-the-Web-Interface"><span class="toc-text">2.6 Access the Web Interface</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Troubleshooting"><span class="toc-text">3. Troubleshooting</span></a></li></ol>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Overview"><span class="toc-text">1. Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Goals"><span class="toc-text">1.1 Goals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Environment"><span class="toc-text">1.2 Environment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Usage-Notes"><span class="toc-text">1.3 Usage Notes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Prerequisites"><span class="toc-text">1.3 Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Steps-at-a-Glance"><span class="toc-text">1.4 Steps at a Glance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Detailed-Steps-CasaOs-Example"><span class="toc-text">2. Detailed Steps (CasaOs Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Open-a-Terminal"><span class="toc-text">2.1 Open a Terminal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Switch-to-Administrator-Mode"><span class="toc-text">2.2 Switch to Administrator Mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Enter-the-Configuration-Wizard"><span class="toc-text">2.3 Enter the Configuration Wizard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Configure-the-Model"><span class="toc-text">2.4 Configure the Model</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Select-a-Provider"><span class="toc-text">1. Select a Provider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Enter-Model-Parameters"><span class="toc-text">2. Enter Model Parameters</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Configure-a-Channel-Telegram-Example"><span class="toc-text">2.5 Configure a Channel (Telegram Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Open-Channel-Settings"><span class="toc-text">1. Open Channel Settings</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Get-a-Bot-Token"><span class="toc-text">2. Get a Bot Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Enter-the-Bot-Token"><span class="toc-text">3. Enter the Bot Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Set-the-DM-Access-Policy"><span class="toc-text">4. Set the DM Access Policy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Complete-Pairing"><span class="toc-text">5. Complete Pairing</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Access-the-Web-Interface"><span class="toc-text">2.6 Access the Web Interface</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Enter-the-OpenClaw-container"><span class="toc-text">1. Enter the OpenClaw container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-List-pending-devices"><span class="toc-text">2. List pending devices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Approve-the-device"><span class="toc-text">3. Approve the device</span></a></li></ol></li></ol></li></ol>
               <a href="#" id="article-toc-top">Back to Top</a>
             </div>
           </aside>
