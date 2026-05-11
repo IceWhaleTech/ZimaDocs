@@ -82,12 +82,17 @@
   </script>
 
   {% if page.title %}
-  {% set _pathParts = page.path.split('/') %}
-  {% if page.lang and page.lang !== 'en' and (_pathParts | length) > 2 %}
+  {% set _rawParts = page.path.split('/') %}
+{% if _rawParts[0] === '' %}
+{% set _pathParts = _rawParts.slice(1) %}
+{% else %}
+{% set _pathParts = _rawParts %}
+{% endif %}
+  {% if page.lang and page.lang !== 'en' and (_rawParts | length) > 2 %}
     {% set _section = _pathParts[1] %}
     {% set _sectionUrl = 'https://www.zimaspace.com/docs/' + page.lang + '/' + _section %}
   {% else %}
-    {% set _section = _pathParts[0] if (_pathParts | length) > 1 else '' %}
+    {% set _section = _pathParts[0] if (_rawParts | length) > 1 else '' %}
     {% set _sectionUrl = 'https://www.zimaspace.com/docs/' + _section %}
   {% endif %}
   {% set _sectionNames = {
