@@ -1,4 +1,3 @@
-```markdown
 ---
 title: 如何部署 OpenClaw
 description: 本指南介绍如何在 CasaOS/ZimaOS 设备上部署 OpenClaw、配置自定义 AI 模型、关联 Telegram 机器人，以及访问 Web UI 来管理和与 AI 交互。
@@ -263,4 +262,3 @@ node /app/dist/index.js devices approve <request_id>
 批准成功后，刷新 Web UI 页面并重新连接。
 **“pairing required”** 警告应会消失，仪表板将正常连接。
 最后，尽情享受 OpenClaw 吧！
-```
