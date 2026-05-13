@@ -1,7 +1,6 @@
-
 ---
 title: Guía completa para instalar Paperless-ngx en ZimaOS
-description: 
+description:
 type: Docs
 author: icewhale123456
 tip: La barra superior está fija, por favor no la elimines, la descripción es para el artículo, si no se llena, se tomará el primer párrafo del contenido.

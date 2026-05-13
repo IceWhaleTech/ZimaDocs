@@ -1,5 +1,3 @@
-以下是翻译后的内容：
-
 ---
 title: ZimaOSでのNFSの使用方法
 description: 

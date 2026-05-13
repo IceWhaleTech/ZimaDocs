@@ -1,11 +1,9 @@
-Here is the translation into Spanish while keeping the original format intact:
-
 ---
-title: Guía del Usuario de la Tarjeta Wi-Fi AX210  
-description:  
-type: Docs  
-author: admin  
-tip: No elimine el formato fijo de la barra superior, la descripción es el resumen del artículo, si no se completa, se tomará el primer párrafo del contenido.  
+title: Guía del Usuario de la Tarjeta Wi-Fi AX210
+description:
+type: Docs
+author: admin
+tip: No elimine el formato fijo de la barra superior, la descripción es el resumen del artículo, si no se completa, se tomará el primer párrafo del contenido.
 permalink: /es/zimaboard/ax210-wifi-6e.html
 ---  
 ## 1. Introducción  

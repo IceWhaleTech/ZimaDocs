@@ -1,12 +1,9 @@
-Aqui está a tradução do seu texto para o português (Portugal), mantendo o formato original:
-
 ---
-
-**Título:** Lista de Compatibilidade de Dispositivos UPS Suportados pelo ZimaOS (USB & usbhid-ups)  
-**Descrição:** Documentação de compatibilidade de UPS do ZimaOS para a versão 1.5.3 e superior. Saiba quais dispositivos UPS conectados via USB e usando o driver usbhid-ups são compatíveis com o ZimaOS, consulte a lista de compatibilidade verificada e obtenha orientações sobre como escolher um UPS confiável para o seu NAS ou servidor doméstico ZimaOS.  
-**Tipo:** Docs  
-**Autor:** icewhale123456  
-**Dica:** O formato fixo da barra superior não deve ser removido. A descrição é para o conteúdo do artigo; se não for preenchida, será capturada a primeira parte do conteúdo.  
+title: Lista de Compatibilidade de Dispositivos UPS Suportados pelo ZimaOS (USB & usbhid-ups)
+description: Documentação de compatibilidade de UPS do ZimaOS para a versão 1.5.3 e superior. Saiba quais dispositivos UPS conectados via USB e usando o driver usbhid-ups são compatíveis com o ZimaOS, consulte a lista de compatibilidade verificada e obtenha orientações sobre como escolher um UPS confiável para o seu NAS ou servidor doméstico ZimaOS.
+type: Docs
+author: icewhale123456
+tip: O formato fixo da barra superior não deve ser removido. A descrição é para o conteúdo do artigo; se não for preenchida, será capturada a primeira parte do conteúdo.
 permalink: /pt-PT/zimaos/ups-compatibility-list.html
 ---
 

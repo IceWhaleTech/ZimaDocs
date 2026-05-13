@@ -1,10 +1,8 @@
-Aqui está a tradução para o português de Portugal:
-
 ---
-**Título:** Drivers sugeridos por utilizadores da comunidade foram implementados  
-**Descrição:** Os drivers do ZimaOS crescem a partir das contribuições da comunidade, moldando o roadmap. Este documento mostra uma lista ao vivo e em expansão de hardware suportado e do trabalho futuro. Partilhe o que gostaria de ver a seguir através dos fóruns ou Discord.  
-**Tipo:** "Docs"  
-**Dica:** Não apague o formato fixo da barra superior, a descrição é a descrição do artigo. Se não for preenchida, será capturada a primeira parte do conteúdo.
+title: Drivers sugeridos por utilizadores da comunidade foram implementados
+description: Os drivers do ZimaOS crescem a partir das contribuições da comunidade, moldando o roadmap. Este documento mostra uma lista ao vivo e em expansão de hardware suportado e do trabalho futuro. Partilhe o que gostaria de ver a seguir através dos fóruns ou Discord.
+type: Docs
+tip: Não apague o formato fixo da barra superior, a descrição é a descrição do artigo. Se não for preenchida, será capturada a primeira parte do conteúdo.
 permalink: /pt-PT/zimaos/contributions.html
 ---
 

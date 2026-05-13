@@ -1,11 +1,8 @@
-Claro! Aqui está a tradução do texto para o português de Portugal, mantendo o formato original:
-
 ---
-
-title: Migrar do CasaOS para o ZimaOS  
-description: Guia passo a passo sobre como migrar do CasaOS para o ZimaOS. Aprenda a transferir ficheiros, mover aplicações Docker com o CTOZ e configurar o seu novo servidor doméstico de forma simples.  
-type: Docs  
-author: Lauren  
+title: Migrar do CasaOS para o ZimaOS
+description: Guia passo a passo sobre como migrar do CasaOS para o ZimaOS. Aprenda a transferir ficheiros, mover aplicações Docker com o CTOZ e configurar o seu novo servidor doméstico de forma simples.
+type: Docs
+author: Lauren
 tip: O formato fixo da barra superior não deve ser eliminado, e a descrição deve ser preenchida com o texto inicial do artigo, caso não seja fornecido nenhum conteúdo.
 permalink: /pt-PT/zimaos/casaos-to-zimaos-migration.html
 ---  

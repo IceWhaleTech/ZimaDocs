@@ -1,3 +1,9 @@
+---
+title: As "Member", How to use Samba？
+description:
+type: Docs
+---
+
 # As "Member",  How to use Samba？
 
 Verify the address for your Operation System compatibility.

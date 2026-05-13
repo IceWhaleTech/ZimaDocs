@@ -1,12 +1,9 @@
-Aquí tienes la traducción al español manteniendo el formato original:
-
 ---
-
-title: Implementación de Frigate+Olama con Descripción AI en Pantalla utilizando ZimaOS  
-description:  
-type: Docs  
-author: admin  
-tip: No eliminar el formato fijo de la barra superior, la descripción es para la descripción del artículo, si no se llena, se tomará el primer párrafo del contenido.  
+title: Implementación de Frigate+Olama con Descripción AI en Pantalla utilizando ZimaOS
+description:
+type: Docs
+author: admin
+tip: No eliminar el formato fijo de la barra superior, la descripción es para la descripción del artículo, si no se llena, se tomará el primer párrafo del contenido.
 permalink: /es/zimaos/frigate-ollama-setup.html
 ---  
 

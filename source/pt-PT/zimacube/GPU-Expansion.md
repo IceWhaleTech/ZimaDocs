@@ -1,5 +1,9 @@
-Aqui está a tradução do texto para o português (Portugal), mantendo o formato original:
-
+---
+title: Expansão de GPU
+description:
+type: Docs
+tip: O formato fixo da barra superior não deve ser excluído. A descrição é um resumo do artigo; se não for preenchida, será usada a primeira parte do conteúdo.
+permalink: /pt-PT/zimacube/gpu-expansion.html
 ---
 **Título:** Expansão de GPU  
 **Descrição:**  

@@ -1,5 +1,9 @@
-以下是您的文本翻译成日语的版本：
-
+---
+title: ディスクのインストール
+description:
+type: Docs
+tip: 上部バーの固定形式は削除しないでください。descriptionは記事の説明で、記入しない場合は最初の段落が自動的に抜粋されます。
+permalink: /jp/zimacube/hdd-interface-guide.html
 ---
 title: ディスクのインストール  
 description:  
