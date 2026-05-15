@@ -1,11 +1,11 @@
----  
+---
 title: ZimaOSでコマンドラインを使用してAzuraCastをインストールするための包括的ガイド  
 description:   
 type: Docs  
 author: icewhale123456  
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明です。記入しない場合、最初の段落が自動的に使用されます。  
 permalink: /jp/zimaos/azuracast-install.html
----  
+---
 
 > _このガイドは、コミュニティメンバー**Muditha Liyanagama**による元の記事、[ZimaOSでコマンドラインを使用してAzuraCastをインストールするための包括的ガイド](https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818)を元に作成されました。彼の作業に深く感謝します。_
 

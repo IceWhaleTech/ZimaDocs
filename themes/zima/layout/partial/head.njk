@@ -63,7 +63,7 @@
       "@type": "TechArticle",
       "headline": "{{ page.title }}",
       "description": "{{ page.description }}",
-      "image": "{{ page.feature_image }}",
+      {% if page.feature_image %}"image": "{{ page.feature_image }}",{% endif %}
       "author": {
         "@type": "Organization",
         "name": "ZimaSpace",
@@ -77,13 +77,24 @@
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "{{ page.date }}"
+      "datePublished": "{{ date_xml(page.date) }}"
     }
   </script>
 
   {% if page.title %}
-  {% set _pathParts = page.path.split('/') %}
-  {% set _section = _pathParts[0] if (_pathParts | length) > 1 else '' %}
+  {% set _rawParts = page.path.split('/') %}
+{% if _rawParts[0] === '' %}
+{% set _pathParts = _rawParts.slice(1) %}
+{% else %}
+{% set _pathParts = _rawParts %}
+{% endif %}
+  {% if page.lang and page.lang !== 'en' and (_rawParts | length) > 2 %}
+    {% set _section = _pathParts[1] %}
+    {% set _sectionUrl = 'https://www.zimaspace.com/docs/' + page.lang + '/' + _section %}
+  {% else %}
+    {% set _section = _pathParts[0] if (_rawParts | length) > 1 else '' %}
+    {% set _sectionUrl = 'https://www.zimaspace.com/docs/' + _section %}
+  {% endif %}
   {% set _sectionNames = {
     'zimacube': 'ZimaCube',
     'zimaos': 'ZimaOS',
@@ -109,7 +120,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "{{ _sectionName }}",
-          "item": "https://www.zimaspace.com/docs/{{ _section }}"
+          "item": "{{ _sectionUrl }}"
         },
         {
           "@type": "ListItem",

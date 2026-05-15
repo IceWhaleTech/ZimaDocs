@@ -1,12 +1,9 @@
-Claro! Aqui está a tradução para o português de Portugal:
-
 ---
-
-**title**: Como Usar uma UPS (Fonte de Alimentação Ininterrupta) no ZimaOS  
-**description**: Aprenda a conectar, ativar e configurar uma UPS USB no ZimaOS 1.5.3 ou versões posteriores, para que o seu NAS possa desligar-se com segurança durante quedas de energia e evitar a perda de dados.  
-**type**: Docs  
-**author**: icewhale123456  
-**tip**: A barra superior tem formato fixo, não a apague. A descrição é o resumo do artigo; caso não seja preenchida, será utilizada a primeira parte do conteúdo.
+title: Como Usar uma UPS (Fonte de Alimentação Ininterrupta) no ZimaOS
+description: Aprenda a conectar, ativar e configurar uma UPS USB no ZimaOS 1.5.3 ou versões posteriores, para que o seu NAS possa desligar-se com segurança durante quedas de energia e evitar a perda de dados.
+type: Docs
+author: icewhale123456
+tip: A barra superior tem formato fixo, não a apague. A descrição é o resumo do artigo; caso não seja preenchida, será utilizada a primeira parte do conteúdo.
 permalink: /pt-PT/zimaos/ups-setup.html
 ---
 

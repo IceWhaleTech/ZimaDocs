@@ -203,9 +203,12 @@ hexo.extend.helper.register('lunr_index', data => {
 // Will be replace with full_url_for after hexo v4 release
 hexo.extend.helper.register('canonical_path_for_nav', function() {
   const path = this.page.canonical_path;
-  return path
-  if (path.startsWith('docs/') || path.startsWith('api/')) return path;
-  return '';
+  const parts = path.split('/').filter(Boolean);
+  const langs = Object.keys(this.site.data.languages || {});
+  if (parts.length > 0 && langs.includes(parts[0])) {
+    parts.shift();
+  }
+  return parts.join('/');
 });
 
 hexo.extend.helper.register('lang_name', function(lang) {

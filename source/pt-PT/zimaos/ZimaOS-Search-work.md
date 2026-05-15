@@ -1,11 +1,8 @@
-Claro! Aqui está a tradução para o português de Portugal, mantendo o formato original:
-
 ---
-
-title:Como funciona o ZimaOS-Search  
-description:  
-type: Docs  
-author: admin  
+title: Como funciona o ZimaOS-Search
+description:
+type: Docs
+author: admin
 tip: O formato fixo da barra superior não deve ser apagado. A descrição é o texto explicativo do artigo, se não for preenchido, será extraída a primeira parte do conteúdo.
 permalink: /pt-PT/zimaos/zimaos-search.html
 ---  

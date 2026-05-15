@@ -1,5 +1,9 @@
-Here's the translation of your text into European Portuguese:
-
+---
+title: Instalar o seu disco
+description:
+type: Docs
+tip: Não remova o formato fixo da barra superior, a descrição é para ser o texto descritivo do artigo; se não for preenchido, será capturado o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimacube/hdd-interface-guide.html
 ---
 title: Instalar o seu disco
 description:

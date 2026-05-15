@@ -1,5 +1,9 @@
-Aqui está a tradução do conteúdo solicitado para o português de Portugal, mantendo a estrutura original:
-
+---
+title: Ligar Synology e Partilhas SMB
+description:
+type: Docs
+tip: Formato fixo da barra superior, por favor, não o apague. A descrição será a descrição do artigo; caso não seja preenchida, será capturado o primeiro parágrafo do conteúdo.
+permalink: /pt-PT/zimaos/radarr-setup.html
 ---
 title: Ligar Synology e Partilhas SMB  
 description:  

@@ -1,14 +1,9 @@
-Aqui está a tradução para o português de Portugal do guia de instalação do Zabbix para ZimaOS, mantendo o formato original:
-
 ---
-
-**Guia de Instalação do Zabbix para ZimaOS**
-
-**Descrição:** Transforme o seu dispositivo ZimaOS num servidor de monitorização poderoso e centralizado para toda a sua rede.
-
-**Tipo:** Documentação  
-**Autor:** icewhale123456  
-**Dica:** O formato da barra superior é fixo, não deve ser removido, e a descrição deve ser uma breve descrição do artigo. Se não for preenchida, a primeira parte do conteúdo será utilizada como descrição.
+title: Guia de Instalação do Zabbix para ZimaOS
+description: Transforme o seu dispositivo ZimaOS num servidor de monitorização poderoso e centralizado para toda a sua rede.
+type: Docs
+author: icewhale123456
+tip: O formato da barra superior é fixo, não deve ser removido, e a descrição deve ser uma breve descrição do artigo. Se não for preenchida, a primeira parte do conteúdo será utilizada como descrição.
 permalink: /pt-PT/zimaos/zabbix-install-guide.html
 ---
 

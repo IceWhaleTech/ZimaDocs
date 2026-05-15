@@ -1,12 +1,9 @@
-Aqui está a tradução para o português (Portugal) do conteúdo que você solicitou:
-
 ---
-
-title: Implantar o Deepseek R1 no ZimaOS  
-description:  
-type: Docs  
-author: admin  
-tip: O formato fixo da barra superior não deve ser excluído, a descrição é para o conteúdo do artigo. Se não for preenchida, o início do texto será usado como descrição.  
+title: Implantar o Deepseek R1 no ZimaOS
+description:
+type: Docs
+author: admin
+tip: O formato fixo da barra superior não deve ser excluído, a descrição é para o conteúdo do artigo. Se não for preenchida, o início do texto será usado como descrição.
 permalink: /pt-PT/zimaos/deploy-deepseek-r1.html
 ---  
 

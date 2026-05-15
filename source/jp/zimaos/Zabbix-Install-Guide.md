@@ -1,5 +1,3 @@
-以下是您的内容翻译成日语：
-
 ---
 title: ZimaOS用Zabbixインストールガイド
 description: ZimaOSデバイスを強力で集中型のネットワーク監視サーバーに変換します。
