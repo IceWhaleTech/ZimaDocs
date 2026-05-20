@@ -46,3 +46,4 @@ Se tiver um **segundo** computador no escritório, mas o zimacube não estiver c
 A conexão entre o seu laptop e o ZimaCube é estabelecida automaticamente pela aplicação do Cliente Zima e pelo ZimaOS, utilizando comunicação P2P para estabelecer a conexão. A transferência de dados entre os dois é encriptada, garantindo que todas as transferências de dados sejam entre pares.
 
 Além disso, quando se conecta com sucesso ao ZimaOS pela primeira vez via cliente Zima, o seu canal de acesso remoto já está configurado. Isso significa que pode usar este dispositivo para aceder ao ZimaOS de qualquer lugar a qualquer momento.
+
