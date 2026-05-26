@@ -17,11 +17,13 @@ permalink: /zimacube/zimacube-bios-update-method.html
 |ZimaCube Pro 1235u|[Google Drive Link](https://drive.google.com/file/d/1hQI2oe0C9CIsylP0vjdP3tZSljgslkx8/view?usp=drive_link) |
 | ZimaCube Pro 1235u with Resizable BAR support |[Google Drive Link](https://drive.google.com/file/d/1i0cm2QHK2e4oNNmQU-0-pnABuqp4HR8N/view?usp=drive_link) |
 
+Note：The Resizable BAR feature has already been added to the ZimaCube 2 BIOS, no update is required.
+
 ---
 ## Step 2: Prepare a USB flash drive
-Format the USB flash drive into FAT32 format, download and extract the installation package according to the ZimaCube model number, and copy the EFI folder to an empty USB flash drive.
-| ![](https://manage.icewhale.io/api/static/docs/1729233074284_image.png) | ![](https://manage.icewhale.io/api/static/docs/1729233088117_image.png) |
-| - | - |
+Format the USB flash drive into `FAT32` format, download and extract the installation package according to the ZimaCube model number, and copy the EFI folder to an empty USB flash drive.
+![](https://manage.icewhale.io/api/static/docs/1779788907886_image.png)
+
 ## Step 3: Update Bios
 Plug the USB flash drive, keyboard and monitor into the ZimaCube, power up and hit F11 continuously to enter the selection screen and manipulate the keyboard to select UEFI:
 ![](https://manage.icewhale.io/api/static/docs/1729233125821_image.png)
