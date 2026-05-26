@@ -12,10 +12,12 @@ permalink: /zimacube/zimacube-bios-update-method.html
 - MiniDP X1
 ## Step 1: Download the BIOS installation package
 
-|ZimaCube N100|https://drive.google.com/file/d/1yd8Z2fJNr69TLyy6381JzVSHP_Af0awQ/view?usp=drive_link |
+|ZimaCube N100|[Google Drive Link](https://drive.google.com/file/d/1yd8Z2fJNr69TLyy6381JzVSHP_Af0awQ/view?usp=drive_link) |
 | - | - |
-| ZimaCube Pro 1235u |https://drive.google.com/file/d/1hQI2oe0C9CIsylP0vjdP3tZSljgslkx8/view?usp=drive_link |
+|ZimaCube Pro 1235u|[Google Drive Link](https://drive.google.com/file/d/1hQI2oe0C9CIsylP0vjdP3tZSljgslkx8/view?usp=drive_link) |
+| ZimaCube Pro 1235u with Resizable BAR support |[Google Drive Link](https://drive.google.com/file/d/1i0cm2QHK2e4oNNmQU-0-pnABuqp4HR8N/view?usp=drive_link) |
 
+---
 ## Step 2: Prepare a USB flash drive
 Format the USB flash drive into FAT32 format, download and extract the installation package according to the ZimaCube model number, and copy the EFI folder to an empty USB flash drive.
 | ![](https://manage.icewhale.io/api/static/docs/1729233074284_image.png) | ![](https://manage.icewhale.io/api/static/docs/1729233088117_image.png) |
