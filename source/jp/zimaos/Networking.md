@@ -1,8 +1,8 @@
 ---
-title: 文章タイトル
+title: タイトル
 description:
 type: “Docs”
-tip: トップバーの固定形式は削除しないでください。descriptionは記事の説明であり、空白の場合は内容の最初の段落が抽出されます。
-permalink: /jp/zimaos/networking.html
+tip: このフロントマターブロックを削除しないでください。descriptionフィールドは記事の要約に使用されます。空の場合、最初の段落が代わりに使用されます。
+permalink: /zimaos/networking.html
 ---
-# 段落タイトル
+# セクションタイトル
