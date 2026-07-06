@@ -1,8 +1,8 @@
 ---
-title: 标题
+title: 网络连接
 description:
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
-permalink: /zimaos/networking.html
+permalink: /zh/zimaos/networking.html
 ---
-# 部分
+# 网络连接
