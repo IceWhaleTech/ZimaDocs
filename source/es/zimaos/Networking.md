@@ -1,8 +1,8 @@
 ---
-title: Título del Artículo
+title: Título
 description:
 type: “Docs”
-tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es para el artículo, si no se rellena se cortará el primer párrafo del contenido.
-permalink: /es/zimaos/networking.html
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+permalink: /zimaos/networking.html
 ---
-# Título del Párrafo
+# sección
