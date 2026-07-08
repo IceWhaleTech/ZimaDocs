@@ -28,6 +28,8 @@ The content of this article is to introduce the interface information and functi
 ## Interface
 
 ![](https://manage.icewhale.io/api/static/docs/1728899990021_img_v3_02fl_c9cd5d38-6bf8-4136-bdf9-cea30c94658g.png)
+![ZimaBlade Pinout](https://manage.icewhale.io/api/static/docs/1783490816877_img_v3_0213d_06f97abc-9592-481c-9285-8abf794a26dg.jpg)
+
 
 ## Wikipedia
 
