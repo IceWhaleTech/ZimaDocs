@@ -1,28 +1,30 @@
 ---
-title: Reset Network Settings
-description: 
+title: ネットワーク設定をリセット
+description: "ネットワークの変更によって接続の問題が発生した場合に、USBドライブを使用してZimaOSのネットワーク設定と固定IP構成をリセットする方法。"
 type: Docs
 author: icewhale123456
-tip: 上部バーの固定フォーマットは削除しないでください。descriptionは記事の説明で、未記入の場合は内容の最初の段落が抽出されます。
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-ZimaOSで静的IPを設定しており、ネットワーク変更によりIP設定をリセットする必要がある場合は、このチュートリアルを使用して設定されたIPバインディングをリセットできます。
+
+ZimaOSで固定IPを設定しており、ネットワークの変更によりネットワークIP設定をリセットする必要がある場合は、このチュートリアルを使用して設定済みのIPバインディングをリセットできます。
 
 {% note warn  %} 
-**注意:** 以下のUSBリセット手順を試す前に、別のネットワークポートに接続してからZimaClientを使用してネットワークを再検索してください。
+**注意:** 以下のUSBリセット手順を試す前に、まず別のネットワークポートに接続し、ZimaClientを使用して再度ネットワークを検索してください。
 {% endnote %}
 
 ### USBドライブをフォーマットする
-WindowsではUSBドライブを右クリックしてexFATを選択し、フォーマットできます
+Windowsでは、USBドライブを右クリックし、exFATを選択してフォーマットできます。  
 ![](https://manage.icewhale.io/api/static/docs/1730802271117_image.png)
 
-Macではディスクユーティリティでディスクを選択し、消去操作を行います
+Macでは、ディスク管理ツールでディスクを選択し、消去操作を実行してください。  
 ![](https://manage.icewhale.io/api/static/docs/1730802287070_image.png)
 
-### _ResetNetwork ファイルを書き込む
-ディスクのルートディレクトリにファイルを作成し、名前を `_ResetNetwork` とします。拡張子を付けず、ファイルは空にしてください。
+### _ResetNetwork ファイルを作成する
+ディスクのルートディレクトリにファイルを作成し、名前を`_ResetNetwork`にしてください。拡張子は付けず、ファイルは空のままにしてください。  
 ![](https://manage.icewhale.io/api/static/docs/1730802301568_image.png)
 
-### ZimaOSに挿入し、20秒待つ
-以下のいずれかの条件が満たされれば、成功とみなされます。
-- ディスプレイにIPが変更されたことが表示される
-- USBドライブ内の `_ResetNetwork` ファイルが削除されている
+### ZimaOSに挿入し、20秒待ちます。
+以下のいずれかの状態になれば成功です。
+
+- ディスプレイにIPアドレスが変更されたことが表示される。
+- USBドライブ内の`_ResetNetwork`ファイルが削除されている。
