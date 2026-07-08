@@ -8,6 +8,11 @@ permalink: /zimaboard/hardware-overview.html
 
 The content of this article is to introduce the interface information and functions of ZimaBlade - for more detailed information, please refer to the official website [ZimaBlade](https://www.zimaspace.com/zh/products/blade-personal-nas).
 
+## Interface
+
+![](https://manage.icewhale.io/api/static/docs/1728899990021_img_v3_02fl_c9cd5d38-6bf8-4136-bdf9-cea30c94658g.png)
+![ZimaBlade Pinout](https://manage.icewhale.io/api/static/docs/1783490816877_img_v3_0213d_06f97abc-9592-481c-9285-8abf794a26dg.jpg)
+
 ## Feature
 - Intel Celeron N3350/N3450 quad core @ 1.1-2.2GHz, perfect for server environments and personal computing.
 - Dual SATA 6.0 Gb/s ports for HDD/SSD storage solutions.
@@ -25,11 +30,6 @@ The content of this article is to introduce the interface information and functi
 **Additional features**
 - Security and Virtualization: Supports AES-NI enhanced security and Intel VT-x virtualization capabilities.
 - Fanless cooling: Designed with a passive cooling system to maintain low temperature and silent operation.
-## Interface
-
-![](https://manage.icewhale.io/api/static/docs/1728899990021_img_v3_02fl_c9cd5d38-6bf8-4136-bdf9-cea30c94658g.png)
-![ZimaBlade Pinout](https://manage.icewhale.io/api/static/docs/1783490816877_img_v3_0213d_06f97abc-9592-481c-9285-8abf794a26dg.jpg)
-
 
 ## Wikipedia
 
