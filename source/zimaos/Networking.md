@@ -5,6 +5,7 @@ type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 permalink: /zimaos/networking.html
 ---
+
 **ZimaOS** does not have a desktop environment. When you connect a monitor to your device, the screen displays a console overview showing the ZimaOS version, device model, and the IP addresses you can use to access the ZimaOS web dashboard.
 
 Example of what you will see on the display:
