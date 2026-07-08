@@ -1,6 +1,6 @@
 ---
 title: Networking
-description:ZimaOS has no desktop UI, plug in Ethernet and it's ready. The connected display shows device info and IP addresses, while the dashboard lets you view link speeds per port, switch to a static IP, or enable remote access.
+description:ZimaOS has no desktop UI, plug in Ethernet and its ready. The connected display shows device info and IP addresses, while the dashboard lets you view link speeds per port, switch to a static IP, or enable remote access.
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 permalink: /zimaos/networking.html
