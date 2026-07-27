@@ -18,9 +18,7 @@ tip: Top bar fixed format, do not delete. description is the article description
 | **Store Source** | `https://play.cuse.eu.org/store.json` |
 | **Links** | [Open Store Source](https://play.cuse.eu.org/store.json) · [GitHub Repo](https://github.com/Cp0204/CasaOS-AppStore-Play) |
 
-```text
-https://play.cuse.eu.org/store.json
-```
+
 
 ---
 
@@ -34,15 +32,13 @@ https://play.cuse.eu.org/store.json
 | **Store Source** | `https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json` |
 | **Links** | [Open Store Source](https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json) · [GitHub Repo](https://github.com/bigbeartechworld/big-bear-casaos/) |
 
-```text
-https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json
-```
+
 
 ---
 
 ## About This List
 
-> - This is a community discovery page, not a formal endorsement list.
-> - Availability, update cadence, and app quality may vary between sources.
+> This is a community discovery page, not a formal endorsement list.
+> Availability, update cadence, and app quality may vary between sources.
 
 ---
