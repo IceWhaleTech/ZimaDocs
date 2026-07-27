@@ -1,31 +1,49 @@
 ---
 title: 素晴らしいサードパーティストア
-description: Play AppStore や Big Bear ZimaOS App Store を含む、ZimaOS 向けの素晴らしいサードパーティストアを探索しましょう。コミュニティによって管理されている Docker アプリケーション、CasaOS および ZimaOS 対応アプリ、そして ZimaOS の利用体験を拡張するための簡単なソースインポート機能を発見できます。セルフホストソリューション向けの柔軟なオプションを備えた、信頼できるコミュニティメンテナーによる厳選されたアプリストアリソースを見つけましょう。
+description: ZimaOS向けの素晴らしいサードパーティストアを探索しましょう。Play AppStoreやBig Bear ZimaOS App Storeを含みます。コミュニティによって管理されているDockerアプリケーション、CasaOSおよびZimaOS対応アプリ、そしてZimaOS体験を拡張するための簡単なソースインポート機能を発見できます。信頼できるコミュニティメンテナーが提供する厳選されたアプリストアリソースを見つけ、セルフホストソリューション向けの柔軟なオプションを活用できます。
 type: Docs
 author: Jeremy
 tip: Top bar fixed format, do not delete. description is the article description, if not filled, the first paragraph of the content will be extracted
+permalink: /jp/zimaos/third-party-stores.html
 ---
-ZimaOS のコミュニティストアソース。ソースリンクをコピーして、ZimaOS にインポートしてください。
-#### 1. Play AppStore
-Docker アプリケーションに重点を置き、ユーザーが効率的にタスクを完了できるよう支援します。
-*   **Maintainer**: Cp0204
-*   **Source Link**:
-    ```text
-    https://play.cuse.eu.org/store.json
-    ```
-*   **Related Resources**: [GitHub Repo](https://github.com/Cp0204/CasaOS-AppStore-Play)
+> ZimaOS用のコミュニティストアソース。ソースリンクをコピーして、ZimaOSにインポートしてください。
+## ストア一覧
 
-#### 2. Big Bear ZimaOS App Store
-BigBearTechWorld によって管理され、CasaOS と ZimaOS の両方に対応したコミュニティアプリケーションを提供しています。
-*   **Maintainer**: BigBearTechWorld
-*   **Source Link**:
-    ```text
-    https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json
-    ```
-*   **Related Resources**: [GitHub Repo](https://github.com/bigbeartechworld/big-bear-casaos/)
+### Play AppStore
+
+> Play AppStore、Dockerで遊ぼう。作業を完了させましょう。
+
+| Item | Details |
+| --- | --- |
+| **Maintainer** | Cp0204 |
+| **Store Source** | `https://play.cuse.eu.org/store.json` |
+| **Links** | [Open Store Source](https://play.cuse.eu.org/store.json) · [GitHub Repo](https://github.com/Cp0204/CasaOS-AppStore-Play) |
+
+```text
+https://play.cuse.eu.org/store.json
+```
 
 ---
 
-> **About this list**
-> *   このリストはコミュニティ発見を目的としたものであり、公式な推奨を意味するものではありません。
-> *   利用可能性、更新頻度、アプリケーションの品質はソースによって異なる場合があります。使用する際は各自でご判断ください。
+### Big Bear ZimaOS App Store
+
+> BigBearTechWorldによるCasaOSおよびZimaOS向けのコミュニティ管理アプリ。
+
+| Item | Details |
+| --- | --- |
+| **Maintainer** | BigBearTechWorld |
+| **Store Source** | `https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json` |
+| **Links** | [Open Store Source](https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json) · [GitHub Repo](https://github.com/bigbeartechworld/big-bear-casaos/) |
+
+```text
+https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json
+```
+
+---
+
+## このリストについて
+
+> - これはコミュニティ発見ページであり、正式な推奨リストではありません。
+> - 利用可能性、更新頻度、アプリの品質はソースによって異なる場合があります。
+
+---
