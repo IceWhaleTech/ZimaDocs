@@ -5,27 +5,44 @@ type: Docs
 author: Jeremy
 tip: Top bar fixed format, do not delete. description is the article description, if not filled, the first paragraph of the content will be extracted
 ---
-Community store sources for ZimaOS. Copy a source link, then import it in ZimaOS.
-#### 1. Play AppStore
-Focuses on Docker applications, aiming to help users complete tasks efficiently.
-*   **Maintainer**: Cp0204
-*   **Source Link**:
-    ```text
-    https://play.cuse.eu.org/store.json
-    ```
-*   **Related Resources**: [GitHub Repo](https://github.com/Cp0204/CasaOS-AppStore-Play)
+> Community store sources for ZimaOS. Copy a source link, then import it in ZimaOS.
+## Store List
 
-#### 2. Big Bear ZimaOS App Store
-Maintained by BigBearTechWorld, featuring community applications suitable for both CasaOS and ZimaOS.
-*   **Maintainer**: BigBearTechWorld
-*   **Source Link**:
-    ```text
-    https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json
-    ```
-*   **Related Resources**: [GitHub Repo](https://github.com/bigbeartechworld/big-bear-casaos/)
+### Play AppStore
+
+> Play AppStore, play with Docker. Get things done.
+
+| Item | Details |
+| --- | --- |
+| **Maintainer** | Cp0204 |
+| **Store Source** | `https://play.cuse.eu.org/store.json` |
+| **Links** | [Open Store Source](https://play.cuse.eu.org/store.json) · [GitHub Repo](https://github.com/Cp0204/CasaOS-AppStore-Play) |
+
+```text
+https://play.cuse.eu.org/store.json
+```
 
 ---
 
-> **About this list**
-> *   This list is for community discovery purposes only and does not represent official endorsement.
-> *   Availability, update frequency, and application quality may vary across different sources; please exercise discretion when using them.
+### Big Bear ZimaOS App Store
+
+> Community-maintained apps for CasaOS and ZimaOS by BigBearTechWorld.
+
+| Item | Details |
+| --- | --- |
+| **Maintainer** | BigBearTechWorld |
+| **Store Source** | `https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json` |
+| **Links** | [Open Store Source](https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json) · [GitHub Repo](https://github.com/bigbeartechworld/big-bear-casaos/) |
+
+```text
+https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json
+```
+
+---
+
+## About This List
+
+> - This is a community discovery page, not a formal endorsement list.
+> - Availability, update cadence, and app quality may vary between sources.
+
+---
