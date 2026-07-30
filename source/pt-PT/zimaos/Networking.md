@@ -1,7 +1,7 @@
 ---
 title: Rede
-description:O ZimaOS não possui uma interface de utilizador de desktop, basta ligar o cabo Ethernet e está pronto. O ecrã ligado apresenta informações do dispositivo e endereços IP, enquanto o painel permite visualizar as velocidades de ligação por porta, mudar para um IP estático ou ativar o acesso remoto.
-type: “Docs”
+description: O ZimaOS não possui uma interface de utilizador de desktop, basta ligar o cabo Ethernet e está pronto. O ecrã ligado apresenta informações do dispositivo e endereços IP, enquanto o painel permite visualizar as velocidades de ligação por porta, mudar para um IP estático ou ativar o acesso remoto.
+type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 permalink: /pt-PT/zimaos/networking.html
 ---

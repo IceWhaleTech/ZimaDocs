@@ -1,7 +1,7 @@
 ---
 title: ネットワーク
-description:ZimaOSにはデスクトップUIがなく、Ethernetを接続するだけですぐに使用できます。接続されたディスプレイにはデバイス情報とIPアドレスが表示され、ダッシュボードではポートごとのリンク速度の確認、固定IPへの切り替え、リモートアクセスの有効化ができます。
-type: “Docs”
+description: ZimaOSにはデスクトップUIがなく、Ethernetを接続するだけですぐに使用できます。接続されたディスプレイにはデバイス情報とIPアドレスが表示され、ダッシュボードではポートごとのリンク速度の確認、固定IPへの切り替え、リモートアクセスの有効化ができます。
+type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 permalink: /jp/zimaos/networking.html
 ---
