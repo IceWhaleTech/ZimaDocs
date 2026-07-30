@@ -29,11 +29,11 @@ hexo.extend.helper.register('page_nav', function() {
   let result = '';
 
   if (index > 0) {
-    result += `<a href="${keys[index - 1]}" class="article-footer-prev" title="${this.__(prefix + list[keys[index - 1]])}"><i class="fa fa-chevron-left"></i><span>${this.__('page.prev')}</span></a>`;
+    result += `<a href="${cleanHtmlExtension(keys[index - 1])}" class="article-footer-prev" title="${this.__(prefix + list[keys[index - 1]])}"><i class="fa fa-chevron-left"></i><span>${this.__('page.prev')}</span></a>`;
   }
 
   if (index < keys.length - 1) {
-    result += `<a href="${keys[index + 1]}" class="article-footer-next" title="${this.__(prefix + list[keys[index + 1]])}"><span>${this.__('page.next')}</span><i class="fa fa-chevron-right"></i></a>`;
+    result += `<a href="${cleanHtmlExtension(keys[index + 1])}" class="article-footer-next" title="${this.__(prefix + list[keys[index + 1]])}"><span>${this.__('page.next')}</span><i class="fa fa-chevron-right"></i></a>`;
   }
 
   return result;
