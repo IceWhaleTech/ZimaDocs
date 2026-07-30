@@ -1,7 +1,7 @@
 ---
 title: 网络
-description:ZimaOS 没有桌面 UI，只需插入以太网即可使用。连接的显示器会显示设备信息和 IP 地址，而仪表盘可让你查看每个端口的链路速度、切换到静态 IP 或启用远程访问。
-type: “Docs”
+description: ZimaOS 没有桌面 UI，只需插入以太网即可使用。连接的显示器会显示设备信息和 IP 地址，而仪表盘可让你查看每个端口的链路速度、切换到静态 IP 或启用远程访问。
+type: Docs
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 permalink: /zh/zimaos/networking.html
 ---

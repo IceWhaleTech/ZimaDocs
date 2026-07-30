@@ -9,6 +9,8 @@ const full_url_for = hexo.extend.helper.get('full_url_for').bind(hexo);
 
 const localizedPath = ['docs', 'api'];
 
+const cleanHtmlExtension = path => path.replace(/\.html$/, '');
+
 hexo.extend.helper.register('page_nav', function() {
   const type = this.page.canonical_path.split('/')[0];
   const sidebar = this.site.data.sidebar[type];
@@ -52,7 +54,7 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   if(type === 'zimaos') {
     result += `
     <h4 class="category-list-link sidebar-title ${path=='index.html'?'current':''}" style="border:none"> 
-      <a href="./index.html">${self.__('sidebar.zimaos.whats_zima')}</a>
+      <a href="./${cleanHtmlExtension('index.html')}">${self.__('sidebar.zimaos.whats_zima')}</a>
     </h4>
     `
   }
@@ -69,7 +71,7 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
         showChildren = 'show-children';
       }
       if( !(type=='zimaos' && link == 'index.html') ){ 
-        childrenContent += `<li class="sidebar-link ${itemClass}"><a href="./${link}">${self.__(prefix + text)}</a></li>`;
+        childrenContent += `<li class="sidebar-link ${itemClass}"><a href="./${cleanHtmlExtension(link)}">${self.__(prefix + text)}</a></li>`;
       }
     }
     result += `
