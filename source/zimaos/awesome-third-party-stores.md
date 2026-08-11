@@ -44,7 +44,7 @@ tip: Top bar fixed format, do not delete. description is the article description
 | --- | --- |
 | **Maintainer** | Lintuxer |
 | **Store Source** | `https://chicohaager.github.io/zima-appstore/store.json` |
-| **Links** | [Open Store Source](https://chicohaager.github.io/zima-appstore/store.json) · [GitHub Repo](https://chicohaager.github.io/zima-appstore/) |
+| **Links** | [Open Store Source](https://chicohaager.github.io/zima-appstore/store.json) · [GitHub Repo](https://github.com/chicohaager/zima-appstore) |
 
 
 

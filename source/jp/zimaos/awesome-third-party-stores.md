@@ -1,16 +1,16 @@
 ---
-title: 驚くべきサードパーティストア
-description: ZimaOS向けの驚くべきサードパーティストアを探索しましょう。Play AppStoreやBig Bear ZimaOS App Storeを含みます。コミュニティが維持するDockerアプリケーション、CasaOSおよびZimaOS互換アプリ、簡単なソースインポートでZimaOS体験を拡張できます。信頼できるコミュニティメンテナによる厳選されたアプリストアリソースを見つけ、セルフホストソリューションの柔軟なオプションを手に入れましょう。
+title: Awesome Third-party Stores
+description: ZimaOS向けの素晴らしいサードパーティストアを探索しましょう。Play AppStoreやBig Bear ZimaOS App Storeを含みます。コミュニティ管理のDockerアプリケーション、CasaOSおよびZimaOS対応アプリ、簡単なソースインポートでZimaOS体験を広げましょう。信頼できるコミュニティメンテナーから厳選されたアプリストアリソースを見つけ、セルフホストソリューションの柔軟なオプションを活用しましょう。
 type: Docs
 author: Jeremy
 tip: Top bar fixed format, do not delete. description is the article description, if not filled, the first paragraph of the content will be extracted
 ---
-> ZimaOSのコミュニティストアソース。ソースリンクをコピーして、ZimaOSにインポートしてください。
+> ZimaOS向けのコミュニティストアソース。ソースリンクをコピーして、ZimaOSにインポートしてください。
 ## ストアリスト
 
 ### Play AppStore
 
-> Play AppStore、Dockerで遊ぼう。やることを成し遂げよう。
+> Play AppStore、Dockerで遊ぼう。物事を成し遂げよう。
 
 | 項目 | 詳細 |
 | --- | --- |
@@ -24,7 +24,7 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ### Big Bear ZimaOS App Store
 
-> BigBearTechWorldによるCasaOSおよびZimaOS向けのコミュニティ維持アプリ。
+> BigBearTechWorldによるCasaOSおよびZimaOS向けのコミュニティ管理アプリ。
 
 | 項目 | 詳細 |
 | --- | --- |
@@ -38,13 +38,13 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ### Lintuxer ZimaOS App Store
 
-> LintuxerによるCasaOSおよびZimaOS向けのコミュニティ維持アプリ。
+> LintuxerによるCasaOSおよびZimaOS向けのコミュニティ管理アプリ。
 
 | 項目 | 詳細 |
 | --- | --- |
 | **メンテナー** | Lintuxer |
 | **ストアソース** | `https://chicohaager.github.io/zima-appstore/store.json` |
-| **リンク** | [ストアソースを開く](https://chicohaager.github.io/zima-appstore/store.json) · [GitHubリポジトリ](https://chicohaager.github.io/zima-appstore/) |
+| **リンク** | [ストアソースを開く](https://chicohaager.github.io/zima-appstore/store.json) · [GitHubリポジトリ](https://github.com/chicohaager/zima-appstore) |
 
 
 
@@ -52,7 +52,7 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ## このリストについて
 
-> これはコミュニティ発見ページであり、正式な推奨リストではありません。
+> これはコミュニティ発見ページであり、公式の推奨リストではありません。
 > 利用可能性、更新頻度、アプリの品質はソースによって異なる場合があります。
 
 ---

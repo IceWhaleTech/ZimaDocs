@@ -1,16 +1,16 @@
 ---
-title: 超棒的第三方商店
-description: 探索ZimaOS的超棒第三方商店，包括Play AppStore和Big Bear ZimaOS App Store。发现社区维护的Docker应用、兼容CasaOS和ZimaOS的应用，以及轻松导入源以扩展您的ZimaOS体验。从值得信赖的社区维护者那里找到精选的应用商店资源，为自托管解决方案提供灵活选项。
+title: 精彩的第三方应用商店
+description: 探索适用于ZimaOS的精彩第三方应用商店，包括Play AppStore和Big Bear ZimaOS App Store。发现社区维护的Docker应用、兼容CasaOS和ZimaOS的应用，以及轻松导入源以扩展您的ZimaOS体验。从值得信赖的社区维护者处查找精选的应用商店资源，为自托管解决方案提供灵活选择。
 type: Docs
 author: Jeremy
 tip: Top bar fixed format, do not delete. description is the article description, if not filled, the first paragraph of the content will be extracted
 ---
-> ZimaOS的社区商店源。复制一个源链接，然后在ZimaOS中导入。
+> ZimaOS的社区商店源。复制源链接，然后在ZimaOS中导入。
 ## 商店列表
 
 ### Play AppStore
 
-> Play AppStore，尽享Docker乐趣。让事情变得简单。
+> Play AppStore，玩转Docker。搞定一切。
 
 | 项目 | 详情 |
 | --- | --- |
@@ -22,9 +22,9 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ---
 
-### Big Bear ZimaOS App Store
+### Big Bear ZimaOS应用商店
 
-> 由BigBearTechWorld为CasaOS和ZimaOS社区维护的应用。
+> BigBearTechWorld为CasaOS和ZimaOS维护的社区应用。
 
 | 项目 | 详情 |
 | --- | --- |
@@ -36,15 +36,15 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ---
 
-### Lintuxer ZimaOS App Store
+### Lintuxer ZimaOS应用商店
 
-> 由Lintuxer为CasaOS和ZimaOS社区维护的应用。
+> Lintuxer为CasaOS和ZimaOS维护的社区应用。
 
 | 项目 | 详情 |
 | --- | --- |
 | **维护者** | Lintuxer |
 | **商店源** | `https://chicohaager.github.io/zima-appstore/store.json` |
-| **链接** | [打开商店源](https://chicohaager.github.io/zima-appstore/store.json) · [GitHub仓库](https://chicohaager.github.io/zima-appstore/) |
+| **链接** | [打开商店源](https://chicohaager.github.io/zima-appstore/store.json) · [GitHub仓库](https://github.com/chicohaager/zima-appstore) |
 
 
 
