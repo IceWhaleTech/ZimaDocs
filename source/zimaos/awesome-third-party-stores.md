@@ -36,6 +36,20 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ---
 
+### Lintuxer ZimaOS App Store
+
+> Community-maintained apps for CasaOS and ZimaOS by Lintuxer.
+
+| Item | Details |
+| --- | --- |
+| **Maintainer** | Lintuxer |
+| **Store Source** | `https://chicohaager.github.io/zima-appstore/store.json` |
+| **Links** | [Open Store Source](https://chicohaager.github.io/zima-appstore/store.json) · [GitHub Repo](https://chicohaager.github.io/zima-appstore/) |
+
+
+
+---
+
 ## About This List
 
 > This is a community discovery page, not a formal endorsement list.

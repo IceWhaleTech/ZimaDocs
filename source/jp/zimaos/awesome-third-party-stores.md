@@ -1,22 +1,22 @@
 ---
-title: 素晴らしいサードパーティストア
-description: ZimaOS向けの素晴らしいサードパーティストアを探索しましょう。Play AppStoreやBig Bear ZimaOS App Storeを含みます。コミュニティによって維持管理されているDockerアプリケーション、CasaOSおよびZimaOS対応アプリ、ZimaOSの体験を拡張するための簡単なソースインポート機能を発見できます。信頼できるコミュニティメンテナーが提供する厳選されたアプリストアリソースを見つけ、セルフホストソリューション向けの柔軟な選択肢を活用できます。
+title: 驚くべきサードパーティストア
+description: ZimaOS向けの驚くべきサードパーティストアを探索しましょう。Play AppStoreやBig Bear ZimaOS App Storeを含みます。コミュニティが維持するDockerアプリケーション、CasaOSおよびZimaOS互換アプリ、簡単なソースインポートでZimaOS体験を拡張できます。信頼できるコミュニティメンテナによる厳選されたアプリストアリソースを見つけ、セルフホストソリューションの柔軟なオプションを手に入れましょう。
 type: Docs
 author: Jeremy
 tip: Top bar fixed format, do not delete. description is the article description, if not filled, the first paragraph of the content will be extracted
 ---
-> ZimaOS向けのコミュニティストアソースです。ソースリンクをコピーして、ZimaOSにインポートしてください。
-## ストア一覧
+> ZimaOSのコミュニティストアソース。ソースリンクをコピーして、ZimaOSにインポートしてください。
+## ストアリスト
 
 ### Play AppStore
 
-> Play AppStore、Dockerで遊ぼう。作業を完了させましょう。
+> Play AppStore、Dockerで遊ぼう。やることを成し遂げよう。
 
 | 項目 | 詳細 |
 | --- | --- |
-| **Maintainer** | Cp0204 |
-| **Store Source** | `https://play.cuse.eu.org/store.json` |
-| **Links** | [Open Store Source](https://play.cuse.eu.org/store.json) · [GitHub Repo](https://github.com/Cp0204/CasaOS-AppStore-Play) |
+| **メンテナー** | Cp0204 |
+| **ストアソース** | `https://play.cuse.eu.org/store.json` |
+| **リンク** | [ストアソースを開く](https://play.cuse.eu.org/store.json) · [GitHubリポジトリ](https://github.com/Cp0204/CasaOS-AppStore-Play) |
 
 
 
@@ -24,13 +24,27 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ### Big Bear ZimaOS App Store
 
-> BigBearTechWorldによるCasaOSおよびZimaOS向けのコミュニティ管理アプリ。
+> BigBearTechWorldによるCasaOSおよびZimaOS向けのコミュニティ維持アプリ。
 
 | 項目 | 詳細 |
 | --- | --- |
-| **Maintainer** | BigBearTechWorld |
-| **Store Source** | `https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json` |
-| **Links** | [Open Store Source](https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json) · [GitHub Repo](https://github.com/bigbeartechworld/big-bear-casaos/) |
+| **メンテナー** | BigBearTechWorld |
+| **ストアソース** | `https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json` |
+| **リンク** | [ストアソースを開く](https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos@gh-pages/store.json) · [GitHubリポジトリ](https://github.com/bigbeartechworld/big-bear-casaos/) |
+
+
+
+---
+
+### Lintuxer ZimaOS App Store
+
+> LintuxerによるCasaOSおよびZimaOS向けのコミュニティ維持アプリ。
+
+| 項目 | 詳細 |
+| --- | --- |
+| **メンテナー** | Lintuxer |
+| **ストアソース** | `https://chicohaager.github.io/zima-appstore/store.json` |
+| **リンク** | [ストアソースを開く](https://chicohaager.github.io/zima-appstore/store.json) · [GitHubリポジトリ](https://chicohaager.github.io/zima-appstore/) |
 
 
 
@@ -38,7 +52,7 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ## このリストについて
 
-> これはコミュニティによる発見ページであり、正式な推奨リストではありません。
+> これはコミュニティ発見ページであり、正式な推奨リストではありません。
 > 利用可能性、更新頻度、アプリの品質はソースによって異なる場合があります。
 
 ---
