@@ -46,19 +46,44 @@ function main() {
     REPO_ROOT,
     'validation-data/redirect-source-baseline-7fd1fa6916.txt'
   );
-  if (!fs.existsSync(baselinePath)) errors.push('redirect source baseline is missing');
+  const retirementPath = path.join(
+    REPO_ROOT,
+    'validation-data/redirect-retirement-ga-zero-2026-08-27.txt'
+  );
+  const retiredSources = new Set();
+
+  if (!fs.existsSync(retirementPath)) errors.push('redirect retirement list is missing');
   else {
-    const baselineSources = fs.readFileSync(baselinePath, 'utf8')
+    const retired = fs.readFileSync(retirementPath, 'utf8')
       .split(/\r?\n/)
       .map(source => source.trim())
       .filter(Boolean);
+    for (const source of retired) {
+      if (retiredSources.has(source)) errors.push('duplicate retired redirect source: ' + source);
+      retiredSources.add(source);
+      if (sourceLiterals.has(source)) errors.push('retired redirect source is still active: ' + source);
+    }
+  }
+
+  if (!fs.existsSync(baselinePath)) errors.push('redirect source baseline is missing');
+  else {
+    const baselineSources = new Set(fs.readFileSync(baselinePath, 'utf8')
+      .split(/\r?\n/)
+      .map(source => source.trim())
+      .filter(Boolean));
     for (const source of baselineSources) {
-      if (!sourceLiterals.has(source)) errors.push('baseline redirect source was removed: ' + source);
+      if (!sourceLiterals.has(source) && !retiredSources.has(source)) {
+        errors.push('baseline redirect source was removed without an audit record: ' + source);
+      }
+    }
+    for (const source of retiredSources) {
+      if (!baselineSources.has(source)) errors.push('retired redirect source is not in the baseline: ' + source);
     }
   }
 
   if (rules.length > 1800) errors.push('redirect rule count exceeds 1800: ' + rules.length);
   console.log('Redirect rules:', rules.length);
+  console.log('Audited retired redirect sources:', retiredSources.size);
   failIfErrors(errors, 'Redirects');
 }
 
