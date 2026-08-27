@@ -1,0 +1,22 @@
+---
+title: Get Network ID
+seo_title: "ZimaOS Network ID: Find and Connect Your Device Remotely"
+description: "Find your ZimaOS Network ID for remote access and ZimaClient connectivity. Step-by-step guide to locate and use your device's unique network identifier."
+type: "Docs"
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+---
+
+## The NetworkID is one of the ways to uniquely identify a Zima device and connect to it.
+## You can find the device’s NetworkID in ZimaOS at the following location:
+1. Click “Settings” in the top-left corner of the system.
+![](https://manage.icewhale.io/api/static/docs/1728368788194_2.1.png)
+
+2. Click and switch to the “Network” tab.
+![](https://manage.icewhale.io/api/static/docs/1728368799399_2.2.png)
+
+3. Obtain and copy the current device’s NetworkID here.
+![](https://manage.icewhale.io/api/static/docs/1728368807199_2.3.png)
+## Notes on NetworkID security:
+1. If the NetworkID is leaked, your shared folders may be exposed, so please keep the NetworkID secure.
+2. If you confirm it has been leaked, please click “…” to reset the NetworkID. The leak will be terminated, while existing connections and shares will become invalid.
+![](https://manage.icewhale.io/api/static/docs/1728368894984_2.4.png)

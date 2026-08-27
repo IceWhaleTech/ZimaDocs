@@ -1,87 +1,98 @@
 ---
-title: Como Instalar o ZimaOS
-description: Aprenda a instalar o ZimaOS com este guia passo a passo. Inclui download da imagem, gravação numa pen USB, processo de instalação e início de sessão via ZimaClient ou endereço IP.
+title: Como instalar o ZimaOS
+description: "Aprenda a instalar o ZimaOS passo a passo: transfira a imagem, grave-a numa unidade USB, conclua a instalação e inicie sessão através do ZimaClient ou do endereço IP."
 type: Docs
 author: admin
-tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+tip: Não remova este bloco de Front Matter. O campo description é utilizado como resumo do artigo; se ficar vazio, será utilizado o primeiro parágrafo.
 ---
 
-## O que vai aprender
-O ZimaOS é um sistema operativo NAS leve, concebido para o ZimaCube e outros dispositivos de servidor doméstico.  
-Este guia fornece um processo completo, passo a passo, para o ajudar a **transferir, gravar e instalar o ZimaOS** de forma rápida e bem-sucedida.
-
----
-
-## O que vai precisar
-- Um **dispositivo Zima** ou um x86-64 genérico com pelo menos 25GB de espaço de armazenamento.  
-- Uma pen USB (recomendado 4GB ou superior).  
+## O que irá aprender
+O ZimaOS é um sistema operativo NAS leve concebido para equipamentos x86-64 genéricos.
+Este guia apresenta o processo completo para **transferir, gravar e instalar o ZimaOS** de forma rápida e correta.
 
 ---
 
-## Primeiros Passos
-Para iniciar o ZimaOS, a BIOS precisa de ter o modo de arranque UEFI ativado e o Secure Boot desativado.
+## O que é necessário
+- Um **dispositivo Zima** ou um equipamento x86-64 genérico com pelo menos 25 GB de armazenamento.
+- Uma unidade USB com 4 GB ou mais.
 
-### Passo 1: Transferir a Imagem de Instalação do ZimaOS
-Para começar, transfira o ficheiro `.img` mais recente do ZimaOS a partir da página oficial de lançamentos no GitHub:  
-👉 [ZimaOS GitHub Releases](https://github.com/IceWhaleTech/ZimaOS/releases)
+---
 
-### Passo 2: Criar uma Pen USB de Arranque
-Precisa de gravar a imagem do ZimaOS numa pen USB. A ferramenta mais simples para isto é o **Balena Etcher**.
+## Preparação
+Para arrancar o ZimaOS, ative o modo de arranque UEFI no BIOS e desative o Secure Boot.
 
-1. Transfira e instale o [**Balena Etcher**](https://etcher.balena.io/#download-etcher)  
-2. Abra o Etcher e selecione o ficheiro `.img` do ZimaOS.  
-3. Insira a sua pen USB e escolha-a como destino.  
-4. Clique em **Flash** para iniciar a gravação da imagem.  
+### Passo 1: Transferir a imagem de instalação do ZimaOS
+Transfira o ficheiro `.img` mais recente do ZimaOS a partir da página oficial de versões no GitHub:
+👉 [Versões do ZimaOS no GitHub](https://github.com/IceWhaleTech/ZimaOS/releases)
 
-![balena etcher tool open zimaos installer image file](https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png)
-![balena etcher select flash device as a target to install zimaos](https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png)
-![flash zimaso image to flash device completed](https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png)
 
-### Passo 3: Iniciar o Dispositivo a partir da Pen USB
-1. Insira a pen USB de arranque no seu dispositivo.  
-2. Entre no menu da BIOS/arranque e escolha **Boot from USB**.  
-![main memu of zimaos installation tool to choose install zimaos or reboot](https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png)
-![quick install memu to select a device or space or location to install zimaos](https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png)
-![confirmation before istalling and choose yes.](https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png)
-![last chance to abort install and choose yes.]](https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png)
-![Installation progress bar displayed. Please wait patiently at this time.](https://manage.icewhale.io/api/static/docs/1758611912717_installing.png)
+### Passo 2: Criar uma unidade USB de arranque
+Grave a imagem do ZimaOS numa unidade USB. A ferramenta mais simples é o **Balena Etcher**.
 
-### Passo 4: Concluir a Instalação do ZimaOS
-Siga as instruções no ecrã para instalar o ZimaOS.  
-Quando o sistema solicitar, retire a pen USB e reinicie o dispositivo.  
-Agora será iniciado automaticamente o **ZimaOS**.  
-![remove the flash device and reboot](https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png)
+1. Transfira e instale o [Balena Etcher](https://etcher.balena.io/#download-etcher)
+2. Abra o Etcher e selecione o ficheiro `.img` do ZimaOS.
+3. Introduza a unidade USB e selecione-a como destino.
+4. Clique em **Flash** para iniciar a gravação.
+
+![Balena Etcher aberto com a imagem do instalador do ZimaOS](https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png)
+![Balena Etcher a selecionar a unidade USB de destino para instalar o ZimaOS](https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png)
+![Gravação da imagem do ZimaOS na unidade USB concluída](https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png)
+
+
+
+### Passo 3: Arrancar o dispositivo por USB
+1. Introduza a unidade USB de arranque no dispositivo.
+2. Abra o BIOS ou o menu de arranque e selecione **Boot from USB**.
+
+![Menu principal do instalador para escolher entre instalar o ZimaOS ou reiniciar](https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png)
+
+![Menu de instalação rápida para selecionar o dispositivo ou espaço onde instalar o ZimaOS](https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png)
+
+![Confirmação anterior à instalação com a opção Yes](https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png)
+
+![Última oportunidade para cancelar a instalação com a opção Yes](https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png)
+
+![Barra de progresso da instalação](https://manage.icewhale.io/api/static/docs/1758611912717_installing.png)
+
+
+### Passo 4: Concluir a instalação do ZimaOS
+Siga as instruções apresentadas para instalar o ZimaOS.
+Quando o sistema solicitar, retire a unidade USB e reinicie o dispositivo.
+O equipamento arrancará automaticamente no **ZimaOS**.
+![Retirar a unidade USB e reiniciar](https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png)
+
+
 
 ### Passo 5: Aceder ao ZimaOS
-Após o reinício, a forma mais simples de iniciar sessão é através do **ZimaClient**, que pode detetar automaticamente o seu dispositivo na rede e ajudá-lo a aceder rapidamente ao ZimaOS.  
+Depois de reiniciar, a forma mais simples de iniciar sessão é utilizar o **ZimaClient**, que deteta automaticamente o dispositivo na rede e permite aceder rapidamente ao ZimaOS.
 
-👉 Transfira o ZimaClient e siga o guia aqui: [ZimaOS Quick Start Guide](https://www.zimaspace.com/docs/zimaos/Get-Started)  
+👉 Transfira o ZimaClient e siga este guia: [Guia de início rápido do ZimaOS](./get-started)
 
-![welcome to zimacos webgui](https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png)
+![Ecrã de boas-vindas da interface Web do ZimaOS](https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png)
 
-Em alternativa, também pode verificar o endereço IP na sua rede e introduzi-lo num navegador para aceder à **Interface Web do ZimaOS**.  
-![zimaos key information show on the screen include ip address os version](https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png)
 
-🎉 **Parabéns!** Instalou com sucesso o ZimaOS no seu dispositivo e já pode começar a explorar todas as suas funcionalidades NAS.
+Também pode consultar o endereço IP do dispositivo na rede e introduzi-lo num navegador para abrir a **interface Web do ZimaOS**.
+![Ecrã de informações do ZimaOS com o endereço IP e a versão do sistema](https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png)
+
+
+🎉 **Parabéns!** Instalou o ZimaOS e já pode explorar todas as funcionalidades de NAS.
 
 ---
 
-## Próximos Passos com o ZimaOS
+## Passos seguintes com o ZimaOS
 
-Agora que o ZimaOS está instalado no seu servidor inteligente, pode começar a construir a sua nuvem pessoal e servidor doméstico.  
-Aqui estão algumas ideias do que fazer a seguir:
+Depois de instalar o ZimaOS no servidor, pode começar a criar a nuvem pessoal e o servidor doméstico.
+Algumas ideias:
 
-- 🔧 **Configurar RAID ou pools de armazenamento** para proteção de dados.  
-- 📂 **Ativar partilha de ficheiros (SMB/FTP)** entre os seus dispositivos.  
-- 🎞️ **Executar um servidor multimédia (Plex, Jellyfin)** para transmitir os seus filmes e músicas.  
-- 🐳 **Implementar aplicações Docker** diretamente a partir da App Store do ZimaOS.  
-- ☁️ **Fazer cópias de segurança de dados importantes** em discos externos ou na nuvem.  
+- 🔧 **Configure RAID ou conjuntos de armazenamento** para proteger os dados.
+- 📂 **Ative a partilha de ficheiros (SMB/FTP)** entre dispositivos.
+- 🎞️ **Execute um servidor multimédia (Plex, Jellyfin)** para transmitir filmes e música.
+- 🐳 **Implemente aplicações Docker** a partir da App Store do ZimaOS.
+- ☁️ **Crie cópias de segurança dos dados importantes** em unidades externas ou na nuvem.
 
-👉 Pronto para desbloquear mais funcionalidades?  
-- Visite a [Documentação do ZimaOS](https://www.zimaspace.com/docs/zimaos/Romote-Access)  
-- Junte-se ao nosso [Fórum da Comunidade](https://community.zimaspace.com/)  
-- Explore a [App Store](https://awesome.casaos.io/content/3rd-party-app-stores/list.html) para expandir a sua configuração  
+👉 Pretende utilizar mais funcionalidades?
+- Continue em **[Começar a utilizar](./get-started)** para concluir o primeiro arranque
+- Configure o **[Acesso remoto](./remote-access)** para se ligar em qualquer lugar
+- Participe no **[Fórum da comunidade](https://community.zimaspace.com/)**
 
-💡 **Dica Pro**: Adicione este guia aos favoritos para futuras atualizações. Novas versões do ZimaOS incluem frequentemente melhorias de desempenho e novas aplicações.  
-
-Comece a sua jornada com o ZimaOS hoje e desfrute de uma experiência NAS mais rápida, simples e fiável! 🚀
+💡 Guarde este guia para futuras atualizações. As novas versões do ZimaOS incluem frequentemente melhorias de desempenho e novas aplicações.

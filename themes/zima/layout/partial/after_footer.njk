@@ -2,18 +2,25 @@
 <!-- Cookie -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- build:js build/js/main.js -->
+{{ js('js/jquery-2.2.0.min') }}
 {{ js('js/lang_select') }}
 {{ js('js/mobile_nav') }}
 {{ js('js/content_bar') }}
 {{ js('js/search_bar') }}
 {{ js('js/hexo_resize_image') }}
-{{ js('js/jquery-2.2.0.min') }}
 {{ js('js/sweetalert2@11') }}
 {{ js('js/jquery.formchimp') }}
 {{ js('js/cloudflare_ai_search') }}
+{% if page.layout === 'page' or page.layout === 'index' %}
+{{ js('js/theme_toggle') }}
+{% endif %}
 <!-- endbuild -->
 {% if page.layout === 'page' %}
 {{ js('js/slidebar') }}
+{{ js('js/sidebar_collapse') }}
+{% endif %}
+{% if page.layout === 'index' %}
+{{ js('js/landing') }}
 {% endif %}
 {% if page.layout === 'plugins' %}
 <!-- Plugin search -->

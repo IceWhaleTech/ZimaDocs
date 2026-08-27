@@ -1,66 +1,104 @@
-<div id="header_outer">
-  <header id="header" >
-    <div id="header-inner" class="inner">
-      <div class="logo-container">
-        <h2 id="logo-wrap">
-          {# <a href="{{ url_for_lang('/zimacube') }}" id="logo">Zima-Docs</a> #}
-          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
-        </h2>
-      </div>
-      <div class="nav-container">
-        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
-          <ul id="menu-main-menu" class="maxmenu-list">
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="{{ url_for('/') }}" aria-label="ZimaSpace">
+      <img src="{{ url_for('/img/docs-logo.svg') }}" width="34" height="33" alt="ZimaSpace">
+    </a>
 
-            {{ header_menu('main-nav') }}
-            <li class="menu-item menu-item-has-children">
-              <span class="maxmenu-click">
-                <i class="maxmenu-arrow"></i>
-              </span>
-              <a href="#">
-                <img src="{{url_for('/img/lang.svg')}}" />
-              </a>
-              <ul class="sub-menu">
-                {% for lang, value in site.data.languages %}
-                  <li class="menu-item">
-                    <a href="{{ url_for(lang_url(lang,canonical_path_for_nav())) }}">{{ lang_name(lang) }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </li>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul>{{ header_menu('site-nav') }}</ul>
+    </nav>
 
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="{{ __('page.search') }}">
+        {# The shortcut chip stays hidden until search_bar.js names the platform,
+           so a JS-less page never advertises the wrong key. #}
+        <span class="search-field__hint">
+          <span class="search-field__label">{{ __('page.search_placeholder') }}</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="{{ url_for('/img/docs-search.svg') }}" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="{{ url_for('/img/docs-globe.svg') }}" width="20" height="20" alt="">
+            <span>{{ page.lang | upper }}</span>
+          </button>
+          <ul class="header-language__menu">
+            {% for lang, value in site.data.languages %}
+              <li><a href="{{ url_for_locale(lang, canonical_path_for_nav()) }}">{{ lang_name(lang) }}</a></li>
+            {% endfor %}
           </ul>
-        </nav>
-      </div>
-
-      <div class="search-icon-container">
-        <div id="search-container-icon">
-          <i class="fa fa-search" id="showSearch"></i>
         </div>
-        <a class="shop" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="external">{{ __('menu.store') }}</a>
+
+        {# The landing page has a dark palette too, so it carries the toggle
+           alongside the doc pages. #}
+        {% if page.layout === 'page' or page.layout === 'index' %}
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="{{ url_for('/img/docs-theme.svg') }}" width="20" height="20" alt="">
+        </button>
+        {% endif %}
       </div>
 
-      <a id="mobile-nav-toggle">
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-      </a>
-    </div>
-  </header>
-</div>
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">{{ __('menu.store') }}</a>
 
-<div id="search-container">
-  <div id="search-container-close">
-    <i class="fa fa-close" id="hideSearch"></i>
+      {# Inside .header-tools so the hamburger picks up the same gap as the
+         other controls, the way Figma 402:15138 groups them. #}
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="{{ __('page.search') }}"
+     data-search-recent="{{ __('page.search_recent') }}"
+     data-search-suggested="{{ __('page.search_suggested') }}"
+     data-search-no-results="{{ __('page.search_no_results') }}"
+     data-search-no-results-hint="{{ __('page.search_no_results_hint') }}"
+     data-search-remove="{{ __('page.search_remove') }}"
+     data-search-overview="{{ __('page.search_overview') }}"
+     data-search-zimaos="{{ __('menu.zimaos') }}"
+     data-search-app-store="{{ __('menu.app-store') }}"
+     data-search-hardware="{{ __('menu.hardware') }}"
+     data-search-developer="{{ __('menu.developer') }}"
+     data-search-help-center="{{ __('menu.help-center') }}">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
   <div class="search-bg"></div>
   <div class="search-content-container">
     <div id="search-input-wrap">
-      <div id="search-input-icon">
-        {# <i class="fa fa-search"></i> #}
-      </div>
-      <input type="search" id="search-input" placeholder="{{__('page.search')}}...">
+      <input type="search" id="search-input" placeholder="{{ __('page.search_input_placeholder') }}">
     </div>
     <div id="resultContent"></div>
   </div>
-
+  <div id="search-suggestion-data" hidden>
+    <a href="{{ url_for_locale(page.lang, '/zimaos/how-to-install-zimaos') }}"
+       data-title="{{ __('sidebar.guides.how-to-install-zimaos') }}"
+       data-meta="{{ __('menu.zimaos') }} › {{ __('sidebar.guides.install-methods') }}"></a>
+    <a href="{{ url_for_locale(page.lang, '/zimaos/get-started') }}"
+       data-title="{{ __('sidebar.guides.get-started') }}"
+       data-meta="{{ __('menu.zimaos') }} › {{ __('sidebar.guides.setup-and-storage') }}"></a>
+    <a href="{{ url_for_locale(page.lang, '/zimaos/app-store/awesome-third-party-stores') }}"
+       data-title="{{ __('sidebar.playground.third-party-stores') }}"
+       data-meta="{{ __('menu.app-store') }} › {{ __('sidebar.playground.creative-builds') }}"></a>
+    <a href="{{ url_for_locale(page.lang, '/zimaos/remote-access') }}"
+       data-title="{{ __('sidebar.guides.remote-access') }}"
+       data-meta="{{ __('menu.zimaos') }} › {{ __('sidebar.guides.access-and-share') }}"></a>
+    <a href="{{ url_for_locale(page.lang, '/zimaos/zimaclient-install') }}"
+       data-title="{{ __('sidebar.guides.download-zimaclient') }}"
+       data-meta="{{ __('menu.zimaos') }} › {{ __('sidebar.guides.access-and-share') }}"></a>
+  </div>
 </div>

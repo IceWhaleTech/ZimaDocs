@@ -112,6 +112,6 @@ Abra um navegador web e insira o endereço IP para acessar a Interface de Gerenc
 Agora que o ZimaOS está em funcionamento na sua máquina virtual, você pode continuar explorando seus recursos e fluxos de trabalho no seu próprio ritmo.  
 Para aprender a configurar o sistema, gerenciar armazenamento e implantar aplicativos, por favor, visite o seguinte guia:
 
-👉** [Comece com o ZimaOS](https://www.zimaspace.com/docs/zimaos/Get-Started) ** 
+👉** [Comece com o ZimaOS](../../zimaos/get-started) **
 
 Este guia ajudará você a dar os próximos passos e aproveitar ao máximo seu ambiente ZimaOS.

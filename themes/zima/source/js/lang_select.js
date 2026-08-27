@@ -11,21 +11,20 @@
 (function() {
   'use strict';
 
-  var Cookies = window.Cookies.noConflict();
+  var Cookies = window.Cookies && typeof window.Cookies.noConflict === 'function'
+    ? window.Cookies.noConflict()
+    : null;
 
   function changeLang() {
-    var lang = this.value;
-    var canonical = this.dataset.canonical;
-    var path = '/';
-    if (lang !== 'en') path += lang + '/';
+    var selected = this.options[this.selectedIndex];
+    var lang = selected && selected.dataset.lang;
 
-    Cookies.set('nf_lang', lang, { expires: 365 });
-    location.href = path + canonical;
+    if (Cookies && lang) Cookies.set('nf_lang', lang, { expires: 365 });
+    if (this.value) location.href = this.value;
   }
 
-  // document.getElementById('lang-select').addEventListener('change', changeLang);
-  var langSelect = document.getElementById('lang-select');
-  if (langSelect) {
-    langSelect.addEventListener('change', changeLang);
-  }
+  ['lang-select', 'mobile-lang-select'].forEach(function(id) {
+    var langSelect = document.getElementById(id);
+    if (langSelect) langSelect.addEventListener('change', changeLang);
+  });
 }());

@@ -264,42 +264,14 @@ note-warn = hsl(0, 100%, 50%)
   .article-heading
     font-family: font-menu
 
+// Layout lives in docs-ui.css. The clearfix that used to sit here added an
+// ::after that became a stray flex item once the footer went column-flex.
 .article-footer
-  clearfix()
-  margin: 1em 0
-  border-top: 1px solid color-border
-  text-align: center
-  color: color-gray
-  line-height: 1em
-  padding-top: 1em
-  position: relative
   @media print
     display: none
 
-$article-footer-link
-  color: color-link
-  text-decoration: none
-  font-weight: bold
-  font-family: font-title
-  text-transform: uppercase
-  position: absolute
-  &:hover
-    color: color-link-hover
-  @media print
-    display: none
-  span
-    padding: 0 6px
-
-.article-footer-prev
-  @extend $article-footer-link
-  left: 0
-
-.article-footer-next
-  @extend $article-footer-link
-  right: 0
-
-.article-footer-updated
-  font-size: 0.9em
+// The previous/next links moved to .doc-pagenav in docs-ui.css, which also
+// owns .article-footer and .article-footer-updated.
 
 #comments
   @media print

@@ -1,0 +1,495 @@
+/* Docs landing page. Implements the "Zima Docs — Home · 1920" Figma frame.
+   Loaded on every localized page that uses `layout: index`.
+
+   zima.css bundles bootstrap.min.css, style.css and main.css ahead of this
+   file, and all three style bare h1/h2/h3/p/ul/li/button/a. Everything below is
+   scoped to .zl-home and the block starts by undoing those inherited rules,
+   because the purchased theme's selectors are broad enough to reach in here. */
+
+.zl-home {
+  --zl-ink: #404040;
+  --zl-muted: #767676;
+  /* rules between accordion rows */
+  --zl-rule: #e5e5e5;
+  --zl-gold: #f1b335;
+  /* The light frame uses #ffaa00 on "Setup guides" and #c2870f on the other two
+     section links. #ffaa00 lands at 2.1:1 on white, under the 4.5:1 floor for
+     16px text, so all three links use the darker of the two. On the dark page
+     #ffaa00 clears 9:1, so the dark block below takes the comp value as drawn. */
+  --zl-link: #c2870f;
+
+  --zl-card: #ffffff;
+  --zl-card-bd: #e5e5e5;
+  --zl-card-bd-hover: #d5d5d5;
+  --zl-card-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+
+  --zl-tag-bg: transparent;
+  --zl-tag-fg: #767676;
+
+  --zl-btn-bg: transparent;
+  --zl-btn-bd: #e5e5e5;
+  --zl-btn-bd-hover: #c9c9c9;
+
+  /* 1200px of content plus a gutter that ramps with the viewport, matching
+     --article-gutter in docs-ui.css so the landing and the doc pages share one
+     left edge on narrow screens. */
+  --zl-content: 1200px;
+  --zl-gutter: clamp(20px, 5.2vw, 52px);
+  --zl-section-space: 72px;
+  --zl-page-bottom: 110px;
+
+  background: var(--bg-page, #fff);
+  color: var(--zl-ink);
+  font-family: var(--font-ui, "Inter", -apple-system, sans-serif);
+}
+
+/* Dark palette, from the "Zima Docs - Home . 1921" frame. Only the tokens move;
+   every component rule below is written against them. The section artwork is
+   the same set of screenshots in both themes, so no image swaps here. */
+[data-theme="dark"] .zl-home {
+  --zl-ink: #dbdbdb;
+  --zl-muted: #b4bac0;
+  --zl-rule: #b4bac0;
+  --zl-link: #ffaa00;
+
+  --zl-card: #262626;
+  --zl-card-bd: #2f2f2f;
+  --zl-card-bd-hover: #3d3d3d;
+  --zl-card-shadow: 0 6px 24px rgba(0, 0, 0, .4);
+
+  --zl-tag-bg: #4d4d4d;
+  --zl-tag-fg: #dbdbdb;
+
+  --zl-btn-bg: #434343;
+  --zl-btn-bd: #8d8d8d;
+  --zl-btn-bd-hover: #a5a5a5;
+}
+
+/* ---------- inherited-style reset ---------- */
+
+/* Every selector here is wrapped in :where() so the reset carries the
+   specificity of .zl-home alone (0,1,0). Written as plain descendant selectors
+   (.zl-home h1) it would score 0,1,1 and beat every single-class component rule
+   below it, which silently handed line-height, padding, font and link colour
+   back to the purchased theme. Against the bare-element selectors in
+   bootstrap/style.css/main.css (0,0,n) this still wins. */
+.zl-home :where(h1, h2, h3, p, ul, li) {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  letter-spacing: normal;
+}
+
+.zl-home :where(ul) { list-style: none; }
+
+.zl-home :where(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.zl-home :where(button) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.zl-home :where(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.zl-home :focus-visible {
+  outline: 2px solid var(--zl-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- hero ---------- */
+
+/* Type-only hero. The device render that used to sit under the CTAs was dropped
+   from the comps, so the section is now just padding + three stacked blocks. */
+.zl-hero {
+  padding: 100px var(--zl-gutter) var(--zl-section-space);
+  text-align: center;
+}
+
+.zl-hero__copy {
+  max-width: var(--zl-content);
+  margin: 0 auto;
+}
+
+.zl-hero__title {
+  font: 600 76px/1.08 var(--font-display, "Britti Sans", sans-serif);
+  color: var(--zl-ink);
+  letter-spacing: -0.5px;
+}
+
+.zl-hero__sub {
+  max-width: 720px;
+  margin: 32px auto 0;
+  font: 400 20px/1.55 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-muted);
+}
+
+.zl-hero__cta {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* ---------- buttons ---------- */
+
+.zl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 8px;
+  font: 500 16px/1 var(--font-display, "Britti Sans", sans-serif);
+  white-space: nowrap;
+  transition: background-color .18s ease, border-color .18s ease;
+}
+
+.zl-btn--primary {
+  background: var(--zl-gold);
+  color: #000;
+}
+
+.zl-btn--primary:hover { background: #e3a521; }
+
+.zl-btn--ghost {
+  border: 1px solid var(--zl-btn-bd);
+  background: var(--zl-btn-bg);
+  color: var(--zl-ink);
+}
+
+.zl-btn--ghost:hover { border-color: var(--zl-btn-bd-hover); }
+
+/* ---------- feature sections ---------- */
+
+.zl-feat { padding: var(--zl-section-space) var(--zl-gutter); }
+
+.zl-feat__inner {
+  display: grid;
+  grid-template-columns: 560px 560px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  max-width: var(--zl-content);
+  margin: 0 auto;
+}
+
+/* Run your apps mirrors the layout. Source order stays copy-then-art so the
+   reading order is identical on every section once the grid collapses. */
+.zl-feat--flip .zl-feat__copy { order: 2; }
+.zl-feat--flip .zl-feat__art { order: 1; }
+
+.zl-feat__title {
+  font: 600 46px/1.15 var(--font-display, "Britti Sans", sans-serif);
+  color: var(--zl-ink);
+}
+
+.zl-feat__sub {
+  margin-top: 16px;
+  font: 400 18px/1.65 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-muted);
+}
+
+/* The three section links and the release-notes link are all instances of the
+   same "Link — Read the release notes" component, so they share one rule and
+   only differ in how far they sit from the block above them. */
+.zl-feat__link,
+.zl-news__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 16px/1 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-link);
+}
+
+/* Underline the label only. Set on the link it would propagate into the arrow
+   box as well and draw a rule under the icon. */
+.zl-feat__link > span:first-child,
+.zl-news__link > span:first-child {
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.zl-feat__link { margin-top: 28px; }
+
+/* The arrow is masked rather than drawn inline so it tracks the link colour. */
+.zl-feat__arrow,
+.zl-news__arrow {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: url("../img/arrow-up-right.svg") no-repeat center / 18px 18px;
+  mask: url("../img/arrow-up-right.svg") no-repeat center / 18px 18px;
+  transition: transform .18s ease;
+}
+
+.zl-feat__link:hover .zl-feat__arrow { transform: translate(2px, -2px); }
+
+/* ---------- accordion ---------- */
+
+.zl-acc { margin-top: 36px; }
+
+.zl-acc__item { border-top: 1px solid var(--zl-rule); }
+.zl-acc__item:last-child { border-bottom: 1px solid var(--zl-rule); }
+
+.zl-acc__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 0;
+  font: 600 18px/1.3 var(--font-display, "Britti Sans", sans-serif);
+  color: var(--zl-ink);
+}
+
+/* The open row can be clicked but never collapses, so it should not advertise
+   itself as pressable. */
+.zl-acc__item.is-open .zl-acc__head { cursor: default; }
+
+.zl-acc__label { flex: 1; }
+
+.zl-acc__icon {
+  position: relative;
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--zl-muted);
+}
+
+.zl-acc__icon::before,
+.zl-acc__icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+.zl-acc__icon::before { top: 6px; left: 0; width: 14px; height: 2px; }
+.zl-acc__icon::after { top: 0; left: 6px; width: 2px; height: 14px; }
+
+/* + becomes − */
+.zl-acc__item.is-open .zl-acc__icon::after {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+/* 0fr -> 1fr animates to the panel's natural height with no JS measurement and
+   no magic max-height. Browsers that cannot interpolate grid tracks still get
+   the correct open and closed states, just without the tween. */
+.zl-acc__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .32s cubic-bezier(.4, 0, .2, 1);
+}
+
+.zl-acc__item.is-open .zl-acc__panel { grid-template-rows: 1fr; }
+
+.zl-acc__panelInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.zl-acc__body {
+  padding-bottom: 20px;
+  font: 400 15px/1.65 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-muted);
+}
+
+/* ---------- section artwork ---------- */
+
+.zl-feat__art {
+  position: relative;
+  aspect-ratio: 560 / 520;
+}
+
+/* Every frame is stacked in the same box and crossfaded by toggling .is-active.
+   Sections with a single image just never toggle. */
+.zl-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+
+.zl-art.is-active { opacity: 1; }
+
+/* ---------- what's new ---------- */
+
+.zl-news {
+  padding: var(--zl-section-space) var(--zl-gutter) var(--zl-page-bottom);
+}
+
+.zl-news__inner {
+  max-width: var(--zl-content);
+  margin: 0 auto;
+}
+
+.zl-news__title {
+  font: 600 46px/1.18 var(--font-display, "Britti Sans", sans-serif);
+  color: var(--zl-ink);
+}
+
+.zl-news__card {
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  align-items: center;
+  gap: 48px;
+  margin-top: 32px;
+  padding: 44px 48px;
+  border: 1px solid var(--zl-card-bd);
+  border-radius: 16px;
+  background: var(--zl-card);
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.zl-news__card:hover {
+  border-color: var(--zl-card-bd-hover);
+  box-shadow: var(--zl-card-shadow);
+}
+
+.zl-news__tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid var(--zl-card-bd);
+  border-radius: 999px;
+  background: var(--zl-tag-bg);
+  font: 500 12px/1 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-tag-fg);
+}
+
+.zl-news__headline {
+  margin-top: 14px;
+  font: 600 28px/1.3 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-ink);
+}
+
+.zl-news__desc {
+  margin-top: 14px;
+  max-width: 588px;
+  font: 400 16px/1.65 var(--font-ui, Inter, sans-serif);
+  color: var(--zl-muted);
+}
+
+.zl-news__link { margin-top: 18px; }
+
+.zl-news__card:hover .zl-news__arrow { transform: translate(2px, -2px); }
+
+.zl-news__art { justify-self: end; }
+.zl-news__art img { border-radius: 16px; }
+
+/* ---------- responsive ---------- */
+
+/* Below the 1200 + 2x52 comp width the two 560px columns stop fitting, so the
+   grid goes fluid before it goes stacked. */
+@media (max-width: 1180px) {
+  .zl-home {
+    --zl-section-space: 56px;
+    --zl-page-bottom: 88px;
+  }
+
+  .zl-hero { padding-top: 72px; }
+  .zl-hero__title { font-size: 60px; }
+  .zl-hero__sub { margin-top: 24px; }
+
+  .zl-feat__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .zl-feat__title,
+  .zl-news__title { font-size: 40px; }
+
+  .zl-news__card { grid-template-columns: minmax(0, 1fr) 380px; gap: 32px; }
+}
+
+@media (max-width: 900px) {
+  .zl-home {
+    --zl-section-space: 44px;
+    --zl-page-bottom: 64px;
+  }
+
+  .zl-hero { padding-top: 64px; }
+  .zl-hero__title { font-size: 46px; }
+  .zl-hero__sub { font-size: 18px; }
+
+  .zl-feat__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 44px;
+  }
+
+  /* The mirrored section has to un-mirror here or its artwork would sit above
+     the heading that introduces it. */
+  .zl-feat--flip .zl-feat__copy,
+  .zl-feat--flip .zl-feat__art { order: 0; }
+
+  .zl-feat__art { max-width: 600px; margin: 0 auto; width: 100%; }
+
+  .zl-feat__title,
+  .zl-news__title { font-size: 34px; }
+
+  .zl-news__card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 35px 32px 32px;
+  }
+
+  /* One column, so the screenshot spans the card instead of sitting at its
+     intrinsic 460px with dead space to the right. */
+  .zl-news__art { justify-self: stretch; }
+  .zl-news__art img { width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .zl-home {
+    --zl-section-space: 36px;
+    --zl-page-bottom: 52px;
+  }
+
+  .zl-hero { padding-top: 44px; }
+  .zl-hero__title { font-size: 32px; letter-spacing: -0.2px; }
+  .zl-hero__sub { font-size: 16px; margin-top: 24px; }
+
+  /* The 390 comp keeps both CTAs on one row at their natural widths rather
+     than stacking them full-bleed. */
+  .zl-hero__cta { margin-top: 37px; }
+
+  .zl-feat__title,
+  .zl-news__title { font-size: 28px; }
+
+  .zl-feat__sub { font-size: 16px; }
+
+  .zl-acc__head { font-size: 16px; padding: 16px 0; }
+
+  .zl-news__card { padding: 24px; }
+  .zl-news__headline { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zl-home *,
+  .zl-home *::before,
+  .zl-home *::after {
+    transition-duration: .01ms !important;
+  }
+}

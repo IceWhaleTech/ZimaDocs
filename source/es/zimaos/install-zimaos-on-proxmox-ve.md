@@ -118,6 +118,6 @@ Abra un navegador web e ingrese la dirección IP para acceder a la interfaz de g
 Ahora que ZimaOS está funcionando en su máquina virtual, puede seguir explorando sus características y flujos de trabajo a su propio ritmo.  
 Para aprender cómo comenzar con la configuración del sistema, gestión de almacenamiento y despliegue de aplicaciones, por favor visite la siguiente guía:  
 
-👉[Comenzar con ZimaOS](https://www.zimaspace.com/docs/zimaos/Get-Started)  
+👉[Comenzar con ZimaOS](../../zimaos/get-started)
 
 Esta guía le ayudará a dar los siguientes pasos y aprovechar al máximo su entorno ZimaOS.

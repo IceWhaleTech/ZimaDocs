@@ -1,15 +1,39 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}</title>
+  <title>{% if page.seo_title %}{{ page.seo_title }} | {{ config.title }}{% elif page.title %}{{ page.title }} | {{ config.title }}{% else %}{{ config.title }}{% endif %}</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  {% if page.layout === 'page' or page.layout === 'index' %}
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  {% endif %}
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
   <!-- Canonical links -->
-  <link rel="canonical" href="{{ url.replace('.html','') }}">
+  <link rel="canonical" href="{{ canonical_url(page.lang) }}">
   <!-- Alternate links -->
   {% if page.layout == 'page' or page.layout == 'index' %}
     {% for lang, value in site.data.languages %}
+    {% if has_translation(lang) %}
   <link rel="alternate" hreflang="{{ lang }}" href="{{ canonical_url(lang) }}">
+    {% endif %}
     {% endfor %}
+    {% if has_translation('en') %}
+  <link rel="alternate" hreflang="x-default" href="{{ canonical_url('en') }}">
+    {% endif %}
   {% endif %}
   <!-- FAVICONS ICON -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -34,13 +58,22 @@
   <meta name="msapplication-TileImage" content="{{ url_for('icon/ms-icon-144x144.png') }}">
   <meta name="theme-color" content="#f1b335">
 
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="{{ url_for('/fonts/inter-latin.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ url_for('/fonts/britti-sans-regular.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ url_for('/fonts/britti-sans-semibold.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ url_for('/fonts/britti-sans-bold.woff2') }}" as="font" type="font/woff2" crossorigin>
+
   <!-- build:css build/css/zima.css -->
   {{ css('css/zima') }}
+  {{ css('css/docs-ui') }}
   <!-- endbuild -->
-  {# <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rajdhani%3A300%2C400%2C500%2C600%2C700%7CMuli%3A200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;subset'/> #}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+  {% if page.layout === 'index' %}
+  {{ css('css/landing') }}
+  {% endif %}
+  {% if config.algolia[page.lang] %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  {% endif %}
   
   <!-- Open Graph -->
   {% set description %}
@@ -51,6 +84,7 @@
     {% endif %}
   {% endset %}
   {{ open_graph({
+    title: page.seo_title or page.title,
     fb_admins: config.fb_admins,
     twitter_site: config.twitter,
     description: description
@@ -61,9 +95,9 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "{{ page.title }}",
-      "description": "{{ page.description }}",
-      {% if page.feature_image %}"image": "{{ page.feature_image }}",{% endif %}
+      "headline": {{ json_ld_string(page.title) }},
+      "description": {{ json_ld_string(page.description) }},
+      {% if page.feature_image %}"image": {{ json_ld_string(page.feature_image) }},{% endif %}
       "author": {
         "@type": "Organization",
         "name": "ZimaSpace",
@@ -77,33 +111,19 @@
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "{{ date_xml(page.date) }}"
+      "datePublished": {{ json_ld_string(date_xml(page.date)) }}
     }
   </script>
 
   {% if page.title %}
-  {% set _rawParts = page.path.split('/') %}
-{% if _rawParts[0] === '' %}
-{% set _pathParts = _rawParts.slice(1) %}
-{% else %}
-{% set _pathParts = _rawParts %}
-{% endif %}
-  {% if page.lang and page.lang !== 'en' and (_rawParts | length) > 2 %}
-    {% set _section = _pathParts[1] %}
-    {% set _sectionUrl = 'https://www.zimaspace.com/docs/' + page.lang + '/' + _section %}
-  {% else %}
-    {% set _section = _pathParts[0] if (_rawParts | length) > 1 else '' %}
-    {% set _sectionUrl = 'https://www.zimaspace.com/docs/' + _section %}
-  {% endif %}
-  {% set _sectionNames = {
-    'zimacube': 'ZimaCube',
-    'zimaos': 'ZimaOS',
-    'zimaboard': 'ZimaBoard',
-    'zimablade': 'ZimaBlade',
-    'faq': 'FAQ',
-    'knowledge': 'Knowledge Base'
-  } %}
-  {% set _sectionName = _sectionNames[_section] or _section %}
+  {% set _canonicalNavPath = canonical_path_for_nav() %}
+  {% set _pathParts = _canonicalNavPath.split('/').slice(1) %}
+  {% set _section = _pathParts[0] or '' %}
+  {% set _sectionNames = {'zimaos': 'ZimaOS', 'hardware': 'Hardware', 'developer': 'Developer', 'help-center': 'Help Center'} %}
+  {% set _sectionName = _sectionNames[_section] %}
+  {% set _localePrefix = page.lang + '/' if page.lang and page.lang !== 'en' else '' %}
+  {% set _isLanding = _canonicalNavPath.slice(-1) === '/' %}
+  {% set _isAppStore = _section === 'zimaos' and _pathParts[1] === 'app-store' %}
   {% if _sectionName %}
   <script type="application/ld+json">
     {
@@ -119,14 +139,24 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "{{ _sectionName }}",
-          "item": "{{ _sectionUrl }}"
-        },
+          "name": {{ json_ld_string(_sectionName) }},
+          "item": {{ json_ld_string(full_url_for(_localePrefix + _section + '/')) }}
+        }{% if _isAppStore or not _isLanding %},{% endif %}
+        {% if _isAppStore %}
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "{{ page.title }}"
+          "name": "App Store",
+          "item": {{ json_ld_string(full_url_for(_localePrefix + 'zimaos/app-store/')) }}
+        }{% if not _isLanding %},{% endif %}
+        {% endif %}
+        {% if not _isLanding %}
+        {
+          "@type": "ListItem",
+          "position": {{ 4 if _isAppStore else 3 }},
+          "name": {{ json_ld_string(page.title) }}
         }
+        {% endif %}
       ]
     }
   </script>

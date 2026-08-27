@@ -117,7 +117,7 @@ Open a web browser and enter the IP address to access the ZimaOS Web Management 
 Now that ZimaOS is running in your virtual machine, you can continue exploring its features and workflows at your own pace.  
 To learn how to get started with system setup, storage management, and application deployment, please visit the following guide:
 
-👉[Get Started with ZimaOS ](https://www.zimaspace.com/docs/zimaos/Get-Started) 
+👉[Get Started with ZimaOS ](./get-started)
 
 
 This guide will help you take the next steps and make the most of your ZimaOS environment.

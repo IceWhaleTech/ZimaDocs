@@ -121,6 +121,6 @@ tip: Do not remove this front matter block. The description field is used for th
 现在，ZimaOS已经在虚拟机中运行，您可以继续按自己的节奏探索其功能和工作流程。  
 要了解如何开始系统设置、存储管理和应用部署，请访问以下指南：
 
-👉[开始使用ZimaOS](https://www.zimaspace.com/docs/zimaos/Get-Started)  
+👉[开始使用ZimaOS](../../zimaos/get-started)
 
 这份指南将帮助您迈出下一步，充分利用您的ZimaOS环境。

@@ -12,8 +12,12 @@
 }
 @font-face {
   font-family: "BrittiSans";
-  src: url("../fonts/britti-sans-regular-webfont.woff") format("woff");
-  src: url("../fonts/britti-sans-regular-webfont.woff2") format("woff2");
+  /* Two separate src declarations used to be listed here; the second simply
+     overrode the first, so the .woff fallback was dead. Now one src with both
+     formats. Points at the official foundry file so this legacy family shares
+     the same vertical metrics as "Britti Sans" in docs-ui.css. */
+  src: url("../fonts/britti-sans-regular.woff2") format("woff2"),
+       url("../fonts/britti-sans-regular.woff") format("woff");
   font-weight: 400;
   letter-spacing: 1px;
   font-style: normal;

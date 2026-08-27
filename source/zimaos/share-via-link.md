@@ -1,10 +1,11 @@
 ---
 title: Share via link
+seo_title: "Share ZimaOS Files via Link: Send Files Without an Account"
 description: "Learn how ZimaOS Share via link works using WebTorrent for peer-to-peer file sharing, including technical details and usage tips."
 type: "Docs"
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-# How “Share via link“ works
+## How “Share via link“ works
 
 ### Introducation
 
@@ -38,11 +39,11 @@ In this article, we provide you with a brief overview of how this technology wor
 * **Legal Responsibility**: Ensure that you have the legal right to share the files to avoid infringing on copyright or other legal rights.
 * **Cybersecurity**: Although WebTorrent provides a certain level of security protection, users should remain vigilant and regularly update their security software to prevent malware attacks.
 
-### Conclusion
+#### Conclusion
 
 Our new feature "Share via Link," powered by WebTorrent technology, offers users a powerful, efficient, and secure file-sharing solution.
 We encourage users to take advantage of this new tool while keeping the aforementioned risks in mind to ensure the safe and compliant use of our service.
 
-### Our Support
+#### Our Support
 
 If you have any questions about WebTorrent technology or our file-sharing feature, you can reach out to our team for support on [Discord](https://discord.gg/f9nzbmpMtU) or [IceWhale Community](https://community.zimaspace.com/).
