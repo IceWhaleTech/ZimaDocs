@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" data-theme="light">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>如何理解ZimaOS上Docker应用的路径 | Zimaspace Docs</title>
+  <title>ZimaOS 应用数据存储位置：Docker 路径说明 | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/docker-app-paths">
   <!-- Alternate links -->
   
     
+    
   <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/docker-app-paths">
+    
+    
     
   <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/docker-app-paths">
     
+    
+    
   <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/docker-app-paths">
+    
+    
     
   <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/docker-app-paths">
     
+    
+    
   <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/docker-app-paths">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/docker-app-paths">
     
   
   <!-- FAVICONS ICON -->
@@ -32,36 +64,41 @@
   <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#f1b335">
 
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- build:css build/css/zima.css -->
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
   <!-- endbuild -->
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
   
   <!-- Open Graph -->
   
-  <meta name="description" content="Docker和ZimaOSDocker是一个平台，使用户能够自动化在轻量级容器中部署、扩展和管理应用程序。这些容器将应用程序及其所有依赖项打包在一起，确保在各种环境下的一致性能。Docker的效率在于其能够隔离应用程序，使它们更具可移植性和可扩展性。 在谈到Docker应用时，ZimaOS真的令人印象深刻，只需几次点击就能简化流程。ZimaOS对于NAS爱好者、专业用户和工">
+  <meta name="description" content="了解 ZimaOS 应用将数据保存在硬盘的什么位置，包括 Docker 容器路径映射、应用配置位置以及跨硬盘移动数据的方法。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="如何理解ZimaOS上Docker应用的路径">
+<meta property="og:title" content="ZimaOS 应用数据存储位置：Docker 路径说明">
 <meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/docker-app-paths">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="Docker和ZimaOSDocker是一个平台，使用户能够自动化在轻量级容器中部署、扩展和管理应用程序。这些容器将应用程序及其所有依赖项打包在一起，确保在各种环境下的一致性能。Docker的效率在于其能够隔离应用程序，使它们更具可移植性和可扩展性。 在谈到Docker应用时，ZimaOS真的令人印象深刻，只需几次点击就能简化流程。ZimaOS对于NAS爱好者、专业用户和工">
+<meta property="og:description" content="了解 ZimaOS 应用将数据保存在硬盘的什么位置，包括 Docker 容器路径映射、应用配置位置以及跨硬盘移动数据的方法。">
 <meta property="og:locale">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1722494286724_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1722494305565_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1722494354267_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1722494383898_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1722494441184_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1722494459333_image.png">
-<meta property="article:published_time" content="2026-08-12T09:13:05.020Z">
-<meta property="article:modified_time" content="2026-08-12T09:13:05.020Z">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/app-data-path-config.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/plex-app-store-card.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/plex-volume-path-settings.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/app-data-cleanup.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.553Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.553Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1722494286724_image.png">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/app-data-path-config.png">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -70,7 +107,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
 <!-- End Google Tag Manager -->
 
 
@@ -78,8 +115,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "如何理解ZimaOS上Docker应用的路径",
-      "description": "",
+      "headline": "应用数据存储在哪里",
+      "description": "了解 ZimaOS 应用将数据保存在硬盘的什么位置，包括 Docker 容器路径映射、应用配置位置以及跨硬盘移动数据的方法。",
       
       "author": {
         "@type": "Organization",
@@ -94,18 +131,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-08-12T09:13:05.020Z"
+      "datePublished": "2026-08-27T09:51:24.553Z"
     }
   </script>
 
   
   
-
-
-
   
-    
-    
+  
+  
+  
   
   
   
@@ -125,13 +160,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "@type": "ListItem",
           "position": 2,
           "name": "ZimaOS",
-          "item": "https://www.zimaspace.com/docs/zh/zimaos"
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
         },
+        
+        
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "如何理解ZimaOS上Docker应用的路径"
+          "name": "应用数据存储在哪里"
         }
+        
       ]
     }
   </script>
@@ -140,223 +178,227 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<body>
+<body class="docs-page">
   
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <div id="container">
-    <div id="header_outer">
-  <header id="header" >
-    <div id="header-inner" class="inner">
-      <div class="logo-container">
-        <h2 id="logo-wrap">
-          
-          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
-        </h2>
-      </div>
-      <div class="nav-container">
-        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
-          <ul id="menu-main-menu" class="maxmenu-list">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
 
-            <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
-            <li class="menu-item menu-item-has-children">
-              <span class="maxmenu-click">
-                <i class="maxmenu-arrow"></i>
-              </span>
-              <a href="#">
-                <img src="/docs/img/lang.svg" />
-              </a>
-              <ul class="sub-menu">
-                
-                  <li class="menu-item">
-                    <a href="/docs/zimaos/docker-app-paths">English</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/zh/zimaos/docker-app-paths">中文</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/jp/zimaos/docker-app-paths">日本語</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/docker-app-paths">Português</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/es/zimaos/docker-app-paths">Español</a>
-                  </li>
-                
-              </ul>
-            </li>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
 
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/docker-app-paths">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/docker-app-paths">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/docker-app-paths">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/docker-app-paths">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/docker-app-paths">Español</a></li>
+            
           </ul>
-        </nav>
-      </div>
-
-      <div class="search-icon-container">
-        <div id="search-container-icon">
-          <i class="fa fa-search" id="showSearch"></i>
         </div>
-        <a class="shop" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="external">商店</a>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
       </div>
 
-      <a id="mobile-nav-toggle">
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-      </a>
-    </div>
-  </header>
-</div>
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
 
-<div id="search-container">
-  <div id="search-container-close">
-    <i class="fa fa-close" id="hideSearch"></i>
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
   <div class="search-bg"></div>
   <div class="search-content-container">
     <div id="search-input-wrap">
-      <div id="search-input-icon">
-        
-      </div>
-      <input type="search" id="search-input" placeholder="搜索...">
+      <input type="search" id="search-input" placeholder="开始搜索">
     </div>
     <div id="resultContent"></div>
   </div>
-
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
 </div>
 
-    <div id="content-wrap">
-  <div id="content" class="wrapper">
-    <div id="content-inner">
-      <article class="article-container" itemscope itemtype="http://schema.org/Article">
-        <div class="article-inner">
-          <div class="article">
-            <div class="inner">
-              <header class="article-header">
-                <h1 class="article-title" itemprop="name">如何理解ZimaOS上Docker应用的路径</h1>
-                
-              
-                
-                <!-- facebook -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
-                </a>
-                <!-- x twitter -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
-                </a>
-              </header>
-              <div class="article-content" itemprop="articleBody">
-                <h1 id="Docker和ZimaOS" class="article-heading"><a href="#Docker和ZimaOS" class="headerlink" title="Docker和ZimaOS"></a>Docker和ZimaOS<a class="article-anchor" href="#Docker和ZimaOS" aria-hidden="true"></a></h1><p>Docker是一个平台，使用户能够自动化在轻量级容器中部署、扩展和管理应用程序。这些容器将应用程序及其所有依赖项打包在一起，确保在各种环境下的一致性能。Docker的效率在于其能够隔离应用程序，使它们更具可移植性和可扩展性。</p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1722494286724_image.png"><br>在谈到Docker应用时，ZimaOS真的令人印象深刻，只需几次点击就能简化流程。ZimaOS对于NAS爱好者、专业用户和工作室用户来说也是一个颠覆性的变化。其直观的界面简化了数据备份和管理。</p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1722494305565_image.png"><br>但是，当您在ZimaOS上使用Docker应用时，您真的理解路径吗？您能区分ZimaOS路径和Docker应用路径吗？</p>
-<h1 id="Docker如何组织路径" class="article-heading"><a href="#Docker如何组织路径" class="headerlink" title="Docker如何组织路径"></a>Docker如何组织路径<a class="article-anchor" href="#Docker如何组织路径" aria-hidden="true"></a></h1><p>当您运行Docker容器时，它在其自己的文件系统中操作，与主机系统相隔离。以下是Docker如何组织路径的一般概述：</p>
-<ul>
-<li><p>容器文件系统：在Docker容器内部，文件系统与主机机器隔离。运行在容器中的应用程序看到自己的根文件系统，通常以&#x2F;开始。例如，如果您有一个应用程序在容器内部的&#x2F;app&#x2F;data中存储数据，则该路径仅存在于该容器的文件系统中。</p>
-</li>
-<li><p>卷：为了在容器的生命周期之外持久化数据，Docker使用卷。卷是位于容器文件系统外的目录或文件，通常位于主机系统上，可以在容器之间共享。它们通常会挂载到容器的特定路径中。</p>
-</li>
-</ul>
-<p><img src="https://manage.icewhale.io/api/static/docs/1722494354267_image.png"><br>还有其他数据共享模式，您可以在此处了解。</p>
-<h1 id="Plex的示例" class="article-heading"><a href="#Plex的示例" class="headerlink" title="Plex的示例"></a>Plex的示例<a class="article-anchor" href="#Plex的示例" aria-hidden="true"></a></h1><p><img src="https://manage.icewhale.io/api/static/docs/1722494383898_image.png"><br>让我们以plex，一个流行的媒体服务器应用程序，作为例子，来了解如何在ZimaOS中使用Docker组织路径。</p>
-<p><strong>Docker应用</strong>：Plex作为Docker应用在ZimaOS的应用商店中分发。当您从ZimaOS的应用商店安装Plex时，ZimaOS会为各种目录指定几个路径：</p>
-<ul>
-<li><p>容器中的&#x2F;config：该目录保存Plex的配置文件。在ZimaOS上，其卷路径是&#x2F;ZIMA&#x2F;AppData&#x2F;plex&#x2F;config，在ZimaOS上挂载到容器的&#x2F;config，以确保配置在容器重启时保持不变。</p>
-</li>
-<li><p>容器中的&#x2F;media：这是Plex访问您的媒体文件的地方。此外，媒体文件的卷路径是&#x2F;ZIMA&#x2F;Media，在ZimaOS上挂载到容器的&#x2F;media。</p>
-</li>
-</ul>
-<p>请记住，我们希望文件存储在主机上。这样，即使容器被停止或重建，数据也会保持完整。<br><img src="https://manage.icewhale.io/api/static/docs/1722494441184_image.png"><br>您可以通过点击Plex的设置找到详细的配置。此外，在此页面上，卷路径可以通过点击卷路径旁边的灰色图标轻松修改。</p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1722494459333_image.png"><br>通过了解Docker路径以及它们如何与像Plex这样的应用程序集成，NAS爱好者和家庭实验室用户可以有效地管理他们的应用程序，以一种将容器化的灵活性与持久存储的可靠性相结合的方式。</p>
-
-              </div>
-              <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-08-12T09:13:05.020Z" itemprop="dateModified">最后更新：2026-08-12</time>
-                <a href="how-to-open-ssh-in-zimaos" class="article-footer-prev" title="在 ZimaOS 中打开 SSH"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="plex-setup-guide" class="article-footer-next" title="Plex 操作指南"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
-              </footer>
-
-            </div>
-          </div>
-          <aside id="article-toc" role="navigation">
-            <div id="article-toc-inner">
-              <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E5%92%8CZimaOS"><span class="toc-text">Docker和ZimaOS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E5%A6%82%E4%BD%95%E7%BB%84%E7%BB%87%E8%B7%AF%E5%BE%84"><span class="toc-text">Docker如何组织路径</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Plex%E7%9A%84%E7%A4%BA%E4%BE%8B"><span class="toc-text">Plex的示例</span></a></li></ol>
-              <a href="#" id="article-toc-top">回到顶部</a>
-            </div>
-          </aside>
-        </div>
-      </article>
-      <aside id="sidebar" role="navigation">
-  <div class="inner">
-    
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">什么是Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>概述</span>
-        <i class="fa fa-chevron-right"></i>
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">开始使用</a></li><li class="sidebar-link "><a href="./features">功能</a></li><li class="sidebar-link "><a href="./remote-access">远程访问</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC 直连</a></li>
-      </ul>
-    </li>
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>探索</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./nvr-camera-server">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./synology-smb-connect">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./cli-guide">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">连接云盘</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./data-migration">数据迁移</a></li><li class="sidebar-link "><a href="./zfs-setup">ZFS 设置</a></li><li class="sidebar-link "><a href="./raid-options">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link  current"><a href="./docker-app-paths">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature">通过链接共享</a></li><li class="sidebar-link "><a href="./llm-manual-download">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./password-recovery">恢复密码</a></li><li class="sidebar-link "><a href="./remote-id">获取网络 ID</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">实现最快传输速度</a></li><li class="sidebar-link "><a href="./samba-member-setup">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./zimaclient-install">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Immich 教程</a></li><li class="sidebar-link "><a href="./iscsi-guide">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./setup-emby-server">开启电源</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./radarr-setup">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./system-recovery">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./dlna-server-setup">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./time-machine-backup">时间机器功能</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./zimaos-search">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./enable-ai">启用AI搜索</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">3-2-1备份</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrate from CasaOS to ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">部署OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">部署 Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">超棒第三方商店</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>开发者</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./networking">网络交流</a></li><li class="sidebar-link "><a href="./python-setup">设置 Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-bay-led">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./offline-install">离线更新</a></li><li class="sidebar-link "><a href="./supported-disk-formats">支持的磁盘格式</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>社区作品</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">如何贡献</a></li><li class="sidebar-link "><a href="./contributions">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./syncthing-install">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./paperless-ai-install">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./azuracast-install">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Zabbix安装指南</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>版本记录</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>常见问题</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./folder-encryption">加密文件夹</a></li><li class="sidebar-link "><a href="./resetnetworksettings">重置网络设置</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
-  </div>
-</aside>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="is-current" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
     </div>
-  </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/from-synology-to-zimacube-migrate-all-files">群晖手动传输</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">在磁盘之间迁移数据</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/remote-id">获取网络 ID</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">应用数据存储在哪里</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.553Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>从 App Store 安装应用后，应用会将文件保存在硬盘上的某个位置。了解具体位置有助于备份正确的文件夹、日后将数据迁移到更大的硬盘，也能避免应用更新后消失时措手不及。</p>
+<p>App Store 应用运行在容器中。应用在容器内部有自己的文件系统，但真正重要的数据会映射到容器外、硬盘上的实际文件夹。删除容器后，这些文件仍会保留。Files 和 VM 等 ZimaOS 原生功能并不使用容器，因此本页只适用于 App Store 应用。</p>
+<h2 id="不要将应用数据保存在系统盘" class="article-heading">不要将应用数据保存在系统盘<a class="article-anchor" href="#不要将应用数据保存在系统盘" aria-hidden="true"></a></h2><p>安装应用前，建议将应用数据指向 <strong><a href="./storage-setup" title="根据需求选择合适的 RAID 选项和存储配置" class="doc-link">存储设置</a></strong> 教程中创建的存储空间。</p>
+<p>系统盘通常容量较小。如果所有应用都向其中写入数据，很快就会用满。Immich 同步的照片、Plex 抓取的媒体信息以及 Paperless 建立索引的文档，默认都会写入系统盘。系统盘用满后，更新会失败、应用行为会异常，整台设备也会变慢。</p>
+<p>从一开始就将应用数据路径设置到主存储阵列，可以保持职责清晰：系统盘负责操作系统，存储阵列负责数据。以后某块硬盘空间不足时，也能将单个应用迁移到其他位置，无需重新安装。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/app-data-path-config.png" alt="ZimaOS Settings Apps 页面将 App data location 指向主存储空间"></span></p>
+<p>进入 <strong>Settings &gt; Apps</strong>，找到 <strong>App data location</strong>，将其设置为已创建的存储空间。ZimaOS 会自动移动数据。</p>
+<p>下面以媒体服务器 Plex 为例说明其工作方式。</p>
+<h2 id="Plex-示例" class="article-heading">Plex 示例<a class="article-anchor" href="#Plex-示例" aria-hidden="true"></a></h2><p>安装 Plex 后，ZimaOS 会为其设置两个文件夹。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/plex-app-store-card.png" alt="ZimaOS App Store 中的 Plex 应用卡片显示安装按钮和应用详情"></span></p>
+<p><strong>Config.</strong> 保存设置、数据库和偏好。在容器内对应 <code class="chip">/config</code>；在硬盘上位于 App data location 下，默认路径为 <code class="chip">/DATA/AppData/plex/config</code>，如果已迁移，则位于你选择的存储空间中。重新安装和更新后仍会保留。</p>
+<p><strong>Media.</strong> 保存电影和电视节目。在容器内对应 <code class="chip">/media</code>；在硬盘上则是存储空间中的 Media 文件夹。将视频文件放入其中，Plex 就能直接读取。</p>
+<p>在 ZimaOS 中打开应用设置，可以查看并更改这些路径。每个卷路径旁都有编辑按钮。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/plex-volume-path-settings.png" alt="ZimaOS 中的 Plex 应用设置显示 config 和 media 卷路径及编辑按钮"></span></p>
+<h2 id="为什么路径很重要" class="article-heading">为什么路径很重要<a class="article-anchor" href="#为什么路径很重要" aria-hidden="true"></a></h2><p>了解应用路径有两个实际原因。</p>
+<p>第一，设置备份时，应备份硬盘上的文件夹，而不是容器内部的内容。容器可以重建，硬盘上的数据却不可替代。</p>
+<p>第二，如果某块硬盘空间不足，可以将应用数据指向另一块硬盘。移动文件夹，再更新应用设置中的路径即可，无需重新安装。</p>
+<h2 id="清理应用缓存" class="article-heading">清理应用缓存<a class="article-anchor" href="#清理应用缓存" aria-hidden="true"></a></h2><p>应用会逐渐积累缓存，在不知不觉中占用磁盘空间。<strong>Settings &gt; Apps</strong> 页面会显示每个应用的空间用量。如果某个应用异常增长，可以在该页面清理缓存。应用仍会正常运行，同时可以回收空间。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/app-data-cleanup.png" alt="ZimaOS Settings Apps 页面列出已安装应用、磁盘用量和缓存清理选项"></span></p>
+<h2 id="下一步" class="article-heading">下一步<a class="article-anchor" href="#下一步" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="./storage-setup" title="根据需求选择合适的 RAID 选项和存储配置" class="doc-link">存储设置</a></strong> — 决定哪些硬盘保存数据</li>
+<li><strong><a href="./data-migration" title="在 ZimaOS 中跨硬盘移动 Docker 镜像、应用数据和文件夹" class="doc-link">在硬盘之间移动数据</a></strong> — 硬盘用满时使用内置迁移工具</li>
+<li><strong><a href="./app-store/" title="浏览 App Store 中的媒体、自托管应用和 AI 分类" class="doc-link">App Store 概览</a></strong> — 查看可以安装的应用</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.553Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/raid-options"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">RAID 选项</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/phone-backup"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">手机备份</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E5%B0%86%E5%BA%94%E7%94%A8%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98%E5%9C%A8%E7%B3%BB%E7%BB%9F%E7%9B%98"><span class="toc-text">不要将应用数据保存在系统盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plex-%E7%A4%BA%E4%BE%8B"><span class="toc-text">Plex 示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B7%AF%E5%BE%84%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">为什么路径很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98"><span class="toc-text">清理应用缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
+    </nav>
+  </aside>
 </div>
 
     <!-- FOOTER START -->
@@ -569,97 +611,103 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER END -->
   </div>
   <div id="mobile-nav-dimmer"></div>
-  <nav id="mobile-nav">
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
       
-      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
     </ul>
     
-      
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">什么是Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>概述</span>
-        <i class="fa fa-chevron-right"></i>
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">开始使用</a></li><li class="sidebar-link "><a href="./features">功能</a></li><li class="sidebar-link "><a href="./remote-access">远程访问</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC 直连</a></li>
-      </ul>
-    </li>
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>探索</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="is-current" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./nvr-camera-server">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./synology-smb-connect">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./cli-guide">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">连接云盘</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./data-migration">数据迁移</a></li><li class="sidebar-link "><a href="./zfs-setup">ZFS 设置</a></li><li class="sidebar-link "><a href="./raid-options">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link  current"><a href="./docker-app-paths">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature">通过链接共享</a></li><li class="sidebar-link "><a href="./llm-manual-download">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./password-recovery">恢复密码</a></li><li class="sidebar-link "><a href="./remote-id">获取网络 ID</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">实现最快传输速度</a></li><li class="sidebar-link "><a href="./samba-member-setup">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./zimaclient-install">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Immich 教程</a></li><li class="sidebar-link "><a href="./iscsi-guide">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./setup-emby-server">开启电源</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./radarr-setup">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./system-recovery">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./dlna-server-setup">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./time-machine-backup">时间机器功能</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./zimaos-search">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./enable-ai">启用AI搜索</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">3-2-1备份</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrate from CasaOS to ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">部署OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">部署 Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">超棒第三方商店</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>开发者</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/from-synology-to-zimacube-migrate-all-files">群晖手动传输</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">在磁盘之间迁移数据</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./networking">网络交流</a></li><li class="sidebar-link "><a href="./python-setup">设置 Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-bay-led">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./offline-install">离线更新</a></li><li class="sidebar-link "><a href="./supported-disk-formats">支持的磁盘格式</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>社区作品</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">如何贡献</a></li><li class="sidebar-link "><a href="./contributions">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./syncthing-install">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./paperless-ai-install">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./azuracast-install">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Zabbix安装指南</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>版本记录</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/remote-id">获取网络 ID</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>常见问题</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./folder-encryption">加密文件夹</a></li><li class="sidebar-link "><a href="./resetnetworksettings">重置网络设置</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li></ul>
+      </div>
+    </div>
     
   </div>
-  <div id="mobile-lang-select-wrap">
-    <span id="mobile-lang-select-label" style="display:none">
-      <i class="fa fa-globe"></i>
-      <span>中文</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/docker-app-paths.html">
-      
-        <option value="en">English</option>
-      
-        <option value="zh" selected>中文</option>
-      
-        <option value="jp">日本語</option>
-      
-        <option value="pt-PT">Português</option>
-      
-        <option value="es">Español</option>
-      
-    </select>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/docker-app-paths" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/docker-app-paths" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/docker-app-paths" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/docker-app-paths" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/docker-app-paths" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
   </div>
 </nav>
+
   <!-- Scripts -->
 <!-- Cookie -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
 
 <script src="/docs/js/lang_select.js"></script>
 
@@ -676,9 +724,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/docs/js/hexo_resize_image.js"></script>
 
 
-<script src="/docs/js/jquery-2.2.0.min.js"></script>
-
-
 <script src="/docs/js/sweetalert2@11.js"></script>
 
 
@@ -687,10 +732,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/docs/js/cloudflare_ai_search.js"></script>
 
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
 <!-- endbuild -->
 
 
 <script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
 
 
 

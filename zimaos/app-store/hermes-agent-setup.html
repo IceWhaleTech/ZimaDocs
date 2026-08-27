@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Configure Hermes Agent on ZimaOS: AI That Learns and Remembers | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zimaos/app-store/hermes-agent-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/hermes-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/hermes-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/hermes-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/hermes-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/hermes-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/hermes-agent-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Step-by-step guide for configuring Hermes Agent on ZimaOS — covers custom model provider setup, Telegram bot integration, and Web Dashboard access, with troubleshooting for common issues.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Configure Hermes Agent on ZimaOS: AI That Learns and Remembers">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zimaos/app-store/hermes-agent-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Step-by-step guide for configuring Hermes Agent on ZimaOS — covers custom model provider setup, Telegram bot integration, and Web Dashboard access, with troubleshooting for common issues.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967418108_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967433450_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967453363_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967561032_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967580671_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967596242_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967618229_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967635993_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967649446_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967667150_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967687091_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967700131_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967716705_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967741377_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967757562_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967777379_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967831434_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967845729_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967857430_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1779967878149_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1779967418108_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "How to Configure Hermes Agent",
+      "description": "Step-by-step guide for configuring Hermes Agent on ZimaOS — covers custom model provider setup, Telegram bot integration, and Web Dashboard access, with troubleshooting for common issues.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.555Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Configure Hermes Agent"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/hermes-agent-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/hermes-agent-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/hermes-agent-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/hermes-agent-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="is-current" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">How to Configure Hermes Agent</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Overview" class="article-heading">Overview<a class="article-anchor" href="#Overview" aria-hidden="true"></a></h2><p>This tutorial guides you through configuring model services and messaging platforms on a device with Hermes Agent deployed, enabling AI model interaction via Telegram. Using Telegram as an example, it covers the complete workflow from model provider configuration to bot verification.</p>
+<blockquote>
+<p><strong>Note:</strong> In most cases, you can configure models and messaging directly through the Hermes WebUI. If the corresponding options are not found, refer to this tutorial to complete the configuration in the container terminal.</p>
+</blockquote>
+<h3 id="Environment" class="article-heading">Environment<a class="article-anchor" href="#Environment" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><strong>Hardware:</strong> ZimaBlade &#x2F; ZimaBoard &#x2F; ZimaCube</li>
+<li><strong>Software:</strong> ZimaOS</li>
+<li><strong>Network:</strong> The device must have internet access and be able to reach the Telegram API. A wired connection is recommended for stability.</li>
+</ul>
+<h3 id="Objectives" class="article-heading">Objectives<a class="article-anchor" href="#Objectives" aria-hidden="true"></a></h3><p>Complete the initial setup of Hermes Agent, including:</p>
+<ul class="doc-dots">
+<li>Connecting a custom model provider</li>
+<li>Creating and binding a Telegram bot for private chat with AI</li>
+<li>Viewing and managing Hermes status via the Web Dashboard</li>
+</ul>
+<h3 id="Prerequisites" class="article-heading">Prerequisites<a class="article-anchor" href="#Prerequisites" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li>The host device’s IP address, used to replace <code class="chip">&lt;ip&gt;</code> in subsequent commands</li>
+<li>An AI model API Key with basic familiarity in using it</li>
+<li>A Telegram account</li>
+</ul>
+<h3 id="Key-Steps" class="article-heading">Key Steps<a class="article-anchor" href="#Key-Steps" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Install Hermes: Search and install from the ZimaOS App Store</li>
+<li>SSH into the ZimaOS host and obtain root privileges</li>
+<li>Enter the Hermes container as the <code class="chip">hermes</code> user and activate the virtual environment</li>
+<li>Launch the configuration wizard, select a model provider, and fill in the parameters</li>
+<li>Configure the Telegram channel: create a bot to obtain a Token, enter it in Hermes, and set user access permissions</li>
+<li>Send <code class="chip">/start</code> in Telegram to verify the configuration and confirm the bot responds correctly</li>
+<li>Access the Web Dashboard to view the running status</li>
+</ol>
+<h2 id="Detailed-Steps" class="article-heading">Detailed Steps<a class="article-anchor" href="#Detailed-Steps" aria-hidden="true"></a></h2><h3 id="SSH-into-the-ZimaOS-Host" class="article-heading">SSH into the ZimaOS Host<a class="article-anchor" href="#SSH-into-the-ZimaOS-Host" aria-hidden="true"></a></h3><p>SSH login to the ZimaOS host is recommended for easy copy and paste of commands.</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ssh &lt;username&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>Example:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ssh zima@192.168.50.20</span><br></pre></td></tr></table></div></figure>
+
+<p>If this is your first connection, type <code class="chip">yes</code> at the confirmation prompt and press Enter.</p>
+<h3 id="Obtain-Container-Execution-Privileges" class="article-heading">Obtain Container Execution Privileges<a class="article-anchor" href="#Obtain-Container-Execution-Privileges" aria-hidden="true"></a></h3><p>If the current user cannot directly execute Docker commands to enter the container, switch to root first:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></div></figure>
+
+<p>After switching, the terminal prompt should indicate that you have root privileges. These root privileges are only used for entering containers on the ZimaOS host.</p>
+<h3 id="Enter-the-Hermes-Container" class="article-heading">Enter the Hermes Container<a class="article-anchor" href="#Enter-the-Hermes-Container" aria-hidden="true"></a></h3><p>Enter the container as the <code class="chip">hermes</code> user:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u hermes hermes bash</span><br></pre></td></tr></table></div></figure>
+
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967418108_image.png" alt="Terminal: entering Hermes container"></span></p>
+<p>Once the terminal prompt changes, you have entered the Hermes container. All subsequent configuration operations must be performed inside the container. If you accidentally exit the container midway, simply re-run this command.</p>
+<p>Activate the Hermes virtual environment:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /opt/hermes/.venv/bin/activate</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967433450_image.png" alt="Terminal: activating virtual environment"></span></p>
+<p>After activation, the <code class="chip">hermes</code> command can be used directly in the current shell.</p>
+<h3 id="Launch-the-Configuration-Wizard" class="article-heading">Launch the Configuration Wizard<a class="article-anchor" href="#Launch-the-Configuration-Wizard" aria-hidden="true"></a></h3><p>Run inside the container:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">hermes setup</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967453363_image.png" alt="Terminal: hermes setup"></span></p>
+<p>Select <strong>Quick setup</strong> to begin configuration. The highlighted item is the currently selected option; press <strong>Enter</strong> to confirm.</p>
+<h3 id="Configure-the-Model-Service" class="article-heading">Configure the Model Service<a class="article-anchor" href="#Configure-the-Model-Service" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li><p>Select the corresponding model provider. A custom provider is used here as an example:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967561032_image.png" alt="Terminal: selecting model provider"></span></p>
+</li>
+<li><p>Enter the <strong>Base URL</strong> and <strong>API Key</strong>:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967580671_image.png" alt="Terminal: entering Base URL and API Key"></span></p>
+</li>
+<li><p>Choose the <strong>API compatibility mode</strong>:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967596242_image.png" alt="Terminal: selecting API compatibility mode"></span></p>
+</li>
+<li><p>Select the model you want to use:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967618229_image.png" alt="Terminal: selecting model"></span></p>
+</li>
+<li><p>Enter the context length. You can press Enter directly for auto-detection:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967635993_image.png" alt="Terminal: entering context length"></span></p>
+</li>
+<li><p>Set the display name:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967649446_image.png" alt="Terminal: setting display name"></span></p>
+</li>
+<li><p>Choose the terminal backend. The default setting is fine:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967667150_image.png" alt="Terminal: choosing terminal backend"></span></p>
+</li>
+</ol>
+<h3 id="Configure-Messaging-Platform-Telegram-Example" class="article-heading">Configure Messaging Platform (Telegram Example)<a class="article-anchor" href="#Configure-Messaging-Platform-Telegram-Example" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Choose to configure messaging in the Hermes container terminal, or enter the following command:</li>
+</ol>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">hermes gateway setup</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967687091_image.png" alt="Terminal: hermes gateway setup"></span></p>
+<ol start="2" class="doc-steps">
+<li>Select the corresponding Platform:<br><img src="https://manage.icewhale.io/api/static/docs/1779967700131_image.png" alt="Terminal: selecting platform"></li>
+</ol>
+<h4 id="Create-a-Telegram-Bot" class="article-heading">Create a Telegram Bot<a class="article-anchor" href="#Create-a-Telegram-Bot" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>Open Telegram, search for and start a chat with <strong>@BotFather</strong></li>
+<li>Send <code class="chip">/newbot</code></li>
+<li>Set a display name, e.g. <code class="chip">Hermes Agent</code></li>
+<li>Set a unique username ending with <code class="chip">bot</code>, e.g. <code class="chip">my_zima_hermes_bot</code></li>
+<li>Save the <strong>API Token</strong> returned by BotFather</li>
+</ul>
+<p><strong>Keep your Bot Token safe.</strong> Anyone with this token can control your bot.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967716705_image.png" alt="Telegram: BotFather creating a bot"></span></p>
+<h4 id="Get-Your-Telegram-User-ID" class="article-heading">Get Your Telegram User ID<a class="article-anchor" href="#Get-Your-Telegram-User-ID" aria-hidden="true"></a></h4><p>Hermes uses a numeric Telegram User ID for access control. Send any message to <strong>@userinfobot</strong> or <strong>@get_id_bot</strong> and save the numeric User ID returned.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967741377_image.png" alt="Telegram: getting user ID"></span></p>
+<h4 id="Enter-Configuration-Details" class="article-heading">Enter Configuration Details<a class="article-anchor" href="#Enter-Configuration-Details" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p>Enter the Telegram Bot Token in the Hermes container:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967757562_image.png" alt="Terminal: entering bot token"></span></p>
+</li>
+<li><p>Enter the Telegram User IDs allowed to access:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967777379_image.png" alt="Terminal: entering allowed user IDs"></span></p>
+</li>
+<li><p>Choose to allow this Telegram User ID to access the home channel:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967831434_image.png" alt="Terminal: allowing home channel access"></span></p>
+</li>
+<li><p>Complete the Messaging Platform configuration:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967845729_image.png" alt="Terminal: completing messaging setup"></span></p>
+</li>
+<li><p>After Telegram setup is complete, Hermes will prompt you to restart the Gateway. Confirm the prompt to let the Gateway apply the latest configuration:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967857430_image.png" alt="Terminal: restarting gateway"></span></p>
+</li>
+</ol>
+<h4 id="Group-Chat-Notes-Optional" class="article-heading">Group Chat Notes (Optional)<a class="article-anchor" href="#Group-Chat-Notes-Optional" aria-hidden="true"></a></h4><p>Telegram Privacy Mode is enabled by default. In groups, the bot can only see commands, replies to its messages, and certain system messages by default.</p>
+<p>If Hermes works in private chat but does not respond in groups:</p>
+<ul class="doc-dots">
+<li>Directly @ the bot</li>
+<li>Promote the bot to group admin</li>
+<li>Or disable group privacy mode in BotFather, then remove and re-add the bot to the group</li>
+</ul>
+<h3 id="Usage" class="article-heading">Usage<a class="article-anchor" href="#Usage" aria-hidden="true"></a></h3><p>Open Telegram and send <code class="chip">/start</code> to your bot. Then send a regular message to confirm Hermes replies correctly.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1779967878149_image.png" alt="Telegram: chatting with bot"></span></p>
+<h3 id="Open-the-Web-Dashboard" class="article-heading">Open the Web Dashboard<a class="article-anchor" href="#Open-the-Web-Dashboard" aria-hidden="true"></a></h3><p>Access the following URL in your browser:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">http://&lt;ip&gt;:9119</span><br></pre></td></tr></table></div></figure>
+
+<p>Example:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">http://192.168.50.20:9119</span><br></pre></td></tr></table></div></figure>
+
+<p>From the Dashboard you can view the running status, inspect sessions, and modify model settings.</p>
+<h3 id="Reconfiguring-Later" class="article-heading">Reconfiguring Later<a class="article-anchor" href="#Reconfiguring-Later" aria-hidden="true"></a></h3><p>To modify the configuration again, follow the steps below.</p>
+<p>Enter the container again:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u hermes hermes bash</span><br></pre></td></tr></table></div></figure>
+
+<p>Activate the virtual environment inside the container:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /opt/hermes/.venv/bin/activate</span><br></pre></td></tr></table></div></figure>
+
+<p>Modify the model:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">hermes model</span><br></pre></td></tr></table></div></figure>
+
+<p>Modify Telegram or other messaging gateways:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">hermes gateway setup</span><br></pre></td></tr></table></div></figure>
+
+<p>When Hermes prompts you to restart the Gateway, confirm the prompt. Exit the container when done:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></div></figure>
+
+<hr>
+<h2 id="Troubleshooting" class="article-heading">Troubleshooting<a class="article-anchor" href="#Troubleshooting" aria-hidden="true"></a></h2><h3 id="opt-data-Permission-Error" class="article-heading"><code class="chip">/opt/data</code> Permission Error<a class="article-anchor" href="#opt-data-Permission-Error" aria-hidden="true"></a></h3><p>This is usually caused by running Hermes Gateway as root previously, which left root-owned files in <code class="chip">$HERMES_HOME</code>.</p>
+<p>First, re-enter the container as the <code class="chip">hermes</code> user:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it -u hermes hermes bash</span><br></pre></td></tr></table></div></figure>
+
+<p>If the permission error persists, check the Hermes logs in the ZimaOS Dashboard. Only temporarily enter a root shell when you need to fix file ownership.</p>
+<h3 id="Telegram-Bot-Not-Responding" class="article-heading">Telegram Bot Not Responding<a class="article-anchor" href="#Telegram-Bot-Not-Responding" aria-hidden="true"></a></h3><p>Check the Hermes logs in the ZimaOS Dashboard, then verify the following in order:</p>
+<ul class="doc-dots">
+<li>The Bot Token is correct</li>
+<li>Your numeric Telegram User ID is in the allowlist</li>
+<li>The container can reach <code class="chip">api.telegram.org</code></li>
+<li>If using in a group, Privacy Mode and group permissions are configured correctly</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zimaos/app-store/deploy-deepseek-r1"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Deploy DeepSeek R1</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zimaos/app-store/llm-manual-download"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Download AI Models</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Environment"><span class="toc-text">Environment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Objectives"><span class="toc-text">Objectives</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prerequisites"><span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Key-Steps"><span class="toc-text">Key Steps</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Detailed-Steps"><span class="toc-text">Detailed Steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSH-into-the-ZimaOS-Host"><span class="toc-text">SSH into the ZimaOS Host</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Obtain-Container-Execution-Privileges"><span class="toc-text">Obtain Container Execution Privileges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enter-the-Hermes-Container"><span class="toc-text">Enter the Hermes Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Launch-the-Configuration-Wizard"><span class="toc-text">Launch the Configuration Wizard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-the-Model-Service"><span class="toc-text">Configure the Model Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-Messaging-Platform-Telegram-Example"><span class="toc-text">Configure Messaging Platform (Telegram Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Create-a-Telegram-Bot"><span class="toc-text">Create a Telegram Bot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Get-Your-Telegram-User-ID"><span class="toc-text">Get Your Telegram User ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Enter-Configuration-Details"><span class="toc-text">Enter Configuration Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Group-Chat-Notes-Optional"><span class="toc-text">Group Chat Notes (Optional)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Open-the-Web-Dashboard"><span class="toc-text">Open the Web Dashboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reconfiguring-Later"><span class="toc-text">Reconfiguring Later</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Troubleshooting"><span class="toc-text">Troubleshooting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#opt-data-Permission-Error"><span class="toc-text">&#x2F;opt&#x2F;data Permission Error</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Telegram-Bot-Not-Responding"><span class="toc-text">Telegram Bot Not Responding</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="is-current" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/hermes-agent-setup" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/hermes-agent-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/hermes-agent-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/hermes-agent-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/hermes-agent-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

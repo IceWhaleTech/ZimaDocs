@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS Docker Compose 与 x-casaos 应用元数据参考 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/developer/app-store-compose-x-casaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/app-store-compose-x-casaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="为 ZimaOS、家庭服务器、Homelab 和 NAS OS 中的 self-hosted 应用定义 Docker 服务与 x-casaos 元数据。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS Docker Compose 与 x-casaos 应用元数据参考">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/developer/app-store-compose-x-casaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="为 ZimaOS、家庭服务器、Homelab 和 NAS OS 中的 self-hosted 应用定义 Docker 服务与 x-casaos 元数据。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-08-27T09:51:24.548Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.548Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Docker Compose 与 x-casaos",
+      "description": "为 ZimaOS、家庭服务器、Homelab 和 NAS OS 中的 self-hosted 应用定义 Docker 服务与 x-casaos 元数据。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.548Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/zh/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Docker Compose 与 x-casaos"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item current_page_item"><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/app-store-compose-x-casaos">English</a></li>
+            
+              <li><a href="/docs/zh/developer/app-store-compose-x-casaos">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/app-store-compose-x-casaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/app-store-compose-x-casaos">Português</a></li>
+            
+              <li><a href="/docs/es/developer/app-store-compose-x-casaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/developer/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">存储与文件系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/zh/developer/zfs-setup">ZFS 设置</a></li><li><a class="" href="/docs/zh/developer/nfs-on-zimaos">NFS 文件共享</a></li><li><a class="" href="/docs/zh/developer/folder-encryption">加密文件夹</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项概览</a></li><li><a class="" href="/docs/zh/developer/raid6-setup">创建 RAID 6</a></li><li><a class="" href="/docs/zh/developer/raid-rebuild-after-reinstall">重装后的 RAID 重建</a></li><li><a class="" href="/docs/zh/developer/iscsi-guide">iSCSI 使用指南</a></li><li><a class="" href="/docs/zh/developer/iscsi-setup">iSCSI 设置</a></li><li><a class="" href="/docs/zh/developer/rsync-backup-clones">Rsync 备份克隆</a></li><li><a class="" href="/docs/zh/developer/synology-smb-connect">连接群晖 SMB</a></li><li><a class="" href="/docs/zh/developer/zimaos-qts-two-way-sync-guide">QTS 双向同步</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">网络与协议</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/zh/developer/networking">网络配置</a></li><li><a class="" href="/docs/zh/developer/how-to-open-ssh-in-zimaos">启用 SSH</a></li><li><a class="" href="/docs/zh/developer/nas-transfer-speed-troubleshooting">网络传输速度</a></li><li><a class="" href="/docs/zh/developer/ssh-setup">SSH 高级设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">开发</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">应用商店开发</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li><li><a class="" href="/docs/zh/developer/app-store-repository-structure">仓库结构</a></li><li><a class="" href="/docs/zh/developer/app-store-config">商店配置</a></li><li><a class="is-current" href="/docs/zh/developer/app-store-compose-x-casaos">Docker Compose 与 x-casaos</a></li><li><a class="" href="/docs/zh/developer/app-store-build-output">构建产物</a></li><li><a class="" href="/docs/zh/developer/app-store-assets-localization">资源与本地化</a></li><li><a class="" href="/docs/zh/developer/app-store-ci-cd">应用商店 CI/CD</a></li><li><a class="" href="/docs/zh/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/zh/developer/app-store-validation-workflow">验证工作流</a></li><li><a class="" href="/docs/zh/developer/app-store-build-workflow">构建工作流</a></li><li><a class="" href="/docs/zh/developer/app-store-publishing-workflow">发布工作流</a></li><li><a class="" href="/docs/zh/developer/app-store-v1-v2-migration">从 v1 迁移到 v2</a></li><li><a class="" href="/docs/zh/developer/app-store-v1-v2-migration-checklist">迁移清单</a></li><li><a class="" href="/docs/zh/developer/app-store-faq">开发者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/zh/developer/openapi-developer-guide">ZimaOS API 指南</a></li><li><a class="" href="/docs/zh/developer/openapi-live-preview">ZimaOS API 浏览器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">版本记录</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/zh/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/zh/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/zh/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/zh/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/zh/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/zh/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/zh/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/zh/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/zh/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/zh/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/zh/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/zh/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/zh/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/zh/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/zh/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/zh/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/zh/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/zh/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/zh/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/zh/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/zh/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/zh/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Docker Compose 与 x-casaos</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.548Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>当你把 Docker 服务打包成 ZimaOS 或兼容 NAS OS 的 self-hosted 应用时，请使用本页作为字段参考。</p>
+<p>每个应用都位于 <code class="chip">Apps/&lt;目录&gt;/docker-compose.yml</code> 中。</p>
+<h2 id="本页范围" class="article-heading">本页范围<a class="article-anchor" href="#本页范围" aria-hidden="true"></a></h2><p>这一页重点说明顶层 <code class="chip">x-casaos</code> 块，因为它是当前商店构建流程所使用的“商店侧元数据契约”。</p>
+<p>对于 <code class="chip">x-casaos</code> 之外的 Compose 内容：</p>
+<ul class="doc-dots">
+<li>以 Docker Compose 官方文件参考为准：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/" class="doc-link">https://docs.docker.com/reference/compose-file/</a></li>
+<li>服务定义以官方 <code class="chip">services</code> 参考为准：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/services/" class="doc-link">https://docs.docker.com/reference/compose-file/services/</a></li>
+<li>顶层 <code class="chip">name</code> 以官方说明为准：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/version-and-name/" class="doc-link">https://docs.docker.com/reference/compose-file/version-and-name/</a></li>
+</ul>
+<p>也就是说：</p>
+<ul class="doc-dots">
+<li>标准容器运行配置属于 Docker Compose 官方规范</li>
+<li>面向商店展示和安装入口的元数据属于 <code class="chip">x-casaos</code></li>
+</ul>
+<h2 id="源码模型" class="article-heading">源码模型<a class="article-anchor" href="#源码模型" aria-hidden="true"></a></h2><p>你为每个应用维护一个 compose 文件。它同时包含：</p>
+<ul class="doc-dots">
+<li>标准 Docker Compose 内容</li>
+<li>一个顶层 <code class="chip">x-casaos</code> 块</li>
+</ul>
+<p><code class="chip">Apps/</code> 下的目录名本身并不是协议层的应用身份。构建过程真正读取的是 compose 内容，尤其是顶层 <code class="chip">name</code> 和 <code class="chip">x-casaos.id</code>。</p>
+<h2 id="最小示例" class="article-heading">最小示例<a class="article-anchor" href="#最小示例" aria-hidden="true"></a></h2><figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my-app</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">my-app:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">myrepo/my-app:1.0.0</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8080</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">index:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">port_map:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">http</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">https://cdn.example.com/my-app/icon.svg</span></span><br><span class="line">  <span class="attr">title:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">My</span> <span class="string">App</span></span><br><span class="line">  <span class="attr">tagline:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">Does</span> <span class="string">amazing</span> <span class="string">things</span></span><br><span class="line">  <span class="attr">description:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">A</span> <span class="string">great</span> <span class="string">app</span> <span class="string">that</span> <span class="string">does</span> <span class="string">amazing</span> <span class="string">things.</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">Your</span> <span class="string">Name</span></span><br><span class="line">  <span class="attr">developer:</span> <span class="string">Original</span> <span class="string">Developer</span></span><br><span class="line">  <span class="attr">category:</span> <span class="string">Productivity</span></span><br><span class="line">  <span class="attr">architectures:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">amd64</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">  <span class="attr">update_at:</span> <span class="string">&quot;2026-03-01&quot;</span></span><br><span class="line">  <span class="attr">release_notes:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">First</span> <span class="string">release</span></span><br></pre></td></tr></table></div></figure>
+
+<h2 id="x-casaos-之外的-Compose-规则" class="article-heading"><code class="chip">x-casaos</code> 之外的 Compose 规则<a class="article-anchor" href="#x-casaos-之外的-Compose-规则" aria-hidden="true"></a></h2><p>对于所有非 <code class="chip">x-casaos</code> 内容，这个仓库不重新定义 Docker Compose 语义，直接以官方文档为准：</p>
+<ul class="doc-dots">
+<li>Compose file reference: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/" class="doc-link">https://docs.docker.com/reference/compose-file/</a></li>
+<li>Services reference: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/services/" class="doc-link">https://docs.docker.com/reference/compose-file/services/</a></li>
+<li>Project <code class="chip">name</code> reference: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/version-and-name/" class="doc-link">https://docs.docker.com/reference/compose-file/version-and-name/</a></li>
+<li>Project naming behavior: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/compose/how-tos/project-name/" class="doc-link">https://docs.docker.com/compose/how-tos/project-name/</a></li>
+</ul>
+<p>仓库自身额外关心的只有：</p>
+<ul class="doc-dots">
+<li>compose 必须是合法 YAML</li>
+<li>compose 必须能通过 <code class="chip">docker compose config -q</code></li>
+<li>顶层 <code class="chip">name</code> 必须满足仓库校验规则</li>
+<li><code class="chip">services.&lt;name&gt;.x-casaos</code> 属于旧式写法，v2 构建时会被清理</li>
+</ul>
+<h2 id="x-casaos-总览" class="article-heading">x-casaos 总览<a class="article-anchor" href="#x-casaos-总览" aria-hidden="true"></a></h2><p>顶层 <code class="chip">x-casaos</code> 中的字段可以分成两类：</p>
+<ul class="doc-dots">
+<li>构建后仍保留在 <code class="chip">docker-compose.yml</code> 中的运行时 &#x2F; 入口字段</li>
+<li>构建后提取到 <code class="chip">meta.json</code> 中的元数据字段</li>
+</ul>
+<h2 id="字段矩阵" class="article-heading">字段矩阵<a class="article-anchor" href="#字段矩阵" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th align="right">必填</th>
+<th align="right">源码是否本地化</th>
+<th>构建输出位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code class="chip">id</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">是</td>
+<td align="right">否</td>
+<td>构建后 compose + <code class="chip">meta.json</code> &#x2F; index 派生输出</td>
+</tr>
+<tr>
+<td><code class="chip">main</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">是</td>
+<td align="right">否</td>
+<td>构建后 compose</td>
+</tr>
+<tr>
+<td><code class="chip">index</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">实际上建议视为必填</td>
+<td align="right">否</td>
+<td>构建后 compose</td>
+</tr>
+<tr>
+<td><code class="chip">port_map</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">是</td>
+<td align="right">否</td>
+<td>构建后 compose</td>
+</tr>
+<tr>
+<td><code class="chip">scheme</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td>构建后 compose</td>
+</tr>
+<tr>
+<td><code class="chip">icon</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">是</td>
+<td align="right">否</td>
+<td>构建后 compose，构建时会重写</td>
+</tr>
+<tr>
+<td><code class="chip">title</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">是</td>
+<td align="right">是</td>
+<td>构建后 compose，按 locale 解析</td>
+</tr>
+<tr>
+<td><code class="chip">tagline</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">建议提供</td>
+<td align="right">是</td>
+<td><code class="chip">meta.json</code>，也可能进入 index 列表</td>
+</tr>
+<tr>
+<td><code class="chip">description</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">建议提供</td>
+<td align="right">是</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">thumbnail</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code> 中的构建后资源路径</td>
+</tr>
+<tr>
+<td><code class="chip">screenshot_link</code></td>
+<td><code class="chip">string[]</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code> 中的构建后资源路径列表</td>
+</tr>
+<tr>
+<td><code class="chip">tips</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">否</td>
+<td align="right">是</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">author</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">建议提供</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code>，也常进入 index 列表</td>
+</tr>
+<tr>
+<td><code class="chip">developer</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">建议提供</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code>，也常进入 index 列表</td>
+</tr>
+<tr>
+<td><code class="chip">category</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">是</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code>，也常进入 index 列表</td>
+</tr>
+<tr>
+<td><code class="chip">architectures</code></td>
+<td><code class="chip">string[]</code></td>
+<td align="right">建议提供</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code>，也常进入 index 列表</td>
+</tr>
+<tr>
+<td><code class="chip">version</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">是</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code>，也可能进入 index 列表</td>
+</tr>
+<tr>
+<td><code class="chip">update_at</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">release_notes</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">否</td>
+<td align="right">是</td>
+<td><code class="chip">meta.json.release_note</code></td>
+</tr>
+<tr>
+<td><code class="chip">website</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">repo</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">support</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">docs</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">否</td>
+<td align="right">否</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="运行时字段" class="article-heading">运行时字段<a class="article-anchor" href="#运行时字段" aria-hidden="true"></a></h2><h3 id="id" class="article-heading"><code class="chip">id</code><a class="article-anchor" href="#id" aria-hidden="true"></a></h3><p>作用：<br>稳定的应用协议身份标识。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>每个源 compose 都必须声明</li>
+<li>必须使用类似 <code class="chip">com.example.myapp</code> 的域名倒置格式</li>
+<li>仅允许字母、数字、<code class="chip">.</code>、<code class="chip">_</code>、<code class="chip">-</code></li>
+<li>构建时会规范化为小写</li>
+<li>至少包含两个非空的点分段</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+<li>同时传播到构建后的元数据和列表数据中</li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>把应用目录名当作应用身份</li>
+<li>使用过短、非域名风格的字符串</li>
+</ul>
+<h3 id="main" class="article-heading"><code class="chip">main</code><a class="article-anchor" href="#main" aria-hidden="true"></a></h3><p>作用：<br>指定提供主要浏览器界面的服务名。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>必填</li>
+<li>必须匹配 <code class="chip">services</code> 里的某个服务名</li>
+<li>应指向真正面向用户的 Web 服务，而不是辅助容器</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>把 <code class="chip">main</code> 指向数据库容器</li>
+</ul>
+<h3 id="index" class="article-heading"><code class="chip">index</code><a class="article-anchor" href="#index" aria-hidden="true"></a></h3><p>作用：<br>定义客户端打开应用时附加的入口路径。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>通常写成 <code class="chip">/</code></li>
+<li>应与应用真实 Web 入口一致</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+</ul>
+<h3 id="port-map" class="article-heading"><code class="chip">port_map</code><a class="article-anchor" href="#port-map" aria-hidden="true"></a></h3><p>作用：<br>定义用户实际访问的 Web UI 对外端口。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>必填</li>
+<li>必须写成 YAML 字符串，例如 <code class="chip">&quot;8080&quot;</code></li>
+<li>应对应浏览器实际打开的发布端口</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>写成 <code class="chip">port_map: 8080</code> 而不是带引号的字符串</li>
+</ul>
+<h3 id="scheme" class="article-heading"><code class="chip">scheme</code><a class="article-anchor" href="#scheme" aria-hidden="true"></a></h3><p>作用：<br>指定客户端应以 <code class="chip">http</code> 还是 <code class="chip">https</code> 打开应用。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>应与实际对外暴露的访问协议一致</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+</ul>
+<h3 id="icon" class="article-heading"><code class="chip">icon</code><a class="article-anchor" href="#icon" aria-hidden="true"></a></h3><p>作用：<br>提供安装后仪表盘展示用的图标 URL。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>必填</li>
+<li>源 compose 中可以先写任意可访问 URL</li>
+<li>构建输出会把它重写为 <code class="chip">--base-url</code> 下的构建图标地址</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+<li>最终会重写为 <code class="chip">apps/&#123;app-id&#125;/assets/icon.*</code></li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>误以为源 compose 里的这个值会原样保留到构建产物中</li>
+</ul>
+<h3 id="title" class="article-heading"><code class="chip">title</code><a class="article-anchor" href="#title" aria-hidden="true"></a></h3><p>作用：<br>提供应用显示名称。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>必填</li>
+<li>源码中必须是多语言对象</li>
+<li>应至少包含 <code class="chip">en_US</code></li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>保留在构建后 compose 中</li>
+<li>在每个生成语言版本中解析成纯字符串</li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>把它写成纯字符串而不是 locale-keyed 对象</li>
+</ul>
+<h2 id="元数据字段" class="article-heading">元数据字段<a class="article-anchor" href="#元数据字段" aria-hidden="true"></a></h2><h3 id="tagline" class="article-heading"><code class="chip">tagline</code><a class="article-anchor" href="#tagline" aria-hidden="true"></a></h3><p>作用：<br>提供一句话短摘要，用于列表和详情等展示场景。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>建议提供</li>
+<li>源码中是多语言对象</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>提取到构建后的 <code class="chip">meta.json</code></li>
+<li>也可能进入 <code class="chip">index.json</code> 等列表数据</li>
+</ul>
+<h3 id="description" class="article-heading"><code class="chip">description</code><a class="article-anchor" href="#description" aria-hidden="true"></a></h3><p>作用：<br>提供应用长描述。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>建议提供</li>
+<li>源码中是多语言对象</li>
+<li>可包含 markdown 文本，具体渲染效果取决于客户端</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>提取到构建后的 <code class="chip">meta.json</code></li>
+<li>在每个生成语言版本中解析成纯字符串</li>
+</ul>
+<h3 id="thumbnail" class="article-heading"><code class="chip">thumbnail</code><a class="article-anchor" href="#thumbnail" aria-hidden="true"></a></h3><p>作用：<br>提供更适合详情页或商店展示的大图。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>源值通常是应用目录中的某个文件名</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>在 <code class="chip">meta.json</code> 中表现为构建后的资源路径</li>
+<li>源文件会被处理后输出到 <code class="chip">apps/&#123;app-id&#125;/assets/</code></li>
+</ul>
+<h3 id="screenshot-link" class="article-heading"><code class="chip">screenshot_link</code><a class="article-anchor" href="#screenshot-link" aria-hidden="true"></a></h3><p>作用：<br>提供一个或多个应用截图，用于详情页展示。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>源码中是截图文件名数组</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>在 <code class="chip">meta.json</code> 中表现为构建后的资源路径列表</li>
+</ul>
+<h3 id="tips" class="article-heading"><code class="chip">tips</code><a class="article-anchor" href="#tips" aria-hidden="true"></a></h3><p>作用：<br>承载安装前或安装过程中的用户提示。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>是一个对象，其值通常是多语言文本</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">tips:</span></span><br><span class="line">  <span class="attr">before_install:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br><span class="line">    <span class="attr">zh_CN:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br></pre></td></tr></table></div></figure>
+
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>提取到构建后的 <code class="chip">meta.json</code></li>
+<li>各 locale 值会按生成语言解析</li>
+</ul>
+<h3 id="author" class="article-heading"><code class="chip">author</code><a class="article-anchor" href="#author" aria-hidden="true"></a></h3><p>作用：<br>标识打包者或商店侧维护者。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>建议提供</li>
+<li>纯字符串</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+<li>也常被包含进应用列表数据</li>
+</ul>
+<h3 id="developer" class="article-heading"><code class="chip">developer</code><a class="article-anchor" href="#developer" aria-hidden="true"></a></h3><p>作用：<br>标识上游项目或原始开发者。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>建议提供</li>
+<li>纯字符串</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+<li>也常被包含进应用列表数据</li>
+</ul>
+<h3 id="category" class="article-heading"><code class="chip">category</code><a class="article-anchor" href="#category" aria-hidden="true"></a></h3><p>作用：<br>把应用归类到标准化的 ZimaOS 商店分类中。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>实际上应视为必填</li>
+<li>必须是以下之一：<ul class="doc-dots">
+<li><code class="chip">Media</code></li>
+<li><code class="chip">Productivity</code></li>
+<li><code class="chip">Home</code></li>
+<li><code class="chip">Networking</code></li>
+<li><code class="chip">AI</code></li>
+<li><code class="chip">Finance</code></li>
+<li><code class="chip">Social</code></li>
+<li><code class="chip">Developer</code></li>
+<li><code class="chip">Others</code></li>
+</ul>
+</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+<li>也常被包含进应用列表数据</li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>使用自由发挥的分类名称</li>
+</ul>
+<h3 id="architectures" class="article-heading"><code class="chip">architectures</code><a class="article-anchor" href="#architectures" aria-hidden="true"></a></h3><p>作用：<br>声明应用包支持的 CPU 架构。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>建议提供</li>
+<li>是字符串数组</li>
+<li>常见值包括 <code class="chip">amd64</code> 和 <code class="chip">arm64</code></li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+<li>也常被包含进应用列表数据</li>
+</ul>
+<h3 id="version" class="article-heading"><code class="chip">version</code><a class="article-anchor" href="#version" aria-hidden="true"></a></h3><p>作用：<br>用于商店展示和升级理解的应用版本号。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>对发布到新版商店的应用，必填</li>
+<li>纯字符串</li>
+<li>当发布的应用更新发生了用户应感知的变化时，应同步变更</li>
+<li>建议尽量使用 semver 风格值，例如 <code class="chip">1.2.3</code></li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+<li>也可能进入列表数据</li>
+</ul>
+<p>为什么重要：</p>
+<ul class="doc-dots">
+<li>未来应用升级判断会依赖这个字段来判断用户将升级到哪个版本</li>
+<li>如果没有这个字段，用户和客户端只能退回到 <code class="chip">content_hash</code> 这类底层变化信号</li>
+<li>缺失或非 semver 的版本号会削弱更新透明度，并可能不进入部分面向列表的输出</li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>把 <code class="chip">version</code> 仅当作展示文案</li>
+<li>有实际更新却不修改版本号</li>
+<li>使用难以作为正常发布版本解释的随意字符串</li>
+</ul>
+<h3 id="update-at" class="article-heading"><code class="chip">update_at</code><a class="article-anchor" href="#update-at" aria-hidden="true"></a></h3><p>作用：<br>可选的更新时间字段，用于增强商店展示。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>推荐格式为 <code class="chip">YYYY-MM-DD</code></li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+</ul>
+<h3 id="release-notes" class="article-heading"><code class="chip">release_notes</code><a class="article-anchor" href="#release-notes" aria-hidden="true"></a></h3><p>作用：<br>提供版本说明或更新摘要。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>源码中是多语言对象</li>
+<li>源字段名必须保持为 <code class="chip">release_notes</code></li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>提取到构建后的 <code class="chip">meta.json</code></li>
+<li>字段名会改写为 <code class="chip">release_note</code></li>
+</ul>
+<p>常见错误：</p>
+<ul class="doc-dots">
+<li>在源码里写成 <code class="chip">release_note</code> 而不是 <code class="chip">release_notes</code></li>
+</ul>
+<h3 id="website" class="article-heading"><code class="chip">website</code><a class="article-anchor" href="#website" aria-hidden="true"></a></h3><p>作用：<br>链接到产品官网或主页。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>纯字符串 URL</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+</ul>
+<h3 id="repo" class="article-heading"><code class="chip">repo</code><a class="article-anchor" href="#repo" aria-hidden="true"></a></h3><p>作用：<br>链接到源码仓库或项目仓库。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>纯字符串 URL</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+</ul>
+<h3 id="support" class="article-heading"><code class="chip">support</code><a class="article-anchor" href="#support" aria-hidden="true"></a></h3><p>作用：<br>链接到支持页面、issue tracker、论坛或帮助中心。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>纯字符串 URL</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+</ul>
+<h3 id="docs" class="article-heading"><code class="chip">docs</code><a class="article-anchor" href="#docs" aria-hidden="true"></a></h3><p>作用：<br>链接到被打包应用自身的文档页面。</p>
+<p>规则：</p>
+<ul class="doc-dots">
+<li>可选</li>
+<li>纯字符串 URL</li>
+</ul>
+<p>构建行为：</p>
+<ul class="doc-dots">
+<li>写入 <code class="chip">meta.json</code></li>
+</ul>
+<h2 id="哪些字段留在构建后-compose，哪些进入-meta-json" class="article-heading">哪些字段留在构建后 compose，哪些进入 <code class="chip">meta.json</code><a class="article-anchor" href="#哪些字段留在构建后-compose，哪些进入-meta-json" aria-hidden="true"></a></h2><p>保留在构建后 compose 中的字段：</p>
+<ul class="doc-dots">
+<li><code class="chip">id</code></li>
+<li><code class="chip">main</code></li>
+<li><code class="chip">index</code></li>
+<li><code class="chip">port_map</code></li>
+<li><code class="chip">scheme</code></li>
+<li><code class="chip">icon</code></li>
+<li><code class="chip">title</code></li>
+</ul>
+<p>移动到构建后 <code class="chip">meta.json</code> 的字段：</p>
+<ul class="doc-dots">
+<li><code class="chip">tagline</code></li>
+<li><code class="chip">description</code></li>
+<li><code class="chip">thumbnail</code></li>
+<li><code class="chip">screenshot_link</code></li>
+<li><code class="chip">tips</code></li>
+<li><code class="chip">author</code></li>
+<li><code class="chip">developer</code></li>
+<li><code class="chip">category</code></li>
+<li><code class="chip">architectures</code></li>
+<li><code class="chip">version</code></li>
+<li><code class="chip">update_at</code></li>
+<li><code class="chip">release_note</code></li>
+<li><code class="chip">website</code></li>
+<li><code class="chip">repo</code></li>
+<li><code class="chip">support</code></li>
+<li><code class="chip">docs</code></li>
+</ul>
+<h2 id="字段放置规则" class="article-heading">字段放置规则<a class="article-anchor" href="#字段放置规则" aria-hidden="true"></a></h2><p>编写源 compose 时建议按下面的分工放置内容：</p>
+<ul class="doc-dots">
+<li>运行入口和访问相关信息放在 <code class="chip">x-casaos</code> 的运行时字段中</li>
+<li>商店展示和元数据放在 <code class="chip">x-casaos</code> 的元数据字段中</li>
+<li>容器运行细节继续放在标准 Docker Compose 的 <code class="chip">services</code>、<code class="chip">volumes</code>、<code class="chip">networks</code>、<code class="chip">environment</code> 等块中</li>
+</ul>
+<h2 id="常见错误汇总" class="article-heading">常见错误汇总<a class="article-anchor" href="#常见错误汇总" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>在期望 locale-keyed 对象的地方写成纯字符串</li>
+<li>把 <code class="chip">main</code> 指向非 UI 服务</li>
+<li>把 <code class="chip">port_map</code> 写成整数而不是带引号的字符串</li>
+<li>使用非官方分类值</li>
+<li>忘记 <code class="chip">title</code> 会留在构建后 compose，而 <code class="chip">tagline</code> 会进入 <code class="chip">meta.json</code></li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.548Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/developer/app-store-config"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">商店配置</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/developer/app-store-build-output"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">构建产物</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E9%A1%B5%E8%8C%83%E5%9B%B4"><span class="toc-text">本页范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E6%A8%A1%E5%9E%8B"><span class="toc-text">源码模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%A4%BA%E4%BE%8B"><span class="toc-text">最小示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x-casaos-%E4%B9%8B%E5%A4%96%E7%9A%84-Compose-%E8%A7%84%E5%88%99"><span class="toc-text">x-casaos 之外的 Compose 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x-casaos-%E6%80%BB%E8%A7%88"><span class="toc-text">x-casaos 总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E7%9F%A9%E9%98%B5"><span class="toc-text">字段矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AD%97%E6%AE%B5"><span class="toc-text">运行时字段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#id"><span class="toc-text">id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main"><span class="toc-text">main</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index"><span class="toc-text">index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#port-map"><span class="toc-text">port_map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scheme"><span class="toc-text">scheme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#icon"><span class="toc-text">icon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#title"><span class="toc-text">title</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E5%AD%97%E6%AE%B5"><span class="toc-text">元数据字段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tagline"><span class="toc-text">tagline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#description"><span class="toc-text">description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thumbnail"><span class="toc-text">thumbnail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#screenshot-link"><span class="toc-text">screenshot_link</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-text">tips</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#author"><span class="toc-text">author</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#developer"><span class="toc-text">developer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#category"><span class="toc-text">category</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architectures"><span class="toc-text">architectures</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#version"><span class="toc-text">version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update-at"><span class="toc-text">update_at</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#release-notes"><span class="toc-text">release_notes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#website"><span class="toc-text">website</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#repo"><span class="toc-text">repo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#support"><span class="toc-text">support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docs"><span class="toc-text">docs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%AA%E4%BA%9B%E5%AD%97%E6%AE%B5%E7%95%99%E5%9C%A8%E6%9E%84%E5%BB%BA%E5%90%8E-compose%EF%BC%8C%E5%93%AA%E4%BA%9B%E8%BF%9B%E5%85%A5-meta-json"><span class="toc-text">哪些字段留在构建后 compose，哪些进入 meta.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E6%94%BE%E7%BD%AE%E8%A7%84%E5%88%99"><span class="toc-text">字段放置规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%B1%87%E6%80%BB"><span class="toc-text">常见错误汇总</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item current_page_item"><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/developer/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">存储与文件系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/zh/developer/zfs-setup">ZFS 设置</a></li><li><a class="" href="/docs/zh/developer/nfs-on-zimaos">NFS 文件共享</a></li><li><a class="" href="/docs/zh/developer/folder-encryption">加密文件夹</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项概览</a></li><li><a class="" href="/docs/zh/developer/raid6-setup">创建 RAID 6</a></li><li><a class="" href="/docs/zh/developer/raid-rebuild-after-reinstall">重装后的 RAID 重建</a></li><li><a class="" href="/docs/zh/developer/iscsi-guide">iSCSI 使用指南</a></li><li><a class="" href="/docs/zh/developer/iscsi-setup">iSCSI 设置</a></li><li><a class="" href="/docs/zh/developer/rsync-backup-clones">Rsync 备份克隆</a></li><li><a class="" href="/docs/zh/developer/synology-smb-connect">连接群晖 SMB</a></li><li><a class="" href="/docs/zh/developer/zimaos-qts-two-way-sync-guide">QTS 双向同步</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">网络与协议</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/zh/developer/networking">网络配置</a></li><li><a class="" href="/docs/zh/developer/how-to-open-ssh-in-zimaos">启用 SSH</a></li><li><a class="" href="/docs/zh/developer/nas-transfer-speed-troubleshooting">网络传输速度</a></li><li><a class="" href="/docs/zh/developer/ssh-setup">SSH 高级设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">开发</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">应用商店开发</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li><li><a class="" href="/docs/zh/developer/app-store-repository-structure">仓库结构</a></li><li><a class="" href="/docs/zh/developer/app-store-config">商店配置</a></li><li><a class="is-current" href="/docs/zh/developer/app-store-compose-x-casaos">Docker Compose 与 x-casaos</a></li><li><a class="" href="/docs/zh/developer/app-store-build-output">构建产物</a></li><li><a class="" href="/docs/zh/developer/app-store-assets-localization">资源与本地化</a></li><li><a class="" href="/docs/zh/developer/app-store-ci-cd">应用商店 CI/CD</a></li><li><a class="" href="/docs/zh/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/zh/developer/app-store-validation-workflow">验证工作流</a></li><li><a class="" href="/docs/zh/developer/app-store-build-workflow">构建工作流</a></li><li><a class="" href="/docs/zh/developer/app-store-publishing-workflow">发布工作流</a></li><li><a class="" href="/docs/zh/developer/app-store-v1-v2-migration">从 v1 迁移到 v2</a></li><li><a class="" href="/docs/zh/developer/app-store-v1-v2-migration-checklist">迁移清单</a></li><li><a class="" href="/docs/zh/developer/app-store-faq">开发者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/zh/developer/openapi-developer-guide">ZimaOS API 指南</a></li><li><a class="" href="/docs/zh/developer/openapi-live-preview">ZimaOS API 浏览器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">版本记录</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/zh/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/zh/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/zh/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/zh/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/zh/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/zh/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/zh/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/zh/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/zh/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/zh/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/zh/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/zh/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/zh/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/zh/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/zh/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/zh/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/zh/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/zh/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/zh/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/zh/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/zh/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/zh/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/app-store-compose-x-casaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/app-store-compose-x-casaos" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/developer/app-store-compose-x-casaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/developer/app-store-compose-x-casaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/developer/app-store-compose-x-casaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

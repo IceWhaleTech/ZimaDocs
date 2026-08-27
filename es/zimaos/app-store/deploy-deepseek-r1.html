@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Desplegar Deepseek R1 en ZimaOS | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/zimaos/app-store/deploy-deepseek-r1">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/deploy-deepseek-r1">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/deploy-deepseek-r1">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/deploy-deepseek-r1">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/deploy-deepseek-r1">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/deploy-deepseek-r1">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="El lanzamiento de Deepseek ha generado una gran atención, con su sólido rendimiento y su enfoque de código abierto, lo que permite que más personas experimenten con los modelos de lenguaje">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Desplegar Deepseek R1 en ZimaOS">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaos/app-store/deploy-deepseek-r1">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="El lanzamiento de Deepseek ha generado una gran atención, con su sólido rendimiento y su enfoque de código abierto, lo que permite que más personas experimenten con los modelos de lenguaje">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739950777131_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739950805989_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739950829035_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739950989104_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739950995830_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739951002382_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739951092182_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739951098726_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739951105561_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739951128451_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739951166823_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.307Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.307Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1739950777131_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Desplegar Deepseek R1 en ZimaOS",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.307Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/es/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/es/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Desplegar Deepseek R1 en ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/deploy-deepseek-r1">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/deploy-deepseek-r1">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/app-store/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimedia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/es/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/es/zimaos/app-store/nvr-camera-server">Servidor de cámaras NVR</a></li><li><a class="" href="/docs/es/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-setup-guide">Servidor multimedia Plex</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-and-gpu-transcoding">Transcodificación Plex por GPU</a></li><li><a class="" href="/docs/es/zimaos/app-store/sync-photos-with-immich">Sincronización de fotos con Immich</a></li><li><a class="" href="/docs/es/zimaos/app-store/immich-photo-backup">Copia de fotos con Immich</a></li><li><a class="" href="/docs/es/zimaos/app-store/cli-guide">Sincronización masiva de fotos</a></li><li><a class="" href="/docs/es/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicaciones autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/es/zimaos/app-store/syncthing-setup">Sincronización con Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/webtorrent-feature">Descargador de torrents</a></li><li><a class="" href="/docs/es/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ngx-install">Gestión de documentos</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ai-install">Procesamiento de documentos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/syncthing-install">Configuración de Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/radarr-setup">Gestor de películas Radarr</a></li><li><a class="" href="/docs/es/zimaos/app-store/azuracast-install">Radio por Internet</a></li><li><a class="" href="/docs/es/zimaos/app-store/zabbix-install-guide">Monitorización de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA y aprendizaje automático</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/es/zimaos/app-store/enable-ai">Activar búsqueda con IA</a></li><li><a class="is-current" href="/docs/es/zimaos/app-store/deploy-deepseek-r1">Desplegar DeepSeek R1</a></li><li><a class="" href="/docs/es/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/es/zimaos/app-store/llm-manual-download">Descargar modelos de IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/frigate-ollama-setup">Descripción de fotos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Proyectos creativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/es/zimaos/app-store/pve-on-debian-for-i226">Ejecutar PVE sobre Debian</a></li><li><a class="" href="/docs/es/zimaos/app-store/awesome-third-party-stores">Tiendas de apps de la comunidad</a></li><li><a class="" href="/docs/es/zimaos/app-store/batocera-arcade-setup">Arcade con Batocera</a></li><li><a class="" href="/docs/es/zimaos/app-store/jellyfin-setup">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/oculus-quest-media-server">Streaming de Oculus VR</a></li><li><a class="" href="/docs/es/zimaos/app-store/minecraft-friendship-service">Servidor de Minecraft</a></li><li><a class="" href="/docs/es/zimaos/app-store/self-hosted-apps">Aplicaciones autoalojadas</a></li><li><a class="" href="/docs/es/zimaos/app-store/zimablade-cluster-pve">Migración de clúster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para desarrolladores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una tienda de aplicaciones</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Desplegar Deepseek R1 en ZimaOS</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.307Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>El lanzamiento de <strong>Deepseek</strong> ha generado una gran atención, con su sólido rendimiento y su enfoque de código abierto, lo que permite que más personas experimenten con los modelos de lenguaje de vanguardia. ¿Estás ansioso por explorar personalmente las potentes capacidades de Deepseek? ¡<strong>ZimaOS</strong> simplifica y agiliza el despliegue y uso de modelos grandes!<br>Este tutorial completo te guiará a través del despliegue sin problemas del modelo Deepseek R1 en ZimaOS mediante OpenWebUI, permitiéndote establecer rápidamente tu propio asistente AI local.</p>
+<h2 id="Empezando" class="article-heading">Empezando<a class="article-anchor" href="#Empezando" aria-hidden="true"></a></h2><p>Para los nuevos en el mundo de la IA, podrías preguntarte: ¿Por qué elegir Deepseek R1:14B y ZimaOS? ¿Y qué es exactamente OpenWebUI?</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739950777131_image.png"></span></p><p><strong>Deepseek R1:14B: Alto rendimiento con bajo requerimiento de recursos</strong><br>La serie Deepseek R1 se destaca por su excepcional rendimiento y naturaleza de código abierto. La versión 14B ofrece potentes capacidades de lenguaje mientras mantiene bajos los requerimientos de recursos, lo que la hace ideal para su despliegue en dispositivos personales o sistemas NAS.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739950805989_image.png"></span></p><p><strong>OpenWebUI: Interfaz fácil de usar, lista para usar</strong><br>OpenWebUI ofrece una interfaz web limpia e intuitiva, lo que te permite desplegar e interactuar fácilmente con modelos de lenguaje grandes. Accede a tu asistente AI en cualquier momento y lugar, directamente a través de tu navegador.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739950829035_image.png"></span></p><p><strong>ZimaOS: Despliegue simplificado con seguridad de datos</strong><br>ZimaOS sobresale en facilidad de uso y seguridad de datos. Con su integración con la App Store y OpenWebUI, desplegar Deepseek R1:14B es tan fácil como instalar una aplicación móvil, sin necesidad de configuraciones complejas de Docker. Una vez desplegado, tu asistente AI puede ser accesible desde todos los dispositivos de tu red local, garantizando “desplegar una vez, usar en todas partes”.<br>En este tutorial, utilizaremos el <strong>ZimaCube Pro Creator Pack</strong> y el <strong>modelo Deepseek R1:14B</strong> como ejemplos. El ZimaCube Pro Creator Pack viene preinstalado con ZimaOS y está equipado con una GPU profesional NVIDIA RTX 2000 Ada, con 16 GB de VRAM, más que suficiente para ejecutar Deepseek R1:14B y modelos aún más grandes sin problemas.</p>
+<p>Para usuarios con otros dispositivos x86, necesitarás lo siguiente:<br><strong>Un dispositivo con una GPU que tenga al menos 16 GB de VRAM</strong>: Ejecutar modelos grandes requiere una cantidad significativa de memoria GPU.<br><strong>Instalar ZimaOS</strong>: Visita la <a href="../how-to-install-zimaos" class="doc-link">guía de instalación de ZimaOS</a> para descargar e instalar ZimaOS en tu dispositivo.</p>
+<h2 id="Instalacion-y-Despliegue" class="article-heading">Instalación y Despliegue<a class="article-anchor" href="#Instalacion-y-Despliegue" aria-hidden="true"></a></h2><p><strong>Inicia sesión en ZimaOS y abre la App Store</strong>: Busca “Open WebUI” en la barra de búsqueda. Localiza e instala la aplicación Open WebUI. Una vez instalada, haz clic en el ícono de Open WebUI en la lista de aplicaciones para lanzarlo.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739950989104_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739950995830_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739951002382_image.png"></span></p><p><strong>Configura el modelo.</strong> En tu primer lanzamiento de OpenWebUI, necesitarás configurarlo:</p>
+<ul class="doc-dots">
+<li>Regístrate e inicia sesión en tu cuenta.</li>
+<li>En la interfaz de chat, haz clic en “Seleccionar un modelo” en la esquina superior izquierda.</li>
+<li>Ingresa “deepseek-r1:14b” y selecciona “Obtener ‘deepseek-r1:14b’ de <a target="_blank" rel="noopener external nofollow noreferrer" href="https://ollama.com/" class="doc-link">Ollama.com</a>.”</li>
+</ul>
+<p>Espera pacientemente a que se descargue el archivo del modelo.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739951092182_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739951098726_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739951105561_image.png"></span></p>
+<h2 id="Comienza-a-usar-Deepseek" class="article-heading">Comienza a usar Deepseek<a class="article-anchor" href="#Comienza-a-usar-Deepseek" aria-hidden="true"></a></h2><p>Ahora, todo lo que tienes que hacer es ingresar tu solicitud en la interfaz de chat, enviarla y esperar la respuesta del modelo.</p>
+<p>Haz clic en “Nuevo Chat” en la barra de navegación izquierda de la interfaz de Open WebUI. Ingresa la tarea con la que te gustaría que el modelo te ayudara en el cuadro de diálogo. Haz clic en “Enviar”, y Deepseek R1:14B generará una respuesta para ti.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739951128451_image.png"></span></p><p>¡Siéntete libre de participar en conversaciones de múltiples turnos con Deepseek R1:14B y explorar sus capacidades!</p>
+<h2 id="El-Valor-y-las-Aplicaciones-de-la-IA-en-el-Borde" class="article-heading">El Valor y las Aplicaciones de la IA en el Borde<a class="article-anchor" href="#El-Valor-y-las-Aplicaciones-de-la-IA-en-el-Borde" aria-hidden="true"></a></h2><p>Los modelos grandes en el borde están transformando la experiencia de la inteligencia móvil con <strong>seguridad + eficiencia</strong>!</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739951166823_image.png"></span></p><p>Aprovechando el procesamiento de datos localizados y una respuesta de baja latencia, proporcionan una base técnica confiable para la protección de la privacidad, trabajo fuera de línea y servicios personalizados. Deepseek R1:14B y modelos similares de IA en el borde ya cubren escenarios como gestión de conocimiento, lluvia de ideas creativas y asistencia en programación.</p>
+<p>Con la solución simplificada de despliegue de ZimaOS, puedes tener fácilmente un modelo grande dedicado sin necesidad de configuraciones profesionales, logrando <strong>“instalar tan fácil como una aplicación móvil, desplegar una vez y usar en todas partes.”</strong> Combinado con el control de hogares inteligentes y las capacidades de análisis de datos de campo cercano, tiene el potencial de convertirse en un compañero inteligente integral para el trabajo y la vida.</p>
+<h2 id="Conclusion" class="article-heading">Conclusión<a class="article-anchor" href="#Conclusion" aria-hidden="true"></a></h2><p>Esperamos que este tutorial te haya proporcionado el conocimiento necesario para desplegar modelos grandes en ZimaOS usando OpenWebUI con solo un clic. La combinación de ZimaOS y Deepseek R1:14B abre la puerta al mundo de la IA local. ¡Comienza tu viaje con IA local hoy mismo!</p>
+<p>Si encuentras algún problema durante el uso, no dudes en comunicarte con nosotros en cualquier momento. También puedes unirte a nuestra <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">comunidad</a> y <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.com/invite/uuNfKzG5" class="doc-link">Discord</a> para hablar más sobre IA y ZimaOS. ¡Esperamos tus comentarios!</p>
+<h2 id="Enlaces-Relacionados" class="article-heading">Enlaces Relacionados<a class="article-anchor" href="#Enlaces-Relacionados" aria-hidden="true"></a></h2><p><strong>ZimaOS</strong>：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS" class="doc-link">https://github.com/IceWhaleTech/ZimaOS</a><br><strong>Deepseek</strong>：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.deepseek.com/" class="doc-link">https://www.deepseek.com/</a><br><strong>OpenWebUI</strong>：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/open-webui/open-webui" class="doc-link">https://github.com/open-webui/open-webui</a><br><strong>ZimaCube Pro Creator Pack</strong>: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/products/zimacube-pro-creator-pack" class="doc-link">https://shop.zimaspace.com/products/zimacube-pro-creator-pack</a></p>
+<hr>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.307Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/zimaos/app-store/enable-ai"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Activar búsqueda con IA</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/zimaos/app-store/hermes-agent-setup"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Agente Hermes</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Empezando"><span class="toc-text">Empezando</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instalacion-y-Despliegue"><span class="toc-text">Instalación y Despliegue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comienza-a-usar-Deepseek"><span class="toc-text">Comienza a usar Deepseek</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#El-Valor-y-las-Aplicaciones-de-la-IA-en-el-Borde"><span class="toc-text">El Valor y las Aplicaciones de la IA en el Borde</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusión</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enlaces-Relacionados"><span class="toc-text">Enlaces Relacionados</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/app-store/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimedia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/es/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/es/zimaos/app-store/nvr-camera-server">Servidor de cámaras NVR</a></li><li><a class="" href="/docs/es/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-setup-guide">Servidor multimedia Plex</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-and-gpu-transcoding">Transcodificación Plex por GPU</a></li><li><a class="" href="/docs/es/zimaos/app-store/sync-photos-with-immich">Sincronización de fotos con Immich</a></li><li><a class="" href="/docs/es/zimaos/app-store/immich-photo-backup">Copia de fotos con Immich</a></li><li><a class="" href="/docs/es/zimaos/app-store/cli-guide">Sincronización masiva de fotos</a></li><li><a class="" href="/docs/es/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicaciones autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/es/zimaos/app-store/syncthing-setup">Sincronización con Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/webtorrent-feature">Descargador de torrents</a></li><li><a class="" href="/docs/es/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ngx-install">Gestión de documentos</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ai-install">Procesamiento de documentos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/syncthing-install">Configuración de Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/radarr-setup">Gestor de películas Radarr</a></li><li><a class="" href="/docs/es/zimaos/app-store/azuracast-install">Radio por Internet</a></li><li><a class="" href="/docs/es/zimaos/app-store/zabbix-install-guide">Monitorización de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA y aprendizaje automático</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/es/zimaos/app-store/enable-ai">Activar búsqueda con IA</a></li><li><a class="is-current" href="/docs/es/zimaos/app-store/deploy-deepseek-r1">Desplegar DeepSeek R1</a></li><li><a class="" href="/docs/es/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/es/zimaos/app-store/llm-manual-download">Descargar modelos de IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/frigate-ollama-setup">Descripción de fotos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Proyectos creativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/es/zimaos/app-store/pve-on-debian-for-i226">Ejecutar PVE sobre Debian</a></li><li><a class="" href="/docs/es/zimaos/app-store/awesome-third-party-stores">Tiendas de apps de la comunidad</a></li><li><a class="" href="/docs/es/zimaos/app-store/batocera-arcade-setup">Arcade con Batocera</a></li><li><a class="" href="/docs/es/zimaos/app-store/jellyfin-setup">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/oculus-quest-media-server">Streaming de Oculus VR</a></li><li><a class="" href="/docs/es/zimaos/app-store/minecraft-friendship-service">Servidor de Minecraft</a></li><li><a class="" href="/docs/es/zimaos/app-store/self-hosted-apps">Aplicaciones autoalojadas</a></li><li><a class="" href="/docs/es/zimaos/app-store/zimablade-cluster-pve">Migración de clúster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para desarrolladores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una tienda de aplicaciones</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/deploy-deepseek-r1" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/deploy-deepseek-r1" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/deploy-deepseek-r1" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/deploy-deepseek-r1" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

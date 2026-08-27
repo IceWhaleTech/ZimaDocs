@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS トラブルシューティング：よくあるシステムとハードウェアの問題 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/help-center/">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/help-center/">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/help-center/">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/help-center/">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/help-center/">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/help-center/">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/help-center/">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="接続、RAID、起動、アカウント初期化、工場出荷状態への復元、BIOS 復旧などを扱う ZimaOS と Zima ハードウェアのトラブルシューティングです。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS トラブルシューティング：よくあるシステムとハードウェアの問題">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/help-center/">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="接続、RAID、起動、アカウント初期化、工場出荷状態への復元、BIOS 復旧などを扱う ZimaOS と Zima ハードウェアのトラブルシューティングです。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-08-27T09:51:24.536Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.536Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "その他の概要",
+      "description": "接続、RAID、起動、アカウント初期化、工場出荷状態への復元、BIOS 復旧などを扱う ZimaOS と Zima ハードウェアのトラブルシューティングです。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.536Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Help Center",
+          "item": "https://www.zimaspace.com/docs/jp/help-center/"
+        }
+        
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item current_page_item"><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/help-center/">English</a></li>
+            
+              <li><a href="/docs/zh/help-center/">中文</a></li>
+            
+              <li><a href="/docs/jp/help-center/">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/help-center/">Português</a></li>
+            
+              <li><a href="/docs/es/help-center/">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="is-current" href="/docs/jp/help-center/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="help-center:troubleshooting">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-help-center-troubleshooting">
+          <span class="doc-sidebar__toggle-text">トラブルシューティング</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-help-center-troubleshooting"><li><a class="" href="/docs/jp/help-center/resets-cmos">CMOS リセット</a></li><li><a class="" href="/docs/jp/help-center/raid-troubleshooting">RAID トラブルシューティング</a></li><li><a class="" href="/docs/jp/help-center/zimacube-bios-update-method">BIOS 更新方法</a></li><li><a class="" href="/docs/jp/help-center/memory-test-tutorial">メモリーテスト</a></li><li><a class="" href="/docs/help-center/troubleshooting-self-test-guide">セルフテストガイド</a></li><li><a class="" href="/docs/jp/help-center/assembly-guide">組み立てガイド</a></li><li><a class="" href="/docs/jp/help-center/thunderbolt-connection-problem">Thunderbolt 接続の問題</a></li><li><a class="" href="/docs/jp/help-center/account-initialization-failed">アカウント初期化の失敗</a></li><li><a class="" href="/docs/jp/help-center/restore-factory-settings">工場出荷状態へ復元</a></li><li><a class="" href="/docs/jp/help-center/bios-upgrade">BIOS アップグレード</a></li><li><a class="" href="/docs/jp/help-center/find-ip-address">IP アドレスを確認</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="help-center:reference">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-help-center-reference">
+          <span class="doc-sidebar__toggle-text">リファレンス</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-help-center-reference"><li><a class="" href="/docs/jp/help-center/privacy-policy">プライバシーポリシー</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">その他の概要</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.536Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>よく発生する問題と解決方法をここにまとめました。期待どおりに動作しない場合は、実際の症状に近い項目から確認してください。</p>
+<h2 id="トラブルシューティング" class="article-heading">トラブルシューティング<a class="article-anchor" href="#トラブルシューティング" aria-hidden="true"></a></h2><p>症状に合うガイドを選んでください。それぞれのページで解決方法を順番に説明します。</p>
+<ul class="doc-dots">
+<li><strong><a href="./resets-cmos" title="起動できないときに CMOS をリセットして BIOS の初期値を戻す" class="doc-link">CMOS リセット</a></strong> — BIOS の既定値を復元します</li>
+<li><strong><a href="./raid-troubleshooting" title="RAID 作成時によくあるエラーを解決する" class="doc-link">RAID トラブルシューティング</a></strong> — RAID を作成できない場合の確認手順です</li>
+<li><strong><a href="./zimacube-bios-update-method" title="ZimaCube に最新 BIOS を書き込む" class="doc-link">BIOS 更新方法</a></strong> — ZimaCube の BIOS を更新します</li>
+<li><strong><a href="./memory-test-tutorial" title="Zima 端末で完全なメモリー診断を実行する" class="doc-link">メモリーテスト</a></strong> — メモリーを詳しく検査します</li>
+<li><strong><a href="/docs/help-center/troubleshooting-self-test-guide" title="ZimaCube の内蔵ハードウェア診断を実行する" class="doc-link">セルフテストガイド</a></strong> — 内蔵診断を実行します</li>
+<li><strong><a href="./assembly-guide" title="ZimaCube を分解し、再度組み立てる" class="doc-link">組み立てガイド</a></strong> — 分解と再組み立ての手順です</li>
+<li><strong><a href="./thunderbolt-connection-problem" title="ZimaCube の Thunderbolt 接続を修復する" class="doc-link">Thunderbolt 接続の問題</a></strong> — 接続を確立できない場合の対処です</li>
+<li><strong><a href="./account-initialization-failed" title="ZimaOS のアカウント設定が止まる問題を解決する" class="doc-link">アカウント初期化の失敗</a></strong> — 初期設定が完了しない場合に使用します</li>
+<li><strong><a href="./restore-factory-settings" title="ZimaBoard を工場出荷時の設定へ戻す" class="doc-link">工場出荷状態へ復元</a></strong> — ZimaBoard をリセットします</li>
+<li><strong><a href="./bios-upgrade" title="ZimaBoard のマザーボード BIOS を更新する" class="doc-link">BIOS アップグレード</a></strong> — ZimaBoard の BIOS を更新します</li>
+<li><strong><a href="./find-ip-address" title="接続できないときに端末の IP アドレスを探す" class="doc-link">IP アドレスを確認</a></strong> — ネットワーク上の端末を見つけます</li>
+</ul>
+<h2 id="リファレンス" class="article-heading">リファレンス<a class="article-anchor" href="#リファレンス" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="./privacy-policy" title="ZimaOS におけるデータと接続の取り扱いを見る" class="doc-link">プライバシーポリシー</a></strong> — データの取り扱いを確認します</li>
+<li><strong><a href="../../hardware/install-unraid" title="Zima ハードウェア向けの Unraid インストールガイドを見る" class="doc-link">Zima 端末で Unraid を実行（英語）</a></strong> — 各 Zima 端末への Unraid 導入方法です</li>
+</ul>
+<h2 id="次のステップ" class="article-heading">次のステップ<a class="article-anchor" href="#次のステップ" aria-hidden="true"></a></h2><p>多くの問題には明確な解決方法があります。該当する項目がない場合は、Discord コミュニティでも相談できます。</p>
+<ul class="doc-dots">
+<li>ZimaOS を設定：**<a href="../zimaos/" title="ZimaOS のインストール、ストレージ、共有ガイドを見る" class="doc-link">ZimaOS 概要</a>** — インストール、ストレージ、システム設定</li>
+<li>ハードウェア仕様：**<a href="../hardware/" title="ZimaCube、ZimaBoard、ZimaBlade を比較する" class="doc-link">ハードウェア概要</a>** — 3 つの製品ラインの詳細</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.536Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/help-center/resets-cmos"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">CMOS リセット</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0"><span class="toc-text">トラブルシューティング</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9"><span class="toc-text">リファレンス</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A1%E3%81%AE%E3%82%B9%E3%83%86%E3%83%83%E3%83%97"><span class="toc-text">次のステップ</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item current_page_item"><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="is-current" href="/docs/jp/help-center/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="help-center:troubleshooting">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-help-center-troubleshooting">
+          <span class="doc-sidebar__toggle-text">トラブルシューティング</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-help-center-troubleshooting"><li><a class="" href="/docs/jp/help-center/resets-cmos">CMOS リセット</a></li><li><a class="" href="/docs/jp/help-center/raid-troubleshooting">RAID トラブルシューティング</a></li><li><a class="" href="/docs/jp/help-center/zimacube-bios-update-method">BIOS 更新方法</a></li><li><a class="" href="/docs/jp/help-center/memory-test-tutorial">メモリーテスト</a></li><li><a class="" href="/docs/help-center/troubleshooting-self-test-guide">セルフテストガイド</a></li><li><a class="" href="/docs/jp/help-center/assembly-guide">組み立てガイド</a></li><li><a class="" href="/docs/jp/help-center/thunderbolt-connection-problem">Thunderbolt 接続の問題</a></li><li><a class="" href="/docs/jp/help-center/account-initialization-failed">アカウント初期化の失敗</a></li><li><a class="" href="/docs/jp/help-center/restore-factory-settings">工場出荷状態へ復元</a></li><li><a class="" href="/docs/jp/help-center/bios-upgrade">BIOS アップグレード</a></li><li><a class="" href="/docs/jp/help-center/find-ip-address">IP アドレスを確認</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="help-center:reference">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-help-center-reference">
+          <span class="doc-sidebar__toggle-text">リファレンス</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-help-center-reference"><li><a class="" href="/docs/jp/help-center/privacy-policy">プライバシーポリシー</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/help-center/" data-lang="en">English</option>
+        
+          <option value="/docs/zh/help-center/" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/help-center/" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/help-center/" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/help-center/" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

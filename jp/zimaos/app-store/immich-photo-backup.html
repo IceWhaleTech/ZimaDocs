@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS の Immich：写真バックアップとストレージ設定ガイド | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/immich-photo-backup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/immich-photo-backup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/immich-photo-backup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/immich-photo-backup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/immich-photo-backup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/immich-photo-backup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/immich-photo-backup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS で Immich を設定し、写真と動画を自動バックアップします。インストール、モバイルアプリの同期、アルバム管理、スマート検索を詳しく説明します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS の Immich：写真バックアップとストレージ設定ガイド">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/app-store/immich-photo-backup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS で Immich を設定し、写真と動画を自動バックアップします。インストール、モバイルアプリの同期、アルバム管理、スマート検索を詳しく説明します。">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730269774466_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730269866832_copyImage.jpeg">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730269868372_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730269926591_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730269940085_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730269963189_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270062733_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270082792_copyImage.jpeg">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270083467_copyImage.jpeg">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270241632_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270251463_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270310188_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270325913_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270365044_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270384165_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270408893_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270441373_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270501295_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270511744_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270568147_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270615131_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270625991_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270635201_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270689535_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270699458_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730270702487_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730272017160_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730271838216_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1730269774466_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Immichのガイド： 効率的な写真バックアップのためのステップバイステップ！",
+      "description": "ZimaOS で Immich を設定し、写真と動画を自動バックアップします。インストール、モバイルアプリの同期、アルバム管理、スマート検索を詳しく説明します。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.537Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Immichのガイド： 効率的な写真バックアップのためのステップバイステップ！"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/immich-photo-backup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/immich-photo-backup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/immich-photo-backup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/immich-photo-backup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Immichのガイド： 効率的な写真バックアップのためのステップバイステップ！</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="はじめに" class="article-heading">はじめに<a class="article-anchor" href="#はじめに" aria-hidden="true"></a></h2><p>Immichは、そのシンプルなウェブインターフェースとスマート機能を持ち、貴重な写真や動画を整理し共有できる完璧なプラットフォームを提供します。ZimaOSは、直感的な操作と強力なデータ保護機能を備え、NASユーザー、プロフェッショナル、クリエイティブスタジオに革命的な体験をもたらします。Dockerアプリケーションのインストールを簡略化し、わずか数回のクリックで完了できます。<br>ImmichとZimaOSを組み合わせることで、強力で使いやすいソリューションが得られます。ZimaOS上でImmichの便利さを簡単に楽しむ方法を探ってみましょう。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730269774466_image.png"></span></p>
+<h2 id="インストールと設定" class="article-heading">インストールと設定<a class="article-anchor" href="#インストールと設定" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>Immichアプリをダウンロードしてインストール</strong><br>ZimaOSアプリストアからImmichアプリの最新バージョンをダウンロードできます。ダウンロードが完了したら、インストールファイルをダブルクリックし、画面の指示に従ってインストールを完了します。<br><img src="https://manage.icewhale.io/api/static/docs/1730269866832_copyImage.jpeg"><img src="https://manage.icewhale.io/api/static/docs/1730269868372_copyImage.png"></li>
+<li>ユーザーアカウントの作成<br>インストールが完了したら、アプリケーションを起動します。起動画面で「新しいユーザーを作成」を選択し、必要なユーザー情報を入力して登録を完了させます。<br><img src="https://manage.icewhale.io/api/static/docs/1730269926591_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1730269940085_image.png"><br>メインページに移動します：<br><img src="https://manage.icewhale.io/api/static/docs/1730269963189_image.png"></li>
+<li>サーバー接続の設定<br>スマートフォン（iPhoneを例として）でImmichアプリをダウンロードして開きます。<br>サーバーのアドレスとポート番号を入力してログインします。サーバーのアドレスとポート番号が正しく入力されていることを確認してください。<br><img src="https://manage.icewhale.io/api/static/docs/1730270062733_copyImage.png"><img src="https://manage.icewhale.io/api/static/docs/1730270082792_copyImage.jpeg"><img src="https://manage.icewhale.io/api/static/docs/1730270083467_copyImage.jpeg"></li>
+</ol>
+<h2 id="使用方法" class="article-heading">使用方法<a class="article-anchor" href="#使用方法" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>バックアップを開始</li>
+</ol>
+<ul class="doc-dots">
+<li>Immichアプリのメインページを開きます。</li>
+<li>「バックアップ」ボタンをクリックし、バックアップしたい写真または動画を選択します。</li>
+<li>ファイルを選択したら、「バックアップを開始」をクリックすると、アプリがファイルをサーバーにアップロードし始めます。<br><img src="https://manage.icewhale.io/api/static/docs/1730270241632_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1730270251463_image.png"></li>
+</ul>
+<ol start="2" class="doc-steps">
+<li>バックアップファイルの表示<br>バックアップが完了すると、アプリのメインページでアップロードされたすべての写真と動画を表示できます。<br><img src="https://manage.icewhale.io/api/static/docs/1730270310188_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1730270325913_image.png"></li>
+</ol>
+<h2 id="高度な機能-AI検索" class="article-heading">高度な機能: AI検索<a class="article-anchor" href="#高度な機能-AI検索" aria-hidden="true"></a></h2><p>Immichの顔認識機能は、高度なAI技術を使用して写真内の人物を自動的に識別し分類します。これにより、写真管理と検索の効率が大幅に向上します。これにより、ユーザーは人物ごとに整理された写真コレクションを簡単に閲覧し、レビューできます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270365044_image.png"></span></p><p>同時に、メインインターフェースの検索ボックスにキーワードを入力すると、AIが必要なファイルを迅速に見つける手助けをします。これにより、ユーザーはサーバーに保存されている特定の写真や動画を迅速かつ正確に見つけることができます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270384165_image.png"></span></p>
+<h2 id="地図表示" class="article-heading">地図表示<a class="article-anchor" href="#地図表示" aria-hidden="true"></a></h2><p>Immichは地図マーク機能もサポートしており、ユーザーは地図上に特定の場所をマークでき、その場所で撮影されたすべての写真と動画を迅速に位置づけて閲覧できます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270408893_image.png"></span></p>
+<h2 id="高度な設定" class="article-heading">高度な設定<a class="article-anchor" href="#高度な設定" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>バックアップオプションの設定</strong><br><img src="https://manage.icewhale.io/api/static/docs/1730270441373_image.png"><br>「バックアップオプション」の設定インターフェースでは、以下のバックアップ機能を設定できます。</li>
+</ol>
+<ul class="doc-dots">
+<li><strong>自動フォアグラウンドバックアップ</strong>：この機能をオンにすると、アプリを開くたびに新しいメディアファイルが自動的にサーバーにアップロードされます。</li>
+<li><strong>自動バックグラウンドバックアップ</strong>：この機能を有効にすると、アプリがバックグラウンドで実行され、アプリが開かれていなくても新しいメディアファイルが自動的にバックアップされます。</li>
+<li><strong>iCloud写真を無視</strong>：有効にすると、iCloudに保存されている写真をサーバーにアップロードしないように選択できます。</li>
+<li><strong>アルバムを同期</strong>：ユーザーがアップロードされたすべての動画と写真を指定したバックアップアルバムに同期するスルことができます。<br>ニーズに応じて設定できます。</li>
+</ul>
+<ol start="2" class="doc-steps">
+<li><strong>ストレージファイルの場所設定</strong><br>設定で、ストレージファイルの選択パス情報を変更できます。<br><img src="https://manage.icewhale.io/api/static/docs/1730270501295_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1730270511744_image.png"><br>リンク：パス構成の理解方法：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/t/tutorial-how-to-understand-docker-apps-paths-on-zimaos-take-plex-as-an-example/3395" class="doc-link">https://community.zimaspace.com/t/tutorial-how-to-understand-docker-apps-paths-on-zimaos-take-plex-as-an-example/3395</a></li>
+<li><strong>ストレージファイルの命名規則</strong><br>ストレージテンプレートは、Immichアプリでファイルのストレージパスとファイル名を定義し標準化するためのツールです。この方法により、ニーズに応じてファイルの整理をカスタマイズでき、その後のデータ管理や検索効率が向上します。<br>詳細な情報については、次のサイトをご覧ください：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://immich.app/docs/administration/storage-template/" class="doc-link">https://immich.app/docs/administration/storage-template/</a><br><img src="https://manage.icewhale.io/api/static/docs/1730270568147_image.png"></li>
+</ol>
+<h2 id="バックアップした写真を見つける" class="article-heading">バックアップした写真を見つける<a class="article-anchor" href="#バックアップした写真を見つける" aria-hidden="true"></a></h2><p>ストレージテンプレートを設定していない場合、設定でストレージパスを確認できます。以下のパスにアクセスします：</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270615131_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270625991_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270635201_image.png"></span></p><p>ストレージテンプレートを設定すると、写真ファイルの整理と検索がより直感的かつ便利になります。ストレージテンプレートのカテゴリに従って、直接写真ファイルをブラウズして見つけることができます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270689535_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270699458_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730270702487_image.png"></span></p><p>これらの手順を踏むことで、ZimaOSにバックアップされた写真ファイルを、デフォルトのパスまたはカスタムストレージテンプレートを使用して簡単に見つけることができます。</p>
+<h2 id="Immich-のデータを新しいディスクへ移動する" class="article-heading">Immich のデータを新しいディスクへ移動する<a class="article-anchor" href="#Immich-のデータを新しいディスクへ移動する" aria-hidden="true"></a></h2><p>a. データ移行<br>設定のデータ移行をクリックし、ライブラリ移行を選択すると、ギャラリー、ドキュメント、メディア、およびバックアップが自動的にターゲット位置に移行されます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730272017160_image.png"></span></p>
+<p>b. 手動移行！<br>ギャラリーのフォルダーをターゲット位置にコピーすることもできます。手順は以下の通りです：</p>
+<ul class="doc-dots">
+<li>Immichアプリケーションを無効にします</li>
+<li>ギャラリーをターゲット位置にコピーします</li>
+<li>次に、アプリケーションのimmich-serverのボリューム内のディレクトリを修正したディレクトリに変更します</li>
+<li>Immichを再起動します<br><img src="https://manage.icewhale.io/api/static/docs/1730271838216_image.png"></li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/app-store/sync-photos-with-immich"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">Immich 写真同期</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/app-store/cli-guide"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">写真の一括同期</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E8%A8%AD%E5%AE%9A"><span class="toc-text">インストールと設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E5%BA%A6%E3%81%AA%E6%A9%9F%E8%83%BD-AI%E6%A4%9C%E7%B4%A2"><span class="toc-text">高度な機能: AI検索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9B%B3%E8%A1%A8%E7%A4%BA"><span class="toc-text">地図表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E5%BA%A6%E3%81%AA%E8%A8%AD%E5%AE%9A"><span class="toc-text">高度な設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%97%E3%81%9F%E5%86%99%E7%9C%9F%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B"><span class="toc-text">バックアップした写真を見つける</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Immich-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%96%B0%E3%81%97%E3%81%84%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%B8%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B"><span class="toc-text">Immich のデータを新しいディスクへ移動する</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/immich-photo-backup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/immich-photo-backup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/immich-photo-backup" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/immich-photo-backup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/immich-photo-backup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

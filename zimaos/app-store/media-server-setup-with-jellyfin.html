@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Jellyfin Media Server on ZimaOS: Watch Videos Anywhere | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zimaos/app-store/media-server-setup-with-jellyfin">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/media-server-setup-with-jellyfin">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/media-server-setup-with-jellyfin">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/media-server-setup-with-jellyfin">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Set up Jellyfin media server on ZimaOS to stream movies and TV shows to any device. Covers installation, library setup, hardware transcoding and remote access.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jellyfin Media Server on ZimaOS: Watch Videos Anywhere">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zimaos/app-store/media-server-setup-with-jellyfin">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Set up Jellyfin media server on ZimaOS to stream movies and TV shows to any device. Covers installation, library setup, hardware transcoding and remote access.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726654101839_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726655796881_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726655918001_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726657342139_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726657370196_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726657424182_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726657478382_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1726658027882_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1726654101839_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "How to Watch Videos Anywhere with Jellyfin Media Server",
+      "description": "Set up Jellyfin media server on ZimaOS to stream movies and TV shows to any device. Covers installation, library setup, hardware transcoding and remote access.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.555Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Watch Videos Anywhere with Jellyfin Media Server"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/media-server-setup-with-jellyfin">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="is-current" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">How to Watch Videos Anywhere with Jellyfin Media Server</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Introduction" class="article-heading">Introduction<a class="article-anchor" href="#Introduction" aria-hidden="true"></a></h2><p>Nowadays, the consumption of media has experienced a significant shift. Gone are the days of physical media formats like DVDs and Blu-rays dominating the entertainment landscape. With the proliferation of high-speed internet connections and the advent of streaming services, people now prefer to access their favorite movies, TV shows, and videos digitally.</p>
+<p>As digital media collections grow larger and more diverse, the need for efficient organization and seamless access becomes paramount. This is where media servers come into play. Media servers are software applications or dedicated hardware devices that centralize and manage media files, allowing users to access and stream their content from various devices.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726654101839_image.png"></span></p>
+<h2 id="What-You-Should-Know-about-Jellyfin-Media-Server" class="article-heading">What You Should Know about Jellyfin Media Server<a class="article-anchor" href="#What-You-Should-Know-about-Jellyfin-Media-Server" aria-hidden="true"></a></h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://jellyfin.org/" class="doc-link"><strong>Jellyfin</strong></a> is an open-source media server that enables you to organize, stream, and share your video content. It works by centralizing your media library on a server, which can then be accessed and streamed on various devices. Jellyfin uses a client-server architecture, where the server hosts the media library and the clients connect to it for playback.</p>
+<h3 id="1-Key-features-and-benefits-of-using-Jellyfin" class="article-heading">1. Key features and benefits of using Jellyfin<a class="article-anchor" href="#1-Key-features-and-benefits-of-using-Jellyfin" aria-hidden="true"></a></h3><p>Jellyfin offers a wide range of features and benefits that enhance your video streaming experience. Some of the key features include:</p>
+<p><strong>Media Organization:</strong> Jellyfin allows you to organize your video library by creating collections, adding metadata, and managing subtitles and artwork. This makes it easy to navigate and find your favorite movies and TV shows.</p>
+<p><strong>Multi-User Support:</strong> With Jellyfin, you can create multiple user profiles, each with its own customized settings and watch history. This enables personalized recommendations and individualized playback options.</p>
+<p>**Live TV and DVR: **Jellyfin supports live TV streaming and allows you to record your favorite shows with its built-in DVR functionality. This transforms your media server into a comprehensive home entertainment hub.</p>
+<p><strong>Transcoding:</strong> Jellyfin supports on-the-fly transcoding, which ensures smooth playback on different devices with varying network speeds and capabilities. This feature optimizes video quality and eliminates compatibility issues.</p>
+<h3 id="2-Jellyfin-Media-Server-Supported-platforms-and-devices" class="article-heading">2. Jellyfin Media Server Supported platforms and devices<a class="article-anchor" href="#2-Jellyfin-Media-Server-Supported-platforms-and-devices" aria-hidden="true"></a></h3><p>Jellyfin is designed to be highly compatible and supports a wide range of platforms and devices. Some of the supported platforms include:</p>
+<p>**Windows: **Jellyfin can be installed on Windows operating systems, allowing you to set up your media server on a Windows-based ZimaBoard.</p>
+<p><strong>Linux:</strong> Jellyfin has extensive support for various Linux distributions, making it a versatile option for Linux enthusiasts.</p>
+<p>**macOS: **If you have a macOS device, you can install Jellyfin and enjoy seamless video streaming using ZimaBoard.</p>
+<p>**Docker: **Jellyfin can also be deployed using Docker, which provides flexibility and ease of installation on compatible devices.</p>
+<p>In addition to the supported platforms, Jellyfin offers client applications for various devices, including:</p>
+<p>**Web Browsers: **You can access your Jellyfin Media Server directly through web browsers on different operating systems.</p>
+<p><strong>Mobile Devices:</strong> Jellyfin has dedicated apps for iOS and Android devices, allowing you to stream videos on your smartphones and tablets.</p>
+<p>**Smart TVs and Streaming Devices: **Jellyfin can be installed on smart TVs, streaming devices like Roku and Amazon Fire TV, and even game consoles such as Xbox and PlayStation.</p>
+<h3 id="3-Jellyfin-Media-Server-Installation-and-setup-process-on-ZimaBoard-SBC" class="article-heading">3. Jellyfin Media Server Installation and setup process on ZimaBoard SBC<a class="article-anchor" href="#3-Jellyfin-Media-Server-Installation-and-setup-process-on-ZimaBoard-SBC" aria-hidden="true"></a></h3><p>**Configuration: **After installation, you will need to configure Jellyfin by accessing the web interface. Follow the setup wizard to select your preferred language, set up your media library, and customize the server settings.</p>
+<p>**Adding Media: **Once the initial configuration is complete, you can start adding your video files to Jellyfin. Organize your media library, import metadata, and customize the artwork to enhance the visual experience.</p>
+<p>**Remote Access: **To access your Jellyfin Media Server remotely, you will need to set up port forwarding on your router and configure secure remote connections. This allows you to stream videos even when you are away from home.</p>
+<h2 id="Exploring-ZimaBoard-as-a-Media-Server-Solution" class="article-heading">Exploring ZimaBoard as a Media Server Solution<a class="article-anchor" href="#Exploring-ZimaBoard-as-a-Media-Server-Solution" aria-hidden="true"></a></h2><p>In the modern digital era, the ability to watch videos anywhere has become a fundamental part of our entertainment experience. With the combination of Jellyfin Media Server and ZimaBoard, you can create a powerful media streaming solution that allows you to access your favorite videos wherever you go.</p>
+<p>ZimaBoard Media Server is a high-performance single-board computer specifically designed for a variety of applications, including media streaming. Its purpose is to provide a compact yet powerful hardware solution that can handle the demands of media server software like Jellyfin. With ZimaBoard, you can transform any location into your personal entertainment hub, allowing you to watch videos anywhere with ease.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726655796881_image.png"></span></p>
+<h3 id="1-Hardware-specifications-and-capabilities-of-ZimaBoard" class="article-heading">1. Hardware specifications and capabilities of ZimaBoard<a class="article-anchor" href="#1-Hardware-specifications-and-capabilities-of-ZimaBoard" aria-hidden="true"></a></h3><p>ZimaBoard boasts impressive hardware specifications that make it an ideal choice for media streaming. Some of its key features include:</p>
+<p>**Processor: **ZimaBoard is equipped with a powerful and energy-efficient Intel Celeron processor, ensuring smooth video playback and transcoding capabilities.</p>
+<p>**Memory: **With 8GB memory capacity, ZimaBoard can handle multiple video streams simultaneously without any performance degradation.</p>
+<p>**Storage: **ZimaBoard offers various storage options, including 32 GB onboard storage and expandable storage through external devices such as SSDs or hard drives. This ensures that you have enough space to store your extensive video library.</p>
+<p>**Connectivity: **ZimaBoard provides a wide range of connectivity options, including Ethernet, allowing you to connect to your network and other devices effortlessly.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726655918001_image.png"></span></p>
+<h3 id="2-Compatibility-with-Jellyfin-and-other-media-server-software" class="article-heading">2. Compatibility with Jellyfin and other media server software<a class="article-anchor" href="#2-Compatibility-with-Jellyfin-and-other-media-server-software" aria-hidden="true"></a></h3><p>One of the significant advantages of ZimaBoard is its compatibility with Jellyfin and other media server software. Whether you choose Jellyfin, Plex, or any other media server solution, ZimaBoard can seamlessly integrate with these platforms, providing you with a reliable and efficient media streaming experience.</p>
+<p>This compatibility allows you to leverage the features and functionalities of popular media server software while taking advantage of ZimaBoard’s powerful hardware capabilities.</p>
+<p>The <strong>Advantages</strong> of using ZimaBoard for media streaming<br>Using ZimaBoard for media streaming offers several advantages:</p>
+<p>**High Performance: **ZimaBoard’s robust hardware specifications ensure smooth and uninterrupted video playback, even when streaming high-definition content or transcoding videos on the fly.</p>
+<p><strong>Versatility:</strong> ZimaBoard supports a wide range of media formats, making it compatible with various video files, ensuring that you can access and stream your entire video library without any compatibility issues.</p>
+<p>**Portability: **With its compact size, ZimaBoard is highly portable, allowing you to take your media server with you wherever you go. Whether you’re traveling or visiting a friend’s house, you can easily set up your media server and enjoy your videos on any compatible device.</p>
+<p>**Customizability: **ZimaBoard offers flexibility and customization options, allowing you to tailor your media streaming setup to your specific preferences. You can expand your storage capacity, connect additional peripherals, or even install other software to enhance your media server experience.</p>
+<h2 id="How-to-Setting-Up-Jellyfin-Media-Server-with-ZimaBoard-SBC" class="article-heading">How to Setting Up Jellyfin Media Server with ZimaBoard SBC<a class="article-anchor" href="#How-to-Setting-Up-Jellyfin-Media-Server-with-ZimaBoard-SBC" aria-hidden="true"></a></h2><p>Setting up Jellyfin with ZimaBoard is an excellent way to create a versatile and powerful media streaming solution. By combining Jellyfin’s robust media server software with the capabilities of ZimaBoard, you can enjoy seamless access to your video library from anywhere.</p>
+<h3 id="1-Preparing-the-ZimaBoard-for-Jellyfin-installation" class="article-heading">1. Preparing the ZimaBoard for Jellyfin installation<a class="article-anchor" href="#1-Preparing-the-ZimaBoard-for-Jellyfin-installation" aria-hidden="true"></a></h3><p>Before installing Jellyfin, it’s important to ensure that your ZimaBoard is ready for the setup process. Here are some key steps to follow:</p>
+<p><strong>Ensure Power and Connectivity:</strong> Connect your ZimaBoard to a power source and ensure that it is properly connected to your network through an Ethernet cable.</p>
+<p>**Check Operating System Compatibility: **Verify that your ZimaBoard’s operating system is compatible with Jellyfin. Most popular operating systems like Windows, Linux, and macOS should be compatible.</p>
+<p>**Update Firmware and Software: **It’s recommended to update your ZimaBoard’s firmware and operating system to the latest versions to ensure optimal performance and compatibility.</p>
+<h3 id="2-Step-by-step-guide-to-installing-Jellyfin-on-ZimaBoard" class="article-heading">2. Step-by-step guide to installing Jellyfin on ZimaBoard<a class="article-anchor" href="#2-Step-by-step-guide-to-installing-Jellyfin-on-ZimaBoard" aria-hidden="true"></a></h3><p>Installing Jellyfin on ZimaBoard is a straightforward process. Follow these steps to set it up:</p>
+<p>Download Jellyfin: Visit the Jellyfin website and download the appropriate installation package for your ZimaBoard’s operating system-<a target="_blank" rel="noopener external nofollow noreferrer" href="https://casaos.zimaspace.com/" class="doc-link">CasaOS</a>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726657342139_image.png"></span></p>
+<p>**Install Jellyfin: **Once the download is complete, follow the on-screen instructions to install Jellyfin on your ZimaBoard. The installation process may vary depending on your operating system, but it typically involves running the installation package and following the prompts.</p>
+<p>**Launch Jellyfin: **After the installation is complete, launch the Jellyfin application on your ZimaBoard. It should open a web interface that allows you to access and configure Jellyfin.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726657370196_image.png"></span></p>
+<h3 id="3-Configuring-Jellyfin-for-optimal-performance-on-ZimaBoard" class="article-heading">3. Configuring Jellyfin for optimal performance on ZimaBoard<a class="article-anchor" href="#3-Configuring-Jellyfin-for-optimal-performance-on-ZimaBoard" aria-hidden="true"></a></h3><p>To ensure the optimal performance of Jellyfin on your ZimaBoard, consider the following configuration steps:</p>
+<p>**Initial Setup Wizard: **The first time you access Jellyfin, you will be guided through an initial setup wizard. Follow the instructions to choose your preferred language, configure metadata agents, and set up your media libraries.</p>
+<p><strong>Transcoding Settings:</strong> Adjust the transcoding settings based on your ZimaBoard’s capabilities and network bandwidth. Consider factors such as video quality, streaming resolution, and subtitle encoding.</p>
+<p>**User Management: **Set up user accounts and manage permissions to control access to your media libraries. This allows you to create individual profiles for different users and personalize their viewing experience.</p>
+<h3 id="4-Connecting-storage-devices-and-organizing-media-libraries" class="article-heading">4. Connecting storage devices and organizing media libraries<a class="article-anchor" href="#4-Connecting-storage-devices-and-organizing-media-libraries" aria-hidden="true"></a></h3><p>To start enjoying your videos on Jellyfin, you need to connect storage devices and organize your media libraries. Follow these steps:</p>
+<p>**Connect External Storage: **If your ZimaBoard has limited onboard storage, consider connecting external storage devices such as SSDs or hard drives to expand your storage capacity.</p>
+<p><strong>Add Media Libraries:</strong> Within the Jellyfin web interface, navigate to the Libraries section and add your media folders from the connected storage devices. Jellyfin will scan and index your media files, making them accessible for streaming.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726657424182_image.png"></span></p>
+<h2 id="How-to-Accessing-and-Streaming-Media-Anywhere-with-Jellyfin" class="article-heading">How to Accessing and Streaming Media Anywhere with Jellyfin<a class="article-anchor" href="#How-to-Accessing-and-Streaming-Media-Anywhere-with-Jellyfin" aria-hidden="true"></a></h2><h3 id="1-Jellyfin’s-web-interface-and-its-features" class="article-heading">1. Jellyfin’s web interface and its features<a class="article-anchor" href="#1-Jellyfin’s-web-interface-and-its-features" aria-hidden="true"></a></h3><p>Jellyfin offers a user-friendly web interface that allows you to access and manage your media library. Some of the key features of Jellyfin’s web interface include:</p>
+<p><strong>User-friendly Interface:</strong> The web interface is designed to be intuitive and easy to navigate, allowing you to browse and search for your favorite videos effortlessly.</p>
+<p><strong>Library Organization:</strong> Jellyfin’s web interface provides tools to organize your media library, allowing you to create collections, playlists, and tags for efficient categorization and navigation.</p>
+<p>**Playback Controls: **The web interface includes playback controls that allow you to adjust video quality, enable subtitles, and control playback speed for a personalized viewing experience.</p>
+<p>**User Management: **The web interface also allows you to manage user accounts, set permissions, and customize individual profiles for a personalized viewing experience for each user.</p>
+<h3 id="2-Exploring-Jellyfin-mobile-apps-for-on-the-go-streaming" class="article-heading">2. Exploring Jellyfin mobile apps for on-the-go streaming<a class="article-anchor" href="#2-Exploring-Jellyfin-mobile-apps-for-on-the-go-streaming" aria-hidden="true"></a></h3><p>Jellyfin offers mobile apps for iOS and Android devices, providing a seamless streaming experience on the go. Here are some benefits of using Jellyfin mobile apps:</p>
+<p><strong>Mobile Streaming:</strong> The mobile apps allow you to stream your videos directly to your mobile device, enabling you to enjoy your favorite content wherever you are.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726657478382_image.png"></span></p><p>**Sync and Offline Viewing: **With Jellyfin mobile apps, you can sync your media libraries for offline viewing. This means you can download videos to your device and watch them without an internet connection.</p>
+<p>**Mobile Sync: **The mobile apps provide a convenient way to synchronize your watch history, playback progress, and library updates across different devices, ensuring a seamless transition between devices.</p>
+<p><strong>Remote Control:</strong> The mobile apps also function as a remote control, allowing you to navigate through your media library and control playback on compatible devices.</p>
+<h3 id="3-Casting-media-to-compatible-devices-using-Jellyfin" class="article-heading">3. Casting media to compatible devices using Jellyfin<a class="article-anchor" href="#3-Casting-media-to-compatible-devices-using-Jellyfin" aria-hidden="true"></a></h3><p>Jellyfin supports casting media to compatible devices, enabling you to enjoy your videos on a larger screen. Here’s how you can cast media using Jellyfin:</p>
+<p>**Compatible Devices: **Jellyfin supports popular casting protocols such as Chromecast, DLNA, and AirPlay. Ensure that your target device supports one of these protocols.</p>
+<p>**Casting Process: **From the Jellyfin web interface or mobile app, select the media you want to cast and choose the compatible device from the cast menu. The media will be streamed to the selected device for playback.</p>
+<p><strong>Control and Playback:</strong> Once the media is cast, you can use the Jellyfin interface on your device to control playback, adjust settings, and navigate through your media library.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1726658027882_image.png"></span></p>
+<h2 id="4-Remote-access-and-streaming-outside-the-local-network" class="article-heading">4. Remote access and streaming outside the local network<a class="article-anchor" href="#4-Remote-access-and-streaming-outside-the-local-network" aria-hidden="true"></a></h2><p>Jellyfin allows you to access and stream your media outside the local network, enabling you to watch videos anywhere. Here’s how you can set up remote access:</p>
+<p>**Port Forwarding: **Configure port forwarding on your router to allow incoming connections to your ZimaBoard running Jellyfin. This ensures that you can access Jellyfin remotely.</p>
+<p><strong>Dynamic DNS:</strong> If your internet service provider assigns you a dynamic IP address, consider using a dynamic DNS service to associate a domain name with your ZimaBoard. This allows you to access Jellyfin using a domain name instead of an IP address.</p>
+<p>**Secure Connections: **To ensure secure remote access, enable SSL&#x2F;TLS encryption for Jellyfin. This protects your data and prevents unauthorized access to your media server.</p>
+<p>**Authentication and Security: **Jellyfin provides options to set up authentication methods, such as username&#x2F;password or OAuth, to add an extra layer of security to your remote access.</p>
+<h3 id="Final-Verdict" class="article-heading">Final Verdict:<a class="article-anchor" href="#Final-Verdict" aria-hidden="true"></a></h3><p>With Jellyfin Media Server and ZimaBoard, watching videos anywhere becomes a reality. The combination of Jellyfin’s versatile features and ZimaBoard’s powerful hardware ensures a seamless and immersive home entertainment experience. So, unleash the power of your home entertainment system, dive into the world of Jellyfin and ZimaBoard, and enjoy your favorite videos anytime, anywhere.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zimaos/app-store/nvr-camera-server"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">NVR Camera Server</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zimaos/app-store/plex-setup-guide"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Plex Media Server</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-You-Should-Know-about-Jellyfin-Media-Server"><span class="toc-text">What You Should Know about Jellyfin Media Server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Key-features-and-benefits-of-using-Jellyfin"><span class="toc-text">1. Key features and benefits of using Jellyfin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Jellyfin-Media-Server-Supported-platforms-and-devices"><span class="toc-text">2. Jellyfin Media Server Supported platforms and devices</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Jellyfin-Media-Server-Installation-and-setup-process-on-ZimaBoard-SBC"><span class="toc-text">3. Jellyfin Media Server Installation and setup process on ZimaBoard SBC</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploring-ZimaBoard-as-a-Media-Server-Solution"><span class="toc-text">Exploring ZimaBoard as a Media Server Solution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Hardware-specifications-and-capabilities-of-ZimaBoard"><span class="toc-text">1. Hardware specifications and capabilities of ZimaBoard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Compatibility-with-Jellyfin-and-other-media-server-software"><span class="toc-text">2. Compatibility with Jellyfin and other media server software</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Setting-Up-Jellyfin-Media-Server-with-ZimaBoard-SBC"><span class="toc-text">How to Setting Up Jellyfin Media Server with ZimaBoard SBC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Preparing-the-ZimaBoard-for-Jellyfin-installation"><span class="toc-text">1. Preparing the ZimaBoard for Jellyfin installation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Step-by-step-guide-to-installing-Jellyfin-on-ZimaBoard"><span class="toc-text">2. Step-by-step guide to installing Jellyfin on ZimaBoard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Configuring-Jellyfin-for-optimal-performance-on-ZimaBoard"><span class="toc-text">3. Configuring Jellyfin for optimal performance on ZimaBoard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Connecting-storage-devices-and-organizing-media-libraries"><span class="toc-text">4. Connecting storage devices and organizing media libraries</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Accessing-and-Streaming-Media-Anywhere-with-Jellyfin"><span class="toc-text">How to Accessing and Streaming Media Anywhere with Jellyfin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Jellyfin%E2%80%99s-web-interface-and-its-features"><span class="toc-text">1. Jellyfin’s web interface and its features</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Exploring-Jellyfin-mobile-apps-for-on-the-go-streaming"><span class="toc-text">2. Exploring Jellyfin mobile apps for on-the-go streaming</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Casting-media-to-compatible-devices-using-Jellyfin"><span class="toc-text">3. Casting media to compatible devices using Jellyfin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Remote-access-and-streaming-outside-the-local-network"><span class="toc-text">4. Remote access and streaming outside the local network</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Final-Verdict"><span class="toc-text">Final Verdict:</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="is-current" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/media-server-setup-with-jellyfin" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/media-server-setup-with-jellyfin" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-theme="light">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>Integração Fluida de Nuvem e Edge para Gestão Total de Dados | Zimaspace Docs</title>
+  <title>Unidades na nuvem no ZimaOS: ligue o Google Drive, Dropbox e OneDrive | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/cloud-drive-connect">
   <!-- Alternate links -->
   
     
+    
   <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/cloud-drive-connect">
+    
+    
     
   <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/cloud-drive-connect">
     
+    
+    
   <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/cloud-drive-connect">
+    
+    
     
   <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/cloud-drive-connect">
     
+    
+    
   <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/cloud-drive-connect">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/cloud-drive-connect">
     
   
   <!-- FAVICONS ICON -->
@@ -32,32 +64,43 @@
   <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#f1b335">
 
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- build:css build/css/zima.css -->
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
   <!-- endbuild -->
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
   
   <!-- Open Graph -->
   
-  <meta name="description" content="Introdução:O Dilema de Dados do JojoNa era digital atual, profissionais como Jojo enfrentam o desafio de gerenciar grandes quantidades de dados espalhados por múltiplos dispositivos e serv">
+  <meta name="description" content="Ligue o Google Drive, Dropbox e OneDrive ao ZimaOS. Monte pastas na nuvem no Files, trabalhe entre o armazenamento local e remoto e utilize a nuvem como cópia externa do seu plano 3-2-1.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Integração Fluida de Nuvem e Edge para Gestão Total de Dados">
+<meta property="og:title" content="Unidades na nuvem no ZimaOS: ligue o Google Drive, Dropbox e OneDrive">
 <meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/cloud-drive-connect">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="Introdução:O Dilema de Dados do JojoNa era digital atual, profissionais como Jojo enfrentam o desafio de gerenciar grandes quantidades de dados espalhados por múltiplos dispositivos e serv">
+<meta property="og:description" content="Ligue o Google Drive, Dropbox e OneDrive ao ZimaOS. Monte pastas na nuvem no Files, trabalhe entre o armazenamento local e remoto e utilize a nuvem como cópia externa do seu plano 3-2-1.">
 <meta property="og:locale" content="pt_PT">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727158676809_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727159941762_%C3%A9%C2%A3%C2%9E%C3%A4%C2%B9%C2%A620240708-103902-2-1.gif">
-<meta property="article:published_time" content="2026-08-12T09:13:05.011Z">
-<meta property="article:modified_time" content="2026-08-12T09:13:05.011Z">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-drive-mount.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-drive-list.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-migrate-select.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-migrate-destination.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-migrate-progress.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-migrate-verified.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.545Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.545Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727158676809_image.png">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/files-cloud-drive-mount.png">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -66,7 +109,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
 <!-- End Google Tag Manager -->
 
 
@@ -74,8 +117,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Integração Fluida de Nuvem e Edge para Gestão Total de Dados",
-      "description": "",
+      "headline": "Ligar unidades na nuvem",
+      "description": "Ligue o Google Drive, Dropbox e OneDrive ao ZimaOS. Monte pastas na nuvem no Files, trabalhe entre o armazenamento local e remoto e utilize a nuvem como cópia externa do seu plano 3-2-1.",
       
       "author": {
         "@type": "Organization",
@@ -90,18 +133,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-08-12T09:13:05.011Z"
+      "datePublished": "2026-08-27T09:51:24.545Z"
     }
   </script>
 
   
   
-
-
-
   
-    
-    
+  
+  
+  
   
   
   
@@ -121,13 +162,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "@type": "ListItem",
           "position": 2,
           "name": "ZimaOS",
-          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos"
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
         },
+        
+        
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Integração Fluida de Nuvem e Edge para Gestão Total de Dados"
+          "name": "Ligar unidades na nuvem"
         }
+        
       ]
     }
   </script>
@@ -136,223 +180,238 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<body>
+<body class="docs-page">
   
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <div id="container">
-    <div id="header_outer">
-  <header id="header" >
-    <div id="header-inner" class="inner">
-      <div class="logo-container">
-        <h2 id="logo-wrap">
-          
-          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
-        </h2>
-      </div>
-      <div class="nav-container">
-        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
-          <ul id="menu-main-menu" class="maxmenu-list">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
 
-            <li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">Fórum</a></li>
-            <li class="menu-item menu-item-has-children">
-              <span class="maxmenu-click">
-                <i class="maxmenu-arrow"></i>
-              </span>
-              <a href="#">
-                <img src="/docs/img/lang.svg" />
-              </a>
-              <ul class="sub-menu">
-                
-                  <li class="menu-item">
-                    <a href="/docs/zimaos/cloud-drive-connect">English</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/zh/zimaos/cloud-drive-connect">中文</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/jp/zimaos/cloud-drive-connect">日本語</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/cloud-drive-connect">Português</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/es/zimaos/cloud-drive-connect">Español</a>
-                  </li>
-                
-              </ul>
-            </li>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
 
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/cloud-drive-connect">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/cloud-drive-connect">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/cloud-drive-connect">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/cloud-drive-connect">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/cloud-drive-connect">Español</a></li>
+            
           </ul>
-        </nav>
-      </div>
-
-      <div class="search-icon-container">
-        <div id="search-container-icon">
-          <i class="fa fa-search" id="showSearch"></i>
         </div>
-        <a class="shop" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="external">Loja</a>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
       </div>
 
-      <a id="mobile-nav-toggle">
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-      </a>
-    </div>
-  </header>
-</div>
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
 
-<div id="search-container">
-  <div id="search-container-close">
-    <i class="fa fa-close" id="hideSearch"></i>
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
   <div class="search-bg"></div>
   <div class="search-content-container">
     <div id="search-input-wrap">
-      <div id="search-input-icon">
-        
-      </div>
-      <input type="search" id="search-input" placeholder="Pesquisa...">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
     </div>
     <div id="resultContent"></div>
   </div>
-
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
 </div>
 
-    <div id="content-wrap">
-  <div id="content" class="wrapper">
-    <div id="content-inner">
-      <article class="article-container" itemscope itemtype="http://schema.org/Article">
-        <div class="article-inner">
-          <div class="article">
-            <div class="inner">
-              <header class="article-header">
-                <h1 class="article-title" itemprop="name">Integração Fluida de Nuvem e Edge para Gestão Total de Dados</h1>
-                
-              
-                
-                <!-- facebook -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="Se tiver algum problema com este documento, contacte-nos e responderemos prontamente.​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
-                </a>
-                <!-- x twitter -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="Se tiver algum problema com este documento, contacte-nos e responderemos prontamente.​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
-                </a>
-              </header>
-              <div class="article-content" itemprop="articleBody">
-                <h1 id="Introducao" class="article-heading"><a href="#Introducao" class="headerlink" title="Introdução:"></a>Introdução:<a class="article-anchor" href="#Introducao" aria-hidden="true"></a></h1><h2 id="O-Dilema-de-Dados-do-Jojo" class="article-heading"><a href="#O-Dilema-de-Dados-do-Jojo" class="headerlink" title="O Dilema de Dados do Jojo"></a>O Dilema de Dados do Jojo<a class="article-anchor" href="#O-Dilema-de-Dados-do-Jojo" aria-hidden="true"></a></h2><p>Na era digital atual, profissionais como Jojo enfrentam o desafio de gerenciar grandes quantidades de dados espalhados por múltiplos dispositivos e serviços de nuvem. Jojo, um <strong>freelancer</strong>, lutou com isso até descobrir o <strong>ZimaOS</strong>, um poderoso <strong>sistema de nuvem pessoal</strong> que simplifica o acesso e a gestão de dados. Este artigo explora como o ZimaOS pode transformar o <strong>fluxo de trabalho digital</strong> para <strong>criadores</strong>, oferecendo uma solução fluida para <strong>armazenamento</strong>, <strong>acesso</strong> e <strong>segurança</strong> de dados.<br><img src="https://manage.icewhale.io/api/static/docs/1727158676809_image.png"></p>
-<h2 id="O-Desafio-de-Jojo-Dados-Fragmentados-em-Plataformas" class="article-heading"><a href="#O-Desafio-de-Jojo-Dados-Fragmentados-em-Plataformas" class="headerlink" title="O Desafio de Jojo: Dados Fragmentados em Plataformas"></a>O Desafio de Jojo: Dados Fragmentados em Plataformas<a class="article-anchor" href="#O-Desafio-de-Jojo-Dados-Fragmentados-em-Plataformas" aria-hidden="true"></a></h2><p>A rotina diária de Jojo envolve lidar com vários arquivos e imagens armazenados em seu <strong>laptop</strong>, <strong>tablet</strong>, <strong>smartphone</strong>, e em vários serviços de nuvem como <strong>Google Drive</strong>, <strong>OneDrive</strong> e <strong>Dropbox</strong>. Mudar constantemente entre essas plataformas interrompe seu fluxo de trabalho e reduz sua produtividade. Frustrado com a ineficiência, Jojo ansiava por uma solução que pudesse centralizar sua <strong>gestão de dados</strong>.</p>
-<h2 id="A-Descoberta-do-ZimaOS-Um-Marco-para-Criadores" class="article-heading"><a href="#A-Descoberta-do-ZimaOS-Um-Marco-para-Criadores" class="headerlink" title="A Descoberta do ZimaOS: Um Marco para Criadores"></a>A Descoberta do ZimaOS: Um Marco para Criadores<a class="article-anchor" href="#A-Descoberta-do-ZimaOS-Um-Marco-para-Criadores" aria-hidden="true"></a></h2><p>Um dia, Jojo encontrou o <strong>ZimaOS</strong>, um robusto sistema operacional de nuvem pessoal projetado para <strong>integrar múltiplos serviços de nuvem</strong> em uma única interface unificada. Intrigado pela promessa de <strong>acesso e gestão de dados sem costura</strong>, Jojo decidiu experimentar.</p>
-<h1 id="Recursos-do-ZimaOS-Simplificando-o-Fluxo-de-Trabalho-de-Jojo" class="article-heading"><a href="#Recursos-do-ZimaOS-Simplificando-o-Fluxo-de-Trabalho-de-Jojo" class="headerlink" title="Recursos do ZimaOS: Simplificando o Fluxo de Trabalho de Jojo"></a>Recursos do ZimaOS: Simplificando o Fluxo de Trabalho de Jojo<a class="article-anchor" href="#Recursos-do-ZimaOS-Simplificando-o-Fluxo-de-Trabalho-de-Jojo" aria-hidden="true"></a></h1><p>O ZimaOS oferece uma gama de recursos que atendem às necessidades de profissionais como Jojo:</p>
-<ul>
-<li><strong>Gestão de Dados Centralizada</strong>: O ZimaOS suporta <strong>integração</strong> com <strong>Google Drive</strong>, <strong>OneDrive</strong> e <strong>Dropbox</strong>, permitindo que os usuários acessem todos os seus dados de uma única plataforma.</li>
-<li><strong>Manipulação Eficiente de Dados</strong>: Com o <strong>ZimaOS</strong>, Jojo pode gerenciar e sincronizar seus arquivos sem esforço entre dispositivos, eliminando a necessidade de constantes troca de login.</li>
-<li><strong>Aumento de Produtividade</strong>: A interface simplificada e os poderosos recursos do ZimaOS permitem que Jojo se concentre mais em seu <strong>trabalho criativo</strong> e menos nas dores de cabeça da gestão de dados.</li>
-<li><strong>Acesso Remoto</strong>: O recurso Connect do ZimaOS permite que Jojo acesse seus dados de qualquer lugar do mundo, garantindo que ele nunca perca o ritmo em seu trabalho.</li>
-</ul>
-<h2 id="O-que-e-ZimaOS-Uma-Visao-Geral-Abrangente" class="article-heading"><a href="#O-que-e-ZimaOS-Uma-Visao-Geral-Abrangente" class="headerlink" title="O que é ZimaOS? Uma Visão Geral Abrangente"></a>O que é ZimaOS? Uma Visão Geral Abrangente<a class="article-anchor" href="#O-que-e-ZimaOS-Uma-Visao-Geral-Abrangente" aria-hidden="true"></a></h2><p>O ZimaOS é um sistema operacional projetado para gerenciar e otimizar dispositivos <strong>NAS</strong> (Armazenamento Conectado à Rede). Ele oferece uma plataforma amigável para <strong>armazenar</strong>, <strong>fazer backup</strong> e <strong>compartilhar dados</strong>. Com suporte para várias configurações de <strong>RAID</strong>, <strong>capacidades de acesso remoto</strong>, e uma gama de <strong>aplicações</strong>, o ZimaOS garante <strong>segurança</strong>, <strong>eficiência</strong> e <strong>acessibilidade</strong> dos dados.</p>
-<h2 id="Integracao-em-Nuvem-com-ZimaOS-Conectando-Armazenamento-Local-e-Nuvem" class="article-heading"><a href="#Integracao-em-Nuvem-com-ZimaOS-Conectando-Armazenamento-Local-e-Nuvem" class="headerlink" title="Integração em Nuvem com ZimaOS: Conectando Armazenamento Local e Nuvem"></a>Integração em Nuvem com ZimaOS: Conectando Armazenamento Local e Nuvem<a class="article-anchor" href="#Integracao-em-Nuvem-com-ZimaOS-Conectando-Armazenamento-Local-e-Nuvem" aria-hidden="true"></a></h2><p><img src="https://manage.icewhale.io/api/static/docs/1727159941762_%C3%A9%C2%A3%C2%9E%C3%A4%C2%B9%C2%A620240708-103902-2-1.gif"><br>Os recursos de integração de nuvem do ZimaOS permitem que os usuários se conectem ao <strong>Google Drive</strong>, <strong>OneDrive</strong> e <strong>Dropbox</strong> de forma fluida. Aqui está como isso beneficia os usuários:</p>
-<ul>
-<li><strong>Acesso Unificado aos Dados</strong>: Jojo pode acessar todos os seus dados em nuvem do <strong>ZimaOS</strong>, reduzindo o tempo gasto na gestão de várias contas.</li>
-<li><strong>Aproveitando os Recursos da Nuvem</strong>: Jojo utiliza o armazenamento em nuvem para backup enquanto acessa os dados rapidamente através do armazenamento local.</li>
-<li><strong>Aumento da Eficiência</strong>: O montante local de unidades de nuvem melhora a velocidade de acesso aos dados e reduz os tempos de download, aumentando a eficiência de Jojo.</li>
-</ul>
-<h1 id="Aplicacoes-Praticas-Casos-de-Uso-do-Mundo-Real" class="article-heading"><a href="#Aplicacoes-Praticas-Casos-de-Uso-do-Mundo-Real" class="headerlink" title="Aplicações Práticas: Casos de Uso do Mundo Real"></a>Aplicações Práticas: Casos de Uso do Mundo Real<a class="article-anchor" href="#Aplicacoes-Praticas-Casos-de-Uso-do-Mundo-Real" aria-hidden="true"></a></h1><h2 id="Backup-e-Recuperacao-de-Dados-Salvaguardando-a-Criatividade" class="article-heading"><a href="#Backup-e-Recuperacao-de-Dados-Salvaguardando-a-Criatividade" class="headerlink" title="Backup e Recuperação de Dados: Salvaguardando a Criatividade"></a>Backup e Recuperação de Dados: Salvaguardando a Criatividade<a class="article-anchor" href="#Backup-e-Recuperacao-de-Dados-Salvaguardando-a-Criatividade" aria-hidden="true"></a></h2><p>Jojo frequentemente se preocupava em perder seu valioso trabalho criativo devido a falhas de hardware. Com o <strong>ZimaOS</strong>, ele pode fazer backup de seus arquivos essenciais para <strong>Google Drive</strong>, <strong>OneDrive</strong> e <strong>Dropbox</strong>. Esses serviços de nuvem oferecem alta confiabilidade, garantindo que os dados de Jojo estejam sempre seguros. Mesmo que seu dispositivo NAS local enfrente problemas, ele pode rapidamente restaurar seus dados da nuvem, minimizando o tempo de inatividade e protegendo sua criatividade.</p>
-<h2 id="Sincronizacao-de-Dados-em-Multiplos-Dispositivos-Fluxo-de-Trabalho-Sem-Costura-em-Diferentes-Locais" class="article-heading"><a href="#Sincronizacao-de-Dados-em-Multiplos-Dispositivos-Fluxo-de-Trabalho-Sem-Costura-em-Diferentes-Locais" class="headerlink" title="Sincronização de Dados em Múltiplos Dispositivos: Fluxo de Trabalho Sem Costura em Diferentes Locais"></a>Sincronização de Dados em Múltiplos Dispositivos: Fluxo de Trabalho Sem Costura em Diferentes Locais<a class="article-anchor" href="#Sincronizacao-de-Dados-em-Multiplos-Dispositivos-Fluxo-de-Trabalho-Sem-Costura-em-Diferentes-Locais" aria-hidden="true"></a></h2><p>Jojo frequentemente se desloca entre seu escritório em casa e vários cafés. O recurso de sincronização de múltiplos dispositivos do ZimaOS tem sido uma mudança de jogo para ele. Ao montar suas <strong>unidades de nuvem</strong> no <strong>ZimaOS</strong>, Jojo pode editar documentos em seu computador do escritório e eles são instantaneamente sincronizados para seu <strong>dispositivo NAS</strong> em casa. Esse fluxo de dados sem costura significa que Jojo pode continuar seu trabalho de qualquer localização sem perder o ritmo.</p>
-<h2 id="Streaming-de-Midia-Entretenimento-em-Qualquer-Lugar" class="article-heading"><a href="#Streaming-de-Midia-Entretenimento-em-Qualquer-Lugar" class="headerlink" title="Streaming de Mídia: Entretenimento em Qualquer Lugar"></a>Streaming de Mídia: Entretenimento em Qualquer Lugar<a class="article-anchor" href="#Streaming-de-Midia-Entretenimento-em-Qualquer-Lugar" aria-hidden="true"></a></h2><p>Em seu tempo livre, Jojo desfruta de sua extensa biblioteca de <strong>mídia</strong> de vídeos e músicas. O <strong>ZimaOS</strong> permite que ele faça upload desses arquivos para a nuvem e os transmita em qualquer dispositivo, seja seu <strong>smartphone</strong>, <strong>tablet</strong> ou <strong>smart TV</strong>. Se estiver relaxando em <strong>casa</strong> ou <strong>viajando</strong>, Jojo pode desfrutar de sua coleção de mídia sem dificuldades. A capacidade de acessar seu conteúdo em qualquer lugar aprimora sua experiência de <strong>entretenimento</strong>, tornando sua vida digital mais agradável.</p>
-<h1 id="Liberando-o-Futuro-dos-Fluxos-de-Trabalho-Digitais-com-ZimaOS" class="article-heading"><a href="#Liberando-o-Futuro-dos-Fluxos-de-Trabalho-Digitais-com-ZimaOS" class="headerlink" title="Liberando o Futuro dos Fluxos de Trabalho Digitais com ZimaOS"></a>Liberando o Futuro dos Fluxos de Trabalho Digitais com ZimaOS<a class="article-anchor" href="#Liberando-o-Futuro-dos-Fluxos-de-Trabalho-Digitais-com-ZimaOS" aria-hidden="true"></a></h1><p>O ZimaOS revolucionou a abordagem de Jojo em relação à <strong>gestão de dados</strong>, proporcionando uma <strong>integração sem costura de nuvem</strong> e <strong>soluções de armazenamento local</strong>. Os robustos recursos do sistema e sua interface intuitiva aumentaram significativamente a produtividade de Jojo, permitindo que ele se concentre em seus <strong>projetos criativos</strong> sem a preocupação constante da gestão de dados. À medida que a tecnologia evolui, o <strong>ZimaOS</strong> continua a inovar, prometendo soluções ainda mais poderosas para <strong>armazenamento</strong> e <strong>acesso</strong> de dados no futuro. Pronto para experimentar o <strong>ZimaOS</strong> por si mesmo? Mergulhe e transforme sua vida digital hoje: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS">Experimente o ZimaOS Agora</a>.</p>
-
-              </div>
-              <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-08-12T09:13:05.011Z" itemprop="dateModified">Última atualização: 2026-08-12</time>
-                <a href="cli-guide" class="article-footer-prev" title="Sincronizar Fotos via CLI Configurável"><i class="fa fa-chevron-left"></i><span>Anterior</span></a><a href="rsync-backup-clones" class="article-footer-next" title="Criar Múltiplos Clones usando rsync"><span>Próximo</span><i class="fa fa-chevron-right"></i></a>
-              </footer>
-
-            </div>
-          </div>
-          <aside id="article-toc" role="navigation">
-            <div id="article-toc-inner">
-              <strong class="sidebar-title">Conteúdos</strong>
-              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introducao"><span class="toc-text">Introdução:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#O-Dilema-de-Dados-do-Jojo"><span class="toc-text">O Dilema de Dados do Jojo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#O-Desafio-de-Jojo-Dados-Fragmentados-em-Plataformas"><span class="toc-text">O Desafio de Jojo: Dados Fragmentados em Plataformas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Descoberta-do-ZimaOS-Um-Marco-para-Criadores"><span class="toc-text">A Descoberta do ZimaOS: Um Marco para Criadores</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recursos-do-ZimaOS-Simplificando-o-Fluxo-de-Trabalho-de-Jojo"><span class="toc-text">Recursos do ZimaOS: Simplificando o Fluxo de Trabalho de Jojo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#O-que-e-ZimaOS-Uma-Visao-Geral-Abrangente"><span class="toc-text">O que é ZimaOS? Uma Visão Geral Abrangente</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integracao-em-Nuvem-com-ZimaOS-Conectando-Armazenamento-Local-e-Nuvem"><span class="toc-text">Integração em Nuvem com ZimaOS: Conectando Armazenamento Local e Nuvem</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Aplicacoes-Praticas-Casos-de-Uso-do-Mundo-Real"><span class="toc-text">Aplicações Práticas: Casos de Uso do Mundo Real</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Backup-e-Recuperacao-de-Dados-Salvaguardando-a-Criatividade"><span class="toc-text">Backup e Recuperação de Dados: Salvaguardando a Criatividade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sincronizacao-de-Dados-em-Multiplos-Dispositivos-Fluxo-de-Trabalho-Sem-Costura-em-Diferentes-Locais"><span class="toc-text">Sincronização de Dados em Múltiplos Dispositivos: Fluxo de Trabalho Sem Costura em Diferentes Locais</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Streaming-de-Midia-Entretenimento-em-Qualquer-Lugar"><span class="toc-text">Streaming de Mídia: Entretenimento em Qualquer Lugar</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Liberando-o-Futuro-dos-Fluxos-de-Trabalho-Digitais-com-ZimaOS"><span class="toc-text">Liberando o Futuro dos Fluxos de Trabalho Digitais com ZimaOS</span></a></li></ol>
-              <a href="#" id="article-toc-top">Voltar ao Topo</a>
-            </div>
-          </aside>
-        </div>
-      </article>
-      <aside id="sidebar" role="navigation">
-  <div class="inner">
-    
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">O que é Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Visão Geral</span>
-        <i class="fa fa-chevron-right"></i>
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">Como instalar o ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">Comece a usar</a></li><li class="sidebar-link "><a href="./features">Recursos</a></li><li class="sidebar-link "><a href="./remote-access">Acesso Remoto</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC Direto</a></li>
-      </ul>
-    </li>
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Explorar</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">Sincronizar Fotos com Immich</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">Configuração do Servidor de Mídia com Jellyfin</a></li><li class="sidebar-link "><a href="./nvr-camera-server">Servidor de Câmeras NVR</a></li><li class="sidebar-link "><a href="./synology-smb-connect">Vincular Compartilhamentos Synology e SMB</a></li><li class="sidebar-link "><a href="./cli-guide">Sincronizar Fotos via CLI Configurável</a></li><li class="sidebar-link  current"><a href="./cloud-drive-connect">Conectar com Drives na Nuvem</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">Criar Múltiplos Clones usando rsync</a></li><li class="sidebar-link "><a href="./data-migration">Migração de Dados</a></li><li class="sidebar-link "><a href="./zfs-setup">Configuração do ZFS</a></li><li class="sidebar-link "><a href="./raid-options">Mais Opções de RAID</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">Migrar todos os Arquivos!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">Abrir SSH no ZimaOS</a></li><li class="sidebar-link "><a href="./docker-app-paths">Caminhos da Aplicação Docker</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Guia de Operação do Plex</a></li><li class="sidebar-link "><a href="./webtorrent-feature">Compartilhar via link</a></li><li class="sidebar-link "><a href="./llm-manual-download">Baixar Modelo de Linguagem Grande</a></li><li class="sidebar-link "><a href="./password-recovery">Recuperar Sua Senha</a></li><li class="sidebar-link "><a href="./remote-id">Obter ID de Rede</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">Alcançar a Velocidade de Transferência Mais Rápida</a></li><li class="sidebar-link "><a href="./samba-member-setup">Samba com Múltiplos Usuários</a></li><li class="sidebar-link "><a href="./zimaclient-install">Baixar e Instalar ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">Criar Raid6 no ZimaOS</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Tutorial Immich</a></li><li class="sidebar-link "><a href="./iscsi-guide">Tutorial de Uso de iSCSI</a></li><li class="sidebar-link "><a href="./setup-emby-server">Ligar</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole</a></li><li class="sidebar-link "><a href="./radarr-setup">Ligar Synology e Compartilhamentos SMB</a></li><li class="sidebar-link "><a href="./system-recovery">Guia Rápido de Recuperação do Sistema</a></li><li class="sidebar-link "><a href="./dlna-server-setup">Configurando o ZimaCube como Servidor DLNA</a></li><li class="sidebar-link "><a href="./time-machine-backup">Recursos da Máquina do Tempo</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">NFS no ZimaOS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">Implantar Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">iSCSI no ZimaOS</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">Guia de Sincronização Bidirecional do ZimaOS e QTS</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">Documento de Ajuda para PME</a></li><li class="sidebar-link "><a href="./zimaos-search">Trabalho do ZimaOS-Search</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">Reconstruindo o RAID após reinstalar o sistema</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">Descrição de IA com ZimaOS</a></li><li class="sidebar-link "><a href="./enable-ai">Formato de Disco Suportado</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">Ativar Intel AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">Como Usar o Backup 3-2-1 no ZimaOS?</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrar do CasaOS para o ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">Configuração UPS</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">install zimaos on proxmox ve</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">Implantar OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">Implementar Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">Lojas Incríveis de Terceiros</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Desenvolvimento</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">Como instalar o ZimaOS</a></li><li class="sidebar-link "><a href="./networking">Estabelecimento de contactos</a></li><li class="sidebar-link "><a href="./python-setup">Configurar Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">Construir Aplicativos</a></li><li class="sidebar-link "><a href="./7th-bay-led">LED da 7ª Baía</a></li><li class="sidebar-link "><a href="./offline-install">Atualizar offline</a></li><li class="sidebar-link "><a href="./supported-disk-formats">Formato de Disco Suportado</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Criações da Comunidade</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">Como Contribuir</a></li><li class="sidebar-link "><a href="./contributions">Drivers sugeridos pelos utilizadores da comunidade foram implementados</a></li><li class="sidebar-link "><a href="./syncthing-install">Instalar o Syncthing no ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">Instalar o Paperless-ngx no ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ai-install">Instalar o Paperless‑AI no ZimaOS</a></li><li class="sidebar-link "><a href="./azuracast-install">Guia de Instalação do AzuraCast</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Guia de Instalação do Zabbix</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Registros de Versão</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>FAQ</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">Lista de Compatibilidade da UPS</a></li><li class="sidebar-link "><a href="./folder-encryption">Pasta encriptada</a></li><li class="sidebar-link "><a href="./resetnetworksettings">Repor definições de rede definições de rede</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
-  </div>
-</aside>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
     </div>
-  </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/from-synology-to-zimacube-migrate-all-files">Transferência manual de Synology</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Mover dados entre unidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/remote-id">Obter o ID de rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Ligar unidades na nuvem</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.545Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>As unidades na nuvem fazem bem o seu trabalho: estão disponíveis em todo o lado, são fiáveis e outras pessoas já partilham ficheiros consigo através delas. O dispositivo ZimaOS é bom no resto: velocidade na sua própria rede, capacidade real e dados sob o seu controlo. Ao ligar os dois ambientes, ganha flexibilidade para mover os dados à medida que as necessidades mudam. Transfira parte dos dados da nuvem para o NAS e reduza o plano da subscrição, ou utilize a nuvem como cópia externa cifrada do NAS. É o utilizador que decide onde fica cada elemento.</p>
+<h2 id="Montar-unidades-na-nuvem-no-Files" class="article-heading">Montar unidades na nuvem no Files<a class="article-anchor" href="#Montar-unidades-na-nuvem-no-Files" aria-hidden="true"></a></h2><p>A aplicação Files liga-se diretamente ao <strong>Google Drive</strong>, <strong>Dropbox</strong> e <strong>OneDrive</strong>. Depois de estabelecer a ligação, as pastas na nuvem aparecem junto ao armazenamento local.</p>
+<ol class="doc-steps">
+<li>Abra o <strong>Files</strong> no painel do ZimaOS.</li>
+<li>Adicione uma unidade na nuvem a partir da lista de armazenamento.</li>
+<li>Inicie sessão na conta da nuvem e autorize o acesso.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-cloud-drive-mount.png" alt="ZimaOS Files com as opções para ligar o Google Drive, Dropbox e OneDrive"></span></p>
+<p>Depois da ligação, a unidade na nuvem aparece junto aos espaços de armazenamento e pode explorar as pastas como quaisquer outras.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-cloud-drive-list.png" alt="Barra lateral do ZimaOS Files com uma unidade na nuvem ligada junto aos espaços locais"></span></p>
+<h2 id="Trabalhar-entre-o-armazenamento-local-e-a-nuvem" class="article-heading">Trabalhar entre o armazenamento local e a nuvem<a class="article-anchor" href="#Trabalhar-entre-o-armazenamento-local-e-a-nuvem" aria-hidden="true"></a></h2><p>Com a nuvem montada, alternar entre os dois ambientes deixa de ser uma tarefa separada.</p>
+<p>Abra um ficheiro na nuvem, edite-o e volte a guardá-lo. Arraste uma pasta local para a unidade na nuvem quando pretender outra cópia. Transfira ficheiros da nuvem quando precisar deles no armazenamento local rápido. Ao mover dados suficientes para o dispositivo, poderá muitas vezes mudar para um plano de nuvem mais económico. O Files verifica os dados durante a transferência, evitando que uma grande migração termine com ficheiros danificados sem aviso.</p>
+<p>Para mover dados de uma unidade na nuvem para o armazenamento local:</p>
+<ol class="doc-steps">
+<li>No Files, abra a unidade na nuvem e selecione a pasta a mover.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-cloud-migrate-select.png" alt="ZimaOS Files com uma pasta na nuvem selecionada para migração"></span></p>
+<ol start="2" class="doc-steps">
+<li>Escolha o espaço de armazenamento de destino.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-cloud-migrate-destination.png" alt="Diálogo de migração do ZimaOS Files para escolher o armazenamento de destino"></span></p>
+<ol start="3" class="doc-steps">
+<li>Inicie a transferência. O progresso é apresentado em tempo real.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-cloud-migrate-progress.png" alt="Progresso de migração do ZimaOS Files com a transferência em tempo real"></span></p>
+<ol start="4" class="doc-steps">
+<li>Quando terminar, o Files verifica o resultado e confirma que os ficheiros estão intactos.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-cloud-migrate-verified.png" alt="Migração do ZimaOS Files concluída e verificada, com os ficheiros intactos"></span></p>
+<h2 id="A-copia-externa" class="article-heading">A cópia externa<a class="article-anchor" href="#A-copia-externa" aria-hidden="true"></a></h2><p>Uma unidade na nuvem ligada assume uma segunda função no plano de cópias de segurança: torna-se a cópia externa da sua <strong><a href="./how-to-use-3-2-1-backup-on-zimaos" title="Proteja os dados do seu NAS com a regra de cópia de segurança 3-2-1" class="doc-link">estratégia de cópia de segurança 3-2-1</a></strong>.</p>
+<p>O armazenamento local contém a cópia de trabalho, uma segunda unidade contém a cópia local e a nuvem guarda uma cópia cifrada que sobrevive a um incêndio ou a uma inundação. É a mesma nuvem que já utiliza, agora dedicada a uma função que desempenha particularmente bem.</p>
+<h2 id="A-seguir" class="article-heading">A seguir<a class="article-anchor" href="#A-seguir" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="./how-to-use-3-2-1-backup-on-zimaos" title="Proteja os dados do seu NAS com a regra de cópia de segurança 3-2-1" class="doc-link">Estratégia de cópia de segurança 3-2-1</a></strong> — crie o plano de proteção completo</li>
+<li><strong><a href="./phone-backup" title="Crie automaticamente uma cópia de segurança do telemóvel no ZimaOS com o ZimaClient" class="doc-link">Cópia de segurança do telemóvel</a></strong> — traga também os dados do telemóvel para casa</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.545Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+      
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Montar-unidades-na-nuvem-no-Files"><span class="toc-text">Montar unidades na nuvem no Files</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trabalhar-entre-o-armazenamento-local-e-a-nuvem"><span class="toc-text">Trabalhar entre o armazenamento local e a nuvem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-copia-externa"><span class="toc-text">A cópia externa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-seguir"><span class="toc-text">A seguir</span></a></li></ol>
+    </nav>
+  </aside>
 </div>
 
     <!-- FOOTER START -->
@@ -565,97 +624,103 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER END -->
   </div>
   <div id="mobile-nav-dimmer"></div>
-  <nav id="mobile-nav">
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
       
-      <li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">Fórum</a></li>
+      <li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
     </ul>
     
-      
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">O que é Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Visão Geral</span>
-        <i class="fa fa-chevron-right"></i>
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">Como instalar o ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">Comece a usar</a></li><li class="sidebar-link "><a href="./features">Recursos</a></li><li class="sidebar-link "><a href="./remote-access">Acesso Remoto</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC Direto</a></li>
-      </ul>
-    </li>
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Explorar</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">Sincronizar Fotos com Immich</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">Configuração do Servidor de Mídia com Jellyfin</a></li><li class="sidebar-link "><a href="./nvr-camera-server">Servidor de Câmeras NVR</a></li><li class="sidebar-link "><a href="./synology-smb-connect">Vincular Compartilhamentos Synology e SMB</a></li><li class="sidebar-link "><a href="./cli-guide">Sincronizar Fotos via CLI Configurável</a></li><li class="sidebar-link  current"><a href="./cloud-drive-connect">Conectar com Drives na Nuvem</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">Criar Múltiplos Clones usando rsync</a></li><li class="sidebar-link "><a href="./data-migration">Migração de Dados</a></li><li class="sidebar-link "><a href="./zfs-setup">Configuração do ZFS</a></li><li class="sidebar-link "><a href="./raid-options">Mais Opções de RAID</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">Migrar todos os Arquivos!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">Abrir SSH no ZimaOS</a></li><li class="sidebar-link "><a href="./docker-app-paths">Caminhos da Aplicação Docker</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Guia de Operação do Plex</a></li><li class="sidebar-link "><a href="./webtorrent-feature">Compartilhar via link</a></li><li class="sidebar-link "><a href="./llm-manual-download">Baixar Modelo de Linguagem Grande</a></li><li class="sidebar-link "><a href="./password-recovery">Recuperar Sua Senha</a></li><li class="sidebar-link "><a href="./remote-id">Obter ID de Rede</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">Alcançar a Velocidade de Transferência Mais Rápida</a></li><li class="sidebar-link "><a href="./samba-member-setup">Samba com Múltiplos Usuários</a></li><li class="sidebar-link "><a href="./zimaclient-install">Baixar e Instalar ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">Criar Raid6 no ZimaOS</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Tutorial Immich</a></li><li class="sidebar-link "><a href="./iscsi-guide">Tutorial de Uso de iSCSI</a></li><li class="sidebar-link "><a href="./setup-emby-server">Ligar</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole</a></li><li class="sidebar-link "><a href="./radarr-setup">Ligar Synology e Compartilhamentos SMB</a></li><li class="sidebar-link "><a href="./system-recovery">Guia Rápido de Recuperação do Sistema</a></li><li class="sidebar-link "><a href="./dlna-server-setup">Configurando o ZimaCube como Servidor DLNA</a></li><li class="sidebar-link "><a href="./time-machine-backup">Recursos da Máquina do Tempo</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">NFS no ZimaOS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">Implantar Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">iSCSI no ZimaOS</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">Guia de Sincronização Bidirecional do ZimaOS e QTS</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">Documento de Ajuda para PME</a></li><li class="sidebar-link "><a href="./zimaos-search">Trabalho do ZimaOS-Search</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">Reconstruindo o RAID após reinstalar o sistema</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">Descrição de IA com ZimaOS</a></li><li class="sidebar-link "><a href="./enable-ai">Formato de Disco Suportado</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">Ativar Intel AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">Como Usar o Backup 3-2-1 no ZimaOS?</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrar do CasaOS para o ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">Configuração UPS</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">install zimaos on proxmox ve</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">Implantar OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">Implementar Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">Lojas Incríveis de Terceiros</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Desenvolvimento</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/from-synology-to-zimacube-migrate-all-files">Transferência manual de Synology</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Mover dados entre unidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">Como instalar o ZimaOS</a></li><li class="sidebar-link "><a href="./networking">Estabelecimento de contactos</a></li><li class="sidebar-link "><a href="./python-setup">Configurar Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">Construir Aplicativos</a></li><li class="sidebar-link "><a href="./7th-bay-led">LED da 7ª Baía</a></li><li class="sidebar-link "><a href="./offline-install">Atualizar offline</a></li><li class="sidebar-link "><a href="./supported-disk-formats">Formato de Disco Suportado</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Criações da Comunidade</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">Como Contribuir</a></li><li class="sidebar-link "><a href="./contributions">Drivers sugeridos pelos utilizadores da comunidade foram implementados</a></li><li class="sidebar-link "><a href="./syncthing-install">Instalar o Syncthing no ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">Instalar o Paperless-ngx no ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ai-install">Instalar o Paperless‑AI no ZimaOS</a></li><li class="sidebar-link "><a href="./azuracast-install">Guia de Instalação do AzuraCast</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Guia de Instalação do Zabbix</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Registros de Versão</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/remote-id">Obter o ID de rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>FAQ</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">Lista de Compatibilidade da UPS</a></li><li class="sidebar-link "><a href="./folder-encryption">Pasta encriptada</a></li><li class="sidebar-link "><a href="./resetnetworksettings">Repor definições de rede definições de rede</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li></ul>
+      </div>
+    </div>
     
   </div>
-  <div id="mobile-lang-select-wrap">
-    <span id="mobile-lang-select-label" style="display:none">
-      <i class="fa fa-globe"></i>
-      <span>Português</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/cloud-drive-connect.html">
-      
-        <option value="en">English</option>
-      
-        <option value="zh">中文</option>
-      
-        <option value="jp">日本語</option>
-      
-        <option value="pt-PT" selected>Português</option>
-      
-        <option value="es">Español</option>
-      
-    </select>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/cloud-drive-connect" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/cloud-drive-connect" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/cloud-drive-connect" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/cloud-drive-connect" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/cloud-drive-connect" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
   </div>
 </nav>
+
   <!-- Scripts -->
 <!-- Cookie -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
 
 <script src="/docs/js/lang_select.js"></script>
 
@@ -672,9 +737,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/docs/js/hexo_resize_image.js"></script>
 
 
-<script src="/docs/js/jquery-2.2.0.min.js"></script>
-
-
 <script src="/docs/js/sweetalert2@11.js"></script>
 
 
@@ -683,10 +745,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/docs/js/cloudflare_ai_search.js"></script>
 
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
 <!-- endbuild -->
 
 
 <script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
 
 
 

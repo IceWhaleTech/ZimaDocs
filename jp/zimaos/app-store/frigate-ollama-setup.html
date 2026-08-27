@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Frigate+OlamaスクリーンAIの実装とZimaOSの使用 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/frigate-ollama-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="背景日常生活において、監視カメラは家庭や企業にとって重要なツールとなっています。しかし、従来の監視システムは通常、画像を記録するだけで、単に動きを検出する機能しかなく、画像の内容に関する詳細な説明を提供することはできません。これにより、ユーザーは動画を視聴したり通知を受け取ったりする際に、何が起こったのかを自分で判断する必要があります。Frigateは、画像内の人、車、動物">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Frigate+OlamaスクリーンAIの実装とZimaOSの使用">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/app-store/frigate-ollama-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="背景日常生活において、監視カメラは家庭や企業にとって重要なツールとなっています。しかし、従来の監視システムは通常、画像を記録するだけで、単に動きを検出する機能しかなく、画像の内容に関する詳細な説明を提供することはできません。これにより、ユーザーは動画を視聴したり通知を受け取ったりする際に、何が起こったのかを自分で判断する必要があります。Frigateは、画像内の人、車、動物">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202079506_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202168758_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202389678_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203245150_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203281707_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203346880_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203380348_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203428242_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203508399_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203744283_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203764783_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203839741_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203882560_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203925603_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203946052_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203986368_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204019481_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204529636_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204647915_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1745202079506_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Frigate+OlamaスクリーンAIの実装とZimaOSの使用",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.537Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Frigate+OlamaスクリーンAIの実装とZimaOSの使用"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/frigate-ollama-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/frigate-ollama-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/frigate-ollama-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/frigate-ollama-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Frigate+OlamaスクリーンAIの実装とZimaOSの使用</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="背景" class="article-heading">背景<a class="article-anchor" href="#背景" aria-hidden="true"></a></h2><p>日常生活において、監視カメラは家庭や企業にとって重要なツールとなっています。しかし、従来の監視システムは通常、画像を記録するだけで、単に動きを検出する機能しかなく、画像の内容に関する詳細な説明を提供することはできません。これにより、ユーザーは動画を視聴したり通知を受け取ったりする際に、何が起こったのかを自分で判断する必要があります。<br>Frigateは、画像内の人、車、動物などの対象を識別し、関連するイベントをトリガーする効率的なオープンソースのビデオ分析ツールです。しかし、その機能は主に「見る」レベルにとどまり、直接的に「何が起こったか」を伝えることはできません。<br>この不足を補うために、私たちはOllamaというツールを導入しました。このツールは自然言語での説明を生成することができます。これにより、Frigateが検出した視覚的なコンテンツを「誰かが庭に入った」や「車がドアの前に駐車した」といった明確なテキスト説明に変換できます。<br>このチュートリアルでは、ZimaOSを使用してFrigateとOllamaを組み合わせ、実用的な視覚的説明システムを作成する方法を説明します。家庭のセキュリティを改善したり、小さなプロジェクトにインテリジェントな機能を追加したりする場合、このソリューションはあなたのニーズを満たすことができます。</p>
+<h2 id="ハードウェアの準備" class="article-heading">ハードウェアの準備<a class="article-anchor" href="#ハードウェアの準備" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>RTSPプロトコルに対応したカメラ</strong><br>Frigateにリアルタイムのビデオストリーム入力を提供します。</li>
+<li><strong>ZimaBoard2対応のグラフィックカード</strong><br>AIモデル推論をローカルで加速するために使用されます（例えば、NVIDIAシリーズのグラフィックカード）。<a href="../../hardware/gpu-expansion" class="doc-link">GPU 拡張ガイド</a>を参照してください。</li>
+<li><strong>容量6GB以上のハードドライブ</strong><br>AIモデルファイル、ビデオスナップショット、システムデータを保存するために使用されます。</li>
+</ol>
+<h2 id="ソフトウェアのインストール" class="article-heading">ソフトウェアのインストール<a class="article-anchor" href="#ソフトウェアのインストール" aria-hidden="true"></a></h2><p>このシステムのソフトウェアインストールは以下の3つのステップに分かれます：</p>
+<ol class="doc-steps">
+<li>データ移行</li>
+<li>OllamaのインストールとLLaVAモデルの設定</li>
+<li>Frigateのインストールと設定</li>
+</ol>
+<h3 id="ステップ1-データ移行" class="article-heading">ステップ1: データ移行<a class="article-anchor" href="#ステップ1-データ移行" aria-hidden="true"></a></h3><p>AIモデルはサイズが大きいため、事前に独立したハードドライブをインストールして、Dockerのデータディレクトリや個人データをハードドライブに移行することをお勧めします。これにより、ダウンロード中の失敗やストレージ容量不足を防ぎ、システムの安定した動作と十分なストレージ容量を確保できます。</p>
+<blockquote>
+<p>重要なファイルをバックアップして、データ損失を防止してください。データ移行にはリスクが伴う場合があります!!!</p>
+</blockquote>
+<h4 id="グラフィックカードをハードドライブに接続し、デバイスを起動してオペレーティングシステムに入ります。" class="article-heading">グラフィックカードをハードドライブに接続し、デバイスを起動してオペレーティングシステムに入ります。<a class="article-anchor" href="#グラフィックカードをハードドライブに接続し、デバイスを起動してオペレーティングシステムに入ります。" aria-hidden="true"></a></h4><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745202079506_image.png"></span></p>
+<h4 id="データ移行" class="article-heading">データ移行<a class="article-anchor" href="#データ移行" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>左上のメニューアイコンをクリックします。</li>
+<li><strong>「アプリ」</strong>をクリックします。</li>
+<li>関連するアプリケーションまたはデータ管理項目を見つけ、<strong>「移行」</strong>ボタンをクリックして移行が完了するのを待ちます。<br><img src="https://manage.icewhale.io/api/static/docs/1745202168758_image.png"></li>
+</ol>
+<h3 id="ステップ1-OllamaのインストールとLLaVAモデルの設定" class="article-heading">ステップ1: OllamaのインストールとLLaVAモデルの設定<a class="article-anchor" href="#ステップ1-OllamaのインストールとLLaVAモデルの設定" aria-hidden="true"></a></h3><p>サポートされているモデルの詳細については、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/genai/" class="doc-link">Frigateの公式ドキュメント</a>および<a target="_blank" rel="noopener external nofollow noreferrer" href="https://ollama.com/" class="doc-link">Ollamaの公式サイト</a>をご覧ください。</p>
+<h4 id="Ollamaのインストール" class="article-heading">Ollamaのインストール<a class="article-anchor" href="#Ollamaのインストール" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><strong>アプリストア</strong>を開き、検索バーに<strong>「Ollama」</strong>と入力します。</li>
+<li>グラフィックカードの種類に応じて適切なバージョンをインストールします（例えば、NVIDIAをサポートするバージョンなど）。<br><img src="https://manage.icewhale.io/api/static/docs/1745202389678_image.png"></li>
+</ol>
+<h4 id="LLaVAモデルの設定" class="article-heading">LLaVAモデルの設定<a class="article-anchor" href="#LLaVAモデルの設定" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><strong>Olamaターミナル</strong>を開き、右上のメニューアイコンをクリックします。</li>
+<li><strong>「設定」</strong>を選択して設定インターフェースに入ります。<br><img src="https://manage.icewhale.io/api/static/docs/1745203245150_image.png"></li>
+<li><strong>「ターミナル」</strong>アイコンをクリックしてコマンドライン制御インターフェースに入ります。<br><img src="https://manage.icewhale.io/api/static/docs/1745203281707_image.png"></li>
+<li>以下のコマンドをコマンドラインに入力して、モデルをダウンロードし、llava-llama3をインストールします。<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ollama pull llava-llama3</span><br></pre></td></tr></table></div></figure>
+<img src="https://manage.icewhale.io/api/static/docs/1745203346880_image.png"></li>
+<li><strong>「成功」</strong>という文字が表示された場合、モデルのダウンロードが完了し、Ollamaの準備が整いました。<br><img src="https://manage.icewhale.io/api/static/docs/1745203380348_image.png"></li>
+<li>Ollamaを起動した後、<strong>実行中のIPアドレスとポート番号</strong>（例：<code class="chip">http://10.0.1.3:11434</code>）を記録します。これは後でFrigateの設定に使用します。<br><img src="https://manage.icewhale.io/api/static/docs/1745203428242_image.png"></li>
+</ol>
+<h3 id="ステップ3-Frigateのインストールと設定" class="article-heading">ステップ3: Frigateのインストールと設定<a class="article-anchor" href="#ステップ3-Frigateのインストールと設定" aria-hidden="true"></a></h3><h4 id="Frigateのインストール" class="article-heading">Frigateのインストール<a class="article-anchor" href="#Frigateのインストール" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p>メインインターフェースの右上にある<strong>「プラス」</strong>ボタンをクリックします。</p>
+</li>
+<li><p>「カスタマイズアプリのインストール」を選択します。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203508399_image.png"></span></p>
+</li>
+<li><p>「インポート」ボタンをクリックします。</p>
+</li>
+<li><p>以下のfrigate.yaml設定ファイルをインポートします。</p>
+<blockquote>
+<p>name: pure_grace<br>services:<br>  frigate:<br> cpu_shares: 90<br> command: []<br> container_name: frigate<br> deploy:<br>   resources:<br> limits:<br>   memory: 7766M<br> devices:</p>
+</blockquote>
+<ul class="doc-dots">
+<li>&#x2F;dev&#x2F;bus&#x2F;usb:&#x2F;dev&#x2F;bus&#x2F;usb</li>
+<li>&#x2F;dev&#x2F;apex_0:&#x2F;dev&#x2F;apex_0</li>
+<li>&#x2F;dev&#x2F;video11:&#x2F;dev&#x2F;video11</li>
+<li>&#x2F;dev&#x2F;dri&#x2F;renderD128:&#x2F;dev&#x2F;dri&#x2F;renderD128<br> image: ghcr.io&#x2F;blakeblackshear&#x2F;frigate:0.15.0<br> labels:<br>   icon: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icon.casaos.io/main/all/frigate.png" class="doc-link">https://icon.casaos.io/main/all/frigate.png</a><br> ports:</li>
+<li>target: 8971<br>published: “8971”<br>protocol: tcp</li>
+<li>target: 8554<br>published: “8554”<br>protocol: tcp</li>
+<li>target: 8555<br>published: “8555”<br>protocol: tcp</li>
+<li>target: 8555<br>published: “8555”<br>protocol: udp<br> privileged: true<br> restart: unless-stopped<br> shm_size: “67108864”<br> volumes:</li>
+<li>type: bind<br>source: &#x2F;etc&#x2F;localtime<br>target: &#x2F;etc&#x2F;localtime</li>
+<li>type: bind<br>source: &#x2F;DATA&#x2F;AppData&#x2F;frigate&#x2F;config<br>target: &#x2F;config</li>
+<li>type: bind<br>source: &#x2F;DATA&#x2F;Media<br>target: &#x2F;media&#x2F;frigate<br> cap_add: []<br> environment: []<br> network_mode: bridge<br>x-casaos:<br>  author: self<br>  category: self<br>  hostname: “”<br>  icon: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icon.casaos.io/main/all/frigate.png" class="doc-link">https://icon.casaos.io/main/all/frigate.png</a><br>  index: &#x2F;<br>  is_uncontrolled: false<br>  port_map: “8971”<br>  scheme: https<br>  store_app_id: pure_grace<br>  tips: null<br>  title:<br> custom: “”<br> en_us: frigate</li>
+</ul>
+</li>
+<li><p>「送信」をクリックします。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203744283_image.png"></span></p>
+</li>
+<li><p>「インストール」をクリックしてインストールが完了するのを待ちます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203764783_image.png"></span></p>
+</li>
+</ol>
+<h4 id="Frigateのアカウントとパスワードを取得" class="article-heading">Frigateのアカウントとパスワードを取得<a class="article-anchor" href="#Frigateのアカウントとパスワードを取得" aria-hidden="true"></a></h4><p>Frigateを起動後、ログでデフォルトのアカウントとパスワードを確認し、記録してください。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203839741_image.png"></span></p>
+<ol class="doc-steps">
+<li><strong>Frigateターミナル</strong>を開き、右上の<strong>メニューアイコン</strong>をクリックします。</li>
+<li><strong>「設定」</strong>を選択して設定インターフェースに入ります。<br><img src="https://manage.icewhale.io/api/static/docs/1745203882560_image.png"></li>
+<li>アプリ内の<strong>「ターミナル」</strong>アイコンをクリックします。</li>
+<li><strong>「ログ」</strong>タブに切り替えて、起動ログを表示します。</li>
+<li>右上の<strong>「全画面」</strong>ボタンをクリックして、デフォルトのユーザー名とパスワードを簡単に見つけることができます。<br><img src="https://manage.icewhale.io/api/static/docs/1745203925603_image.png"></li>
+<li>アカウントとパスワードの情報が表示されるので、記録してください。<br><img src="https://manage.icewhale.io/api/static/docs/1745203946052_image.png"></li>
+</ol>
+<h4 id="Frigateの設定" class="article-heading">Frigateの設定<a class="article-anchor" href="#Frigateの設定" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>先ほど取得したアカウントとパスワードを入力し、システムにログインします。<br><img src="https://manage.icewhale.io/api/static/docs/1745203986368_image.png"></li>
+<li>左メニューの<strong>「設定」</strong>ボタンをクリックします。</li>
+<li><strong>「構成エディタ」</strong>を選択して構成ファイル編集インターフェースに入ります。<br><img src="https://manage.icewhale.io/api/static/docs/1745204019481_image.png"></li>
+<li>構成エディタで、カメラ関連の設定を追加または変更します。以下の設定例を参考にしてください：</li>
+</ol>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mqtt:</span><br><span class="line">  enabled: false</span><br><span class="line"></span><br><span class="line">cameras:</span><br><span class="line">  abc: # カメラの名前、カスタマイズ可能</span><br><span class="line">    genai:</span><br><span class="line">      enabled: true</span><br><span class="line">      use_snapshot: True</span><br><span class="line">      objects:</span><br><span class="line">        - person</span><br><span class="line"></span><br><span class="line">    ffmpeg:</span><br><span class="line">      inputs:</span><br><span class="line">        - path: rtsp://admin:HTC123456@10.0.171.52/stream1  # カメラのRTSPアドレス、デバイスのURLに置き換えてください</span><br><span class="line">          roles:</span><br><span class="line">            - detect</span><br><span class="line">    detect:</span><br><span class="line">      enabled: true</span><br><span class="line">      width: 1280</span><br><span class="line">      height: 720</span><br><span class="line">      fps: 10</span><br><span class="line">      max_disappeared: 10</span><br><span class="line"></span><br><span class="line">    motion:</span><br><span class="line">      enabled: true</span><br><span class="line">      mask: []</span><br><span class="line">      threshold: 25</span><br><span class="line"></span><br><span class="line">    snapshots:</span><br><span class="line">      enabled: true</span><br><span class="line">      timestamp: true</span><br><span class="line">      bounding_box: true</span><br><span class="line">      retain:</span><br><span class="line">        default: 3</span><br><span class="line"></span><br><span class="line">semantic_search:</span><br><span class="line">  enabled: true</span><br><span class="line">  reindex: False</span><br><span class="line"></span><br><span class="line">genai:</span><br><span class="line">  enabled: true</span><br><span class="line">  provider: ollama</span><br><span class="line">  base_url: http://10.0.1.12:11434   # Ollamaサービスの実行中のホストアドレスとポート</span><br><span class="line">  model: llava-llama3 # 画像とテキスト分析に使用するマルチモーダルモデル</span><br><span class="line">  prompt: &quot;Describe what the &#123;label&#125; is doing in these images from camera &#123;camera&#125;. Focus on actions and possible intent.&quot;</span><br><span class="line">  object_prompts:</span><br><span class="line">    person: &quot;What is this person doing?&quot; # 「person」を分析するための特定のプロンプト</span><br><span class="line">    car: &quot;What is this car doing? Is it parked, circling, or doing something unusual?&quot;</span><br><span class="line">version: 0.15-1</span><br></pre></td></tr></table></div></figure>
+<p><strong>必ず、<code class="chip">rtsp</code>リンクを自分のカメラアドレスに置き換え、OllamaのIPとポートを実際の実行アドレス（例：<code class="chip">http://10.0.1.3:11434</code>）に設定してください。さもないと、Frigateはビデオストリームにアクセスしたり、AIモデルを接続して分析を行ったりできません。</strong></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204529636_image.png"></span></p><p>5. 設定が完了したら、「保存」をクリックし、Frigateが自動的に新しい設定を適用して実行を開始します。<br>Frigateが監視画面で人物オブジェクトを検出すると、自動的にスナップショットを撮影し、AIモデルを呼び出して対応する画像の説明を生成します。検出するオブジェクト、使用するモデル、プロンプトの内容を実際のアプリケーションシナリオに合わせて自由に調整することができ、よりインテリジェントでパーソナライズされた監視体験を作成できます。</p>
+<h2 id="構築完了" class="article-heading">構築完了<a class="article-anchor" href="#構築完了" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204647915_image.png"></span></p><p>これで、FrigateとOllamaを使用したインテリジェント監視システムの構築が完了しました。リアルタイム画面を通じて検出効果を確認するか、ログとスナップショットページに入ってAI分析が正常に動作しているかを確認できます。<br>さらに体験を最適化するために、通知サービスにアクセスしたり、モデルのパラメータを調整したり、カメラを追加したりしてみてください。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/app-store/llm-manual-download"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">AI モデルをダウンロード</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/app-store/openclaw-agent-setup"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">OpenClaw エージェント</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%8F%E3%83%BC%E3%83%89%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E6%BA%96%E5%82%99"><span class="toc-text">ハードウェアの準備</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">ソフトウェアのインストール</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-%E3%83%87%E3%83%BC%E3%82%BF%E7%A7%BB%E8%A1%8C"><span class="toc-text">ステップ1: データ移行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%AB%E3%83%BC%E3%83%89%E3%82%92%E3%83%8F%E3%83%BC%E3%83%89%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%81%AB%E6%8E%A5%E7%B6%9A%E3%81%97%E3%80%81%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AB%E5%85%A5%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82"><span class="toc-text">グラフィックカードをハードドライブに接続し、デバイスを起動してオペレーティングシステムに入ります。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E7%A7%BB%E8%A1%8C"><span class="toc-text">データ移行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%971-Ollama%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8LLaVA%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">ステップ1: OllamaのインストールとLLaVAモデルの設定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Ollama%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">Ollamaのインストール</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LLaVA%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">LLaVAモデルの設定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%973-Frigate%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A8%E8%A8%AD%E5%AE%9A"><span class="toc-text">ステップ3: Frigateのインストールと設定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Frigate%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">Frigateのインストール</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Frigate%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%A8%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%92%E5%8F%96%E5%BE%97"><span class="toc-text">Frigateのアカウントとパスワードを取得</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Frigate%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">Frigateの設定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A7%8B%E7%AF%89%E5%AE%8C%E4%BA%86"><span class="toc-text">構築完了</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/frigate-ollama-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/frigate-ollama-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/frigate-ollama-setup" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/frigate-ollama-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

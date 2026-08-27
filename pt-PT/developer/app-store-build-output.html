@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Saída da App Store ZimaOS: Docker Compose, metadados e recursos | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/developer/app-store-build-output">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/app-store-build-output">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/app-store-build-output">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/app-store-build-output">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/app-store-build-output">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/app-store-build-output">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/app-store-build-output">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Compreenda os ficheiros Docker Compose gerados, metadados, índices localizados, recursos e hashes de conteúdo das App Stores ZimaOS.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Saída da App Store ZimaOS: Docker Compose, metadados e recursos">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/developer/app-store-build-output">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Compreenda os ficheiros Docker Compose gerados, metadados, índices localizados, recursos e hashes de conteúdo das App Stores ZimaOS.">
+<meta property="og:locale" content="pt_PT">
+<meta property="article:published_time" content="2026-08-27T09:51:24.540Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.540Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Saída da compilação da App Store",
+      "description": "Compreenda os ficheiros Docker Compose gerados, metadados, índices localizados, recursos e hashes de conteúdo das App Stores ZimaOS.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.540Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/pt-PT/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Saída da compilação da App Store"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/app-store-build-output">English</a></li>
+            
+              <li><a href="/docs/zh/developer/app-store-build-output">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/app-store-build-output">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/app-store-build-output">Português</a></li>
+            
+              <li><a href="/docs/es/developer/app-store-build-output">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/developer/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">Armazenamento e sistemas de ficheiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/pt-PT/developer/zfs-setup">Configuração de ZFS</a></li><li><a class="" href="/docs/pt-PT/developer/nfs-on-zimaos">Partilha de ficheiros NFS</a></li><li><a class="" href="/docs/pt-PT/developer/folder-encryption">Pastas encriptadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Visão geral de RAID</a></li><li><a class="" href="/docs/pt-PT/developer/raid6-setup">Criar RAID 6</a></li><li><a class="" href="/docs/pt-PT/developer/raid-rebuild-after-reinstall">Reconstruir RAID após reinstalar</a></li><li><a class="" href="/docs/pt-PT/developer/iscsi-guide">Guia de iSCSI</a></li><li><a class="" href="/docs/pt-PT/developer/iscsi-setup">Configuração de iSCSI</a></li><li><a class="" href="/docs/pt-PT/developer/rsync-backup-clones">Clones de cópia com Rsync</a></li><li><a class="" href="/docs/pt-PT/developer/synology-smb-connect">Ligar Synology por SMB</a></li><li><a class="" href="/docs/pt-PT/developer/zimaos-qts-two-way-sync-guide">Sincronização bidirecional com QTS</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">Redes e protocolos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/pt-PT/developer/networking">Configuração de rede</a></li><li><a class="" href="/docs/pt-PT/developer/how-to-open-ssh-in-zimaos">Ativar SSH</a></li><li><a class="" href="/docs/pt-PT/developer/nas-transfer-speed-troubleshooting">Velocidade de transferência</a></li><li><a class="" href="/docs/pt-PT/developer/ssh-setup">Configuração avançada de SSH</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">Desenvolvimento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/pt-PT/developer/python-setup">Ambiente Python</a></li><li><a class="" href="/docs/pt-PT/developer/how-to-contribute">Guia de contribuição</a></li><li><a class="" href="/docs/pt-PT/developer/contributions">Contribuições da comunidade</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">Desenvolvimento da App Store</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma App Store</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-repository-structure">Estrutura do repositório</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-config">Configuração da loja</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-compose-x-casaos">Docker Compose e x-casaos</a></li><li><a class="is-current" href="/docs/pt-PT/developer/app-store-build-output">Resultados da compilação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-assets-localization">Recursos e localização</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-ci-cd">CI/CD da App Store</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-validation-workflow">Fluxo de validação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-build-workflow">Fluxo de compilação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-publishing-workflow">Fluxo de publicação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-v1-v2-migration">Migrar da v1 para a v2</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-v1-v2-migration-checklist">Checklist de migração</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-faq">FAQ para programadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">API do ZimaOS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/pt-PT/developer/openapi-developer-guide">Guia da API do ZimaOS</a></li><li><a class="" href="/docs/pt-PT/developer/openapi-live-preview">Explorador da API</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">Histórico de versões</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/pt-PT/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Saída da compilação da App Store</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.540Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>Estes são os ficheiros consumidos por um cliente de servidor doméstico ZimaOS ou homelab depois de concluída a compilação da App Store Docker.</p>
+<p>O protocolo é consumido a partir dos ficheiros gerados em <code class="chip">dist/</code>.</p>
+<h2 id="Ficheiros-de-saida" class="article-heading">Ficheiros de saída<a class="article-anchor" href="#Ficheiros-de-saida" aria-hidden="true"></a></h2><p>O script de compilação pode gerar:</p>
+<ul class="doc-dots">
+<li><code class="chip">dist/store.json</code></li>
+<li><code class="chip">dist/store.&#123;locale&#125;.json</code></li>
+<li><code class="chip">dist/index.json</code></li>
+<li><code class="chip">dist/index.&#123;locale&#125;.json</code></li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/docker-compose.yml</code></li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/docker-compose.&#123;architecture&#125;.yml</code></li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/meta.json</code></li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/meta.&#123;locale&#125;.json</code></li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/assets/*</code></li>
+</ul>
+<h2 id="index-json" class="article-heading"><code class="chip">index.json</code><a class="article-anchor" href="#index-json" aria-hidden="true"></a></h2><p><code class="chip">index.json</code> é a listagem de aplicações de toda a loja.</p>
+<p>Cada item de aplicação inclui dados como:</p>
+<ul class="doc-dots">
+<li><code class="chip">id</code></li>
+<li><code class="chip">title</code></li>
+<li><code class="chip">tagline</code></li>
+<li><code class="chip">category</code></li>
+<li><code class="chip">version</code></li>
+<li><code class="chip">author</code></li>
+<li><code class="chip">developer</code></li>
+<li><code class="chip">architectures</code></li>
+<li><code class="chip">icon</code></li>
+<li><code class="chip">thumbnail</code></li>
+<li><code class="chip">compose_url</code></li>
+<li><code class="chip">meta_url</code></li>
+<li><code class="chip">content_hash</code></li>
+</ul>
+<h3 id="Significado-dos-campos-da-listagem" class="article-heading">Significado dos campos da listagem<a class="article-anchor" href="#Significado-dos-campos-da-listagem" aria-hidden="true"></a></h3><h4 id="id" class="article-heading"><code class="chip">id</code><a class="article-anchor" href="#id" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>identificador normalizado a partir do <code class="chip">x-casaos.id</code> superior da origem</li>
+<li>também utilizado como nome do diretório de saída da aplicação em <code class="chip">dist/apps/</code></li>
+</ul>
+<h4 id="title" class="article-heading"><code class="chip">title</code><a class="article-anchor" href="#title" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>nome visível da aplicação resolvido para o locale de destino</li>
+</ul>
+<h4 id="tagline" class="article-heading"><code class="chip">tagline</code><a class="article-anchor" href="#tagline" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>resumo curto resolvido para o locale de destino</li>
+</ul>
+<h4 id="category" class="article-heading"><code class="chip">category</code><a class="article-anchor" href="#category" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>valor de categoria normalizado utilizado para apresentação e agrupamento</li>
+</ul>
+<h4 id="version" class="article-heading"><code class="chip">version</code><a class="article-anchor" href="#version" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>versão da aplicação proveniente de <code class="chip">x-casaos.version</code></li>
+<li>importante para os utilizadores compreenderem as atualizações e para o controlo de versões</li>
+</ul>
+<h4 id="author" class="article-heading"><code class="chip">author</code><a class="article-anchor" href="#author" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>atribuição de quem empacota a aplicação ou da loja</li>
+</ul>
+<h4 id="developer" class="article-heading"><code class="chip">developer</code><a class="article-anchor" href="#developer" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>atribuição do projeto de origem</li>
+</ul>
+<h4 id="architectures" class="article-heading"><code class="chip">architectures</code><a class="article-anchor" href="#architectures" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>lista de arquiteturas de CPU suportadas</li>
+<li>utilizada pela compilação para emitir variantes de Compose por arquitetura quando possível</li>
+</ul>
+<h4 id="icon" class="article-heading"><code class="chip">icon</code><a class="article-anchor" href="#icon" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>caminho ou URL do recurso compilado relativo a <code class="chip">--base-url</code></li>
+</ul>
+<h4 id="thumbnail" class="article-heading"><code class="chip">thumbnail</code><a class="article-anchor" href="#thumbnail" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>caminho ou URL da miniatura compilada relativo a <code class="chip">--base-url</code></li>
+</ul>
+<h4 id="compose-url" class="article-heading"><code class="chip">compose_url</code><a class="article-anchor" href="#compose-url" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>caminho para o ficheiro Compose compilado de cada aplicação</li>
+</ul>
+<h4 id="meta-url" class="article-heading"><code class="chip">meta_url</code><a class="article-anchor" href="#meta-url" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>caminho para o ficheiro de metadados compilado de cada aplicação</li>
+</ul>
+<h4 id="content-hash" class="article-heading"><code class="chip">content_hash</code><a class="article-anchor" href="#content-hash" aria-hidden="true"></a></h4><ul class="doc-dots">
+<li>hash que representa todos os ficheiros gerados relevantes para a aplicação</li>
+<li>utilizado para detetar atualizações incrementais no cliente</li>
+</ul>
+<p>É emitido como:</p>
+<ul class="doc-dots">
+<li><code class="chip">dist/index.json</code></li>
+<li><code class="chip">dist/index.&#123;locale&#125;.json</code> quando pelo menos uma aplicação define explicitamente esse locale em campos apresentados na listagem</li>
+</ul>
+<h2 id="docker-compose-yml-compilado" class="article-heading"><code class="chip">docker-compose.yml</code> compilado<a class="article-anchor" href="#docker-compose-yml-compilado" aria-hidden="true"></a></h2><p>Os ficheiros Compose compilados mantêm apenas os campos <code class="chip">x-casaos</code> orientados para a execução:</p>
+<ul class="doc-dots">
+<li><code class="chip">id</code></li>
+<li><code class="chip">main</code></li>
+<li><code class="chip">index</code></li>
+<li><code class="chip">port_map</code></li>
+<li><code class="chip">scheme</code></li>
+<li><code class="chip">icon</code></li>
+<li><code class="chip">title</code></li>
+</ul>
+<p>Todos os metadados são removidos do Compose compilado e transferidos para <code class="chip">meta.json</code>.</p>
+<h3 id="Comportamento-do-Compose-compilado" class="article-heading">Comportamento do Compose compilado<a class="article-anchor" href="#Comportamento-do-Compose-compilado" aria-hidden="true"></a></h3><p>O Compose compilado não é uma cópia direta do Compose de origem.</p>
+<p>Durante a compilação:</p>
+<ul class="doc-dots">
+<li>são removidos os metadados <code class="chip">x-casaos</code> que não são de execução</li>
+<li><code class="chip">icon</code> é reescrito</li>
+<li>o <code class="chip">title</code> indexado por locale é resolvido para uma string simples no locale gerado</li>
+</ul>
+<h2 id="meta-json-compilado" class="article-heading"><code class="chip">meta.json</code> compilado<a class="article-anchor" href="#meta-json-compilado" aria-hidden="true"></a></h2><p>O <code class="chip">meta.json</code> compilado contém metadados da aplicação, incluindo campos relacionados com atualizações e apresentação:</p>
+<ul class="doc-dots">
+<li><code class="chip">version</code></li>
+<li><code class="chip">update_at</code></li>
+<li><code class="chip">release_note</code></li>
+<li><code class="chip">website</code></li>
+<li><code class="chip">repo</code></li>
+<li><code class="chip">support</code></li>
+<li><code class="chip">docs</code></li>
+</ul>
+<p>Na prática, <code class="chip">version</code> não deve ser tratado como um extra decorativo. É um campo essencial para comunicar atualizações da aplicação na nova loja.</p>
+<p><code class="chip">title</code> e <code class="chip">icon</code> não são intencionalmente escritos em <code class="chip">meta.json</code>, porque permanecem como informações de execução e apresentação no Compose compilado.</p>
+<h3 id="Grupos-de-campos-de-metadados-compilados" class="article-heading">Grupos de campos de metadados compilados<a class="article-anchor" href="#Grupos-de-campos-de-metadados-compilados" aria-hidden="true"></a></h3><p>Na prática, o <code class="chip">meta.json</code> compilado agrupa:</p>
+<ul class="doc-dots">
+<li>conteúdo descritivo, como <code class="chip">tagline</code> e <code class="chip">description</code></li>
+<li>recursos de apresentação, como <code class="chip">thumbnail</code> e <code class="chip">screenshot_link</code></li>
+<li>atribuição, como <code class="chip">author</code> e <code class="chip">developer</code></li>
+<li>dados de compatibilidade, como <code class="chip">architectures</code></li>
+<li>campos opcionais de melhoria, como <code class="chip">version</code>, <code class="chip">update_at</code> e <code class="chip">release_note</code></li>
+</ul>
+<h2 id="Comportamento-dos-caminhos" class="article-heading">Comportamento dos caminhos<a class="article-anchor" href="#Comportamento-dos-caminhos" aria-hidden="true"></a></h2><p>Os caminhos relativos às aplicações gerados costumam ter este aspeto:</p>
+<ul class="doc-dots">
+<li><code class="chip">apps/com.example.myapp/docker-compose.yml</code></li>
+<li><code class="chip">apps/com.example.myapp/meta.json</code></li>
+<li><code class="chip">apps/com.example.myapp/assets/icon.svg</code></li>
+</ul>
+<p>Nestes exemplos, <code class="chip">com.example.myapp</code> é o valor normalizado do <code class="chip">x-casaos.id</code> de origem.</p>
+<p>Estes caminhos são resolvidos relativamente ao <code class="chip">--base-url</code> configurado.</p>
+<p>Assim, a mesma compilação lógica pode ser publicada em diferentes hosts públicos alterando <code class="chip">--base-url</code>.</p>
+<h2 id="Hash-de-conteudo" class="article-heading">Hash de conteúdo<a class="article-anchor" href="#Hash-de-conteudo" aria-hidden="true"></a></h2><p><code class="chip">content_hash</code> é calculado a partir dos ficheiros no diretório gerado de cada aplicação, incluindo:</p>
+<ul class="doc-dots">
+<li>Compose compilado</li>
+<li>variantes de Compose específicas de arquitetura</li>
+<li>variantes de metadados</li>
+<li>recursos</li>
+</ul>
+<p>Isto permite atualizações incrementais eficientes no cliente.</p>
+<h2 id="Comportamento-das-atualizacoes" class="article-heading">Comportamento das atualizações<a class="article-anchor" href="#Comportamento-das-atualizacoes" aria-hidden="true"></a></h2><p>As verificações de atualizações no cliente são orientadas por <code class="chip">index.json</code> e pelo <code class="chip">content_hash</code> de cada aplicação.</p>
+<p>Isto significa que:</p>
+<ul class="doc-dots">
+<li>as aplicações sem alterações são ignoradas</li>
+<li>as aplicações alteradas voltam a obter apenas os seus ficheiros Compose e de metadados</li>
+<li>a loja não precisa de voltar a transferir o pacote completo em cada atualização</li>
+</ul>
+<h2 id="Erros-comuns" class="article-heading">Erros comuns<a class="article-anchor" href="#Erros-comuns" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>assumir que os ficheiros em <code class="chip">dist/</code> devem ser escritos manualmente</li>
+<li>assumir que <code class="chip">meta.json</code> contém <code class="chip">title</code></li>
+<li>tratar <code class="chip">content_hash</code> como um campo de versão manual</li>
+<li>esquecer que os ficheiros de índice e metadados específicos de locale só existem para locales definidos explicitamente</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.540Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/developer/app-store-compose-x-casaos"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Docker Compose e x-casaos</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/developer/app-store-assets-localization"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Recursos e localização</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ficheiros-de-saida"><span class="toc-text">Ficheiros de saída</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#index-json"><span class="toc-text">index.json</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Significado-dos-campos-da-listagem"><span class="toc-text">Significado dos campos da listagem</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#id"><span class="toc-text">id</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#title"><span class="toc-text">title</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tagline"><span class="toc-text">tagline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#category"><span class="toc-text">category</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#version"><span class="toc-text">version</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#author"><span class="toc-text">author</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#developer"><span class="toc-text">developer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#architectures"><span class="toc-text">architectures</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#icon"><span class="toc-text">icon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#thumbnail"><span class="toc-text">thumbnail</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#compose-url"><span class="toc-text">compose_url</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#meta-url"><span class="toc-text">meta_url</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#content-hash"><span class="toc-text">content_hash</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose-yml-compilado"><span class="toc-text">docker-compose.yml compilado</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Comportamento-do-Compose-compilado"><span class="toc-text">Comportamento do Compose compilado</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#meta-json-compilado"><span class="toc-text">meta.json compilado</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Grupos-de-campos-de-metadados-compilados"><span class="toc-text">Grupos de campos de metadados compilados</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comportamento-dos-caminhos"><span class="toc-text">Comportamento dos caminhos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hash-de-conteudo"><span class="toc-text">Hash de conteúdo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comportamento-das-atualizacoes"><span class="toc-text">Comportamento das atualizações</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Erros-comuns"><span class="toc-text">Erros comuns</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/developer/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">Armazenamento e sistemas de ficheiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/pt-PT/developer/zfs-setup">Configuração de ZFS</a></li><li><a class="" href="/docs/pt-PT/developer/nfs-on-zimaos">Partilha de ficheiros NFS</a></li><li><a class="" href="/docs/pt-PT/developer/folder-encryption">Pastas encriptadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Visão geral de RAID</a></li><li><a class="" href="/docs/pt-PT/developer/raid6-setup">Criar RAID 6</a></li><li><a class="" href="/docs/pt-PT/developer/raid-rebuild-after-reinstall">Reconstruir RAID após reinstalar</a></li><li><a class="" href="/docs/pt-PT/developer/iscsi-guide">Guia de iSCSI</a></li><li><a class="" href="/docs/pt-PT/developer/iscsi-setup">Configuração de iSCSI</a></li><li><a class="" href="/docs/pt-PT/developer/rsync-backup-clones">Clones de cópia com Rsync</a></li><li><a class="" href="/docs/pt-PT/developer/synology-smb-connect">Ligar Synology por SMB</a></li><li><a class="" href="/docs/pt-PT/developer/zimaos-qts-two-way-sync-guide">Sincronização bidirecional com QTS</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">Redes e protocolos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/pt-PT/developer/networking">Configuração de rede</a></li><li><a class="" href="/docs/pt-PT/developer/how-to-open-ssh-in-zimaos">Ativar SSH</a></li><li><a class="" href="/docs/pt-PT/developer/nas-transfer-speed-troubleshooting">Velocidade de transferência</a></li><li><a class="" href="/docs/pt-PT/developer/ssh-setup">Configuração avançada de SSH</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">Desenvolvimento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/pt-PT/developer/python-setup">Ambiente Python</a></li><li><a class="" href="/docs/pt-PT/developer/how-to-contribute">Guia de contribuição</a></li><li><a class="" href="/docs/pt-PT/developer/contributions">Contribuições da comunidade</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">Desenvolvimento da App Store</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma App Store</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-repository-structure">Estrutura do repositório</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-config">Configuração da loja</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-compose-x-casaos">Docker Compose e x-casaos</a></li><li><a class="is-current" href="/docs/pt-PT/developer/app-store-build-output">Resultados da compilação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-assets-localization">Recursos e localização</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-ci-cd">CI/CD da App Store</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-validation-workflow">Fluxo de validação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-build-workflow">Fluxo de compilação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-publishing-workflow">Fluxo de publicação</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-v1-v2-migration">Migrar da v1 para a v2</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-v1-v2-migration-checklist">Checklist de migração</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-faq">FAQ para programadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">API do ZimaOS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/pt-PT/developer/openapi-developer-guide">Guia da API do ZimaOS</a></li><li><a class="" href="/docs/pt-PT/developer/openapi-live-preview">Explorador da API</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">Histórico de versões</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/pt-PT/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/pt-PT/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/app-store-build-output" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/app-store-build-output" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/developer/app-store-build-output" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/developer/app-store-build-output" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/developer/app-store-build-output" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

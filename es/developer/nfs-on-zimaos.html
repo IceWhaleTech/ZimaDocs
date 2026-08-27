@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Cómo usar NFS en ZimaOS | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/developer/nfs-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/nfs-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/nfs-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/nfs-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/nfs-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/nfs-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/nfs-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Los protocolos de intercambio de archivos en red permiten compartir archivos y directorios desde tu computadora con otros dispositivos en la red. Los protocolos comunes incluyen SAMBA, NFS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cómo usar NFS en ZimaOS">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/developer/nfs-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Los protocolos de intercambio de archivos en red permiten compartir archivos y directorios desde tu computadora con otros dispositivos en la red. Los protocolos comunes incluyen SAMBA, NFS">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739500988306_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.303Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.303Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1739500988306_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Cómo usar NFS en ZimaOS",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.303Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/es/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Cómo usar NFS en ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item current_page_item"><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/nfs-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/developer/nfs-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/nfs-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/nfs-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/developer/nfs-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/developer/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">Almacenamiento y sistemas de archivos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/es/developer/zfs-setup">Configuración de ZFS</a></li><li><a class="is-current" href="/docs/es/developer/nfs-on-zimaos">Archivos compartidos por NFS</a></li><li><a class="" href="/docs/es/developer/folder-encryption">Carpetas cifradas</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Resumen de opciones RAID</a></li><li><a class="" href="/docs/es/developer/raid6-setup">Crear RAID 6</a></li><li><a class="" href="/docs/es/developer/raid-rebuild-after-reinstall">Reconstruir RAID tras reinstalar</a></li><li><a class="" href="/docs/es/developer/iscsi-guide">Guía de uso de iSCSI</a></li><li><a class="" href="/docs/es/developer/iscsi-setup">Configuración de iSCSI</a></li><li><a class="" href="/docs/es/developer/rsync-backup-clones">Clones de copia con Rsync</a></li><li><a class="" href="/docs/es/developer/synology-smb-connect">Conectar Synology por SMB</a></li><li><a class="" href="/docs/es/developer/zimaos-qts-two-way-sync-guide">Sincronización bidireccional con QTS</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">Redes y protocolos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/es/developer/networking">Configuración de red</a></li><li><a class="" href="/docs/es/developer/how-to-open-ssh-in-zimaos">Activar SSH</a></li><li><a class="" href="/docs/es/developer/nas-transfer-speed-troubleshooting">Velocidad de transferencia</a></li><li><a class="" href="/docs/es/developer/ssh-setup">Configuración avanzada de SSH</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo de App Store</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una App Store</a></li><li><a class="" href="/docs/es/developer/app-store-repository-structure">Estructura del repositorio</a></li><li><a class="" href="/docs/es/developer/app-store-config">Configuración de la tienda</a></li><li><a class="" href="/docs/es/developer/app-store-compose-x-casaos">Docker Compose y x-casaos</a></li><li><a class="" href="/docs/es/developer/app-store-build-output">Resultados de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-assets-localization">Recursos y localización</a></li><li><a class="" href="/docs/es/developer/app-store-ci-cd">CI/CD de App Store</a></li><li><a class="" href="/docs/es/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/es/developer/app-store-validation-workflow">Flujo de validación</a></li><li><a class="" href="/docs/es/developer/app-store-build-workflow">Flujo de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-publishing-workflow">Flujo de publicación</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration">Migrar de v1 a v2</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration-checklist">Lista de migración</a></li><li><a class="" href="/docs/es/developer/app-store-faq">FAQ para desarrolladores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">API de ZimaOS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/es/developer/openapi-developer-guide">Guía de la API de ZimaOS</a></li><li><a class="" href="/docs/es/developer/openapi-live-preview">Explorador de la API</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">Historial de versiones</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/es/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/es/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/es/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/es/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/es/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/es/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/es/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/es/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/es/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/es/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/es/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/es/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/es/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/es/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/es/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/es/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/es/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/es/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/es/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/es/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/es/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Cómo usar NFS en ZimaOS</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.303Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>Los protocolos de intercambio de archivos en red permiten compartir archivos y directorios desde tu computadora con otros dispositivos en la red. Los protocolos comunes incluyen SAMBA, NFS y FTP.<br>Ventajas del intercambio en red:</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th><strong>Aspecto</strong></th>
+<th><strong>Copia USB</strong></th>
+<th><strong>Aplicaciones de mensajería</strong></th>
+<th><strong>Intercambio en red</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Almacenamiento</strong></td>
+<td>Copias locales</td>
+<td>Copias múltiples</td>
+<td><strong>Centralizado, sin duplicados</strong></td>
+</tr>
+<tr>
+<td><strong>Gestión</strong></td>
+<td>Manual, propenso a errores</td>
+<td>Disperso en chats</td>
+<td><strong>Control centralizado</strong></td>
+</tr>
+<tr>
+<td><strong>Uso de medios</strong></td>
+<td>Se requiere copia completa</td>
+<td>Se requiere descarga completa</td>
+<td><strong>Soporte de transmisión</strong></td>
+</tr>
+<tr>
+<td><strong>Colaboración</strong></td>
+<td>Transferencia física</td>
+<td>Límites de tamaño de archivo</td>
+<td><strong>Acceso múltiple en tiempo real</strong></td>
+</tr>
+</tbody></table></div>
+<p>ZimaOS actualmente ofrece soporte CLI y GUI para SAMBA. En versiones posteriores a la 1.3.2, ZimaOS también integra la funcionalidad de NFS (a nivel de CLI). Este tutorial muestra cómo usar NFS en ZimaOS para compartir carpetas y acceder a ellas desde Windows, macOS y Ubuntu.<br>Primero, necesitas crear o encontrar una carpeta para compartir. Aquí usaré <code class="chip">/DATA/C/demo</code> como ejemplo.</p>
+<h2 id="Editar-el-archivo-de-configuracion" class="article-heading">Editar el archivo de configuración<a class="article-anchor" href="#Editar-el-archivo-de-configuracion" aria-hidden="true"></a></h2><p>Usa <code class="chip">vi</code> para editar el archivo <code class="chip">/etc/exports</code>, que es el archivo de configuración para NFS.</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"># Primero, necesitas ingresar al terminal web de ZimaOS y obtener privilegios de root.</span><br><span class="line"># Panel de ZimaOS -&gt; Configuración -&gt; General </span><br><span class="line"># -&gt; Modo desarrollador -&gt; Terminal basado en web</span><br><span class="line"># Inicia sesión y cambia a root</span><br><span class="line">sudo -i</span><br><span class="line"></span><br><span class="line"># editar el archivo de configuración</span><br><span class="line">vi /etc/exports</span><br><span class="line"></span><br><span class="line"># en el archivo /etc/exports, pega esta línea</span><br><span class="line">/DATA/C/demo *(rw,sync,no_subtree_check)</span><br><span class="line"></span><br><span class="line"># la primera columna especifica la carpeta compartida (por ejemplo, /DATA/C/demo)</span><br><span class="line"># la segunda columna define</span><br><span class="line">    # La subred que tiene permiso para acceder</span><br><span class="line">        # por ejemplo, 10.0.0.0/8,</span><br><span class="line">        # el * permite el acceso desde todas las redes</span><br><span class="line">    # Permitir permisos de Lectura y Escritura para los usuarios de la red (rw)</span><br><span class="line">    # Método de escritura, generalmente se usa sync o async (en este caso sync)</span><br><span class="line">    # no_subtree_check permite acceso total al directorio compartido sin restricciones de subárbol</span><br><span class="line"># consulta esto: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/5/html/deployment_guide/s1-nfs-server-config-exports#s1-nfs-server-config-exports</span><br></pre></td></tr></table></div></figure>
+<p>Funcionará automáticamente, incluso después de reiniciar.</p>
+<h2 id="Hacer-efectivo-el-archivo-de-configuracion" class="article-heading">Hacer efectivo el archivo de configuración<a class="article-anchor" href="#Hacer-efectivo-el-archivo-de-configuracion" aria-hidden="true"></a></h2><figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"># En algunos casos,</span><br><span class="line"># Es posible que necesites ejecutar este comando en el terminal para que la configuración sea efectiva.</span><br><span class="line">systemctl restart nfs-server</span><br><span class="line"></span><br><span class="line">#o</span><br><span class="line">exportfs -a</span><br></pre></td></tr></table></div></figure>
+<h2 id="Usar-Montar-x2F-Desmontar-las-carpetas-NFS" class="article-heading">Usar (Montar&#x2F;Desmontar) las carpetas NFS<a class="article-anchor" href="#Usar-Montar-x2F-Desmontar-las-carpetas-NFS" aria-hidden="true"></a></h2><h3 id="En-ZimaOS-x2F-Ubuntu" class="article-heading">En ZimaOS&#x2F;Ubuntu<a class="article-anchor" href="#En-ZimaOS-x2F-Ubuntu" aria-hidden="true"></a></h3><figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"># Probado en ZimaOS 1.3.2-beta2 y Ubuntu 22.04.5 LTS</span><br><span class="line"># Aquí en una máquina cliente</span><br><span class="line"># abre la Terminal</span><br><span class="line"># primero cambia a root</span><br><span class="line"># crea un directorio para montar</span><br><span class="line">sudo -i</span><br><span class="line">mkdir /mnt/demo</span><br><span class="line"></span><br><span class="line"># monta la carpeta nfs</span><br><span class="line"># esta ip es la IP del Servidor</span><br><span class="line">mount 10.0.0.71:/DATA/C/demo /mnt/demo</span><br><span class="line"></span><br><span class="line"># Ahora puedes ver y usar tu compartición</span><br><span class="line"></span><br><span class="line"># puede que quieras eliminar las carpetas NFS montadas algún día</span><br><span class="line"># Solo revisa las carpetas montadas</span><br><span class="line">df -h</span><br><span class="line"># o</span><br><span class="line">mount | grep nfs</span><br><span class="line"></span><br><span class="line"># desmonta las carpetas nfs</span><br><span class="line">umount /mnt/demo</span><br></pre></td></tr></table></div></figure>
+<h3 id="En-macOS" class="article-heading">En macOS<a class="article-anchor" href="#En-macOS" aria-hidden="true"></a></h3><figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"># Probado en macOS Sequoia en Chip M4</span><br><span class="line"># crea un directorio para montar</span><br><span class="line">mkdir ~/demo</span><br><span class="line"></span><br><span class="line"># monta la carpeta nfs</span><br><span class="line"># necesitas usar sudo para montar</span><br><span class="line"># te pedirá que ingreses la contraseña</span><br><span class="line">sudo mount -t nfs -o resvport 10.0.0.71:/DATA/C/demo ~/demo</span><br><span class="line"></span><br><span class="line"># abre la carpeta para usarla</span><br><span class="line">open .</span><br><span class="line"></span><br><span class="line"># puede que quieras eliminar las carpetas NFS montadas algún día</span><br><span class="line"># Solo revisa las carpetas montadas</span><br><span class="line">df -h</span><br><span class="line"># o</span><br><span class="line">mount | grep nfs</span><br><span class="line"></span><br><span class="line"># desmonta las carpetas nfs</span><br><span class="line">sudo umount /mnt/demo</span><br></pre></td></tr></table></div></figure>
+<h3 id="En-Windows" class="article-heading">En Windows<a class="article-anchor" href="#En-Windows" aria-hidden="true"></a></h3><figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"># Probado en Windows 11</span><br><span class="line"># puede que necesites ingresar a CMD primero </span><br><span class="line"># ya que la terminal podría colocarte en Powershell por defecto en Windows 11</span><br><span class="line">cmd</span><br><span class="line"></span><br><span class="line"># puede que necesites cambiar W: a un carácter disponible que no esté ocupado</span><br><span class="line">mount \\10.0.0.71\DATA\C\demo W:</span><br><span class="line"></span><br><span class="line"># Ahora puedes ver y usar tu compartición</span><br><span class="line"></span><br><span class="line"># puede que quieras eliminar las carpetas NFS montadas algún día</span><br><span class="line"># Solo revisa las carpetas montadas</span><br><span class="line">net use</span><br><span class="line"></span><br><span class="line"># desmonta las carpetas nfs</span><br><span class="line">net use W: /delete</span><br></pre></td></tr></table></div></figure>
+<p>La captura de pantalla después de montar en Windows:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739500988306_image.png"></span></p>
+<h2 id="Consejos-utiles" class="article-heading">Consejos útiles<a class="article-anchor" href="#Consejos-utiles" aria-hidden="true"></a></h2><p>Aquí algunos comandos que podrías necesitar más adelante.</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"># En el servidor ZimaOS</span><br><span class="line"># verifica el estado del servicio nfs</span><br><span class="line">systemctl status nfs-server</span><br><span class="line"></span><br><span class="line"># elimina o comenta la línea en /etc/exports para deshabilitar la compartición</span><br><span class="line"># ejecuta esto para que sea efectivo</span><br><span class="line">exportfs -a</span><br><span class="line"># o</span><br><span class="line">systemctl restart nfs-server</span><br></pre></td></tr></table></div></figure>
+<p>Si encuentras algún problema durante el uso, no dudes en hacérnoslo saber en cualquier momento. También puedes unirte a nuestra <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">comunidad</a> y <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.com/invite/uuNfKzG5" class="doc-link">Discord</a> para discutir más sobre NAS y ZimaOS. ¡Esperamos tus comentarios!</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.303Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/developer/zfs-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Configuración de ZFS</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/developer/folder-encryption"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Carpetas cifradas</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Editar-el-archivo-de-configuracion"><span class="toc-text">Editar el archivo de configuración</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hacer-efectivo-el-archivo-de-configuracion"><span class="toc-text">Hacer efectivo el archivo de configuración</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usar-Montar-x2F-Desmontar-las-carpetas-NFS"><span class="toc-text">Usar (Montar&#x2F;Desmontar) las carpetas NFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#En-ZimaOS-x2F-Ubuntu"><span class="toc-text">En ZimaOS&#x2F;Ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#En-macOS"><span class="toc-text">En macOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#En-Windows"><span class="toc-text">En Windows</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consejos-utiles"><span class="toc-text">Consejos útiles</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item current_page_item"><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/developer/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">Almacenamiento y sistemas de archivos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/es/developer/zfs-setup">Configuración de ZFS</a></li><li><a class="is-current" href="/docs/es/developer/nfs-on-zimaos">Archivos compartidos por NFS</a></li><li><a class="" href="/docs/es/developer/folder-encryption">Carpetas cifradas</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Resumen de opciones RAID</a></li><li><a class="" href="/docs/es/developer/raid6-setup">Crear RAID 6</a></li><li><a class="" href="/docs/es/developer/raid-rebuild-after-reinstall">Reconstruir RAID tras reinstalar</a></li><li><a class="" href="/docs/es/developer/iscsi-guide">Guía de uso de iSCSI</a></li><li><a class="" href="/docs/es/developer/iscsi-setup">Configuración de iSCSI</a></li><li><a class="" href="/docs/es/developer/rsync-backup-clones">Clones de copia con Rsync</a></li><li><a class="" href="/docs/es/developer/synology-smb-connect">Conectar Synology por SMB</a></li><li><a class="" href="/docs/es/developer/zimaos-qts-two-way-sync-guide">Sincronización bidireccional con QTS</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">Redes y protocolos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/es/developer/networking">Configuración de red</a></li><li><a class="" href="/docs/es/developer/how-to-open-ssh-in-zimaos">Activar SSH</a></li><li><a class="" href="/docs/es/developer/nas-transfer-speed-troubleshooting">Velocidad de transferencia</a></li><li><a class="" href="/docs/es/developer/ssh-setup">Configuración avanzada de SSH</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo de App Store</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una App Store</a></li><li><a class="" href="/docs/es/developer/app-store-repository-structure">Estructura del repositorio</a></li><li><a class="" href="/docs/es/developer/app-store-config">Configuración de la tienda</a></li><li><a class="" href="/docs/es/developer/app-store-compose-x-casaos">Docker Compose y x-casaos</a></li><li><a class="" href="/docs/es/developer/app-store-build-output">Resultados de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-assets-localization">Recursos y localización</a></li><li><a class="" href="/docs/es/developer/app-store-ci-cd">CI/CD de App Store</a></li><li><a class="" href="/docs/es/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/es/developer/app-store-validation-workflow">Flujo de validación</a></li><li><a class="" href="/docs/es/developer/app-store-build-workflow">Flujo de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-publishing-workflow">Flujo de publicación</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration">Migrar de v1 a v2</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration-checklist">Lista de migración</a></li><li><a class="" href="/docs/es/developer/app-store-faq">FAQ para desarrolladores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">API de ZimaOS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/es/developer/openapi-developer-guide">Guía de la API de ZimaOS</a></li><li><a class="" href="/docs/es/developer/openapi-live-preview">Explorador de la API</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">Historial de versiones</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/es/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/es/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/es/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/es/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/es/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/es/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/es/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/es/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/es/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/es/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/es/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/es/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/es/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/es/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/es/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/es/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/es/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/es/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/es/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/es/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/es/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/nfs-on-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/nfs-on-zimaos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/developer/nfs-on-zimaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/developer/nfs-on-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/developer/nfs-on-zimaos" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

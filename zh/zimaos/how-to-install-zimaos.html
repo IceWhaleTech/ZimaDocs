@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" data-theme="light">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <title>如何安装 ZimaOS | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/how-to-install-zimaos">
   <!-- Alternate links -->
   
     
+    
   <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/how-to-install-zimaos">
+    
+    
     
   <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/how-to-install-zimaos">
     
+    
+    
   <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/how-to-install-zimaos">
+    
+    
     
   <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/how-to-install-zimaos">
     
+    
+    
   <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/how-to-install-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/how-to-install-zimaos">
     
   
   <!-- FAVICONS ICON -->
@@ -32,24 +64,31 @@
   <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#f1b335">
 
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- build:css build/css/zima.css -->
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
   <!-- endbuild -->
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
   
   <!-- Open Graph -->
   
-  <meta name="description" content="通过这份逐步指南学习如何安装 ZimaOS。内容包括下载镜像、写入 U 盘、安装过程，以及通过 ZimaClient 或 IP 地址登录。">
+  <meta name="description" content="按照本指南分步安装 ZimaOS，包括下载镜像、写入 USB 设备、完成安装，以及通过 ZimaClient 或 IP 地址登录。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="如何安装 ZimaOS">
 <meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/how-to-install-zimaos">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="通过这份逐步指南学习如何安装 ZimaOS。内容包括下载镜像、写入 U 盘、安装过程，以及通过 ZimaClient 或 IP 地址登录。">
+<meta property="og:description" content="按照本指南分步安装 ZimaOS，包括下载镜像、写入 USB 设备、完成安装，以及通过 ZimaClient 或 IP 地址登录。">
 <meta property="og:locale">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png">
@@ -62,8 +101,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png">
-<meta property="article:published_time" content="2026-08-12T09:13:05.022Z">
-<meta property="article:modified_time" content="2026-08-12T09:13:05.022Z">
+<meta property="article:published_time" content="2026-08-27T09:51:24.553Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.553Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png">
@@ -75,7 +114,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
 <!-- End Google Tag Manager -->
 
 
@@ -84,7 +123,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "headline": "如何安装 ZimaOS",
-      "description": "通过这份逐步指南学习如何安装 ZimaOS。内容包括下载镜像、写入 U 盘、安装过程，以及通过 ZimaClient 或 IP 地址登录。",
+      "description": "按照本指南分步安装 ZimaOS，包括下载镜像、写入 USB 设备、完成安装，以及通过 ZimaClient 或 IP 地址登录。",
       
       "author": {
         "@type": "Organization",
@@ -99,18 +138,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-08-12T09:13:05.022Z"
+      "datePublished": "2026-08-27T09:51:24.553Z"
     }
   </script>
 
   
   
-
-
-
   
-    
-    
+  
+  
+  
   
   
   
@@ -130,13 +167,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "@type": "ListItem",
           "position": 2,
           "name": "ZimaOS",
-          "item": "https://www.zimaspace.com/docs/zh/zimaos"
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
         },
+        
+        
         {
           "@type": "ListItem",
           "position": 3,
           "name": "如何安装 ZimaOS"
         }
+        
       ]
     }
   </script>
@@ -145,246 +185,251 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<body>
+<body class="docs-page">
   
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <div id="container">
-    <div id="header_outer">
-  <header id="header" >
-    <div id="header-inner" class="inner">
-      <div class="logo-container">
-        <h2 id="logo-wrap">
-          
-          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
-        </h2>
-      </div>
-      <div class="nav-container">
-        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
-          <ul id="menu-main-menu" class="maxmenu-list">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
 
-            <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
-            <li class="menu-item menu-item-has-children">
-              <span class="maxmenu-click">
-                <i class="maxmenu-arrow"></i>
-              </span>
-              <a href="#">
-                <img src="/docs/img/lang.svg" />
-              </a>
-              <ul class="sub-menu">
-                
-                  <li class="menu-item">
-                    <a href="/docs/zimaos/how-to-install-zimaos">English</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/zh/zimaos/how-to-install-zimaos">中文</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/jp/zimaos/how-to-install-zimaos">日本語</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos">Português</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/es/zimaos/how-to-install-zimaos">Español</a>
-                  </li>
-                
-              </ul>
-            </li>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
 
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/how-to-install-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/how-to-install-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/how-to-install-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/how-to-install-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/how-to-install-zimaos">Español</a></li>
+            
           </ul>
-        </nav>
-      </div>
-
-      <div class="search-icon-container">
-        <div id="search-container-icon">
-          <i class="fa fa-search" id="showSearch"></i>
         </div>
-        <a class="shop" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="external">商店</a>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
       </div>
 
-      <a id="mobile-nav-toggle">
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-      </a>
-    </div>
-  </header>
-</div>
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
 
-<div id="search-container">
-  <div id="search-container-close">
-    <i class="fa fa-close" id="hideSearch"></i>
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
   <div class="search-bg"></div>
   <div class="search-content-container">
     <div id="search-input-wrap">
-      <div id="search-input-icon">
-        
-      </div>
-      <input type="search" id="search-input" placeholder="搜索...">
+      <input type="search" id="search-input" placeholder="开始搜索">
     </div>
     <div id="resultContent"></div>
   </div>
-
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
 </div>
 
-    <div id="content-wrap">
-  <div id="content" class="wrapper">
-    <div id="content-inner">
-      <article class="article-container" itemscope itemtype="http://schema.org/Article">
-        <div class="article-inner">
-          <div class="article">
-            <div class="inner">
-              <header class="article-header">
-                <h1 class="article-title" itemprop="name">如何安装 ZimaOS</h1>
-                
-              
-                
-                <!-- facebook -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
-                </a>
-                <!-- x twitter -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
-                </a>
-              </header>
-              <div class="article-content" itemprop="articleBody">
-                <h2 id="你将学到什么" class="article-heading"><a href="#你将学到什么" class="headerlink" title="你将学到什么"></a>你将学到什么<a class="article-anchor" href="#你将学到什么" aria-hidden="true"></a></h2><p>ZimaOS 是一款为 ZimaCube 和其他家庭服务器设备设计的轻量级 NAS 操作系统。<br>本指南提供完整的分步流程，帮助你快速且成功地 <strong>下载、写入和安装 ZimaOS</strong>。</p>
-<hr>
-<h2 id="你需要准备" class="article-heading"><a href="#你需要准备" class="headerlink" title="你需要准备"></a>你需要准备<a class="article-anchor" href="#你需要准备" aria-hidden="true"></a></h2><ul>
-<li>一台 <strong>Zima 设备</strong> 或至少拥有 25GB 存储空间的通用 x86-64 设备。  </li>
-<li>一个 U 盘（推荐 4GB 或更大）。</li>
-</ul>
-<hr>
-<h2 id="开始之前" class="article-heading"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前<a class="article-anchor" href="#开始之前" aria-hidden="true"></a></h2><p>要启动 ZimaOS，需要在 BIOS 中启用 UEFI 启动模式，并关闭 Secure Boot。  </p>
-<h3 id="步骤-1：下载-ZimaOS-安装镜像" class="article-heading"><a href="#步骤-1：下载-ZimaOS-安装镜像" class="headerlink" title="步骤 1：下载 ZimaOS 安装镜像"></a>步骤 1：下载 ZimaOS 安装镜像<a class="article-anchor" href="#步骤-1：下载-ZimaOS-安装镜像" aria-hidden="true"></a></h3><p>首先，从官方 GitHub 发布页面下载最新的 ZimaOS <code>.img</code> 文件：<br>👉 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS/releases">ZimaOS GitHub Releases</a></p>
-<h3 id="步骤-2：创建可启动-U-盘" class="article-heading"><a href="#步骤-2：创建可启动-U-盘" class="headerlink" title="步骤 2：创建可启动 U 盘"></a>步骤 2：创建可启动 U 盘<a class="article-anchor" href="#步骤-2：创建可启动-U-盘" aria-hidden="true"></a></h3><p>需要将 ZimaOS 镜像写入 U 盘。最简单的工具是 <strong>Balena Etcher</strong>。  </p>
-<ol>
-<li>下载并安装 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/#download-etcher"><strong>Balena Etcher</strong></a>  </li>
-<li>打开 Etcher 并选择 ZimaOS <code>.img</code> 文件。  </li>
-<li>插入 U 盘并选择为目标设备。  </li>
-<li>点击 <strong>Flash</strong> 开始写入镜像。</li>
-</ol>
-<p><img src="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png" alt="balena etcher 打开 zimaos 安装镜像"><br><img src="https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png" alt="balena etcher 选择 U 盘作为目标"><br><img src="https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png" alt="zimaos 镜像写入完成">  </p>
-<h3 id="步骤-3：从-U-盘启动设备" class="article-heading"><a href="#步骤-3：从-U-盘启动设备" class="headerlink" title="步骤 3：从 U 盘启动设备"></a>步骤 3：从 U 盘启动设备<a class="article-anchor" href="#步骤-3：从-U-盘启动设备" aria-hidden="true"></a></h3><ol>
-<li>将可启动 U 盘插入设备。  </li>
-<li>进入 BIOS&#x2F;启动菜单，选择 <strong>从 USB 启动</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png" alt="安装工具主菜单选择安装或重启"><br><img src="https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png" alt="快速安装菜单选择安装位置"><br><img src="https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png" alt="确认安装选择是"><br><img src="https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png" alt="最后一次确认安装选择是"><br><img src="https://manage.icewhale.io/api/static/docs/1758611912717_installing.png" alt="安装进度条显示中，请耐心等待"></li>
-</ol>
-<h3 id="步骤-4：完成-ZimaOS-安装" class="article-heading"><a href="#步骤-4：完成-ZimaOS-安装" class="headerlink" title="步骤 4：完成 ZimaOS 安装"></a>步骤 4：完成 ZimaOS 安装<a class="article-anchor" href="#步骤-4：完成-ZimaOS-安装" aria-hidden="true"></a></h3><p>按照屏幕上的提示完成安装。<br>系统提示时，请移除 U 盘并重启设备。<br>此时将会自动启动进入 <strong>ZimaOS</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png" alt="移除 U 盘并重启">  </p>
-<h3 id="步骤-5：访问-ZimaOS" class="article-heading"><a href="#步骤-5：访问-ZimaOS" class="headerlink" title="步骤 5：访问 ZimaOS"></a>步骤 5：访问 ZimaOS<a class="article-anchor" href="#步骤-5：访问-ZimaOS" aria-hidden="true"></a></h3><p>重启后，最简单的方式是通过 <strong>ZimaClient</strong> 登录，它可以自动检测网络中的设备并帮助快速访问 ZimaOS。  </p>
-<p>👉 下载 ZimaClient 并参考指南：<a href="https://www.zimaspace.com/docs/zimaos/Get-Started">ZimaOS 快速入门</a>  </p>
-<p><img src="https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png" alt="欢迎界面 zimaos webgui">  </p>
-<p>或者，你也可以查看设备在网络中的 IP 地址，并在浏览器中输入该地址以访问 <strong>ZimaOS Web UI</strong>。<br><img src="https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png" alt="屏幕显示关键信息，包括 IP 地址和系统版本">  </p>
-<p>🎉 <strong>恭喜！</strong> 你已经成功在设备上安装了 ZimaOS，现在可以开始探索它的全部 NAS 功能了。  </p>
-<hr>
-<h2 id="下一步探索-ZimaOS" class="article-heading"><a href="#下一步探索-ZimaOS" class="headerlink" title="下一步探索 ZimaOS"></a>下一步探索 ZimaOS<a class="article-anchor" href="#下一步探索-ZimaOS" aria-hidden="true"></a></h2><p>现在 ZimaOS 已经安装在你的智能服务器上，你可以开始搭建个人云和家庭服务器。<br>以下是一些可尝试的方向：  </p>
-<ul>
-<li>🔧 <strong>设置 RAID 或存储池</strong> 以保护数据。  </li>
-<li>📂 **开启文件共享 (SMB&#x2F;FTP)**，实现多设备互通。  </li>
-<li>🎞️ <strong>运行媒体服务器 (Plex, Jellyfin)</strong> 来串流电影和音乐。  </li>
-<li>🐳 <strong>直接在 ZimaOS 应用商店中部署 Docker 应用</strong>。  </li>
-<li>☁️ <strong>将重要数据备份</strong> 到外部硬盘或云端。</li>
-</ul>
-<p>👉 准备解锁更多功能？  </p>
-<ul>
-<li>浏览 <a href="https://www.zimaspace.com/docs/zimaos/Romote-Access">ZimaOS 文档</a>  </li>
-<li>加入 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/">社区论坛</a>  </li>
-<li>探索 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://awesome.casaos.io/content/3rd-party-app-stores/list.html">应用商店</a> 扩展你的系统</li>
-</ul>
-<p>💡 <strong>专业提示</strong>：收藏此指南以便日后查看更新。新的 ZimaOS 版本通常包含性能优化和新应用。  </p>
-<p>立即开启你的 ZimaOS 之旅，享受更快、更简单、更稳定的 NAS 体验吧！ 🚀</p>
-
-              </div>
-              <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-08-12T09:13:05.022Z" itemprop="dateModified">最后更新：2026-08-12</time>
-                <a href="index" class="article-footer-prev" title="首页"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="get-started" class="article-footer-next" title="开始使用"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
-              </footer>
-
-            </div>
-          </div>
-          <aside id="article-toc" role="navigation">
-            <div id="article-toc-inner">
-              <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E5%B0%86%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88"><span class="toc-text">你将学到什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E9%9C%80%E8%A6%81%E5%87%86%E5%A4%87"><span class="toc-text">你需要准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="toc-text">开始之前</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E4%B8%8B%E8%BD%BD-ZimaOS-%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F"><span class="toc-text">步骤 1：下载 ZimaOS 安装镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E5%88%9B%E5%BB%BA%E5%8F%AF%E5%90%AF%E5%8A%A8-U-%E7%9B%98"><span class="toc-text">步骤 2：创建可启动 U 盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E4%BB%8E-U-%E7%9B%98%E5%90%AF%E5%8A%A8%E8%AE%BE%E5%A4%87"><span class="toc-text">步骤 3：从 U 盘启动设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E5%AE%8C%E6%88%90-ZimaOS-%E5%AE%89%E8%A3%85"><span class="toc-text">步骤 4：完成 ZimaOS 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-5%EF%BC%9A%E8%AE%BF%E9%97%AE-ZimaOS"><span class="toc-text">步骤 5：访问 ZimaOS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E6%8E%A2%E7%B4%A2-ZimaOS"><span class="toc-text">下一步探索 ZimaOS</span></a></li></ol>
-              <a href="#" id="article-toc-top">回到顶部</a>
-            </div>
-          </aside>
-        </div>
-      </article>
-      <aside id="sidebar" role="navigation">
-  <div class="inner">
-    
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">什么是Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>概述</span>
-        <i class="fa fa-chevron-right"></i>
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link  current"><a href="./how-to-install-zimaos">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">开始使用</a></li><li class="sidebar-link "><a href="./features">功能</a></li><li class="sidebar-link "><a href="./remote-access">远程访问</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC 直连</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>探索</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./nvr-camera-server">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./synology-smb-connect">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./cli-guide">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">连接云盘</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./data-migration">数据迁移</a></li><li class="sidebar-link "><a href="./zfs-setup">ZFS 设置</a></li><li class="sidebar-link "><a href="./raid-options">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./docker-app-paths">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature">通过链接共享</a></li><li class="sidebar-link "><a href="./llm-manual-download">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./password-recovery">恢复密码</a></li><li class="sidebar-link "><a href="./remote-id">获取网络 ID</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">实现最快传输速度</a></li><li class="sidebar-link "><a href="./samba-member-setup">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./zimaclient-install">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Immich 教程</a></li><li class="sidebar-link "><a href="./iscsi-guide">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./setup-emby-server">开启电源</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./radarr-setup">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./system-recovery">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./dlna-server-setup">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./time-machine-backup">时间机器功能</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./zimaos-search">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./enable-ai">启用AI搜索</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">3-2-1备份</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrate from CasaOS to ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">部署OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">部署 Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">超棒第三方商店</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>开发者</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./networking">网络交流</a></li><li class="sidebar-link "><a href="./python-setup">设置 Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-bay-led">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./offline-install">离线更新</a></li><li class="sidebar-link "><a href="./supported-disk-formats">支持的磁盘格式</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>社区作品</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">如何贡献</a></li><li class="sidebar-link "><a href="./contributions">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./syncthing-install">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./paperless-ai-install">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./azuracast-install">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Zabbix安装指南</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>版本记录</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>常见问题</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./folder-encryption">加密文件夹</a></li><li class="sidebar-link "><a href="./resetnetworksettings">重置网络设置</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
-  </div>
-</aside>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
     </div>
-  </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/from-synology-to-zimacube-migrate-all-files">群晖手动传输</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">在磁盘之间迁移数据</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="is-current" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/remote-id">获取网络 ID</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">如何安装 ZimaOS</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.553Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="你将了解" class="article-heading">你将了解<a class="article-anchor" href="#你将了解" aria-hidden="true"></a></h2><p>ZimaOS 是一款为通用 x86-64 设备设计的轻量级 NAS 操作系统。<br>本指南提供完整步骤，帮助你快速、顺利地<strong>下载、写入并安装 ZimaOS</strong>。</p>
+<hr>
+<h2 id="所需设备" class="article-heading">所需设备<a class="article-anchor" href="#所需设备" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>一台 <strong>Zima 设备</strong>或至少有 25 GB 存储空间的通用 x86-64 设备。</li>
+<li>一个容量不低于 4 GB 的 USB 设备。</li>
+</ul>
+<hr>
+<h2 id="开始安装" class="article-heading">开始安装<a class="article-anchor" href="#开始安装" aria-hidden="true"></a></h2><p>要启动 ZimaOS，需要在 BIOS 中启用 UEFI 启动模式并关闭 Secure Boot。</p>
+<h3 id="步骤-1：下载-ZimaOS-安装镜像" class="article-heading">步骤 1：下载 ZimaOS 安装镜像<a class="article-anchor" href="#步骤-1：下载-ZimaOS-安装镜像" aria-hidden="true"></a></h3><p>从官方 GitHub Release 页面下载最新的 ZimaOS <code class="chip">.img</code> 文件：<br>👉 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS/releases" class="doc-link">ZimaOS GitHub Releases</a></p>
+<h3 id="步骤-2：制作可启动-USB-设备" class="article-heading">步骤 2：制作可启动 USB 设备<a class="article-anchor" href="#步骤-2：制作可启动-USB-设备" aria-hidden="true"></a></h3><p>需要将 ZimaOS 镜像写入 USB 设备。最简单的工具是 <strong>Balena Etcher</strong>。</p>
+<ol class="doc-steps">
+<li>下载并安装 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/#download-etcher" class="doc-link">Balena Etcher</a></li>
+<li>打开 Etcher，选择 ZimaOS <code class="chip">.img</code> 文件。</li>
+<li>插入 USB 设备，并将其选为目标设备。</li>
+<li>单击 <strong>Flash</strong> 开始写入镜像。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png" alt="Balena Etcher 已打开 ZimaOS 安装镜像文件"></span><br><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png" alt="Balena Etcher 选择用于安装 ZimaOS 的目标 USB 设备"></span><br><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png" alt="ZimaOS 镜像已成功写入 USB 设备"></span></p>
+<h3 id="步骤-3：从-USB-启动设备" class="article-heading">步骤 3：从 USB 启动设备<a class="article-anchor" href="#步骤-3：从-USB-启动设备" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>将可启动 USB 设备插入目标设备。</li>
+<li>进入 BIOS 或启动菜单，然后选择 <strong>Boot from USB</strong>。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png" alt="ZimaOS 安装工具主菜单用于选择安装 ZimaOS 或重新启动"></span></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png" alt="快速安装菜单用于选择安装 ZimaOS 的设备或空间"></span></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png" alt="安装前确认界面选择 Yes"></span></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png" alt="取消安装前的最后确认界面选择 Yes"></span></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611912717_installing.png" alt="安装进度条正在显示，请耐心等待"></span></p>
+<h3 id="步骤-4：完成-ZimaOS-安装" class="article-heading">步骤 4：完成 ZimaOS 安装<a class="article-anchor" href="#步骤-4：完成-ZimaOS-安装" aria-hidden="true"></a></h3><p>按照屏幕提示安装 ZimaOS。<br>系统提示时，拔下 USB 设备并重新启动。<br>设备随后会自动启动进入 <strong>ZimaOS</strong>。</p><p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png" alt="拔下 USB 设备并重新启动"></span></p>
+<h3 id="步骤-5：访问-ZimaOS" class="article-heading">步骤 5：访问 ZimaOS<a class="article-anchor" href="#步骤-5：访问-ZimaOS" aria-hidden="true"></a></h3><p>重新启动后，最简单的登录方式是使用 <strong>ZimaClient</strong>。它可以自动发现网络中的设备，并帮助你快速访问 ZimaOS。</p>
+<p>👉 下载 ZimaClient 并按照此指南操作：<a href="./get-started" class="doc-link">ZimaOS 快速入门指南</a></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png" alt="ZimaOS Web UI 欢迎界面"></span></p>
+<p>也可以在网络中查找设备 IP 地址，并在浏览器中输入，从而访问 <strong>ZimaOS Web UI</strong>。</p><p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png" alt="ZimaOS 信息界面显示 IP 地址和系统版本"></span></p>
+<p>🎉 <strong>恭喜！</strong> ZimaOS 已成功安装，现在可以开始探索各项 NAS 功能。</p>
+<hr>
+<h2 id="安装-ZimaOS-后的下一步" class="article-heading">安装 ZimaOS 后的下一步<a class="article-anchor" href="#安装-ZimaOS-后的下一步" aria-hidden="true"></a></h2><p>在智能服务器上安装 ZimaOS 后，可以开始搭建个人云和家庭服务器。<br>你可以尝试：</p>
+<ul class="doc-dots">
+<li>🔧 <strong>设置 RAID 或存储池</strong>以保护数据。</li>
+<li>📂 <strong>启用文件共享（SMB&#x2F;FTP）</strong>，在设备之间访问文件。</li>
+<li>🎞️ <strong>运行媒体服务器（Plex、Jellyfin）</strong>，串流播放电影和音乐。</li>
+<li>🐳 从 ZimaOS App Store 直接<strong>部署 Docker 应用</strong>。</li>
+<li>☁️ 将重要数据<strong>备份到外部硬盘或云端</strong>。</li>
+</ul>
+<p>👉 准备使用更多功能？</p>
+<ul class="doc-dots">
+<li>继续阅读 **<a href="./get-started" class="doc-link--plain">开始使用</a>**，完成首次启动设置</li>
+<li>设置 **<a href="./remote-access" class="doc-link--plain">远程访问</a>**，随时随地连接设备</li>
+<li>加入 <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link--plain">社区论坛</a></strong></li>
+</ul>
+<p>💡 建议收藏本指南以便日后查看。ZimaOS 新版本通常会带来性能改进和新应用。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.553Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/samba-member-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Samba 多用户设置</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">安装到 Proxmox</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E5%B0%86%E4%BA%86%E8%A7%A3"><span class="toc-text">你将了解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%80%E9%9C%80%E8%AE%BE%E5%A4%87"><span class="toc-text">所需设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85"><span class="toc-text">开始安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E4%B8%8B%E8%BD%BD-ZimaOS-%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F"><span class="toc-text">步骤 1：下载 ZimaOS 安装镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E5%88%B6%E4%BD%9C%E5%8F%AF%E5%90%AF%E5%8A%A8-USB-%E8%AE%BE%E5%A4%87"><span class="toc-text">步骤 2：制作可启动 USB 设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E4%BB%8E-USB-%E5%90%AF%E5%8A%A8%E8%AE%BE%E5%A4%87"><span class="toc-text">步骤 3：从 USB 启动设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E5%AE%8C%E6%88%90-ZimaOS-%E5%AE%89%E8%A3%85"><span class="toc-text">步骤 4：完成 ZimaOS 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-5%EF%BC%9A%E8%AE%BF%E9%97%AE-ZimaOS"><span class="toc-text">步骤 5：访问 ZimaOS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-ZimaOS-%E5%90%8E%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">安装 ZimaOS 后的下一步</span></a></li></ol>
+    </nav>
+  </aside>
 </div>
 
     <!-- FOOTER START -->
@@ -597,97 +642,103 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER END -->
   </div>
   <div id="mobile-nav-dimmer"></div>
-  <nav id="mobile-nav">
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
       
-      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
     </ul>
     
-      
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">什么是Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>概述</span>
-        <i class="fa fa-chevron-right"></i>
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link  current"><a href="./how-to-install-zimaos">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">开始使用</a></li><li class="sidebar-link "><a href="./features">功能</a></li><li class="sidebar-link "><a href="./remote-access">远程访问</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC 直连</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>探索</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./nvr-camera-server">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./synology-smb-connect">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./cli-guide">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">连接云盘</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./data-migration">数据迁移</a></li><li class="sidebar-link "><a href="./zfs-setup">ZFS 设置</a></li><li class="sidebar-link "><a href="./raid-options">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./docker-app-paths">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature">通过链接共享</a></li><li class="sidebar-link "><a href="./llm-manual-download">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./password-recovery">恢复密码</a></li><li class="sidebar-link "><a href="./remote-id">获取网络 ID</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">实现最快传输速度</a></li><li class="sidebar-link "><a href="./samba-member-setup">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./zimaclient-install">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Immich 教程</a></li><li class="sidebar-link "><a href="./iscsi-guide">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./setup-emby-server">开启电源</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./radarr-setup">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./system-recovery">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./dlna-server-setup">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./time-machine-backup">时间机器功能</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./zimaos-search">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./enable-ai">启用AI搜索</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">3-2-1备份</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrate from CasaOS to ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">部署OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">部署 Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">超棒第三方商店</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>开发者</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/from-synology-to-zimacube-migrate-all-files">群晖手动传输</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">在磁盘之间迁移数据</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./networking">网络交流</a></li><li class="sidebar-link "><a href="./python-setup">设置 Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-bay-led">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./offline-install">离线更新</a></li><li class="sidebar-link "><a href="./supported-disk-formats">支持的磁盘格式</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>社区作品</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">如何贡献</a></li><li class="sidebar-link "><a href="./contributions">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./syncthing-install">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./paperless-ai-install">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./azuracast-install">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Zabbix安装指南</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>版本记录</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="is-current" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/remote-id">获取网络 ID</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>常见问题</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./folder-encryption">加密文件夹</a></li><li class="sidebar-link "><a href="./resetnetworksettings">重置网络设置</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li></ul>
+      </div>
+    </div>
     
   </div>
-  <div id="mobile-lang-select-wrap">
-    <span id="mobile-lang-select-label" style="display:none">
-      <i class="fa fa-globe"></i>
-      <span>中文</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/how-to-install-zimaos.html">
-      
-        <option value="en">English</option>
-      
-        <option value="zh" selected>中文</option>
-      
-        <option value="jp">日本語</option>
-      
-        <option value="pt-PT">Português</option>
-      
-        <option value="es">Español</option>
-      
-    </select>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/how-to-install-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/how-to-install-zimaos" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/how-to-install-zimaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/how-to-install-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/how-to-install-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
   </div>
 </nav>
+
   <!-- Scripts -->
 <!-- Cookie -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
 
 <script src="/docs/js/lang_select.js"></script>
 
@@ -704,9 +755,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/docs/js/hexo_resize_image.js"></script>
 
 
-<script src="/docs/js/jquery-2.2.0.min.js"></script>
-
-
 <script src="/docs/js/sweetalert2@11.js"></script>
 
 
@@ -715,10 +763,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/docs/js/cloudflare_ai_search.js"></script>
 
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
 <!-- endbuild -->
 
 
 <script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
 
 
 

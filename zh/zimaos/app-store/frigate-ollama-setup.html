@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>使用ZimaOS实现Frigate+Olama屏幕AI描述 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/frigate-ollama-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="背景在日常生活中，监控摄像头已经成为家庭和企业中重要的工具。然而，传统的监控系统通常只记录图像或简单地检测运动，无法提供图像内容的详细解释。这通常需要用户自己判断，观看视频或接收通知时，判断发生了什么。Frigate 是一个高效的开源视频分析工具，能够识别图像中的目标，如人、车和动物，并触发相关事件。但其功能主要停留在“看见”的层面，无法直接告诉你“发生了什么”。为弥补这一">
+<meta property="og:type" content="website">
+<meta property="og:title" content="使用ZimaOS实现Frigate+Olama屏幕AI描述">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/app-store/frigate-ollama-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="背景在日常生活中，监控摄像头已经成为家庭和企业中重要的工具。然而，传统的监控系统通常只记录图像或简单地检测运动，无法提供图像内容的详细解释。这通常需要用户自己判断，观看视频或接收通知时，判断发生了什么。Frigate 是一个高效的开源视频分析工具，能够识别图像中的目标，如人、车和动物，并触发相关事件。但其功能主要停留在“看见”的层面，无法直接告诉你“发生了什么”。为弥补这一">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202079506_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202168758_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202389678_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203245150_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203281707_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203346880_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203380348_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203428242_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203508399_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203744283_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203764783_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203839741_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203882560_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203925603_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203946052_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203986368_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204019481_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204529636_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204647915_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1745202079506_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "使用ZimaOS实现Frigate+Olama屏幕AI描述",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.552Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "使用ZimaOS实现Frigate+Olama屏幕AI描述"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/frigate-ollama-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/frigate-ollama-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/frigate-ollama-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/frigate-ollama-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="is-current" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">使用ZimaOS实现Frigate+Olama屏幕AI描述</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="背景" class="article-heading">背景<a class="article-anchor" href="#背景" aria-hidden="true"></a></h2><p>在日常生活中，监控摄像头已经成为家庭和企业中重要的工具。然而，传统的监控系统通常只记录图像或简单地检测运动，无法提供图像内容的详细解释。这通常需要用户自己判断，观看视频或接收通知时，判断发生了什么。<br>Frigate 是一个高效的开源视频分析工具，能够识别图像中的目标，如人、车和动物，并触发相关事件。但其功能主要停留在“看见”的层面，无法直接告诉你“发生了什么”。<br>为弥补这一不足，我们引入了 Ollama，它可以生成自然语言描述。通过它，我们可以将 Frigate 检测到的视觉内容转化为清晰的文本说明，比如“有人走进了院子”或“有辆车停在门口”。<br>本教程将引导你如何使用 ZimaOS 将 Frigate 和 Ollama 结合起来，创建一个实用的视觉描述系统。无论你是想提升家庭安全的便利性，还是为小型项目增加智能功能，这一解决方案都能满足你的需求。</p>
+<h2 id="硬件准备" class="article-heading">硬件准备<a class="article-anchor" href="#硬件准备" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>支持 RTSP 协议的摄像头</strong><br>用于为 Frigate 提供实时视频流输入。</li>
+<li><strong>兼容的 ZimaBoard2 显卡</strong><br>用于本地加速 AI 模型推理（如 NVIDIA 系列显卡）。请参考 <a href="../../hardware/gpu-expansion" class="doc-link">GPU 扩展指南</a>。</li>
+<li><strong>6GB 或更大容量的硬盘</strong><br>用于存储 AI 模型文件、视频快照和系统数据。</li>
+</ol>
+<h2 id="软件安装" class="article-heading">软件安装<a class="article-anchor" href="#软件安装" aria-hidden="true"></a></h2><p>该系统的软件安装可以分为以下三个步骤：</p>
+<ol class="doc-steps">
+<li>数据迁移</li>
+<li>安装 Ollama 并配置 LLaVA 模型</li>
+<li>安装并配置 Frigate</li>
+</ol>
+<h3 id="步骤-1-数据迁移" class="article-heading">步骤 1: 数据迁移<a class="article-anchor" href="#步骤-1-数据迁移" aria-hidden="true"></a></h3><p>由于 AI 模型文件的体积较大，建议提前安装独立硬盘，并将 Docker 数据目录及个人数据迁移到硬盘中，以避免下载过程中出现失败或存储空间不足的问题，从而确保系统稳定运行并有足够的存储空间。</p>
+<blockquote>
+<p>请备份重要文件，以防数据丢失。在迁移数据时可能存在风险！！！</p>
+</blockquote>
+<h4 id="连接显卡到硬盘，启动设备并进入操作系统。" class="article-heading">连接显卡到硬盘，启动设备并进入操作系统。<a class="article-anchor" href="#连接显卡到硬盘，启动设备并进入操作系统。" aria-hidden="true"></a></h4><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745202079506_image.png"></span></p>
+<h4 id="数据迁移" class="article-heading">数据迁移<a class="article-anchor" href="#数据迁移" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>点击左上角菜单中的 <strong>“设置”</strong> 图标。</li>
+<li>点击 **”应用”**。</li>
+<li>找到相关的应用或数据管理项目，点击 <strong>“迁移”</strong> 按钮，等待迁移完成。<br><img src="https://manage.icewhale.io/api/static/docs/1745202168758_image.png"></li>
+</ol>
+<h3 id="步骤-2-安装-Ollama-并配置-LLaVA-模型" class="article-heading">步骤 2: 安装 Ollama 并配置 LLaVA 模型<a class="article-anchor" href="#步骤-2-安装-Ollama-并配置-LLaVA-模型" aria-hidden="true"></a></h3><p>关于支持的模型的更多细节，请访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/genai/" class="doc-link">Frigate 官方文档</a> 和 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://ollama.com/" class="doc-link">Ollama 官方网站</a>。</p>
+<h4 id="安装-Ollama" class="article-heading">安装 Ollama<a class="article-anchor" href="#安装-Ollama" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>打开 <strong>应用商店</strong>，在搜索栏输入 **”Ollama”**。</li>
+<li>根据显卡类型选择合适的版本进行安装（例如支持 NVIDIA 的版本）。<br><img src="https://manage.icewhale.io/api/static/docs/1745202389678_image.png"></li>
+</ol>
+<h4 id="配置-LLaVA-模型" class="article-heading">配置 LLaVA 模型<a class="article-anchor" href="#配置-LLaVA-模型" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p>打开 <strong>Olama 终端</strong>，点击右上角的菜单图标。</p>
+</li>
+<li><p>选择 <strong>“设置”</strong> 进入设置界面。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203245150_image.png"></span></p>
+</li>
+<li><p>点击 <strong>“终端”</strong> 图标进入命令行控制界面。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203281707_image.png"></span></p>
+</li>
+<li><p>在命令行中输入以下命令，下载并安装 llava-llama3 模型：</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ollama pull llava-llama3</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203346880_image.png"></span></p>
+</li>
+<li><p>出现 <strong>“Success”</strong> 字样表示模型下载完成，Ollama 已准备就绪。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203380348_image.png"></span></p>
+</li>
+<li><p>启动 Ollama 后，<strong>记录运行的 IP 地址和端口号</strong>（如 <code class="chip">http://10.0.1.3:11434</code>），稍后在配置 Frigate 时使用。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203428242_image.png"></span></p>
+</li>
+</ol>
+<h3 id="步骤-3-安装并配置-Frigate" class="article-heading">步骤 3: 安装并配置 Frigate<a class="article-anchor" href="#步骤-3-安装并配置-Frigate" aria-hidden="true"></a></h3><h4 id="安装-Frigate" class="article-heading">安装 Frigate<a class="article-anchor" href="#安装-Frigate" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p>点击主界面右上角的 <strong>“加号”</strong> 按钮。</p>
+</li>
+<li><p>选择“安装自定义应用”。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203508399_image.png"></span></p>
+</li>
+<li><p>点击 <strong>“导入”</strong> 按钮。</p>
+</li>
+<li><p>导入下面的 frigate.yaml 配置文件。</p>
+<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">pure_grace</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">frigate:</span></span><br><span class="line">    <span class="attr">cpu_shares:</span> <span class="number">90</span></span><br><span class="line">    <span class="attr">command:</span> []</span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">frigate</span></span><br><span class="line">    <span class="attr">deploy:</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">limits:</span></span><br><span class="line">          <span class="attr">memory:</span> <span class="string">7766M</span></span><br><span class="line">    <span class="attr">devices:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/dev/bus/usb:/dev/bus/usb</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/dev/apex_0:/dev/apex_0</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/dev/video11:/dev/video11</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/dev/dri/renderD128:/dev/dri/renderD128</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">ghcr.io/blakeblackshear/frigate:0.15.0</span></span><br><span class="line">    <span class="attr">labels:</span></span><br><span class="line">      <span class="attr">icon:</span> <span class="string">https://icon.casaos.io/main/all/frigate.png</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8971</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8971&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8554</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8554&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8555</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8555&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8555</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8555&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">udp</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">shm_size:</span> <span class="string">&quot;67108864&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">bind</span></span><br><span class="line">        <span class="attr">source:</span> <span class="string">/etc/localtime</span></span><br><span class="line">        <span class="attr">target:</span> <span class="string">/etc/localtime</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">bind</span></span><br><span class="line">        <span class="attr">source:</span> <span class="string">/DATA/AppData/frigate/config</span></span><br><span class="line">        <span class="attr">target:</span> <span class="string">/config</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">bind</span></span><br><span class="line">        <span class="attr">source:</span> <span class="string">/DATA/Media</span></span><br><span class="line">        <span class="attr">target:</span> <span class="string">/media/frigate</span></span><br><span class="line">    <span class="attr">cap_add:</span> []</span><br><span class="line">    <span class="attr">environment:</span> []</span><br><span class="line">    <span class="attr">network_mode:</span> <span class="string">bridge</span></span><br><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">self</span></span><br><span class="line">  <span class="attr">category:</span> <span class="string">self</span></span><br><span class="line">  <span class="attr">hostname:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">https://icon.casaos.io/main/all/frigate.png</span></span><br><span class="line">  <span class="attr">index:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">is_uncontrolled:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">port_map:</span> <span class="string">&quot;8971&quot;</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">https</span></span><br><span class="line">  <span class="attr">store_app_id:</span> <span class="string">pure_grace</span></span><br><span class="line">  <span class="attr">tips:</span> <span class="literal">null</span></span><br><span class="line">  <span class="attr">title:</span></span><br><span class="line">    <span class="attr">custom:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="attr">en_us:</span> <span class="string">frigate</span></span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>点击 **”提交”**。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203744283_image.png"></span></p>
+</li>
+<li><p>点击 **”安装”**，等待安装完成。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203764783_image.png"></span></p>
+</li>
+</ol>
+<h4 id="获取-Frigate-的账号和密码" class="article-heading">获取 Frigate 的账号和密码<a class="article-anchor" href="#获取-Frigate-的账号和密码" aria-hidden="true"></a></h4><p>启动 Frigate 后，请检查并记录日志中的默认账号和密码。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203839741_image.png"></span></p>
+<ol class="doc-steps">
+<li><p>打开 <strong>Frigate 终端</strong>，点击右上角的 <strong>菜单图标</strong>。</p>
+</li>
+<li><p>选择 <strong>“设置”</strong> 进入设置界面。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203882560_image.png"></span></p>
+</li>
+<li><p>点击 <strong>“终端”</strong> 图标进入命令行界面。</p>
+</li>
+<li><p>切换到 <strong>“日志”</strong> 标签查看启动日志。</p>
+</li>
+<li><p>点击右上角的 <strong>“全屏”</strong> 按钮，方便查找默认的用户名和密码。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203925603_image.png"></span></p>
+</li>
+<li><p>账号和密码信息会显示在这里，请记录下来。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203946052_image.png"></span></p>
+</li>
+</ol>
+<h4 id="配置-Frigate" class="article-heading">配置 Frigate<a class="article-anchor" href="#配置-Frigate" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p>输入之前获取的账号和密码登录系统。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203986368_image.png"></span></p>
+</li>
+<li><p>点击左侧菜单中的 <strong>“设置”</strong> 按钮。</p>
+</li>
+<li><p>选择 <strong>“配置编辑器”</strong> 进入配置文件编辑界面。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204019481_image.png"></span></p>
+</li>
+<li><p>在配置编辑器中，添加或修改摄像头相关配置。你可以参考以下示例进行设置：</p>
+</li>
+</ol>
+<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">mqtt:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cameras:</span></span><br><span class="line">  <span class="attr">abc:</span> <span class="comment"># 摄像头名称，可以自定义</span></span><br><span class="line">    <span class="attr">genai:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">use_snapshot:</span> <span class="literal">True</span></span><br><span class="line">      <span class="attr">objects:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">person</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">ffmpeg:</span></span><br><span class="line">      <span class="attr">inputs:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">rtsp://admin:HTC123456@10.0.171.52/stream1</span>  <span class="comment"># 摄像头的 RTSP 地址，替换为你的设备 URL</span></span><br><span class="line">          <span class="attr">roles:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">detect</span></span><br><span class="line">    <span class="attr">detect:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">width:</span> <span class="number">1280</span></span><br><span class="line">      <span class="attr">height:</span> <span class="number">720</span></span><br><span class="line">      <span class="attr">fps:</span> <span class="number">10</span></span><br><span class="line">      <span class="attr">max_disappeared:</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">motion:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">mask:</span> []</span><br><span class="line">      <span class="attr">threshold:</span> <span class="number">25</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">snapshots:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">timestamp:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">bounding_box:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">retain:</span></span><br><span class="line">        <span class="attr">default:</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="attr">semantic_search:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">reindex:</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="attr">genai:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">ollama</span></span><br><span class="line">  <span class="attr">base_url:</span> <span class="string">http://10.0.1.12:11434</span>   <span class="comment"># Ollama 服务运行的主机地址和端口</span></span><br><span class="line">  <span class="attr">model:</span> <span class="string">llava-llama3</span> <span class="comment"># 用于图像+文本分析的多模态模型</span></span><br><span class="line">  <span class="attr">prompt:</span> <span class="string">&quot;Describe what the &#123;label&#125; is doing in these images from camera &#123;camera&#125;. Focus on actions and possible intent.&quot;</span></span><br><span class="line">  <span class="attr">object_prompts:</span></span><br><span class="line">    <span class="attr">person:</span> <span class="string">&quot;What is this person doing?&quot;</span> <span class="comment"># 针对“person”分析的特定提示</span></span><br><span class="line">    <span class="attr">car:</span> <span class="string">&quot;What is this car doing? Is it parked, circling, or doing something unusual?&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">version:</span> <span class="number">0.15</span><span class="number">-1</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>请确保将 <code class="chip">rtsp</code> 链接替换为你自己的摄像头地址，并将 Ollama 的 IP 和端口设置为实际运行地址（例如 <code class="chip">http://10.0.1.3:11434</code>）。否则，Frigate 将无法访问视频流或连接 AI 模型进行分析。</strong></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204529636_image.png"></span></p>
+<ol start="5" class="doc-steps">
+<li>配置完成后，点击 **”保存”**，Frigate 会自动应用新的配置并开始运行。<br>当 Frigate 在监控屏幕中检测到人物对象时，它会自动捕捉快照，并调用 AI 模型生成相应的图像描述。你还可以根据实际应用场景自由调整检测对象、使用的模型和提示内容，从而创建更加智能和个性化的监控体验。</li>
+</ol>
+<h2 id="系统建设完成" class="article-heading">系统建设完成<a class="article-anchor" href="#系统建设完成" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204647915_image.png"></span></p>
+<p>至此，Frigate 和 Ollama 的智能监控系统已经成功搭建完成。你可以通过实时屏幕查看检测效果，或进入日志和快照页面，验证 AI 分析是否正常运行。<br>为了进一步优化体验，你可以尝试接入通知服务、调整模型参数或添加更多摄像头。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/app-store/llm-manual-download"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">下载 AI 模型</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/app-store/openclaw-agent-setup"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">OpenClaw 智能体</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%87%86%E5%A4%87"><span class="toc-text">硬件准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-text">软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="toc-text">步骤 1: 数据迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%98%BE%E5%8D%A1%E5%88%B0%E7%A1%AC%E7%9B%98%EF%BC%8C%E5%90%AF%E5%8A%A8%E8%AE%BE%E5%A4%87%E5%B9%B6%E8%BF%9B%E5%85%A5%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%82"><span class="toc-text">连接显卡到硬盘，启动设备并进入操作系统。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="toc-text">数据迁移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2-%E5%AE%89%E8%A3%85-Ollama-%E5%B9%B6%E9%85%8D%E7%BD%AE-LLaVA-%E6%A8%A1%E5%9E%8B"><span class="toc-text">步骤 2: 安装 Ollama 并配置 LLaVA 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Ollama"><span class="toc-text">安装 Ollama</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-LLaVA-%E6%A8%A1%E5%9E%8B"><span class="toc-text">配置 LLaVA 模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3-%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AE-Frigate"><span class="toc-text">步骤 3: 安装并配置 Frigate</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Frigate"><span class="toc-text">安装 Frigate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96-Frigate-%E7%9A%84%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-text">获取 Frigate 的账号和密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Frigate"><span class="toc-text">配置 Frigate</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE%E5%AE%8C%E6%88%90"><span class="toc-text">系统建设完成</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="is-current" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/frigate-ollama-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/frigate-ollama-setup" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/frigate-ollama-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/frigate-ollama-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

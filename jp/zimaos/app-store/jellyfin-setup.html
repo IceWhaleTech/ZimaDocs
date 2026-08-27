@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>専用システムの基本機能 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/jellyfin-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/jellyfin-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/jellyfin-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/jellyfin-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/jellyfin-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/jellyfin-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/jellyfin-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Jellyfinでどこでも動画を視聴するJellyfinを開くウェブブラウザを開き、**http:&#x2F;&#x2F;casaos.local**にアクセスします。 （Windowsで開けない場合は、**http:&#x2F;&#x2F;casaos**を試してみてください。）  Appsの中にJellyfinを見つけ、そのロゴをクリックすると開きます。 JellyfinにログインTIPSプリインストールされ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="専用システムの基本機能">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/app-store/jellyfin-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Jellyfinでどこでも動画を視聴するJellyfinを開くウェブブラウザを開き、**http:&#x2F;&#x2F;casaos.local**にアクセスします。 （Windowsで開けない場合は、**http:&#x2F;&#x2F;casaos**を試してみてください。）  Appsの中にJellyfinを見つけ、そのロゴをクリックすると開きます。 JellyfinにログインTIPSプリインストールされ">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Get-Started-with-ZimaBoard/casaos-main.jpg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/watching-move-details.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/watching-move-play.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/watching-move-jellyfin-phone.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Get-Started-with-ZimaBoard/casaos-main.jpg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-photoprism-login-page.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-view-photos.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-editing-photo.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-create-albums2.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-upload2.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Basic-functions-of-dedicated-systems/photo-upload-photos.png">
+<meta property="og:image" content="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2">
+<meta property="article:published_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/Get-Started-with-ZimaBoard/casaos-main.jpg">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "専用システムの基本機能",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.537Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "専用システムの基本機能"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/jellyfin-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/jellyfin-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/jellyfin-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/jellyfin-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">専用システムの基本機能</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h1 id="Jellyfinでどこでも動画を視聴する" class="article-heading">Jellyfinでどこでも動画を視聴する<a class="article-anchor" href="#Jellyfinでどこでも動画を視聴する" aria-hidden="true"></a></h1><h2 id="Jellyfinを開く" class="article-heading">Jellyfinを開く<a class="article-anchor" href="#Jellyfinを開く" aria-hidden="true"></a></h2><p>ウェブブラウザを開き、**<code class="chip">http://casaos.local</code>**にアクセスします。</p>
+<p>（Windowsで開けない場合は、**<code class="chip">http://casaos</code>**を試してみてください。）</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Get-Started-with-ZimaBoard/casaos-main.jpg" alt="CasaOS Main"></span></p>
+<p><strong>Apps</strong>の中に<strong>Jellyfin</strong>を見つけ、そのロゴをクリックすると開きます。</p>
+<h2 id="Jellyfinにログイン" class="article-heading">Jellyfinにログイン<a class="article-anchor" href="#Jellyfinにログイン" aria-hidden="true"></a></h2><blockquote class="note dinfo"><p>TIPS<br><strong>プリインストールされたアプリ用のデフォルトアカウント</strong></p>
+<p><strong>ユーザー名:<code class="chip">casaos</code></strong></p>
+<p><strong>パスワード:<code class="chip">casaos</code></strong></p>
+</blockquote>
+
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg" alt="ログインJellyfin"></span></p>
+<h2 id="Jellyfinで動画をストリーミング！" class="article-heading">Jellyfinで動画をストリーミング！<a class="article-anchor" href="#Jellyfinで動画をストリーミング！" aria-hidden="true"></a></h2><h3 id="ライブラリをブラウズする" class="article-heading">ライブラリをブラウズする<a class="article-anchor" href="#ライブラリをブラウズする" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.jpeg" alt="Jellyfinライブラリを見る"></span></p>
+<h3 id="映画情報" class="article-heading">映画情報<a class="article-anchor" href="#映画情報" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/watching-move-details.jpeg" alt="Jellyfinで映画の詳細を見る"></span></p>
+<h3 id="再生" class="article-heading">再生<a class="article-anchor" href="#再生" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/watching-move-play.webp" alt="Jellyfinで映画を見る"></span></p>
+<h2 id="どこでも動画をストリーミング" class="article-heading">どこでも動画をストリーミング<a class="article-anchor" href="#どこでも動画をストリーミング" aria-hidden="true"></a></h2><p>Embyは、コンピュータ、携帯電話、テレビ、ゲームコンソール、さらにはVRで視聴できる多くの方法を提供しています。</p>
+<h3 id="スマートフォンで動画をストリーミング" class="article-heading">スマートフォンで動画をストリーミング<a class="article-anchor" href="#スマートフォンで動画をストリーミング" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/watching-move-jellyfin-phone.webp" alt="Jellyfinを使用してスマートフォンで映画を見る"></span></p>
+<h1 id="PhotoPrismで写真を管理する" class="article-heading">PhotoPrismで写真を管理する<a class="article-anchor" href="#PhotoPrismで写真を管理する" aria-hidden="true"></a></h1><h2 id="PhotoPrismを開く" class="article-heading">PhotoPrismを開く<a class="article-anchor" href="#PhotoPrismを開く" aria-hidden="true"></a></h2><p>ウェブブラウザを開き、**<code class="chip">http://casaos.local</code>**にアクセスします。</p>
+<p>（Windowsで開けない場合は、**<code class="chip">http://casaos</code>**を試してみてください。）</p>
+<browserwindow url="http://casaos.local">
+
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Get-Started-with-ZimaBoard/casaos-main.jpg" alt="CasaOS Main"></span></p>
+</browserwindow>
+
+<p><strong>Apps</strong>の中に<strong>PhotoPrism</strong>を見つけ、そのロゴをクリックすると開きます。</p>
+<h3 id="PhotoPrismにログイン" class="article-heading">PhotoPrismにログイン<a class="article-anchor" href="#PhotoPrismにログイン" aria-hidden="true"></a></h3><blockquote class="note dinfo"><p>TIPS<br><strong>プリインストールされたアプリ用のデフォルトアカウント</strong></p>
+<p>ユーザー名:<code class="chip">casaos</code></p>
+<p>パスワード:<code class="chip">casaos</code></p>
+</blockquote>
+
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-photoprism-login-page.png" alt="ログインPhotoprism"></span></p>
+<h2 id="PhotoPrismの利用" class="article-heading">PhotoPrismの利用<a class="article-anchor" href="#PhotoPrismの利用" aria-hidden="true"></a></h2><h3 id="写真を見る" class="article-heading">写真を見る<a class="article-anchor" href="#写真を見る" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-view-photos.webp" alt="Photoprismで写真を見る"></span></p>
+<h3 id="写真情報を見る" class="article-heading">写真情報を見る<a class="article-anchor" href="#写真情報を見る" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.png" alt="Photoprismで写真情報を見る"></span></p>
+<h3 id="写真のバッチ編集" class="article-heading">写真のバッチ編集<a class="article-anchor" href="#写真のバッチ編集" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-editing-photo.png" alt="Photoprismでの写真編集"></span></p>
+<h3 id="アルバムの作成" class="article-heading">アルバムの作成<a class="article-anchor" href="#アルバムの作成" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-create-albums2.png" alt="Photoprismでアルバムを作成"></span></p>
+<h3 id="写真のアップロード" class="article-heading">写真のアップロード<a class="article-anchor" href="#写真のアップロード" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-upload2.webp" alt="Photoprismで写真をアップロード"></span></p>
+<h4 id="インデックスの更新" class="article-heading">インデックスの更新<a class="article-anchor" href="#インデックスの更新" aria-hidden="true"></a></h4><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Basic-functions-of-dedicated-systems/photo-upload-photos.png" alt="Photoprismでの写真アップロード"></span></p>
+<p>**詳細についてはこのリンクを参照してください-**<strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.photoprism.app/" class="doc-link">https://docs.photoprism.app/</a></strong></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/knqAbbBbeX" class="doc-link"><img src="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2" alt="Discordカード"></a></p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/app-store/batocera-arcade-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">Batocera アーケード</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/app-store/oculus-quest-media-server"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Oculus VR ストリーミング</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jellyfin%E3%81%A7%E3%81%A9%E3%81%93%E3%81%A7%E3%82%82%E5%8B%95%E7%94%BB%E3%82%92%E8%A6%96%E8%81%B4%E3%81%99%E3%82%8B"><span class="toc-text">Jellyfinでどこでも動画を視聴する</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Jellyfin%E3%82%92%E9%96%8B%E3%81%8F"><span class="toc-text">Jellyfinを開く</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jellyfin%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3"><span class="toc-text">Jellyfinにログイン</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jellyfin%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%EF%BC%81"><span class="toc-text">Jellyfinで動画をストリーミング！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E3%83%96%E3%83%A9%E3%82%A6%E3%82%BA%E3%81%99%E3%82%8B"><span class="toc-text">ライブラリをブラウズする</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%A0%E7%94%BB%E6%83%85%E5%A0%B1"><span class="toc-text">映画情報</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E7%94%9F"><span class="toc-text">再生</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%A9%E3%81%93%E3%81%A7%E3%82%82%E5%8B%95%E7%94%BB%E3%82%92%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0"><span class="toc-text">どこでも動画をストリーミング</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%B3%E3%81%A7%E5%8B%95%E7%94%BB%E3%82%92%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0"><span class="toc-text">スマートフォンで動画をストリーミング</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PhotoPrism%E3%81%A7%E5%86%99%E7%9C%9F%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B"><span class="toc-text">PhotoPrismで写真を管理する</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PhotoPrism%E3%82%92%E9%96%8B%E3%81%8F"><span class="toc-text">PhotoPrismを開く</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PhotoPrism%E3%81%AB%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3"><span class="toc-text">PhotoPrismにログイン</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PhotoPrism%E3%81%AE%E5%88%A9%E7%94%A8"><span class="toc-text">PhotoPrismの利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E7%9C%9F%E3%82%92%E8%A6%8B%E3%82%8B"><span class="toc-text">写真を見る</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E7%9C%9F%E6%83%85%E5%A0%B1%E3%82%92%E8%A6%8B%E3%82%8B"><span class="toc-text">写真情報を見る</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E7%9C%9F%E3%81%AE%E3%83%90%E3%83%83%E3%83%81%E7%B7%A8%E9%9B%86"><span class="toc-text">写真のバッチ編集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0%E3%81%AE%E4%BD%9C%E6%88%90"><span class="toc-text">アルバムの作成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E7%9C%9F%E3%81%AE%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89"><span class="toc-text">写真のアップロード</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%81%AE%E6%9B%B4%E6%96%B0"><span class="toc-text">インデックスの更新</span></a></li></ol></li></ol></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/jellyfin-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/jellyfin-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/jellyfin-setup" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/jellyfin-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/jellyfin-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

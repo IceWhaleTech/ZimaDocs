@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Explorando OMV | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/hardware/openmediavault-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/openmediavault-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/openmediavault-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/openmediavault-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/openmediavault-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/openmediavault-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/openmediavault-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Primeiro LoginMétodo de Login Para fazer login no OMV pela primeira vez, digite openmediavault.local&#x2F; no seu navegador Nome de Usuário: adminSenha: openmediavault (Os usuários podem altera">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Explorando OMV">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/hardware/openmediavault-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Primeiro LoginMétodo de Login Para fazer login no OMV pela primeira vez, digite openmediavault.local&#x2F; no seu navegador Nome de Usuário: adminSenha: openmediavault (Os usuários podem altera">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-(OMV+Zima)/menthod-of-login.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-dashboard.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/change-dashboard.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-creat-users.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-users-id.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-permissions.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-permissions-with-groups.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-permissions-with-%20share-folders.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-share-folders.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-share-folders1.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-share-folders-permissions.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-system-upadtes.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-plugins-install.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-automatic-logout-times.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-a-times-zone.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-reminder-notice.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-fixed-ip-address.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-smb-cifs.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-community-plugins.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-community-plugins1.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-community-plugins2.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos1.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos2.jpeg">
+<meta property="og:image" content="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2">
+<meta property="article:published_time" content="2026-08-27T09:51:24.542Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.542Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/Small-body-Big-applications-(OMV+Zima)/menthod-of-login.jpeg">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Explorando OMV",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.542Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/pt-PT/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Explorando OMV"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/openmediavault-setup">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/openmediavault-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/openmediavault-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/openmediavault-setup">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/openmediavault-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/hardware/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/pt-PT/hardware/quick-start">Início rápido</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-details">Detalhes de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on-setup">Método de arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/pc-direct">Ligação direta ao PC</a></li><li><a class="" href="/docs/pt-PT/hardware/hdd-interface-guide">Guia da interface HDD</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-guide">Utilização da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-install">Instalar a sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on">Arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/gpu-expansion">Expansão de GPU</a></li><li><a class="" href="/docs/pt-PT/hardware/raid-ssd-expansion">Expansão RAID com SSD</a></li><li><a class="" href="/docs/pt-PT/hardware/bios-configuration">Configuração da BIOS</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-fan-diy">Guia de ventoinha DIY</a></li><li><a class="" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt">Velocidade por Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/hardware/compatible-network-adapters">Adaptadores de rede compatíveis</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-wol-on-zimacube">Ativar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/pt-PT/hardware/zimaboard-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/zimaboard-quick-start">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/power-on-zimaboard-2">Ligar o ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalação da ventoinha e PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/pt-PT/hardware/power-on-zimablade">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/zimablade-overview">Primeiros passos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/pt-PT/hardware/7th-bay-led">Indicador LED da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/ups-compatibility-list">Compatibilidade de UPS</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/supported-disk-formats">Formatos de disco suportados</a></li><li><a class="" href="/docs/pt-PT/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/pt-PT/hardware/install-unraid">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/install-truenas">Executar TrueNAS</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-x86-install">Executar OpenWrt</a></li><li><a class="" href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-usb-install">OpenWrt por USB</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-emmc-boot">OpenWrt em eMMC</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="is-current" href="/docs/pt-PT/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/unraid-install">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/third-party-os-install">Sistemas de terceiros</a></li><li><a class="" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Explorando OMV</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.542Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h1 id="Primeiro-Login" class="article-heading">Primeiro Login<a class="article-anchor" href="#Primeiro-Login" aria-hidden="true"></a></h1><h2 id="Metodo-de-Login" class="article-heading">Método de Login<a class="article-anchor" href="#Metodo-de-Login" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-(OMV+Zima)/menthod-of-login.jpeg" alt="método de login omv"></span></p>
+<p>Para fazer login no OMV pela primeira vez, digite <strong><code class="chip">openmediavault.local/</code></strong> no seu navegador</p>
+<blockquote class="note info"><p><strong>Nome de Usuário</strong>: <code class="chip">admin</code><br><strong>Senha</strong>: <code class="chip">openmediavault</code> (Os usuários podem alterar a senha padrão após o primeiro login)</p>
+</blockquote>
+
+<h2 id="Painel" class="article-heading">Painel<a class="article-anchor" href="#Painel" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-dashboard.jpeg" alt="Painel OMV"></span></p>
+<p><strong>Os usuários podem personalizar o layout do Painel através das configurações (botão em forma de engrenagem) no canto superior direito.</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/change-dashboard.jpeg" alt="Mudar Painel OMV"></span></p>
+<h1 id="Tres-elementos-da-Inicializacao" class="article-heading">Três elementos da Inicialização<a class="article-anchor" href="#Tres-elementos-da-Inicializacao" aria-hidden="true"></a></h1><h2 id="Grupos-x2F-Usuarios" class="article-heading">Grupos&#x2F;Usuários<a class="article-anchor" href="#Grupos-x2F-Usuarios" aria-hidden="true"></a></h2><p><strong>Usuários -&gt; Grupo -&gt; Criar</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-creat-users.jpeg" alt="Criar Usuários OMV"></span></p>
+<p><strong>Ao criar um novo grupo de usuários, o usuário pode adicionar o ID do usuário recém-criado a este grupo de usuários.</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-users-id.jpeg" alt="Criar ID de Usuários OMV"></span></p>
+<p><strong>Usuários -&gt; Usuários -&gt; Criar</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-permissions.jpeg" alt="Criar Permissões OMV"></span></p>
+<p><strong>O novo usuário pertence ao grupo de usuários por padrão, mas os usuários também podem personalizar o grupo de usuários de acordo com suas necessidades reais para diferenciar seu uso.</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-permissions-with-groups.jpeg" alt="Criar Permissões OMV com grupos"></span></p>
+<p><strong>As permissões da pasta compartilhada definem os direitos de acesso do novo usuário à pasta compartilhada (por favor, consulte o conteúdo do tutorial sobre a pasta compartilhada)</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-permissions-with-%20share-folders.jpeg" alt="Criar Permissões OMV com Pastas Compartilhadas"></span></p>
+<h2 id="Pastas-Compartilhadas" class="article-heading">Pastas Compartilhadas<a class="article-anchor" href="#Pastas-Compartilhadas" aria-hidden="true"></a></h2><p><strong>Armazenamento - Sistemas de Arquivos - Montagem de partições Ext3&#x2F;4 (Montar)</strong><br><strong>OMV suporta a montagem direta de partições Ext3 ou Ext4 existentes; se o disco rígido atualmente conectado não tiver tais partições, a gestão do disco relevante (particionamento ou formatação) pode ser realizada nas partições existentes do disco rígido</strong></p>
+<blockquote class="note danger"><p><strong>As partições montadas são um pré-requisito para novas pastas compartilhadas</strong></p>
+</blockquote>
+
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-share-folders.jpeg" alt="Criar Pastas Compartilhadas OMV"></span></p>
+<p><strong>Armazenamento -&gt; Pastas Compartilhadas -&gt; Criar</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-share-folders1.jpeg" alt="Criar Pastas Compartilhadas OMV"></span></p>
+<p><strong>Os usuários podem optar por criar uma nova pasta compartilhada na partição montada e definir os direitos de acesso apropriados (leitura&#x2F;escrita)</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/creat-omv-share-folders-permissions.jpeg" alt="Criar Permissões de Pastas Compartilhadas OMV"></span></p>
+<h2 id="Gestao-de-Plugins" class="article-heading">Gestão de Plugins<a class="article-anchor" href="#Gestao-de-Plugins" aria-hidden="true"></a></h2><p><strong>Sistema -&gt; Gestão de Atualizações -&gt; Atualizações</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-system-upadtes.jpeg" alt="Atualizações do Sistema OMV"></span></p>
+<blockquote class="note danger"><p><strong>As atualizações do sistema são geralmente patches oficiais do sistema ou conteúdos atualizados do OMV, portanto, é recomendado operar isso após a inicialização.</strong></p>
+</blockquote>
+
+<p><strong>Sistema -&gt; Plugins</strong></p>
+<p>Como mencionado no início deste artigo, OMV é uma solução de armazenamento conectado à rede (NAS) baseada em Debian Linux para um ambiente doméstico ou pequeno escritório, e sua biblioteca de plugins oficial pode atender à maioria das necessidades diárias dos usuários. </p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/omv-plugins-install.jpeg" alt="Instalação de Plugins do Sistema OMV"></span></p>
+<blockquote class="note primary"><p><strong>Recomendação de instalação obrigatória de plugins</strong> </p>
+<p><strong>- Gerenciador de arquivos: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://filebrowser.org/" class="doc-link">Filebrowser</a></strong><br><strong>- Netbook: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage" class="doc-link">Onedrive</a></strong><br><strong>- Gerenciador de Imagens: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://photoprism.app/" class="doc-link">Photoprism</a></strong><br><strong>- Push de aeroporto: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mikebrady/shairport-sync" class="doc-link">Shairport</a></strong><br><strong>- Compartilhamento de partição do sistema OMV: sharerootfs (se o usuário quiser experimentar e usar o emmc do Zima como uma pasta compartilhada sem um disco rígido externo)</strong><br><strong>- Gerenciador de Máquinas Virtuais: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.linux-kvm.org/page/Main_Page" class="doc-link">Kvm</a></strong><br><strong>- Navegador de terminal SSH: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/butlerx/wetty" class="doc-link">Wetty</a></strong></p>
+</blockquote>
+
+<h2 id="Dicas-para-uso" class="article-heading">Dicas para uso<a class="article-anchor" href="#Dicas-para-uso" aria-hidden="true"></a></h2><h3 id="Tempo-de-logout-automatico" class="article-heading">Tempo de logout automático<a class="article-anchor" href="#Tempo-de-logout-automatico" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-automatic-logout-times.jpeg" alt="Tempo de logout automático do Sistema OMV"></span></p>
+<p>No processo de uso diário, a maioria dos usuários descobrirá que, após um curto período, eles precisam reinserir suas credenciais de login. Isso ocorre porque o tempo de logout automático padrão do OMV é de apenas 5 minutos. <strong><code class="chip">Sistema - Oficina - Logout automático.</code></strong> Defina o tempo um pouco mais longo para resolver esse problema.</p>
+<h3 id="Fuso-Horario" class="article-heading">Fuso Horário<a class="article-anchor" href="#Fuso-Horario" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-a-times-zone.jpeg" alt="Fuso Horário do Sistema OMV"></span></p>
+<p>Alguns usuários descobrem que, ao usar a sincronização de dados, configuraram para sincronizar dados toda a tarde. No entanto, na verdade, sincroniza dados bem cedo pela manhã. Isso acontece porque os usuários não definiram seu próprio fuso horário. Para resolver isso, vá em <strong><code class="chip">Sistema - Data &amp; Hora - Fuso Horário</code></strong></p>
+<h3 id="Lembretes" class="article-heading">Lembretes<a class="article-anchor" href="#Lembretes" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-reminder-notice.jpeg" alt="Aviso de lembrete do Sistema OMV"></span></p>
+<p>O pequeno sino no canto superior direito da área de trabalho do OMV frequentemente exibe notificações redundantes, que os usuários costumam achar irritantes, pois são irrelevantes. O usuário simplesmente precisa ir a <strong><code class="chip">Sistema - Notificação - Notificações</code></strong> para desligar notificações que não são relevantes para eles.</p>
+<h3 id="Endereco-IP-fixo" class="article-heading">Endereço IP fixo<a class="article-anchor" href="#Endereco-IP-fixo" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-fixed-ip-address.jpeg" alt="Endereço IP fixo do Sistema OMV"></span></p>
+<p>Para alguns usuários, por causa de fatores ambientais da LAN, o endereço OMV sempre mudará. Você pode usar o Host (openmediavault.local&#x2F;) para acessar a página de gerenciamento, mas a operação real do aplicativo ainda não é muito conveniente. Portanto, os usuários devem ir em <strong><code class="chip">Rede -&gt; Interface</code></strong> para modificar o IP da interface de rede existente do endereço IP variável DHCP padrão para o endereço IP fixo estático. </p>
+<p><strong><code class="chip">SMB/CIFS</code></strong><br><strong>O serviço SMB</strong> é uma das aplicações NAS mais básicas; usuários que utilizam o OMV pela primeira vez encontrarão a dificuldade de não conseguir criar o serviço SMB corretamente. Na verdade, os usuários só precisam seguir os passos deste guia para completar a inicialização dos três elementos das configurações da pasta compartilhada, e a criação do serviço SMB pode ser facilmente corrigida (da mesma forma que o serviço NFS).</p>
+<h3 id="SMB-x2F-CIFS" class="article-heading">SMB&#x2F;CIFS<a class="article-anchor" href="#SMB-x2F-CIFS" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-smb-cifs.jpeg" alt="Sistema OMV SMB/CIFS"></span></p>
+<p><strong>O serviço SMB é uma das aplicações NAS mais básicas, e os usuários que utilizam o OMV pela primeira vez encontrarão a dificuldade de não conseguir criar o serviço SMB corretamente; na verdade, os usuários só precisam seguir os passos deste guia para completar a inicialização dos três elementos das configurações da pasta compartilhada, e a criação do serviço SMB pode ser facilmente corrigida (da mesma forma que o serviço NFS).</strong></p>
+<h1 id="OMV-Avancado" class="article-heading">OMV Avançado<a class="article-anchor" href="#OMV-Avancado" aria-hidden="true"></a></h1><h2 id="Biblioteca-de-Plugins-da-Comunidade" class="article-heading">Biblioteca de Plugins da Comunidade<a class="article-anchor" href="#Biblioteca-de-Plugins-da-Comunidade" aria-hidden="true"></a></h2><p><strong>Além dos plugins oficiais que acompanham o sistema, o OMV também possui uma grande biblioteca de plugins de comunidade construídos&#x2F;manutidos por fãs, dos quais o mais importante é o suporte total ao Docker.</strong></p>
+<p><strong>a)</strong> Os usuários podem usar o plugin oficial Wetty [Serviços - Wetty] recomendado no artigo anterior</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-community-plugins.jpeg" alt="Plugins da Comunidade OMV"></span></p>
+<p><strong>b)</strong> Abra a versão web do navegador SSH do Wetty e faça login inserindo a conta root e a senha configurada durante a instalação do sistema.</p>
+<p><strong>c)</strong> Faça login e digite:<strong><code class="chip"><code class="chip">wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash</code><code class="chip"></code></code></strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-community-plugins1.jpeg" alt="Plugins da Comunidade OMV"></span></p>
+<p><strong>d)</strong> Assim que o repositório de plugins da comunidade for instalado, os usuários podem instalar o Docker</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-community-plugins2.jpeg" alt="Plugins da Comunidade OMV"></span></p>
+<h2 id="Docker-e-CasaOS" class="article-heading">Docker e CasaOS<a class="article-anchor" href="#Docker-e-CasaOS" aria-hidden="true"></a></h2><p><strong>a)</strong> Faça login no SSH do Wetty com a senha da conta root e entre. <strong><code class="chip"><code class="chip">wget -qO- https://get.casaos.io | sudo bash</code><code class="chip"></code></code></strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos.jpeg" alt="Sistema OMV com CasaOS"></span></p>
+<p><strong>b)</strong> Após a conclusão da instalação, os usuários devem lembrar do endereço de login do CasaOS.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos1.jpeg" alt="Sistema OMV com CasaOS"></span></p>
+<p><strong>c)</strong> Acesse a página inicial do CasaOS, e os usuários podem desfrutar facilmente de uma coleção personalizada de aplicativos Docker.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Small-body-Big-applications-OMV-First-Experience/Omv-system-with-casaos2.jpeg" alt="Sistema OMV com CasaOS"></span></p>
+<h1 id="Resumo" class="article-heading">Resumo<a class="article-anchor" href="#Resumo" aria-hidden="true"></a></h1><p><strong>Como uma solução de armazenamento conectado à rede (NAS) baseada em Debian Linux para ambientes domésticos ou pequenos escritórios, o sistema do OMV é pequeno o suficiente para ajudar os usuários a atender às suas necessidades diárias com sua própria biblioteca de plugins, além de uma grande biblioteca Docker e nosso CasaOS adaptado ao usuário, em comparação com outros grandes sistemas NAS no mercado, como Synology, QNAP e UNAS.</strong></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/knqAbbBbeX" class="doc-link"><img src="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2" alt="Cartão Discord"></a></p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.542Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/hardware/openmediavault-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Instalar OMV</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/hardware/unraid-install"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Executar Unraid</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Primeiro-Login"><span class="toc-text">Primeiro Login</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Metodo-de-Login"><span class="toc-text">Método de Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Painel"><span class="toc-text">Painel</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tres-elementos-da-Inicializacao"><span class="toc-text">Três elementos da Inicialização</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Grupos-x2F-Usuarios"><span class="toc-text">Grupos&#x2F;Usuários</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pastas-Compartilhadas"><span class="toc-text">Pastas Compartilhadas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gestao-de-Plugins"><span class="toc-text">Gestão de Plugins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dicas-para-uso"><span class="toc-text">Dicas para uso</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tempo-de-logout-automatico"><span class="toc-text">Tempo de logout automático</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fuso-Horario"><span class="toc-text">Fuso Horário</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lembretes"><span class="toc-text">Lembretes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Endereco-IP-fixo"><span class="toc-text">Endereço IP fixo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SMB-x2F-CIFS"><span class="toc-text">SMB&#x2F;CIFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OMV-Avancado"><span class="toc-text">OMV Avançado</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Biblioteca-de-Plugins-da-Comunidade"><span class="toc-text">Biblioteca de Plugins da Comunidade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-e-CasaOS"><span class="toc-text">Docker e CasaOS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Resumo"><span class="toc-text">Resumo</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/hardware/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/pt-PT/hardware/quick-start">Início rápido</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-details">Detalhes de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on-setup">Método de arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/pc-direct">Ligação direta ao PC</a></li><li><a class="" href="/docs/pt-PT/hardware/hdd-interface-guide">Guia da interface HDD</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-guide">Utilização da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-install">Instalar a sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on">Arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/gpu-expansion">Expansão de GPU</a></li><li><a class="" href="/docs/pt-PT/hardware/raid-ssd-expansion">Expansão RAID com SSD</a></li><li><a class="" href="/docs/pt-PT/hardware/bios-configuration">Configuração da BIOS</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-fan-diy">Guia de ventoinha DIY</a></li><li><a class="" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt">Velocidade por Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/hardware/compatible-network-adapters">Adaptadores de rede compatíveis</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-wol-on-zimacube">Ativar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/pt-PT/hardware/zimaboard-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/zimaboard-quick-start">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/power-on-zimaboard-2">Ligar o ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalação da ventoinha e PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/pt-PT/hardware/power-on-zimablade">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/zimablade-overview">Primeiros passos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/pt-PT/hardware/7th-bay-led">Indicador LED da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/ups-compatibility-list">Compatibilidade de UPS</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/supported-disk-formats">Formatos de disco suportados</a></li><li><a class="" href="/docs/pt-PT/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/pt-PT/hardware/install-unraid">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/install-truenas">Executar TrueNAS</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-x86-install">Executar OpenWrt</a></li><li><a class="" href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-usb-install">OpenWrt por USB</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-emmc-boot">OpenWrt em eMMC</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="is-current" href="/docs/pt-PT/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/unraid-install">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/third-party-os-install">Sistemas de terceiros</a></li><li><a class="" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/openmediavault-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/openmediavault-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/openmediavault-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/openmediavault-setup" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/hardware/openmediavault-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

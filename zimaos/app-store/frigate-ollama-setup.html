@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>AI Image Description with ZimaOS: Frigate and Ollama Setup | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/frigate-ollama-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Set up AI-powered security camera descriptions on ZimaOS using Frigate and Ollama. Local AI object detection with no cloud dependency.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Image Description with ZimaOS: Frigate and Ollama Setup">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zimaos/app-store/frigate-ollama-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Set up AI-powered security camera descriptions on ZimaOS using Frigate and Ollama. Local AI object detection with no cloud dependency.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202079506_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202168758_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745202389678_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203245150_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203281707_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203346880_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203380348_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203428242_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203508399_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203744283_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203764783_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203839741_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203882560_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203925603_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203946052_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745203986368_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204019481_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204529636_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1745204647915_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1745202079506_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Implementing Frigate+Olama Screen AI Description with ZimaOS",
+      "description": "Set up AI-powered security camera descriptions on ZimaOS using Frigate and Ollama. Local AI object detection with no cloud dependency.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.555Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Implementing Frigate+Olama Screen AI Description with ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/frigate-ollama-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/frigate-ollama-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/frigate-ollama-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/frigate-ollama-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="is-current" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Implementing Frigate+Olama Screen AI Description with ZimaOS</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Background" class="article-heading">Background<a class="article-anchor" href="#Background" aria-hidden="true"></a></h2><p>In daily life, surveillance cameras have become important tools for both households and businesses. However, traditional monitoring systems usually only record images or simply detect motion, and cannot provide detailed explanations of the content of the images. This often requires users to judge for themselves what happened when viewing videos or receiving notifications.<br>Frigate is an efficient open-source video analysis tool that can identify targets such as people, cars, and animals in images and trigger related events. But its function mainly stays at the level of “seeing” and cannot directly tell you “what happened”.<br>To compensate for this deficiency, we introduced Ollama, a tool that can generate natural language descriptions. Through it, we can convert the visual content detected by Frigate into clear textual explanations, such as’ someone walked into the yard ‘or’ a car parked at the door ‘.<br>This tutorial will guide you on how to use ZimaOS to combine Frigate and Ollama to create a practical visual description system. Whether you want to improve the convenience of home security or add intelligent features to small projects, this solution can meet your needs.</p>
+<h2 id="Hardware-preparation" class="article-heading">Hardware preparation<a class="article-anchor" href="#Hardware-preparation" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>Cameras that support RTSP protocol</strong><br>Used to provide real-time video stream input to Frigate.</li>
+<li><strong>ZimaBoard2 compatible graphics card</strong><br>Used for locally accelerating AI model inference (such as NVIDIA series graphics cards). See the <a href="../../hardware/gpu-expansion" class="doc-link">GPU expansion guide</a>.</li>
+<li><strong>A hard drive with a capacity of 6GB or greater</strong><br>Used for storing AI model files, video snapshots, and system data.</li>
+</ol>
+<h2 id="Software-installation" class="article-heading">Software installation<a class="article-anchor" href="#Software-installation" aria-hidden="true"></a></h2><p>The software installation of this system can be divided into the following three steps:</p>
+<ol class="doc-steps">
+<li>Data migration</li>
+<li>Install Ollama and configure the LLaVA model</li>
+<li>Install and configure Frigate</li>
+</ol>
+<h3 id="Step-1-Data-Migration" class="article-heading">Step 1: Data Migration<a class="article-anchor" href="#Step-1-Data-Migration" aria-hidden="true"></a></h3><p>Due to the large size of AI models, it is recommended to install an independent hard drive in advance and migrate Docker data directories and personal data to the hard drive to avoid problems such as failure or insufficient storage space during the download process, in order to ensure stable system operation and sufficient storage space.</p>
+<blockquote>
+<p>Please backup important files to prevent data loss. There may be risks when migrating data!!!</p>
+</blockquote>
+<h4 id="Connect-the-graphics-card-to-the-hard-drive-start-the-device-and-enter-the-operating-system" class="article-heading">Connect the graphics card to the hard drive, start the device, and enter the operating system.<a class="article-anchor" href="#Connect-the-graphics-card-to-the-hard-drive-start-the-device-and-enter-the-operating-system" aria-hidden="true"></a></h4><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745202079506_image.png"></span></p>
+<h4 id="Data-migration" class="article-heading">Data migration<a class="article-anchor" href="#Data-migration" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>Click on the <strong>“Settings”</strong> icon in the upper left menu</li>
+<li>Click on <strong>“Apps”</strong></li>
+<li>Find the relevant application or data management item, click the <strong>“Migration”</strong> button, and wait for the migration to complete.<br><img src="https://manage.icewhale.io/api/static/docs/1745202168758_image.png"></li>
+</ol>
+<h3 id="Step-1-Install-Ollama-and-configure-LLaVA-model" class="article-heading">Step 1:Install Ollama and configure LLaVA model<a class="article-anchor" href="#Step-1-Install-Ollama-and-configure-LLaVA-model" aria-hidden="true"></a></h3><p>For more details on supported models, please visit <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/genai/" class="doc-link">the official documentation of Frigate</a> and <a target="_blank" rel="noopener external nofollow noreferrer" href="https://ollama.com/" class="doc-link">the official website of Ollama</a>.</p>
+<h4 id="Install-Ollama" class="article-heading">Install Ollama<a class="article-anchor" href="#Install-Ollama" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>Open the <strong>App Store</strong> and enter <strong>“Ollama”</strong> in the search bar</li>
+<li>Choose the appropriate version for installation based on your graphics card type (such as a version that supports NVIDIA)<br><img src="https://manage.icewhale.io/api/static/docs/1745202389678_image.png"></li>
+</ol>
+<h4 id="Configure-LLaVA-model" class="article-heading">Configure LLaVA model<a class="article-anchor" href="#Configure-LLaVA-model" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>Open the <strong>Olama terminal</strong> and click on the menu icon in the upper right corner</li>
+<li>Select <strong>“Settings”</strong> to enter the settings interface<br><img src="https://manage.icewhale.io/api/static/docs/1745203245150_image.png"></li>
+<li>Click on the <strong>“Terminal”</strong> icon to enter the command line control interface<br><img src="https://manage.icewhale.io/api/static/docs/1745203281707_image.png"></li>
+<li>Enter the following command in the command line to download the model and install llava-llama3<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ollama pull llava-llama3</span><br></pre></td></tr></table></div></figure>
+<img src="https://manage.icewhale.io/api/static/docs/1745203346880_image.png"></li>
+<li>The appearance of the word <strong>“Success”</strong> indicates that the model download is complete and Ollama is ready<br><img src="https://manage.icewhale.io/api/static/docs/1745203380348_image.png"></li>
+<li>After starting Olama, <strong>record the IP address and port number of the running IP</strong> (such as <code class="chip">http://10.0.1.3:11434</code> ）It will be used later when configuring Frigate.<br><img src="https://manage.icewhale.io/api/static/docs/1745203428242_image.png"></li>
+</ol>
+<h3 id="Step-3-Install-and-configure-Frigate" class="article-heading">Step 3: Install and configure Frigate<a class="article-anchor" href="#Step-3-Install-and-configure-Frigate" aria-hidden="true"></a></h3><h4 id="Install-Frigate" class="article-heading">Install Frigate<a class="article-anchor" href="#Install-Frigate" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p>Click the <strong>“plus”</strong> button in the upper right corner of the main interface.</p>
+</li>
+<li><p>Select ‘Install a customized app’.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203508399_image.png"></span></p>
+</li>
+<li><p>Click on the ‘Import’ button.</p>
+</li>
+<li><p>Import the frigate.yaml configuration file below.</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">name: pure_grace</span><br><span class="line">services:</span><br><span class="line">  frigate:</span><br><span class="line">    cpu_shares: 90</span><br><span class="line">    command: []</span><br><span class="line">    container_name: frigate</span><br><span class="line">    deploy:</span><br><span class="line">      resources:</span><br><span class="line">        limits:</span><br><span class="line">          memory: 7766M</span><br><span class="line">    devices:</span><br><span class="line">      - /dev/bus/usb:/dev/bus/usb</span><br><span class="line">      - /dev/apex_0:/dev/apex_0</span><br><span class="line">      - /dev/video11:/dev/video11</span><br><span class="line">      - /dev/dri/renderD128:/dev/dri/renderD128</span><br><span class="line">    image: ghcr.io/blakeblackshear/frigate:0.15.0</span><br><span class="line">    labels:</span><br><span class="line">      icon: https://icon.casaos.io/main/all/frigate.png</span><br><span class="line">    ports:</span><br><span class="line">      - target: 8971</span><br><span class="line">        published: &quot;8971&quot;</span><br><span class="line">        protocol: tcp</span><br><span class="line">      - target: 8554</span><br><span class="line">        published: &quot;8554&quot;</span><br><span class="line">        protocol: tcp</span><br><span class="line">      - target: 8555</span><br><span class="line">        published: &quot;8555&quot;</span><br><span class="line">        protocol: tcp</span><br><span class="line">      - target: 8555</span><br><span class="line">        published: &quot;8555&quot;</span><br><span class="line">        protocol: udp</span><br><span class="line">    privileged: true</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    shm_size: &quot;67108864&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      - type: bind</span><br><span class="line">        source: /etc/localtime</span><br><span class="line">        target: /etc/localtime</span><br><span class="line">      - type: bind</span><br><span class="line">        source: /DATA/AppData/frigate/config</span><br><span class="line">        target: /config</span><br><span class="line">      - type: bind</span><br><span class="line">        source: /DATA/Media</span><br><span class="line">        target: /media/frigate</span><br><span class="line">    cap_add: []</span><br><span class="line">    environment: []</span><br><span class="line">    network_mode: bridge</span><br><span class="line">x-casaos:</span><br><span class="line">  author: self</span><br><span class="line">  category: self</span><br><span class="line">  hostname: &quot;&quot;</span><br><span class="line">  icon: https://icon.casaos.io/main/all/frigate.png</span><br><span class="line">  index: /</span><br><span class="line">  is_uncontrolled: false</span><br><span class="line">  port_map: &quot;8971&quot;</span><br><span class="line">  scheme: https</span><br><span class="line">  store_app_id: pure_grace</span><br><span class="line">  tips: null</span><br><span class="line">  title:</span><br><span class="line">    custom: &quot;&quot;</span><br><span class="line">    en_us: frigate</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>Click on “Submit”.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203744283_image.png"></span></p>
+</li>
+<li><p>Click “Install” and wait for the installation to complete.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203764783_image.png"></span></p>
+</li>
+</ol>
+<h4 id="Obtain-Frigate’s-account-and-password" class="article-heading">Obtain Frigate’s account and password<a class="article-anchor" href="#Obtain-Frigate’s-account-and-password" aria-hidden="true"></a></h4><p>After starting Frigate, please check and record the default account and password in the log.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745203839741_image.png"></span></p>
+<ol class="doc-steps">
+<li>Open the <strong>Frigate terminal</strong> and click on the <strong>menu icon</strong> in the upper right corner.</li>
+<li>Select <strong>“Settings”</strong> to enter the settings interface.<br><img src="https://manage.icewhale.io/api/static/docs/1745203882560_image.png"></li>
+<li>Click on the <strong>“Terminal”</strong> icon within the application.</li>
+<li>Switch to the <strong>“Logs”</strong> tab to view the startup logs.</li>
+<li>Click the <strong>“Full Screen”</strong> button in the upper right corner to easily find the default username and password.<br><img src="https://manage.icewhale.io/api/static/docs/1745203925603_image.png"></li>
+<li>Account and password information will be displayed here, please record it.<br><img src="https://manage.icewhale.io/api/static/docs/1745203946052_image.png"></li>
+</ol>
+<h4 id="Configure-firmate" class="article-heading">Configure firmate<a class="article-anchor" href="#Configure-firmate" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>Enter the account and password obtained earlier and log in to the system.<br><img src="https://manage.icewhale.io/api/static/docs/1745203986368_image.png"></li>
+<li>Click on the <strong>“Settings”</strong> button in the left menu.</li>
+<li>Select <strong>“Configuration Editor”</strong> to enter the configuration file editing interface.<br><img src="https://manage.icewhale.io/api/static/docs/1745204019481_image.png"></li>
+<li>In the configuration editor, add or modify camera related configurations. You can refer to the following example for setting up:</li>
+</ol>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mqtt:</span><br><span class="line">  enabled: false</span><br><span class="line"></span><br><span class="line">cameras:</span><br><span class="line">  abc: # Name of the camera, customizable</span><br><span class="line">    genai:</span><br><span class="line">      enabled: true</span><br><span class="line">      use_snapshot: True</span><br><span class="line">      objects:</span><br><span class="line">        - person</span><br><span class="line"></span><br><span class="line">    ffmpeg:</span><br><span class="line">      inputs:</span><br><span class="line">        - path: rtsp://admin:HTC123456@10.0.171.52/stream1  # RTSP address of the camera, replace with your device&#x27;s URL</span><br><span class="line">          roles:</span><br><span class="line">            - detect</span><br><span class="line">    detect:</span><br><span class="line">      enabled: true</span><br><span class="line">      width: 1280</span><br><span class="line">      height: 720</span><br><span class="line">      fps: 10</span><br><span class="line">      max_disappeared: 10</span><br><span class="line"></span><br><span class="line">    motion:</span><br><span class="line">      enabled: true</span><br><span class="line">      mask: []</span><br><span class="line">      threshold: 25</span><br><span class="line"></span><br><span class="line">    snapshots:</span><br><span class="line">      enabled: true</span><br><span class="line">      timestamp: true</span><br><span class="line">      bounding_box: true</span><br><span class="line">      retain:</span><br><span class="line">        default: 3</span><br><span class="line"></span><br><span class="line">semantic_search:</span><br><span class="line">  enabled: true</span><br><span class="line">  reindex: False</span><br><span class="line"></span><br><span class="line">genai:</span><br><span class="line">  enabled: true</span><br><span class="line">  provider: ollama</span><br><span class="line">  base_url: http://10.0.1.12:11434   # Host address and port where the Ollama service is running</span><br><span class="line">  model: llava-llama3 # Multimodal model used for image + text analysis</span><br><span class="line">  prompt: &quot;Describe what the &#123;label&#125; is doing in these images from camera &#123;camera&#125;. Focus on actions and possible intent.&quot;</span><br><span class="line">  object_prompts:</span><br><span class="line">    person: &quot;What is this person doing?&quot; # Specific prompt for analyzing &quot;person&quot;</span><br><span class="line">    car: &quot;What is this car doing? Is it parked, circling, or doing something unusual?&quot;</span><br><span class="line"></span><br><span class="line">version: 0.15-1</span><br></pre></td></tr></table></div></figure>
+<p><strong>Please make sure to replace the <code class="chip">rtsp</code> link with your own camera address and set Ollama’s IP and port to the actual running address (e.g <code class="chip">http://10.0.1.3:11434</code> ）Otherwise, Frigate will not be able to access video streams or connect AI models for analysis.</strong></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204529636_image.png"></span></p><p>5. After the configuration is completed, click “Save” and Frigate will automatically apply the new configuration and start running.<br>When Frigate detects a person object in the monitoring screen, it will automatically capture a snapshot and call the AI model to generate the corresponding image description. You can also freely adjust the detection object, model used, and prompt content according to the actual application scenario, thus creating a more intelligent and personalized monitoring experience.</p>
+<h2 id="Construction-completed" class="article-heading">Construction completed<a class="article-anchor" href="#Construction-completed" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1745204647915_image.png"></span></p><p>At this point, the intelligent monitoring system of Frigate and Ollama has been successfully built. You can check the detection effect through real-time screen, or enter the log and snapshot page to verify whether the AI analysis is running normally.<br>To further optimize the experience, you can try accessing notification services, adjusting model parameters, or adding more cameras.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zimaos/app-store/llm-manual-download"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Download AI Models</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zimaos/app-store/openclaw-agent-setup"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">OpenClaw Agent</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Background"><span class="toc-text">Background</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hardware-preparation"><span class="toc-text">Hardware preparation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Software-installation"><span class="toc-text">Software installation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-Data-Migration"><span class="toc-text">Step 1: Data Migration</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Connect-the-graphics-card-to-the-hard-drive-start-the-device-and-enter-the-operating-system"><span class="toc-text">Connect the graphics card to the hard drive, start the device, and enter the operating system.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-migration"><span class="toc-text">Data migration</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-1-Install-Ollama-and-configure-LLaVA-model"><span class="toc-text">Step 1:Install Ollama and configure LLaVA model</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-Ollama"><span class="toc-text">Install Ollama</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Configure-LLaVA-model"><span class="toc-text">Configure LLaVA model</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step-3-Install-and-configure-Frigate"><span class="toc-text">Step 3: Install and configure Frigate</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-Frigate"><span class="toc-text">Install Frigate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Obtain-Frigate%E2%80%99s-account-and-password"><span class="toc-text">Obtain Frigate’s account and password</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Configure-firmate"><span class="toc-text">Configure firmate</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Construction-completed"><span class="toc-text">Construction completed</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="is-current" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/frigate-ollama-setup" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/frigate-ollama-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/frigate-ollama-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/frigate-ollama-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

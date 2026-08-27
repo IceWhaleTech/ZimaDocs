@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Cómo usar la CLI para navegar en ZimaOS | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/zimaos/app-store/cli-guide">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/cli-guide">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/cli-guide">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/cli-guide">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/cli-guide">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/cli-guide">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/cli-guide">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS 3 es un cambio de juego para los entusiastas de NAS, usuarios profesionales y usuarios de estudio. Su interfaz intuitiva simplifica la copia de seguridad y la gestión de datos, aseg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cómo usar la CLI para navegar en ZimaOS">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaos/app-store/cli-guide">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS 3 es un cambio de juego para los entusiastas de NAS, usuarios profesionales y usuarios de estudio. Su interfaz intuitiva simplifica la copia de seguridad y la gestión de datos, aseg">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727176855906_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727176878586_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177117363_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177214909_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177258550_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177269954_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177290437_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177297428_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727177303590_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.307Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.307Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727176855906_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Cómo usar la CLI para navegar en ZimaOS",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.307Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/es/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/es/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Cómo usar la CLI para navegar en ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/cli-guide">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/cli-guide">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/cli-guide">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/cli-guide">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/cli-guide">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/app-store/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimedia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/es/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/es/zimaos/app-store/nvr-camera-server">Servidor de cámaras NVR</a></li><li><a class="" href="/docs/es/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-setup-guide">Servidor multimedia Plex</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-and-gpu-transcoding">Transcodificación Plex por GPU</a></li><li><a class="" href="/docs/es/zimaos/app-store/sync-photos-with-immich">Sincronización de fotos con Immich</a></li><li><a class="" href="/docs/es/zimaos/app-store/immich-photo-backup">Copia de fotos con Immich</a></li><li><a class="is-current" href="/docs/es/zimaos/app-store/cli-guide">Sincronización masiva de fotos</a></li><li><a class="" href="/docs/es/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicaciones autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/es/zimaos/app-store/syncthing-setup">Sincronización con Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/webtorrent-feature">Descargador de torrents</a></li><li><a class="" href="/docs/es/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ngx-install">Gestión de documentos</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ai-install">Procesamiento de documentos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/syncthing-install">Configuración de Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/radarr-setup">Gestor de películas Radarr</a></li><li><a class="" href="/docs/es/zimaos/app-store/azuracast-install">Radio por Internet</a></li><li><a class="" href="/docs/es/zimaos/app-store/zabbix-install-guide">Monitorización de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA y aprendizaje automático</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/es/zimaos/app-store/enable-ai">Activar búsqueda con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/deploy-deepseek-r1">Desplegar DeepSeek R1</a></li><li><a class="" href="/docs/es/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/es/zimaos/app-store/llm-manual-download">Descargar modelos de IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/frigate-ollama-setup">Descripción de fotos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Proyectos creativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/es/zimaos/app-store/pve-on-debian-for-i226">Ejecutar PVE sobre Debian</a></li><li><a class="" href="/docs/es/zimaos/app-store/awesome-third-party-stores">Tiendas de apps de la comunidad</a></li><li><a class="" href="/docs/es/zimaos/app-store/batocera-arcade-setup">Arcade con Batocera</a></li><li><a class="" href="/docs/es/zimaos/app-store/jellyfin-setup">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/oculus-quest-media-server">Streaming de Oculus VR</a></li><li><a class="" href="/docs/es/zimaos/app-store/minecraft-friendship-service">Servidor de Minecraft</a></li><li><a class="" href="/docs/es/zimaos/app-store/self-hosted-apps">Aplicaciones autoalojadas</a></li><li><a class="" href="/docs/es/zimaos/app-store/zimablade-cluster-pve">Migración de clúster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para desarrolladores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una tienda de aplicaciones</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Cómo usar la CLI para navegar en ZimaOS</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.307Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>ZimaOS 3 es un cambio de juego para los entusiastas de NAS, usuarios profesionales y usuarios de estudio. Su interfaz intuitiva simplifica la copia de seguridad y la gestión de datos, asegurando que sus archivos críticos estén siempre seguros. ZimaOS destaca en la instalación de aplicaciones Docker, agilizando el proceso con solo unos pocos clics.</p>
+<p>¿Alguna vez has pensado en lo que hay detrás de la glamorosa interfaz de ZimaOS? Hoy, utilizamos otra interfaz para acceder a nuestro ZimaOS.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727176855906_image.png"></span></p>
+<blockquote>
+<p>La GUI (Interfaz Gráfica de Usuario) ofrece una experiencia interactiva visual con íconos y menús, diseñada para una navegación intuitiva, dirigida a usuarios de todos los niveles de habilidad por su facilidad de uso. La CLI (Interfaz de Línea de Comandos), por otro lado, es una interfaz basada en texto para ejecutar comandos, favorecida por expertos por su eficiencia y capacidades de scripting.</p>
+</blockquote>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727176878586_image.png"></span></p>
+<h2 id="Tres-formas-de-acceder-a-la-CLI-en-ZimaOS" class="article-heading">Tres formas de acceder a la CLI en ZimaOS<a class="article-anchor" href="#Tres-formas-de-acceder-a-la-CLI-en-ZimaOS" aria-hidden="true"></a></h2><h3 id="Metodo-1-Usa-tu-teclado-y-pantalla" class="article-heading">Método 1: Usa tu teclado y pantalla<a class="article-anchor" href="#Metodo-1-Usa-tu-teclado-y-pantalla" aria-hidden="true"></a></h3><p>Conecta tu dispositivo Zima a un teclado y una pantalla. Al iniciar, ZimaOS mostrará una interfaz como esta en la pantalla:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177117363_image.png"></span></p><p>Presiona <strong>Alt+F2</strong>, y accederás a una página de inicio de sesión. Ahora, ingresa root y presiona Enter. Si es la primera vez que ingresas a esta página, no necesitarás una contraseña y estarás en la CLI de ZimaOS directamente. Te recomendamos que configures una contraseña para tu cuenta de root. Ingresa passwd-root y esta herramienta te pedirá que establezcas la contraseña para root. Ten en cuenta que una contraseña para root es necesaria para iniciar sesión por SSH.</p>
+<h3 id="Metodo-2-Usa-tu-Cliente-SSH" class="article-heading">Método 2: Usa tu Cliente SSH<a class="article-anchor" href="#Metodo-2-Usa-tu-Cliente-SSH" aria-hidden="true"></a></h3><p>SSH es un método de acceso remoto ampliamente utilizado. ZimaOS también se puede acceder utilizando SSH.</p>
+<p>De nuevo, se necesita una contraseña para root para iniciar sesión por SSH. Consulta el contenido anterior.</p>
+<p>Abre una terminal. Aquí, usamos el terminal de Windows como ejemplo. Ingresa <strong>ssh root@tuZimaOSIP</strong> y presiona <strong>Enter</strong>. Se te pedirá que confíes en una huella digital de clave y que ingreses la contraseña. Después de eso, estarás en la CLI de ZimaOS a través de SSH.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177214909_image.png"></span></p>
+<h3 id="Metodo-3-Usa-la-aplicacion-ttydBridge" class="article-heading">Método 3: Usa la aplicación ttydBridge<a class="article-anchor" href="#Metodo-3-Usa-la-aplicacion-ttydBridge" aria-hidden="true"></a></h3><p>Este es el método sugerido para usar la CLI en ZimaOS. Inicia sesión en la WebUI de ZimaOS a través de la IP de tu dispositivo Zima. En la WebUI de ZimaOS, podemos instalar el ttydBridge desde nuestra tienda de aplicaciones.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177258550_image.png"></span></p><p>Después de la instalación, lanza el ttydBridge desde el panel de control y se te pedirá que ingreses el nombre de usuario y la contraseña. Dado que has iniciado sesión en nuestra WebUI, puedes ingresar admin como nombre de usuario y la contraseña como la contraseña para ttydBridge. Ahora, verás una hermosa CLI como esta:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177269954_image.png"></span></p>
+<h3 id="Diferencias-y-comandos-comunes" class="article-heading">Diferencias y comandos comunes<a class="article-anchor" href="#Diferencias-y-comandos-comunes" aria-hidden="true"></a></h3><p>Por razones de seguridad, la mayoría de las carpetas del sistema son de solo lectura incluso si inicias sesión como root, lo que distingue el sistema de archivos de ZimaOS de otras distribuciones de linux.</p>
+<p>Los datos de usuario y los datos de aplicaciones se colocarán en &#x2F;DATA. Siéntete libre de utilizar comandos para crear, eliminar y modificar archivos y carpetas dentro de los subdirectorios de &#x2F;DATA. Por supuesto, te recomendamos que crees una nueva subcarpeta dentro de &#x2F;DATA para realizar estos experimentos.</p>
+<p>Aquí también compartimos contigo algunos comandos y herramientas comúnmente utilizados.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177290437_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177297428_image.png"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727177303590_image.png"></span></p><p>Estos comandos funcionan bien en ZimaOS. Esperamos que esta tabla te ayude a comprender mejor cómo funciona la CLI en ZimaOS.</p>
+<p>Si encuentras algún problema durante el uso, no dudes en hacérnoslo saber en cualquier momento. Simplemente comenta a continuación. También puedes unirte a nuestro <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.com/invite/uuNfKzG5" class="doc-link">Discord</a> para hablar más sobre la aplicación Docker y ZimaOS. ¡Esperamos tus comentarios!</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.307Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/zimaos/app-store/immich-photo-backup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Copia de fotos con Immich</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/zimaos/app-store/dlna-server-setup"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Servidor DLNA</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tres-formas-de-acceder-a-la-CLI-en-ZimaOS"><span class="toc-text">Tres formas de acceder a la CLI en ZimaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Metodo-1-Usa-tu-teclado-y-pantalla"><span class="toc-text">Método 1: Usa tu teclado y pantalla</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metodo-2-Usa-tu-Cliente-SSH"><span class="toc-text">Método 2: Usa tu Cliente SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metodo-3-Usa-la-aplicacion-ttydBridge"><span class="toc-text">Método 3: Usa la aplicación ttydBridge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Diferencias-y-comandos-comunes"><span class="toc-text">Diferencias y comandos comunes</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/app-store/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimedia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/es/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/es/zimaos/app-store/nvr-camera-server">Servidor de cámaras NVR</a></li><li><a class="" href="/docs/es/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-setup-guide">Servidor multimedia Plex</a></li><li><a class="" href="/docs/es/zimaos/app-store/plex-and-gpu-transcoding">Transcodificación Plex por GPU</a></li><li><a class="" href="/docs/es/zimaos/app-store/sync-photos-with-immich">Sincronización de fotos con Immich</a></li><li><a class="" href="/docs/es/zimaos/app-store/immich-photo-backup">Copia de fotos con Immich</a></li><li><a class="is-current" href="/docs/es/zimaos/app-store/cli-guide">Sincronización masiva de fotos</a></li><li><a class="" href="/docs/es/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicaciones autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/es/zimaos/app-store/syncthing-setup">Sincronización con Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/webtorrent-feature">Descargador de torrents</a></li><li><a class="" href="/docs/es/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ngx-install">Gestión de documentos</a></li><li><a class="" href="/docs/es/zimaos/app-store/paperless-ai-install">Procesamiento de documentos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/syncthing-install">Configuración de Syncthing</a></li><li><a class="" href="/docs/es/zimaos/app-store/radarr-setup">Gestor de películas Radarr</a></li><li><a class="" href="/docs/es/zimaos/app-store/azuracast-install">Radio por Internet</a></li><li><a class="" href="/docs/es/zimaos/app-store/zabbix-install-guide">Monitorización de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA y aprendizaje automático</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/es/zimaos/app-store/enable-ai">Activar búsqueda con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/deploy-deepseek-r1">Desplegar DeepSeek R1</a></li><li><a class="" href="/docs/es/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/es/zimaos/app-store/llm-manual-download">Descargar modelos de IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/frigate-ollama-setup">Descripción de fotos con IA</a></li><li><a class="" href="/docs/es/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Proyectos creativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/es/zimaos/app-store/pve-on-debian-for-i226">Ejecutar PVE sobre Debian</a></li><li><a class="" href="/docs/es/zimaos/app-store/awesome-third-party-stores">Tiendas de apps de la comunidad</a></li><li><a class="" href="/docs/es/zimaos/app-store/batocera-arcade-setup">Arcade con Batocera</a></li><li><a class="" href="/docs/es/zimaos/app-store/jellyfin-setup">Servidor multimedia Jellyfin</a></li><li><a class="" href="/docs/es/zimaos/app-store/oculus-quest-media-server">Streaming de Oculus VR</a></li><li><a class="" href="/docs/es/zimaos/app-store/minecraft-friendship-service">Servidor de Minecraft</a></li><li><a class="" href="/docs/es/zimaos/app-store/self-hosted-apps">Aplicaciones autoalojadas</a></li><li><a class="" href="/docs/es/zimaos/app-store/zimablade-cluster-pve">Migración de clúster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para desarrolladores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una tienda de aplicaciones</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/cli-guide" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/cli-guide" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/cli-guide" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/cli-guide" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/cli-guide" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

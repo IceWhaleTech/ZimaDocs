@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <title>Cómo conectar ZimaCube a través de un cable Thunderbolt | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.zimaspace.com/docs/es/zimaos/thunderbolt-direct-connect">
   <!-- Alternate links -->
   
     
+    
   <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/thunderbolt-direct-connect">
+    
+    
     
   <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/thunderbolt-direct-connect">
     
+    
+    
   <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/thunderbolt-direct-connect">
+    
+    
     
   <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/thunderbolt-direct-connect">
     
+    
+    
   <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/thunderbolt-direct-connect">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/thunderbolt-direct-connect">
     
   
   <!-- FAVICONS ICON -->
@@ -32,24 +64,31 @@
   <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#f1b335">
 
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- build:css build/css/zima.css -->
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
   <!-- endbuild -->
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
   
   <!-- Open Graph -->
   
-  <meta name="description" content="Si desea conectar su computadora al ZimaCube utilizando un cable Thunderbolt para obtener velocidades de conexión más rápidas, puede seguir estos pasos: Mac Si aún no se ha conectado a Zim">
+  <meta name="description" content="Conecta ZimaCube directamente a tu Mac o PC mediante un cable Thunderbolt para alcanzar velocidades de transferencia de 2GB&#x2F;s. Guía del modo PC Direct por Thunderbolt en ZimaOS.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cómo conectar ZimaCube a través de un cable Thunderbolt">
 <meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaos/thunderbolt-direct-connect">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="Si desea conectar su computadora al ZimaCube utilizando un cable Thunderbolt para obtener velocidades de conexión más rápidas, puede seguir estos pasos: Mac Si aún no se ha conectado a Zim">
+<meta property="og:description" content="Conecta ZimaCube directamente a tu Mac o PC mediante un cable Thunderbolt para alcanzar velocidades de transferencia de 2GB&#x2F;s. Guía del modo PC Direct por Thunderbolt en ZimaOS.">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728443998198_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1728444041984_image.png">
@@ -64,8 +103,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729590200515_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729590218016_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729590231315_image.png">
-<meta property="article:published_time" content="2026-08-12T09:13:04.493Z">
-<meta property="article:modified_time" content="2026-08-12T09:13:04.493Z">
+<meta property="article:published_time" content="2026-08-27T09:51:24.309Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.309Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1728443998198_image.png">
@@ -77,7 +116,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
 <!-- End Google Tag Manager -->
 
 
@@ -86,7 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "headline": "Cómo conectar ZimaCube a través de un cable Thunderbolt",
-      "description": "",
+      "description": "Conecta ZimaCube directamente a tu Mac o PC mediante un cable Thunderbolt para alcanzar velocidades de transferencia de 2GB/s. Guía del modo PC Direct por Thunderbolt en ZimaOS.",
       
       "author": {
         "@type": "Organization",
@@ -101,18 +140,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-08-12T09:13:04.493Z"
+      "datePublished": "2026-08-27T09:51:24.309Z"
     }
   </script>
 
   
   
-
-
-
   
-    
-    
+  
+  
+  
   
   
   
@@ -132,13 +169,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "@type": "ListItem",
           "position": 2,
           "name": "ZimaOS",
-          "item": "https://www.zimaspace.com/docs/es/zimaos"
+          "item": "https://www.zimaspace.com/docs/es/zimaos/"
         },
+        
+        
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Cómo conectar ZimaCube a través de un cable Thunderbolt"
         }
+        
       ]
     }
   </script>
@@ -147,132 +187,202 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<body>
+<body class="docs-page">
   
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <div id="container">
-    <div id="header_outer">
-  <header id="header" >
-    <div id="header-inner" class="inner">
-      <div class="logo-container">
-        <h2 id="logo-wrap">
-          
-          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
-        </h2>
-      </div>
-      <div class="nav-container">
-        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
-          <ul id="menu-main-menu" class="maxmenu-list">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
 
-            <li class="menu-item current_page_item"><a href="/docs/es/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/es/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">Foro</a></li>
-            <li class="menu-item menu-item-has-children">
-              <span class="maxmenu-click">
-                <i class="maxmenu-arrow"></i>
-              </span>
-              <a href="#">
-                <img src="/docs/img/lang.svg" />
-              </a>
-              <ul class="sub-menu">
-                
-                  <li class="menu-item">
-                    <a href="/docs/zimaos/thunderbolt-direct-connect">English</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/zh/zimaos/thunderbolt-direct-connect">中文</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/jp/zimaos/thunderbolt-direct-connect">日本語</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Português</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/es/zimaos/thunderbolt-direct-connect">Español</a>
-                  </li>
-                
-              </ul>
-            </li>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
 
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/thunderbolt-direct-connect">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/thunderbolt-direct-connect">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/thunderbolt-direct-connect">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/thunderbolt-direct-connect">Español</a></li>
+            
           </ul>
-        </nav>
-      </div>
-
-      <div class="search-icon-container">
-        <div id="search-container-icon">
-          <i class="fa fa-search" id="showSearch"></i>
         </div>
-        <a class="shop" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="external">Tienda</a>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
       </div>
 
-      <a id="mobile-nav-toggle">
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-      </a>
-    </div>
-  </header>
-</div>
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
 
-<div id="search-container">
-  <div id="search-container-close">
-    <i class="fa fa-close" id="hideSearch"></i>
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
   <div class="search-bg"></div>
   <div class="search-content-container">
     <div id="search-input-wrap">
-      <div id="search-input-icon">
-        
-      </div>
-      <input type="search" id="search-input" placeholder="Buscar...">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
     </div>
     <div id="resultContent"></div>
   </div>
-
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
 </div>
 
-    <div id="content-wrap">
-  <div id="content" class="wrapper">
-    <div id="content-inner">
-      <article class="article-container" itemscope itemtype="http://schema.org/Article">
-        <div class="article-inner">
-          <div class="article">
-            <div class="inner">
-              <header class="article-header">
-                <h1 class="article-title" itemprop="name">Cómo conectar ZimaCube a través de un cable Thunderbolt</h1>
-                
-              
-                
-                <!-- facebook -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="Si tiene algún problema con este documento, póngase en contacto con nosotros y le responderemos a la mayor brevedad.​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
-                </a>
-                <!-- x twitter -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="Si tiene algún problema con este documento, póngase en contacto con nosotros y le responderemos a la mayor brevedad.​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
-                </a>
-              </header>
-              <div class="article-content" itemprop="articleBody">
-                <p>Si desea conectar su computadora al ZimaCube utilizando un cable Thunderbolt para obtener velocidades de conexión más rápidas, puede seguir estos pasos:</p>
-<h2 id="Mac" class="article-heading"><a href="#Mac" class="headerlink" title="Mac"></a>Mac<a class="article-anchor" href="#Mac" aria-hidden="true"></a></h2><ul>
-<li>Si aún no se ha conectado a ZimaCube usando ZimaClient, por favor consulte la <a href="https://www.zimaspace.com/docs/zimaos/Features.html#Download-the-Zima-Client">documentación</a> para descargar e instalar <a target="_blank" rel="noopener external nofollow noreferrer" href="https://find.zimaspace.com/">ZimaClient</a>. ZimaClient priorizará e identificará dispositivos con conexiones Thunderbolt durante el escaneo inicial.</li>
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuración y almacenamiento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/es/zimaos/get-started">Primeros pasos</a></li><li><a class="" href="/docs/es/zimaos/features">Resumen de funciones</a></li><li><a class="" href="/docs/es/zimaos/storage-setup">Configuración del almacenamiento</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Opciones de RAID</a></li><li><a class="" href="/docs/es/zimaos/docker-app-paths">Rutas de almacenamiento de apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronización y copias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/es/zimaos/phone-backup">Copia del teléfono</a></li><li><a class="" href="/docs/es/zimaos/computer-backup">Copia del ordenador</a></li><li><a class="" href="/docs/es/zimaos/synology-to-zimacube-migration">Migrar desde otro NAS</a></li><li><a class="" href="/docs/es/zimaos/from-synology-to-zimacube-migrate-all-files">Transferencia manual de Synology</a></li><li><a class="" href="/docs/es/zimaos/data-migration">Mover datos entre unidades</a></li><li><a class="" href="/docs/es/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estrategia de copia 3-2-1</a></li><li><a class="" href="/docs/es/zimaos/time-machine-backup">Copia con Time Machine</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acceso y uso compartido</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/es/zimaos/remote-access">Acceso remoto</a></li><li><a class="" href="/docs/es/zimaos/zimaclient-install">Descargar ZimaClient</a></li><li><a class="is-current" href="/docs/es/zimaos/thunderbolt-direct-connect">Conexión directa Thunderbolt</a></li><li><a class="" href="/docs/es/zimaos/smb-troubleshooting">Archivos compartidos por SMB</a></li><li><a class="" href="/docs/es/zimaos/share-via-link">Compartir mediante enlace</a></li><li><a class="" href="/docs/es/zimaos/samba-member-setup">Samba multiusuario</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalación</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/es/zimaos/how-to-install-zimaos">Instalar ZimaOS</a></li><li><a class="" href="/docs/es/zimaos/install-zimaos-on-proxmox-ve">Instalar en Proxmox</a></li><li><a class="" href="/docs/es/zimaos/casaos-to-zimaos-migration">Migrar desde CasaOS</a></li><li><a class="" href="/docs/es/zimaos/remote-id">Obtener el ID de red</a></li><li><a class="" href="/docs/es/zimaos/password-recovery">Restablecer la contraseña</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/es/zimaos/ups-setup">Configuración de UPS</a></li><li><a class="" href="/docs/es/zimaos/system-recovery">Recuperación del sistema</a></li><li><a class="" href="/docs/es/zimaos/offline-install">Instalación sin conexión</a></li><li><a class="" href="/docs/es/zimaos/reset-network-settings">Restablecer la red</a></li><li><a class="" href="/docs/es/zimaos/zimaos-search">Función de búsqueda</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Cómo conectar ZimaCube a través de un cable Thunderbolt</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.309Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>Si desea conectar su computadora al ZimaCube utilizando un cable Thunderbolt para obtener velocidades de conexión más rápidas, puede seguir estos pasos:</p>
+<h2 id="Mac" class="article-heading">Mac<a class="article-anchor" href="#Mac" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Si aún no te has conectado a ZimaCube mediante ZimaClient, consulta la <a href="./features#Download-the-Zima-Client" class="doc-link">documentación</a> para descargar e instalar <a href="https://www.zimaspace.com/zimaos/download" class="doc-link">ZimaClient</a>. ZimaClient dará prioridad a los dispositivos conectados por Thunderbolt durante el escaneo inicial.</li>
 </ul>
-<p><img src="https://manage.icewhale.io/api/static/docs/1728443998198_image.png"></p>
-<ol>
-<li>Conecte un extremo del cable Thunderbolt al puerto Thunderbolt en el panel trasero del ZimaCube (cualquiera de los dos puertos) y el otro extremo al puerto Thunderbolt de su computadora.<ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1728443998198_image.png"></span></p>
+<ol class="doc-steps">
+<li>Conecte un extremo del cable Thunderbolt al puerto Thunderbolt en el panel trasero del ZimaCube (cualquiera de los dos puertos) y el otro extremo al puerto Thunderbolt de su computadora.<ul class="doc-dots">
 <li>a. Cable Thunderbolt: Requiere un cable estándar Thunderbolt 3 o Thunderbolt 4; los cables más cortos proporcionan mejor estabilidad y velocidad de transmisión.</li>
 <li>b. Nota: Los puertos en el panel frontal de ZimaCube Pro no soportan la funcionalidad Thunderbolt, y ZimaCube en sí no soporta la funcionalidad Thunderbolt.</li>
 </ul>
 </li>
 </ol>
-<table>
+<div class="doc-table-scroll" tabindex="0"><table>
 <thead>
 <tr>
 <th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728444041984_image.png"></th>
@@ -283,14 +393,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <td align="center">1.1 Conecte el cable Thunderbolt al panel trasero del ZimaCube</td>
 <td align="center">1.2 Conecte el otro extremo al puerto Thunderbolt de su computadora.</td>
 </tr>
-</tbody></table>
-<ol start="2">
-<li>Después de enchufar el cable, ZimaClient se adaptará automáticamente y cambiará a la conexión Thunderbolt.<ul>
-<li>Si aún no se ha conectado a ZimaCube utilizando ZimaClient, por favor consulte la <a href="https://www.zimaspace.com/docs/zimaos/Features.html#Download-the-Zima-Client">documentación</a> para descargar e instalar <a target="_blank" rel="noopener external nofollow noreferrer" href="https://find.zimaspace.com/">ZimaClient</a>.</li>
+</tbody></table></div>
+<ol start="2" class="doc-steps">
+<li>Después de enchufar el cable, ZimaClient se adaptará automáticamente y cambiará a la conexión Thunderbolt.<ul class="doc-dots">
+<li>Si aún no te has conectado a ZimaCube mediante ZimaClient, consulta la <a href="./features#Download-the-Zima-Client" class="doc-link">documentación</a> para descargar e instalar <a href="https://www.zimaspace.com/zimaos/download" class="doc-link">ZimaClient</a>.</li>
 </ul>
 </li>
 </ol>
-<table>
+<div class="doc-table-scroll" tabindex="0"><table>
 <thead>
 <tr>
 <th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728444146303_image.png"></th>
@@ -303,14 +413,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <td align="center">2. Espere aproximadamente 2 minutos <br> El cable Thunderbolt será reconocido como insertado.</td>
 <td align="center">3. Cable Thunderbolt conectado correctamente <br> Por ejemplo: dirección IP 169.254.1.1</td>
 </tr>
-</tbody></table>
-<ol start="3">
-<li>Basado en la nueva dirección IP de la conexión del cable Thunderbolt, vuelva a abrir el tablero, configure el uso compartido Samba y utilice las funciones correspondientes.<ul>
+</tbody></table></div>
+<ol start="3" class="doc-steps">
+<li>Basado en la nueva dirección IP de la conexión del cable Thunderbolt, vuelva a abrir el tablero, configure el uso compartido Samba y utilice las funciones correspondientes.<ul class="doc-dots">
 <li>Nota: Cuando tanto el cable Thunderbolt como el cable LAN están conectados, estarán en dos direcciones IP diferentes. Debe acceder a la dirección IP correspondiente al cable Thunderbolt en su computadora para beneficiarse de la transmisión más rápida de Thunderbolt.</li>
 </ul>
 </li>
 </ol>
-<table>
+<div class="doc-table-scroll" tabindex="0"><table>
 <thead>
 <tr>
 <th align="center"><img src="https://manage.icewhale.io/api/static/docs/1728444289229_image.png"></th>
@@ -321,18 +431,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <td align="center">Reabra el tablero</td>
 <td align="center">Reconfigure el uso compartido Samba</td>
 </tr>
-</tbody></table>
-<h2 id="Windows" class="article-heading"><a href="#Windows" class="headerlink" title="Windows"></a>Windows<a class="article-anchor" href="#Windows" aria-hidden="true"></a></h2><ul>
-<li>Si aún no se ha conectado a ZimaCube usando ZimaClient, por favor consulte la <a href="https://www.zimaspace.com/docs/zimaos/Features.html#Download-the-Zima-Client">documentación</a> para descargar e instalar <a target="_blank" rel="noopener external nofollow noreferrer" href="https://find.zimaspace.com/">ZimaClient</a>. ZimaClient priorizará e identificará dispositivos con conexiones Thunderbolt durante el escaneo inicial.</li>
+</tbody></table></div>
+<h2 id="Windows" class="article-heading">Windows<a class="article-anchor" href="#Windows" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Si aún no te has conectado a ZimaCube mediante ZimaClient, consulta la <a href="./features#Download-the-Zima-Client" class="doc-link">documentación</a> para descargar e instalar <a href="https://www.zimaspace.com/zimaos/download" class="doc-link">ZimaClient</a>. ZimaClient dará prioridad a los dispositivos conectados por Thunderbolt durante el escaneo inicial.</li>
 </ul>
-<ol>
+<ol class="doc-steps">
 <li>Use el cable Thunderbolt para conectarse al conector Thunderbolt en el panel trasero del ZimaCube (cualquiera de los dos conectores) y el otro extremo para conectarse al conector Thunderbolt de su PC con Windows.</li>
 </ol>
-<ul>
+<ul class="doc-dots">
 <li>a. Cable Thunderbolt: se requiere un cable estándar Thunderbolt 3 o Thunderbolt 4, cuanto más corto sea el cable, mejor será la estabilidad y la velocidad de transmisión.</li>
 <li>b. Nota: La interfaz en el panel frontal de ZimaCube Pro no admite la función Thunderbolt, ZimaCube no admite la función Thunderbolt.</li>
 </ul>
-<table>
+<div class="doc-table-scroll" tabindex="0"><table>
 <thead>
 <tr>
 <th align="center"><img src="https://manage.icewhale.io/api/static/docs/1729589901877_image.png"></th>
@@ -343,188 +453,119 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <td align="center">Cable eléctrico conecta al conector Thunderbolt en el panel trasero del ZimaCube.</td>
 <td align="center">El otro extremo del cable se conecta al conector Thunderbolt de su computadora</td>
 </tr>
-</tbody></table>
-<ol start="2">
+</tbody></table></div>
+<ol start="2" class="doc-steps">
 <li>Una vez que el cable esté conectado, ZimaClient se adaptará automáticamente y cambiará a la conexión Thunderbolt.</li>
 </ol>
-<ul>
+<ul class="doc-dots">
 <li>Si aún no ha usado ZimaClient para conectarse a ZimaCube, consulte la documentación y descargue e instale ZimaClient primero.</li>
 <li>Abra el cliente y verá que su dispositivo se ha conectado correctamente al ZimaCube a través de Thunderbolt.</li>
 <li>Haga clic para conectarse.</li>
 </ul>
-<table>
+<div class="doc-table-scroll" tabindex="0"><table>
 <thead>
 <tr>
 <th><img src="https://manage.icewhale.io/api/static/docs/1729590200515_image.png"></th>
 <th><img src="https://manage.icewhale.io/api/static/docs/1729590218016_image.png"></th>
 </tr>
 </thead>
-</table>
-<ol start="3">
-<li><p>Conectar exitosamente el cable Thunderbolt<br><img src="https://manage.icewhale.io/api/static/docs/1729590231315_image.png"></p>
+</table></div>
+<ol start="3" class="doc-steps">
+<li><p>Conectar exitosamente el cable Thunderbolt</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729590231315_image.png"></span></p>
 </li>
 <li><p>Basado en la dirección IP de la nueva conexión del cable Thunderbolt, vuelva a abrir el Tablero, configure el uso compartido Samba, etc., y utilice las funciones correspondientes.</p>
 </li>
 </ol>
-<ul>
+<ul class="doc-dots">
 <li>Nota: Cuando el cable Thunderbolt y el cable LAN están ambos conectados, se encontrarán en 2 direcciones IP diferentes, y solo se transmitirá con el cable Thunderbolt más rápido cuando se acceda a la dirección IP correspondiente del cable Thunderbolt en la computadora.</li>
 </ul>
-<h2 id="Lectura-Extendida" class="article-heading"><a href="#Lectura-Extendida" class="headerlink" title="Lectura Extendida"></a>Lectura Extendida<a class="article-anchor" href="#Lectura-Extendida" aria-hidden="true"></a></h2><ol>
-<li>Cómo acceder y modificar archivos en ZimaCube en Finder de MacOS y Explorador de Windows, consulte <a href="https://www.zimaspace.com/docs/zimaos/Using-Samba-as-a-Member">más</a>.</li>
-<li>Aprenda sobre las velocidades de transferencia más rápidas que se pueden lograr con una conexión Thunderbolt en el ZimaCube, consulte: <a href="https://www.zimaspace.com/docs/zimacube/Transfer-Speeds-Over-Thunderbolt">Análisis de Velocidades de Transferencia de Conexión Thunderbolt de ZimaCube</a>.</li>
+<h2 id="Lectura-Extendida" class="article-heading">Lectura Extendida<a class="article-anchor" href="#Lectura-Extendida" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>Para acceder y modificar archivos de ZimaCube en Finder de macOS y el Explorador de Windows, consulta <a href="./samba-member-setup" class="doc-link">más información</a>.</li>
+<li>Para conocer las velocidades máximas de transferencia mediante Thunderbolt en ZimaCube, consulta el <a href="../hardware/transfer-speeds-over-thunderbolt" class="doc-link">análisis de velocidades de transferencia de la conexión Thunderbolt de ZimaCube</a>.</li>
 </ol>
-<h2 id="Resolucion-de-Problemas-por-completar" class="article-heading"><a href="#Resolucion-de-Problemas-por-completar" class="headerlink" title="Resolución de Problemas (por completar)"></a>Resolución de Problemas (por completar)<a class="article-anchor" href="#Resolucion-de-Problemas-por-completar" aria-hidden="true"></a></h2><ol>
+<h2 id="Resolucion-de-Problemas-por-completar" class="article-heading">Resolución de Problemas (por completar)<a class="article-anchor" href="#Resolucion-de-Problemas-por-completar" aria-hidden="true"></a></h2><ol class="doc-steps">
 <li>Si el cliente no se muestra, verifique la configuración de red en Mac y Windows.</li>
 <li>Si el ZimaCube está enchufado a una tarjeta gráfica, intente reiniciar el ZimaCube y luego intente nuevamente.</li>
 </ol>
-<h2 id="Preguntas-Frecuentes" class="article-heading"><a href="#Preguntas-Frecuentes" class="headerlink" title="Preguntas Frecuentes"></a>Preguntas Frecuentes<a class="article-anchor" href="#Preguntas-Frecuentes" aria-hidden="true"></a></h2><p><strong>1. ¿Qué es ZimaCube? ¿En qué se diferencia de los dispositivos de almacenamiento USB externos?</strong></p>
-<ul>
+<h2 id="Preguntas-Frecuentes" class="article-heading">Preguntas Frecuentes<a class="article-anchor" href="#Preguntas-Frecuentes" aria-hidden="true"></a></h2><p><strong>1. ¿Qué es ZimaCube? ¿En qué se diferencia de los dispositivos de almacenamiento USB externos?</strong></p>
+<ul class="doc-dots">
 <li>a. ZimaCube es un dispositivo de nube personal que supera la conectividad DAS en condiciones de velocidad similares. Tiene capacidades tanto de NAS como de DAS, permitiendo conexiones rápidas a computadoras personales a través de cables Thunderbolt 4 mientras mantiene una conexión a internet independiente para ZimaCube.</li>
 <li>b. A diferencia de los dispositivos de almacenamiento USB, ZimaCube tiene su propia placa base y CPU; no es solo un dispositivo de almacenamiento. Por lo tanto, cuando se conecta a una computadora personal a través de un cable Thunderbolt, establece una conexión de red Thunderbolt y se muestra como un dispositivo de puente Thunderbolt en lugar de un dispositivo de almacenamiento USB. Conectar ZimaCube a una computadora personal no afecta la operación de ZimaCube ni su conexión a internet; opera simultáneamente como NAS y DAS.</li>
 <li>c. Conectar ZimaCube a una computadora personal a través de un puente Thunderbolt no resulta en velocidades más lentas en comparación con los dispositivos de almacenamiento USB externos. La velocidad de conexión depende principalmente del cable y del disco duro. Sin embargo, si ZimaCube está conectado simultáneamente a los cables LAN y Thunderbolt, la computadora personal puede conectarse a ZimaCube a través de cualquiera de los métodos. Con ZimaClient instalado, cambiará automáticamente a la conexión más rápida. Si se conecta manualmente, ZimaCube aparecerá como dos IPs (dispositivos) en la red.</li>
 </ul>
 <p><strong>2. ¿Es Thunderbolt 4 la conexión más rápida en ZimaCube Pro?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>Sí.</li>
 </ul>
 <p><strong>3. ¿Hay funciones en ZimaCube Pro que solo se pueden utilizar a través de Thunderbolt?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>TB4 admite todas las funciones de expansión, como pantallas externas, dispositivos de almacenamiento, periféricos USB, dispositivos PCIe, redes y carga.</li>
 </ul>
 <p><strong>4. ¿Necesito instalar controladores adicionales al usar Thunderbolt 4?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>ZimaOS instalado en ZimaCube ya tiene los controladores.</li>
 <li>El cliente debe asegurarse de que los controladores estén instalados y actualizados.</li>
 </ul>
 <p><strong>5. ¿Por qué la velocidad de transferencia de archivos es la misma que mi velocidad LAN cuando ambos Thunderbolt 4 y LAN están conectados? ¿Por qué no Thunderbolt 4? (Mac)</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>Cuando tanto Thunderbolt como LAN están conectados, macOS por defecto utiliza la red LAN en lugar de TB4.</li>
 <li>Este es un problema de mecanismo del sistema con macOS. ZimaOS está trabajando en optimizar esto. Mientras tanto, se recomienda desconectar la red LAN y solo conectarse a través de TB4.</li>
 </ul>
 <p><strong>6. ¿Qué debo hacer si las velocidades de transferencia de archivos a través de SMB o uso compartido de archivos son muy lentas?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>Instale ZimaClient. ZimaClient cambiará automáticamente a una conexión más rápida. Después del cambio, recuerde hacer clic en “Abrir en Finder&#x2F;Explorador” nuevamente para asegurarse de que está utilizando la conexión Thunderbolt.</li>
 </ul>
 <p><strong>7. ¿Cuál es la velocidad real de Thunderbolt 4 en ZimaCube Pro?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>Las pruebas de velocidad pueden alcanzar hasta 20Gbps, pero las velocidades de transferencia reales pueden disminuir debido a limitaciones del disco duro, tamaños de archivos y protocolos.</li>
 </ul>
 <p><strong>8. ¿Cómo puedo lograr velocidades óptimas de Thunderbolt 4 en ZimaCube Pro?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>a. Compre cables Thunderbolt 4 genuinos.</li>
 <li>b. Asegúrese de que los discos duros y la configuración RAID dentro de ZimaCube puedan soportar velocidades de lectura&#x2F;escritura superiores a 20Gbps.</li>
 <li>c. En macOS, las velocidades de transferencia Samba pueden estar limitadas por Finder.</li>
 <li>d. Al transferir un gran número de archivos pequeños, las velocidades pueden estar limitadas.</li>
 </ul>
 <p><strong>9. ¿Cuáles son las diferencias entre Thunderbolt 4 y las interfaces USB?</strong></p>
-<ul>
-<li>Por favor consulte: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/thunderbolt-4-vs-usb-c.html">Comparación de Intel</a></li>
+<ul class="doc-dots">
+<li>Por favor consulte: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/thunderbolt-4-vs-usb-c.html" class="doc-link">Comparación de Intel</a></li>
 </ul>
 <p><strong>10. ¿Cuáles son los pasos de resolución de problemas si la interfaz Thunderbolt 4 no se puede habilitar?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>a. Verifique si el dispositivo y el cable admiten TB4, especialmente el cable.</li>
 <li>b. ¿Puede la PC detectar el dispositivo Thunderbolt cuando está enchufado?</li>
 <li>c. ¿Puede ZimaCube conectarse a otros dispositivos o docks Thunderbolt?</li>
 </ul>
 <p><strong>11. ¿Son compatibles hacia atrás las interfaces y dispositivos Thunderbolt 4?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>TB4 es compatible hacia atrás con TB3.</li>
 </ul>
 <p><strong>12. ¿Puede el puerto Thunderbolt 4 en ZimaCube Pro soportar conexiones en cadena Daisy Chain?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>Sí.</li>
 </ul>
 <p><strong>13. ¿Puedo usar ZimaCube Pro como un dispositivo de almacenamiento Thunderbolt directo como un disco duro externo regular?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>No, a diferencia de los dispositivos de almacenamiento USB, ZimaCube tiene su propia placa base y CPU, y la transferencia de datos pasará a través de ellos.</li>
 </ul>
 <p><strong>14. ¿Conectar varios cables a Mac&#x2F;PC a través de los dos puertos Thunderbolt 4 aumentará la velocidad?</strong></p>
-<ul>
+<ul class="doc-dots">
 <li>No, la red TB no admite agregación de enlaces como los cables Ethernet duales.</li>
 </ul>
 
-              </div>
-              <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-08-12T09:13:04.493Z" itemprop="dateModified">Última actualización: 2026-08-12</time>
-                <a href="remote-access" class="article-footer-prev" title="Acceso Remoto"><i class="fa fa-chevron-left"></i><span>Anterior</span></a><a href="sync-photos-with-immich" class="article-footer-next" title="Sincronizar Fotos con Immich"><span>Siguiente</span><i class="fa fa-chevron-right"></i></a>
-              </footer>
-
-            </div>
-          </div>
-          <aside id="article-toc" role="navigation">
-            <div id="article-toc-inner">
-              <strong class="sidebar-title">Contenidos</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac"><span class="toc-text">Mac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lectura-Extendida"><span class="toc-text">Lectura Extendida</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resolucion-de-Problemas-por-completar"><span class="toc-text">Resolución de Problemas (por completar)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preguntas-Frecuentes"><span class="toc-text">Preguntas Frecuentes</span></a></li></ol>
-              <a href="#" id="article-toc-top">Volver arriba</a>
-            </div>
-          </aside>
-        </div>
-      </article>
-      <aside id="sidebar" role="navigation">
-  <div class="inner">
-    
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">¿Qué es Zima?</a>
-    </h4>
-    <ul class="category-list">
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Resumen</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">Cómo instalar ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">Comenzar</a></li><li class="sidebar-link "><a href="./features">Características</a></li><li class="sidebar-link "><a href="./remote-access">Acceso Remoto</a></li><li class="sidebar-link  current"><a href="./thunderbolt-direct-connect">Thunderbolt PC Directo</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Explorar</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">Sincronizar Fotos con Immich</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">Configuración del Servidor Multimedia con Jellyfin</a></li><li class="sidebar-link "><a href="./nvr-camera-server">Servidor de Cámara NVR</a></li><li class="sidebar-link "><a href="./synology-smb-connect">Vincular Comparticiones de Synology y SMB</a></li><li class="sidebar-link "><a href="./cli-guide">Sincronizar Fotos a través de CLI Configurable</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">Conectar con Unidades en la Nube</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">Construir Múltiples Clones usando rsync</a></li><li class="sidebar-link "><a href="./data-migration">Migración de Datos</a></li><li class="sidebar-link "><a href="./zfs-setup">Configuración de ZFS</a></li><li class="sidebar-link "><a href="./raid-options">Más Opciones RAID</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">¡Migrar Todos los Archivos!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">Abrir SSH en ZimaOS</a></li><li class="sidebar-link "><a href="./docker-app-paths">Rutas de Aplicaciones Docker</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Guía de Operación de Plex</a></li><li class="sidebar-link "><a href="./webtorrent-feature">Compartir a través de enlace</a></li><li class="sidebar-link "><a href="./llm-manual-download">Descargar Modelo de Lenguaje Grande</a></li><li class="sidebar-link "><a href="./password-recovery">Recupera Tu Contraseña</a></li><li class="sidebar-link "><a href="./remote-id">Obtener ID de Red</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">Lograr la Velocidad de Transferencia más Rápida</a></li><li class="sidebar-link "><a href="./samba-member-setup">Samba con Multi-Usuario</a></li><li class="sidebar-link "><a href="./zimaclient-install">Descargar e Instalar ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">Crear Raid6 en ZimaOS</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Tutorial de Immich</a></li><li class="sidebar-link "><a href="./iscsi-guide">Tutorial de uso de iSCSI</a></li><li class="sidebar-link "><a href="./setup-emby-server">Encender</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole</a></li><li class="sidebar-link "><a href="./radarr-setup">Vincular Synology y Comparticiones SMB</a></li><li class="sidebar-link "><a href="./system-recovery">Guía Rápida de Recuperación del Sistema</a></li><li class="sidebar-link "><a href="./dlna-server-setup">Configuración de ZimaCube como servidor DLNA</a></li><li class="sidebar-link "><a href="./time-machine-backup">Características de la Máquina del Tiempo</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">NFS en ZimaOS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">Desplegar Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">iSCSI en ZimaOS</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">Guía de sincronización bidireccional de ZimaOS y QTS</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">Documento de ayuda para SMB</a></li><li class="sidebar-link "><a href="./zimaos-search">Trabajo de ZimaOS-Búsqueda</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">Reconstruyendo RAID después de reinstalar el sistema</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">Descripción de IA con ZimaOS</a></li><li class="sidebar-link "><a href="./enable-ai">Formato de disco compatible</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">Habilitar Intel AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">Cómo utilizar la copia de seguridad 3-2-1 en ZimaOS?</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migración de CasaOS a ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">Configuración de UPS</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">Instalación de la versión ISO de Zimaos en PVE</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">Desplegar OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">Desplegar Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">Tiendas de Terceros Increíbles</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Desarrollo</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">Cómo instalar ZimaOS</a></li><li class="sidebar-link "><a href="./networking">Networking</a></li><li class="sidebar-link "><a href="./python-setup">Configurar Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">Crear Aplicaciones</a></li><li class="sidebar-link "><a href="./7th-bay-led">LED de la 7ª Bahía</a></li><li class="sidebar-link "><a href="./offline-install">Actualizar Fuera de Línea</a></li><li class="sidebar-link "><a href="./supported-disk-formats">Formato de disco compatible</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Creaciones de la Comunidad</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">Cómo Contribuir</a></li><li class="sidebar-link "><a href="./contributions">Obtenga controladores implementados recomendados por los usuarios.</a></li><li class="sidebar-link "><a href="./syncthing-install">Instalar Syncthing en ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">Instalar Paperless-ngx en ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ai-install">Instalar Paperless‑AI en ZimaOS  </a></li><li class="sidebar-link "><a href="./azuracast-install">Guía de instalación de AzuraCast</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Guía de instalación de Zabbix</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Registros de Versiones</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>FAQ</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">Lista de compatibilidad de UPS</a></li><li class="sidebar-link "><a href="./folder-encryption">Carpeta de cifrado</a></li><li class="sidebar-link "><a href="./resetnetworksettings">Restablecer la configuración de red</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
-  </div>
-</aside>
     </div>
-  </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.309Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/zimaos/zimaclient-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Descargar ZimaClient</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/zimaos/smb-troubleshooting"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Archivos compartidos por SMB</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac"><span class="toc-text">Mac</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lectura-Extendida"><span class="toc-text">Lectura Extendida</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resolucion-de-Problemas-por-completar"><span class="toc-text">Resolución de Problemas (por completar)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preguntas-Frecuentes"><span class="toc-text">Preguntas Frecuentes</span></a></li></ol>
+    </nav>
+  </aside>
 </div>
 
     <!-- FOOTER START -->
@@ -737,97 +778,103 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER END -->
   </div>
   <div id="mobile-nav-dimmer"></div>
-  <nav id="mobile-nav">
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
       
-      <li class="menu-item current_page_item"><a href="/docs/es/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/es/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">Foro</a></li>
+      <li class="menu-item current_page_item"><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
     </ul>
     
-      
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">¿Qué es Zima?</a>
-    </h4>
-    <ul class="category-list">
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Resumen</span>
-        <i class="fa fa-chevron-right"></i>
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuración y almacenamiento</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">Cómo instalar ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">Comenzar</a></li><li class="sidebar-link "><a href="./features">Características</a></li><li class="sidebar-link "><a href="./remote-access">Acceso Remoto</a></li><li class="sidebar-link  current"><a href="./thunderbolt-direct-connect">Thunderbolt PC Directo</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Explorar</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/es/zimaos/get-started">Primeros pasos</a></li><li><a class="" href="/docs/es/zimaos/features">Resumen de funciones</a></li><li><a class="" href="/docs/es/zimaos/storage-setup">Configuración del almacenamiento</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Opciones de RAID</a></li><li><a class="" href="/docs/es/zimaos/docker-app-paths">Rutas de almacenamiento de apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronización y copias</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">Sincronizar Fotos con Immich</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">Configuración del Servidor Multimedia con Jellyfin</a></li><li class="sidebar-link "><a href="./nvr-camera-server">Servidor de Cámara NVR</a></li><li class="sidebar-link "><a href="./synology-smb-connect">Vincular Comparticiones de Synology y SMB</a></li><li class="sidebar-link "><a href="./cli-guide">Sincronizar Fotos a través de CLI Configurable</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">Conectar con Unidades en la Nube</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">Construir Múltiples Clones usando rsync</a></li><li class="sidebar-link "><a href="./data-migration">Migración de Datos</a></li><li class="sidebar-link "><a href="./zfs-setup">Configuración de ZFS</a></li><li class="sidebar-link "><a href="./raid-options">Más Opciones RAID</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">¡Migrar Todos los Archivos!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">Abrir SSH en ZimaOS</a></li><li class="sidebar-link "><a href="./docker-app-paths">Rutas de Aplicaciones Docker</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Guía de Operación de Plex</a></li><li class="sidebar-link "><a href="./webtorrent-feature">Compartir a través de enlace</a></li><li class="sidebar-link "><a href="./llm-manual-download">Descargar Modelo de Lenguaje Grande</a></li><li class="sidebar-link "><a href="./password-recovery">Recupera Tu Contraseña</a></li><li class="sidebar-link "><a href="./remote-id">Obtener ID de Red</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">Lograr la Velocidad de Transferencia más Rápida</a></li><li class="sidebar-link "><a href="./samba-member-setup">Samba con Multi-Usuario</a></li><li class="sidebar-link "><a href="./zimaclient-install">Descargar e Instalar ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">Crear Raid6 en ZimaOS</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Tutorial de Immich</a></li><li class="sidebar-link "><a href="./iscsi-guide">Tutorial de uso de iSCSI</a></li><li class="sidebar-link "><a href="./setup-emby-server">Encender</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole</a></li><li class="sidebar-link "><a href="./radarr-setup">Vincular Synology y Comparticiones SMB</a></li><li class="sidebar-link "><a href="./system-recovery">Guía Rápida de Recuperación del Sistema</a></li><li class="sidebar-link "><a href="./dlna-server-setup">Configuración de ZimaCube como servidor DLNA</a></li><li class="sidebar-link "><a href="./time-machine-backup">Características de la Máquina del Tiempo</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">NFS en ZimaOS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">Desplegar Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">iSCSI en ZimaOS</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">Guía de sincronización bidireccional de ZimaOS y QTS</a></li><li class="sidebar-link "><a href="./smb-troubleshooting">Documento de ayuda para SMB</a></li><li class="sidebar-link "><a href="./zimaos-search">Trabajo de ZimaOS-Búsqueda</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">Reconstruyendo RAID después de reinstalar el sistema</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">Descripción de IA con ZimaOS</a></li><li class="sidebar-link "><a href="./enable-ai">Formato de disco compatible</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">Habilitar Intel AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">Cómo utilizar la copia de seguridad 3-2-1 en ZimaOS?</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migración de CasaOS a ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">Configuración de UPS</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">Instalación de la versión ISO de Zimaos en PVE</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">Desplegar OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">Desplegar Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">Tiendas de Terceros Increíbles</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Desarrollo</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/es/zimaos/phone-backup">Copia del teléfono</a></li><li><a class="" href="/docs/es/zimaos/computer-backup">Copia del ordenador</a></li><li><a class="" href="/docs/es/zimaos/synology-to-zimacube-migration">Migrar desde otro NAS</a></li><li><a class="" href="/docs/es/zimaos/from-synology-to-zimacube-migrate-all-files">Transferencia manual de Synology</a></li><li><a class="" href="/docs/es/zimaos/data-migration">Mover datos entre unidades</a></li><li><a class="" href="/docs/es/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estrategia de copia 3-2-1</a></li><li><a class="" href="/docs/es/zimaos/time-machine-backup">Copia con Time Machine</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acceso y uso compartido</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">Cómo instalar ZimaOS</a></li><li class="sidebar-link "><a href="./networking">Networking</a></li><li class="sidebar-link "><a href="./python-setup">Configurar Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">Crear Aplicaciones</a></li><li class="sidebar-link "><a href="./7th-bay-led">LED de la 7ª Bahía</a></li><li class="sidebar-link "><a href="./offline-install">Actualizar Fuera de Línea</a></li><li class="sidebar-link "><a href="./supported-disk-formats">Formato de disco compatible</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Creaciones de la Comunidad</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/es/zimaos/remote-access">Acceso remoto</a></li><li><a class="" href="/docs/es/zimaos/zimaclient-install">Descargar ZimaClient</a></li><li><a class="is-current" href="/docs/es/zimaos/thunderbolt-direct-connect">Conexión directa Thunderbolt</a></li><li><a class="" href="/docs/es/zimaos/smb-troubleshooting">Archivos compartidos por SMB</a></li><li><a class="" href="/docs/es/zimaos/share-via-link">Compartir mediante enlace</a></li><li><a class="" href="/docs/es/zimaos/samba-member-setup">Samba multiusuario</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalación</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">Cómo Contribuir</a></li><li class="sidebar-link "><a href="./contributions">Obtenga controladores implementados recomendados por los usuarios.</a></li><li class="sidebar-link "><a href="./syncthing-install">Instalar Syncthing en ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">Instalar Paperless-ngx en ZimaOS</a></li><li class="sidebar-link "><a href="./paperless-ai-install">Instalar Paperless‑AI en ZimaOS  </a></li><li class="sidebar-link "><a href="./azuracast-install">Guía de instalación de AzuraCast</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Guía de instalación de Zabbix</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>Registros de Versiones</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/es/zimaos/how-to-install-zimaos">Instalar ZimaOS</a></li><li><a class="" href="/docs/es/zimaos/install-zimaos-on-proxmox-ve">Instalar en Proxmox</a></li><li><a class="" href="/docs/es/zimaos/casaos-to-zimaos-migration">Migrar desde CasaOS</a></li><li><a class="" href="/docs/es/zimaos/remote-id">Obtener el ID de red</a></li><li><a class="" href="/docs/es/zimaos/password-recovery">Restablecer la contraseña</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>FAQ</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">Lista de compatibilidad de UPS</a></li><li class="sidebar-link "><a href="./folder-encryption">Carpeta de cifrado</a></li><li class="sidebar-link "><a href="./resetnetworksettings">Restablecer la configuración de red</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/es/zimaos/ups-setup">Configuración de UPS</a></li><li><a class="" href="/docs/es/zimaos/system-recovery">Recuperación del sistema</a></li><li><a class="" href="/docs/es/zimaos/offline-install">Instalación sin conexión</a></li><li><a class="" href="/docs/es/zimaos/reset-network-settings">Restablecer la red</a></li><li><a class="" href="/docs/es/zimaos/zimaos-search">Función de búsqueda</a></li></ul>
+      </div>
+    </div>
     
   </div>
-  <div id="mobile-lang-select-wrap">
-    <span id="mobile-lang-select-label" style="display:none">
-      <i class="fa fa-globe"></i>
-      <span>Español</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/thunderbolt-direct-connect.html">
-      
-        <option value="en">English</option>
-      
-        <option value="zh">中文</option>
-      
-        <option value="jp">日本語</option>
-      
-        <option value="pt-PT">Português</option>
-      
-        <option value="es" selected>Español</option>
-      
-    </select>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/thunderbolt-direct-connect" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/thunderbolt-direct-connect" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/thunderbolt-direct-connect" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/thunderbolt-direct-connect" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/thunderbolt-direct-connect" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
   </div>
 </nav>
+
   <!-- Scripts -->
 <!-- Cookie -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
 
 <script src="/docs/js/lang_select.js"></script>
 
@@ -844,9 +891,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/docs/js/hexo_resize_image.js"></script>
 
 
-<script src="/docs/js/jquery-2.2.0.min.js"></script>
-
-
 <script src="/docs/js/sweetalert2@11.js"></script>
 
 
@@ -855,10 +899,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/docs/js/cloudflare_ai_search.js"></script>
 
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
 <!-- endbuild -->
 
 
 <script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
 
 
 

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Aplicações de Auto-implantação | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/self-hosted-apps">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/self-hosted-apps">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/self-hosted-apps">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/self-hosted-apps">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/self-hosted-apps">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/self-hosted-apps">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/self-hosted-apps">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="RazãoPara atender às necessidades de instalação de sua própria carga de aplicativo, o CasaOS oferece aos usuários várias maneiras de instalar. Este documento irá ajudá-lo a encontrar mais">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aplicações de Auto-implantação">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/self-hosted-apps">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="RazãoPara atender às necessidades de instalação de sua própria carga de aplicativo, o CasaOS oferece aos usuários várias maneiras de instalar. Este documento irá ajudá-lo a encontrar mais">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-introduce-linuxserver.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-linuxserver-fleet1.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-linuxserver-fleet.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/applicatin-appriseapi-logo.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-docker-cli.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps1.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps2.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps3.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps4.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps5.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps6.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps7.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-install-apps8.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-using-appriseapi.webp">
+<meta property="og:image" content="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2">
+<meta property="article:published_time" content="2026-08-27T09:51:24.545Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.545Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/Self-Deploying-Applications/application-introduce-linuxserver.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Aplicações de Auto-implantação",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.545Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Aplicações de Auto-implantação"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/self-hosted-apps">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/self-hosted-apps">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/self-hosted-apps">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/self-hosted-apps">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/webtorrent-feature">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA e aprendizagem automática</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Aplicações de Auto-implantação</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.545Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h1 id="Razao" class="article-heading">Razão<a class="article-anchor" href="#Razao" aria-hidden="true"></a></h1><p><strong>Para atender às necessidades de instalação de sua própria carga de aplicativo, o CasaOS oferece aos usuários várias maneiras de instalar. Este documento irá ajudá-lo a encontrar mais aplicativos Docker e usá-los simplesmente copiando-os. O site de pesquisa recomendado para este documento é <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.linuxserver.io/" class="doc-link">linuxserver.io</a></strong></strong></p>
+<h1 id="linuxserver-io" class="article-heading">linuxserver.io<a class="article-anchor" href="#linuxserver-io" aria-hidden="true"></a></h1><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-introduce-linuxserver.png" alt="Linuxserver"></span></p>
+<p>Como descrito em seu site oficial.<br>Somos um grupo de entusiastas com ideias semelhantes de todo o mundo que constroem e mantêm a maior coleção de imagens Docker na web e, em nosso núcleo, estão os princípios por trás do Software Livre e de Código Aberto. Nosso principal objetivo é fornecer imagens Docker fáceis de usar e simplificadas, com documentação clara e concisa.<br><strong>Sim, eu acho que eles conseguiram isso!</strong></p>
+<h1 id="Pesquisar-a-Imagem-Docker-Desejada" class="article-heading">Pesquisar a Imagem Docker Desejada<a class="article-anchor" href="#Pesquisar-a-Imagem-Docker-Desejada" aria-hidden="true"></a></h1><p><strong>Passo 1</strong> Abra o LinuxServer e clique em <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://fleet.linuxserver.io/" class="doc-link">’fleet’</a></strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-linuxserver-fleet1.webp" alt="Linuxserver Fleet"></span></p>
+<p><strong>Passo 2</strong> Pesquise a aplicação que você deseja em <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://fleet.linuxserver.io/" class="doc-link">’fleet’</a></strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-linuxserver-fleet.png" alt="Linuxserver Fleet"></span></p>
+<h1 id="Instalando-aplicacoes" class="article-heading">Instalando aplicações<a class="article-anchor" href="#Instalando-aplicacoes" aria-hidden="true"></a></h1><p><strong>Exemplo:</strong> Instalando a <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hub.docker.com/r/linuxserver/apprise-api" class="doc-link">Apprise API</a></strong> no CasaOS e usando-a</p>
+<h2 id="O-que-e-Apprise-API" class="article-heading">O que é <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hub.docker.com/r/linuxserver/apprise-api" class="doc-link">Apprise API</a></strong>?<a class="article-anchor" href="#O-que-e-Apprise-API" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/applicatin-appriseapi-logo.png" alt="Appriseapi"></span></p>
+<p>O Apprise permite que você envie notificações para quase todos os serviços de notificação mais populares disponíveis hoje, como Telegram, Discord, Slack, Amazon SNS, Gotify, e mais. Esta API fornece um gateway simples para acessá-la diretamente através de uma interface HTTP. Instalação da API Apprise no CasaOS</p>
+<h2 id="Pesquisar-CLI-Docker" class="article-heading">Pesquisar CLI Docker<a class="article-anchor" href="#Pesquisar-CLI-Docker" aria-hidden="true"></a></h2><p>Vá até o hub da Apprise API e copie o CLI Docker apropriado -apprise-api</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-docker-cli.webp" alt="Copy Appriseapi Cli"></span></p>
+<h2 id="Siga-estes-passos-na-ordem" class="article-heading">Siga estes passos na ordem<a class="article-anchor" href="#Siga-estes-passos-na-ordem" aria-hidden="true"></a></h2><p>Abra o CasaOS e vá para a tela de instalação definida pelo usuário, cole e aguarde a instalação.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps1.webp" alt="Copy Appriseapi Cli"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps2.webp" alt="Copy Appriseapi Cli"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps3.webp" alt="Copy Appriseapi Cli"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps4.webp" alt="Copy Appriseapi Cli"></span></p>
+<h2 id="Copiar-CLI-Docker-Apprise-API" class="article-heading">Copiar CLI Docker Apprise API<a class="article-anchor" href="#Copiar-CLI-Docker-Apprise-API" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps5.webp" alt="Copy Appriseapi Cli"></span></p>
+<h2 id="Colar-CLI-Docker-Apprise-API" class="article-heading">Colar CLI Docker Apprise API<a class="article-anchor" href="#Colar-CLI-Docker-Apprise-API" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps6.webp" alt="Copy Appriseapi Cli"></span></p>
+<h2 id="Adicionar-Porta-da-Interface-Web" class="article-heading">Adicionar Porta da Interface Web<a class="article-anchor" href="#Adicionar-Porta-da-Interface-Web" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps7.webp" alt="Copy Appriseapi Cli"></span></p>
+<h2 id="Aguardar-Instalacao" class="article-heading">Aguardar Instalação<a class="article-anchor" href="#Aguardar-Instalacao" aria-hidden="true"></a></h2><p>Isto pode levar alguns minutos</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-install-apps8.webp" alt="Copy Appriseapi Cli"></span></p>
+<h2 id="Instalacao-Bem-Sucedida-e-Clique-para-Usar" class="article-heading">Instalação Bem-Sucedida e Clique para Usar<a class="article-anchor" href="#Instalacao-Bem-Sucedida-e-Clique-para-Usar" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Self-Deploying-Applications/application-using-appriseapi.webp" alt="Copy Appriseapi Cli"></span></p>
+<p><strong>Atenção</strong><br>O AutoPreenchimento apenas ajuda você a completar algumas das informações de configuração,<br>incluindo:</p>
+<ul class="doc-dots">
+<li>a porta e o caminho da Interface Web</li>
+<li>a localização de montagem do volume ou arquivo</li>
+<li>o mapeamento de porta do Host</li>
+<li>itens de configuração opcionais<br>Esses incluem, mas não se limitam a esses casos e ainda precisam ser confirmados ou modificados por você. Sinta-se à vontade para sugerir melhorias a este recurso no Servidor Discord!</li>
+</ul>
+<h1 id="Conclusao" class="article-heading">Conclusão<a class="article-anchor" href="#Conclusao" aria-hidden="true"></a></h1><p>Acima está o método de instalação da <strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hub.docker.com/r/linuxserver/apprise-api" class="doc-link">Apprise API</a></strong>, e o mesmo se aplica a outras aplicações. Mas note: cada aplicação requer certas condições.</p>
+<p>Várias partes precisam ser verificadas na interface do Docker Hub durante a instalação。</p>
+<p><strong>Por exemplo</strong></p>
+<ul class="doc-dots">
+<li>Arquitetura Suportada<br>Identifica a arquitetura suportada pela aplicação. Se não, por favor, verifique as Tags acima (contendo o histórico de versões atualizadas)</li>
+<li>Parâmetros :<br>A imagem do contêiner é racionada usando os parâmetros passados em tempo de execução, e algumas aplicações definiram senhas padrão que serão exibidas aqui também.</li>
+</ul>
+<p>Mais Informações——<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.linuxserver.io/images/docker-airsonic-advanced#docker-cli-click-here-for-more-info" class="doc-link">https://docs.linuxserver.io/images/docker-airsonic-advanced#docker-cli-click-here-for-more-info</a></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/knqAbbBbeX" class="doc-link"><img src="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2" alt="Discord Card"></a></p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.545Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Servidor Minecraft</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Migração de cluster PVE</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Razao"><span class="toc-text">Razão</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linuxserver-io"><span class="toc-text">linuxserver.io</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pesquisar-a-Imagem-Docker-Desejada"><span class="toc-text">Pesquisar a Imagem Docker Desejada</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Instalando-aplicacoes"><span class="toc-text">Instalando aplicações</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#O-que-e-Apprise-API"><span class="toc-text">O que é Apprise API?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pesquisar-CLI-Docker"><span class="toc-text">Pesquisar CLI Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Siga-estes-passos-na-ordem"><span class="toc-text">Siga estes passos na ordem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Copiar-CLI-Docker-Apprise-API"><span class="toc-text">Copiar CLI Docker Apprise API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Colar-CLI-Docker-Apprise-API"><span class="toc-text">Colar CLI Docker Apprise API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adicionar-Porta-da-Interface-Web"><span class="toc-text">Adicionar Porta da Interface Web</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Aguardar-Instalacao"><span class="toc-text">Aguardar Instalação</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instalacao-Bem-Sucedida-e-Clique-para-Usar"><span class="toc-text">Instalação Bem-Sucedida e Clique para Usar</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusao"><span class="toc-text">Conclusão</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/webtorrent-feature">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA e aprendizagem automática</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/self-hosted-apps" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/self-hosted-apps" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/self-hosted-apps" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/self-hosted-apps" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/self-hosted-apps" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

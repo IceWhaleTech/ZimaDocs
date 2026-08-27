@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaCube RAID SSD 扩展 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/hardware/raid-ssd-expansion">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/raid-ssd-expansion">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/raid-ssd-expansion">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/raid-ssd-expansion">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/raid-ssd-expansion">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/raid-ssd-expansion">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/raid-ssd-expansion">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="为 ZimaCube 添加 SSD，将其用于 RAID 缓存或高速存储池。本指南介绍 M.2 NVMe 和 SATA SSD 的安装、在 ZimaOS 中配置 RAID 以及优化性能的方法。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaCube RAID SSD 扩展">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/hardware/raid-ssd-expansion">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="为 ZimaCube 添加 SSD，将其用于 RAID 缓存或高速存储池。本指南介绍 M.2 NVMe 和 SATA SSD 的安装、在 ZimaOS 中配置 RAID 以及优化性能的方法。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-08-27T09:51:24.550Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.550Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaCube RAID SSD 扩展",
+      "description": "为 ZimaCube 添加 SSD，将其用于 RAID 缓存或高速存储池。本指南介绍 M.2 NVMe 和 SATA SSD 的安装、在 ZimaOS 中配置 RAID 以及优化性能的方法。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.550Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/zh/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZimaCube RAID SSD 扩展"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item current_page_item"><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/raid-ssd-expansion">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/raid-ssd-expansion">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/raid-ssd-expansion">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/raid-ssd-expansion">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/raid-ssd-expansion">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/hardware/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/zh/hardware/quick-start">快速开始</a></li><li><a class="" href="/docs/zh/hardware/zimacube-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/hardware-details">硬件详情</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on-setup">自动开机方法</a></li><li><a class="" href="/docs/zh/hardware/pc-direct">PC 直连</a></li><li><a class="" href="/docs/zh/hardware/hdd-interface-guide">硬盘接口指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-guide">第七硬盘槽使用指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-install">安装第七硬盘槽</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on">自动开机</a></li><li><a class="" href="/docs/zh/hardware/gpu-expansion">GPU 扩展</a></li><li><a class="is-current" href="/docs/zh/hardware/raid-ssd-expansion">RAID SSD 扩展</a></li><li><a class="" href="/docs/zh/hardware/bios-configuration">BIOS 配置</a></li><li><a class="" href="/docs/zh/hardware/zimacube-fan-diy">DIY 风扇指南</a></li><li><a class="" href="/docs/zh/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 传输速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">兼容的网络适配器</a></li><li><a class="" href="/docs/zh/hardware/enable-wol-on-zimacube">启用网络唤醒</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/zh/hardware/zimaboard-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/zimaboard-quick-start">开机</a></li><li><a class="" href="/docs/zh/hardware/hardware-interface">硬件接口</a></li><li><a class="" href="/docs/zh/hardware/power-on-zimaboard-2">ZimaBoard 2 开机</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">风扇安装与 PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/zh/hardware/power-on-zimablade">开机</a></li><li><a class="" href="/docs/zh/hardware/zimablade-overview">开始使用</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">兼容性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/zh/hardware/7th-bay-led">第七硬盘槽 LED 指示灯</a></li><li><a class="" href="/docs/zh/hardware/ups-compatibility-list">UPS 兼容性列表</a></li><li><a class="" href="/docs/zh/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/zh/hardware/supported-disk-formats">支持的磁盘格式</a></li><li><a class="" href="/docs/zh/hardware/ax210-wifi-6e">AX210 Wi-Fi 模块</a></li><li><a class="" href="/docs/zh/hardware/wake-on-lan-setup">网络唤醒设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">第三方系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaCube RAID SSD 扩展</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.550Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>除六个 HDD 硬盘仓外，ZimaCube 还支持最多四个内置 SSD。你可以将这些 SSD 用作 RAID 缓存以加快 HDD 访问速度，也可以创建专用高速存储池，供需要低延迟的应用使用。</p>
+<h2 id="SSD-安装位置" class="article-heading">SSD 安装位置<a class="article-anchor" href="#SSD-安装位置" aria-hidden="true"></a></h2><p>ZimaCube 机箱内部提供两类 SSD 插槽：</p>
+<ul class="doc-dots">
+<li>主板上的 <strong>4 个 M.2 NVMe 插槽</strong>（PCIe 3.0 x4），支持 2280 规格的 NVMe 硬盘。</li>
+<li><strong>2 个 2.5 英寸 SATA SSD 硬盘仓</strong>，取出前部硬盘托架后即可操作。</li>
+</ul>
+<p>NVMe 的延迟远低于 SATA，因此 M.2 插槽更适合安装缓存盘。2.5 英寸硬盘仓则适合创建高速大容量存储池。</p>
+<h2 id="安装-M-2-NVMe-SSD" class="article-heading">安装 M.2 NVMe SSD<a class="article-anchor" href="#安装-M-2-NVMe-SSD" aria-hidden="true"></a></h2><p>开始前，请关闭 ZimaCube 并拔下电源线。</p>
+<ol class="doc-steps">
+<li>拧下机箱后部的手拧螺丝，将面板向后滑动并取下顶盖。</li>
+<li>找到主板上的两个 M.2 插槽。它们位于 CPU 散热器与 PCIe 扩展插槽之间。</li>
+<li>以 30 度角将 M.2 硬盘插入插槽，然后向下按平，使其贴合固定柱。</li>
+<li>使用 SSD 随附的小螺丝，或固定柱上预装的螺丝固定硬盘。</li>
+<li>重新安装顶盖。</li>
+</ol>
+<p>启动后，硬盘应显示在 ZimaOS 的 Storage &gt; Disks 中。如果某块硬盘没有显示，请确认它已完全插入插槽。</p>
+<h2 id="安装-2-5-英寸-SATA-SSD" class="article-heading">安装 2.5 英寸 SATA SSD<a class="article-anchor" href="#安装-2-5-英寸-SATA-SSD" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>从 ZimaCube 前部拉出一个空硬盘托架。</li>
+<li>使用 ZimaCube 随附的四颗螺丝，将 2.5 英寸 SSD 固定在托架上。</li>
+<li>将托架推回硬盘仓，直到其卡入到位。</li>
+<li>该硬盘会自动显示在 ZimaOS 中。</li>
+</ol>
+<h2 id="使用-SSD-配置-RAID" class="article-heading">使用 SSD 配置 RAID<a class="article-anchor" href="#使用-SSD-配置-RAID" aria-hidden="true"></a></h2><p>安装 SSD 后，可以通过 ZimaOS Web 界面设置 RAID：</p>
+<ol class="doc-steps">
+<li>进入 <strong>Storage &gt; RAID</strong>。</li>
+<li>选择要加入阵列的硬盘。你可以混用 SSD 和 HDD，但为了获得最佳性能，建议使用 SSD 单独组建阵列。</li>
+<li>选择 RAID 级别。对于 SSD，RAID 0 性能最高，但不提供冗余；RAID 1 会在两块硬盘上镜像数据，以提高安全性。</li>
+<li>单击 <strong>Create</strong>，等待阵列创建完成。大容量硬盘可能需要几分钟。</li>
+</ol>
+<p>有关 RAID 选项的更多信息，请参阅 **<a href="../zimaos/raid-options" class="doc-link">RAID 选项概览</a>**。</p>
+<h2 id="将-SSD-用作缓存" class="article-heading">将 SSD 用作缓存<a class="article-anchor" href="#将-SSD-用作缓存" aria-hidden="true"></a></h2><p>如果使用 HDD 作为主存储，可以将 SSD 配置为读写缓存，加快常用文件的访问速度。在 ZimaOS 中，缓存需要按共享文件夹进行设置：</p>
+<ol class="doc-steps">
+<li>进入 <strong>Storage &gt; Shared Folders</strong>。</li>
+<li>选择一个文件夹，然后单击 <strong>Edit</strong>。</li>
+<li>在 <strong>Cache</strong> 下拉菜单中选择 SSD。</li>
+<li>设置缓存模式：writeback 可提供最佳性能，writethrough 则更注重数据安全。</li>
+<li>单击 <strong>Save</strong>。</li>
+</ol>
+<p>对于大多数家庭 NAS 工作负载，一块 256 GB NVMe SSD 足以承担缓存任务。如果有多个用户并需要处理大型媒体文件，可以考虑使用 512 GB 或 1 TB 缓存盘。</p>
+<h2 id="检查硬盘健康状态" class="article-heading">检查硬盘健康状态<a class="article-anchor" href="#检查硬盘健康状态" aria-hidden="true"></a></h2><p>SSD 的写入周期有限。ZimaOS 会在 <strong>Storage &gt; Disks &gt; [select drive] &gt; Health</strong> 中显示硬盘健康信息。请定期检查；如果磨损程度接近 80%，应计划更换硬盘。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.550Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/gpu-expansion"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">GPU 扩展</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/hardware/bios-configuration"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">BIOS 配置</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SSD-%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE"><span class="toc-text">SSD 安装位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-M-2-NVMe-SSD"><span class="toc-text">安装 M.2 NVMe SSD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-2-5-%E8%8B%B1%E5%AF%B8-SATA-SSD"><span class="toc-text">安装 2.5 英寸 SATA SSD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-SSD-%E9%85%8D%E7%BD%AE-RAID"><span class="toc-text">使用 SSD 配置 RAID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86-SSD-%E7%94%A8%E4%BD%9C%E7%BC%93%E5%AD%98"><span class="toc-text">将 SSD 用作缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E7%A1%AC%E7%9B%98%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81"><span class="toc-text">检查硬盘健康状态</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item current_page_item"><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/hardware/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/zh/hardware/quick-start">快速开始</a></li><li><a class="" href="/docs/zh/hardware/zimacube-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/hardware-details">硬件详情</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on-setup">自动开机方法</a></li><li><a class="" href="/docs/zh/hardware/pc-direct">PC 直连</a></li><li><a class="" href="/docs/zh/hardware/hdd-interface-guide">硬盘接口指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-guide">第七硬盘槽使用指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-install">安装第七硬盘槽</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on">自动开机</a></li><li><a class="" href="/docs/zh/hardware/gpu-expansion">GPU 扩展</a></li><li><a class="is-current" href="/docs/zh/hardware/raid-ssd-expansion">RAID SSD 扩展</a></li><li><a class="" href="/docs/zh/hardware/bios-configuration">BIOS 配置</a></li><li><a class="" href="/docs/zh/hardware/zimacube-fan-diy">DIY 风扇指南</a></li><li><a class="" href="/docs/zh/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 传输速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">兼容的网络适配器</a></li><li><a class="" href="/docs/zh/hardware/enable-wol-on-zimacube">启用网络唤醒</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/zh/hardware/zimaboard-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/zimaboard-quick-start">开机</a></li><li><a class="" href="/docs/zh/hardware/hardware-interface">硬件接口</a></li><li><a class="" href="/docs/zh/hardware/power-on-zimaboard-2">ZimaBoard 2 开机</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">风扇安装与 PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/zh/hardware/power-on-zimablade">开机</a></li><li><a class="" href="/docs/zh/hardware/zimablade-overview">开始使用</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">兼容性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/zh/hardware/7th-bay-led">第七硬盘槽 LED 指示灯</a></li><li><a class="" href="/docs/zh/hardware/ups-compatibility-list">UPS 兼容性列表</a></li><li><a class="" href="/docs/zh/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/zh/hardware/supported-disk-formats">支持的磁盘格式</a></li><li><a class="" href="/docs/zh/hardware/ax210-wifi-6e">AX210 Wi-Fi 模块</a></li><li><a class="" href="/docs/zh/hardware/wake-on-lan-setup">网络唤醒设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">第三方系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/raid-ssd-expansion" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/raid-ssd-expansion" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/hardware/raid-ssd-expansion" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/raid-ssd-expansion" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/raid-ssd-expansion" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

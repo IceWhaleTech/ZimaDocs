@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Arch Linux Installation on ZimaBoard 2 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/hardware/arch-linux-installation-on-zimaboard-2">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/arch-linux-installation-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/arch-linux-installation-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/arch-linux-installation-on-zimaboard-2">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Install Arch Linux on ZimaBoard 2 with this step-by-step guide. Covers bootable USB creation, partitioning, base system install, and first boot setup.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arch Linux Installation on ZimaBoard 2">
+<meta property="og:url" content="https://www.zimaspace.com/docs/hardware/arch-linux-installation-on-zimaboard-2">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Install Arch Linux on ZimaBoard 2 with this step-by-step guide. Covers bootable USB creation, partitioning, base system install, and first boot setup.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567150367_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567151194_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567151645_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567152384_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567153730_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567154188_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567155139_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567156058_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567156700_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567157176_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567157797_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567158616_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567159383_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567160155_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567161097_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567162104_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567162844_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567163775_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567164682_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567165509_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567166450_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567167219_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567168020_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567168969_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567169740_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567170625_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567171361_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567172129_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567172894_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567174214_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567175220_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567175932_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567176716_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567177777_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567178733_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567179497_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567180239_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567180931_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567181830_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567182309_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567182798_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567183538_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567184534_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567185486_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567186422_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567187080_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567187556_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567188512_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567189421_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1766567190046_copyImage.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.311Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.311Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Arch Linux Installation on ZimaBoard 2",
+      "description": "Install Arch Linux on ZimaBoard 2 with this step-by-step guide. Covers bootable USB creation, partitioning, base system install, and first boot setup.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.311Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Arch Linux Installation on ZimaBoard 2"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/arch-linux-installation-on-zimaboard-2">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/arch-linux-installation-on-zimaboard-2">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/hardware/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/hardware/quick-start">Quick Start</a></li><li><a class="" href="/docs/hardware/zimacube-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/hardware-details">Hardware Details</a></li><li><a class="" href="/docs/hardware/auto-power-on-setup">Auto Power-On Method</a></li><li><a class="" href="/docs/hardware/pc-direct">PC Direct Connection</a></li><li><a class="" href="/docs/hardware/hdd-interface-guide">HDD Interface Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-guide">7th Bay Usage Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-install">Install 7th Bay</a></li><li><a class="" href="/docs/hardware/auto-power-on">Auto Power-On</a></li><li><a class="" href="/docs/hardware/gpu-expansion">GPU Expansion</a></li><li><a class="" href="/docs/hardware/raid-ssd-expansion">RAID SSD Expansion</a></li><li><a class="" href="/docs/hardware/bios-configuration">BIOS Configuration</a></li><li><a class="" href="/docs/hardware/zimacube-fan-diy">DIY Fan Guide</a></li><li><a class="" href="/docs/hardware/transfer-speeds-over-thunderbolt">Thunderbolt Transfer Speed</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">Compatible Network Adapters</a></li><li><a class="" href="/docs/hardware/enable-wol-on-zimacube">Enable Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/hardware/zimaboard-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/zimaboard-quick-start">Power On</a></li><li><a class="" href="/docs/hardware/hardware-interface">Hardware Interface</a></li><li><a class="" href="/docs/hardware/power-on-zimaboard-2">Power On ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Fan Installation & PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/hardware/power-on-zimablade">Power On</a></li><li><a class="" href="/docs/hardware/zimablade-overview">Get Started</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibility</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/hardware/7th-bay-led">7th Bay LED Indicator</a></li><li><a class="" href="/docs/hardware/ups-compatibility-list">UPS Compatibility List</a></li><li><a class="" href="/docs/hardware/enable-intel-ax210">Intel AX210 WiFi</a></li><li><a class="" href="/docs/hardware/supported-disk-formats">Supported Disk Formats</a></li><li><a class="" href="/docs/hardware/ax210-wifi-6e">AX210 WiFi Module</a></li><li><a class="" href="/docs/hardware/wake-on-lan-setup">Wake-on-LAN Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Third-Party Systems</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="is-current" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Arch Linux Installation on ZimaBoard 2</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.311Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="I-Overview" class="article-heading"><strong>I. Overview</strong><a class="article-anchor" href="#I-Overview" aria-hidden="true"></a></h2><p>Arch Linux has long been favored by developers and advanced users for its minimalist design, rolling release model, and high degree of customizability.</p>
+<p>ZimaBoard 2 is an x86-based single-board server that balances performance and expandability, making it an excellent platform for deploying Arch Linux in scenarios such as home servers, self-hosted services, and development or testing environments.</p>
+<p>This article provides a complete walkthrough of installing Arch Linux on ZimaBoard 2 and performing basic system configuration. The steps are presented clearly and are designed to be reproducible, serving as a practical reference for users deploying Arch Linux on this platform for the first time.</p>
+<hr>
+<h2 id="II-Preparation" class="article-heading"><strong>II. Preparation</strong><a class="article-anchor" href="#II-Preparation" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><h3 id="Hardware-Checklist" class="article-heading">Hardware Checklist<a class="article-anchor" href="#Hardware-Checklist" aria-hidden="true"></a></h3></li>
+</ol>
+<ul class="doc-dots">
+<li><p><strong>ZimaBoard 2 main board</strong></p>
+</li>
+<li><blockquote>
+<p>⚠️ In this guide, the system is installed on the onboard eMMC. The installation process will partition and format the eMMC. Please ensure there is no important data stored on it.</p>
+</blockquote>
+</li>
+<li><p><strong>HDMI monitor + USB keyboard</strong></p>
+</li>
+<li><p><strong>USB flash drive (≥ 8 GB)</strong> (for creating the bootable installer)</p>
+</li>
+<li><blockquote>
+<p>⚠️ The USB drive will be formatted during the creation of the bootable media. All existing data will be erased. Be sure to back up any important files in advance.  </p>
+</blockquote>
+</li>
+<li><p><strong>Wired network connection</strong> (recommended, as an internet connection is required during installation)</p>
+</li>
+</ul>
+<ol start="2" class="doc-steps">
+<li><h3 id="Software-Preparation" class="article-heading">Software Preparation<a class="article-anchor" href="#Software-Preparation" aria-hidden="true"></a></h3></li>
+</ol>
+<ul class="doc-dots">
+<li><p><strong>A computer for creating the bootable USB</strong> (Windows, macOS, or Linux)</p>
+</li>
+<li><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://archlinux.org/download/" class="doc-link">- Official Arch Linux ISO image (2025.12.01)</a></p>
+</li>
+<li><p><strong>Bootable USB creation tool</strong> (choose one):</p>
+<ul class="doc-dots">
+<li><p><strong>balenaEtcher</strong> (cross-platform, graphical interface, recommended)</p>
+</li>
+<li><p><strong>Rufus</strong> (for Windows users)</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="III-Creating-the-Bootable-USB-Using-balenaEtcher-as-an-Example" class="article-heading"><strong>III. Creating the Bootable USB (Using balenaEtcher as an Example)</strong><a class="article-anchor" href="#III-Creating-the-Bootable-USB-Using-balenaEtcher-as-an-Example" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567149666_copyImage.png" alt="balenaEtcher burning process"></span></p>
+<blockquote>
+<p>⚠️ Creating the bootable USB drive will format the flash drive and erase all existing data. Be sure to back up any important files in advance.</p>
+</blockquote>
+<ol class="doc-steps">
+<li><p>Insert the USB flash drive.  </p>
+</li>
+<li><p>Launch <strong>balenaEtcher</strong>.</p>
+</li>
+<li><p>Click <strong>“Flash from file”</strong> and select the downloaded <code class="chip">archlinux-2025.12.01-x86_64.iso</code>.</p>
+</li>
+<li><p>Click <strong>“Select target”</strong> and choose your USB flash drive (make sure not to select the wrong device).</p>
+</li>
+<li><p>Click <strong>“Flash!”</strong> and wait for the writing process to complete.</p>
+</li>
+<li><p>Safely eject the USB flash drive.</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567150367_copyImage.png" alt="balenaEtcher burning complete"></span>  </p>
+<hr>
+<h2 id="IV-Booting-ZimaBoard-2-from-the-USB-Drive" class="article-heading"><strong>IV. Booting ZimaBoard 2 from the USB Drive</strong><a class="article-anchor" href="#IV-Booting-ZimaBoard-2-from-the-USB-Drive" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><p>Insert the prepared Arch Linux bootable USB drive into a USB port on the ZimaBoard 2.</p>
+</li>
+<li><p>Connect the HDMI monitor, keyboard, and Ethernet cable.</p>
+</li>
+<li><p>Power on the device. When the <strong>ZIMA</strong> logo appears, repeatedly press <strong>F11</strong> to enter the <strong>Boot Menu</strong>.</p>
+</li>
+<li><p>Use the arrow keys to select your USB flash drive.</p>
+</li>
+<li><p>Press <strong>Enter</strong> to confirm and boot from the USB drive.</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567151194_copyImage.png" alt="boot options"></span></p>
+<hr>
+<h2 id="V-Entering-the-Installation-Environment-and-Performing-Initial-Configuration" class="article-heading"><strong>V. Entering the Installation Environment and Performing Initial Configuration</strong><a class="article-anchor" href="#V-Entering-the-Installation-Environment-and-Performing-Initial-Configuration" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><h3 id="Booting-into-the-Arch-Linux-Installation-Environment" class="article-heading">Booting into the Arch Linux Installation Environment<a class="article-anchor" href="#Booting-into-the-Arch-Linux-Installation-Environment" aria-hidden="true"></a></h3></li>
+</ol>
+<p>From the boot menu, select the first option:</p>
+<pre><code>Arch Linux install medium (x86_64)
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567151645_copyImage.png" alt="arch startup options"></span></p>
+<p>After the boot process completes, you will be dropped into a root shell:</p>
+<pre><code>root@archiso ~ #
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567152384_copyImage.png" alt="
+Arch installation environment"></span></p>
+<p>This means you are now in the Arch Linux installation environment.</p>
+<hr>
+<ol start="2" class="doc-steps">
+<li><h3 id="Verify-Network-Connectivity" class="article-heading"><strong>Verify Network Connectivity</strong><a class="article-anchor" href="#Verify-Network-Connectivity" aria-hidden="true"></a></h3></li>
+</ol>
+<p>First, check whether the system has detected a network interface:</p>
+<pre><code>ip link
+</code></pre>
+<p>If you can see an interface such as <strong>enp*</strong>, this indicates that the network interface card has been successfully detected.</p>
+<hr>
+<ol start="3" class="doc-steps">
+<li><h3 id="Test-Network-Connectivity" class="article-heading"><strong>Test Network Connectivity</strong><a class="article-anchor" href="#Test-Network-Connectivity" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Next, test the network connection:</p>
+<pre><code>ping archlinux.org
+</code></pre>
+<p>If the ping succeeds, the network connection is working properly. Press<code class="chip">Ctrl + C</code> to stop the test.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567153730_copyImage.png" alt="Network connectivity test"></span></p>
+<hr>
+<ol start="4" class="doc-steps">
+<li><h3 id="Synchronize-System-Time" class="article-heading"><strong>Synchronize System Time</strong><a class="article-anchor" href="#Synchronize-System-Time" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Before proceeding with the installation, it is recommended to enable network time synchronization to ensure accurate system time.</p>
+<p>Enable NTP to allow automatic time synchronization:</p>
+<pre><code>timedatectl set-ntp true
+</code></pre>
+<p>Check the synchronization status:</p>
+<pre><code>timedatectl
+</code></pre>
+<p>If the time is displayed correctly, the system time synchronization is complete.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567154188_copyImage.png" alt="Synchronize system time"></span></p>
+<hr>
+<ol start="5" class="doc-steps">
+<li><h3 id="Disk-Partitioning-GPT" class="article-heading"><strong>Disk Partitioning (GPT)</strong><a class="article-anchor" href="#Disk-Partitioning-GPT" aria-hidden="true"></a></h3></li>
+</ol>
+<p>This guide assumes that the system will be installed on the <strong>onboard eMMC device</strong>.</p>
+<blockquote>
+<p>⚠️ The installation process will partition and format the onboard eMMC. Please ensure that there is no important data stored on the eMMC before proceeding.</p>
+</blockquote>
+<hr>
+<h3 id="View-Disk-Information" class="article-heading">View Disk Information<a class="article-anchor" href="#View-Disk-Information" aria-hidden="true"></a></h3><pre><code>lsblk
+</code></pre>
+<p>Run the following command to view disk and partition information in a tree structure:</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567155139_copyImage.png" alt="View disk information"></span></p>
+<h4 id="Create-a-GPT-Partition-Table-Using-cfdisk" class="article-heading">Create a GPT Partition Table Using <code class="chip">cfdisk</code><a class="article-anchor" href="#Create-a-GPT-Partition-Table-Using-cfdisk" aria-hidden="true"></a></h4><h5 id="Launch-the-partitioning-tool" class="article-heading">Launch the partitioning tool:<a class="article-anchor" href="#Launch-the-partitioning-tool" aria-hidden="true"></a></h5><pre><code>cfdisk /dev/mmcblk0
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567156058_copyImage.png" alt="Enter the partition tool"></span></p>
+<h5 id="Select-the-Partition-Table-Type" class="article-heading">Select the Partition Table Type<a class="article-anchor" href="#Select-the-Partition-Table-Type" aria-hidden="true"></a></h5><p>When entering <code class="chip">cfdisk</code> for the first time, you will be prompted to choose a partition table type. Select:<code class="chip">GPT</code></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567156700_copyImage.png" alt="Select partition table type"></span></p>
+<h5 id="Create-the-First-Partition-EFI-System" class="article-heading">Create the First Partition (EFI System)<a class="article-anchor" href="#Create-the-First-Partition-EFI-System" aria-hidden="true"></a></h5><h6 id="①-Create-a-New-Partition" class="article-heading">① Create a New Partition<a class="article-anchor" href="#①-Create-a-New-Partition" aria-hidden="true"></a></h6><p>In the main <code class="chip">cfdisk</code> interface, perform the following steps:</p>
+<ol class="doc-steps">
+<li><p>Use the <strong>right arrow key (→)</strong>.</p>
+</li>
+<li><p>Move the cursor to the bottom menu and select <strong>[NEW]</strong>.</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567157176_copyImage.png" alt="Create new partition"></span></p>
+<ol start="3" class="doc-steps">
+<li>Press <strong>Enter</strong> to create a new partition.</li>
+</ol>
+<h6 id="②-Specify-the-Partition-Size" class="article-heading">② Specify the Partition Size<a class="article-anchor" href="#②-Specify-the-Partition-Size" aria-hidden="true"></a></h6><p>When prompted for the partition size, enter:<code class="chip">512M</code></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567157797_copyImage.png" alt="Input 512M"></span></p>
+<p>Then press <strong>Enter</strong>.</p>
+<h6 id="③-Set-the-Partition-Type" class="article-heading">③ Set the Partition Type<a class="article-anchor" href="#③-Set-the-Partition-Type" aria-hidden="true"></a></h6><p>After the new partition is created:</p>
+<ol class="doc-steps">
+<li><p>Ensure the newly created partition is selected.</p>
+</li>
+<li><p>Use the <strong>right arrow key (→)</strong> to move to the bottom menu.</p>
+</li>
+<li><p>Select <strong>[Type]</strong>.</p>
+</li>
+<li><p>Press <strong>Enter</strong>.</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567158616_copyImage.png" alt="View partition type"></span></p>
+<h6 id="④-Choose-the-EFI-System-Type" class="article-heading">④ Choose the EFI System Type<a class="article-anchor" href="#④-Choose-the-EFI-System-Type" aria-hidden="true"></a></h6><p>From the list of partition types:</p>
+<ol class="doc-steps">
+<li><p>Use the <strong>↑ &#x2F; ↓</strong> arrow keys.</p>
+</li>
+<li><p>Locate <strong>EFI System</strong>.</p>
+</li>
+<li><p>Press <strong>Enter</strong> to confirm.</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567159383_copyImage.png" alt="Select partition type"></span></p>
+<h6 id="⑤-Verify-the-Result" class="article-heading">⑤ Verify the Result<a class="article-anchor" href="#⑤-Verify-the-Result" aria-hidden="true"></a></h6><p>Back at the main interface, you should see an entry similar to:</p>
+<p><code class="chip">/dev/mmcblk0p1 512M EFI System</code></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567160155_copyImage.png" alt="Confirm partition results"></span></p>
+<hr>
+<h5 id="Create-the-Second-Partition-Swap" class="article-heading"><strong>Create the Second Partition (Swap)</strong><a class="article-anchor" href="#Create-the-Second-Partition-Swap" aria-hidden="true"></a></h5><h6 id="①-Select-the-Free-Space" class="article-heading">① Select the Free Space<a class="article-anchor" href="#①-Select-the-Free-Space" aria-hidden="true"></a></h6><p>Use the <strong>↓</strong> arrow key to select:<code class="chip">Free space 28.6G</code></p>
+<h6 id="②-Create-a-New-Partition" class="article-heading">② Create a New Partition<a class="article-anchor" href="#②-Create-a-New-Partition" aria-hidden="true"></a></h6><ul class="doc-dots">
+<li><p>Use the <strong>right arrow key (→)</strong> to move to the bottom menu.</p>
+</li>
+<li><p>Highlight <strong>[NEW]</strong>.</p>
+</li>
+<li><p>Press <strong>Enter</strong>.</p>
+</li>
+</ul>
+<h6 id="③-Specify-the-Partition-Size" class="article-heading">③ Specify the Partition Size<a class="article-anchor" href="#③-Specify-the-Partition-Size" aria-hidden="true"></a></h6><p>When prompted for the size, enter:<code class="chip">2G</code></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567161097_copyImage.png" alt="Enter 2G"></span></p>
+<h6 id="④-Set-the-Partition-Type-to-Linux-Swap" class="article-heading">④ Set the Partition Type to Linux Swap<a class="article-anchor" href="#④-Set-the-Partition-Type-to-Linux-Swap" aria-hidden="true"></a></h6><ul class="doc-dots">
+<li><p>Select the newly created ~2 GB partition.</p>
+</li>
+<li><p>Enter <strong>[Type]</strong>.</p>
+</li>
+<li><p>Choose <strong>Linux swap</strong>.</p>
+</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567162104_copyImage.png" alt="Set the partition type to Linux swap."></span></p>
+<hr>
+<h5 id="Create-the-Third-Partition-Root" class="article-heading">Create the Third Partition (Root)<a class="article-anchor" href="#Create-the-Third-Partition-Root" aria-hidden="true"></a></h5><h6 id="①-Select-the-Remaining-Free-Space" class="article-heading">① Select the Remaining Free Space<a class="article-anchor" href="#①-Select-the-Remaining-Free-Space" aria-hidden="true"></a></h6><p>You should now see:</p>
+<p><code class="chip">Free space 26.6G</code></p>
+<p>Keep this entry selected.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567162844_copyImage.png" alt="Create the third partition (Root)."></span></p>
+<h6 id="②-Create-a-New-Partition-1" class="article-heading">② Create a New Partition<a class="article-anchor" href="#②-Create-a-New-Partition-1" aria-hidden="true"></a></h6><ul class="doc-dots">
+<li><p>Use the <strong>right arrow key (→)</strong> to move to the bottom menu.</p>
+</li>
+<li><p>Select <strong>[NEW]</strong>.</p>
+</li>
+<li><p>Press <strong>Enter</strong>.</p>
+</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567163775_copyImage.png" alt="
+Select the 3rd partition (Root)."></span></p>
+<h6 id="③-Use-All-Remaining-Space" class="article-heading">③ Use All Remaining Space<a class="article-anchor" href="#③-Use-All-Remaining-Space" aria-hidden="true"></a></h6><p>When prompted for the partition size:</p>
+<p><strong>Do not enter anything. Simply press Enter</strong> to use all remaining space.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567164682_copyImage.png" alt="Create new partition"></span></p>
+<h6 id="④-Set-the-Partition-Type" class="article-heading">④ Set the Partition Type<a class="article-anchor" href="#④-Set-the-Partition-Type" aria-hidden="true"></a></h6><p>After the partition is created:</p>
+<ul class="doc-dots">
+<li><p>The default partition type is <strong>Linux filesystem</strong>.</p>
+</li>
+<li><p>In most cases, no change is required. Keep the default.</p>
+</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567165509_copyImage.png" alt="Default partition type"></span></p>
+<hr>
+<h5 id="Write-the-Partition-Table-and-Exit" class="article-heading">Write the Partition Table and Exit<a class="article-anchor" href="#Write-the-Partition-Table-and-Exit" aria-hidden="true"></a></h5><h6 id="Write-the-Partition-Table" class="article-heading">Write the Partition Table<a class="article-anchor" href="#Write-the-Partition-Table" aria-hidden="true"></a></h6><ul class="doc-dots">
+<li>Select <strong>[Write]</strong>.</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567166450_copyImage.png" alt="Write to partition table"></span></p>
+<ul class="doc-dots">
+<li><p>Press <strong>Enter</strong>.</p>
+</li>
+<li><p>When prompted, type:yes</p>
+</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567167219_copyImage.png" alt="Confirm writing"></span>  </p>
+<h6 id="Exit-cfdisk" class="article-heading">Exit <code class="chip">cfdisk</code><a class="article-anchor" href="#Exit-cfdisk" aria-hidden="true"></a></h6><ul class="doc-dots">
+<li>Select <strong>[Quit]</strong>.</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567168020_copyImage.png" alt="Exit cfdisk"></span></p>
+<ul class="doc-dots">
+<li>Press <strong>Enter</strong>.</li>
+</ul>
+<hr>
+<h5 id="Partitioning-Summary" class="article-heading">Partitioning Summary<a class="article-anchor" href="#Partitioning-Summary" aria-hidden="true"></a></h5><p>At this point, disk partitioning is complete. You should have the following layout:</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Size</th>
+<th>Partition</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mmcblk0p1</td>
+<td>512M</td>
+<td>EFI System</td>
+</tr>
+<tr>
+<td>mmcblk0p2</td>
+<td>2G</td>
+<td>Linux swap</td>
+</tr>
+<tr>
+<td>mmcblk0p3</td>
+<td>26.6G</td>
+<td>Linux filesystem</td>
+</tr>
+</tbody></table></div>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567168969_copyImage.png" alt="Partition completed"></span></p>
+<p>At this point, you have completed the most error-prone step in the Arch Linux installation process.</p>
+<hr>
+<ol start="6" class="doc-steps">
+<li><h3 id="Format-Partitions" class="article-heading">Format Partitions<a class="article-anchor" href="#Format-Partitions" aria-hidden="true"></a></h3></li>
+</ol>
+<p>In simple terms:</p>
+<ul class="doc-dots">
+<li><p><strong>Formatting</strong> &#x3D; clearing a partition and preparing it for use</p>
+</li>
+<li><p><strong>Mounting</strong> &#x3D; telling the system how these partitions should be used</p>
+</li>
+</ul>
+<hr>
+<h4 id="①-Format-the-EFI-Partition-FAT32" class="article-heading">① Format the EFI Partition (FAT32)<a class="article-anchor" href="#①-Format-the-EFI-Partition-FAT32" aria-hidden="true"></a></h4><p>Run the following command to format <code class="chip">mmcblk0p1</code>:</p>
+<pre><code>mkfs.fat -F32 /dev/mmcblk0p1
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567169740_copyImage.png" alt="Format partition"></span></p>
+<h4 id="②-Initialize-and-Enable-the-Swap-Partition" class="article-heading">② Initialize and Enable the Swap Partition<a class="article-anchor" href="#②-Initialize-and-Enable-the-Swap-Partition" aria-hidden="true"></a></h4><pre><code>mkswap /dev/mmcblk0p2
+swapon /dev/mmcblk0p2
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567170625_copyImage.png" alt="Initialize and enable partitions"></span></p>
+<h4 id="③-Format-the-Root-Partition-ext4" class="article-heading">③ Format the Root Partition (ext4)<a class="article-anchor" href="#③-Format-the-Root-Partition-ext4" aria-hidden="true"></a></h4><pre><code>mkfs.ext4 /dev/mmcblk0p3
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567171361_copyImage.png" alt="Format root partition"></span></p>
+<hr>
+<ol start="7" class="doc-steps">
+<li><h3 id="Mount-Partitions" class="article-heading">Mount Partitions<a class="article-anchor" href="#Mount-Partitions" aria-hidden="true"></a></h3></li>
+</ol>
+<h4 id="Mount-the-Root-Partition-to-mnt" class="article-heading">Mount the Root Partition to <code class="chip">/mnt</code><a class="article-anchor" href="#Mount-the-Root-Partition-to-mnt" aria-hidden="true"></a></h4><pre><code>mount /dev/mmcblk0p3 /mnt
+</code></pre>
+<h4 id="Create-and-Mount-the-EFI-Partition" class="article-heading">Create and Mount the EFI Partition<a class="article-anchor" href="#Create-and-Mount-the-EFI-Partition" aria-hidden="true"></a></h4><pre><code>mkdir /mnt/boot
+mount /dev/mmcblk0p1 /mnt/boot
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567172129_copyImage.png" alt="Create and mount the EFI partition"></span></p>
+<hr>
+<h2 id="VI-Installing-Arch-Linux-pacstrap" class="article-heading">VI. Installing Arch Linux (pacstrap)<a class="article-anchor" href="#VI-Installing-Arch-Linux-pacstrap" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><h3 id="Run-pacstrap" class="article-heading">Run <code class="chip">pacstrap</code><a class="article-anchor" href="#Run-pacstrap" aria-hidden="true"></a></h3>pacstrap &#x2F;mnt base linux linux-firmware networkmanager sudo vim</li>
+</ol>
+<p><strong>Parameter explanation (for reference):</strong></p>
+<ul class="doc-dots">
+<li><p><strong>base</strong>: Minimal Arch Linux system</p>
+</li>
+<li><p><strong>linux</strong>: Standard Linux kernel</p>
+</li>
+<li><p><strong>linux-firmware</strong>: Hardware firmware (required)</p>
+</li>
+<li><p><strong>networkmanager</strong>: Network management tool</p>
+</li>
+<li><p><strong>sudo</strong>: Privilege management for non-root users</p>
+</li>
+<li><p><strong>vim</strong>: Text editor (used for later configuration)</p>
+</li>
+</ul>
+<p>This step will download and install packages. The duration depends on network speed. A large amount of output during the process is normal.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567172894_copyImage.png" alt="Execute pacstrap"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567174214_copyImage.png" alt="pacstrap execution complete"></span></p>
+<hr>
+<ol start="2" class="doc-steps">
+<li><h3 id="Generate-the-fstab-File" class="article-heading">Generate the <code class="chip">fstab</code> File<a class="article-anchor" href="#Generate-the-fstab-File" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Generate the filesystem mount table for the new system:</p>
+<pre><code>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567175220_copyImage.png" alt="Generate fstab file"></span></p>
+<hr>
+<ol start="3" class="doc-steps">
+<li><h3 id="Enter-the-Newly-Installed-System-chroot" class="article-heading">Enter the Newly Installed System (chroot)<a class="article-anchor" href="#Enter-the-Newly-Installed-System-chroot" aria-hidden="true"></a></h3></li>
+</ol>
+<ul class="doc-dots">
+<li>Switch into the newly installed Arch Linux system environment:</li>
+</ul>
+<p><code class="chip">arch-chroot /mnt</code></p>
+<ul class="doc-dots">
+<li>After a successful switch, the shell prompt will change to something similar to:</li>
+</ul>
+<p><code class="chip">[root@arch /]#</code></p>
+<p><strong>This indicates that you have exited the installation environment and are now inside the newly installed Arch Linux system.</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567175932_copyImage.png" alt="Enter the newly installed system (chroot)"></span></p>
+<hr>
+<h2 id="VII-Basic-System-Configuration" class="article-heading">VII. Basic System Configuration<a class="article-anchor" href="#VII-Basic-System-Configuration" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><h3 id="Set-the-Time-Zone" class="article-heading">Set the Time Zone<a class="article-anchor" href="#Set-the-Time-Zone" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Using Hong Kong as an example:</p>
+<pre><code>ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+</code></pre>
+<p>Synchronize the hardware clock (very important):</p>
+<pre><code>hwclock --systohc
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567176716_copyImage.png" alt="Synchronizing hardware clock"></span></p>
+<p>Quick verification (optional)</p>
+<p>If the time is shown as <strong>UTC+8 (Hong Kong time)</strong>, the configuration is successful.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567177777_copyImage.png" alt="Hardware clock synchronization successful"></span></p>
+<hr>
+<ol start="2" class="doc-steps">
+<li><h3 id="Configure-Locale-Language" class="article-heading">Configure Locale (Language)<a class="article-anchor" href="#Configure-Locale-Language" aria-hidden="true"></a></h3></li>
+</ol>
+<h3 id="①-Edit-the-locale-list" class="article-heading">① Edit the locale list<a class="article-anchor" href="#①-Edit-the-locale-list" aria-hidden="true"></a></h3><p>Open the locale configuration file:</p>
+<pre><code>vim /etc/locale.gen
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567178733_copyImage.png" alt="Set language"></span></p>
+<p>Find the language you want and uncomment the corresponding line (remove the leading <code class="chip">#</code>). Example for English (United States):</p>
+<pre><code>en_US.UTF-8 UTF-8
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567179497_copyImage.png" alt="Set language en_US"></span></p>
+<p>Save and exit:</p>
+<ul class="doc-dots">
+<li><p>Press <strong>Esc</strong></p>
+</li>
+<li><p>Type <code class="chip">:wq</code></p>
+</li>
+<li><p>Press <strong>Enter</strong></p>
+</li>
+</ul>
+<h4 id="②-Generate-locales" class="article-heading">② Generate locales<a class="article-anchor" href="#②-Generate-locales" aria-hidden="true"></a></h4><pre><code>locale-gen
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567180239_copyImage.png" alt="Generate locale"></span>  </p>
+<ol start="3" class="doc-steps">
+<li><h3 id="Set-the-Hostname" class="article-heading">Set the Hostname<a class="article-anchor" href="#Set-the-Hostname" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Set the system hostname. You may replace it with any name you like. Here, <code class="chip">arch</code> is used as an example (you can choose a different name):</p>
+<pre><code>echo &quot;arch&quot; &gt; /etc/hostname
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567180931_copyImage.png" alt="Set system hostname"></span></p>
+<p>Next, configure the <code class="chip">hosts</code> file:</p>
+<pre><code>vim /etc/hosts
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567181830_copyImage.png" alt="vim hosts"></span></p>
+<p>Modify the file as follows:</p>
+<pre><code>127.0.0.1   localhost
+::1         localhost
+127.0.1.1   arch.localdomain arch
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567182309_copyImage.png" alt="
+hosts example"></span></p>
+<p>⚠️ If your hostname is not <code class="chip">arch</code>, replace <code class="chip">arch</code> in the above lines with the hostname you actually set.</p>
+<p>Save and exit Vim:</p>
+<ul class="doc-dots">
+<li><p>Press <strong>Esc</strong></p>
+</li>
+<li><p>Type <code class="chip">:wq</code></p>
+</li>
+<li><p>Press <strong>Enter</strong></p>
+</li>
+</ul>
+<hr>
+<ol start="4" class="doc-steps">
+<li><h3 id="Set-the-Root-Password" class="article-heading">Set the Root Password<a class="article-anchor" href="#Set-the-Root-Password" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Set a login password for the <code class="chip">root</code> user:</p>
+<pre><code>passwd
+</code></pre>
+<p>The system will prompt you to enter the password twice:</p>
+<ol class="doc-steps">
+<li><p>Enter the new password</p>
+</li>
+<li><p>Re-enter it to confirm</p>
+</li>
+</ol>
+<p>⚠️ Notes:</p>
+<ul class="doc-dots">
+<li><p>No characters (not even <code class="chip">*</code>) will be displayed while typing the password — this is normal.</p>
+</li>
+<li><p>Make sure both entries match.</p>
+</li>
+</ul>
+<p>Once completed, you can log in as <code class="chip">root</code> using this password.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567182798_copyImage.png" alt="Set root password"></span></p>
+<hr>
+<ol start="5" class="doc-steps">
+<li><h3 id="Enable-Network-Service" class="article-heading">Enable Network Service<a class="article-anchor" href="#Enable-Network-Service" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Enable NetworkManager to start automatically at boot:</p>
+<pre><code>systemctl enable NetworkManager
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567183538_copyImage.png" alt="Enable network services"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567184534_copyImage.png" alt="Network service enabled successfully"></span></p>
+<hr>
+<h2 id="VIII-Install-and-Configure-the-systemd-boot-Bootloader" class="article-heading">VIII. Install and Configure the systemd-boot Bootloader<a class="article-anchor" href="#VIII-Install-and-Configure-the-systemd-boot-Bootloader" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><h3 id="Install-systemd-boot" class="article-heading">Install systemd-boot<a class="article-anchor" href="#Install-systemd-boot" aria-hidden="true"></a></h3></li>
+</ol>
+<p>Simply run:</p>
+<pre><code>bootctl install
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567185486_copyImage.png" alt="Install systemd-boot"></span></p>
+<hr>
+<ol start="2" class="doc-steps">
+<li><h3 id="Create-an-Arch-Linux-Boot-Entry" class="article-heading">Create an Arch Linux Boot Entry<a class="article-anchor" href="#Create-an-Arch-Linux-Boot-Entry" aria-hidden="true"></a></h3></li>
+</ol>
+<p>You need the following file:</p>
+<p><code class="chip">/boot/loader/entries/arch.conf</code></p>
+<p>This file tells systemd-boot:</p>
+<ul class="doc-dots">
+<li><p>Where the kernel is</p>
+</li>
+<li><p>Where the initramfs is</p>
+</li>
+<li><p>Which partition is the root filesystem</p>
+</li>
+</ul>
+<h3 id="①-Obtain-the-PARTUUID-of-the-root-partition" class="article-heading">① Obtain the PARTUUID of the root partition<a class="article-anchor" href="#①-Obtain-the-PARTUUID-of-the-root-partition" aria-hidden="true"></a></h3><pre><code>blkid /dev/mmcblk0p3
+</code></pre>
+<p>You should see output similar to:</p>
+<pre><code>/dev/mmcblk0p3: PARTUUID=&quot;12345678-9abc-def0-1234-56789abcdef0&quot;
+</code></pre>
+<blockquote>
+<p>Copy and note the value inside the quotes.</p>
+</blockquote>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567186422_copyImage.png" alt="Write down PARTUUID."></span></p>
+<hr>
+<h4 id="②-Create-the-boot-entry-configuration-file" class="article-heading">② Create the boot entry configuration file<a class="article-anchor" href="#②-Create-the-boot-entry-configuration-file" aria-hidden="true"></a></h4><pre><code>vi /boot/loader/entries/arch.conf
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567187080_copyImage.png" alt="Create startup configuration file"></span></p>
+<p>Enter insert mode (press <strong>i</strong>) and enter the following content:</p>
+<p>⚠️ Replace <code class="chip">YOUR_PARTUUID</code> with the actual value obtained in the previous step.</p>
+<pre><code>title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=PARTUUID=YOUR_PARTUUID rw
+</code></pre>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567187556_copyImage.png" alt="arch.conf example"></span></p>
+<p>Save and exit:</p>
+<ul class="doc-dots">
+<li><p>Press <strong>Esc</strong></p>
+</li>
+<li><p>Type <code class="chip">:wq</code></p>
+</li>
+<li><p>Press <strong>Enter</strong></p>
+</li>
+</ul>
+<hr>
+<h2 id="IX-Finish-Installation-and-Reboot" class="article-heading">IX. Finish Installation and Reboot<a class="article-anchor" href="#IX-Finish-Installation-and-Reboot" aria-hidden="true"></a></h2><h3 id="Exit-chroot" class="article-heading">Exit chroot<a class="article-anchor" href="#Exit-chroot" aria-hidden="true"></a></h3><p>Leave the chroot environment:<code class="chip">exit</code></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567188512_copyImage.png" alt="Exit the chroot environment"></span></p>
+<h3 id="Reboot-the-system" class="article-heading">Reboot the system<a class="article-anchor" href="#Reboot-the-system" aria-hidden="true"></a></h3><p><code class="chip">reboot</code></p>
+<blockquote>
+<p>⚠️ Before rebooting, <strong>make sure to remove the installation media</strong> (USB drive &#x2F; ISO).</p>
+</blockquote>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567189421_copyImage.png" alt="Restart the system"></span></p>
+<hr>
+<h3 id="Installation-Complete" class="article-heading">Installation Complete<a class="article-anchor" href="#Installation-Complete" aria-hidden="true"></a></h3><p>After a successful boot, you should see a screen similar to the following:</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1766567190046_copyImage.png" alt="Installation completed"></span></p>
+<p>🎉 At this point, the basic installation of <strong>Arch Linux</strong> is complete. The system is now a clean, functional, and extensible starting point.</p>
+<h3 id="Next-steps-you-may-consider" class="article-heading">Next steps you may consider:<a class="article-anchor" href="#Next-steps-you-may-consider" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><p>Configure networking</p>
+</li>
+<li><p>Set up a desktop environment</p>
+</li>
+</ul>
+<p>You can refer to the official Arch Wiki for further guidance: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.archlinux.org/title/General_recommendations" class="doc-link">https://wiki.archlinux.org/title/General_recommendations</a></p>
+<p>All further configurations can be gradually built on top of this foundation.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.311Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/openwrt-x86-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Run OpenWrt</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/hardware/openwrt-usb-install"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">OpenWrt via USB</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#I-Overview"><span class="toc-text">I. Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#II-Preparation"><span class="toc-text">II. Preparation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hardware-Checklist"><span class="toc-text">Hardware Checklist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software-Preparation"><span class="toc-text">Software Preparation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#III-Creating-the-Bootable-USB-Using-balenaEtcher-as-an-Example"><span class="toc-text">III. Creating the Bootable USB (Using balenaEtcher as an Example)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IV-Booting-ZimaBoard-2-from-the-USB-Drive"><span class="toc-text">IV. Booting ZimaBoard 2 from the USB Drive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V-Entering-the-Installation-Environment-and-Performing-Initial-Configuration"><span class="toc-text">V. Entering the Installation Environment and Performing Initial Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Booting-into-the-Arch-Linux-Installation-Environment"><span class="toc-text">Booting into the Arch Linux Installation Environment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-Network-Connectivity"><span class="toc-text">Verify Network Connectivity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test-Network-Connectivity"><span class="toc-text">Test Network Connectivity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Synchronize-System-Time"><span class="toc-text">Synchronize System Time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disk-Partitioning-GPT"><span class="toc-text">Disk Partitioning (GPT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View-Disk-Information"><span class="toc-text">View Disk Information</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Create-a-GPT-Partition-Table-Using-cfdisk"><span class="toc-text">Create a GPT Partition Table Using cfdisk</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Launch-the-partitioning-tool"><span class="toc-text">Launch the partitioning tool:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Select-the-Partition-Table-Type"><span class="toc-text">Select the Partition Table Type</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-First-Partition-EFI-System"><span class="toc-text">Create the First Partition (EFI System)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-Create-a-New-Partition"><span class="toc-text">① Create a New Partition</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-Specify-the-Partition-Size"><span class="toc-text">② Specify the Partition Size</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-Set-the-Partition-Type"><span class="toc-text">③ Set the Partition Type</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-Choose-the-EFI-System-Type"><span class="toc-text">④ Choose the EFI System Type</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A4-Verify-the-Result"><span class="toc-text">⑤ Verify the Result</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-Second-Partition-Swap"><span class="toc-text">Create the Second Partition (Swap)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-Select-the-Free-Space"><span class="toc-text">① Select the Free Space</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-Create-a-New-Partition"><span class="toc-text">② Create a New Partition</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-Specify-the-Partition-Size"><span class="toc-text">③ Specify the Partition Size</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-Set-the-Partition-Type-to-Linux-Swap"><span class="toc-text">④ Set the Partition Type to Linux Swap</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-Third-Partition-Root"><span class="toc-text">Create the Third Partition (Root)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A0-Select-the-Remaining-Free-Space"><span class="toc-text">① Select the Remaining Free Space</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A1-Create-a-New-Partition-1"><span class="toc-text">② Create a New Partition</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A2-Use-All-Remaining-Space"><span class="toc-text">③ Use All Remaining Space</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E2%91%A3-Set-the-Partition-Type"><span class="toc-text">④ Set the Partition Type</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Write-the-Partition-Table-and-Exit"><span class="toc-text">Write the Partition Table and Exit</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Write-the-Partition-Table"><span class="toc-text">Write the Partition Table</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Exit-cfdisk"><span class="toc-text">Exit cfdisk</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Partitioning-Summary"><span class="toc-text">Partitioning Summary</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Format-Partitions"><span class="toc-text">Format Partitions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0-Format-the-EFI-Partition-FAT32"><span class="toc-text">① Format the EFI Partition (FAT32)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-Initialize-and-Enable-the-Swap-Partition"><span class="toc-text">② Initialize and Enable the Swap Partition</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2-Format-the-Root-Partition-ext4"><span class="toc-text">③ Format the Root Partition (ext4)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mount-Partitions"><span class="toc-text">Mount Partitions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Mount-the-Root-Partition-to-mnt"><span class="toc-text">Mount the Root Partition to &#x2F;mnt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Create-and-Mount-the-EFI-Partition"><span class="toc-text">Create and Mount the EFI Partition</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VI-Installing-Arch-Linux-pacstrap"><span class="toc-text">VI. Installing Arch Linux (pacstrap)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-pacstrap"><span class="toc-text">Run pacstrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-the-fstab-File"><span class="toc-text">Generate the fstab File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enter-the-Newly-Installed-System-chroot"><span class="toc-text">Enter the Newly Installed System (chroot)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VII-Basic-System-Configuration"><span class="toc-text">VII. Basic System Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-the-Time-Zone"><span class="toc-text">Set the Time Zone</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configure-Locale-Language"><span class="toc-text">Configure Locale (Language)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A0-Edit-the-locale-list"><span class="toc-text">① Edit the locale list</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-Generate-locales"><span class="toc-text">② Generate locales</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-the-Hostname"><span class="toc-text">Set the Hostname</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-the-Root-Password"><span class="toc-text">Set the Root Password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Enable-Network-Service"><span class="toc-text">Enable Network Service</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VIII-Install-and-Configure-the-systemd-boot-Bootloader"><span class="toc-text">VIII. Install and Configure the systemd-boot Bootloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-systemd-boot"><span class="toc-text">Install systemd-boot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-an-Arch-Linux-Boot-Entry"><span class="toc-text">Create an Arch Linux Boot Entry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%91%A0-Obtain-the-PARTUUID-of-the-root-partition"><span class="toc-text">① Obtain the PARTUUID of the root partition</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1-Create-the-boot-entry-configuration-file"><span class="toc-text">② Create the boot entry configuration file</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IX-Finish-Installation-and-Reboot"><span class="toc-text">IX. Finish Installation and Reboot</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exit-chroot"><span class="toc-text">Exit chroot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reboot-the-system"><span class="toc-text">Reboot the system</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installation-Complete"><span class="toc-text">Installation Complete</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Next-steps-you-may-consider"><span class="toc-text">Next steps you may consider:</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/hardware/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/hardware/quick-start">Quick Start</a></li><li><a class="" href="/docs/hardware/zimacube-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/hardware-details">Hardware Details</a></li><li><a class="" href="/docs/hardware/auto-power-on-setup">Auto Power-On Method</a></li><li><a class="" href="/docs/hardware/pc-direct">PC Direct Connection</a></li><li><a class="" href="/docs/hardware/hdd-interface-guide">HDD Interface Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-guide">7th Bay Usage Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-install">Install 7th Bay</a></li><li><a class="" href="/docs/hardware/auto-power-on">Auto Power-On</a></li><li><a class="" href="/docs/hardware/gpu-expansion">GPU Expansion</a></li><li><a class="" href="/docs/hardware/raid-ssd-expansion">RAID SSD Expansion</a></li><li><a class="" href="/docs/hardware/bios-configuration">BIOS Configuration</a></li><li><a class="" href="/docs/hardware/zimacube-fan-diy">DIY Fan Guide</a></li><li><a class="" href="/docs/hardware/transfer-speeds-over-thunderbolt">Thunderbolt Transfer Speed</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">Compatible Network Adapters</a></li><li><a class="" href="/docs/hardware/enable-wol-on-zimacube">Enable Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/hardware/zimaboard-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/zimaboard-quick-start">Power On</a></li><li><a class="" href="/docs/hardware/hardware-interface">Hardware Interface</a></li><li><a class="" href="/docs/hardware/power-on-zimaboard-2">Power On ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Fan Installation & PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/hardware/power-on-zimablade">Power On</a></li><li><a class="" href="/docs/hardware/zimablade-overview">Get Started</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibility</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/hardware/7th-bay-led">7th Bay LED Indicator</a></li><li><a class="" href="/docs/hardware/ups-compatibility-list">UPS Compatibility List</a></li><li><a class="" href="/docs/hardware/enable-intel-ax210">Intel AX210 WiFi</a></li><li><a class="" href="/docs/hardware/supported-disk-formats">Supported Disk Formats</a></li><li><a class="" href="/docs/hardware/ax210-wifi-6e">AX210 WiFi Module</a></li><li><a class="" href="/docs/hardware/wake-on-lan-setup">Wake-on-LAN Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Third-Party Systems</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="is-current" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/arch-linux-installation-on-zimaboard-2" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/arch-linux-installation-on-zimaboard-2" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

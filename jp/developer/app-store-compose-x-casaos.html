@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS アプリ向け Docker Compose と x-casaos リファレンス | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/developer/app-store-compose-x-casaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/app-store-compose-x-casaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/app-store-compose-x-casaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS、ホームサーバー、Homelab、NAS OS 環境で配布する self-hosted アプリ向けに、Docker サービスと x-casaos メタデータを定義します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS アプリ向け Docker Compose と x-casaos リファレンス">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/developer/app-store-compose-x-casaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS、ホームサーバー、Homelab、NAS OS 環境で配布する self-hosted アプリ向けに、Docker サービスと x-casaos メタデータを定義します。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-08-27T09:51:24.533Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.533Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Docker Compose と x-casaos",
+      "description": "ZimaOS、ホームサーバー、Homelab、NAS OS 環境で配布する self-hosted アプリ向けに、Docker サービスと x-casaos メタデータを定義します。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.533Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/jp/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Docker Compose と x-casaos"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item current_page_item"><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/app-store-compose-x-casaos">English</a></li>
+            
+              <li><a href="/docs/zh/developer/app-store-compose-x-casaos">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/app-store-compose-x-casaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/app-store-compose-x-casaos">Português</a></li>
+            
+              <li><a href="/docs/es/developer/app-store-compose-x-casaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/developer/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">ストレージとファイルシステム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/jp/developer/zfs-setup">ZFS 設定</a></li><li><a class="" href="/docs/jp/developer/nfs-on-zimaos">NFS ファイル共有</a></li><li><a class="" href="/docs/jp/developer/folder-encryption">暗号化フォルダー</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション概要</a></li><li><a class="" href="/docs/jp/developer/raid6-setup">RAID 6 を作成</a></li><li><a class="" href="/docs/jp/developer/raid-rebuild-after-reinstall">再インストール後の RAID 再構築</a></li><li><a class="" href="/docs/jp/developer/iscsi-guide">iSCSI 利用ガイド</a></li><li><a class="" href="/docs/jp/developer/iscsi-setup">iSCSI 設定</a></li><li><a class="" href="/docs/jp/developer/rsync-backup-clones">Rsync バックアップクローン</a></li><li><a class="" href="/docs/jp/developer/synology-smb-connect">Synology SMB 接続</a></li><li><a class="" href="/docs/jp/developer/zimaos-qts-two-way-sync-guide">QTS 双方向同期</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">ネットワークとプロトコル</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/jp/developer/networking">ネットワーク設定</a></li><li><a class="" href="/docs/jp/developer/how-to-open-ssh-in-zimaos">SSH を有効化</a></li><li><a class="" href="/docs/jp/developer/nas-transfer-speed-troubleshooting">ネットワーク転送速度</a></li><li><a class="" href="/docs/jp/developer/ssh-setup">SSH 高度な設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/jp/developer/python-setup">Python 環境</a></li><li><a class="" href="/docs/jp/developer/how-to-contribute">貢献ガイド</a></li><li><a class="" href="/docs/jp/developer/contributions">コミュニティの貢献</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">App Store 開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築、公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li><li><a class="" href="/docs/jp/developer/app-store-repository-structure">リポジトリ構成</a></li><li><a class="" href="/docs/jp/developer/app-store-config">ストア設定</a></li><li><a class="is-current" href="/docs/jp/developer/app-store-compose-x-casaos">Docker Compose と x-casaos</a></li><li><a class="" href="/docs/jp/developer/app-store-build-output">ビルド出力</a></li><li><a class="" href="/docs/jp/developer/app-store-assets-localization">アセットとローカライズ</a></li><li><a class="" href="/docs/jp/developer/app-store-ci-cd">App Store CI/CD</a></li><li><a class="" href="/docs/jp/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/jp/developer/app-store-validation-workflow">検証ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-build-workflow">ビルドワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-publishing-workflow">公開ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration">v1 から v2 へ移行</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration-checklist">移行チェックリスト</a></li><li><a class="" href="/docs/jp/developer/app-store-faq">開発者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/jp/developer/openapi-developer-guide">ZimaOS API ガイド</a></li><li><a class="" href="/docs/jp/developer/openapi-live-preview">ZimaOS API エクスプローラー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">バージョン履歴</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/jp/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/jp/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/jp/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/jp/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/jp/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/jp/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/jp/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/jp/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/jp/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/jp/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/jp/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/jp/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/jp/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/jp/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/jp/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/jp/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/jp/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/jp/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/jp/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/jp/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/jp/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/jp/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Docker Compose と x-casaos</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.533Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>Docker サービスを ZimaOS または互換 NAS OS 向けの self-hosted アプリとしてパッケージするときは、このリファレンスを使用してください。</p>
+<p>各アプリは <code class="chip">Apps/&lt;folder&gt;/docker-compose.yml</code> に配置します。</p>
+<h2 id="このページの範囲" class="article-heading">このページの範囲<a class="article-anchor" href="#このページの範囲" aria-hidden="true"></a></h2><p>このページでは、ビルドパイプラインで使用するストア固有のメタデータ契約である、トップレベルの <code class="chip">x-casaos</code> ブロックを中心に説明します。</p>
+<p>Compose ファイルのその他の部分については、次の公式リファレンスを参照してください。</p>
+<ul class="doc-dots">
+<li>Docker Compose ファイルの公式リファレンス: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/" class="doc-link">https://docs.docker.com/reference/compose-file/</a></li>
+<li>サービス定義用の公式 <code class="chip">services</code> リファレンス: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/services/" class="doc-link">https://docs.docker.com/reference/compose-file/services/</a></li>
+<li>トップレベル <code class="chip">name</code> の公式リファレンス: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/version-and-name/" class="doc-link">https://docs.docker.com/reference/compose-file/version-and-name/</a></li>
+</ul>
+<p>つまり、次のように分けます。</p>
+<ul class="doc-dots">
+<li>標準的なコンテナ実行設定は Docker Compose に記述します</li>
+<li>ストアに表示するアプリメタデータは <code class="chip">x-casaos</code> に記述します</li>
+</ul>
+<h2 id="ソースモデル" class="article-heading">ソースモデル<a class="article-anchor" href="#ソースモデル" aria-hidden="true"></a></h2><p>アプリごとに 1 つの Compose ファイルを作成します。このファイルには次を含めます。</p>
+<ul class="doc-dots">
+<li>標準の Docker Compose コンテンツ</li>
+<li>トップレベルの <code class="chip">x-casaos</code> ブロック 1 つ</li>
+</ul>
+<p><code class="chip">Apps/</code> 内のソースディレクトリ名は、プロトコル上の識別情報ではありません。ビルド処理は Compose の内容、特にトップレベルの <code class="chip">name</code> と <code class="chip">x-casaos.id</code> から識別情報を読み取ります。</p>
+<h2 id="最小例" class="article-heading">最小例<a class="article-anchor" href="#最小例" aria-hidden="true"></a></h2><figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my-app</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">my-app:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">myrepo/my-app:1.0.0</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8080</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">index:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">port_map:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">http</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">https://cdn.example.com/my-app/icon.svg</span></span><br><span class="line">  <span class="attr">title:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">My</span> <span class="string">App</span></span><br><span class="line">  <span class="attr">tagline:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">Does</span> <span class="string">amazing</span> <span class="string">things</span></span><br><span class="line">  <span class="attr">description:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">A</span> <span class="string">great</span> <span class="string">app</span> <span class="string">that</span> <span class="string">does</span> <span class="string">amazing</span> <span class="string">things.</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">Your</span> <span class="string">Name</span></span><br><span class="line">  <span class="attr">developer:</span> <span class="string">Original</span> <span class="string">Developer</span></span><br><span class="line">  <span class="attr">category:</span> <span class="string">Productivity</span></span><br><span class="line">  <span class="attr">architectures:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">amd64</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">  <span class="attr">update_at:</span> <span class="string">&quot;2026-03-01&quot;</span></span><br><span class="line">  <span class="attr">release_notes:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">First</span> <span class="string">release</span></span><br></pre></td></tr></table></div></figure>
+
+<h2 id="x-casaos-以外の-Compose-ルール" class="article-heading"><code class="chip">x-casaos</code> 以外の Compose ルール<a class="article-anchor" href="#x-casaos-以外の-Compose-ルール" aria-hidden="true"></a></h2><p><code class="chip">x-casaos</code> 以外の内容について、このリポジトリは Docker Compose のセマンティクスを再定義しません。次の公式ドキュメントを正式なリファレンスとして使用してください。</p>
+<ul class="doc-dots">
+<li>Compose ファイルリファレンス: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/" class="doc-link">https://docs.docker.com/reference/compose-file/</a></li>
+<li>サービスリファレンス: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/services/" class="doc-link">https://docs.docker.com/reference/compose-file/services/</a></li>
+<li>プロジェクト <code class="chip">name</code> リファレンス: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/reference/compose-file/version-and-name/" class="doc-link">https://docs.docker.com/reference/compose-file/version-and-name/</a></li>
+<li>プロジェクト名の動作: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.docker.com/compose/how-tos/project-name/" class="doc-link">https://docs.docker.com/compose/how-tos/project-name/</a></li>
+</ul>
+<p>リポジトリ固有の要件は次に限られます。</p>
+<ul class="doc-dots">
+<li>Compose が有効な YAML であること</li>
+<li>Compose が <code class="chip">docker compose config -q</code> に合格すること</li>
+<li>トップレベルの <code class="chip">name</code> がリポジトリの検証要件を満たすこと</li>
+<li>サービスレベルの従来形式 <code class="chip">services.&lt;name&gt;.x-casaos</code> ブロックは、v2 ビルド処理で削除されること</li>
+</ul>
+<h2 id="x-casaos-の概要" class="article-heading">x-casaos の概要<a class="article-anchor" href="#x-casaos-の概要" aria-hidden="true"></a></h2><p>トップレベルの <code class="chip">x-casaos</code> ブロックには、2 種類のフィールドがあります。</p>
+<ul class="doc-dots">
+<li>ビルド済み <code class="chip">docker-compose.yml</code> に残る実行および表示エントリフィールド</li>
+<li>ビルド済み <code class="chip">meta.json</code> に抽出されるメタデータフィールド</li>
+</ul>
+<h2 id="フィールド一覧" class="article-heading">フィールド一覧<a class="article-anchor" href="#フィールド一覧" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>フィールド</th>
+<th>型</th>
+<th align="right">必須</th>
+<th align="right">ソースでローカライズ</th>
+<th>ビルド出力先</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code class="chip">id</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">はい</td>
+<td align="right">いいえ</td>
+<td>ビルド済み Compose + <code class="chip">meta.json</code>&#x2F;インデックス由来の出力</td>
+</tr>
+<tr>
+<td><code class="chip">main</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">はい</td>
+<td align="right">いいえ</td>
+<td>ビルド済み Compose</td>
+</tr>
+<tr>
+<td><code class="chip">index</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">実質的に必須</td>
+<td align="right">いいえ</td>
+<td>ビルド済み Compose</td>
+</tr>
+<tr>
+<td><code class="chip">port_map</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">はい</td>
+<td align="right">いいえ</td>
+<td>ビルド済み Compose</td>
+</tr>
+<tr>
+<td><code class="chip">scheme</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td>ビルド済み Compose</td>
+</tr>
+<tr>
+<td><code class="chip">icon</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">はい</td>
+<td align="right">いいえ</td>
+<td>ビルド済み Compose。ビルド時に書き換え</td>
+</tr>
+<tr>
+<td><code class="chip">title</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">はい</td>
+<td align="right">はい</td>
+<td>ビルド済み Compose。locale ごとに解決</td>
+</tr>
+<tr>
+<td><code class="chip">tagline</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">推奨</td>
+<td align="right">はい</td>
+<td><code class="chip">meta.json</code>、インデックス一覧</td>
+</tr>
+<tr>
+<td><code class="chip">description</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">推奨</td>
+<td align="right">はい</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">thumbnail</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td>ビルド済みリソースパスとして <code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">screenshot_link</code></td>
+<td><code class="chip">string[]</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td>ビルド済みリソースパスとして <code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">tips</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">いいえ</td>
+<td align="right">はい</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">author</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">推奨</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code>、インデックス一覧</td>
+</tr>
+<tr>
+<td><code class="chip">developer</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">推奨</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code>、インデックス一覧</td>
+</tr>
+<tr>
+<td><code class="chip">category</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">はい</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code>、インデックス一覧</td>
+</tr>
+<tr>
+<td><code class="chip">architectures</code></td>
+<td><code class="chip">string[]</code></td>
+<td align="right">推奨</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code>、インデックス一覧</td>
+</tr>
+<tr>
+<td><code class="chip">version</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">はい</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code>、インデックス一覧</td>
+</tr>
+<tr>
+<td><code class="chip">update_at</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">release_notes</code></td>
+<td><code class="chip">object</code></td>
+<td align="right">いいえ</td>
+<td align="right">はい</td>
+<td><code class="chip">meta.json.release_note</code></td>
+</tr>
+<tr>
+<td><code class="chip">website</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">repo</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">support</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+<tr>
+<td><code class="chip">docs</code></td>
+<td><code class="chip">string</code></td>
+<td align="right">いいえ</td>
+<td align="right">いいえ</td>
+<td><code class="chip">meta.json</code></td>
+</tr>
+</tbody></table></div>
+<h2 id="実行フィールド" class="article-heading">実行フィールド<a class="article-anchor" href="#実行フィールド" aria-hidden="true"></a></h2><h3 id="id" class="article-heading"><code class="chip">id</code><a class="article-anchor" href="#id" aria-hidden="true"></a></h3><p>目的:<br>ストアプロトコル上で安定したアプリ識別情報を提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>すべてのアプリのソース Compose で必須です</li>
+<li><code class="chip">com.example.myapp</code> のような逆ドメイン形式を使用してください</li>
+<li>使用できるのは英字、数字、<code class="chip">.</code>、<code class="chip">_</code>、<code class="chip">-</code> のみです</li>
+<li>ビルド時に小文字へ正規化されます</li>
+<li>ドットで区切られた空でないセグメントが 2 つ以上必要です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+<li>ビルド済みメタデータと一覧データにも反映されます</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li>アプリディレクトリ名を識別情報として扱う</li>
+<li>ドメイン形式ではない短い文字列を使用する</li>
+</ul>
+<h3 id="main" class="article-heading"><code class="chip">main</code><a class="article-anchor" href="#main" aria-hidden="true"></a></h3><p>目的:<br>ブラウザー向けの主要 UI を提供するサービス名を指定します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>必須です</li>
+<li><code class="chip">services</code> 内のサービス名と一致する必要があります</li>
+<li>補助コンテナではなく、ユーザー向けの Web サービスを指定してください</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li><code class="chip">main</code> にデータベースコンテナを指定する</li>
+</ul>
+<h3 id="index" class="article-heading"><code class="chip">index</code><a class="article-anchor" href="#index" aria-hidden="true"></a></h3><p>目的:<br>クライアントが UI を開くとき、アプリのエントリ URL に追加するパスを定義します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>通常は <code class="chip">/</code> です</li>
+<li>アプリの実際の Web エントリパスに合わせてください</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+</ul>
+<h3 id="port-map" class="article-heading"><code class="chip">port_map</code><a class="article-anchor" href="#port-map" aria-hidden="true"></a></h3><p>目的:<br>ユーザーに公開する Web UI のポートを定義します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>必須です</li>
+<li><code class="chip">&quot;8080&quot;</code> のような YAML 文字列である必要があります</li>
+<li>ユーザーがブラウザーで実際に開くポートと一致させてください</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li>引用符を付けずに <code class="chip">port_map: 8080</code> と記述する</li>
+</ul>
+<h3 id="scheme" class="article-heading"><code class="chip">scheme</code><a class="article-anchor" href="#scheme" aria-hidden="true"></a></h3><p>目的:<br>アプリを <code class="chip">http</code> と <code class="chip">https</code> のどちらで開くかを指定します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>実際に公開するプロトコルに合わせてください</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+</ul>
+<h3 id="icon" class="article-heading"><code class="chip">icon</code><a class="article-anchor" href="#icon" aria-hidden="true"></a></h3><p>目的:<br>インストール済みアプリのダッシュボードアイコン URL を提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>必須です</li>
+<li>ソース Compose ではアクセス可能な任意の URL を使用できます</li>
+<li>ビルド出力では、<code class="chip">--base-url</code> 配下のビルド済みリソース URL に書き換えられます</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+<li><code class="chip">apps/&#123;app-id&#125;/assets/icon.*</code> を指すように書き換えられます</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li>ビルド後もソースの値がそのまま残ると考える</li>
+</ul>
+<h3 id="title" class="article-heading"><code class="chip">title</code><a class="article-anchor" href="#title" aria-hidden="true"></a></h3><p>目的:<br>アプリの表示名を提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>必須です</li>
+<li>ソースでは locale をキーとするオブジェクトです</li>
+<li><code class="chip">en_US</code> を含めてください</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み Compose に残ります</li>
+<li>生成される locale ごとの出力では単純な文字列に解決されます</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li>locale をキーとするオブジェクトではなく、単純な文字列を記述する</li>
+</ul>
+<h2 id="メタデータフィールド" class="article-heading">メタデータフィールド<a class="article-anchor" href="#メタデータフィールド" aria-hidden="true"></a></h2><h3 id="tagline" class="article-heading"><code class="chip">tagline</code><a class="article-anchor" href="#tagline" aria-hidden="true"></a></h3><p>目的:<br>アプリ一覧や詳細画面で使用する 1 行の短い概要です。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>推奨です</li>
+<li>ソースでは locale をキーとするオブジェクトです</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み <code class="chip">meta.json</code> に抽出されます</li>
+<li><code class="chip">index.json</code> などの一覧データにも出力される場合があります</li>
+</ul>
+<h3 id="description" class="article-heading"><code class="chip">description</code><a class="article-anchor" href="#description" aria-hidden="true"></a></h3><p>目的:<br>アプリの詳細な説明です。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>推奨です</li>
+<li>ソースでは locale をキーとするオブジェクトです</li>
+<li>クライアントの対応状況に応じて Markdown テキストを含められます</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み <code class="chip">meta.json</code> に抽出されます</li>
+<li>生成される各 locale ファイルでは単純な文字列に解決されます</li>
+</ul>
+<h3 id="thumbnail" class="article-heading"><code class="chip">thumbnail</code><a class="article-anchor" href="#thumbnail" aria-hidden="true"></a></h3><p>目的:<br>より充実したアプリ表示に使用する、大きなプロモーション画像を提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>通常はアプリディレクトリ内のファイルを参照します</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済みリソースパスとして <code class="chip">meta.json</code> に出力されます</li>
+<li>ソースファイルは <code class="chip">apps/&#123;app-id&#125;/assets/</code> 配下の出力へ変換されます</li>
+</ul>
+<h3 id="screenshot-link" class="article-heading"><code class="chip">screenshot_link</code><a class="article-anchor" href="#screenshot-link" aria-hidden="true"></a></h3><p>目的:<br>アプリ詳細画面に表示する 1 枚以上のスクリーンショットを提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>ソースではスクリーンショットファイル名の配列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済みリソースパスとして <code class="chip">meta.json</code> に出力されます</li>
+</ul>
+<h3 id="tips" class="article-heading"><code class="chip">tips</code><a class="article-anchor" href="#tips" aria-hidden="true"></a></h3><p>目的:<br>インストール時またはインストール前のユーザー向け案内を提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>値が locale をキーとするテキストであるオブジェクトです</li>
+</ul>
+<p>例:</p>
+<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">tips:</span></span><br><span class="line">  <span class="attr">before_install:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br><span class="line">    <span class="attr">zh_CN:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br></pre></td></tr></table></div></figure>
+
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み <code class="chip">meta.json</code> に抽出されます</li>
+<li>locale の値は生成される locale ごとに解決されます</li>
+</ul>
+<h3 id="author" class="article-heading"><code class="chip">author</code><a class="article-anchor" href="#author" aria-hidden="true"></a></h3><p>目的:<br>ストア側でアプリ定義をパッケージまたは管理する担当者を示します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>推奨です</li>
+<li>単純な文字列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+<li>通常はアプリ一覧データにも含まれます</li>
+</ul>
+<h3 id="developer" class="article-heading"><code class="chip">developer</code><a class="article-anchor" href="#developer" aria-hidden="true"></a></h3><p>目的:<br>上流プロジェクトまたは元の開発者を示します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>推奨です</li>
+<li>単純な文字列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+<li>通常はアプリ一覧データにも含まれます</li>
+</ul>
+<h3 id="category" class="article-heading"><code class="chip">category</code><a class="article-anchor" href="#category" aria-hidden="true"></a></h3><p>目的:<br>アプリを標準化された ZimaOS ストアカテゴリに割り当てます。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>正しく表示するため、実質的に必須です</li>
+<li>次のいずれかである必要があります:<ul class="doc-dots">
+<li><code class="chip">Media</code></li>
+<li><code class="chip">Productivity</code></li>
+<li><code class="chip">Home</code></li>
+<li><code class="chip">Networking</code></li>
+<li><code class="chip">AI</code></li>
+<li><code class="chip">Finance</code></li>
+<li><code class="chip">Social</code></li>
+<li><code class="chip">Developer</code></li>
+<li><code class="chip">Others</code></li>
+</ul>
+</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+<li>通常はアプリ一覧データにも含まれます</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li>任意のカテゴリ名を使用する</li>
+</ul>
+<h3 id="architectures" class="article-heading"><code class="chip">architectures</code><a class="article-anchor" href="#architectures" aria-hidden="true"></a></h3><p>目的:<br>アプリパッケージが対応する CPU アーキテクチャを宣言します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>推奨です</li>
+<li>文字列の配列です</li>
+<li>一般的な値は <code class="chip">amd64</code> と <code class="chip">arm64</code> です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+<li>通常はアプリ一覧データにも含まれます</li>
+</ul>
+<h3 id="version" class="article-heading"><code class="chip">version</code><a class="article-anchor" href="#version" aria-hidden="true"></a></h3><p>目的:<br>ユーザーに表示し、アップグレード内容の把握に使用するアプリバージョンです。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>新しいストアで公開するアプリでは必須です</li>
+<li>単純な文字列です</li>
+<li>ユーザーが新しいバージョンとして受け取るべき変更を公開したときに更新してください</li>
+<li>可能な限り <code class="chip">1.2.3</code> のような semver 形式を使用してください</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+<li>一覧データにも含まれる場合があります</li>
+</ul>
+<p>重要な理由:</p>
+<ul class="doc-dots">
+<li>将来のアップグレード判断では、このフィールドを使ってユーザーの移行先バージョンを決定します</li>
+<li>この値がない場合、ユーザーとクライアントは <code class="chip">content_hash</code> などの低レベルな変更信号に依存する必要があります</li>
+<li>バージョンがない、または semver 形式でない場合、アップデートの透明性が下がり、一部の一覧出力から省かれることがあります</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li><code class="chip">version</code> を単なる表示項目として扱う</li>
+<li>重要なアプリ更新を公開するときに値を更新しない</li>
+<li>通常のリリースバージョンとして機能しない任意の文字列を使用する</li>
+</ul>
+<h3 id="update-at" class="article-heading"><code class="chip">update_at</code><a class="article-anchor" href="#update-at" aria-hidden="true"></a></h3><p>目的:<br>ストア表示を充実させるための任意の更新日です。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>推奨形式: <code class="chip">YYYY-MM-DD</code></li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+</ul>
+<h3 id="release-notes" class="article-heading"><code class="chip">release_notes</code><a class="article-anchor" href="#release-notes" aria-hidden="true"></a></h3><p>目的:<br>リリースノートまたは変更概要を提供します。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>ソースでは locale をキーとするオブジェクトです</li>
+<li>ソースフィールド名は <code class="chip">release_notes</code> のままです</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li>ビルド済み <code class="chip">meta.json</code> に抽出されます</li>
+<li><code class="chip">release_note</code> に名前が変わります</li>
+</ul>
+<p>よくある間違い:</p>
+<ul class="doc-dots">
+<li>ソースに <code class="chip">release_notes</code> ではなく <code class="chip">release_note</code> と記述する</li>
+</ul>
+<h3 id="website" class="article-heading"><code class="chip">website</code><a class="article-anchor" href="#website" aria-hidden="true"></a></h3><p>目的:<br>公式製品またはホームページへのリンクです。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>単純な URL 文字列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+</ul>
+<h3 id="repo" class="article-heading"><code class="chip">repo</code><a class="article-anchor" href="#repo" aria-hidden="true"></a></h3><p>目的:<br>ソースリポジトリまたはプロジェクトリポジトリへのリンクです。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>単純な URL 文字列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+</ul>
+<h3 id="support" class="article-heading"><code class="chip">support</code><a class="article-anchor" href="#support" aria-hidden="true"></a></h3><p>目的:<br>サポートページ、Issue トラッカー、フォーラム、ヘルプセンターへのリンクです。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>単純な URL 文字列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+</ul>
+<h3 id="docs" class="article-heading"><code class="chip">docs</code><a class="article-anchor" href="#docs" aria-hidden="true"></a></h3><p>目的:<br>パッケージ対象アプリのドキュメントへのリンクです。</p>
+<p>ルール:</p>
+<ul class="doc-dots">
+<li>任意です</li>
+<li>単純な URL 文字列です</li>
+</ul>
+<p>ビルド時の動作:</p>
+<ul class="doc-dots">
+<li><code class="chip">meta.json</code> に出力されます</li>
+</ul>
+<h2 id="ビルド済み-Compose-に残る項目と-meta-json-に移る項目" class="article-heading">ビルド済み Compose に残る項目と <code class="chip">meta.json</code> に移る項目<a class="article-anchor" href="#ビルド済み-Compose-に残る項目と-meta-json-に移る項目" aria-hidden="true"></a></h2><p>ビルド済み Compose に残る項目:</p>
+<ul class="doc-dots">
+<li><code class="chip">id</code></li>
+<li><code class="chip">main</code></li>
+<li><code class="chip">index</code></li>
+<li><code class="chip">port_map</code></li>
+<li><code class="chip">scheme</code></li>
+<li><code class="chip">icon</code></li>
+<li><code class="chip">title</code></li>
+</ul>
+<p>ビルド済み <code class="chip">meta.json</code> に移る項目:</p>
+<ul class="doc-dots">
+<li><code class="chip">tagline</code></li>
+<li><code class="chip">description</code></li>
+<li><code class="chip">thumbnail</code></li>
+<li><code class="chip">screenshot_link</code></li>
+<li><code class="chip">tips</code></li>
+<li><code class="chip">author</code></li>
+<li><code class="chip">developer</code></li>
+<li><code class="chip">category</code></li>
+<li><code class="chip">architectures</code></li>
+<li><code class="chip">version</code></li>
+<li><code class="chip">update_at</code></li>
+<li><code class="chip">release_note</code></li>
+<li><code class="chip">website</code></li>
+<li><code class="chip">repo</code></li>
+<li><code class="chip">support</code></li>
+<li><code class="chip">docs</code></li>
+</ul>
+<h2 id="フィールド配置ルール" class="article-heading">フィールド配置ルール<a class="article-anchor" href="#フィールド配置ルール" aria-hidden="true"></a></h2><p>ソース Compose を作成するときは、次のように分けてください。</p>
+<ul class="doc-dots">
+<li>実行情報と起動エントリ情報は、実行用の <code class="chip">x-casaos</code> フィールドに記述します</li>
+<li>ストア表示用メタデータは、メタデータ用の <code class="chip">x-casaos</code> フィールドに記述します</li>
+<li>コンテナ実行の詳細は、<code class="chip">services</code>、<code class="chip">volumes</code>、<code class="chip">networks</code>、<code class="chip">environment</code> などの標準 Docker Compose セクションに記述します</li>
+</ul>
+<h2 id="よくある間違いのまとめ" class="article-heading">よくある間違いのまとめ<a class="article-anchor" href="#よくある間違いのまとめ" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>locale をキーとするオブジェクトが必要な場所に単純な文字列を使用する</li>
+<li><code class="chip">main</code> に UI を持たないサービスを指定する</li>
+<li><code class="chip">port_map</code> に引用符付き文字列ではなく整数を使用する</li>
+<li>非公式のカテゴリ値を使用する</li>
+<li><code class="chip">title</code> はビルド済み Compose に残り、<code class="chip">tagline</code> は <code class="chip">meta.json</code> に移ることを忘れる</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.533Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/developer/app-store-config"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">ストア設定</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/developer/app-store-build-output"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">ビルド出力</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%93%E3%81%AE%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E7%AF%84%E5%9B%B2"><span class="toc-text">このページの範囲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%A2%E3%83%87%E3%83%AB"><span class="toc-text">ソースモデル</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BE%8B"><span class="toc-text">最小例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x-casaos-%E4%BB%A5%E5%A4%96%E3%81%AE-Compose-%E3%83%AB%E3%83%BC%E3%83%AB"><span class="toc-text">x-casaos 以外の Compose ルール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x-casaos-%E3%81%AE%E6%A6%82%E8%A6%81"><span class="toc-text">x-casaos の概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E4%B8%80%E8%A6%A7"><span class="toc-text">フィールド一覧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9F%E8%A1%8C%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89"><span class="toc-text">実行フィールド</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#id"><span class="toc-text">id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main"><span class="toc-text">main</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index"><span class="toc-text">index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#port-map"><span class="toc-text">port_map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scheme"><span class="toc-text">scheme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#icon"><span class="toc-text">icon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#title"><span class="toc-text">title</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89"><span class="toc-text">メタデータフィールド</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tagline"><span class="toc-text">tagline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#description"><span class="toc-text">description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thumbnail"><span class="toc-text">thumbnail</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#screenshot-link"><span class="toc-text">screenshot_link</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-text">tips</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#author"><span class="toc-text">author</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#developer"><span class="toc-text">developer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#category"><span class="toc-text">category</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#architectures"><span class="toc-text">architectures</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#version"><span class="toc-text">version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update-at"><span class="toc-text">update_at</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#release-notes"><span class="toc-text">release_notes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#website"><span class="toc-text">website</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#repo"><span class="toc-text">repo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#support"><span class="toc-text">support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docs"><span class="toc-text">docs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%93%E3%83%AB%E3%83%89%E6%B8%88%E3%81%BF-Compose-%E3%81%AB%E6%AE%8B%E3%82%8B%E9%A0%85%E7%9B%AE%E3%81%A8-meta-json-%E3%81%AB%E7%A7%BB%E3%82%8B%E9%A0%85%E7%9B%AE"><span class="toc-text">ビルド済み Compose に残る項目と meta.json に移る項目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E9%85%8D%E7%BD%AE%E3%83%AB%E3%83%BC%E3%83%AB"><span class="toc-text">フィールド配置ルール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%88%E3%81%8F%E3%81%82%E3%82%8B%E9%96%93%E9%81%95%E3%81%84%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">よくある間違いのまとめ</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item current_page_item"><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/developer/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">ストレージとファイルシステム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/jp/developer/zfs-setup">ZFS 設定</a></li><li><a class="" href="/docs/jp/developer/nfs-on-zimaos">NFS ファイル共有</a></li><li><a class="" href="/docs/jp/developer/folder-encryption">暗号化フォルダー</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション概要</a></li><li><a class="" href="/docs/jp/developer/raid6-setup">RAID 6 を作成</a></li><li><a class="" href="/docs/jp/developer/raid-rebuild-after-reinstall">再インストール後の RAID 再構築</a></li><li><a class="" href="/docs/jp/developer/iscsi-guide">iSCSI 利用ガイド</a></li><li><a class="" href="/docs/jp/developer/iscsi-setup">iSCSI 設定</a></li><li><a class="" href="/docs/jp/developer/rsync-backup-clones">Rsync バックアップクローン</a></li><li><a class="" href="/docs/jp/developer/synology-smb-connect">Synology SMB 接続</a></li><li><a class="" href="/docs/jp/developer/zimaos-qts-two-way-sync-guide">QTS 双方向同期</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">ネットワークとプロトコル</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/jp/developer/networking">ネットワーク設定</a></li><li><a class="" href="/docs/jp/developer/how-to-open-ssh-in-zimaos">SSH を有効化</a></li><li><a class="" href="/docs/jp/developer/nas-transfer-speed-troubleshooting">ネットワーク転送速度</a></li><li><a class="" href="/docs/jp/developer/ssh-setup">SSH 高度な設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/jp/developer/python-setup">Python 環境</a></li><li><a class="" href="/docs/jp/developer/how-to-contribute">貢献ガイド</a></li><li><a class="" href="/docs/jp/developer/contributions">コミュニティの貢献</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">App Store 開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築、公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li><li><a class="" href="/docs/jp/developer/app-store-repository-structure">リポジトリ構成</a></li><li><a class="" href="/docs/jp/developer/app-store-config">ストア設定</a></li><li><a class="is-current" href="/docs/jp/developer/app-store-compose-x-casaos">Docker Compose と x-casaos</a></li><li><a class="" href="/docs/jp/developer/app-store-build-output">ビルド出力</a></li><li><a class="" href="/docs/jp/developer/app-store-assets-localization">アセットとローカライズ</a></li><li><a class="" href="/docs/jp/developer/app-store-ci-cd">App Store CI/CD</a></li><li><a class="" href="/docs/jp/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/jp/developer/app-store-validation-workflow">検証ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-build-workflow">ビルドワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-publishing-workflow">公開ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration">v1 から v2 へ移行</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration-checklist">移行チェックリスト</a></li><li><a class="" href="/docs/jp/developer/app-store-faq">開発者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/jp/developer/openapi-developer-guide">ZimaOS API ガイド</a></li><li><a class="" href="/docs/jp/developer/openapi-live-preview">ZimaOS API エクスプローラー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">バージョン履歴</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/jp/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/jp/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/jp/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/jp/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/jp/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/jp/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/jp/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/jp/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/jp/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/jp/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/jp/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/jp/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/jp/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/jp/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/jp/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/jp/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/jp/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/jp/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/jp/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/jp/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/jp/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/jp/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/app-store-compose-x-casaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/app-store-compose-x-casaos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/developer/app-store-compose-x-casaos" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/developer/app-store-compose-x-casaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/developer/app-store-compose-x-casaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

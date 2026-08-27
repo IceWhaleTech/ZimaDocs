@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Configuración de almacenamiento en ZimaOS: elige RAID, NAS o ZFS para tu servidor doméstico | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/zimaos/storage-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/storage-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/storage-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/storage-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/storage-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/storage-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/storage-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Cómo configurar el almacenamiento en ZimaOS. Compara disco único, RAID y ZFS para distintos usos: NAS doméstico, servidor de aplicaciones, agente de IA y uso compartido de archivos en pequ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Configuración de almacenamiento en ZimaOS: elige RAID, NAS o ZFS para tu servidor doméstico">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaos/storage-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Cómo configurar el almacenamiento en ZimaOS. Compara disco único, RAID y ZFS para distintos usos: NAS doméstico, servidor de aplicaciones, agente de IA y uso compartido de archivos en pequ">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/storage-dashboard-overview.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/storage-new-disk-notification.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/storage-combine-wizard.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/storage-create-name.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/storage-disk-status.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.309Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.309Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/storage-dashboard-overview.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Elige tu configuración de almacenamiento",
+      "description": "Cómo configurar el almacenamiento en ZimaOS. Compara disco único, RAID y ZFS para distintos usos: NAS doméstico, servidor de aplicaciones, agente de IA y uso compartido de archivos en pequeñas empresas.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.309Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/es/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Elige tu configuración de almacenamiento"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/storage-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/storage-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/storage-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/storage-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/storage-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuración y almacenamiento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/es/zimaos/get-started">Primeros pasos</a></li><li><a class="" href="/docs/es/zimaos/features">Resumen de funciones</a></li><li><a class="is-current" href="/docs/es/zimaos/storage-setup">Configuración del almacenamiento</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Opciones de RAID</a></li><li><a class="" href="/docs/es/zimaos/docker-app-paths">Rutas de almacenamiento de apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronización y copias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/es/zimaos/phone-backup">Copia del teléfono</a></li><li><a class="" href="/docs/es/zimaos/computer-backup">Copia del ordenador</a></li><li><a class="" href="/docs/es/zimaos/synology-to-zimacube-migration">Migrar desde otro NAS</a></li><li><a class="" href="/docs/es/zimaos/from-synology-to-zimacube-migrate-all-files">Transferencia manual de Synology</a></li><li><a class="" href="/docs/es/zimaos/data-migration">Mover datos entre unidades</a></li><li><a class="" href="/docs/es/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estrategia de copia 3-2-1</a></li><li><a class="" href="/docs/es/zimaos/time-machine-backup">Copia con Time Machine</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acceso y uso compartido</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/es/zimaos/remote-access">Acceso remoto</a></li><li><a class="" href="/docs/es/zimaos/zimaclient-install">Descargar ZimaClient</a></li><li><a class="" href="/docs/es/zimaos/thunderbolt-direct-connect">Conexión directa Thunderbolt</a></li><li><a class="" href="/docs/es/zimaos/smb-troubleshooting">Archivos compartidos por SMB</a></li><li><a class="" href="/docs/es/zimaos/share-via-link">Compartir mediante enlace</a></li><li><a class="" href="/docs/es/zimaos/samba-member-setup">Samba multiusuario</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalación</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/es/zimaos/how-to-install-zimaos">Instalar ZimaOS</a></li><li><a class="" href="/docs/es/zimaos/install-zimaos-on-proxmox-ve">Instalar en Proxmox</a></li><li><a class="" href="/docs/es/zimaos/casaos-to-zimaos-migration">Migrar desde CasaOS</a></li><li><a class="" href="/docs/es/zimaos/remote-id">Obtener el ID de red</a></li><li><a class="" href="/docs/es/zimaos/password-recovery">Restablecer la contraseña</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/es/zimaos/ups-setup">Configuración de UPS</a></li><li><a class="" href="/docs/es/zimaos/system-recovery">Recuperación del sistema</a></li><li><a class="" href="/docs/es/zimaos/offline-install">Instalación sin conexión</a></li><li><a class="" href="/docs/es/zimaos/reset-network-settings">Restablecer la red</a></li><li><a class="" href="/docs/es/zimaos/zimaos-search">Función de búsqueda</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Elige tu configuración de almacenamiento</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.309Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>La forma de configurar las unidades depende de lo que estés construyendo. Un servidor multimedia doméstico necesita un almacenamiento distinto del que requiere un agente de IA que funciona todo el día.</p>
+<p>La configuración del almacenamiento depende del uso del dispositivo. A continuación se presentan cuatro opciones habituales. No necesitas saber de antemano qué es RAID.</p>
+<h2 id="Casos-de-uso-habituales" class="article-heading">Casos de uso habituales<a class="article-anchor" href="#Casos-de-uso-habituales" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>Datos familiares</strong> — empieza con RAID 1 y pasa a RAID 5 cuando crezca la biblioteca</li>
+<li><strong>Servidor de aplicaciones</strong> — SSD para la velocidad y RAID para la biblioteca multimedia</li>
+<li><strong>Agente de IA</strong> — una sola unidad fiable con copias de seguridad periódicas</li>
+<li><strong>Pequeña empresa</strong> — RAID 5, con un equilibrio entre capacidad y disponibilidad</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/storage-dashboard-overview.png" alt="Panel de almacenamiento de ZimaOS en Ajustes con una vista general de discos, espacios de almacenamiento y opciones"></span></p>
+<h3 id="Fotos-videos-y-archivos-familiares" class="article-heading">Fotos, vídeos y archivos familiares<a class="article-anchor" href="#Fotos-videos-y-archivos-familiares" aria-hidden="true"></a></h3><p>Quieres un único lugar para todo lo que crea la familia: las fotos de cada teléfono, los vídeos domésticos y los documentos. El dispositivo está en el salón y lo utiliza toda la familia.</p>
+<p>Empieza con dos unidades idénticas en RAID 1. Los datos se duplican. Si una unidad falla, no pierdes nada.</p>
+<p><strong><a href="./cloud-drive-connect" title="Conecta Google Drive, Dropbox u OneDrive a ZimaOS para realizar copias de seguridad" class="doc-link">Conecta unidades en la nube</a></strong> para añadir flexibilidad. Traslada bibliotecas multimedia grandes fuera de Google Drive o iCloud para reducir los costes de suscripción. Conserva una tercera copia externa de los archivos irremplazables como parte de una estrategia de copia de seguridad 3-2-1. Distribuye los proyectos compartidos entre el almacenamiento local y la nube para que los colaboradores puedan acceder a lo que necesitan.</p>
+<p>Si la biblioteca supera la capacidad de dos unidades, RAID 5 con tres o más unidades permite seguir creciendo sin renunciar a la protección.</p>
+<h3 id="Servidor-de-aplicaciones-y-host-Docker" class="article-heading">Servidor de aplicaciones y host Docker<a class="article-anchor" href="#Servidor-de-aplicaciones-y-host-Docker" aria-hidden="true"></a></h3><p>Ejecutas Jellyfin, Paperless, Pi-hole y algunas aplicaciones más. Para algunos datos te importa más la velocidad que la redundancia y, para otros, lo contrario.</p>
+<p>Un solo SSD para los datos de las aplicaciones permite iniciar rápidamente los contenedores y acceder con agilidad a los archivos. Guarda el contenido multimedia y los documentos en un conjunto RAID 1 o RAID 5 independiente, donde la redundancia sí es importante.</p>
+<h3 id="Servidor-de-agentes-de-IA" class="article-heading">Servidor de agentes de IA<a class="article-anchor" href="#Servidor-de-agentes-de-IA" aria-hidden="true"></a></h3><p>Ejecutas OpenClaw o Hermes. El agente funciona las 24 horas y escribe registros y memoria. Como los datos son principalmente texto, la capacidad rara vez es el problema. Lo importante es la fiabilidad.</p>
+<p>Un solo SSD, un HDD básico o incluso la unidad del sistema funcionan bien. Los datos son principalmente texto: registros, archivos de memoria y configuraciones. Haz copias de seguridad periódicas. Si ejecutas varios agentes junto con otras aplicaciones, RAID 1 en dos SSD cuesta algo más, pero elimina un único punto de fallo.</p>
+<h3 id="Uso-compartido-de-archivos-en-una-pequena-empresa" class="article-heading">Uso compartido de archivos en una pequeña empresa<a class="article-anchor" href="#Uso-compartido-de-archivos-en-una-pequena-empresa" aria-hidden="true"></a></h3><p>Varias personas de una oficina o un estudio necesitan acceso compartido a los archivos de los proyectos. La velocidad importa durante la jornada y la redundancia importa en todo momento.</p>
+<p>RAID 5 con tres o más unidades equilibra capacidad, velocidad y protección. Una unidad puede fallar sin que nadie lo note. Su mayor ventaja es que puedes añadir más unidades con el tiempo, a medida que aumentan las necesidades de almacenamiento, sin tener que reconstruir desde cero.</p>
+<h2 id="Como-configurarlo" class="article-heading">Cómo configurarlo<a class="article-anchor" href="#Como-configurarlo" aria-hidden="true"></a></h2><p>ZimaOS se encarga de la configuración. Al conectar un disco nuevo, aparecerá una notificación que te pedirá configurarlo.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/storage-new-disk-notification.png" alt="Notificación de ZimaOS que solicita configurar un disco recién conectado cuando se detecta la unidad"></span></p>
+<ol class="doc-steps">
+<li>Ve a <strong>Ajustes &gt; Almacenamiento</strong>.</li>
+<li>Haz clic en <strong>Combinar</strong> para abrir el asistente de configuración de discos.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/storage-combine-wizard.png" alt="Asistente de configuración de almacenamiento de ZimaOS abierto desde el botón Combinar y con las opciones de configuración de discos"></span></p>
+<ol start="3" class="doc-steps">
+<li>Elige la configuración y selecciona las unidades.</li>
+<li>Asigna un nombre al conjunto y confirma.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/storage-create-name.png" alt="Pantalla de creación de almacenamiento de ZimaOS donde se seleccionan las unidades, se asigna un nombre al conjunto y se confirma la configuración"></span></p>
+<h2 id="Despues-de-crearlo" class="article-heading">Después de crearlo<a class="article-anchor" href="#Despues-de-crearlo" aria-hidden="true"></a></h2><p>Una vez configurado el almacenamiento, el conjunto aparecerá con su estado en <strong>Ajustes &gt; Almacenamiento</strong>. Un conjunto en buen estado muestra un indicador verde. Desde esta página puedes comprobar la salud de los discos, la capacidad disponible y las velocidades de lectura y escritura.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/storage-disk-status.png" alt="Página de estado del almacenamiento de ZimaOS con la salud del conjunto, la capacidad disponible y las velocidades de lectura y escritura"></span></p>
+<p>Si falla una unidad de un conjunto RAID, el estado cambiará a degradado. Los datos seguirán siendo totalmente accesibles y las operaciones de lectura y escritura continuarán con normalidad. Sustituye la unidad averiada y ZimaOS te guiará durante la reconstrucción.</p>
+<p>Los discos individuales y las unidades USB muestran una vista de estado más sencilla con su salud y capacidad. No requieren gestión RAID.</p>
+<p>Las unidades USB siguen la misma lógica que los HDD y SSD internos: conecta una y podrás utilizarla como almacenamiento, añadirla a un conjunto o ampliar el espacio existente.</p>
+<p>Para consultar los pasos detallados de cada nivel RAID, revisa <strong><a href="./raid-options" title="Explicación de los niveles RAID y JBOD con instrucciones de configuración paso a paso" class="doc-link">Opciones RAID</a></strong>. Si quieres usar ZFS para obtener instantáneas e integridad de datos avanzada, la <strong><a href="../developer/zfs-setup" title="Configura ZFS en ZimaOS para obtener instantáneas, sumas de comprobación e integridad de datos" class="doc-link">guía de configuración de ZFS</a></strong>, en la sección Desarrollo, explica el proceso.</p>
+<p>Una vez configurado el almacenamiento, el siguiente paso es importar los datos. <strong><a href="./phone-backup" title="Realiza automáticamente una copia de seguridad de tu teléfono en ZimaOS con ZimaClient" class="doc-link">Copia de seguridad del teléfono</a></strong> y <strong><a href="./computer-backup" title="Realiza una copia de seguridad de tu ordenador en ZimaOS mediante Finder, el Explorador o sincronización" class="doc-link">Copia de seguridad del ordenador</a></strong> cubren los dispositivos que utilizas a diario. <strong><a href="./data-migration" title="Mueve imágenes Docker, datos de aplicaciones y carpetas entre unidades en ZimaOS" class="doc-link">Mover datos entre unidades</a></strong> te ayuda cuando una unidad se llena. <strong><a href="./docker-app-paths" title="Dónde guardan las aplicaciones sus datos y cómo moverlos entre unidades" class="doc-link">Rutas de almacenamiento de aplicaciones</a></strong> permite dirigir cada aplicación a la unidad adecuada.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.309Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/zimaos/features"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Resumen de funciones</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/zimaos/raid-options"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Opciones de RAID</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Casos-de-uso-habituales"><span class="toc-text">Casos de uso habituales</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Fotos-videos-y-archivos-familiares"><span class="toc-text">Fotos, vídeos y archivos familiares</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servidor-de-aplicaciones-y-host-Docker"><span class="toc-text">Servidor de aplicaciones y host Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servidor-de-agentes-de-IA"><span class="toc-text">Servidor de agentes de IA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Uso-compartido-de-archivos-en-una-pequena-empresa"><span class="toc-text">Uso compartido de archivos en una pequeña empresa</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Como-configurarlo"><span class="toc-text">Cómo configurarlo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Despues-de-crearlo"><span class="toc-text">Después de crearlo</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/zimaos/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuración y almacenamiento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/es/zimaos/get-started">Primeros pasos</a></li><li><a class="" href="/docs/es/zimaos/features">Resumen de funciones</a></li><li><a class="is-current" href="/docs/es/zimaos/storage-setup">Configuración del almacenamiento</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Opciones de RAID</a></li><li><a class="" href="/docs/es/zimaos/docker-app-paths">Rutas de almacenamiento de apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronización y copias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/es/zimaos/phone-backup">Copia del teléfono</a></li><li><a class="" href="/docs/es/zimaos/computer-backup">Copia del ordenador</a></li><li><a class="" href="/docs/es/zimaos/synology-to-zimacube-migration">Migrar desde otro NAS</a></li><li><a class="" href="/docs/es/zimaos/from-synology-to-zimacube-migrate-all-files">Transferencia manual de Synology</a></li><li><a class="" href="/docs/es/zimaos/data-migration">Mover datos entre unidades</a></li><li><a class="" href="/docs/es/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estrategia de copia 3-2-1</a></li><li><a class="" href="/docs/es/zimaos/time-machine-backup">Copia con Time Machine</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acceso y uso compartido</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/es/zimaos/remote-access">Acceso remoto</a></li><li><a class="" href="/docs/es/zimaos/zimaclient-install">Descargar ZimaClient</a></li><li><a class="" href="/docs/es/zimaos/thunderbolt-direct-connect">Conexión directa Thunderbolt</a></li><li><a class="" href="/docs/es/zimaos/smb-troubleshooting">Archivos compartidos por SMB</a></li><li><a class="" href="/docs/es/zimaos/share-via-link">Compartir mediante enlace</a></li><li><a class="" href="/docs/es/zimaos/samba-member-setup">Samba multiusuario</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalación</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/es/zimaos/how-to-install-zimaos">Instalar ZimaOS</a></li><li><a class="" href="/docs/es/zimaos/install-zimaos-on-proxmox-ve">Instalar en Proxmox</a></li><li><a class="" href="/docs/es/zimaos/casaos-to-zimaos-migration">Migrar desde CasaOS</a></li><li><a class="" href="/docs/es/zimaos/remote-id">Obtener el ID de red</a></li><li><a class="" href="/docs/es/zimaos/password-recovery">Restablecer la contraseña</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/es/zimaos/ups-setup">Configuración de UPS</a></li><li><a class="" href="/docs/es/zimaos/system-recovery">Recuperación del sistema</a></li><li><a class="" href="/docs/es/zimaos/offline-install">Instalación sin conexión</a></li><li><a class="" href="/docs/es/zimaos/reset-network-settings">Restablecer la red</a></li><li><a class="" href="/docs/es/zimaos/zimaos-search">Función de búsqueda</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/storage-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/storage-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/storage-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/storage-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/storage-setup" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

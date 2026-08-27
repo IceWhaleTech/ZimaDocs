@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作成 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/batocera-arcade-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/batocera-arcade-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/batocera-arcade-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/batocera-arcade-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/batocera-arcade-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/batocera-arcade-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ストーリー: まだまだ多くのレトロゲームがあり、それらの印象的な名前やスクリーンショットを1つずつ眺めることは、時間を遡ることのようです。自分の子供時代の情熱や欲望に戻るようなものです。このチュートリアルは、あなたの初期の頃に戻ることを目的としています。  この文書を読んで、ZimaBoardの他の使い方や多様な使用方法についての概要を学びましょう。  Batoceraを">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作成">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/app-store/batocera-arcade-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ストーリー: まだまだ多くのレトロゲームがあり、それらの印象的な名前やスクリーンショットを1つずつ眺めることは、時間を遡ることのようです。自分の子供時代の情熱や欲望に戻るようなものです。このチュートリアルは、あなたの初期の頃に戻ることを目的としています。  この文書を読んで、ZimaBoardの他の使い方や多様な使用方法についての概要を学びましょう。  Batoceraを">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera2.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare2.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-select-the-u-disk.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-enter-batocera.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-in-game-batocera-hotkeys.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-play.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings1.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings2.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings3.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings4.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings2.jpeg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings3.jpeg">
+<meta property="og:image" content="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2">
+<meta property="article:published_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.537Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作成",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.537Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作成"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/batocera-arcade-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/batocera-arcade-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/batocera-arcade-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/batocera-arcade-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作成</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <blockquote>
+<p><strong>ストーリー:</strong><br> まだまだ多くのレトロゲームがあり、それらの印象的な名前やスクリーンショットを1つずつ眺めることは、時間を遡ることのようです。自分の子供時代の情熱や欲望に戻るようなものです。このチュートリアルは、あなたの初期の頃に戻ることを目的としています。</p>
+</blockquote>
+<p><strong>この文書を読んで、ZimaBoardの他の使い方や多様な使用方法についての概要を学びましょう。</strong></p>
+<blockquote>
+<p><strong>Batoceraを選ぶ理由：</strong><br>    - &gt; <strong>Batocera</strong>は、私たちのZimaBoardを魅力的なレトロコンソールに変える最も簡単な方法の1つであり、複数のエミュレーターと数百のゲームを楽しむことができます。<br>    - &gt; <strong>Batocera</strong>の利点の1つは、ZimaBoardや他の互換デバイスの内部ストレージメモリを変更しないことです。Batoceraを使用したくないときは、メモリまたはカードを取り外すことで、私たちのマシンは変更なしに元の状態に戻ります。試すことのできる<a target="_blank" rel="noopener external nofollow noreferrer" href="https://androidpctv.com/%E3%80%81tutorial-emuelec-turns-your-android-tv-box-into-a-retro-console/" class="doc-link">EmuELEC</a>に似たシステムもあります。</p>
+</blockquote>
+<h1 id="1-BATOCERA-LINUXとは？" class="article-heading">1. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/" class="doc-link">BATOCERA.LINUX</a>とは？<a class="article-anchor" href="#1-BATOCERA-LINUXとは？" aria-hidden="true"></a></h1><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera.png" alt="Batoceraを紹介"></span></p>
+<p><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/" class="doc-link">Batocera</a>ソフトウェアは、Debianディストリビューションに基づいており、さまざまなマシンの数十のエミュレーターを整理してプレイするためにゲームのカバーやその他のエクストラを読み込むことを可能にするエミュレーターのグループです。これらのゲームをプレイするには、<code class="chip">ROMSまたはISO</code>が必要です。これらのシステムのいくつかは、エミュレートするためにマシンのBIOSイメージも必要とします。</strong></p>
+<p><strong>Batoceraは、<code class="chip">Android</code>、<code class="chip">PC</code>、<code class="chip">MacOS</code>のあらゆる種類のコンピュータ、<code class="chip">Raspberry Pi</code>ボード、そして多くの</strong>ポータブルレトロコンソール<strong>をサポートしています…それらには専用のディストリビューションがあります。Batoceraのインストールは簡単で設定も簡単で、そのインターフェースは快適で使いやすく、サポートされているエミュレーターのリストは非常に豊富です。</strong></p>
+<ul class="doc-dots">
+<li>基本的にサポートされているエミュレーター: AMIGA, MSX, NES, SNES, GBA, MG, DREAMCAST, NDS, PS1, CPS1&#x2F;2&#x2F;3…</li>
+<li>高性能ハードウェアのみサポート: PS2, PS3, GAMECUBE, 3DS, WII&#x2F;U, SWITCH, XBOX…</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/compatibility.php" class="doc-link">Batoceraでエミュレートされているシステムの完全なリスト。</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.batocera.org/" class="doc-link">Batocera wiki</a></li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-introduce-batocera2.png" alt="Batoceraを紹介"></span></p>
+<h1 id="2-USBペンドライブまたはmicroSDにBatoceraをインストール" class="article-heading">2.USBペンドライブまたはmicroSDにBatoceraをインストール<a class="article-anchor" href="#2-USBペンドライブまたはmicroSDにBatoceraをインストール" aria-hidden="true"></a></h1><h2 id="事前に準備すること" class="article-heading">事前に準備すること<a class="article-anchor" href="#事前に準備すること" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare.webp" alt="Batocera Linux"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-prepare2.jpeg" alt="Batoceraを紹介"></span></p>
+<h2 id="Batoceraイメージの作成" class="article-heading">Batoceraイメージの作成<a class="article-anchor" href="#Batoceraイメージの作成" aria-hidden="true"></a></h2><p><strong>Batoceraをインストールするには、私たちのデバイス用の</strong>IMG.GZ<strong>ファイルが必要です。このファイルをダウンロードするには、Batoceraのウェブサイトにアクセスし、コンピュータに保存するだけです。その後、balenaEtcherソフトウェアを使用して、システムを変更せずに実行できるブートドライブを作成します。</strong></p>
+<ul class="doc-dots">
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://batocera.org/download" class="doc-link">BatoceraイメージファイルIMG.GZをダウンロード。</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.balena.io/etcher" class="doc-link">イメージを焼くためのBalenaをダウンロード</a></strong></li>
+<li><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Abdess/retroarch_system/releases/download/RetroArch-v1.9.13/Batocera_V33.zip" class="doc-link">Batocera用BIOSパックをダウンロード</a></strong></li>
+</ul>
+<h2 id="Batocera用のブートドライブを作成" class="article-heading">Batocera用のブートドライブを作成<a class="article-anchor" href="#Batocera用のブートドライブを作成" aria-hidden="true"></a></h2><p><strong>必要なファイルをダウンロードしたら、Balenaプログラムを実行してこのシステムをブートするための<code class="chip">SDメモリまたはUSBドライブ</code>を生成できます。USBドライブでデバイスが動作しない場合は、SDカードを使用することをお勧めします。いずれにせよ、この方法で使用する場合は、できるだけ高速なドライブを用意する必要があります。</strong></p>
+<p><strong>- ステップ1</strong></p>
+<p><strong>できるだけ速い<a target="_blank" rel="noopener external nofollow noreferrer" href="https://amzn.to/3tcdzSh" class="doc-link">マイクロSDカードまたはUSBドライブ</a>が必要です。最低でも16 GBとPCカードリーダーを用意します。</strong></p>
+<p><strong>- ステップ2</strong></p>
+<p><strong>Balenaを開き、「ファイルからフラッシュ」をクリックし、ダウンロードしたBatoceraを選択します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg" alt="Balenaetcherを開く"></span></p>
+<p><strong>- ステップ3</strong></p>
+<p><strong>ブートするために必要な<code class="chip">SDメモリまたはUSBドライブ</code>を選択します。</strong> </p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg" alt="USBドライブを選択"></span></p>
+<p><strong>- ステップ4</strong></p>
+<p><strong>変換を開始するためにホストパスワードを入力します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg" alt="USBドライブを選択"></span></p>
+<h1 id="3-ZimaBoardを電源オン" class="article-heading">3.ZimaBoardを電源オン<a class="article-anchor" href="#3-ZimaBoardを電源オン" aria-hidden="true"></a></h1><h2 id="ZimaBoardの初回ブート" class="article-heading">ZimaBoardの初回ブート<a class="article-anchor" href="#ZimaBoardの初回ブート" aria-hidden="true"></a></h2><p><strong>ZimaBoardの電源がオフの状態で、Batocera用に準備した<code class="chip">SDカードまたはUSBドライブ</code>を挿入します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png" alt="ZimaBoardにUSBを接続"></span></p>
+<p><strong>ブート中、長押ししてBIOSインターフェースに入ります。<code class="chip">Uディスクブート</code>を選択します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-select-the-u-disk.jpeg" alt="USBディスクを選択するZimaBoardのブート"></span></p>
+<p><strong>最後に、Batoceraインターフェースに入ります。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-boot-enter-batocera.webp" alt="Batoceraに入る"></span></p>
+<h1 id="4-Batoceraの使い方を始める" class="article-heading">4. Batoceraの使い方を始める<a class="article-anchor" href="#4-Batoceraの使い方を始める" aria-hidden="true"></a></h1><h2 id="使用ルールの取り扱い" class="article-heading">使用ルールの取り扱い<a class="article-anchor" href="#使用ルールの取り扱い" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-in-game-batocera-hotkeys.png" alt="Batoceraホットキー"></span></p>
+<p>Batoceraはすべてのグリップに適しているわけではありませんが、マーケットに出回っている主流のグリップの使用ルールには合致しています。</p>
+<h2 id="プレイ" class="article-heading">プレイ<a class="article-anchor" href="#プレイ" aria-hidden="true"></a></h2><p><strong>Batoceraには、自由に利用でき、法的に配布できる選択された<code class="chip">フリーROM - ゲーム</code>が同梱されています。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-play.jpeg" alt="ZimaBoardでBatoceraをプレイ"></span></p>
+<h1 id="5-その他の設定" class="article-heading">5. その他の設定<a class="article-anchor" href="#5-その他の設定" aria-hidden="true"></a></h1><p><strong>自分のROMやBIOSファイルを追加したい場合は、まずBatoceraにアクセスする必要があります。</strong></p>
+<h2 id="ZimaBoardのIPアドレスを見つける" class="article-heading">ZimaBoardのIPアドレスを見つける<a class="article-anchor" href="#ZimaBoardのIPアドレスを見つける" aria-hidden="true"></a></h2><p><strong>- ステップ1 スペースバーを押します。</strong></p>
+<p><strong>- ステップ2 NETWORK SETTINGSを見つけて、Enterを押します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings.jpeg" alt="Batocera設定ネットワーク"></span></p>
+<p><strong>- ステップ3 IPアドレスを見つけます。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings1.jpeg" alt="Batocera設定ネットワーク"></span></p>
+<p><strong>- ステップ4 コンピュータを使ってZimaBoardにリンクします。</strong> </p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings2.webp" alt="Batocera設定ネットワーク"></span></p>
+<p><strong>- ステップ5 フォルダに移動するためにConnectをクリックします。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings3.jpeg" alt="Batocera設定ネットワーク"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-network-settings4.jpeg" alt="Batocera設定ネットワークの画像"></span></p>
+<p><strong>- ステップ6 ダウンロードしたROMまたはBIOSを適切なフォルダに配置します。</strong> </p>
+<p>詳細なドキュメンテーションについては、**<a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.batocera.org/add_games_bios" class="doc-link">公式チュートリアル</a>**を参照してください。</p>
+<h2 id="元のシステムでBatoceraを上書きする" class="article-heading">元のシステムでBatoceraを上書きする<a class="article-anchor" href="#元のシステムでBatoceraを上書きする" aria-hidden="true"></a></h2><p><strong>- ステップ1 スペースバーを押して、<code class="chip">SYSTEM SETTINGS</code>を探します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings.jpeg" alt="Batoceraシステム"></span></p>
+<p><strong>- ステップ2 <code class="chip">INSTALL BATOCERA ON A NEW DISK</code>を選択します。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings2.jpeg" alt="Batoceraシステム"></span></p>
+<p><strong>- ステップ3 TARGET DEVICE <code class="chip">16 or 32G</code> TARGECT ARCHITECTUREを選択し、<code class="chip">X86_64</code>を選択、<code class="chip">ARE YOU SURE？</code>で<code class="chip">yes</code>を選択します。</strong></p>
+<p><strong>最後に、<code class="chip">INSTALL</code>をクリックします。</strong></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-system-settings3.jpeg" alt="Batoceraシステム"></span></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/knqAbbBbeX" class="doc-link"><img src="https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2" alt="Discordカード"></a></p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.537Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/app-store/awesome-third-party-stores"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">コミュニティ App Store</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/app-store/jellyfin-setup"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Jellyfin メディアサーバー</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-BATOCERA-LINUX%E3%81%A8%E3%81%AF%EF%BC%9F"><span class="toc-text">1. BATOCERA.LINUXとは？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-USB%E3%83%9A%E3%83%B3%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%81%BE%E3%81%9F%E3%81%AFmicroSD%E3%81%ABBatocera%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">2.USBペンドライブまたはmicroSDにBatoceraをインストール</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%89%8D%E3%81%AB%E6%BA%96%E5%82%99%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8"><span class="toc-text">事前に準備すること</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Batocera%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E4%BD%9C%E6%88%90"><span class="toc-text">Batoceraイメージの作成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Batocera%E7%94%A8%E3%81%AE%E3%83%96%E3%83%BC%E3%83%88%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%92%E4%BD%9C%E6%88%90"><span class="toc-text">Batocera用のブートドライブを作成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-ZimaBoard%E3%82%92%E9%9B%BB%E6%BA%90%E3%82%AA%E3%83%B3"><span class="toc-text">3.ZimaBoardを電源オン</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZimaBoard%E3%81%AE%E5%88%9D%E5%9B%9E%E3%83%96%E3%83%BC%E3%83%88"><span class="toc-text">ZimaBoardの初回ブート</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Batocera%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E5%A7%8B%E3%82%81%E3%82%8B"><span class="toc-text">4. Batoceraの使い方を始める</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E5%8F%96%E3%82%8A%E6%89%B1%E3%81%84"><span class="toc-text">使用ルールの取り扱い</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%97%E3%83%AC%E3%82%A4"><span class="toc-text">プレイ</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">5. その他の設定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZimaBoard%E3%81%AEIP%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%8B"><span class="toc-text">ZimaBoardのIPアドレスを見つける</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E3%81%AE%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7Batocera%E3%82%92%E4%B8%8A%E6%9B%B8%E3%81%8D%E3%81%99%E3%82%8B"><span class="toc-text">元のシステムでBatoceraを上書きする</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI と機械学習</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="is-current" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/batocera-arcade-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/batocera-arcade-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/batocera-arcade-setup" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/batocera-arcade-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

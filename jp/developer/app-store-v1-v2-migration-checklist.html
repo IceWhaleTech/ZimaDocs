@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS App Store v1 から v2 への移行チェックリスト | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/developer/app-store-v1-v2-migration-checklist">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/app-store-v1-v2-migration-checklist">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/app-store-v1-v2-migration-checklist">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/app-store-v1-v2-migration-checklist">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/app-store-v1-v2-migration-checklist">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/app-store-v1-v2-migration-checklist">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/app-store-v1-v2-migration-checklist">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS、ホームサーバー、Homelab で self-hosted Docker App Store を v1 から v2 へ移行するための最小変更チェックリストです。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS App Store v1 から v2 への移行チェックリスト">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/developer/app-store-v1-v2-migration-checklist">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS、ホームサーバー、Homelab で self-hosted Docker App Store を v1 から v2 へ移行するための最小変更チェックリストです。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-08-27T09:51:24.533Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.533Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "App Store v1 から v2 への移行チェックリスト",
+      "description": "ZimaOS、ホームサーバー、Homelab で self-hosted Docker App Store を v1 から v2 へ移行するための最小変更チェックリストです。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.533Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/jp/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store v1 から v2 への移行チェックリスト"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item current_page_item"><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/app-store-v1-v2-migration-checklist">English</a></li>
+            
+              <li><a href="/docs/zh/developer/app-store-v1-v2-migration-checklist">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/app-store-v1-v2-migration-checklist">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/app-store-v1-v2-migration-checklist">Português</a></li>
+            
+              <li><a href="/docs/es/developer/app-store-v1-v2-migration-checklist">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/developer/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">ストレージとファイルシステム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/jp/developer/zfs-setup">ZFS 設定</a></li><li><a class="" href="/docs/jp/developer/nfs-on-zimaos">NFS ファイル共有</a></li><li><a class="" href="/docs/jp/developer/folder-encryption">暗号化フォルダー</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション概要</a></li><li><a class="" href="/docs/jp/developer/raid6-setup">RAID 6 を作成</a></li><li><a class="" href="/docs/jp/developer/raid-rebuild-after-reinstall">再インストール後の RAID 再構築</a></li><li><a class="" href="/docs/jp/developer/iscsi-guide">iSCSI 利用ガイド</a></li><li><a class="" href="/docs/jp/developer/iscsi-setup">iSCSI 設定</a></li><li><a class="" href="/docs/jp/developer/rsync-backup-clones">Rsync バックアップクローン</a></li><li><a class="" href="/docs/jp/developer/synology-smb-connect">Synology SMB 接続</a></li><li><a class="" href="/docs/jp/developer/zimaos-qts-two-way-sync-guide">QTS 双方向同期</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">ネットワークとプロトコル</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/jp/developer/networking">ネットワーク設定</a></li><li><a class="" href="/docs/jp/developer/how-to-open-ssh-in-zimaos">SSH を有効化</a></li><li><a class="" href="/docs/jp/developer/nas-transfer-speed-troubleshooting">ネットワーク転送速度</a></li><li><a class="" href="/docs/jp/developer/ssh-setup">SSH 高度な設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/jp/developer/python-setup">Python 環境</a></li><li><a class="" href="/docs/jp/developer/how-to-contribute">貢献ガイド</a></li><li><a class="" href="/docs/jp/developer/contributions">コミュニティの貢献</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">App Store 開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築、公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li><li><a class="" href="/docs/jp/developer/app-store-repository-structure">リポジトリ構成</a></li><li><a class="" href="/docs/jp/developer/app-store-config">ストア設定</a></li><li><a class="" href="/docs/jp/developer/app-store-compose-x-casaos">Docker Compose と x-casaos</a></li><li><a class="" href="/docs/jp/developer/app-store-build-output">ビルド出力</a></li><li><a class="" href="/docs/jp/developer/app-store-assets-localization">アセットとローカライズ</a></li><li><a class="" href="/docs/jp/developer/app-store-ci-cd">App Store CI/CD</a></li><li><a class="" href="/docs/jp/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/jp/developer/app-store-validation-workflow">検証ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-build-workflow">ビルドワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-publishing-workflow">公開ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration">v1 から v2 へ移行</a></li><li><a class="is-current" href="/docs/jp/developer/app-store-v1-v2-migration-checklist">移行チェックリスト</a></li><li><a class="" href="/docs/jp/developer/app-store-faq">開発者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/jp/developer/openapi-developer-guide">ZimaOS API ガイド</a></li><li><a class="" href="/docs/jp/developer/openapi-live-preview">ZimaOS API エクスプローラー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">バージョン履歴</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/jp/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/jp/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/jp/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/jp/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/jp/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/jp/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/jp/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/jp/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/jp/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/jp/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/jp/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/jp/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/jp/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/jp/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/jp/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/jp/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/jp/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/jp/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/jp/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/jp/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/jp/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/jp/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">App Store v1 から v2 への移行チェックリスト</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.533Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>このチェックリストは、ホームサーバーまたは Homelab の self-hosted Docker App Store カタログを v1 から v2 へ移行しながら互換性を維持するためのものです。</p>
+<p>すでに v1 ストアがあり、v2 対応に必要な実用上最小限の変更だけを行いたい場合に使用してください。</p>
+<p>目標は、1 つのソースリポジトリから v2 静的出力と任意の v1 zip 互換出力を生成することです。</p>
+<h2 id="1-既存のアプリツリーを維持する" class="article-heading">1. 既存のアプリツリーを維持する<a class="article-anchor" href="#1-既存のアプリツリーを維持する" aria-hidden="true"></a></h2><p>既存の構成を維持します。</p>
+<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">Apps/</span><br><span class="line">└── MyApp/</span><br><span class="line">    ├── docker-compose.yml</span><br><span class="line">    ├── icon.png</span><br><span class="line">    ├── thumbnail.png</span><br><span class="line">    └── screenshot-1.png</span><br></pre></td></tr></table></div></figure>
+
+<p>SVG アイコンや品質の高いリソースは後から追加できます。リソースの置き換えは、移行を開始するための必須条件ではありません。</p>
+<h2 id="2-store-config-json-を追加する" class="article-heading">2. <code class="chip">store-config.json</code> を追加する<a class="article-anchor" href="#2-store-config-json-を追加する" aria-hidden="true"></a></h2><p>リポジトリのルートに次のファイルを作成します。</p>
+<figure class="highlight json"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;store_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your-store-id&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;en_US&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Your Store Name&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;maintainer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your-name&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://github.com/username/your-appstore&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>確認項目:</p>
+<ul class="doc-dots">
+<li><code class="chip">version</code> が <code class="chip">2</code> であること</li>
+<li><code class="chip">store_id</code> がグローバルに識別でき、安定していること</li>
+<li><code class="chip">store_id</code> で使用しているのが英字、数字、ドット (<code class="chip">.</code>)、アンダースコア (<code class="chip">_</code>)、ハイフン (<code class="chip">-</code>) だけであること</li>
+<li><code class="chip">name.en_US</code> が存在すること</li>
+</ul>
+<h2 id="3-supported-languages-json-を追加する" class="article-heading">3. <code class="chip">supported-languages.json</code> を追加する<a class="article-anchor" href="#3-supported-languages-json-を追加する" aria-hidden="true"></a></h2><p>リポジトリのルートに次のファイルを作成します。</p>
+<figure class="highlight json"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;en_US&quot;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></div></figure>
+
+<p>ソースメタデータで定義する可能性がある <code class="chip">zh_CN</code> や <code class="chip">de_DE</code> など、すべての locale を追加してください。</p>
+<h2 id="4-すべてのアプリに-x-casaos-id-を追加する" class="article-heading">4. すべてのアプリに <code class="chip">x-casaos.id</code> を追加する<a class="article-anchor" href="#4-すべてのアプリに-x-casaos-id-を追加する" aria-hidden="true"></a></h2><p>各アプリには、トップレベルの安定したアプリ ID が必要です。</p>
+<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br></pre></td></tr></table></div></figure>
+
+<p>確認項目:</p>
+<ul class="doc-dots">
+<li>すべてのソース <code class="chip">docker-compose.yml</code> にトップレベルの <code class="chip">x-casaos.id</code> があること</li>
+<li><code class="chip">com.example.myapp</code> のような逆ドメイン形式を使用していること</li>
+<li>ID に、ドットで区切られた空でないセグメントが 2 つ以上あること</li>
+<li>使用しているのが英字、数字、ドット (<code class="chip">.</code>)、アンダースコア (<code class="chip">_</code>)、ハイフン (<code class="chip">-</code>) だけであること</li>
+</ul>
+<h2 id="5-従来のメタデータ構成を正規化する" class="article-heading">5. 従来のメタデータ構成を正規化する<a class="article-anchor" href="#5-従来のメタデータ構成を正規化する" aria-hidden="true"></a></h2><p>v1 から v2 への一般的な整理:</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>従来のソース</th>
+<th>v2 ソース</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code class="chip">en_us</code></td>
+<td><code class="chip">en_US</code></td>
+</tr>
+<tr>
+<td><code class="chip">zh_cn</code></td>
+<td><code class="chip">zh_CN</code></td>
+</tr>
+<tr>
+<td><code class="chip">appfile.json</code> の表示メタデータ</td>
+<td>トップレベルの <code class="chip">x-casaos</code> フィールド</td>
+</tr>
+</tbody></table></div>
+<p>v2 では <code class="chip">appfile.json</code> を維持する必要はありません。v1 パッケージが引き続き使用する場合に限り、従来のパイプライン用として残してください。</p>
+<h2 id="6-カテゴリを正規化する" class="article-heading">6. カテゴリを正規化する<a class="article-anchor" href="#6-カテゴリを正規化する" aria-hidden="true"></a></h2><p>各アプリの <code class="chip">x-casaos.category</code> を次のいずれかに設定します。</p>
+<p><code class="chip">Media</code>, <code class="chip">Productivity</code>, <code class="chip">Home</code>, <code class="chip">Networking</code>, <code class="chip">AI</code>, <code class="chip">Finance</code>, <code class="chip">Social</code>, <code class="chip">Developer</code>, <code class="chip">Others</code></p>
+<p>例えば、従来の <code class="chip">Utilities</code> は、最も近い v2 カテゴリ、通常は <code class="chip">Productivity</code> または <code class="chip">Others</code> へ変更する必要があります。</p>
+<h2 id="7-v2-出力をビルドする" class="article-heading">7. v2 出力をビルドする<a class="article-anchor" href="#7-v2-出力をビルドする" aria-hidden="true"></a></h2><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">BASE_URL=<span class="string">&quot;https://your-store-domain&quot;</span> \</span><br><span class="line">./scripts/build_dist.sh</span><br></pre></td></tr></table></div></figure>
+
+<p>確認項目:</p>
+<ul class="doc-dots">
+<li><code class="chip">dist/store.json</code> が存在すること</li>
+<li><code class="chip">dist/index.json</code> が存在すること</li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/docker-compose.yml</code> が存在すること。<code class="chip">&lt;app-id&gt;</code> は正規化された <code class="chip">x-casaos.id</code> です</li>
+<li><code class="chip">dist/apps/&lt;app-id&gt;/meta.json</code> が存在すること</li>
+<li>生成されたアプリ一覧項目に <code class="chip">id</code>、<code class="chip">compose_url</code>、<code class="chip">meta_url</code>、<code class="chip">content_hash</code> が含まれること</li>
+</ul>
+<h2 id="8-バージョンとその他の表示フィールドを追加する" class="article-heading">8. バージョンとその他の表示フィールドを追加する<a class="article-anchor" href="#8-バージョンとその他の表示フィールドを追加する" aria-hidden="true"></a></h2><p>古いソースリポジトリに同等のフィールドがなかった場合でも、新しいストアでは <code class="chip">version</code> が必須です。</p>
+<p>その他のフィールドは互換性のために必須ではありませんが、ストアの体験を改善します。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>フィールド</th>
+<th>型</th>
+<th>注記</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code class="chip">version</code></td>
+<td><code class="chip">string</code></td>
+<td>新規かつ必須です。将来のアプリアップグレード判断で使用します。可能な限り semver 形式を使用してください。</td>
+</tr>
+<tr>
+<td><code class="chip">update_at</code></td>
+<td><code class="chip">string</code></td>
+<td>新規の任意更新日です。可能な場合は <code class="chip">YYYY-MM-DD</code> を使用してください。</td>
+</tr>
+<tr>
+<td><code class="chip">release_notes</code></td>
+<td><code class="chip">object</code></td>
+<td>新規の任意項目です。locale をキーとするリリースノートで、各値は単純なテキストです。</td>
+</tr>
+<tr>
+<td><code class="chip">website</code></td>
+<td><code class="chip">string</code></td>
+<td>新規の任意公式 Web サイト URL です。</td>
+</tr>
+<tr>
+<td><code class="chip">repo</code></td>
+<td><code class="chip">string</code></td>
+<td>新規の任意ソースリポジトリ URL です。</td>
+</tr>
+<tr>
+<td><code class="chip">support</code></td>
+<td><code class="chip">string</code></td>
+<td>新規の任意サポート URL です。</td>
+</tr>
+<tr>
+<td><code class="chip">docs</code></td>
+<td><code class="chip">string</code></td>
+<td>新規の任意ドキュメント URL です。</td>
+</tr>
+</tbody></table></div>
+<h2 id="9-必要な場合は-v1-互換性を維持する" class="article-heading">9. 必要な場合は v1 互換性を維持する<a class="article-anchor" href="#9-必要な場合は-v1-互換性を維持する" aria-hidden="true"></a></h2><p>古いクライアントが v1 ストアに依存している場合は、次をビルドするワークフロー手順を維持します。</p>
+<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/store/main.zip</span><br></pre></td></tr></table></div></figure>
+
+<p>公式リポジトリでは、v2 ビルドの後に v1 ビルドを実行します。これにより、1 つのソースツリーで次の両方を提供できます。</p>
+<ul class="doc-dots">
+<li>v2 静的ストアを利用するクライアント</li>
+<li>従来の v1 zip を利用するクライアント</li>
+</ul>
+<h2 id="10-生成ファイルをデプロイする" class="article-heading">10. 生成ファイルをデプロイする<a class="article-anchor" href="#10-生成ファイルをデプロイする" aria-hidden="true"></a></h2><p><code class="chip">dist/</code> を静的ホスティングへ公開します。ユーザーが追加する URL は、ビルドの <code class="chip">base-url</code> と一致させてください。</p>
+<h2 id="リリース前の最終チェック" class="article-heading">リリース前の最終チェック<a class="article-anchor" href="#リリース前の最終チェック" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><input disabled type="checkbox"> <code class="chip">store-config.json</code> が存在し、有効である</li>
+<li><input disabled type="checkbox"> <code class="chip">supported-languages.json</code> が存在し、有効である</li>
+<li><input disabled type="checkbox"> すべてのアプリに有効な <code class="chip">x-casaos.id</code> がある</li>
+<li><input disabled type="checkbox"> 古い locale キーが正規化されている</li>
+<li><input disabled type="checkbox"> <code class="chip">x-casaos.version</code> が存在し、このリリース向けに更新されている</li>
+<li><input disabled type="checkbox"> 必要な箇所に任意の表示フィールドが追加されている</li>
+<li><input disabled type="checkbox"> すべてのアプリカテゴリが v2 の値を使用している</li>
+<li><input disabled type="checkbox"> <code class="chip">dist/store.json</code> と <code class="chip">dist/index.json</code> にアクセスできる</li>
+<li><input disabled type="checkbox"> v1 互換性が必要な場合、<code class="chip">dist/store/main.zip</code> が生成されている</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.533Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/developer/app-store-v1-v2-migration"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">v1 から v2 へ移行</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/developer/app-store-faq"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">開発者 FAQ</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%97%A2%E5%AD%98%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%83%84%E3%83%AA%E3%83%BC%E3%82%92%E7%B6%AD%E6%8C%81%E3%81%99%E3%82%8B"><span class="toc-text">1. 既存のアプリツリーを維持する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-store-config-json-%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><span class="toc-text">2. store-config.json を追加する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-supported-languages-json-%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><span class="toc-text">3. supported-languages.json を追加する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB-x-casaos-id-%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><span class="toc-text">4. すべてのアプリに x-casaos.id を追加する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BE%93%E6%9D%A5%E3%81%AE%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E6%88%90%E3%82%92%E6%AD%A3%E8%A6%8F%E5%8C%96%E3%81%99%E3%82%8B"><span class="toc-text">5. 従来のメタデータ構成を正規化する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%82%92%E6%AD%A3%E8%A6%8F%E5%8C%96%E3%81%99%E3%82%8B"><span class="toc-text">6. カテゴリを正規化する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-v2-%E5%87%BA%E5%8A%9B%E3%82%92%E3%83%93%E3%83%AB%E3%83%89%E3%81%99%E3%82%8B"><span class="toc-text">7. v2 出力をビルドする</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A1%A8%E7%A4%BA%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><span class="toc-text">8. バージョンとその他の表示フィールドを追加する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%BF%85%E8%A6%81%E3%81%AA%E5%A0%B4%E5%90%88%E3%81%AF-v1-%E4%BA%92%E6%8F%9B%E6%80%A7%E3%82%92%E7%B6%AD%E6%8C%81%E3%81%99%E3%82%8B"><span class="toc-text">9. 必要な場合は v1 互換性を維持する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E7%94%9F%E6%88%90%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B"><span class="toc-text">10. 生成ファイルをデプロイする</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E5%89%8D%E3%81%AE%E6%9C%80%E7%B5%82%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF"><span class="toc-text">リリース前の最終チェック</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item current_page_item"><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/developer/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">ストレージとファイルシステム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/jp/developer/zfs-setup">ZFS 設定</a></li><li><a class="" href="/docs/jp/developer/nfs-on-zimaos">NFS ファイル共有</a></li><li><a class="" href="/docs/jp/developer/folder-encryption">暗号化フォルダー</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション概要</a></li><li><a class="" href="/docs/jp/developer/raid6-setup">RAID 6 を作成</a></li><li><a class="" href="/docs/jp/developer/raid-rebuild-after-reinstall">再インストール後の RAID 再構築</a></li><li><a class="" href="/docs/jp/developer/iscsi-guide">iSCSI 利用ガイド</a></li><li><a class="" href="/docs/jp/developer/iscsi-setup">iSCSI 設定</a></li><li><a class="" href="/docs/jp/developer/rsync-backup-clones">Rsync バックアップクローン</a></li><li><a class="" href="/docs/jp/developer/synology-smb-connect">Synology SMB 接続</a></li><li><a class="" href="/docs/jp/developer/zimaos-qts-two-way-sync-guide">QTS 双方向同期</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">ネットワークとプロトコル</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/jp/developer/networking">ネットワーク設定</a></li><li><a class="" href="/docs/jp/developer/how-to-open-ssh-in-zimaos">SSH を有効化</a></li><li><a class="" href="/docs/jp/developer/nas-transfer-speed-troubleshooting">ネットワーク転送速度</a></li><li><a class="" href="/docs/jp/developer/ssh-setup">SSH 高度な設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/jp/developer/python-setup">Python 環境</a></li><li><a class="" href="/docs/jp/developer/how-to-contribute">貢献ガイド</a></li><li><a class="" href="/docs/jp/developer/contributions">コミュニティの貢献</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">App Store 開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築、公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li><li><a class="" href="/docs/jp/developer/app-store-repository-structure">リポジトリ構成</a></li><li><a class="" href="/docs/jp/developer/app-store-config">ストア設定</a></li><li><a class="" href="/docs/jp/developer/app-store-compose-x-casaos">Docker Compose と x-casaos</a></li><li><a class="" href="/docs/jp/developer/app-store-build-output">ビルド出力</a></li><li><a class="" href="/docs/jp/developer/app-store-assets-localization">アセットとローカライズ</a></li><li><a class="" href="/docs/jp/developer/app-store-ci-cd">App Store CI/CD</a></li><li><a class="" href="/docs/jp/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/jp/developer/app-store-validation-workflow">検証ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-build-workflow">ビルドワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-publishing-workflow">公開ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration">v1 から v2 へ移行</a></li><li><a class="is-current" href="/docs/jp/developer/app-store-v1-v2-migration-checklist">移行チェックリスト</a></li><li><a class="" href="/docs/jp/developer/app-store-faq">開発者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/jp/developer/openapi-developer-guide">ZimaOS API ガイド</a></li><li><a class="" href="/docs/jp/developer/openapi-live-preview">ZimaOS API エクスプローラー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">バージョン履歴</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/jp/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/jp/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/jp/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/jp/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/jp/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/jp/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/jp/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/jp/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/jp/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/jp/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/jp/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/jp/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/jp/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/jp/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/jp/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/jp/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/jp/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/jp/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/jp/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/jp/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/jp/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/jp/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/app-store-v1-v2-migration-checklist" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/app-store-v1-v2-migration-checklist" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/developer/app-store-v1-v2-migration-checklist" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/developer/app-store-v1-v2-migration-checklist" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/developer/app-store-v1-v2-migration-checklist" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

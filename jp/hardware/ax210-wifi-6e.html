@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="jp" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaBoard の AX210 Wi-Fi：インストールと設定ガイド | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/hardware/ax210-wifi-6e">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/ax210-wifi-6e">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/ax210-wifi-6e">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/ax210-wifi-6e">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/ax210-wifi-6e">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/ax210-wifi-6e">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/ax210-wifi-6e">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Intel AX210 Wi-Fi 6E カードを ZimaBoard に取り付けて有効にします。ハードウェアの取り付け、ドライバー設定、無線ネットワーク接続を詳しく説明します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaBoard の AX210 Wi-Fi：インストールと設定ガイド">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/hardware/ax210-wifi-6e">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Intel AX210 Wi-Fi 6E カードを ZimaBoard に取り付けて有効にします。ハードウェアの取り付け、ドライバー設定、無線ネットワーク接続を詳しく説明します。">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248064574_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248150818_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248310999_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248335646_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248357144_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248383004_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755248568547_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249083029_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249117075_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249154038_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249240618_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249301302_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249412290_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249456648_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249476230_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249580916_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249604651_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755249878561_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755250711162_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1755250706664_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.535Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.535Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1755248064574_copyImage.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "AX210 Wi-Fi カード ユーザーガイド",
+      "description": "Intel AX210 Wi-Fi 6E カードを ZimaBoard に取り付けて有効にします。ハードウェアの取り付け、ドライバー設定、無線ネットワーク接続を詳しく説明します。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.535Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/jp/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AX210 Wi-Fi カード ユーザーガイド"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/ax210-wifi-6e">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/ax210-wifi-6e">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/ax210-wifi-6e">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/ax210-wifi-6e">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/ax210-wifi-6e">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/hardware/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/jp/hardware/quick-start">クイックスタート</a></li><li><a class="" href="/docs/jp/hardware/zimacube-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/hardware-details">ハードウェア詳細</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on-setup">自動電源オンの設定</a></li><li><a class="" href="/docs/jp/hardware/pc-direct">PC 直接接続</a></li><li><a class="" href="/docs/jp/hardware/hdd-interface-guide">HDD インターフェースガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-guide">7 番ベイ利用ガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-install">7 番ベイの取り付け</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on">自動電源オン</a></li><li><a class="" href="/docs/jp/hardware/gpu-expansion">GPU 拡張</a></li><li><a class="" href="/docs/jp/hardware/raid-ssd-expansion">RAID SSD 拡張</a></li><li><a class="" href="/docs/jp/hardware/bios-configuration">BIOS 設定</a></li><li><a class="" href="/docs/jp/hardware/zimacube-fan-diy">DIY ファンガイド</a></li><li><a class="" href="/docs/jp/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 転送速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">対応ネットワークアダプター</a></li><li><a class="" href="/docs/jp/hardware/enable-wol-on-zimacube">Wake-on-LAN を有効化</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/jp/hardware/zimaboard-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/zimaboard-quick-start">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/hardware-interface">ハードウェアインターフェース</a></li><li><a class="" href="/docs/jp/hardware/power-on-zimaboard-2">ZimaBoard 2 の電源を入れる</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">ファン取り付けと PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/jp/hardware/power-on-zimablade">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/zimablade-overview">はじめに</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">互換性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/jp/hardware/7th-bay-led">7 番ベイ LED インジケーター</a></li><li><a class="" href="/docs/jp/hardware/ups-compatibility-list">UPS 互換性リスト</a></li><li><a class="" href="/docs/jp/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/jp/hardware/supported-disk-formats">対応ディスク形式</a></li><li><a class="is-current" href="/docs/jp/hardware/ax210-wifi-6e">AX210 Wi-Fi モジュール</a></li><li><a class="" href="/docs/jp/hardware/wake-on-lan-setup">Wake-on-LAN 設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">サードパーティ OS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/jp/hardware/install-unraid">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/install-truenas">TrueNAS を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-x86-install">OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux のインストール</a></li><li><a class="" href="/docs/jp/hardware/openwrt-usb-install">USB から OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-emmc-boot">OpenWrt eMMC 起動</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-install">OMV のインストール</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-setup">OMV の設定</a></li><li><a class="" href="/docs/jp/hardware/unraid-install">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/third-party-os-install">サードパーティ OS</a></li><li><a class="" href="/docs/jp/hardware/minimal-ubuntu-server-build">Ubuntu Server の設定</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">AX210 Wi-Fi カード ユーザーガイド</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.535Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="1-はじめに" class="article-heading">1. はじめに<a class="article-anchor" href="#1-はじめに" aria-hidden="true"></a></h2><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/products/intel-ax210-wifi-6e-pcie-card-zimaboard" class="doc-link">Intel® Wi-Fi 6E AX210（Gig+）アダプター</a>は、Wi-Fi 6E 技術に対応するよう設計されています。2.4GHz、5GHz、6GHz 帯のデュアルストリーム Wi-Fi と Bluetooth® 5.3 に対応します。Intel® Core™ プロセッサーと優れた Intel の無線技術を組み合わせることで、Intel® Wi-Fi 6E AX210 モジュールは、自宅、職場、外出先での接続体験を大幅に向上させます。</p>
+<h2 id="2-仕様" class="article-heading">2. 仕様<a class="article-anchor" href="#2-仕様" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755248064574_copyImage.png" alt="AX210 Wi-Fi カードの仕様"></span></p>
+<h2 id="3-使用方法" class="article-heading">3. 使用方法<a class="article-anchor" href="#3-使用方法" aria-hidden="true"></a></h2><p><strong>クイック操作手順：<br>A. AX210 カードを ZimaBoard に挿入します。<br>B. AX210 ドライバーを更新します。<br>C. CasaOS システムを開き、Wi-Fi に接続します。</strong></p>
+<p><strong>STA モード</strong><br><strong>必要な機器：</strong></p>
+<ul class="doc-dots">
+<li>ZimaBlade &#x2F; ZimaBoard × 1</li>
+<li>AX210 Wi-Fi カード × 1</li>
+<li>Ethernet ケーブル × 1</li>
+<li>電源アダプター × 1<br><strong>オプション：</strong></li>
+<li>miniDP ケーブル × 1</li>
+<li>モニター × 1</li>
+<li>キーボード × 1<br><strong>接続図</strong><br><img src="https://manage.icewhale.io/api/static/docs/1755248150818_image.png" alt="接続図"></li>
+</ul>
+<h3 id="ステップ-1：AX210-Wi-Fi-カードが検出されているか確認する" class="article-heading">ステップ 1：AX210 Wi-Fi カードが検出されているか確認する<a class="article-anchor" href="#ステップ-1：AX210-Wi-Fi-カードが検出されているか確認する" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li><p>ターミナルからデバイスにアクセスします。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755248310999_copyImage.png" alt="ターミナル"></span></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755248335646_image.png" alt="ログインターミナル"></span></p>
+</li>
+<li><p><code class="chip">su</code> で root モードに切り替えます</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755248357144_image.png" alt="root モード"></span></p>
+</li>
+<li><p><code class="chip">lspci</code> コマンドを実行します</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755248383004_image.png" alt="lspci の結果"></span></p>
+<p>Intel デバイスが一覧に表示されれば、ZimaBoard に接続されていることを確認できます。</p>
+</li>
+</ol>
+<h3 id="ステップ-2：AX210-ドライバーをインストールする" class="article-heading">ステップ 2：AX210 ドライバーをインストールする<a class="article-anchor" href="#ステップ-2：AX210-ドライバーをインストールする" aria-hidden="true"></a></h3><p><mark style="background-color: #fff9bd">注：<br> ZimaBoard または ZimaBlade にプリインストールされた CasaOS のカーネルバージョンが <strong>5.10</strong> の場合は、直接<strong>ステップ 3</strong>へ進めます。<br> このバージョンは<a href="../help-center/restore-factory-settings" class="doc-link">提供されているリンク</a>から入手することもできます。</mark></p>
+<ol class="doc-steps">
+<li><p>カーネルバージョンを確認します。6.10 未満の場合はアップグレードをおすすめします。このガイドでは backports カーネルを使用します。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755248568547_image.png" alt="カーネルバージョン"></span></p>
+</li>
+<li><p>backports リポジトリを追加します。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">echo &quot;deb http://deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware&quot; | sudo tee -a /etc/apt/sources.list</span><br></pre></td></tr></table></div></figure>
+
+</li>
+<li><p>パッケージリストを更新します。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249083029_image.png" alt="apt update"></span></p>
+</li>
+<li><p>Debian アーカイブキーリングをインストールします。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y debian-archive-keyring</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249117075_image.png" alt="ライセンス"></span></p>
+</li>
+<li><p>パッケージリストをもう一度更新します。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249154038_image.png" alt="apt update"></span></p>
+</li>
+<li><p>カーネルをアップグレードし、ファームウェアをインストールします。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y -t bookworm-backports linux-image-amd64 firmware-iwlwifi</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249240618_image.png" alt="カーネルとドライバーのダウンロード"></span></p>
+</li>
+<li><p>再起動します。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
+<p>再起動後、カーネルバージョンが 6.12 以上であることを確認します。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249301302_image.png"></span></p>
+</li>
+</ol>
+<h3 id="ステップ-3：nmtui-で-Wi-Fi-に接続する" class="article-heading">ステップ 3：<code class="chip">nmtui</code> で Wi-Fi に接続する<a class="article-anchor" href="#ステップ-3：nmtui-で-Wi-Fi-に接続する" aria-hidden="true"></a></h3><p><code class="chip">nmtui</code> ツールを使用して接続します。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nmtui</span><br></pre></td></tr></table></div></figure>
+
+<p>システムが <code class="chip">nmtui</code> コマンドを認識しない場合は、下の<strong>nmtui のインストール</strong>セクションを参照してください。</p>
+<ol class="doc-steps">
+<li><p><strong>Activate a connection</strong> を選択します。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249412290_image.png" alt="ネットワークマネージャーの GUI/TUI"></span></p>
+</li>
+<li><p>Wi-Fi ネットワーク（SSID）を選びます。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249456648_image.png" alt="Wi-Fi の選択"></span></p>
+</li>
+<li><p>パスワードを入力し、Enter を押します。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249476230_image.png" alt="無線ネットワークで要求される認証またはパスワード"></span></p>
+</li>
+<li><p>IP アドレスと接続を確認します<br>設定を保存して <code class="chip">nmtui</code> を終了し、<code class="chip">ip a</code> で無線インターフェースの状態を確認します。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ip a</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249580916_image.png" alt="IP アドレスの確認"></span></p>
+<p>  GUI 版 CasaOS を使用している場合は、Wi-Fi メニューを開き、接続するネットワークを選ぶだけです。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249604651_image.png"></span></p>
+<h3 id="対応するルーター-OS" class="article-heading">対応するルーター OS<a class="article-anchor" href="#対応するルーター-OS" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><strong>OpenWRT</strong><ol class="doc-steps">
+<li>AX210 の公式ドライバーである iwlwifi をインストールします。</li>
+<li>Intel の[公式 Web サイト](<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.intel.com/content/www/us/en/support/articles/000005511/wireless.html" class="doc-link">https://www.intel.com/content/www/us/en/support/articles/000005511/wireless.html</a> 383)からファームウェアをダウンロードします。</li>
+<li>iwlwifi-ty-59.601f3a66.0.tgz を展開し、ファイルを &#x2F;lib&#x2F;firmware&#x2F; にコピーします。</li>
+<li>lspci コマンドで AX210 のパスを確認します。</li>
+<li>&#x2F;sys&#x2F;bus&#x2F;pci&#x2F;devices に移動すると、デバイス ID が表示されます。</li>
+<li>ディレクトリに入り、pwd コマンドで絶対パスを取得します。</li>
+<li>&#x2F;etc&#x2F;config&#x2F;wireless を編集します。<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">config wifi-device &#x27;radio0&#x27;</span><br><span class="line">        option type &#x27;mac80211&#x27;</span><br><span class="line">        option country &#x27;US&#x27;</span><br><span class="line">        option cell_density &#x27;0&#x27;</span><br><span class="line">        option path &#x27;pci0000:00/0000:00:1d.0/0000:03:00.0&#x27;</span><br><span class="line"></span><br><span class="line">config wifi-device &#x27;radio1&#x27;</span><br><span class="line">        option type &#x27;mac80211&#x27;</span><br><span class="line">        option path &#x27;pci0000:00/0000:00:1d.0/0000:03:00.0&#x27;</span><br><span class="line">        option band &#x27;5g&#x27;</span><br><span class="line">        option htmode &#x27;HE80&#x27;</span><br><span class="line">        option cell_density &#x27;0&#x27;</span><br><span class="line">        option country &#x27;US&#x27;</span><br></pre></td></tr></table></div></figure></li>
+<li>再起動します。ドライバーが正常に動作することを確認できます。</li>
+</ol>
+</li>
+</ul>
+<h2 id="ネットワーク速度テスト" class="article-heading">ネットワーク速度テスト<a class="article-anchor" href="#ネットワーク速度テスト" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755249878561_image.png" alt="iperf3"></span></p>
+<h2 id="AP-モード（2-4-GHz-のみ）" class="article-heading">AP モード（2.4 GHz のみ）<a class="article-anchor" href="#AP-モード（2-4-GHz-のみ）" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><p>必要なパッケージをインストールします。<br><code class="chip">sudo apt update</code><br><code class="chip">sudo apt install hostapd iw</code></p>
+</li>
+<li><p>無線ネットワークを設定します。<br><code class="chip">/etc/hostapd/hostapd.conf</code> を編集します。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">interface=wlp1s0  # Replace according to your network adapter name</span><br><span class="line">driver=nl80211</span><br><span class="line">ssid=mylove   # Replace &quot;YourSSID&quot; with your desired network name</span><br><span class="line">hw_mode=a</span><br><span class="line">channel=36      # Select your preferred channel</span><br><span class="line">country_code=US</span><br><span class="line">ieee80211ac=1</span><br><span class="line">wmm_enabled=1</span><br><span class="line">auth_algs=1</span><br><span class="line">wpa=2</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">rsn_pairwise=CCMP</span><br><span class="line">wpa_passphrase=YourPassphrase  # Replace &quot;YourPassphrase&quot; with your Wi-Fi password</span><br><span class="line">logger_stdout=-1</span><br><span class="line">logger_stdout_level=2</span><br></pre></td></tr></table></div></figure></li>
+<li><p>hostapd を起動します。<br><code class="chip">sudo systemctl start hostapd</code></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755250711162_image.png"></span></p>
+</li>
+<li><p>別のデバイスから接続し、Wi-Fi ネットワークをテストします。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1755250706664_image.png"></span></p>
+</li>
+</ol>
+<h2 id="nmtui-のインストール" class="article-heading">nmtui のインストール<a class="article-anchor" href="#nmtui-のインストール" aria-hidden="true"></a></h2><p><code class="chip">nmtui</code> は <code class="chip">network-manager</code> パッケージに含まれています。</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install network-manager</span><br></pre></td></tr></table></div></figure>
+
+<p>実際に試してみませんか。必要なコンポーネントは<a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/" class="doc-link">当社のストア</a>で入手できます。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.535Z" itemprop="dateModified">最終更新日: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/hardware/supported-disk-formats"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">対応ディスク形式</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/hardware/wake-on-lan-setup"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Wake-on-LAN 設定</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="toc-text">1. はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%95%E6%A7%98"><span class="toc-text">2. 仕様</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">3. 使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-1%EF%BC%9AAX210-Wi-Fi-%E3%82%AB%E3%83%BC%E3%83%89%E3%81%8C%E6%A4%9C%E5%87%BA%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B"><span class="toc-text">ステップ 1：AX210 Wi-Fi カードが検出されているか確認する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-2%EF%BC%9AAX210-%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B"><span class="toc-text">ステップ 2：AX210 ドライバーをインストールする</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-3%EF%BC%9Anmtui-%E3%81%A7-Wi-Fi-%E3%81%AB%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B"><span class="toc-text">ステップ 3：nmtui で Wi-Fi に接続する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BE%E5%BF%9C%E3%81%99%E3%82%8B%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC-OS"><span class="toc-text">対応するルーター OS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E9%80%9F%E5%BA%A6%E3%83%86%E3%82%B9%E3%83%88"><span class="toc-text">ネットワーク速度テスト</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AP-%E3%83%A2%E3%83%BC%E3%83%89%EF%BC%882-4-GHz-%E3%81%AE%E3%81%BF%EF%BC%89"><span class="toc-text">AP モード（2.4 GHz のみ）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nmtui-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">nmtui のインストール</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/hardware/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/jp/hardware/quick-start">クイックスタート</a></li><li><a class="" href="/docs/jp/hardware/zimacube-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/hardware-details">ハードウェア詳細</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on-setup">自動電源オンの設定</a></li><li><a class="" href="/docs/jp/hardware/pc-direct">PC 直接接続</a></li><li><a class="" href="/docs/jp/hardware/hdd-interface-guide">HDD インターフェースガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-guide">7 番ベイ利用ガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-install">7 番ベイの取り付け</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on">自動電源オン</a></li><li><a class="" href="/docs/jp/hardware/gpu-expansion">GPU 拡張</a></li><li><a class="" href="/docs/jp/hardware/raid-ssd-expansion">RAID SSD 拡張</a></li><li><a class="" href="/docs/jp/hardware/bios-configuration">BIOS 設定</a></li><li><a class="" href="/docs/jp/hardware/zimacube-fan-diy">DIY ファンガイド</a></li><li><a class="" href="/docs/jp/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 転送速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">対応ネットワークアダプター</a></li><li><a class="" href="/docs/jp/hardware/enable-wol-on-zimacube">Wake-on-LAN を有効化</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/jp/hardware/zimaboard-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/zimaboard-quick-start">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/hardware-interface">ハードウェアインターフェース</a></li><li><a class="" href="/docs/jp/hardware/power-on-zimaboard-2">ZimaBoard 2 の電源を入れる</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">ファン取り付けと PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/jp/hardware/power-on-zimablade">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/zimablade-overview">はじめに</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">互換性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/jp/hardware/7th-bay-led">7 番ベイ LED インジケーター</a></li><li><a class="" href="/docs/jp/hardware/ups-compatibility-list">UPS 互換性リスト</a></li><li><a class="" href="/docs/jp/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/jp/hardware/supported-disk-formats">対応ディスク形式</a></li><li><a class="is-current" href="/docs/jp/hardware/ax210-wifi-6e">AX210 Wi-Fi モジュール</a></li><li><a class="" href="/docs/jp/hardware/wake-on-lan-setup">Wake-on-LAN 設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">サードパーティ OS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/jp/hardware/install-unraid">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/install-truenas">TrueNAS を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-x86-install">OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux のインストール</a></li><li><a class="" href="/docs/jp/hardware/openwrt-usb-install">USB から OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-emmc-boot">OpenWrt eMMC 起動</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-install">OMV のインストール</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-setup">OMV の設定</a></li><li><a class="" href="/docs/jp/hardware/unraid-install">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/third-party-os-install">サードパーティ OS</a></li><li><a class="" href="/docs/jp/hardware/minimal-ubuntu-server-build">Ubuntu Server の設定</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/ax210-wifi-6e" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/ax210-wifi-6e" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/ax210-wifi-6e" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/ax210-wifi-6e" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/ax210-wifi-6e" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

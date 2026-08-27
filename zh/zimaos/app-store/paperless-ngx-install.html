@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>在ZimaOS上安装Paperless-ngx的完整指南 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/paperless-ngx-install">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/paperless-ngx-install">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/paperless-ngx-install">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/paperless-ngx-install">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/paperless-ngx-install">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/paperless-ngx-install">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/paperless-ngx-install">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="最初由 Muditha Liyanagama 发布在 IceWhale 社区论坛上: 原文地址    大家好，ZimaOS 和 Zimaboard 的爱好者们！   我注意到，尽管 ZimaOS 社区和 Ice-whale 团队提供了出色的支持，但有时找到清晰、组织良好、详细的安装指南仍然是一个挑战。对于那些喜欢直接、一步一步方法的人，特别是在处理一些小而常常令人沮丧的技">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在ZimaOS上安装Paperless-ngx的完整指南">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/app-store/paperless-ngx-install">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="最初由 Muditha Liyanagama 发布在 IceWhale 社区论坛上: 原文地址    大家好，ZimaOS 和 Zimaboard 的爱好者们！   我注意到，尽管 ZimaOS 社区和 Ice-whale 团队提供了出色的支持，但有时找到清晰、组织良好、详细的安装指南仍然是一个挑战。对于那些喜欢直接、一步一步方法的人，特别是在处理一些小而常常令人沮丧的技">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767274710302_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767274711098_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767274711641_copyImage.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767274712173_copyImage.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1767274710302_copyImage.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "在ZimaOS上安装Paperless-ngx的完整指南",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.552Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "在ZimaOS上安装Paperless-ngx的完整指南"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/paperless-ngx-install">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/paperless-ngx-install">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/paperless-ngx-install">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/paperless-ngx-install">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="is-current" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">在ZimaOS上安装Paperless-ngx的完整指南</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <blockquote>
+<p><em>最初由</em> <em><strong>Muditha Liyanagama</strong></em> <em>发布在 IceWhale 社区论坛上:</em> <em><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-paperless-ngx-on-zimaos/7474" class="doc-link">原文地址</a></em>  </p>
+</blockquote>
+<p>大家好，ZimaOS 和 Zimaboard 的爱好者们！  </p>
+<p>我注意到，尽管 ZimaOS 社区和 Ice-whale 团队提供了出色的支持，但有时找到清晰、组织良好、详细的安装指南仍然是一个挑战。对于那些喜欢直接、一步一步方法的人，特别是在处理一些小而常常令人沮丧的技术问题时，这个指南就是为你们设计的。这篇文章是我正在开发的关于 ZimaOS 和 Zimaboard 系列文章中的第二篇，我真诚希望它能对你们有所帮助。  </p>
+<p>本指南重点介绍如何安装 Paperless-ngx，并配置其家庭使用的基本功能，可以在你的本地网络或 Tailscale 网络中访问。如果你的目的是将 Paperless-ngx 实例暴露到公共互联网，则以下的一些配置可能需要调整。  </p>
+<p>我在一台 Zimaboard 2 上进行了此安装，规格如下：  </p>
+<ul class="doc-dots">
+<li><strong>CPU：</strong> Intel(R) N150 4 核 2.90 GHz 4 线程  </li>
+<li><strong>RAM：</strong> 16 GB 6400 MHz LPDDR5  </li>
+<li><strong>GPU：</strong> Intel Corporation Alder Lake-N [Intel Graphics]  </li>
+<li><strong>操作系统：</strong> ZimaOS v1.5.3 Plus</li>
+</ul>
+<p>让我们开始安装 Paperless-ngx 吧！  </p>
+<h3 id="步骤-1：访问应用商店" class="article-heading"><strong>步骤 1：访问应用商店</strong><a class="article-anchor" href="#步骤-1：访问应用商店" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>登录到你的 ZimaOS 网络界面。  </li>
+<li>导航到 <strong>应用商店</strong>。</li>
+</ol>
+<h3 id="步骤-2：查找并选择-Paperless-ngx" class="article-heading"><strong>步骤 2：查找并选择 Paperless-ngx</strong><a class="article-anchor" href="#步骤-2：查找并选择-Paperless-ngx" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>在应用商店的搜索栏中，输入 Paperless-ngx。  </li>
+<li>从搜索结果中选择 **Paperless-ngx (BigBearCasaOS)**。</li>
+</ol>
+<h3 id="步骤-3：自定义安装" class="article-heading"><strong>步骤 3：自定义安装</strong><a class="article-anchor" href="#步骤-3：自定义安装" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>找到 <strong>安装</strong> 按钮。不要直接点击它，而是点击旁边的小箭头。  </li>
+<li>选择 <strong>自定义安装</strong>。</li>
+</ol>
+<h3 id="步骤-4：安装前的关键配置" class="article-heading"><strong>步骤 4：安装前的关键配置</strong><a class="article-anchor" href="#步骤-4：安装前的关键配置" aria-hidden="true"></a></h3><p>这是我们为 Paperless-ngx 正常运行设置基本参数的关键阶段。  </p>
+<p>在 <strong>Volumes</strong> 部分，进行以下更改。（如果你更喜欢默认设置，可以保持不变。请参阅下面的图片作为参考。）  </p>
+<ul class="doc-dots">
+<li><strong>为</strong> &#x2F;usr&#x2F;src&#x2F;paperless&#x2F;consume <strong>设置自定义卷路径</strong>：强烈建议为你的消费文件夹定义一个特定且用户友好的路径，这将使文档管理变得更简单。</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767274710302_copyImage.png" alt="Configuration Path"></span>  </p>
+<p>添加以下环境变量。（请参阅下面的图片作为参考。）  </p>
+<ul class="doc-dots">
+<li><strong>PAPERLESS_ADMIN_USER</strong>：将默认值更改为你首选的管理员用户名。  </li>
+<li><strong>PAPERLESS_ADMIN_PASSWORD</strong>：将默认值更改为你首选的管理员密码。  </li>
+<li><em>这些参数将在安装过程中创建你的管理员帐户.</em>  </li>
+<li><strong>PAPERLESS_CONSUMER_DELETE_ORIGINALS: true</strong>：  </li>
+<li><em>此参数启用在文件被处理并吸收到 Paperless-ngx 后，自动删除 &#x2F;consume 文件夹中的文件。</em>  </li>
+<li><strong>PAPERLESS_CONSUMER_RECURSIVE: true</strong>：  </li>
+<li><em>此参数启用对 &#x2F;consume 文件夹中子文件夹及其内容的递归消费。</em>  </li>
+<li><strong>PAPERLESS_OCR_CLEAN: clean-final</strong>：  </li>
+<li>**PAPERLESS_OCR_LANGUAGES: &lt;3-letter code for OCR support languages separated by spaces (e.g., eng sin)&gt;**：  </li>
+<li><em>这些配置启用 Paperless-ngx 的基本 OCR 功能。然而，特定的 clean-final 设置和所需的 OCR 语言需要在安装后通过 Paperless-ngx 图形用户界面（GUI）进一步启用和配置。</em>  </li>
+<li><strong>PAPERLESS_CSRF_TRUSTED_ORIGINS:</strong> <em><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="http://your_server/" class="doc-link">http://your_server</a></strong></em> <em><strong>address:port</strong></em>  </li>
+<li><strong>PAPERLESS_URL:</strong> <em><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="http://your_server/" class="doc-link">http://your_server</a></strong></em> <em><strong>address:port</strong></em>  </li>
+<li><em>这些配置至关重要。不要在 URL 末尾添加斜杠（**&#x2F;**）。错误地设置这些参数会导致在尝试登录时出现 “Forbidden (403) CSRF verification failed. Request aborted” 错误消息.</em>  </li>
+<li><strong>注意：</strong> 用你的 Zimaboard 的 IP 地址或主机名替换（例如，192.168.1.100）。用 Paperless-ngx 将使用的端口替换（通常默认为 8000，但你可以在 ZimaOS 应用商店配置中验证这一点）。</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767274711098_copyImage.png" alt="Confirm path"></span>  </p>
+<p>保持其他所有设置不变。  </p>
+<p><strong>再次检查：</strong> 在继续之前，仔细检查你的所有设置。一旦你确信所有参数正确，点击 <strong>安装</strong> 按钮。  </p>
+<h3 id="安装后配置和操作" class="article-heading"><strong>安装后配置和操作</strong><a class="article-anchor" href="#安装后配置和操作" aria-hidden="true"></a></h3><p>安装完成后，登录到你的 Paperless-ngx 界面，并按如下方式配置 OCR 设置：  </p>
+<ol class="doc-steps">
+<li>导航到 <strong>应用配置</strong> —&gt; <strong>OCR 设置</strong>。  </li>
+<li>将 <strong>Clean</strong> 设置为 clean-final。  </li>
+<li>启用 <strong>Deskew</strong>。  </li>
+<li>将 <strong>Language</strong> 设置为你所需的 OCR 支持语言的 3 字母代码，多个语言之间用加号（+）隔开（例如，eng+sin）。  </li>
+<li>点击 <strong>保存</strong>。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767274711641_copyImage.png" alt="OCR Settings"></span>  </p>
+<p>接下来，返回到 ZimaOS 的 <strong>应用仪表盘</strong>，并重启 <strong>Paperless-ngx</strong>。  </p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767274712173_copyImage.png" alt="restart"></span>  </p>
+<p><strong>重要操作提示：</strong> 每当你向 &#x2F;consume 文件夹中添加大量文档进行处理时，建议重启 Paperless-ngx。不这样做可能会导致文件权限问题，并妨碍文档处理。或者，你可以直接通过 Paperless-ngx GUI 上传文档，通常不需要重启。  </p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/app-store/pi-hole-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Pi-hole 广告拦截</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/app-store/paperless-ai-install"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">AI 文档处理</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E8%AE%BF%E9%97%AE%E5%BA%94%E7%94%A8%E5%95%86%E5%BA%97"><span class="toc-text">步骤 1：访问应用商店</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E6%9F%A5%E6%89%BE%E5%B9%B6%E9%80%89%E6%8B%A9-Paperless-ngx"><span class="toc-text">步骤 2：查找并选择 Paperless-ngx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AE%89%E8%A3%85"><span class="toc-text">步骤 3：自定义安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E5%AE%89%E8%A3%85%E5%89%8D%E7%9A%84%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">步骤 4：安装前的关键配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%90%8E%E9%85%8D%E7%BD%AE%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="toc-text">安装后配置和操作</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="is-current" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/paperless-ngx-install" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/paperless-ngx-install" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/paperless-ngx-install" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/paperless-ngx-install" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/paperless-ngx-install" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

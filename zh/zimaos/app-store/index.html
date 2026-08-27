@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS 应用商店：在 NAS 上运行媒体服务、自托管应用与 AI | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="探索 Zima NAS 可以实现的用途：搭建家庭媒体服务器、自托管应用、运行 AI 智能体以及创建游戏服务器，所有服务都运行在你自己的硬件上。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS 应用商店：在 NAS 上运行媒体服务、自托管应用与 AI">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/app-store/">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="探索 Zima NAS 可以实现的用途：搭建家庭媒体服务器、自托管应用、运行 AI 智能体以及创建游戏服务器，所有服务都运行在你自己的硬件上。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "应用商店概览",
+      "description": "探索 Zima NAS 可以实现的用途：搭建家庭媒体服务器、自托管应用、运行 AI 智能体以及创建游戏服务器，所有服务都运行在你自己的硬件上。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.552Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/app-store/"
+        }
+        
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="is-current" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">应用商店概览</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>我们很喜欢看到大家用这些设备创造出的各种项目。多年来，社区成员把 Zima 设备变成了媒体中心、广告拦截器、AI 助手和游戏服务器；每当我们以为已经见过所有玩法时，总会有人带来新的惊喜。</p>
+<p>运行自己的服务会带来一种独特的踏实感：硬件属于你，数据留在你手中，也不会有人突然停止服务或更改价格。</p>
+<h2 id="媒体服务器" class="article-heading">媒体服务器<a class="article-anchor" href="#媒体服务器" aria-hidden="true"></a></h2><p>大多数人从这里开始。把 NAS 变成家庭流媒体中心，让电影、电视剧、音乐和照片能够在家中的任意屏幕上播放。</p>
+<ul class="doc-dots">
+<li><strong><a href="./media-server-setup-with-jellyfin" title="使用 Jellyfin 从 NAS 串流电影、电视剧和音乐" class="doc-link">Jellyfin 媒体服务器</a></strong> — 免费开源，支持多种设备</li>
+<li><strong><a href="./plex-setup-guide" title="安装 Plex Media Server，并将媒体库串流到任意设备" class="doc-link">Plex 媒体服务器</a></strong> — 界面成熟，并为各类设备提供客户端</li>
+<li><strong><a href="./plex-and-gpu-transcoding" title="在 Plex 中启用 GPU 硬件转码，实现流畅的 4K 播放" class="doc-link">Plex GPU 转码</a></strong> — 启用硬件加速，流畅播放 4K 内容</li>
+<li><strong><a href="./setup-emby-server" title="设置 Emby Media Server，在不同设备间串流内容" class="doc-link">Emby 服务器</a></strong> — 兼顾 Jellyfin 的开放性与 Plex 的易用性</li>
+<li><strong><a href="./sync-photos-with-immich" title="使用自托管 Immich 将手机照片同步到 NAS" class="doc-link">Immich 照片同步</a></strong> — Google Photos 的自托管替代方案</li>
+<li><strong><a href="./immich-photo-backup" title="深入配置 Immich，用于备份照片库" class="doc-link">Immich 照片备份</a></strong> — 进一步设置 Immich 照片备份</li>
+<li><strong><a href="./dlna-server-setup" title="设置 DLNA，将媒体串流到旧款电视和 DLNA 设备" class="doc-link">DLNA 服务器</a></strong> — 将内容播放到旧款智能电视和 DLNA 设备</li>
+<li><strong><a href="./nvr-camera-server" title="将安防摄像机连接到 NAS，并启用 AI 目标检测" class="doc-link">NVR 摄像机服务器</a></strong> — 接入安防摄像机并使用 AI 目标检测</li>
+<li><strong><a href="./cli-guide" title="通过命令行将数千张照片批量同步到 NAS" class="doc-link">批量照片同步</a></strong> — 适合一次迁移大量照片</li>
+</ul>
+<h2 id="自托管应用" class="article-heading">自托管应用<a class="article-anchor" href="#自托管应用" aria-hidden="true"></a></h2><p>这些是社区最常运行的应用。每个应用都能用你自己掌控的服务替代一项订阅。</p>
+<ul class="doc-dots">
+<li><strong><a href="./syncthing-setup" title="使用自托管 Syncthing 在设备之间保持文件夹同步" class="doc-link">使用 Syncthing 同步文件</a></strong> — 在所有电脑和手机之间同步文件夹</li>
+<li><strong><a href="./pi-hole-setup" title="在家庭服务器上使用 Pi-hole 拦截全网广告" class="doc-link">Pi-hole 广告拦截</a></strong> — 自动为网络中的每台设备拦截广告</li>
+<li><strong><a href="./paperless-ngx-install" title="使用 Paperless-ngx 管理和搜索扫描文档" class="doc-link">文档管理</a></strong> — 扫描纸质文档并建立可搜索的资料库</li>
+<li><strong><a href="./paperless-ai-install" title="使用 Paperless-AI 自动标记和分类文档" class="doc-link">AI 文档处理</a></strong> — 为 Paperless 增加自动标签和分类</li>
+<li><strong><a href="./radarr-setup" title="使用 Radarr 自动下载和管理电影" class="doc-link">Radarr 电影管理</a></strong> — 指定想看的电影，其余流程自动完成</li>
+<li><strong><a href="./azuracast-install" title="使用 AzuraCast 运行自己的网络电台" class="doc-link">网络电台</a></strong> — 搭建属于自己的网络广播站</li>
+<li><strong><a href="./zabbix-install-guide" title="使用 Zabbix 仪表盘监控服务器和网络" class="doc-link">服务器监控</a></strong> — 掌握服务器与网络运行状态</li>
+<li><strong><a href="./webtorrent-feature" title="使用 WebTorrent 将种子内容直接下载到 NAS" class="doc-link">种子下载器</a></strong> — 直接把下载内容保存到 NAS</li>
+<li><strong><a href="./syncthing-install" title="为多设备同步配置更高级的 Syncthing 设置" class="doc-link">Syncthing 设置指南</a></strong> — 更详细的 Syncthing 配置说明</li>
+</ul>
+<h2 id="AI-与机器学习" class="article-heading">AI 与机器学习<a class="article-anchor" href="#AI-与机器学习" aria-hidden="true"></a></h2><p>在自己的硬件上运行 AI，意味着数据无需离开家中。最近，社区在这个方向上投入了很多创造力。</p>
+<ul class="doc-dots">
+<li><strong><a href="./enable-ai" title="在家庭服务器上启用 AI 搜索，用自然语言查找文件" class="doc-link">启用 AI 搜索</a></strong> — 使用自然语言搜索所有文件</li>
+<li><strong><a href="./deploy-deepseek-r1" title="在智能体服务器上部署 DeepSeek R1，本地运行大语言模型" class="doc-link">部署 DeepSeek R1</a></strong> — 在 Zima 硬件上本地运行高性能模型</li>
+<li><strong><a href="./llm-manual-download" title="为离线环境下载 AI 模型" class="doc-link">下载 AI 模型</a></strong> — 适用于离线或低带宽环境</li>
+<li><strong><a href="./frigate-ollama-setup" title="使用 AI 自动为家庭服务器中的照片添加标签和描述" class="doc-link">AI 照片描述</a></strong> — 自动标记并描述照片库</li>
+<li><strong><a href="./openclaw-agent-setup" title="将 OpenClaw 作为全天候智能体运行，并通过 Telegram 对话" class="doc-link">OpenClaw 智能体</a></strong> — 可通过 Telegram 随时对话的 AI 智能体</li>
+<li><strong><a href="./hermes-agent-setup" title="运行能够学习并记住用户信息的 Hermes 智能体" class="doc-link">Hermes 智能体</a></strong> — 会持续学习并保留记忆的智能体</li>
+</ul>
+<h2 id="创意项目" class="article-heading">创意项目<a class="article-anchor" href="#创意项目" aria-hidden="true"></a></h2><p>有些项目很难归入固定类别，而它们往往最让人惊喜。</p>
+<ul class="doc-dots">
+<li><strong><a href="./batocera-arcade-setup" title="使用 Batocera 将 Zima 设备变成复古游戏机" class="doc-link">Batocera 街机</a></strong> — 将 Zima 设备改造成复古游戏主机</li>
+<li><strong><a href="./minecraft-friendship-service" title="在自己的服务器上托管持续运行的 Minecraft 世界" class="doc-link">Minecraft 服务器</a></strong> — 托管属于自己的 Minecraft 世界</li>
+<li><strong><a href="./oculus-quest-media-server" title="将 PC VR 游戏无线串流到 Oculus Quest" class="doc-link">Oculus VR 串流</a></strong> — 将 PC VR 游戏串流到 Quest 头显</li>
+<li><strong><a href="./zimablade-cluster-pve" title="通过 Proxmox 集群迁移在主机之间移动服务" class="doc-link">PVE 集群迁移</a></strong> — 在 Proxmox 主机之间迁移服务</li>
+<li><strong><a href="./pve-on-debian-for-i226" title="为 Intel i226 网卡在 Debian 上运行 Proxmox VE" class="doc-link">在 Debian 上运行 PVE</a></strong> — 适用于 Intel i226 网卡的 Proxmox VE 方案</li>
+<li><strong><a href="./awesome-third-party-stores" title="浏览由社区维护的第三方 NAS 应用商店" class="doc-link">社区应用商店</a></strong> — 社区整理的第三方应用源</li>
+<li><strong><a href="./self-hosted-apps" title="了解在家庭服务器上自托管应用的更多方式" class="doc-link">自托管应用概览</a></strong> — 在 ZimaBoard 上探索更多自托管方案</li>
+<li><strong><a href="./jellyfin-setup" title="在 ZimaBoard 家庭服务器上设置 Jellyfin" class="doc-link">ZimaBoard 上的 Jellyfin</a></strong> — 针对 ZimaBoard 硬件的 Jellyfin 指南</li>
+</ul>
+<h2 id="下一步" class="article-heading">下一步<a class="article-anchor" href="#下一步" aria-hidden="true"></a></h2><p>无论准备搭建什么，都可以先从一个应用开始。亲手把它变成自己的服务，正是其中的乐趣。</p>
+<ul class="doc-dots">
+<li>硬件规格：**<a href="../../hardware/" title="并排比较 ZimaCube、ZimaBoard 和 ZimaBlade" class="doc-link">硬件概览</a>** — 查看三条产品线的硬件详情</li>
+<li>深入探索：**<a href="../../developer/" title="深入了解 ZFS、RAID、网络和 ZimaOS API" class="doc-link">开发者概览</a>** — ZFS、RAID、网络与 ZimaOS API</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/app-store/setup-emby-server"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Emby 服务器</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">媒体服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%89%98%E7%AE%A1%E5%BA%94%E7%94%A8"><span class="toc-text">自托管应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI-%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-text">AI 与机器学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E6%84%8F%E9%A1%B9%E7%9B%AE"><span class="toc-text">创意项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="is-current" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

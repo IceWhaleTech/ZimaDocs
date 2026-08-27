@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>How to Enable Wake-on-LAN (WOL) on Zimaboard | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/hardware/wake-on-lan-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/wake-on-lan-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/wake-on-lan-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/wake-on-lan-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/wake-on-lan-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/wake-on-lan-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/wake-on-lan-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Enable Wake-on-LAN on ZimaBoard to remotely power it on from sleep. Configure BIOS and network settings for WOL support on your single-board server.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How to Enable Wake-on-LAN (WOL) on Zimaboard">
+<meta property="og:url" content="https://www.zimaspace.com/docs/hardware/wake-on-lan-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Enable Wake-on-LAN on ZimaBoard to remotely power it on from sleep. Configure BIOS and network settings for WOL support on your single-board server.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730194172109_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730194187655_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730195494901_copyImage.jpeg">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730196409296_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730196776593_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730196793376_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730197095005_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730197245860_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730197626956_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730197821740_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.311Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.311Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1730194172109_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "How to Enable Wake-on-LAN (WOL) on Zimaboard",
+      "description": "Enable Wake-on-LAN on ZimaBoard to remotely power it on from sleep. Configure BIOS and network settings for WOL support on your single-board server.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.311Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Enable Wake-on-LAN (WOL) on Zimaboard"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/wake-on-lan-setup">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/wake-on-lan-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/wake-on-lan-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/wake-on-lan-setup">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/wake-on-lan-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/hardware/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/hardware/quick-start">Quick Start</a></li><li><a class="" href="/docs/hardware/zimacube-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/hardware-details">Hardware Details</a></li><li><a class="" href="/docs/hardware/auto-power-on-setup">Auto Power-On Method</a></li><li><a class="" href="/docs/hardware/pc-direct">PC Direct Connection</a></li><li><a class="" href="/docs/hardware/hdd-interface-guide">HDD Interface Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-guide">7th Bay Usage Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-install">Install 7th Bay</a></li><li><a class="" href="/docs/hardware/auto-power-on">Auto Power-On</a></li><li><a class="" href="/docs/hardware/gpu-expansion">GPU Expansion</a></li><li><a class="" href="/docs/hardware/raid-ssd-expansion">RAID SSD Expansion</a></li><li><a class="" href="/docs/hardware/bios-configuration">BIOS Configuration</a></li><li><a class="" href="/docs/hardware/zimacube-fan-diy">DIY Fan Guide</a></li><li><a class="" href="/docs/hardware/transfer-speeds-over-thunderbolt">Thunderbolt Transfer Speed</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">Compatible Network Adapters</a></li><li><a class="" href="/docs/hardware/enable-wol-on-zimacube">Enable Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/hardware/zimaboard-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/zimaboard-quick-start">Power On</a></li><li><a class="" href="/docs/hardware/hardware-interface">Hardware Interface</a></li><li><a class="" href="/docs/hardware/power-on-zimaboard-2">Power On ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Fan Installation & PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/hardware/power-on-zimablade">Power On</a></li><li><a class="" href="/docs/hardware/zimablade-overview">Get Started</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibility</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/hardware/7th-bay-led">7th Bay LED Indicator</a></li><li><a class="" href="/docs/hardware/ups-compatibility-list">UPS Compatibility List</a></li><li><a class="" href="/docs/hardware/enable-intel-ax210">Intel AX210 WiFi</a></li><li><a class="" href="/docs/hardware/supported-disk-formats">Supported Disk Formats</a></li><li><a class="" href="/docs/hardware/ax210-wifi-6e">AX210 WiFi Module</a></li><li><a class="is-current" href="/docs/hardware/wake-on-lan-setup">Wake-on-LAN Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Third-Party Systems</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">How to Enable Wake-on-LAN (WOL) on Zimaboard</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.311Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>LAN Wake-on-LAN (WOL) is a very important part of system and computer processing, especially if you are dealing with a SBS (Single Board Server) like Zimaboard.<br>To meet your needs, our Zimaboard product provides support for WOL, out of the box, and you just need to enable it.<br>Enabling LAN Wake-on-LAN (WOL) on Zimaboard through its BIOS is a three-step process.</p>
+<ul class="doc-dots">
+<li>The first step is to configure WOL through the BIOS</li>
+<li>The second step is to enable WOL in the system services, and note down the MAC address and other information</li>
+<li>The third step is to download the appropriate WakeOnLine software and configure the new device.</li>
+</ul>
+<p>Here are the specific steps:</p>
+<h2 id="BIOS-Settings" class="article-heading">BIOS Settings<a class="article-anchor" href="#BIOS-Settings" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>Turn on the system power and press the <strong>Delete</strong> key to enter the BIOS.</li>
+<li>Use the arrow keys on the keyboard to navigate to the <strong>Advanced</strong> tab, then select the <strong>Power Management Configuration</strong> item. Make sure the <strong>Wake on PME</strong> option is set to <strong>Enabled</strong>. Press <strong>F10</strong> and click <strong>OK</strong> to save the settings, and the system will automatically restart.<br><img src="https://manage.icewhale.io/api/static/docs/1730194172109_image.png"><br><img src="https://manage.icewhale.io/api/static/docs/1730194187655_image.png"></li>
+</ol>
+<h2 id="Enabling-System-Services" class="article-heading">Enabling System Services<a class="article-anchor" href="#Enabling-System-Services" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><p>Our ZimaBoard is pre-installed with the CasaOS system. Here, an SSH tool can be utilized to control the command line and connect using your own username and password.<br>Use the command <code class="chip">ip a</code> to list all the network interfaces and their status in the system. Network interface names are typically like <code class="chip">eth0</code>, <code class="chip">enp2s0</code>, <code class="chip">wlan0</code>, etc. You can identify the appropriate interface name based on the network interface you are connected to:<br>At the same time, when using WakeMeOnLan on Windows in the subsequent steps, ensure that you use the correct target address. Usually, the broadcast address is the broadcast IP address of the entire subnet. For instance, if the IP address of the ZimaBoard is <code class="chip">10.0.192.211</code>, the broadcast address should be <code class="chip">10.0.255.255</code>. Therefore, attention should also be paid to the broadcast address.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730195494901_copyImage.jpeg"></span></p>
+</li>
+<li><p>Run the following commands to update your package manager and install the ethtool tool:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ethtool</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>The network interface I enabled here is <code class="chip">enp3s0</code>. By default, the network interface WOL is disabled. You can use the following command to check whether WOL is enabled:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo ethtool enp3s0</span><br></pre></td></tr></table></div></figure>
+<p>Where <code class="chip">enp3s0</code> should be the name of the network interface you enabled, as shown below</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730196409296_image.png"></span></p><p><code class="chip">Wake-on: d</code> means WOL is currently disabled.</p>
+</li>
+<li><p>To enable the Wake-on-LAN feature, you need to run the following command:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo ethtool -s enp3s0 wol g</span><br></pre></td></tr></table></div></figure>
+<p>  This command will enable magic packets (g), which will support waking up the ZimaBoard via magic packets.<br>  After running this command, you can use the following command again to confirm that WOL is enabled:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo ethtool enp3s0</span><br></pre></td></tr></table></div></figure></li>
+</ol>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th><img src="https://manage.icewhale.io/api/static/docs/1730196776593_image.png"></th>
+<th><img src="https://manage.icewhale.io/api/static/docs/1730196793376_image.png"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>running this command</td>
+<td>The status of <code class="chip">Wake-on</code> should change to <code class="chip">g</code>, indicating that WOL has been successfully enabled</td>
+</tr>
+</tbody></table></div>
+<ol start="5" class="doc-steps">
+<li>Create a startup script through systemd</li>
+</ol>
+<ul class="doc-dots">
+<li><p>Create a systemd service to automatically run the ethtool command to enable WOL at system startup. Services are the simplest.</p>
+</li>
+<li><p>Create a new service file:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/systemd/system/wol.service</span><br></pre></td></tr></table></div></figure></li>
+<li><p>Enter the following content in the file:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Enable Wake-on-LAN on enp3s0</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/sbin/ethtool -s enp3s0 wol g</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730197095005_image.png"></span></p>
+</li>
+<li><p>Press <code class="chip">Ctel+O</code> to save, then press <code class="chip">Enter</code>, then press <code class="chip">Ctrl+X</code> to close the file, and then use the following command to enable the service:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable wol.service</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>Reboot the system and check if the Wake-on setting remains as <code class="chip">g</code>:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl start wol.service</span><br></pre></td></tr></table></div></figure></li>
+</ul>
+<p>The above method can ensure that the WOL setting is automatically enabled after reboot.</p>
+<ol start="6" class="doc-steps">
+<li>After success, shut down the computer on the web page, or enter <code class="chip">sudo shutdown now</code> to shut down the computer<br><img src="https://manage.icewhale.io/api/static/docs/1730197245860_image.png"></li>
+</ol>
+<h2 id="Wake-on-LAN" class="article-heading">Wake on LAN<a class="article-anchor" href="#Wake-on-LAN" aria-hidden="true"></a></h2><p><strong>Windows test</strong></p>
+<ol class="doc-steps">
+<li>Download <a target="_blank" rel="noopener external nofollow noreferrer" href="https://sourceforge.net/projects/wakemeonlan/" class="doc-link">WakeMeOnLan</a> software (of course there are many options, here we use this software for testing)</li>
+<li>Open the software and click <code class="chip">Add New Computer</code> under File<br><img src="https://manage.icewhale.io/api/static/docs/1730197626956_image.png"></li>
+<li>Enter the previous broadcast address in IP address. For example, if the IP address of ZimaBoard is <code class="chip">10.0.192.211</code>, the broadcast address should be <code class="chip">10.0.255.255</code>. Fill in the MAC Address normally. Do not fill in other information. Click <code class="chip">OK</code>.</li>
+<li>Select the device to be awakened, click <code class="chip">Wake Up Selected Computers</code> in the upper right corner, and observe whether it can be awakened and started.<br><img src="https://manage.icewhale.io/api/static/docs/1730197821740_image.png"><blockquote class="note warn"><strong class="note-title">Tips</strong><p>If you need remote wakeup on other devices (such as Android, iOS, MacOS, etc.), you can search for related software online. Since the basic steps are not much different, I will not go into details here. I wish you all the best.</p>
+</blockquote></li>
+</ol>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.311Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/ax210-wifi-6e"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">AX210 WiFi Module</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/hardware/install-unraid"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Run Unraid</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BIOS-Settings"><span class="toc-text">BIOS Settings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enabling-System-Services"><span class="toc-text">Enabling System Services</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wake-on-LAN"><span class="toc-text">Wake on LAN</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/hardware/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/hardware/quick-start">Quick Start</a></li><li><a class="" href="/docs/hardware/zimacube-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/hardware-details">Hardware Details</a></li><li><a class="" href="/docs/hardware/auto-power-on-setup">Auto Power-On Method</a></li><li><a class="" href="/docs/hardware/pc-direct">PC Direct Connection</a></li><li><a class="" href="/docs/hardware/hdd-interface-guide">HDD Interface Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-guide">7th Bay Usage Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-install">Install 7th Bay</a></li><li><a class="" href="/docs/hardware/auto-power-on">Auto Power-On</a></li><li><a class="" href="/docs/hardware/gpu-expansion">GPU Expansion</a></li><li><a class="" href="/docs/hardware/raid-ssd-expansion">RAID SSD Expansion</a></li><li><a class="" href="/docs/hardware/bios-configuration">BIOS Configuration</a></li><li><a class="" href="/docs/hardware/zimacube-fan-diy">DIY Fan Guide</a></li><li><a class="" href="/docs/hardware/transfer-speeds-over-thunderbolt">Thunderbolt Transfer Speed</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">Compatible Network Adapters</a></li><li><a class="" href="/docs/hardware/enable-wol-on-zimacube">Enable Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/hardware/zimaboard-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/zimaboard-quick-start">Power On</a></li><li><a class="" href="/docs/hardware/hardware-interface">Hardware Interface</a></li><li><a class="" href="/docs/hardware/power-on-zimaboard-2">Power On ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Fan Installation & PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/hardware/power-on-zimablade">Power On</a></li><li><a class="" href="/docs/hardware/zimablade-overview">Get Started</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibility</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/hardware/7th-bay-led">7th Bay LED Indicator</a></li><li><a class="" href="/docs/hardware/ups-compatibility-list">UPS Compatibility List</a></li><li><a class="" href="/docs/hardware/enable-intel-ax210">Intel AX210 WiFi</a></li><li><a class="" href="/docs/hardware/supported-disk-formats">Supported Disk Formats</a></li><li><a class="" href="/docs/hardware/ax210-wifi-6e">AX210 WiFi Module</a></li><li><a class="is-current" href="/docs/hardware/wake-on-lan-setup">Wake-on-LAN Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Third-Party Systems</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/wake-on-lan-setup" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/hardware/wake-on-lan-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/wake-on-lan-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/wake-on-lan-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/wake-on-lan-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Deploy OpenClaw on ZimaOS: Set Up a 24/7 AI Agent | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zimaos/app-store/openclaw-agent-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/openclaw-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/openclaw-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/openclaw-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/openclaw-agent-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/openclaw-agent-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="This guide explains deploying OpenClaw on CasaOS&#x2F;ZimaOS devices, configuring a custom AI model, linking a Telegram bot, and accessing the Web UI to manage and interact with the AI.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Deploy OpenClaw on ZimaOS: Set Up a 24&#x2F;7 AI Agent">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zimaos/app-store/openclaw-agent-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="This guide explains deploying OpenClaw on CasaOS&#x2F;ZimaOS devices, configuring a custom AI model, linking a Telegram bot, and accessing the Web UI to manage and interact with the AI.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220372637_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220537700_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220664655_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220692606_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220726788_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220763191_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220810816_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220830104_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220843480_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220866935_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220891482_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220923167_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220933540_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773220953934_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221077004_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221116186_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221130505_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221160225_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221182974_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221202944_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1773221237858_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1778125516229_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1778125603653_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.555Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1773220372637_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "How to Deploy OpenClaw",
+      "description": "This guide explains deploying OpenClaw on CasaOS/ZimaOS devices, configuring a custom AI model, linking a Telegram bot, and accessing the Web UI to manage and interact with the AI.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.555Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Deploy OpenClaw"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/openclaw-agent-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/openclaw-agent-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/openclaw-agent-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/openclaw-agent-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="is-current" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">How to Deploy OpenClaw</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="1-Overview" class="article-heading">1. Overview<a class="article-anchor" href="#1-Overview" aria-hidden="true"></a></h2><p>This tutorial guides you through deploying OpenClaw on a device running CasaOS&#x2F;ZimaOS, completing the basic configuration, and enabling AI model interaction via Telegram. Using a Telegram bot as the example, this tutorial covers the entire process from model provider setup to bot pairing.</p>
+<h3 id="1-1-Goals" class="article-heading">1.1 Goals<a class="article-anchor" href="#1-1-Goals" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><p>Complete the initial OpenClaw setup, including:</p>
+</li>
+<li><p>Connecting a custom AI model provider</p>
+</li>
+<li><p>Creating and linking a Telegram bot to enable AI chat via direct messages</p>
+</li>
+<li><p>Viewing and managing OpenClaw status through the Web UI</p>
+</li>
+</ul>
+<h3 id="1-2-Environment" class="article-heading">1.2 Environment<a class="article-anchor" href="#1-2-Environment" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><p>Recommended Hardware Specifications: </p>
+<ul class="doc-dots">
+<li>4 GB RAM</li>
+<li>20 GB Storage</li>
+</ul>
+</li>
+<li><p>Software：CasaOS v0.4.15 &#x2F; ZimaOS v1.5.4 (latest)</p>
+</li>
+<li><p>Network：Must  The device must be connected to the internet and able to reach the Telegram API. A wired connection is recommended for stability.</p>
+</li>
+</ul>
+<h3 id="1-3-Usage-Notes" class="article-heading">1.3 Usage Notes<a class="article-anchor" href="#1-3-Usage-Notes" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><p><strong>Continuous Operation:</strong> OpenClaw is designed to run 24&#x2F;7. Place your ZimaBlade in a well-ventilated area with a stable ambient temperature to ensure reliable long-term performance and prevent thermal throttling.</p>
+</li>
+<li><p><strong>Storage Expansion:</strong> The ZimaBlade’s built-in storage is limited. If you plan to use memory or logging features extensively, it is strongly recommended to attach an external drive for storing conversation history and application data.</p>
+</li>
+</ul>
+<h3 id="1-3-Prerequisites" class="article-heading">1.3 Prerequisites<a class="article-anchor" href="#1-3-Prerequisites" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><p>Your device’s IP address, used to replace the <code class="chip">&lt;ip&gt;</code> placeholder in commands.</p>
+<p>See Step 3 in the <a href="../../hardware/power-on-zimablade" class="doc-link">power-on guide</a> for how to find it.</p>
+</li>
+<li><p>An AI model API Key and basic familiarity with how to use it.</p>
+</li>
+<li><p>A Telegram account.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> In the OpenClaw configuration interface, use the <strong>Space bar</strong> to select an option and <strong>Enter</strong> to confirm.</p>
+</blockquote>
+<h3 id="1-4-Steps-at-a-Glance" class="article-heading">1.4 Steps at a Glance<a class="article-anchor" href="#1-4-Steps-at-a-Glance" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li><p>Install OpenClaw from the CasaOS &#x2F; ZimaOS App Store.</p>
+</li>
+<li><p>Open a terminal — connect via SSH (recommended) or use the terminal.</p>
+</li>
+<li><p>Switch to administrator mode: run <code class="chip">su</code> and enter the default password <code class="chip">casaos</code>.</p>
+</li>
+<li><p>Enter the OpenClaw container: <code class="chip">docker exec -it openclaw bash</code></p>
+</li>
+<li><p>Launch the configuration wizard: <code class="chip">node /app/dist/index.js config</code></p>
+</li>
+<li><p>Configure the model provider: select <strong>Model</strong>, choose <strong>custom provider</strong>, then enter the Base URL, API Key, and model ID.</p>
+</li>
+<li><p>Configure the Telegram channel: select <strong>Channels → Configure&#x2F;link → Telegram</strong>, create a bot via BotFather, enter the Token, and set the DM policy to <strong>Pairing</strong> (recommended).</p>
+</li>
+<li><p>Complete pairing: send <code class="chip">/start</code> to your bot in Telegram to receive a pairing code, then run <code class="chip">openclaw pairing approve telegram &lt;pairing-code&gt;</code> in the terminal.</p>
+</li>
+<li><p>Access the Web UI at <code class="chip">https://&lt;ip&gt;:24190?token=casaos</code>.</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-Detailed-Steps-CasaOs-Example" class="article-heading">2. Detailed Steps (CasaOs Example)<a class="article-anchor" href="#2-Detailed-Steps-CasaOs-Example" aria-hidden="true"></a></h2><h3 id="2-1-Open-a-Terminal" class="article-heading">2.1 Open a Terminal<a class="article-anchor" href="#2-1-Open-a-Terminal" aria-hidden="true"></a></h3><p>After installing OpenClaw via the CasaOS Web UI, open a terminal to begin configuration. There are two ways to do this:</p>
+<p><strong>A. SSH from your computer (recommended — easier to copy and paste commands)</strong></p>
+<p>Please open the <strong>Terminal</strong>.<br>Run the following command:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ssh &lt;username&gt;@&lt;ip&gt;</span><br></pre></td></tr></table></div></figure>
+<p>   For example: <code class="chip">ssh casaos@10.0.1.7</code><br>   </p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220372637_image.png" alt="Terminal showing the SSH command being entered"></span></p><p>If this is your first time connecting, you will see the prompt:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></div></figure>
+<p>   Type <code class="chip">yes</code> and press Enter.</p>
+<p><strong>B. Input directly on ZimaBlade</strong></p>
+<p>Connect a keyboard and monitor directly to the ZimaBlade and use the local terminal.</p>
+<hr>
+<h3 id="2-2-Switch-to-Administrator-Mode" class="article-heading">2.2 Switch to Administrator Mode<a class="article-anchor" href="#2-2-Switch-to-Administrator-Mode" aria-hidden="true"></a></h3><p>Run the following command and press Enter:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></div></figure>
+<p>Enter the default password <code class="chip">casaos</code>.</p>
+<blockquote>
+<p>The password will not be displayed as you type — this is normal.<br>If you are using ZimaOS, no password is required.</p>
+</blockquote>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220537700_image.png" alt="Terminal showing the prompt has switched to the root user"></span></p>
+<p>You now have the administrator privileges required to modify system settings.</p>
+<hr>
+<h3 id="2-3-Enter-the-Configuration-Wizard" class="article-heading">2.3 Enter the Configuration Wizard<a class="article-anchor" href="#2-3-Enter-the-Configuration-Wizard" aria-hidden="true"></a></h3><p><strong>Step 1 — Enter the OpenClaw container:</strong></p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it openclaw bash</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220664655_image.png" alt="Terminal prompt changed to root@openclaw:/app"></span></p>
+<p>When the prompt changes to <code class="chip">root@openclaw:/app</code>, you have successfully entered the container. All subsequent configuration must be performed from within this container. If you accidentally exit, simply run this command again.</p>
+<p><strong>Step 2 — Launch the configuration wizard:</strong></p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">node /app/dist/index.js config</span><br></pre></td></tr></table></div></figure>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220692606_image.png" alt="The configuration wizard&#39;s initial screen"></span></p>
+<p><strong>Step 3 — Select the Gateway location:</strong></p>
+<p>When prompted with <strong>Where will the Gateway run?</strong>, select <strong>Local (this machine)</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220726788_image.png" alt="Local (this machine) highlighted in the selection menu"></span></p>
+<p>The highlighted option is the currently selected one. Press <strong>Enter</strong> to confirm.</p>
+<hr>
+<h3 id="2-4-Configure-the-Model" class="article-heading">2.4 Configure the Model<a class="article-anchor" href="#2-4-Configure-the-Model" aria-hidden="true"></a></h3><h4 id="1-Select-a-Provider" class="article-heading">1. Select a Provider<a class="article-anchor" href="#1-Select-a-Provider" aria-hidden="true"></a></h4><p>In <strong>Select sections to configure</strong>, choose <strong>Model</strong>.<br>  </p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220763191_image.png" alt="Cursor on the Model option"></span></p>
+<p>In <strong>Model &#x2F; auth provider</strong>, select <strong>custom provider</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220810816_image.png" alt="custom provider highlighted"></span></p>
+<h4 id="2-Enter-Model-Parameters" class="article-heading">2. Enter Model Parameters<a class="article-anchor" href="#2-Enter-Model-Parameters" aria-hidden="true"></a></h4><p>Enter the <strong>Base URL</strong> (e.g., <code class="chip">https://api.openai.com/v1</code>).</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220830104_image.png" alt="Base URL input field"></span></p>
+<p>Enter your <strong>API Key</strong>.<br>  </p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220843480_image.png" alt="API Key input field"></span></p>
+<p>Select the <strong>API format</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220866935_image.png" alt="API format selection menu"></span></p>
+<p>Select the <strong>Model ID</strong> you want to use.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220891482_image.png" alt="Model ID selection list"></span></p>
+<hr>
+<h3 id="2-5-Configure-a-Channel-Telegram-Example" class="article-heading">2.5 Configure a Channel (Telegram Example)<a class="article-anchor" href="#2-5-Configure-a-Channel-Telegram-Example" aria-hidden="true"></a></h3><h4 id="1-Open-Channel-Settings" class="article-heading">1. Open Channel Settings<a class="article-anchor" href="#1-Open-Channel-Settings" aria-hidden="true"></a></h4><p>In <strong>Select sections to configure</strong>, choose <strong>Channels</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220923167_image.png" alt="Cursor on the Channels option"></span></p>
+<p>Select <strong>Configure &#x2F; link</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220933540_image.png" alt="Channels submenu showing &quot;Telegram: needs token&quot; status"></span></p>
+<p>Select <strong>Telegram</strong> from the list.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773220953934_image.png" alt="Telegram selected in the channel list"></span></p>
+<h4 id="2-Get-a-Bot-Token" class="article-heading">2. Get a Bot Token<a class="article-anchor" href="#2-Get-a-Bot-Token" aria-hidden="true"></a></h4><p>Open a conversation with <strong>@BotFather</strong> on Telegram and send <code class="chip">/newbot</code> to start creating a bot.<br>BotFather will ask you to provide:</p>
+<blockquote>
+<p><strong>Bot Name:</strong> The display name for your bot<br><strong>Username:</strong> A unique handle that must end in <code class="chip">bot</code> </p>
+</blockquote>
+<p>Once created, BotFather will return an <strong>HTTP API Token</strong></p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221077004_image.png" alt="BotFather conversation"></span></p>
+<blockquote>
+<p><strong>Save this Token</strong> — you will need it in the next step.</p>
+</blockquote>
+<h4 id="3-Enter-the-Bot-Token" class="article-heading">3. Enter the Bot Token<a class="article-anchor" href="#3-Enter-the-Bot-Token" aria-hidden="true"></a></h4><p>Select <strong>Enter Telegram bot token</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221116186_image.png" alt="Token input option in the menu"></span></p>
+<p>Paste or type the Token you received from BotFather.<br>  </p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221130505_image.png" alt="Token input field"></span></p>
+<h4 id="4-Set-the-DM-Access-Policy" class="article-heading">4. Set the DM Access Policy<a class="article-anchor" href="#4-Set-the-DM-Access-Policy" aria-hidden="true"></a></h4><p>When asked <strong>Configure DM access policies now? (default: pairing)</strong>, select <strong>Yes</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221160225_image.png" alt="Policy configuration prompt"></span></p>
+<p>In <strong>Telegram DM policy</strong>, select <strong>Pairing (recommended)</strong>.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221182974_image.png" alt="Pairing option highlighted"></span></p>
+<p>Return to <strong>Select sections to configure</strong> and choose <strong>Continue (Done)</strong> to finish the Telegram setup.<br>  </p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221202944_image.png" alt="Continue (Done) option highlighted"></span></p>
+<h4 id="5-Complete-Pairing" class="article-heading">5. Complete Pairing<a class="article-anchor" href="#5-Complete-Pairing" aria-hidden="true"></a></h4><p>Open your bot’s chat in Telegram and send <code class="chip">/start</code>. Wait for the bot to reply with a pairing code.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1773221237858_image.png" alt="Telegram conversation showing the bot&#39;s pairing code reply"></span></p>
+<p>In the terminal, run the following command, replacing <code class="chip">&lt;your-pairing-code&gt;</code> with the code you received:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">openclaw pairing approve telegram &lt;your-pairing-code&gt;</span><br></pre></td></tr></table></div></figure>
+
+<p>A success message confirms that pairing is complete. You can now chat with the AI directly through your Telegram bot.</p>
+<hr>
+<h3 id="2-6-Access-the-Web-Interface" class="article-heading">2.6 Access the Web Interface<a class="article-anchor" href="#2-6-Access-the-Web-Interface" aria-hidden="true"></a></h3><p>Once configuration is complete, open a browser and navigate to:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">https://&lt;ip&gt;:24190?token=casaos</span><br></pre></td></tr></table></div></figure>
+
+<p>Replace <code class="chip">&lt;ip&gt;</code> with your device’s IP address.<br>After opening the Web UI for the first time, you may see a <strong>“pairing required”</strong> message on the Gateway dashboard instead of connecting directly.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1778125516229_image.png"></span></p><p>This is expected behavior in newer OpenClaw versions. The Web UI device must first be approved from inside the container.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1778125603653_image.png"></span></p>
+<h4 id="1-Enter-the-OpenClaw-container" class="article-heading">1. Enter the OpenClaw container<a class="article-anchor" href="#1-Enter-the-OpenClaw-container" aria-hidden="true"></a></h4><p>Run:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it openclaw bash</span><br></pre></td></tr></table></div></figure>
+<h4 id="2-List-pending-devices" class="article-heading">2. List pending devices<a class="article-anchor" href="#2-List-pending-devices" aria-hidden="true"></a></h4><p>Inside the container, run:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">node /app/dist/index.js devices list</span><br></pre></td></tr></table></div></figure>
+<p>If an unpaired device exists, OpenClaw will display a request_id.</p>
+<h4 id="3-Approve-the-device" class="article-heading">3. Approve the device<a class="article-anchor" href="#3-Approve-the-device" aria-hidden="true"></a></h4><p>Run the following command and replace <request_id> with the actual ID shown above:</request_id></p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">node /app/dist/index.js devices approve &lt;request_id&gt;</span><br></pre></td></tr></table></div></figure>
+<p>After approval succeeds, refresh the Web UI page and reconnect.<br>The <strong>“pairing required”</strong> warning should disappear, and the dashboard will connect normally.<br>Finally, enjoy OpenClaw!</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.555Z" itemprop="dateModified">Last updated: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zimaos/app-store/frigate-ollama-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">AI Photo Description</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zimaos/app-store/pve-on-debian-for-i226"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Run PVE on Debian</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Overview"><span class="toc-text">1. Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Goals"><span class="toc-text">1.1 Goals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Environment"><span class="toc-text">1.2 Environment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Usage-Notes"><span class="toc-text">1.3 Usage Notes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Prerequisites"><span class="toc-text">1.3 Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Steps-at-a-Glance"><span class="toc-text">1.4 Steps at a Glance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Detailed-Steps-CasaOs-Example"><span class="toc-text">2. Detailed Steps (CasaOs Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Open-a-Terminal"><span class="toc-text">2.1 Open a Terminal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Switch-to-Administrator-Mode"><span class="toc-text">2.2 Switch to Administrator Mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Enter-the-Configuration-Wizard"><span class="toc-text">2.3 Enter the Configuration Wizard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Configure-the-Model"><span class="toc-text">2.4 Configure the Model</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Select-a-Provider"><span class="toc-text">1. Select a Provider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Enter-Model-Parameters"><span class="toc-text">2. Enter Model Parameters</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-Configure-a-Channel-Telegram-Example"><span class="toc-text">2.5 Configure a Channel (Telegram Example)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Open-Channel-Settings"><span class="toc-text">1. Open Channel Settings</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Get-a-Bot-Token"><span class="toc-text">2. Get a Bot Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Enter-the-Bot-Token"><span class="toc-text">3. Enter the Bot Token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Set-the-DM-Access-Policy"><span class="toc-text">4. Set the DM Access Policy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Complete-Pairing"><span class="toc-text">5. Complete Pairing</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Access-the-Web-Interface"><span class="toc-text">2.6 Access the Web Interface</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Enter-the-OpenClaw-container"><span class="toc-text">1. Enter the OpenClaw container</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-List-pending-devices"><span class="toc-text">2. List pending devices</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Approve-the-device"><span class="toc-text">3. Approve the device</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI & Machine Learning</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="is-current" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/openclaw-agent-setup" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/openclaw-agent-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/openclaw-agent-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/openclaw-agent-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

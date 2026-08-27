@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Primeros pasos con ZimaBoard 2 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/hardware/power-on-zimaboard-2">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/power-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/power-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/power-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/power-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/power-on-zimaboard-2">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/power-on-zimaboard-2">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Desembala y configura tu servidor de placa única ZimaBoard 2. Incluye una descripción del hardware, el primer arranque, la conexión de periféricos y el acceso al panel del sistema.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Primeros pasos con ZimaBoard 2">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/hardware/power-on-zimaboard-2">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Desembala y configura tu servidor de placa única ZimaBoard 2. Incluye una descripción del hardware, el primer arranque, la conexión de periféricos y el acceso al panel del sistema.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1756795953605_zimaboard2-interface-pinout.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1756796033890_zimaboard2-power-network.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.305Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.305Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1756795953605_zimaboard2-interface-pinout.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Primeros pasos con ZimaBoard 2",
+      "description": "Desembala y configura tu servidor de placa única ZimaBoard 2. Incluye una descripción del hardware, el primer arranque, la conexión de periféricos y el acceso al panel del sistema.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.305Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/es/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Primeros pasos con ZimaBoard 2"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item current_page_item"><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/power-on-zimaboard-2">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/power-on-zimaboard-2">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/power-on-zimaboard-2">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/power-on-zimaboard-2">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/power-on-zimaboard-2">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/hardware/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/es/hardware/quick-start">Inicio rápido</a></li><li><a class="" href="/docs/es/hardware/zimacube-hardware-overview">Resumen de hardware</a></li><li><a class="" href="/docs/es/hardware/hardware-details">Detalles de hardware</a></li><li><a class="" href="/docs/es/hardware/auto-power-on-setup">Método de encendido automático</a></li><li><a class="" href="/docs/es/hardware/pc-direct">Conexión directa al PC</a></li><li><a class="" href="/docs/es/hardware/hdd-interface-guide">Guía de interfaz HDD</a></li><li><a class="" href="/docs/es/hardware/7th-bay-guide">Uso de la séptima bahía</a></li><li><a class="" href="/docs/es/hardware/7th-bay-install">Instalar la séptima bahía</a></li><li><a class="" href="/docs/es/hardware/auto-power-on">Encendido automático</a></li><li><a class="" href="/docs/es/hardware/gpu-expansion">Expansión de GPU</a></li><li><a class="" href="/docs/es/hardware/raid-ssd-expansion">Expansión RAID con SSD</a></li><li><a class="" href="/docs/es/hardware/bios-configuration">Configuración de BIOS</a></li><li><a class="" href="/docs/es/hardware/zimacube-fan-diy">Guía de ventilador DIY</a></li><li><a class="" href="/docs/es/hardware/transfer-speeds-over-thunderbolt">Velocidad por Thunderbolt</a></li><li><a class="" href="/docs/es/hardware/compatible-network-adapters">Adaptadores de red compatibles</a></li><li><a class="" href="/docs/es/hardware/enable-wol-on-zimacube">Activar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/es/hardware/zimaboard-hardware-overview">Resumen de hardware</a></li><li><a class="" href="/docs/es/hardware/zimaboard-quick-start">Encender</a></li><li><a class="" href="/docs/es/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="is-current" href="/docs/es/hardware/power-on-zimaboard-2">Encender ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalación del ventilador y PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/es/hardware/power-on-zimablade">Encender</a></li><li><a class="" href="/docs/es/hardware/zimablade-overview">Primeros pasos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidad</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/es/hardware/7th-bay-led">Indicador LED de la séptima bahía</a></li><li><a class="" href="/docs/es/hardware/ups-compatibility-list">Compatibilidad de UPS</a></li><li><a class="" href="/docs/es/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/es/hardware/supported-disk-formats">Formatos de disco compatibles</a></li><li><a class="" href="/docs/es/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/es/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/es/hardware/install-unraid">Ejecutar Unraid</a></li><li><a class="" href="/docs/es/hardware/install-truenas">Ejecutar TrueNAS</a></li><li><a class="" href="/docs/es/hardware/openwrt-x86-install">Ejecutar OpenWrt</a></li><li><a class="" href="/docs/es/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/es/hardware/openwrt-usb-install">OpenWrt mediante USB</a></li><li><a class="" href="/docs/es/hardware/openwrt-emmc-boot">OpenWrt desde eMMC</a></li><li><a class="" href="/docs/es/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="" href="/docs/es/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/es/hardware/unraid-install">Ejecutar Unraid</a></li><li><a class="" href="/docs/es/hardware/third-party-os-install">Sistemas de terceros</a></li><li><a class="" href="/docs/es/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Primeros pasos con ZimaBoard 2</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.305Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Introduccion" class="article-heading">Introducción<a class="article-anchor" href="#Introduccion" aria-hidden="true"></a></h2><p><strong>ZimaBoard 2 — Crea nuevas reglas</strong><br>Un <strong>servidor de placa única de alto rendimiento</strong> diseñado para makers y creadores. Compacto pero potente, puede funcionar como <strong>mini NAS</strong>, <strong>servidor doméstico</strong>, <strong>plataforma autoalojada</strong> o <strong>router por software</strong>, y permite ejecutar inferencia de <strong>IA local</strong> y despliegues en <strong>clúster</strong>.<br> Con <strong>doble 2.5GbE</strong>, una ranura <strong>PCIe</strong>, <strong>doble SATA 3.0</strong> y expansión <strong>USB 3.1</strong>, ZimaBoard 2 te permite construir tu propio centro digital privado de alto rendimiento.</p>
+<h2 id="Caracteristicas" class="article-heading">Características<a class="article-anchor" href="#Caracteristicas" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>CPU Intel® N150 de cuatro núcleos</strong>, hasta <strong>3.6 GHz</strong> para ofrecer un rendimiento ágil.</li>
+<li><strong>8GB</strong> o <strong>16GB de memoria LPDDR5x</strong> para gestionar varias tareas.</li>
+<li><strong>32GB</strong> o <strong>64GB de eMMC</strong> para un arranque rápido del sistema.</li>
+<li><strong>2 puertos LAN 2.5GbE</strong> para conexiones de red de alta velocidad.</li>
+<li><strong>2 conexiones SATA 3.0 con alimentación</strong> para conectar directamente HDD&#x2F;SSD de 2.5”&#x2F;3.5”.</li>
+<li><strong>2 puertos USB 3.1</strong> para periféricos y unidades externas de alta velocidad.</li>
+<li><strong>1 ranura PCIe 3.0</strong> para una <strong>NIC de 10GbE</strong>, un <strong>adaptador NVMe</strong> o una <strong>GPU</strong>.</li>
+<li><strong>1 Mini DisplayPort 1.4</strong>, compatible con salida <strong>4K@60Hz</strong>.</li>
+<li><strong>Refrigeración pasiva sin ventilador</strong> para un funcionamiento silencioso y estable.</li>
+</ul>
+<h2 id="Interfaces" class="article-heading">Interfaces<a class="article-anchor" href="#Interfaces" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1756795953605_zimaboard2-interface-pinout.png" alt="Diagrama de interfaces de ZimaBoard 2: doble 2.5GbE, USB 3.1, MiniDP, alimentación de CC, PCIe y SATA."></span></p>
+<h2 id="Conectar-almacenamiento-y-dispositivos-PCIe" class="article-heading">Conectar almacenamiento y dispositivos PCIe<a class="article-anchor" href="#Conectar-almacenamiento-y-dispositivos-PCIe" aria-hidden="true"></a></h2><h3 id="HDD-x2F-SSD-SATA-de-2-5”-x2F-3-5”" class="article-heading">HDD&#x2F;SSD SATA de 2.5”&#x2F;3.5”<a class="article-anchor" href="#HDD-x2F-SSD-SATA-de-2-5”-x2F-3-5”" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li>Utiliza el <strong>cable de datos SATA + cable de alimentación</strong> incluidos para conectar la unidad al puerto SATA de la placa.</li>
+<li>Instala la unidad en un <strong>soporte NAS</strong> adecuado o en una bandeja externa.<br><mark><em>Consejo: dos unidades de <strong>3.5”</strong> requieren una corriente de arranque mayor; utiliza una fuente de alimentación <strong>estable de 12V&#x2F;5A</strong>.</em></mark></li>
+</ul>
+<h3 id="Tarjetas-de-expansion-PCIe" class="article-heading">Tarjetas de expansión PCIe<a class="article-anchor" href="#Tarjetas-de-expansion-PCIe" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li>Instala una <strong>NIC de 10GbE</strong>, un <strong>adaptador NVMe</strong> o una <strong>GPU discreta de bajo consumo</strong> (consulta la lista de compatibilidad de GPU para obtener más información).</li>
+<li>Si la GPU requiere alimentación externa, prepara los cables adecuados y comprueba que la fuente tenga capacidad suficiente (consulta el mismo documento de compatibilidad).</li>
+</ul>
+<h2 id="Primer-arranque-y-red" class="article-heading">Primer arranque y red<a class="article-anchor" href="#Primer-arranque-y-red" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><p>Conecta el <strong>adaptador de corriente</strong> a ZimaBoard 2.</p>
+</li>
+<li><p>Conecta un <strong>cable Ethernet</strong> al router o switch.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1756796033890_zimaboard2-power-network.png" alt="E/S trasera de ZimaBoard 2 con Ethernet 2.5GbE y alimentación de 12V conectadas, y LED de encendido iluminado durante la configuración inicial del mini NAS." width="50%"></span></p>
+</li>
+<li><p>ZimaBoard 2 <strong>arranca automáticamente</strong> con <strong>ZimaOS preinstalado</strong> y obtiene una dirección IP de forma automática.</p>
+<ul class="doc-dots">
+<li>Visita <a href="https://www.zimaspace.com/zimaos/download" class="doc-link">https://www.zimaspace.com/zimaos/download</a> para descargar <strong>ZimaClient</strong>, buscar el dispositivo y abrir directamente su página.</li>
+<li>También puedes encontrar la IP en la <strong>lista DHCP del router</strong> o en una <strong>pantalla</strong> conectada.</li>
+<li>La <strong>aplicación Zima</strong> también está disponible para facilitar la detección y gestión del dispositivo.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Iniciar-sesion-y-usar-ZimaOS" class="article-heading"><a href="../zimaos/get-started" class="doc-link">Iniciar sesión y usar ZimaOS</a><a class="article-anchor" href="#Iniciar-sesion-y-usar-ZimaOS" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Abre la página de inicio de sesión mediante la IP del dispositivo, ZimaClient o la aplicación.</li>
+<li>Crea tu cuenta y completa la configuración inicial: idioma, zona horaria y red.</li>
+<li>Actualiza el sistema a la última versión de ZimaOS para obtener la máxima estabilidad y compatibilidad con aplicaciones.</li>
+</ul>
+<h2 id="Opciones-mas-avanzadas" class="article-heading">Opciones más avanzadas<a class="article-anchor" href="#Opciones-mas-avanzadas" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>Instalar un sistema operativo de terceros</strong>: distribuciones Linux, OpenWrt, <a href="./unraid-install" class="doc-link">UnRAID</a> y otros.</li>
+<li><strong>Activar WOL (Wake on LAN)</strong>: actívalo en la BIOS y en el sistema operativo (consulta el <a href="./wake-on-lan-setup" class="doc-link">tutorial para activar WOL</a>).</li>
+<li><strong>Usar un módulo Wi-Fi</strong>: sigue la guía de controladores y configuración para ZimaOS o el sistema operativo que elijas (<a href="./ax210-wifi-6e" class="doc-link">tutorial: guía del usuario de AX210</a>).</li>
+<li><strong>Añadir un módulo de refrigeración</strong>: consulta la guía de instalación del módulo de refrigeración si vas a ejecutar cargas de trabajo intensivas.</li>
+<li><strong>Descargar el modelo 3D</strong>: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://drive.google.com/file/d/1paE2loHLjRjftefT0xsKo4lIFok9-Itc/view?usp=sharing" class="doc-link">Google Drive</a></li>
+</ul>
+<h2 id="Preguntas-frecuentes" class="article-heading">Preguntas frecuentes<a class="article-anchor" href="#Preguntas-frecuentes" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>¿Cómo recupero o reinstalo ZimaOS?</strong><br> Consulta la guía de recuperación&#x2F;reinstalación de ZimaOS para crear un medio de arranque y ejecutar el instalador.</li>
+<li><strong>¿Cómo borro o inicializo la CMOS?</strong><br> Apaga el dispositivo, pulsa el botón de reinicio —o retira la batería durante unos segundos—, vuelve a conectar la alimentación y carga los valores predeterminados de la BIOS. Consulta la guía de inicialización de la CMOS para obtener más detalles.</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.305Z" itemprop="dateModified">Última actualización: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/hardware/hardware-interface"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Interfaces de hardware</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/hardware/fan-install-bios-pwm"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Instalación del ventilador y PWM</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduccion"><span class="toc-text">Introducción</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caracteristicas"><span class="toc-text">Características</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interfaces"><span class="toc-text">Interfaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conectar-almacenamiento-y-dispositivos-PCIe"><span class="toc-text">Conectar almacenamiento y dispositivos PCIe</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HDD-x2F-SSD-SATA-de-2-5%E2%80%9D-x2F-3-5%E2%80%9D"><span class="toc-text">HDD&#x2F;SSD SATA de 2.5”&#x2F;3.5”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tarjetas-de-expansion-PCIe"><span class="toc-text">Tarjetas de expansión PCIe</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Primer-arranque-y-red"><span class="toc-text">Primer arranque y red</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iniciar-sesion-y-usar-ZimaOS"><span class="toc-text">Iniciar sesión y usar ZimaOS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Opciones-mas-avanzadas"><span class="toc-text">Opciones más avanzadas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preguntas-frecuentes"><span class="toc-text">Preguntas frecuentes</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item current_page_item"><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/hardware/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/es/hardware/quick-start">Inicio rápido</a></li><li><a class="" href="/docs/es/hardware/zimacube-hardware-overview">Resumen de hardware</a></li><li><a class="" href="/docs/es/hardware/hardware-details">Detalles de hardware</a></li><li><a class="" href="/docs/es/hardware/auto-power-on-setup">Método de encendido automático</a></li><li><a class="" href="/docs/es/hardware/pc-direct">Conexión directa al PC</a></li><li><a class="" href="/docs/es/hardware/hdd-interface-guide">Guía de interfaz HDD</a></li><li><a class="" href="/docs/es/hardware/7th-bay-guide">Uso de la séptima bahía</a></li><li><a class="" href="/docs/es/hardware/7th-bay-install">Instalar la séptima bahía</a></li><li><a class="" href="/docs/es/hardware/auto-power-on">Encendido automático</a></li><li><a class="" href="/docs/es/hardware/gpu-expansion">Expansión de GPU</a></li><li><a class="" href="/docs/es/hardware/raid-ssd-expansion">Expansión RAID con SSD</a></li><li><a class="" href="/docs/es/hardware/bios-configuration">Configuración de BIOS</a></li><li><a class="" href="/docs/es/hardware/zimacube-fan-diy">Guía de ventilador DIY</a></li><li><a class="" href="/docs/es/hardware/transfer-speeds-over-thunderbolt">Velocidad por Thunderbolt</a></li><li><a class="" href="/docs/es/hardware/compatible-network-adapters">Adaptadores de red compatibles</a></li><li><a class="" href="/docs/es/hardware/enable-wol-on-zimacube">Activar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/es/hardware/zimaboard-hardware-overview">Resumen de hardware</a></li><li><a class="" href="/docs/es/hardware/zimaboard-quick-start">Encender</a></li><li><a class="" href="/docs/es/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="is-current" href="/docs/es/hardware/power-on-zimaboard-2">Encender ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalación del ventilador y PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/es/hardware/power-on-zimablade">Encender</a></li><li><a class="" href="/docs/es/hardware/zimablade-overview">Primeros pasos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidad</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/es/hardware/7th-bay-led">Indicador LED de la séptima bahía</a></li><li><a class="" href="/docs/es/hardware/ups-compatibility-list">Compatibilidad de UPS</a></li><li><a class="" href="/docs/es/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/es/hardware/supported-disk-formats">Formatos de disco compatibles</a></li><li><a class="" href="/docs/es/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/es/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/es/hardware/install-unraid">Ejecutar Unraid</a></li><li><a class="" href="/docs/es/hardware/install-truenas">Ejecutar TrueNAS</a></li><li><a class="" href="/docs/es/hardware/openwrt-x86-install">Ejecutar OpenWrt</a></li><li><a class="" href="/docs/es/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/es/hardware/openwrt-usb-install">OpenWrt mediante USB</a></li><li><a class="" href="/docs/es/hardware/openwrt-emmc-boot">OpenWrt desde eMMC</a></li><li><a class="" href="/docs/es/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="" href="/docs/es/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/es/hardware/unraid-install">Ejecutar Unraid</a></li><li><a class="" href="/docs/es/hardware/third-party-os-install">Sistemas de terceros</a></li><li><a class="" href="/docs/es/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/power-on-zimaboard-2" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/power-on-zimaboard-2" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/power-on-zimaboard-2" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/power-on-zimaboard-2" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/power-on-zimaboard-2" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

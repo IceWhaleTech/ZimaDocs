@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" data-theme="light">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <title>SMB帮助文档 | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
   <!-- Canonical links -->
   <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/smb-troubleshooting">
   <!-- Alternate links -->
   
     
+    
   <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/smb-troubleshooting">
+    
+    
     
   <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/smb-troubleshooting">
     
+    
+    
   <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/smb-troubleshooting">
+    
+    
     
   <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/smb-troubleshooting">
     
+    
+    
   <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/smb-troubleshooting">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/smb-troubleshooting">
     
   
   <!-- FAVICONS ICON -->
@@ -32,15 +64,22 @@
   <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#f1b335">
 
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
   <!-- build:css build/css/zima.css -->
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
   <!-- endbuild -->
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-lato@0.0.75/index.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
+  
   
   <!-- Open Graph -->
   
@@ -53,8 +92,8 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742797263676_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1742797274843_image.png">
-<meta property="article:published_time" content="2026-08-12T09:13:05.021Z">
-<meta property="article:modified_time" content="2026-08-12T09:13:05.021Z">
+<meta property="article:published_time" content="2026-08-27T09:51:24.553Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.553Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1742797263676_image.png">
@@ -66,7 +105,7 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WXBHPJ4N');</script>
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
 <!-- End Google Tag Manager -->
 
 
@@ -90,18 +129,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-08-12T09:13:05.021Z"
+      "datePublished": "2026-08-27T09:51:24.553Z"
     }
   </script>
 
   
   
-
-
-
   
-    
-    
+  
+  
+  
   
   
   
@@ -121,13 +158,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "@type": "ListItem",
           "position": 2,
           "name": "ZimaOS",
-          "item": "https://www.zimaspace.com/docs/zh/zimaos"
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
         },
+        
+        
         {
           "@type": "ListItem",
           "position": 3,
           "name": "SMB帮助文档"
         }
+        
       ]
     }
   </script>
@@ -136,258 +176,259 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 
-<body>
+<body class="docs-page">
   
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXBHPJ4N"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
   <div id="container">
-    <div id="header_outer">
-  <header id="header" >
-    <div id="header-inner" class="inner">
-      <div class="logo-container">
-        <h2 id="logo-wrap">
-          
-          <a href="https://www.zimaspace.com" id="logo">Zima-Docs</a>
-        </h2>
-      </div>
-      <div class="nav-container">
-        <nav id="main-nav" class="maxmenu white-style brackets-style nav-animation fade-down-animation" >
-          <ul id="menu-main-menu" class="maxmenu-list">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
 
-            <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="main-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="main-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="main-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="main-nav-link ">论坛</a></li>
-            <li class="menu-item menu-item-has-children">
-              <span class="maxmenu-click">
-                <i class="maxmenu-arrow"></i>
-              </span>
-              <a href="#">
-                <img src="/docs/img/lang.svg" />
-              </a>
-              <ul class="sub-menu">
-                
-                  <li class="menu-item">
-                    <a href="/docs/zimaos/smb-troubleshooting">English</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/zh/zimaos/smb-troubleshooting">中文</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/jp/zimaos/smb-troubleshooting">日本語</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/pt-PT/zimaos/smb-troubleshooting">Português</a>
-                  </li>
-                
-                  <li class="menu-item">
-                    <a href="/docs/es/zimaos/smb-troubleshooting">Español</a>
-                  </li>
-                
-              </ul>
-            </li>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
 
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/smb-troubleshooting">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/smb-troubleshooting">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/smb-troubleshooting">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/smb-troubleshooting">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/smb-troubleshooting">Español</a></li>
+            
           </ul>
-        </nav>
-      </div>
-
-      <div class="search-icon-container">
-        <div id="search-container-icon">
-          <i class="fa fa-search" id="showSearch"></i>
         </div>
-        <a class="shop" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="external">商店</a>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
       </div>
 
-      <a id="mobile-nav-toggle">
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-        <span class="mobile-nav-toggle-bar"></span>
-      </a>
-    </div>
-  </header>
-</div>
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
 
-<div id="search-container">
-  <div id="search-container-close">
-    <i class="fa fa-close" id="hideSearch"></i>
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
   <div class="search-bg"></div>
   <div class="search-content-container">
     <div id="search-input-wrap">
-      <div id="search-input-icon">
-        
-      </div>
-      <input type="search" id="search-input" placeholder="搜索...">
+      <input type="search" id="search-input" placeholder="开始搜索">
     </div>
     <div id="resultContent"></div>
   </div>
-
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
 </div>
 
-    <div id="content-wrap">
-  <div id="content" class="wrapper">
-    <div id="content-inner">
-      <article class="article-container" itemscope itemtype="http://schema.org/Article">
-        <div class="article-inner">
-          <div class="article">
-            <div class="inner">
-              <header class="article-header">
-                <h1 class="article-title" itemprop="name">SMB帮助文档</h1>
-                
-              
-                
-                <!-- facebook -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/3HofnB3" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"/></svg>
-                </a>
-                <!-- x twitter -->
-                <a class="article-edit-link" style="margin:0 5px;" target="_blank" href="http://bit.ly/45Ef2Du" rel="external nofollow noreferrer" title="如对本文件有任何疑问，请联系我们，我们将及时响应。​​">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m17.687 3.063l-4.996 5.711l-4.32-5.711H2.112l7.477 9.776l-7.086 8.099h3.034l5.469-6.25l4.78 6.25h6.102l-7.794-10.304l6.625-7.571zm-1.064 16.06L5.654 4.782h1.803l10.846 14.34z"/></svg>
-                </a>
-              </header>
-              <div class="article-content" itemprop="articleBody">
-                <h2 id="核心问题" class="article-heading"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题<a class="article-anchor" href="#核心问题" aria-hidden="true"></a></h2><ul>
-<li><strong>认证方式错误：</strong> 直接输入<code>smb://IP</code>连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。</li>
-<li><strong>MacOS 14.x版本缓存问题：</strong> 第一次认证失败后，即使之后输入正确的账号和密码，连接仍然无法建立。必须通过输入大小写不一致的用户名绕过macOS缓存重新认证。例如，正确的账号密码是<code>zimaos/zimaos</code>，第一次输入<br><code>smb://zimaos:zimaos1@10.0.0.99/ZimaOS-HD</code>（密码错误）失败后，再次输入<br><code>smb://zimaos:zimaos@10.0.0.99/ZimaOS-HD</code>仍然无法连接。必须输入<br><code>smb://Zimaos:zimaos@10.0.0.99/ZimaOS-HD</code>（或者继续改变用户名的大小写）。</li>
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/from-synology-to-zimacube-migrate-all-files">群晖手动传输</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">在磁盘之间迁移数据</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="is-current" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/remote-id">获取网络 ID</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">SMB帮助文档</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.553Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="核心问题" class="article-heading">核心问题<a class="article-anchor" href="#核心问题" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>认证方式错误：</strong> 直接输入<code class="chip">smb://IP</code>连接时，系统默认使用匿名或系统用户，导致认证失败并且连接响应时间过长。</li>
+<li><strong>MacOS 14.x版本缓存问题：</strong> 第一次认证失败后，即使之后输入正确的账号和密码，连接仍然无法建立。必须通过输入大小写不一致的用户名绕过macOS缓存重新认证。例如，正确的账号密码是<code class="chip">zimaos/zimaos</code>，第一次输入<br><code class="chip">smb://zimaos:zimaos1@10.0.0.99/ZimaOS-HD</code>（密码错误）失败后，再次输入<br><code class="chip">smb://zimaos:zimaos@10.0.0.99/ZimaOS-HD</code>仍然无法连接。必须输入<br><code class="chip">smb://Zimaos:zimaos@10.0.0.99/ZimaOS-HD</code>（或者继续改变用户名的大小写）。</li>
 </ul>
-<h2 id="服务器SMB服务状态检查" class="article-heading"><a href="#服务器SMB服务状态检查" class="headerlink" title="服务器SMB服务状态检查"></a>服务器SMB服务状态检查<a class="article-anchor" href="#服务器SMB服务状态检查" aria-hidden="true"></a></h2><ol>
+<h2 id="服务器SMB服务状态检查" class="article-heading">服务器SMB服务状态检查<a class="article-anchor" href="#服务器SMB服务状态检查" aria-hidden="true"></a></h2><ol class="doc-steps">
 <li>确保服务器上的SMB服务已经正确启动。</li>
 </ol>
-<ul>
+<ul class="doc-dots">
 <li>当服务器未启动时，Windows和macOS会显示相应的错误提示。<br>| <img src="https://manage.icewhale.io/api/static/docs/1742797263676_image.png"> | <img src="https://manage.icewhale.io/api/static/docs/1742797274843_image.png"> |</li>
 <li>输入错误的用户名进行匿名登录时，文件夹会显示为空白。</li>
 <li>输入正确的用户名但密码错误时，会出现密码错误提示。</li>
 </ul>
-<ol start="2">
+<ol start="2" class="doc-steps">
 <li>可以通过命令确定当前连接的账户名，以确认登录状态。</li>
 </ol>
-<h2 id="客户端解决方案" class="article-heading"><a href="#客户端解决方案" class="headerlink" title="客户端解决方案"></a>客户端解决方案<a class="article-anchor" href="#客户端解决方案" aria-hidden="true"></a></h2><h3 id="Windows-10-x2F-11" class="article-heading"><a href="#Windows-10-x2F-11" class="headerlink" title="Windows 10&#x2F;11"></a>Windows 10&#x2F;11<a class="article-anchor" href="#Windows-10-x2F-11" aria-hidden="true"></a></h3><ol>
+<h2 id="客户端解决方案" class="article-heading">客户端解决方案<a class="article-anchor" href="#客户端解决方案" aria-hidden="true"></a></h2><h3 id="Windows-10-x2F-11" class="article-heading">Windows 10&#x2F;11<a class="article-anchor" href="#Windows-10-x2F-11" aria-hidden="true"></a></h3><ol class="doc-steps">
 <li>清除现有的连接记录：</li>
 </ol>
-<ul>
-<li><code>net use \\%IP%\ /delete /y</code></li>
-<li>示例：<code>net use \\10.0.0.99\ /delete /y</code></li>
+<ul class="doc-dots">
+<li><code class="chip">net use \\%IP%\ /delete /y</code></li>
+<li>示例：<code class="chip">net use \\10.0.0.99\ /delete /y</code></li>
 </ul>
-<ol start="2">
+<ol start="2" class="doc-steps">
 <li>保存连接凭证：</li>
 </ol>
-<ul>
-<li><code>cmdkey /add:% IP% /user:%USERNAME% /pass:%PASSWORD%</code></li>
-<li>示例：<code>cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos</code></li>
+<ul class="doc-dots">
+<li><code class="chip">cmdkey /add:% IP% /user:%USERNAME% /pass:%PASSWORD%</code></li>
+<li>示例：<code class="chip">cmdkey /add:10.0.0.99 /user:zimaos /pass:zimaos</code></li>
 </ul>
-<ol start="3">
+<ol start="3" class="doc-steps">
 <li>映射网络驱动器：</li>
 </ol>
-<ul>
-<li><code>net use \\%IP%\ /USER:% USERNAME% %PASSWORD% /PERSISTENT:YES</code></li>
-<li>示例：<code>net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES</code></li>
+<ul class="doc-dots">
+<li><code class="chip">net use \\%IP%\ /USER:% USERNAME% %PASSWORD% /PERSISTENT:YES</code></li>
+<li>示例：<code class="chip">net use \\10.0.0.99\ /USER:zimaos zimaos /PERSISTENT:YES</code></li>
 </ul>
-<ol start="4">
+<ol start="4" class="doc-steps">
 <li>Windows连接SMB脚本：</li>
 </ol>
-<ul>
-<li>可以将以上命令合并为批处理文件，方便快捷执行。<br>Windows连接SMB脚本<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">echo 请填写以下信息：</span><br><span class="line">set /p IP=请输入IP地址: </span><br><span class="line">set /p USERNAME=请输入用户名: </span><br><span class="line">set /p PASSWORD=请输入密码: </span><br><span class="line"></span><br><span class="line">:: 删除之前的网络驱动器，如果存在</span><br><span class="line">net use \\%IP%\ /delete /y</span><br><span class="line"></span><br><span class="line">:: 使用cmdkey保存凭证</span><br><span class="line">cmdkey /add:%IP% /user:%USERNAME% /pass:%PASSWORD%</span><br><span class="line"></span><br><span class="line">:: 映射网络驱动器</span><br><span class="line">net use \\%IP%\ /USER:%USERNAME% %PASSWORD% /PERSISTENT:YES</span><br><span class="line"></span><br><span class="line">:: 打开网络共享</span><br><span class="line">start explorer \\%IP%\</span><br><span class="line"></span><br><span class="line">:: 暂停片刻，允许资源管理器打开文件夹</span><br><span class="line">timeout /t 2 /nobreak &gt; NUL</span><br><span class="line"></span><br><span class="line">:: 使用PowerShell刷新文件夹窗口</span><br><span class="line">powershell -Command &quot;</span><br><span class="line">Add-Type -TypeDefinition @&#x27;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">public class WinAPI &#123;</span><br><span class="line">    [DllImport(\&quot;user32.dll\&quot;)]</span><br><span class="line">    public static extern bool SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);</span><br><span class="line">&#125;</span><br><span class="line">&#x27;@</span><br><span class="line">\$HWND = (Get-Process | Where-Object &#123; \$_.MainWindowTitle -match &#x27;%IP%&#x27; &#125;).MainWindowHandle</span><br><span class="line">if (\$HWND -ne [IntPtr]::Zero) &#123;</span><br><span class="line">    [WinAPI]::SendMessage(\$HWND, 0x0111, [IntPtr]0x702C, [IntPtr]0)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    Write-Host \&quot;未找到窗口.\&quot;</span><br><span class="line">&#125;</span><br><span class="line">&quot;</span><br><span class="line"></span><br><span class="line">echo 命令执行成功。</span><br><span class="line">pause</span><br></pre></td></tr></table></figure></li>
+<ul class="doc-dots">
+<li>可以将以上命令合并为批处理文件，方便快捷执行。<br>Windows连接SMB脚本<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">echo 请填写以下信息：</span><br><span class="line">set /p IP=请输入IP地址: </span><br><span class="line">set /p USERNAME=请输入用户名: </span><br><span class="line">set /p PASSWORD=请输入密码: </span><br><span class="line"></span><br><span class="line">:: 删除之前的网络驱动器，如果存在</span><br><span class="line">net use \\%IP%\ /delete /y</span><br><span class="line"></span><br><span class="line">:: 使用cmdkey保存凭证</span><br><span class="line">cmdkey /add:%IP% /user:%USERNAME% /pass:%PASSWORD%</span><br><span class="line"></span><br><span class="line">:: 映射网络驱动器</span><br><span class="line">net use \\%IP%\ /USER:%USERNAME% %PASSWORD% /PERSISTENT:YES</span><br><span class="line"></span><br><span class="line">:: 打开网络共享</span><br><span class="line">start explorer \\%IP%\</span><br><span class="line"></span><br><span class="line">:: 暂停片刻，允许资源管理器打开文件夹</span><br><span class="line">timeout /t 2 /nobreak &gt; NUL</span><br><span class="line"></span><br><span class="line">:: 使用PowerShell刷新文件夹窗口</span><br><span class="line">powershell -Command &quot;</span><br><span class="line">Add-Type -TypeDefinition @&#x27;</span><br><span class="line">using System.Runtime.InteropServices;</span><br><span class="line">public class WinAPI &#123;</span><br><span class="line">    [DllImport(\&quot;user32.dll\&quot;)]</span><br><span class="line">    public static extern bool SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);</span><br><span class="line">&#125;</span><br><span class="line">&#x27;@</span><br><span class="line">\$HWND = (Get-Process | Where-Object &#123; \$_.MainWindowTitle -match &#x27;%IP%&#x27; &#125;).MainWindowHandle</span><br><span class="line">if (\$HWND -ne [IntPtr]::Zero) &#123;</span><br><span class="line">    [WinAPI]::SendMessage(\$HWND, 0x0111, [IntPtr]0x702C, [IntPtr]0)</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    Write-Host \&quot;未找到窗口.\&quot;</span><br><span class="line">&#125;</span><br><span class="line">&quot;</span><br><span class="line"></span><br><span class="line">echo 命令执行成功。</span><br><span class="line">pause</span><br></pre></td></tr></table></div></figure></li>
 </ul>
-<h3 id="MacOS" class="article-heading"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS<a class="article-anchor" href="#MacOS" aria-hidden="true"></a></h3><ol>
+<h3 id="MacOS" class="article-heading">MacOS<a class="article-anchor" href="#MacOS" aria-hidden="true"></a></h3><ol class="doc-steps">
 <li>使用Finder连接：</li>
 </ol>
-<ul>
-<li>按<code>Command+K</code>打开“连接服务器”窗口。</li>
-<li>输入<code>smb://USERNAME:PASSWORD@IP/PATH</code>。</li>
-<li>示例：<code>smb://zimaos:zimaos@1.0.0.99/ZimaoS-HD</code>。</li>
+<ul class="doc-dots">
+<li>按<code class="chip">Command+K</code>打开“连接服务器”窗口。</li>
+<li>输入<code class="chip">smb://USERNAME:PASSWORD@IP/PATH</code>。</li>
+<li>示例：<code class="chip">smb://zimaos:zimaos@1.0.0.99/ZimaoS-HD</code>。</li>
 </ul>
-<ol start="2">
+<ol start="2" class="doc-steps">
 <li>解决macOS 14.x缓存问题：</li>
 </ol>
-<ul>
-<li>如果第一次认证失败，可以尝试改变用户名的大小写，例如：<code>smb://Zimaos:zimaos@1.0.0.99/ZimaoS-HD</code>。</li>
+<ul class="doc-dots">
+<li>如果第一次认证失败，可以尝试改变用户名的大小写，例如：<code class="chip">smb://Zimaos:zimaos@1.0.0.99/ZimaoS-HD</code>。</li>
 </ul>
 
-              </div>
-              <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2026-08-12T09:13:05.021Z" itemprop="dateModified">最后更新：2026-08-12</time>
-                <a href="zimaos-qts-two-way-sync-guide" class="article-footer-prev" title="ZimaOS 和 QTS 双向同步指南"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="zimaos-search" class="article-footer-next" title="ZimaOS-搜索工作"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
-              </footer>
-
-            </div>
-          </div>
-          <aside id="article-toc" role="navigation">
-            <div id="article-toc-inner">
-              <strong class="sidebar-title">目录</strong>
-              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="toc-text">核心问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8SMB%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="toc-text">服务器SMB服务状态检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">客户端解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-10-x2F-11"><span class="toc-text">Windows 10&#x2F;11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MacOS"><span class="toc-text">MacOS</span></a></li></ol></li></ol>
-              <a href="#" id="article-toc-top">回到顶部</a>
-            </div>
-          </aside>
-        </div>
-      </article>
-      <aside id="sidebar" role="navigation">
-  <div class="inner">
-    
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">什么是Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>概述</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">开始使用</a></li><li class="sidebar-link "><a href="./features">功能</a></li><li class="sidebar-link "><a href="./remote-access">远程访问</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC 直连</a></li>
-      </ul>
-    </li>
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>探索</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./nvr-camera-server">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./synology-smb-connect">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./cli-guide">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">连接云盘</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./data-migration">数据迁移</a></li><li class="sidebar-link "><a href="./zfs-setup">ZFS 设置</a></li><li class="sidebar-link "><a href="./raid-options">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./docker-app-paths">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature">通过链接共享</a></li><li class="sidebar-link "><a href="./llm-manual-download">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./password-recovery">恢复密码</a></li><li class="sidebar-link "><a href="./remote-id">获取网络 ID</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">实现最快传输速度</a></li><li class="sidebar-link "><a href="./samba-member-setup">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./zimaclient-install">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Immich 教程</a></li><li class="sidebar-link "><a href="./iscsi-guide">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./setup-emby-server">开启电源</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./radarr-setup">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./system-recovery">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./dlna-server-setup">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./time-machine-backup">时间机器功能</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link  current"><a href="./smb-troubleshooting">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./zimaos-search">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./enable-ai">启用AI搜索</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">3-2-1备份</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrate from CasaOS to ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">部署OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">部署 Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">超棒第三方商店</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>开发者</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./networking">网络交流</a></li><li class="sidebar-link "><a href="./python-setup">设置 Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-bay-led">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./offline-install">离线更新</a></li><li class="sidebar-link "><a href="./supported-disk-formats">支持的磁盘格式</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>社区作品</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">如何贡献</a></li><li class="sidebar-link "><a href="./contributions">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./syncthing-install">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./paperless-ai-install">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./azuracast-install">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Zabbix安装指南</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>版本记录</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>常见问题</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./folder-encryption">加密文件夹</a></li><li class="sidebar-link "><a href="./resetnetworksettings">重置网络设置</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
-  </div>
-</aside>
     </div>
-  </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.553Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/thunderbolt-direct-connect"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Thunderbolt 直连</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/share-via-link"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">通过链接共享</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="toc-text">核心问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8SMB%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81%E6%A3%80%E6%9F%A5"><span class="toc-text">服务器SMB服务状态检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">客户端解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-10-x2F-11"><span class="toc-text">Windows 10&#x2F;11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MacOS"><span class="toc-text">MacOS</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
 </div>
 
     <!-- FOOTER START -->
@@ -600,97 +641,103 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER END -->
   </div>
   <div id="mobile-nav-dimmer"></div>
-  <nav id="mobile-nav">
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
       
-      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link ">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimacube/" class="mobile-nav-link ">ZimaCube</a></li><li class="menu-item "><a href="/docs/zh/zimaboard/" class="mobile-nav-link ">ZimaBoard</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link ">论坛</a></li>
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
     </ul>
     
-      
-    <h4 class="category-list-link sidebar-title " style="border:none"> 
-      <a href="./index">什么是Zima</a>
-    </h4>
-    <ul class="category-list">
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>概述</span>
-        <i class="fa fa-chevron-right"></i>
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-install-zimaos">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./get-started">开始使用</a></li><li class="sidebar-link "><a href="./features">功能</a></li><li class="sidebar-link "><a href="./remote-access">远程访问</a></li><li class="sidebar-link "><a href="./thunderbolt-direct-connect">Thunderbolt PC 直连</a></li>
-      </ul>
-    </li>
-    <li class="show-children">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>探索</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./sync-photos-with-immich">使用 Immich 同步照片</a></li><li class="sidebar-link "><a href="./media-server-setup-with-jellyfin">使用 Jellyfin 设置媒体服务器</a></li><li class="sidebar-link "><a href="./nvr-camera-server">NVR 摄像机服务器</a></li><li class="sidebar-link "><a href="./synology-smb-connect">连接群晖和 SMB 共享</a></li><li class="sidebar-link "><a href="./cli-guide">通过可配置 CLI 同步照片</a></li><li class="sidebar-link "><a href="./cloud-drive-connect">连接云盘</a></li><li class="sidebar-link "><a href="./rsync-backup-clones">使用 rsync 创建多个克隆</a></li><li class="sidebar-link "><a href="./data-migration">数据迁移</a></li><li class="sidebar-link "><a href="./zfs-setup">ZFS 设置</a></li><li class="sidebar-link "><a href="./raid-options">更多 RAID 选项</a></li><li class="sidebar-link "><a href="./synology-to-zimacube-migration">从群晖迁移所有文件到 ZimaCube!</a></li><li class="sidebar-link "><a href="./how-to-open-ssh-in-zimaos">在 ZimaOS 中打开 SSH</a></li><li class="sidebar-link "><a href="./docker-app-paths">理解 Docker 应用程序路径</a></li><li class="sidebar-link "><a href="./plex-setup-guide">Plex 操作指南</a></li><li class="sidebar-link "><a href="./webtorrent-feature">通过链接共享</a></li><li class="sidebar-link "><a href="./llm-manual-download">手动下载大型语言模型</a></li><li class="sidebar-link "><a href="./password-recovery">恢复密码</a></li><li class="sidebar-link "><a href="./remote-id">获取网络 ID</a></li><li class="sidebar-link "><a href="./nas-transfer-speed-troubleshooting">实现最快传输速度</a></li><li class="sidebar-link "><a href="./samba-member-setup">使用 Samba 的多用户模式</a></li><li class="sidebar-link "><a href="./zimaclient-install">下载并安装 ZimaClient</a></li><li class="sidebar-link "><a href="./raid6-setup">在 ZimaOS 上创建 RAID6</a></li><li class="sidebar-link "><a href="./immich-photo-backup">Immich 教程</a></li><li class="sidebar-link "><a href="./iscsi-guide">iSCSI 使用教程</a></li><li class="sidebar-link "><a href="./setup-emby-server">开启电源</a></li><li class="sidebar-link "><a href="./pi-hole-setup">Pi-hole（广告拦截器）</a></li><li class="sidebar-link "><a href="./radarr-setup">链接Synology和SMB共享</a></li><li class="sidebar-link "><a href="./system-recovery">系统快速恢复指南</a></li><li class="sidebar-link "><a href="./dlna-server-setup">将ZimaCube设置为DLNA服务器</a></li><li class="sidebar-link "><a href="./time-machine-backup">时间机器功能</a></li><li class="sidebar-link "><a href="./nfs-on-zimaos">ZimaOS上的NFS</a></li><li class="sidebar-link "><a href="./deploy-deepseek-r1">部署Deepseek R1</a></li><li class="sidebar-link "><a href="./iscsi-setup">ZimaOS上的iSCSI</a></li><li class="sidebar-link "><a href="./zimaos-qts-two-way-sync-guide">ZimaOS 和 QTS 双向同步指南</a></li><li class="sidebar-link  current"><a href="./smb-troubleshooting">中小企业帮助文档</a></li><li class="sidebar-link "><a href="./zimaos-search">ZimaOS-搜索工作</a></li><li class="sidebar-link "><a href="./raid-rebuild-after-reinstall">重新安装系统后重建RAID</a></li><li class="sidebar-link "><a href="./frigate-ollama-setup">带有ZimaOS的AI描述</a></li><li class="sidebar-link "><a href="./enable-ai">启用AI搜索</a></li><li class="sidebar-link "><a href="./enable-intel-ax210">启用英特尔 AX210</a></li><li class="sidebar-link "><a href="./how-to-use-3-2-1-backup-on-zimaos">3-2-1备份</a></li><li class="sidebar-link "><a href="./casaos-to-zimaos-migration">Migrate from CasaOS to ZimaOS</a></li><li class="sidebar-link "><a href="./ups-setup">UPS 设置</a></li><li class="sidebar-link "><a href="./install-zimaos-on-proxmox-ve">在Proxmox VE上安装ZimaOS</a></li><li class="sidebar-link "><a href="./openclaw-agent-setup">部署OpenClaw</a></li><li class="sidebar-link "><a href="./hermes-agent-setup">部署 Hermes</a></li><li class="sidebar-link "><a href="./awesome-third-party-stores">超棒第三方商店</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>开发者</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/from-synology-to-zimacube-migrate-all-files">群晖手动传输</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">在磁盘之间迁移数据</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ssh-setup">如何安装 ZimaOS</a></li><li class="sidebar-link "><a href="./networking">网络交流</a></li><li class="sidebar-link "><a href="./python-setup">设置 Python</a></li><li class="sidebar-link "><a href="./docker-app-publishing">构建应用程序</a></li><li class="sidebar-link "><a href="./7th-bay-led">第七硬盘槽 LED</a></li><li class="sidebar-link "><a href="./offline-install">离线更新</a></li><li class="sidebar-link "><a href="./supported-disk-formats">支持的磁盘格式</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>社区作品</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="is-current" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./how-to-contribute">如何贡献</a></li><li class="sidebar-link "><a href="./contributions">已实施的驱动（社区用户建议）</a></li><li class="sidebar-link "><a href="./syncthing-install">在 ZimaOS 上安装 Syncthing</a></li><li class="sidebar-link "><a href="./paperless-ngx-install">在 ZimaOS 上安装 Paperless-ngx</a></li><li class="sidebar-link "><a href="./paperless-ai-install">在 ZimaOS 上安装 Paperless‑AI</a></li><li class="sidebar-link "><a href="./azuracast-install">《AzuraCast 安装指南》</a></li><li class="sidebar-link "><a href="./zabbix-install-guide">Zabbix安装指南</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>版本记录</span>
-        <i class="fa fa-chevron-right"></i>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/remote-id">获取网络 ID</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
       </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./v-1-7-0">v 1.7.0</a></li><li class="sidebar-link "><a href="./v-1-6-2">v 1.6.2</a></li><li class="sidebar-link "><a href="./v-1-6-1">v 1.6.1</a></li><li class="sidebar-link "><a href="./v-1-6-0">v 1.6.0</a></li><li class="sidebar-link "><a href="./v-1-5-4">v 1.5.4</a></li><li class="sidebar-link "><a href="./v-1-5-3">v 1.5.3</a></li><li class="sidebar-link "><a href="./v-1-5-2">v 1.5.2</a></li><li class="sidebar-link "><a href="./v-1-5-1">v 1.5.1</a></li><li class="sidebar-link "><a href="./v-1-5-0">v 1.5.0</a></li><li class="sidebar-link "><a href="./v-1-4-4">v 1.4.4</a></li><li class="sidebar-link "><a href="./v-1-4-3">v 1.4.3</a></li><li class="sidebar-link "><a href="./v-1-4-2">v 1.4.2</a></li><li class="sidebar-link "><a href="./v-1-4-1">v 1.4.1</a></li><li class="sidebar-link "><a href="./v-1-4-0">v 1.4.0</a></li><li class="sidebar-link "><a href="./v-1-3-3">v 1.3.3</a></li><li class="sidebar-link "><a href="./v-1-3-2">v 1.3.2</a></li><li class="sidebar-link "><a href="./v-1-3-1">v 1.3.1</a></li><li class="sidebar-link "><a href="./v-1-3-0">v 1.3.0</a></li><li class="sidebar-link "><a href="./zimaos-v1-2-5-available">v 1.2.5</a></li><li class="sidebar-link "><a href="./v-1-2-4">v 1.2.4</a></li><li class="sidebar-link "><a href="./v-1-2-3">v 1.2.3</a></li><li class="sidebar-link "><a href="./v-1-2-2">v 1.2.2</a></li>
-      </ul>
-    </li>
-    <li class="">
-      <h4 class="category-list-link sidebar-title"> 
-        <span>常见问题</span>
-        <i class="fa fa-chevron-right"></i>
-      </h4>
-      <ul class="category-list-children">
-      <li class="sidebar-link "><a href="./ups-compatibility-list">UPS兼容性列表</a></li><li class="sidebar-link "><a href="./folder-encryption">加密文件夹</a></li><li class="sidebar-link "><a href="./resetnetworksettings">重置网络设置</a></li><li class="sidebar-link "><a href="./privacy-policy">Privacy Policy</a></li>
-      </ul>
-    </li></ul>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li></ul>
+      </div>
+    </div>
     
   </div>
-  <div id="mobile-lang-select-wrap">
-    <span id="mobile-lang-select-label" style="display:none">
-      <i class="fa fa-globe"></i>
-      <span>中文</span></span>
-    <select id="mobile-lang-select" data-canonical="zimaos/smb-troubleshooting.html">
-      
-        <option value="en">English</option>
-      
-        <option value="zh" selected>中文</option>
-      
-        <option value="jp">日本語</option>
-      
-        <option value="pt-PT">Português</option>
-      
-        <option value="es">Español</option>
-      
-    </select>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/smb-troubleshooting" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/smb-troubleshooting" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/smb-troubleshooting" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/smb-troubleshooting" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/smb-troubleshooting" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
   </div>
 </nav>
+
   <!-- Scripts -->
 <!-- Cookie -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 <!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
 
 <script src="/docs/js/lang_select.js"></script>
 
@@ -707,9 +754,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/docs/js/hexo_resize_image.js"></script>
 
 
-<script src="/docs/js/jquery-2.2.0.min.js"></script>
-
-
 <script src="/docs/js/sweetalert2@11.js"></script>
 
 
@@ -718,10 +762,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="/docs/js/cloudflare_ai_search.js"></script>
 
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
 <!-- endbuild -->
 
 
 <script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
 
 
 

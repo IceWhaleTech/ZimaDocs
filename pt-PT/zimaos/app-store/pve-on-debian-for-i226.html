@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>PVE em Debian para i226 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/pve-on-debian-for-i226">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/pve-on-debian-for-i226">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/pve-on-debian-for-i226">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/pve-on-debian-for-i226">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/pve-on-debian-for-i226">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Executando Proxmox VE em Debian para NICs i226">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PVE em Debian para i226">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Executando Proxmox VE em Debian para NICs i226">
+<meta property="og:locale" content="pt_PT">
+<meta property="article:published_time" content="2026-08-27T09:51:24.545Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.545Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "PVE em Debian para i226",
+      "description": "Executando Proxmox VE em Debian para NICs i226",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.545Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "PVE em Debian para i226"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/pve-on-debian-for-i226">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/pve-on-debian-for-i226">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/webtorrent-feature">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA e aprendizagem automática</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">PVE em Debian para i226</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.545Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Executando-Proxmox-VE-em-Debian-para-NICs-i226" class="article-heading">Executando Proxmox VE em Debian para NICs i226<a class="article-anchor" href="#Executando-Proxmox-VE-em-Debian-para-NICs-i226" aria-hidden="true"></a></h2><h3 id="1-Visao-Geral-da-Solucao" class="article-heading">1. Visão Geral da Solução<a class="article-anchor" href="#1-Visao-Geral-da-Solucao" aria-hidden="true"></a></h3><p>Esta solução foi projetada para implantar um ambiente de virtualização Proxmox VE na plataforma ZimaBoard 2 com NICs Intel i226. O objetivo é resolver o problema de desreferência de ponteiro nulo do driver de NIC causado pela gestão de energia PCIe ASPM em kernels Linux de versão mais alta, evitando assim o Kernel Panic e a falta de resposta do sistema.</p>
+<ul class="doc-dots">
+<li><strong>Plataforma de Hardware</strong>: ZimaBoard 2  </li>
+<li><strong>Versão do Software</strong>: Debian 12.8.0  </li>
+<li><strong>Ambiente de Rede</strong>: Recomenda-se usar uma conexão cabeada durante todo o processo. Prepare as informações da sub-rede do roteador (exemplo de sub-rede neste guia: <code class="chip">10.0.0.1/16</code>).  </li>
+<li><strong>Objetivo Principal</strong>: Resolver o conflito de gerenciamento de energia ASPM e o problema de Kernel Panic da NIC i226 em kernels Linux de versão alta, criando um ambiente de virtualização estável.  </li>
+<li><strong>Conhecimento Prévio Necessário</strong>: Quando o PCIe ASPM (especialmente os Subestados L1) é ativado na NIC Intel i226-V, ele frequentemente desencadeia uma desreferência de ponteiro NULL no driver igc durante eventos de subida&#x2F;descida de link físico, recarregamentos de driver ou renegociação de link, resultando em kernel panic ou congelamento do sistema. Esta solução adota um modelo de implantação “Base Debian + Kernel PVE”, restringindo e alinhando o ambiente de gerenciamento de energia e firmware antes de introduzir o kernel Proxmox, garantindo maior compatibilidade de hardware e flexibilidade de ajustes.</li>
+</ul>
+<h4 id="Etapas-Principais-de-Operacao" class="article-heading">Etapas Principais de Operação<a class="article-anchor" href="#Etapas-Principais-de-Operacao" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>Instale o Debian 12.8: ISO de instalação de rede, use o disco inteiro, inicialize via UEFI.  </li>
+<li>Desative o ASPM: Edite <code class="chip">/etc/default/grub</code>, adicione <code class="chip">pcie_aspm=off</code> a <code class="chip">GRUB_CMDLINE_LINUX_DEFAULT</code>, execute <code class="chip">update-grub</code> e reinicie.  </li>
+<li>Configuração básica: Troque para espelhos nacionais, instale <code class="chip">firmware-intel-misc</code>; configure temporariamente o IP e teste a conectividade.  </li>
+<li>Prepare o Proxmox: Configure <code class="chip">/etc/hosts</code>, adicione o repositório sem assinatura do Proxmox e a chave GPG.  </li>
+<li>Instale o Proxmox: <code class="chip">apt install proxmox-ve postfix open-iscsi</code>; se houver conflito com <code class="chip">pve-firmware</code>, execute <code class="chip">dpkg --force-overwrite</code> para forçar a instalação, depois <code class="chip">apt install -f</code> para corrigir dependências.  </li>
+<li>Configure a rede em bridge: Edite <code class="chip">/etc/network/interfaces</code>, adicione a NIC física (por exemplo, <code class="chip">enp1s0</code>) à bridge <code class="chip">vmbr0</code>, defina IP&#x2F;gateway estático e reinicie a rede.  </li>
+<li>Verifique o acesso: Após reiniciar, acesse <code class="chip">https://&lt;IP&gt;:8006</code>.</li>
+</ol>
+<h3 id="2-Etapas-de-Operacao" class="article-heading">2. Etapas de Operação<a class="article-anchor" href="#2-Etapas-de-Operacao" aria-hidden="true"></a></h3><p>Todos os comandos abaixo são executados no sistema Debian com privilégios de root ou sudo.</p>
+<h4 id="2-1-Gravar-e-Instalar-o-Debian" class="article-heading">2.1 Gravar e Instalar o Debian<a class="article-anchor" href="#2-1-Gravar-e-Instalar-o-Debian" aria-hidden="true"></a></h4><p>Para garantir a estabilidade e controlabilidade do sistema base, esta solução utiliza o Debian 12.8 como base.</p>
+<ol class="doc-steps">
+<li><p><strong>Download dos Recursos de Software</strong>  </p>
+<ul class="doc-dots">
+<li>Debian 12.8.0: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso" class="doc-link">https://chuangtzu.ftp.acc.umu.se/cdimage/archive/12.8.0/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso</a>  </li>
+<li>Ferramenta de gravação balenaEtcher: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/" class="doc-link">https://etcher.balena.io/</a></li>
+</ul>
+</li>
+<li><p><strong>Criar um Pen Drive Inicializável</strong>  </p>
+<ul class="doc-dots">
+<li>Insira um pen drive de pelo menos 8GB.  </li>
+<li>Abra o balenaEtcher, selecione seu pen drive como dispositivo de destino.  </li>
+<li>Clique em “Flash from file”, localize o arquivo <code class="chip">debian-12.8.0-amd64-netinst.iso</code> baixado; o software selecionará automaticamente o disco.  </li>
+<li>Clique em “Flash!” e aguarde a conclusão, depois ejete com segurança o pen drive.</li>
+</ul>
+</li>
+<li><p><strong>Inicialização pelo BIOS</strong>  </p>
+<ul class="doc-dots">
+<li>Insira o pen drive preparado em uma porta USB do ZimaBoard.  </li>
+<li>Ligue o computador e pressione repetidamente a tecla <strong>F11</strong> (alguns modelos podem usar ESC ou Delete, mas o ZimaBoard 2 usa F11 por padrão).  </li>
+<li>No Menu de Inicialização, selecione a entrada do pen drive com “UEFI” no nome.</li>
+</ul>
+</li>
+<li><p><strong>Resumo do Procedimento de Instalação</strong><br>Após acessar a tela azul de boas-vindas do Debian, siga estas orientações:  </p>
+<ul class="doc-dots">
+<li>Modo de instalação: Recomenda-se selecionar <strong>Graphical Install</strong> (mais amigável para iniciantes).  </li>
+<li>Idioma e região: Escolha “Inglês” ou seu idioma preferido; selecione o teclado “American English”.  </li>
+<li>Particionamento de disco: Selecione <strong>“Use entire disk”</strong>, escolha o eMMC embutido ou SSD instalado no ZimaBoard e depois selecione <strong>“All files in one partition”</strong> como esquema de particionamento.</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo" class="article-heading">2.2 Depuração da NIC em um Sistema Debian Limpo<a class="article-anchor" href="#2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p><strong>Desativar o Gerenciamento Avançado de Energia PCIe (ASPM)</strong>  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">nano /etc/default/grub</span><br></pre></td></tr></table></div></figure>
+<p>Modifique a linha:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash intel_iommu=on iommu=pt pcie_aspm=off&quot;</span><br></pre></td></tr></table></div></figure>
+<p>Salve e saia, depois atualize o GRUB e reinicie:</p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">update-grub</span><br><span class="line">reboot</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>Trocar para Servidores DNS Mais Estáveis (Temporariamente)</strong>  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">nano /etc/resolv.conf</span><br></pre></td></tr></table></div></figure>
+<p>Adicione:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 114.114.114.114</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>Instalar Firmware</strong>  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpar cache</span></span><br><span class="line"><span class="built_in">rm</span> -rf /var/lib/apt/lists/*</span><br><span class="line"><span class="comment"># Atualizar e instalar o firmware da NIC Intel</span></span><br><span class="line">apt update</span><br><span class="line">apt install firmware-intel-misc -y</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>Configurar Temporariamente a Interface da NIC</strong><br>Neste exemplo, o nome da interface é <code class="chip">enp8s0</code> e o endereço do roteador é <code class="chip">10.0.0.1</code>.  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Limpar configurações de IP existentes</span></span><br><span class="line">ip addr flush dev enp8s0</span><br><span class="line"><span class="comment"># Derrubar a interface</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 down</span><br><span class="line"><span class="comment"># Configurar IP e gateway</span></span><br><span class="line">ip addr add 10.0.1.100/16 dev enp8s0</span><br><span class="line">ip route add default via 10.0.0.1</span><br><span class="line"><span class="comment"># Subir a interface</span></span><br><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp8s0 up</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>Testar Conectividade</strong>  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping -I enp8s0 8.8.8.8</span><br></pre></td></tr></table></div></figure>
+<p>Se bem-sucedido, a NIC está funcionando corretamente.</p>
+</li>
+</ol>
+<h4 id="2-3-Instalar-o-Kernel-Proxmox-VE" class="article-heading">2.3 Instalar o Kernel Proxmox VE<a class="article-anchor" href="#2-3-Instalar-o-Kernel-Proxmox-VE" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p><strong>Configurar o Arquivo de Hosts</strong>  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Confirmar o nome do host (neste exemplo, o nome é &quot;debian&quot;)</span></span><br><span class="line">hostname</span><br><span class="line">nano /etc/hosts</span><br></pre></td></tr></table></div></figure>
+<p>Certifique-se de que o arquivo contenha:</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">127.0.0.1       localhost</span><br><span class="line">10.0.1.21       debian.proxmox.com debian</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>Adicionar Repositório de Software do Proxmox</strong>  </p>
+<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Instalar curl se não presente</span></span><br><span class="line">apt update &amp;&amp; apt install curl -y</span><br><span class="line"><span class="comment"># Adicionar chave GPG</span></span><br><span class="line">curl -fSsL http://download.proxmox.com/debian/proxmox-release-bookworm.gpg -o /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg</span><br><span class="line"><span class="comment"># Editar pve-no-subscription.list</span></span><br><span class="line">nano /etc/apt/sources.list.d/pve-no-subscription.list</span><br><span class="line"><span class="comment"># Adicionar a seguinte linha</span></span><br><span class="line">deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p><strong>Instalar o Kernel PVE e Componentes Principais</strong><br>&#96;&#96;&#96;bash</p>
+<h1 id="Atualizar-e-realizar-uma-atualizacao-completa" class="article-heading">Atualizar e realizar uma atualização completa<a class="article-anchor" href="#Atualizar-e-realizar-uma-atualizacao-completa" aria-hidden="true"></a></h1><p>apt update<br>apt full-upgrade -y</p>
+<h1 id="Instalar-pacotes-principais-do-Proxmox-VE" class="article-heading">Instalar pacotes principais do Proxmox VE<a class="article-anchor" href="#Instalar-pacotes-principais-do-Proxmox-VE" aria-hidden="true"></a></h1></li>
+</ol>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.545Z" itemprop="dateModified">Última atualização: 2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Agente OpenClaw</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Lojas de aplicações da comunidade</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Executando-Proxmox-VE-em-Debian-para-NICs-i226"><span class="toc-text">Executando Proxmox VE em Debian para NICs i226</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Visao-Geral-da-Solucao"><span class="toc-text">1. Visão Geral da Solução</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Etapas-Principais-de-Operacao"><span class="toc-text">Etapas Principais de Operação</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Etapas-de-Operacao"><span class="toc-text">2. Etapas de Operação</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Gravar-e-Instalar-o-Debian"><span class="toc-text">2.1 Gravar e Instalar o Debian</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-Depuracao-da-NIC-em-um-Sistema-Debian-Limpo"><span class="toc-text">2.2 Depuração da NIC em um Sistema Debian Limpo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-Instalar-o-Kernel-Proxmox-VE"><span class="toc-text">2.3 Instalar o Kernel Proxmox VE</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Atualizar-e-realizar-uma-atualizacao-completa"><span class="toc-text">Atualizar e realizar uma atualização completa</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Instalar-pacotes-principais-do-Proxmox-VE"><span class="toc-text">Instalar pacotes principais do Proxmox VE</span></a>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/webtorrent-feature">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">IA e aprendizagem automática</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/pve-on-debian-for-i226" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/pve-on-debian-for-i226" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/pve-on-debian-for-i226" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/pve-on-debian-for-i226" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

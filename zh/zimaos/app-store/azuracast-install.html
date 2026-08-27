@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/azuracast-install">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/azuracast-install">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/azuracast-install">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/azuracast-install">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/azuracast-install">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/azuracast-install">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/azuracast-install">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  
+<link rel="stylesheet" href="/docs/css/docs-ui.css">
+
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="本指南改编自社区成员 Muditha Liyanagama 的原文，在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南，我们对他们的工作表示衷心的感谢。  介绍AzuraCast 是一款强大的自托管的全能型网络广播管理套件。它允许你运行多个在线广播电台，管理播放列表，配置 AutoDJ，并探索许多其他创意广播选项。 之前，我写过一个使用 ZimaOS 图形">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/app-store/azuracast-install">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="本指南改编自社区成员 Muditha Liyanagama 的原文，在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南，我们对他们的工作表示衷心的感谢。  介绍AzuraCast 是一款强大的自托管的全能型网络广播管理套件。它允许你运行多个在线广播电台，管理播放列表，配置 AutoDJ，并探索许多其他创意广播选项。 之前，我写过一个使用 ZimaOS 图形">
+<meta property="og:locale">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1768468645225_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1768468682300_image.png">
+<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1768468838713_image.png">
+<meta property="article:published_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:modified_time" content="2026-08-27T09:51:24.552Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1768468645225_image.png">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南",
+      "description": "",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-08-27T09:51:24.552Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/azuracast-install">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/azuracast-install">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/azuracast-install">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/azuracast-install">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/azuracast-install">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="is-current" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南</h1>
+      <time class="doc-article__meta" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <blockquote>
+<p><em>本指南改编自社区成员 <strong>Muditha Liyanagama</strong> 的原文，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/t/a-comprehensive-guide-to-installing-azuracast-on-zimaos-via-the-command-line/7818" class="doc-link">在 ZimaOS 上通过命令行安装 AzuraCast 的完整指南</a>，我们对他们的工作表示衷心的感谢。</em></p>
+</blockquote>
+<h2 id="介绍" class="article-heading">介绍<a class="article-anchor" href="#介绍" aria-hidden="true"></a></h2><p><strong>AzuraCast</strong> 是一款强大的自托管的全能型网络广播管理套件。它允许你运行多个在线广播电台，管理播放列表，配置 AutoDJ，并探索许多其他创意广播选项。</p>
+<p>之前，我写过一个使用 ZimaOS 图形界面安装 AzuraCast 的指南。然而，经过进一步测试，我发现图形界面方法不稳定，而且使用这种方式安装时，AzuraCast 的网页更新无法正常工作。</p>
+<p>在本指南中，我将向你展示一种更可靠的方法：通过命令行在 ZimaOS 上安装 AzuraCast。这个方法要稳定得多，网页更新也能正常工作。</p>
+<p>本教程适用于家庭或私人使用，可以在本地网络内或通过 Tailscale 访问。如果你计划将 AzuraCast 实例暴露到公共互联网，你可能需要配置额外的网络和安全设置。</p>
+<p>此方法已在 <strong>Zimaboard 1</strong> 和 <strong>Zimaboard 2</strong> 上进行了测试。</p>
+<p>让我们开始吧。</p>
+<h3 id="步骤-1：启用开发者模式和-SSH-访问" class="article-heading">步骤 1：启用开发者模式和 SSH 访问<a class="article-anchor" href="#步骤-1：启用开发者模式和-SSH-访问" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1768468645225_image.png" alt="setting page and open the Developer mode window"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1768468682300_image.png" alt="enable SSH access and open the web-based terminal"></span></p>
+<ol class="doc-steps">
+<li>进入 ZimaOS <strong>设置</strong> → <strong>常规</strong> → <strong>开发者模式</strong></li>
+<li>点击 <strong>查看</strong></li>
+<li>启用 <strong>SSH 访问</strong></li>
+<li>点击 <strong>基于 Web 的终端</strong></li>
+</ol>
+<p>一个新的浏览器标签页将打开，显示 ZimaOS 终端界面。</p>
+<h3 id="步骤-2：以-Root-用户登录终端" class="article-heading">步骤 2：以 Root 用户登录终端<a class="article-anchor" href="#步骤-2：以-Root-用户登录终端" aria-hidden="true"></a></h3><p>在终端中：</p>
+<ol class="doc-steps">
+<li>输入你的 <strong>登录用户名</strong> → 按 <strong>Enter</strong></li>
+<li>输入你的 <strong>密码</strong> → 按 <strong>Enter</strong></li>
+<li>输入：<code class="chip">sudo -i</code></li>
+<li>按 <strong>Enter</strong></li>
+<li>再次输入你的 <strong>密码</strong> → 按 <strong>Enter</strong></li>
+</ol>
+<p>现在你已经以 root 用户身份登录。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1768468838713_image.png" alt="go into the terminal and login with root account"></span></p>
+<h3 id="步骤-3：创建-AzuraCast-安装目录" class="article-heading">步骤 3：创建 AzuraCast 安装目录<a class="article-anchor" href="#步骤-3：创建-AzuraCast-安装目录" aria-hidden="true"></a></h3><p>AzuraCast 应该安装在 AppData 目录下。</p>
+<h4 id="1-进入你的-AppData-文件夹" class="article-heading">1. 进入你的 AppData 文件夹<a class="article-anchor" href="#1-进入你的-AppData-文件夹" aria-hidden="true"></a></h4><p>（示例路径 — 你的路径可能不同）</p>
+<p><code class="chip">cd /ZimaOS-HD/AppData</code></p>
+<h4 id="2-创建-AzuraCast-目录" class="article-heading">2. 创建 AzuraCast 目录<a class="article-anchor" href="#2-创建-AzuraCast-目录" aria-hidden="true"></a></h4><p><code class="chip">mkdir azuracast</code></p>
+<h4 id="3-进入该目录" class="article-heading">3. 进入该目录<a class="article-anchor" href="#3-进入该目录" aria-hidden="true"></a></h4><p><code class="chip">cd /ZimaOS-HD/AppData/azuracast</code></p>
+<h3 id="步骤-4：下载并运行-AzuraCast-安装程序" class="article-heading">步骤 4：下载并运行 AzuraCast 安装程序<a class="article-anchor" href="#步骤-4：下载并运行-AzuraCast-安装程序" aria-hidden="true"></a></h3><p>运行以下命令：</p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/AzuraCast/AzuraCast/main/docker.sh &gt; docker.sh</span><br><span class="line">chmod a+x docker.sh</span><br><span class="line">./docker.sh install</span><br></pre></td></tr></table></div></figure>
+<p>这将在当前目录中启动 AzuraCast 的安装。</p>
+<p>安装过程中，你将被要求选择多个选项，包括端口号。<br><strong>推荐</strong>：保持所有默认值，除非你确定要更改它们。</p>
+<p>安装完成后，AzuraCast 服务和网页更新功能将会部署。</p>
+<h3 id="步骤-5：修复端口冲突（如果有的话）" class="article-heading">步骤 5：修复端口冲突（如果有的话）<a class="article-anchor" href="#步骤-5：修复端口冲突（如果有的话）" aria-hidden="true"></a></h3><p>如果某些必需的端口已被占用，安装程序会显示一个错误，指明哪些端口发生冲突。</p>
+<h4 id="1-停止-AzuraCast-服务" class="article-heading">1. 停止 AzuraCast 服务<a class="article-anchor" href="#1-停止-AzuraCast-服务" aria-hidden="true"></a></h4><p><code class="chip">docker compose down</code></p>
+<p>等待所有服务停止。</p>
+<h4 id="2-编辑-Docker-Compose-文件" class="article-heading">2. 编辑 Docker Compose 文件<a class="article-anchor" href="#2-编辑-Docker-Compose-文件" aria-hidden="true"></a></h4><p><code class="chip">nano docker-compose.yml</code></p>
+<p>编辑时：</p>
+<p>只更改左侧（<strong>发布端口</strong>）<br>不要更改右侧（<strong>目标端口</strong>）</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">8080:80 ← 如果需要更改 8080，保持 80 不变</span><br></pre></td></tr></table></div></figure>
+
+<h4 id="3-保存文件" class="article-heading">3. 保存文件<a class="article-anchor" href="#3-保存文件" aria-hidden="true"></a></h4><p>按：</p>
+<ol class="doc-steps">
+<li>Ctrl + X</li>
+<li>Y</li>
+<li>Enter</li>
+</ol>
+<h4 id="4-重新部署-AzuraCast" class="article-heading">4. 重新部署 AzuraCast<a class="article-anchor" href="#4-重新部署-AzuraCast" aria-hidden="true"></a></h4><p><code class="chip">docker-compose up -d</code></p>
+<p>你可能需要多次重复此过程，因为 Docker 通常一次只报告一个端口冲突。解决一个冲突后，可能会检测到另一个。</p>
+<p>解决所有冲突后，AzuraCast 将完全部署。</p>
+<h3 id="步骤-6：访问-AzuraCast-网页界面" class="article-heading">步骤 6：访问 AzuraCast 网页界面<a class="article-anchor" href="#步骤-6：访问-AzuraCast-网页界面" aria-hidden="true"></a></h3><p>打开浏览器并访问：</p>
+<p><code class="chip">http://YOUR_SERVER_IP:80</code></p>
+<p>如果你更改了发布端口，将 80 替换为你选择的端口号。</p>
+<hr>
+<p><strong><u>重要事项</u></strong><br>使用此方法时，有几个限制需要注意：</p>
+<ul class="doc-dots">
+<li>这种安装 <strong>无法通过 ZimaOS 图形界面管理</strong>。</li>
+<li>通过图形界面编辑或停止它可能会导致崩溃。</li>
+<li>ZimaOS 仪表板 <strong>不会显示 AzuraCast 的 CPU 或 RAM 使用情况</strong>。</li>
+<li>所有管理和故障排除必须通过 <strong>命令行</strong> 或使用像 <strong>Portainer</strong> 这样的第三方图形界面应用程序进行。</li>
+</ul>
+<p>然而，尽管存在这些限制：</p>
+<ul class="doc-dots">
+<li>这种安装方法 <strong>更稳定</strong></li>
+<li>AzuraCast <strong>网页更新工作正常</strong></li>
+<li>更适合长期的个人或家庭广播服务器</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-08-27T09:51:24.552Z" itemprop="dateModified">最后更新：2026-08-27</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/app-store/radarr-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Radarr 电影管理</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/app-store/zabbix-install-guide"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">服务器监控</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E5%90%AF%E7%94%A8%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%E5%92%8C-SSH-%E8%AE%BF%E9%97%AE"><span class="toc-text">步骤 1：启用开发者模式和 SSH 访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E4%BB%A5-Root-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%BB%88%E7%AB%AF"><span class="toc-text">步骤 2：以 Root 用户登录终端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E5%88%9B%E5%BB%BA-AzuraCast-%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="toc-text">步骤 3：创建 AzuraCast 安装目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%BF%9B%E5%85%A5%E4%BD%A0%E7%9A%84-AppData-%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">1. 进入你的 AppData 文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA-AzuraCast-%E7%9B%AE%E5%BD%95"><span class="toc-text">2. 创建 AzuraCast 目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%BF%9B%E5%85%A5%E8%AF%A5%E7%9B%AE%E5%BD%95"><span class="toc-text">3. 进入该目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%BF%90%E8%A1%8C-AzuraCast-%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F"><span class="toc-text">步骤 4：下载并运行 AzuraCast 安装程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-5%EF%BC%9A%E4%BF%AE%E5%A4%8D%E7%AB%AF%E5%8F%A3%E5%86%B2%E7%AA%81%EF%BC%88%E5%A6%82%E6%9E%9C%E6%9C%89%E7%9A%84%E8%AF%9D%EF%BC%89"><span class="toc-text">步骤 5：修复端口冲突（如果有的话）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%81%9C%E6%AD%A2-AzuraCast-%E6%9C%8D%E5%8A%A1"><span class="toc-text">1. 停止 AzuraCast 服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BC%96%E8%BE%91-Docker-Compose-%E6%96%87%E4%BB%B6"><span class="toc-text">2. 编辑 Docker Compose 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6"><span class="toc-text">3. 保存文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2-AzuraCast"><span class="toc-text">4. 重新部署 AzuraCast</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-6%EF%BC%9A%E8%AE%BF%E9%97%AE-AzuraCast-%E7%BD%91%E9%A1%B5%E7%95%8C%E9%9D%A2"><span class="toc-text">步骤 6：访问 AzuraCast 网页界面</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/app-store/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">媒体服务器</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zh/zimaos/app-store/setup-emby-server">Emby 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/nvr-camera-server">NVR 摄像机服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-setup-guide">Plex 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU 转码</a></li><li><a class="" href="/docs/zh/zimaos/app-store/sync-photos-with-immich">Immich 照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/immich-photo-backup">Immich 照片备份</a></li><li><a class="" href="/docs/zh/zimaos/app-store/cli-guide">批量照片同步</a></li><li><a class="" href="/docs/zh/zimaos/app-store/dlna-server-setup">DLNA 服务器</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自托管应用</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-setup">使用 Syncthing 同步文件</a></li><li><a class="" href="/docs/zh/zimaos/app-store/webtorrent-feature">种子下载器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/pi-hole-setup">Pi-hole 广告拦截</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ngx-install">文档管理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/paperless-ai-install">AI 文档处理</a></li><li><a class="" href="/docs/zh/zimaos/app-store/syncthing-install">Syncthing 设置指南</a></li><li><a class="" href="/docs/zh/zimaos/app-store/radarr-setup">Radarr 电影管理</a></li><li><a class="is-current" href="/docs/zh/zimaos/app-store/azuracast-install">网络电台</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zabbix-install-guide">服务器监控</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">AI 与机器学习</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/zh/zimaos/app-store/enable-ai">启用 AI 搜索</a></li><li><a class="" href="/docs/zh/zimaos/app-store/deploy-deepseek-r1">部署 DeepSeek R1</a></li><li><a class="" href="/docs/zh/zimaos/app-store/hermes-agent-setup">Hermes 智能体</a></li><li><a class="" href="/docs/zh/zimaos/app-store/llm-manual-download">下载 AI 模型</a></li><li><a class="" href="/docs/zh/zimaos/app-store/frigate-ollama-setup">AI 照片描述</a></li><li><a class="" href="/docs/zh/zimaos/app-store/openclaw-agent-setup">OpenClaw 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">创意项目</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zh/zimaos/app-store/pve-on-debian-for-i226">在 Debian 上运行 PVE</a></li><li><a class="" href="/docs/zh/zimaos/app-store/awesome-third-party-stores">社区应用商店</a></li><li><a class="" href="/docs/zh/zimaos/app-store/batocera-arcade-setup">Batocera 街机</a></li><li><a class="" href="/docs/zh/zimaos/app-store/jellyfin-setup">Jellyfin 媒体服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/oculus-quest-media-server">Oculus VR 串流</a></li><li><a class="" href="/docs/zh/zimaos/app-store/minecraft-friendship-service">Minecraft 服务器</a></li><li><a class="" href="/docs/zh/zimaos/app-store/self-hosted-apps">自托管应用</a></li><li><a class="" href="/docs/zh/zimaos/app-store/zimablade-cluster-pve">PVE 集群迁移</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">开发者资源</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/zh/developer/docker-app-publishing">构建并发布应用</a></li><li><a class="" href="/docs/zh/developer/app-store-create-from-scratch">创建应用商店</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/azuracast-install" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/azuracast-install" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/azuracast-install" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/azuracast-install" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/azuracast-install" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
