@@ -1,106 +1,60 @@
 ---
-title: Começar
-description:
-type: “Docs”
-tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não for preenchida, será cortada a primeira parte do conteúdo
-permalink: /pt-PT/zimaos/get-started.html
+title: Começar a utilizar o ZimaOS
+description: "Instale o ZimaClient no computador ou telemóvel, crie uma conta ZimaOS, escolha o idioma e conclua a configuração inicial em Windows, macOS, iOS ou Android."
+type: Docs
+tip: Não remova este bloco de Front Matter. O campo description é utilizado como resumo do artigo; se ficar vazio, será utilizado o primeiro parágrafo.
 ---
 
-# Integração
+Configurar um dispositivo novo não deve ser trabalhoso. Depois de repetir este primeiro arranque muitas vezes, a versão curta é simples: instale o cliente, crie uma conta e comece a utilizar o equipamento.
 
-Começar com o ZimaOS é muito simples. O **design geral do sistema foca na simplicidade e na consistência da linguagem**. Nosso objetivo é garantir que usar, compartilhar e gerenciar dados em uma nuvem privada seja uma experiência fluida, elegante e rápida.
-Durante o processo de configuração, o **aplicativo cliente Zima estabelece todas as conexões** entre o seu laptop ou iMac e o ZimaCube, **proporcionando a base para acesso, transferências de alta velocidade e experiências remotas**. Após instalar o aplicativo cliente, basta seguir os passos guiados para completar a inicialização do ZimaCube.
+## Antes de começar
 
-## Instalar Cliente Zima 
-### Baixar Cliente Zima
-https://find.zimaspace.com/ e instale o ZimaClient. Ele irá automaticamente escanear os dispositivos disponíveis.
-### Pesquisa Rápida
-Se preferir usar a interface web, você pode visitar o site. Certifique-se de que seu dispositivo esteja conectado à mesma rede que o ZimaCube. Faça a varredura na página web e, após a varredura ser concluída, você verá uma lista de dispositivos ZimaCube disponíveis. Basta clicar no dispositivo correspondente para se conectar ao ZimaOS.
-![](https://manage.icewhale.io/api/static/docs/1773888170981_20260318-185643.jpeg)
+O dispositivo Zima deve estar ligado e conectado à mesma rede que o computador utilizado na configuração. Se ainda não instalou o ZimaOS, consulte primeiro **[Instalar o ZimaOS](./how-to-install-zimaos "Guia passo a passo para instalar o ZimaOS de raiz no seu dispositivo")**.
 
-## Login no ZimaOS
-Após conectar-se com sucesso ao ZimaCube, insira o endereço IP correspondente para acessar a interface de inicialização do ZimaOS, onde você pode começar a configurar seu ZimaCube.
-### Selecionar idioma
-Atualmente, o ZimaOS suporta 6 idiomas, incluindo inglês, chinês, japonês, italiano e norueguês. Escolha o idioma com o qual você tem mais familiaridade para garantir a melhor experiência do usuário.
-![](https://manage.icewhale.io/api/static/docs/1727082127778_image.png)
-### Criar Usuário
-Em seguida, você precisará criar uma conta de usuário. Esta conta será a principal forma de gerenciar o ZimaOS. Por favor, defina um nome de usuário e uma senha seguros para proteger seus dados e configurações.
-![](https://manage.icewhale.io/api/static/docs/1727082165610_image.png)
-### Inicialização bem-sucedida
-Após a inicialização, o ZimaOS fornecerá uma breve introdução às funções e ao guia de uso. Isso ajudará você a entender os principais recursos e o uso do ZimaOS. Você pode aprender sobre: 
-- Sistema de gerenciamento de arquivos
-- Loja de aplicativos e aplicativos instaláveis
-- Gerenciamento de dispositivos e configurações de rede
-- Vários tipos de Raid para escolher
-![](https://manage.icewhale.io/api/static/docs/1727082245929_image.png)
-![](https://manage.icewhale.io/api/static/docs/1728377751054_copyImage.png)
+## Instalar o ZimaClient
 
+O ZimaClient liga o computador ou telemóvel ao dispositivo Zima. Encontra automaticamente o dispositivo na rede e configura o acesso remoto.
 
-# Resumo
+**Computador** — Transfira a versão para **[Windows ou macOS](https://www.zimaspace.com/zimaos/download "Transferir o ZimaClient para Windows e macOS")**. Instale e abra a aplicação; esta procura na rede e apresenta os dispositivos disponíveis.
 
-## Acesso Remoto
-A acessibilidade é fundamental para nuvens privadas, e configurar as configurações de rede na maioria dos dispositivos NAS pode ser bastante complexo. O ZimaOS visa oferecer uma experiência de acesso remoto plug-and-play que seja segura e confiável, sem risco de encaminhamento de nuvem ou vazamento de dados.
+**Telemóvel** — Obtenha o ZimaClient para **[iOS](https://www.zimaspace.com/zimaos/download "Transferir o ZimaClient para iOS na App Store")** na App Store ou para **[Android](https://www.zimaspace.com/zimaos/download "Transferir o ZimaClient para Android no Google Play")** no Google Play. A aplicação móvel permite verificar o estado do sistema, gerir aplicações e sincronizar ficheiros do telemóvel.
 
-Assim, uma vez que você instala o [**Cliente Zima**](https://find.zimaspace.com/) e escaneia para se conectar ao ZimaOS pela primeira vez, seu canal de acesso remoto já está configurado！
+![Página de transferência do ZimaClient com opções para macOS, Windows, iOS e Android](https://manage.icewhale.io/api/static/docs/1773888170981_20260318-185643.jpeg)
 
-![](https://manage.icewhale.io/api/static/docs/1728377748520_image.png)
+## Iniciar sessão e configurar
 
+Quando o ZimaClient encontrar o dispositivo, clique para estabelecer a ligação. Verá o ecrã de configuração do ZimaOS.
 
-Você pode se conectar ao seu ZimaCube em casa ou no escritório de qualquer lugar usando seu MacBook ou laptop, sem nenhuma configuração adicional. A conexão entre seu laptop e o ZimaCube é automaticamente estabelecida pelo Aplicativo Cliente Zima e ZimaOS, utilizando comunicação P2P para criar a conexão. As transferências de dados entre os dois são criptografadas, garantindo que todas as transmissões de dados sejam de ponta a ponta.
+**Escolha o idioma.** O ZimaOS suporta inglês, chinês, japonês e outros idiomas. A comunidade continua a ajudar a aumentar o número de traduções.
 
-Para controle total, você também pode fazer login no painel de configurações para desativar o recurso de acesso remoto com apenas um clique.
-![](https://manage.icewhale.io/api/static/docs/1727081506994_image.png)
-## Arquivos
-Arquivos foca na gestão unificada para criadores e dados pessoais, oferecendo uma experiência de armazenamento e acesso a arquivos simplificada. Sem dúvida, se assemelha a um serviço de armazenamento na nuvem local. No entanto, ao contrário dos serviços de armazenamento em nuvem convencionais, sua velocidade pode atingir GB/s via Thunderbolt, e com redes sem fio Wi-Fi 6, pode alcançar mais de 100MB/s em sincronizações de material e experiências de pré-visualização de arquivos. Isso proporciona velocidades ideais para fazer backup de grandes quantidades de imagens pessoais ou conteúdo em vídeo, incluindo 4K.
+![Ecrã de configuração inicial do ZimaOS com um seletor de inglês, chinês e japonês](https://manage.icewhale.io/api/static/docs/1727082127778_image.png)
 
-Arquivos oferece pré-visualizações de vídeo, fixação e recursos de expansão de armazenamento em nuvem, atendendo efetivamente às suas necessidades de acesso ao conteúdo e unificando dados entre os serviços de nuvem. Usos comuns incluem compartilhar um conjunto de materiais dentro de uma pequena equipe ou fixar suas pastas de projetos mais usadas para fácil acesso.
+**Crie a conta.** A primeira conta criada é a conta principal, com privilégios de proprietário e administrador. Escolha um nome de utilizador e uma palavra-passe segura.
 
-Embora o desempenho de 100MB/s geralmente satisfaça a maioria das necessidades de pré-visualização e edição, se você exigir velocidades extremas, as capacidades de 10GbE ou Thunderbolt do ZimaCube são excelentes opções.
-![](https://manage.icewhale.io/api/static/docs/1727081538638_image.png)
-## Transferência Thunderbolt
+![Ecrã do ZimaOS para criar uma conta local com campos de utilizador e palavra-passe](https://manage.icewhale.io/api/static/docs/1727082165610_image.png)
 
-Thunderbolt, um método que não deve ser negligenciado por editores profissionais ou usuários em busca de desempenho máximo de transferência, é utilizado com o ZimaCube. Ele oferece velocidades de transferência de dados superiores a 1GB/s, com velocidades teóricas de leitura e gravação alcançando até 20Gbps.
+Depois da criação, o ZimaOS apresenta um breve resumo das funções principais. O dispositivo está pronto a utilizar.
 
-No entanto, isso não deve ser complicado—deve ser tão simples quanto conectar um cabo Thunderbolt e usá-lo imediatamente. Sim, através do aplicativo Cliente Zima e do ZimaOS. Uma vez que o cabo Thunderbolt esteja conectado, basta acessar novamente o ZimaOS através do aplicativo Cliente Zima para experimentar as velocidades mais rápidas de edição, acesso a materiais ou compartilhamento Samba. Nenhuma configuração adicional é necessária; o sistema e os aplicativos lidam automaticamente com tudo para você.
-![](https://manage.icewhale.io/api/static/docs/1727081568557_image.png)
-## Compartilhamento Samba
-Criar um espaço dentro de uma rede local (LAN) onde uma equipe pode editar diretamente, ou permitir acesso direto ao armazenamento de rede local a partir de dispositivos como TVs e headsets VR, o Samba é frequentemente a escolha ideal para muitos. Configurar e gerenciar Samba no ZimaOS continua a oferecer a facilidades inerentes do sistema. Você pode facilmente criar um compartilhamento LAN clicando com o botão direito em qualquer pasta em Arquivos.
+![Assistente do ZimaOS com uma descrição do acesso remoto, RAID, armazenamento Btrfs e NAS OS](https://manage.icewhale.io/api/static/docs/1727082245929_image.png)
 
-Curiosamente, quando combinado com o recurso de acesso remoto do Cliente Zima, você pode até carregar remotamente espaços de armazenamento e editar arquivos diretamente dentro desse espaço remoto. Isso oferece uma solução atraente e simples para colaboração e trabalho remoto.
+## O que já está configurado
 
-Através do painel de configurações, você pode criar diretamente diferentes usuários e atribuir permissões de acesso correspondentes ao conteúdo, personalizando a acessibilidade conforme necessário para sua equipe ou família.
-![](https://manage.icewhale.io/api/static/docs/1727081592637_image.png)
-## Integração de Armazenamento em Nuvem
-Hoje, os dados de todos estão incrivelmente dispersos—alguns estão no Notion, outros no Slack, e muitos por e-mail. Acreditamos que os dados pessoais ou de pequenas equipes deveriam ser mais unificados. Não é necessário que residam em uma nuvem privada, mas a gestão deve ser centralizada. Tendo essa filosofia em mente, o primeiro passo do ZimaOS é permitir a gestão dos seus dados de armazenamento em nuvem, dados NAS ou dados nos dispositivos Zima através de uma única interface de sistema.
+Algumas funções estão disponíveis de imediato e não exigem configuração adicional.
 
-Com o recurso Adicionar em Arquivos, você pode facilmente vincular seu Google Drive, Dropbox, OneDrive ou pastas Samba compartilhadas locais com um clique, tudo a partir de um único e elegante gerenciador de arquivos. Isso permite a gestão em lote ou unificada dos seus dados pessoais.
+**Acesso remoto.** Depois da primeira ligação através do ZimaClient, pode aceder ao dispositivo fora de casa. A ligação é cifrada e P2P, sem encaminhamento de portas nem configuração do router.
 
-Isso significa que se você achar que a gestão de dados do Google Drive não é mais confiável ou econômica, pode migrar dados em lote do Google Drive para o Dropbox ou qualquer outro meio de sua escolha. Isso será muito empolgante e, com base nessa ideia, ofereceremos soluções de gestão de dados pessoais mais eficazes.
-![](https://manage.icewhale.io/api/static/docs/1727081614882_image.png)
-## Raid
-RAID é um recurso essencial para usuários de NAS existentes. O ZimaOS agora suporta três modos de RAID: RAID 0, RAID 1 e RAID 5. Essas opções oferecem soluções de backup redundante para o armazenamento de dados pessoais, protegendo contra o risco imprevisível de falhas de discos rígidos.
+Pode abrir um ficheiro do NAS num café, verificar uma transferência durante uma viagem ou partilhar uma pasta sem a enviar primeiro para um serviço de terceiros. O dispositivo torna-se um servidor doméstico disponível em qualquer lugar e os dados permanecem sob o seu controlo. Pode desativar o acesso remoto em Settings com um clique e decidir quando o dispositivo fica acessível. Os dados nunca passam por servidores de terceiros.
 
-RAID 0 é uma opção que existe principalmente para maximizar o desempenho de leitura e gravação e unificar o espaço de armazenamento, sem nenhum mecanismo de redundância. RAID 1 oferece uma solução segura e confiável, armazenando seus dados em dois discos rígidos idênticos, reduzindo o espaço pela metade, mas dobrando a segurança. RAID 5, através da configuração de três discos, maximiza o espaço de armazenamento enquanto fornece um mecanismo de redundância.
+**Partilha Samba.** Todos os espaços de armazenamento são partilhados por predefinição na rede local e protegidos pela conta e palavra-passe do ZimaOS. O ZimaClient gere automaticamente a ligação P2P. Depois da ligação, as pastas partilhadas aparecem no Finder do Mac ou no Explorador de Ficheiros do Windows e pode mover ficheiros como em qualquer pasta.
 
-Se você está interessado em ZFS ou configurações de RAID mais avançadas, pode construir essas opções através das interfaces de nível de sistema fornecidas pelo ZimaOS.
-![](https://manage.icewhale.io/api/static/docs/1727081705277_image.png)
-## ZVM
-Baseado em tecnologia de virtualização, você pode utilizar ainda mais os recursos computacionais do seu hardware ZimaCube. Por exemplo, você pode usar seu NAS como um host de desktop Windows, um ambiente de desenvolvimento Debian segregado, ou até mesmo como um sistema de roteamento para gerenciar sua rede. As capacidades de VM ainda estão em estágios iniciais, e estamos continuamente refinando seus recursos mais avançados com base no feedback da comunidade.
-![](https://manage.icewhale.io/api/static/docs/1727081725764_image.png)
-## Drop
-É um recurso de sobremesa simples: todos os celulares, laptops ou dispositivos clientes dentro da mesma rede local criada pelo ZimaOS podem realizar transferências peer-to-peer de arquivos individuais quando abrem um link compartilhado pelo ZimaOS.
-![](https://manage.icewhale.io/api/static/docs/1727081744441_image.png)
-## App Store
-A AppStore quase herda todos os recursos do CasaOS, oferecendo mais de cem aplicativos privatizados que podem ser implantados com apenas um clique. Esses incluem aplicativos populares de servidor de mídia como Plex e Jellyfin, aplicativos de casa inteligente como Home Assistant e Homebridge, e ferramentas de documentação e colaboração em equipe privatizadas, como Notion e Affinity. 
-Aplicativos de IA local populares recentemente, como OpenWeb UI e Stable Diffusion também podem ser instalados e ativados com apenas um clique.
+Uma equipa no mesmo projeto ou uma família que partilhe fotografias e vídeos pode utilizar o mesmo armazenamento sem software adicional. As permissões estão associadas às contas ZimaOS, permitindo controlar quem vê cada conteúdo.
 
-Há muitos cenários e usos a explorar, esperando que você os desbloqueie. Vamos gradualmente mostrar isso a você através de conteúdos futuros.
-![](https://manage.icewhale.io/api/static/docs/1727081765695_image.png)
+## A seguir
 
+- **[Descrição geral das funcionalidades](./features "Conheça o acesso remoto, o armazenamento e as aplicações do ZimaOS")** — explore o painel do ZimaOS e as suas possibilidades
+- **[Transferir o ZimaClient](./zimaclient-install "Instale e configure o ZimaClient no computador e no telemóvel")** — consulte mais detalhes sobre a aplicação de computador
+- **[Acesso remoto](./remote-access "Configure o acesso remoto para utilizar o servidor doméstico em qualquer lugar")** — configure e gira ligações remotas
 
-# ZimaOS e CasaOS
-Neste artigo, vamos apresentar brevemente os principais recursos disponíveis no ZimaOS. Aqueles que estão familiarizados com a Zima sabem que o ZimaOS é desenvolvido com base no CasaOS, um projeto de nuvem privada de código aberto lançado pela equipe Zima em 2022. Ele atraiu significativa atenção de desenvolvedores em todo o mundo, com mais de 700 mil instalações servindo entusiastas em centenas de países globalmente.
+## Resolução de problemas
 
-Aproveitando a base do CasaOS, o ZimaOS aprimorou ainda mais suas funcionalidades essenciais como um sistema operacional NAS definitivo. Em resumo, enquanto o **CasaOS serve** como um hub de **aplicações de nuvem pessoal** permitindo a fácil implantação de vários aplicativos de nuvem privada, o **ZimaOS** constrói sobre essa fundação para **estabelecer um sistema operacional robusto e completo.** Ele apresenta configuração de RAID, acesso remoto, um gerenciador de arquivos similar a uma nuvem, backups automáticos e gerenciamento unificado de dados em nuvem e NAS—um conjunto de funções em nível de sistema. 
-
-Conteúdos futuros vão explorar mais profundamente as características detalhadas do ZimaOS.
+Se o ZimaClient não encontrar o dispositivo, confirme que ambos estão na mesma rede. Também pode ligar-se diretamente pelo endereço IP: procure o IP na lista de clientes DHCP do router e introduza-o num navegador. O ecrã de configuração será o mesmo.

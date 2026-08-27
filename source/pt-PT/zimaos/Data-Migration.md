@@ -1,38 +1,46 @@
 ---
-title: Guia de Migração de Dados
-description:
-type: "Docs"
-tip: O formato fixo da barra superior não deve ser removido, a descrição é a descrição do artigo, se não preenchida, o conteúdo será cortado na primeira parte do texto
-permalink: /pt-PT/zimaos/data-migration.html
+title: Mover dados entre unidades
+seo_title: "Mover dados entre unidades no ZimaOS: Docker, dados de aplicações e pastas"
+description: "Mova imagens Docker, dados de aplicações e pastas de utilizador entre espaços de armazenamento do ZimaOS com a ferramenta Data Migration integrada."
+type: Docs
+author: Lauren Pan
+tip: Não remova este bloco de Front Matter. O campo description é utilizado como resumo do artigo; se ficar vazio, será utilizado o primeiro parágrafo.
 ---
-# Propósito
-A migração de dados é o processo de transferência de diretórios especificados para outro espaço de armazenamento para otimizar e reduzir o tamanho do seu armazenamento atual. Isso garante que seu sistema permaneça eficiente e organizado, permitindo um melhor desempenho e gerenciamento mais fácil dos seus arquivos.
 
-# Alvos de Migração
-Você pode migrar três tipos de pastas:
-* Imagens Docker
-* Dados de Aplicação Docker
-* Bancos de Dados de Usuários (incluindo as seguintes cinco pastas):
-  * Galeria
-  * Downloads
-  * Documentos
-  * Mídia
-  * Backup
-# Como Usar
-### 1. Vá para Configurações > Migração de Dados.
-Abra Configurações e navegue até a página **Migração de Dados**![](https://manage.icewhale.io/api/static/docs/1727178430378_image.png)
+Quando uma unidade fica cheia, não é necessário reinstalar nada. A ferramenta de migração integrada move imagens Docker, dados de aplicações e pastas de utilizador para outro espaço de armazenamento, mantendo tudo a funcionar.
 
-### 2. Selecione e clique em Modificar Localização.
-Selecione o item que deseja migrar e clique no botão **Modificar Localização** à direita![](https://manage.icewhale.io/api/static/docs/1727178444256_image.png)
+## O que pode mover
 
-### 3. Escolha o novo espaço e clique em Avançar
-Escolha o novo espaço de armazenamento e clique no botão **Avançar**![](https://manage.icewhale.io/api/static/docs/1727178450237_image.png)
+- Imagens Docker
+- Dados de aplicações Docker
+- Bases de dados do utilizador (Gallery, Downloads, Documents, Media e Backup)
 
-### 4. Clique em Iniciar Migração
-Marque a caixa "Eu reconheço e confirmo esta ação," e então clique no botão **Iniciar Migração**![](https://manage.icewhale.io/api/static/docs/1727178455511_image.png)
+## Como mover
 
-### 5. Migrando
-Durante a migração, o progresso será exibido em tela cheia, e nenhuma outra operação poderá ser realizada![](https://manage.icewhale.io/api/static/docs/1727178460307_image.png)
+![Página Settings do ZimaOS com a entrada Data Migration e a lista de pastas de armazenamento](https://manage.icewhale.io/api/static/docs/1727178430378_image.png)
 
-### 6. Concluído
-Após a conclusão, um popup mostrará os detalhes da migração![](https://manage.icewhale.io/api/static/docs/1727178465734_image.png)
+1. Abra **Settings > Data Migration**.
+2. Selecione o item que pretende migrar e clique no botão **Modify Location** à direita.
+
+![Página Data Migration com o botão Modify Location junto a cada item selecionável](https://manage.icewhale.io/api/static/docs/1727178444256_image.png)
+
+3. Escolha o novo espaço de armazenamento e clique em **Next**.
+
+![Assistente Data Migration com a seleção do espaço de armazenamento e o botão Next](https://manage.icewhale.io/api/static/docs/1727178450237_image.png)
+
+4. Selecione a caixa "I acknowledge and confirm this action" e clique em **Start Migration**.
+
+![Ecrã de confirmação do Data Migration com a caixa de aceitação e o botão Start Migration](https://manage.icewhale.io/api/static/docs/1727178455511_image.png)
+
+5. O progresso é apresentado em ecrã inteiro e não é possível realizar outras operações durante a migração.
+
+![Ecrã de progresso do Data Migration com o estado da migração em ecrã inteiro](https://manage.icewhale.io/api/static/docs/1727178460307_image.png)
+
+6. Quando terminar, uma janela de contexto apresenta os detalhes da migração.
+
+![Janela de conclusão do Data Migration com os detalhes da migração terminada](https://manage.icewhale.io/api/static/docs/1727178465734_image.png)
+
+## Relacionado
+
+- **[Caminhos de armazenamento das aplicações](./docker-app-paths "Onde as aplicações guardam dados nas unidades e como os mover")** — compreenda onde ficam os dados antes de os transferir
+- **[Configuração do armazenamento](./storage-setup "Escolha uma configuração de armazenamento com opções RAID adequadas às suas necessidades")** — planeie os espaços de armazenamento

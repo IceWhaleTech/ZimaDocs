@@ -4,7 +4,6 @@ description: ZimaOS 1.5.3以降でUSB UPSを接続、有効化、および設定
 type: Docs
 author: icewhale123456
 tip: トップバーの固定フォーマットは削除しないでください。descriptionは記事の説明で、記入しない場合は内容の最初の段落を切り取って表示します。
-permalink: /jp/zimaos/ups-setup.html
 ---
 ## はじめに
 **ZimaOS v1.5.3**以降、ZimaOSは正式に**UPS（無停電電源装置）**をサポートし、停電時にNASを継続して動作させ、必要に応じて安全にシャットダウンします。互換性のあるUSB UPSを接続すると、ZimaOSは次のことができます：
@@ -99,7 +98,7 @@ UPSの状態または設定ページでは、次のような情報が表示さ�
 
 ---
 ## 対応デバイスリスト
-[ZimaOS対応UPSデバイス互換リスト](https://www.zimaspace.com/docs/zimaos/zimaos-ups-compatibility-list)
+[ZimaOS対応UPSデバイス互換リスト](../hardware/ups-compatibility-list)
 
 このリストは完全ではなく、随時更新される場合があります。  
 UPSがリストに載っていない場合でも、自動的にサポート外であるわけではありません。

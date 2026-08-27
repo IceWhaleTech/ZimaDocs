@@ -66,7 +66,7 @@ It will now automatically boot into **ZimaOS**.
 ### Step 5: Access ZimaOS
 After reboot, the easiest way to log in is by using **ZimaClient**, which can automatically detect your device on the network and help you quickly access ZimaOS.  
 
-👉 Download ZimaClient and follow the guide here: [ZimaOS Quick Start Guide](https://www.zimaspace.com/docs/zimaos/Get-Started)  
+👉 Download ZimaClient and follow the guide here: [ZimaOS Quick Start Guide](./get-started)
 
 ![welcome to zimacos webgui](https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png)
 
@@ -91,10 +91,8 @@ Here are some ideas for what to do next:
 - ☁️ **Backup important data** to external drives or the cloud.  
 
 👉 Ready to unlock more features?  
-- Visit the [ZimaOS Documentation](https://www.zimaspace.com/docs/zimaos/Romote-Access)  
-- Join our [Community Forum](https://community.zimaspace.com/)  
-- Explore the [Awesome App Store](https://awesome.casaos.io/content/3rd-party-app-stores/list.html) to expand your setup  
+- Continue with **[Get Started](./get-started)** for first boot setup
+- Set up **[Remote Access](./remote-access)** to connect from anywhere
+- Join our **[Community Forum](https://community.zimaspace.com/)**
 
-💡 **Pro Tip**: Bookmark this guide for future updates. New ZimaOS releases often include performance improvements and new apps.  
-
-Start your journey with ZimaOS today and enjoy a faster, simpler, and more reliable NAS experience! 🚀
+💡 Bookmark this guide for future updates. New ZimaOS releases often include performance improvements and new apps.

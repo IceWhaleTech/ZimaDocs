@@ -119,6 +119,6 @@ https://github.com/IceWhaleTech/ZimaOS/releases
 ZimaOSが仮想マシンで実行されているので、システムのセットアップ、ストレージ管理、アプリケーションの展開方法を自分のペースで探索できます。  
 次のガイドでさらに学ぶことができます：
 
-👉[ZimaOSの始め方](https://www.zimaspace.com/docs/zimaos/Get-Started)
+👉[ZimaOSの始め方](../../zimaos/get-started)
 
 このガイドを通じて、ZimaOS環境を最大限に活用するための次のステップを踏むことができます。

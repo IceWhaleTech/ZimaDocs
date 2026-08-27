@@ -1,113 +1,85 @@
 ---
-title: Features-Build Data Station 
-description: "Explore ZimaOS features including remote access, ZimaClient connectivity, and multi-device data management for your ZimaCube."
+title: ZimaOS Features
+seo_title: "ZimaOS Features: Remote Access, Storage, RAID, and the App Store"
+description: “A tour of the ZimaOS dashboard. Remote access, file sharing, storage management, RAID options, virtual machines, and the App Store with one-click Docker app installation.”
 type: “Docs”
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
-permalink: /zimaos/features.html
 ---
 
-# Remote Access
-##  Your Gateway to Remote Access
-**Enter ZimaCube’s Remote feature**[ (click here to learn more)](/zimaos/Romote-Access) , a powerful solution that allows users to manage and access their data from anywhere in the world. Whether you’re handling urgent documents remotely or enjoying your home media library, ZimaCube ensures that your data is always within reach, efficiently and securely.
-![](https://manage.icewhale.io/api/static/docs/1773989011331_img_v3_02vt_5e8ddcb9-5708-41d3-be12-7392938caaeg.jpg)
+If you just went through the **[Get Started](./get-started "Set up ZimaOS from first boot with ZimaClient and account creation")** guide, your device is online and ready. Remote access is open, storage is shared, your account is set up. That first moment of seeing the dashboard come together is genuinely satisfying.
+
+Here is a tour of what ZimaOS can do, and where to find the detailed guides for each feature. Think of this page as a map. If something catches your eye, follow the link to go deeper.
+
+## Reach Your Device from Anywhere
+
+Most NAS devices make you configure port forwarding or set up a VPN to connect from outside your home. ZimaOS does not. The first time you connect through ZimaClient, an encrypted peer-to-peer channel is created automatically. After that, your device is reachable from anywhere.
+
+Your data stays private. The connection is encrypted end to end, with no third-party server in the middle. You can turn remote access off in Settings whenever you want.
+
+We do not collect, store, or have access to your personal files, connection logs, or usage data. Remote access runs over an encrypted peer-to-peer channel. No third-party server sits between you and your device. Our privacy practices are documented in full and open to community review.
+
+**[Privacy Policy](../help-center/privacy-policy "ZimaOS privacy policy on how your data and connections are handled")**
+
+<table style="width:100%; table-layout:fixed;">
+  <tr>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885802_zimaclient-ios-v-1-6-dash.png" alt="ZimaClient iOS dashboard screen showing device status, storage usage, and system information" style="max-width:100%; height:auto;">
+    </td>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885801_zimaclient-ios-v-1-6-files.png" alt="ZimaClient iOS files screen listing shared folders and files on the home server" style="max-width:100%; height:auto;">
+    </td>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885803_zimaclient-ios-v-1-6-app.png" alt="ZimaClient iOS apps screen showing installed applications and their running status" style="max-width:100%; height:auto;">
+    </td>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885804_zimaclient-ios-v-1-6-photos.png" alt="ZimaClient iOS photos screen with photo library synced from the home server" style="max-width:100%; height:auto;">
+    </td>
+  </tr>
+</table>
+
+**[Remote Access](./remote-access "Configure remote access so your home server is reachable anywhere")** · **[Download ZimaClient](./zimaclient-install "Install and set up ZimaClient on desktop and mobile for device access")** · **[Network ID](./remote-id "Find your ZimaOS Network ID and use it to connect from other devices")**
+
+## Store, Share, and Protect Your Files
+
+How you set up storage depends on what you are using your device for.
+
+For most homes, we recommend starting with two identical drives in RAID 1. Your data is mirrored across both drives, so if one fails you lose nothing. Files appear in Finder and File Explorer on every computer in the house, with none of the upload waits or monthly fees that come with cloud storage. If you do want an offsite copy of your most important files, the Files app can connect to Google Drive, Dropbox, or OneDrive for selective backup.
+
+Your music, photos, and videos stream directly from the device to any screen on your network. For an extra layer of protection, the Files app can selectively back up your most important folders to Google Drive, Dropbox, or OneDrive.
+
+![ZimaOS storage settings page showing disk list and options to combine drives into RAID storage](https://manage.icewhale.io/api/static/docs/1786262061523_zimaos-storage-settings.png)
+
+If you are running a small business or keeping irreplaceable family archives, RAID 5 gives you more usable space while still protecting against a single drive failure. Start with three drives and add more later. Your data stays online even while a failed disk is being replaced. ZimaOS also supports RAID 0, RAID 1, and RAID 6 for other scenarios.
+
+If you want snapshots, checksums, and advanced data integrity, **[ZFS is available](../developer/zfs-setup "Set up ZFS on ZimaOS for snapshots, checksums, and data integrity")** as well.
+
+Once storage is configured, it appears automatically on your local network. On a Mac it shows up in Finder. On Windows, File Explorer. Access is protected by your ZimaOS account. You can create separate accounts for family members or teammates, each with their own read and write permissions.
+
+**[Storage Setup](./storage-setup "Choose your storage setup with RAID options matched to your needs")** · **[SMB File Sharing](./smb-troubleshooting "Share files over SMB so they appear in Finder and File Explorer")** · **[Connect Cloud Drives](./cloud-drive-connect "Connect Google Drive, Dropbox, or OneDrive to ZimaOS for backup")** · **[RAID Options](./raid-options "RAID levels and JBOD explained with step-by-step setup instructions")** · **[Move Data Between Drives](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")**
 
 
-## Second host device access:
-If you have another computer in the office, but the zimacube is not with you, you can still use Connect ID.
-**Setting Up ZimaCube Remote Access**
-* Open the network settings in ZimaOS and copy the Network ID.
-![](https://manage.icewhale.io/api/static/docs/1726647865007_image.png)
-* Download and install the Zima client from [find.zimaspace.com](https://find.zimaspace.com/).
-![](https://manage.icewhale.io/api/static/docs/1726648388482_image.png)
+## Install Apps with One Click
 
-* Launch the client, enter your Network ID and user details to log in.
-![](https://manage.icewhale.io/api/static/docs/1726647966224_image.png)
-![](https://manage.icewhale.io/api/static/docs/1726647980176_image.png)
-![](https://manage.icewhale.io/api/static/docs/1726647985810_image.png)
+This is where your device goes from storing files to being a home server. The App Store was significantly expanded in ZimaOS 1.7.
 
-**Maximizing Your Remote Experience**
-Here are some tips to ensure a seamless remote access experience:
+**One-click install.** Hundreds of applications are available with a single click. No Docker knowledge required. Install Pi-hole to block ads across your entire home network. Install Jellyfin to run your own streaming server. The interface is built for browsing, with categories and recommendations to help you find what you need.
 
-* Stable Connection: Always connect both your ZimaCube and remote device to reliable networks.
-* Security First: Regularly update your Network ID to prevent unauthorized access.
-![](https://manage.icewhale.io/api/static/docs/1726648028645_image.png)
-With these steps, ZimaCube’s Remote functionality is easy to set up and optimize for secure, efficient remote data management.
-## Empower Your Digital Life
-ZimaCube’s Remote feature is not just about accessing data; it’s about simplifying your digital life. No matter where you are—be it at home, the office, or on the move—ZimaCube offers a dependable and secure way to access your data. Activate ZimaCube Remote today and transform how you manage your digital content.
+**Manage everything in one place.** All your installed apps live on a single page. You can see which ones are running, check for updates, and adjust basic settings without touching a config file. If something goes wrong, the built-in logs and terminal are there when you need them.
 
-For further details on the ZimaCube Remote feature and our other offerings, please visit our website or reach out to our customer service team. We’re excited to help you take control of your data! 
-# Shared Storage
+**For power users.** Import any Docker Compose YAML file, edit configurations directly, and run multi-container stacks with full lifecycle control. ZimaOS handles the Docker layer so you can focus on what you are building.
 
-In this section, we will explore the various storage categories, sharing options, and permission settings available in ZimaOS.
-### Storage Classification
-ZimaOS divides storage into three main types:
-### USB
-You can enable a single disk in ZimaOS for normal use, making it easy to access your data.
-### Single Disk
-Disks can be enabled individually in ZimaOS for normal use.
-### Raid
-Enabling RAID in ZimaOS allows for safer use of disks, providing redundancy and enhanced data protection.
-![](https://manage.icewhale.io/api/static/docs/1727085879635_image.png)
-## Sharing Storage
-ZimaOS shares single disk and RAID storage by default. Although it is not possible to unshare these storages, you can modify the sharing settings as needed. USB devices are not automatically shared. To share a USB drive, navigate to the root directory, select the appropriate USB device and share it.
-![](https://manage.icewhale.io/api/static/docs/1727085956483_image.png)
-## Permission Settings
-ZimaOS supports SMB multi-user configuration, allowing you to set the read and write permissions of users. You can easily manage permissions, add or delete users through the admin panel.
-![](https://manage.icewhale.io/api/static/docs/1727085985786_image.png)
-![](https://manage.icewhale.io/api/static/docs/1727085991929_image.png)
-## Connection Sharing
-After successfully sharing the storage, you will receive a prompt with the connection details.
-![](https://manage.icewhale.io/api/static/docs/1727086027486_image.png)
-### Steps to connect:
-1. **On Mac or Windows**: Connect using the address provided in the prompt.
-2. **Enter the address**: Enter the copied address in the file browser and press Enter.
-![](https://manage.icewhale.io/api/static/docs/1727086114235_image.png)
-Once connected, you will see the connected server in the network
-![](https://manage.icewhale.io/api/static/docs/1727086136328_image.png)
-This smooth storage management approach enables ZimaOS to ensure convenient, secure and flexible data access.
+The community maintains several third-party stores with hundreds more apps. Your hardware, your apps, your rules. Nothing depends on a subscription or someone else's cloud.
 
-# Virtual Machine
-# App Store
+**[App Store Overview](./app-store/ "Browse App Store categories for media, self-hosted apps, and AI")** — media streaming, self-hosted apps, AI, creative builds
 
-First-time user of ZimaCube shares Luke’s experience:
-Luke is a designer who needs to remotely access a large number of design files and editing project files in his work. He is also a film and television enthusiast with a large number of movies and lossless music files. Although he knows nothing about code, he likes to explore new features and tinker with various devices. As an old user of Synology for seven years, when he first experienced ZimaCube, he was impressed by its simple configuration process and innovative App Store. ZimaOS ‘App Store is not only as powerful as Docker, but also realizes one-click installation of applications, which greatly simplifies the operation process. Luke often uses Jellyfin and Emby. On Synology, he needs to manually modify ports and set router port forwarding, but on ZimaOS, these are all automatically completed by the system, which greatly facilitates his use. For “novices” and “lazy people” like him, this is undoubtedly a blessing. Just open the App Store and click install, and the application can be used directly without any complicated operations. ZimaCube’s ease of use and efficiency have given him great surprise and satisfaction.
-![](https://manage.icewhale.io/api/static/docs/1726648441217_image.png)
-## Introduction
-ZimaOS aims to provide a user-friendly interface, powerful features, and easy-to-use experience, making it your first Data Management System! This philosophy sets ZimaOS apart from many other NAS systems on the market, truly achieving an Out Of The Box experience.
-The design of ZimaOS App Store further enhances its usability. In other NAS systems, installing and managing applications may require users to have certain Docker knowledge and perform manual Port Mapping and path settings. However, in ZimaOS, the App Store provides a one-click installation function. Users only need to click the installation button, and the system will automatically complete all necessary configurations, including port settings and path mapping, truly realizing the instant installation and use of applications.
-This guide provides you with a detailed introduction to how to use the ZimaOS app store, including the essence of the app store, introductions to third-party stores, and custom installation steps for the app.
-![](https://manage.icewhale.io/api/static/docs/1726648480871_image.png)
-## The essence of app stores
-The essence of an app store:
-The app store is an integrated platform that provides centralized management functions. Users can use the app store to:
+## Get Your Data In First
 
-* Find apps quickly and easily:No need to search everywhere, all apps in one place.
-* Download and install safely:Apps are audited to reduce the risk of malicious software.
-* Update reminder:The app store will automatically prompt the version status of existing applications, ensuring that you can always manage the application to stay up to date.
-Most of these applications belong to Docker containers with pre-configured templates, and users only need to pull mirroring to install them.
-Currently, ZimaOS ‘app store includes nearly a hundred applications, covering various types of applications such as video apps, album management, backup, file systems, team collaboration, and ad blocking.
-## Third-party store introduction:
-But then IceWhale realized the power of the community was huge, they had amazing creativity and insight. Therefore, IceWhale decided to open this interface and leverage the extraordinary insights and innovative abilities of community members. Currently, eight third-party app stores have been established, with a total of nearly 500 apps and a huge download volume.
-The community’s contributions have significantly enhanced the ecosystem, driving the continued growth and improvement of ZimaOS.
-We also welcome more warriors to build their own store system!![](https://manage.icewhale.io/api/static/docs/1726648635825_image.png)
-The steps to add a third-party store are also very simple. Just open the application center, click the ADD button at the top right of the list, and enter the address of the third-party store.[AppStore-Play](https://play.cuse.eu.org/Cp0204-AppStore-Play.zip)For example,
-![](https://manage.icewhale.io/api/static/docs/1726648696012_image.png)
-After confirming the addition and waiting for a moment, 99 apps became 235 apps ( these two numbers will change with the maintenance of developers), indicating that the third-party store [AppStore-Play] was successfully added.
-![](https://manage.icewhale.io/api/static/docs/1726648852875_image.png)
-Video tutorials: https://www.youtube.com/watch?v=N9LUoOQTrqs&t=52s
+I know the App Store is tempting. You probably already scrolled through it and picked out three things you want to try. But if I could go back and do my first setup again, I would sort out storage before I install anything. It saves a headache later.
 
-## Custom installation of the app
-If these stores still cannot meet your needs, you can also customize the installation of applications. As everyone’s device is different, the templates pre-written by developers cannot cover everything, so fine-tuning these templates has become a required course for Docker users. In this way, you can flexibly adjust and optimize the application installation process according to your specific needs and device situation to achieve the best results. This not only improves the compatibility and performance of the application, but also better meets the unique needs of individuals and fully unleashes the potential of the device.
+Start with your drives. A single disk is the simplest path. Two identical drives in RAID 1 give you redundancy without complexity. RAID 5 scales across three or more disks when you need more space with protection. USB drives work for overflow or portable storage. The **[Storage Setup](./storage-setup "Choose your storage setup with RAID options matched to your needs")** page matches each scenario to a recommended configuration, with **[RAID Options](./raid-options "RAID levels and JBOD explained with step-by-step setup instructions")** as the technical reference.
 
-Don’t worry, custom installation is also very simple. You just need to find the application you want to add on Docker Hub, copy the YAML file with one click, select Import, and then configure the resources.
-Video link: https://www.youtube.com/watch?v=ToV6vRIl3Nk&t=91s
-In the custom installation interface, the resources that the container will use are recorded in detail. You can learn the relevant information and operation steps in detail through this link: https://icewhale.community/t/tutorial-how-to-understand-docker-apps-paths-on-zimaos-take-plex-as-an-example/3395
+Next, decide where your app data lives. Every app you install stores its files somewhere on your device. The **[App Storage Paths](./docker-app-paths "Where apps store data on your drives and how to move it")** guide shows you where, and how to move that data to a larger drive later. Setting this up early saves you from migrating app data down the line.
 
-## Summary:
-With the above guide, you can easily master the usage skills of the ZimaOS app store, whether it’s downloading official apps, adding third-party stores, or customizing installations. With these features, you can fully utilize the power of the community and the advantages of Docker containers to create a NAS system that meets all your needs.
+Then bring your content in. **[Phone Backup](./phone-backup "Back up your phone to ZimaOS automatically with ZimaClient")** and **[Computer Backup](./computer-backup "Back up your computer to ZimaOS with Finder, Explorer, or sync")** cover the devices you use every day. **[Move from Another NAS](./synology-to-zimacube-migration "Move files from a Synology NAS to ZimaOS with a phased approach")** and **[Connect Cloud Drives](./cloud-drive-connect "Connect Google Drive, Dropbox, or OneDrive to ZimaOS for backup")** handle the two most common sources.
 
-It is the contribution and continuous innovation of the community that have enabled ZimaOS to continue to grow and become the preferred platform in the minds of users. Start exploring now and make your NAS system more powerful and diverse!
-
-Thank you for reading this guide. I hope it can help you better use ZimaOS. If you have any questions or suggestions, please join the community and share and discuss with us.
-
-Wish you a pleasant use!
+These guides and more are organized in the **[ZimaOS Overview](./ "ZimaOS documentation overview for setup, storage, and sharing")** under Setup & Storage. After that, install whatever you want. You earned it.

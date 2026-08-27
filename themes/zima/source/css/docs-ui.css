@@ -1,0 +1,1754 @@
+/* Production implementation of the Figma docs frames 162:147 and 195:1865. */
+
+/* ---------- fonts ---------- */
+
+/*
+Font:     Britti Sans
+URL:      https://youworkforthem.com/font/T12190/britti-sans
+Foundry:  Nois
+Foundry:  https://youworkforthem.com/designer/1360/nois
+Version:  17
+Created:  June 21, 2023
+License:  https://www.youworkforthem.com/font-license
+License:  The WebFont(s) listed in this document must follow the YouWorkForThem
+          WebFont license rules. All other parties are strictly restricted
+          from using the WebFonts(s) listed without a purchased license.
+          All details above must always remain unaltered and visible in your CSS.
+*/
+
+/* Official foundry webfonts. Do NOT reintroduce local() here: machines with
+   Britti Sans installed would render from the system copy while everyone else
+   gets the webfont, and the two used to disagree on line-height by 25%.
+   All three weights share usWinAscent/Descent 800/200 -> line-height:normal
+   resolves to exactly 1.0em. */
+@font-face {
+  font-family: "Britti Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+  src: url("/docs/fonts/britti-sans-regular.woff2") format("woff2"),
+       url("/docs/fonts/britti-sans-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Britti Sans";
+  font-weight: 600;
+  font-style: normal;
+  font-display: optional;
+  src: url("/docs/fonts/britti-sans-semibold.woff2") format("woff2"),
+       url("/docs/fonts/britti-sans-semibold.woff") format("woff");
+}
+@font-face {
+  font-family: "Britti Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: optional;
+  src: url("/docs/fonts/britti-sans-bold.woff2") format("woff2"),
+       url("/docs/fonts/britti-sans-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url("../fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url("../fonts/inter-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+                 U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+                 U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+                 U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- design tokens ---------- */
+
+:root {
+  /* type */
+  --font-display: "Britti Sans", "Inter", -apple-system, sans-serif;
+  --font-ui: "Inter", -apple-system, "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono NL", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --docs-h1: 600 34px/1.2 var(--font-display);
+  --docs-h2: 700 20px/1 var(--font-display);
+  --docs-h3: 700 16px/1 var(--font-ui);
+  --docs-body: 400 16px/1.7 var(--font-ui);
+  --menu-h1: 700 16px/1 var(--font-ui);
+  --menu-body: 400 14px/1.25 var(--font-ui);
+
+  /* geometry */
+  --header-h: 64px;
+  --gutter-top: 32px;
+  --sidebar-w: 220px;
+  --article-w: 860px;
+  --toc-w: 220px;
+  --toc-gap: 50px;
+  --doc-image-max: 760px;
+  --doc-image-radius: 8px;
+  /* Single-column side gutter. Fluid so the 52px of the 1024 comp and the 20px
+     of the 390 comp are the two ends of one ramp instead of a jump at a
+     breakpoint: 5.2vw hits 52px at 1000px wide and 20px at 385px. */
+  --article-gutter: clamp(20px, 5.2vw, 52px);
+
+  /* light palette */
+  --bg-page: #ffffff;
+  --bg-header: rgba(17, 17, 17, .75);
+  --nav-fg: #ffffff;
+  --nav-pill-bg: #f1b335;
+  --nav-pill-fg: #404040;
+  --search-bg: #7d7d7d;
+  --search-bd: #848484;
+  --search-fg: #ffffff;
+  /* Border and glyph of the shortcut chip. Both comps draw it as --search-fg at
+     .8 over --search-bg, resolved to a flat colour so the chip needs no opacity
+     of its own. */
+  --search-kbd-bd: #e5e5e5;
+  /* Search overlay. The modal is a surface above the page rather than the page
+     itself, so it does not reuse --bg-page: at 390/760 the sheet covers the
+     whole viewport and would otherwise be indistinguishable from the article
+     behind it in dark. The scrim carries its alpha in the token because the
+     two comps use different opacities (50% light, 75% dark). */
+  --search-modal-bg: #ffffff;
+  --search-modal-rule: #dfdfdf;
+  --search-scrim: rgba(142, 142, 142, .5);
+  --store-bg: #f1b335;
+  --store-fg: #000000;
+  --icon-fg: #e5e5e5;
+
+  --menu-fg: #404040;
+  --menu-title-fg: #404040;
+  --menu-current-bg: #ffe3a9;
+  --menu-current-fg: #404040;
+
+  /* mobile drawer chrome; the sidebar inside it reuses the --menu-* tokens */
+  --drawer-bg: #f1f1f1;
+  --drawer-fg: #1e1e1e;
+  --drawer-fg-dim: #646464;
+  --drawer-rule: #bababa;
+  --drawer-utils-rule: #404040;
+
+  --doc-title-fg: #404040;
+  --doc-meta-fg: #999999;
+  --doc-heading-fg: #404040;
+  --doc-body-fg: #404040;
+  --doc-link-fg: #f1b335;
+  --doc-bullet: #ffaa00;
+
+  --code-bg: #f7f7f7;
+  --code-bd: #d5d5d5;
+  --code-fg: #404040;
+
+  --toc-rail: #ececec;
+  --toc-rail-active: #000000;
+  --toc-fg: #8e8e8e;
+  --toc-fg-active: #000000;
+
+  /* article footer: the rule and the target titles share one colour in the
+     comp, the "last updated" line sits a shade lighter */
+  --pagenav-fg: #8e8e8e;
+  --pagenav-meta-fg: #999999;
+}
+
+[data-theme="dark"] {
+  --bg-page: #0f0f0f;
+  --bg-header: rgba(32, 32, 32, .88);
+  --nav-fg: #fdfdfd;
+  --search-bg: #262626;
+  --search-bd: #2f2f2f;
+  --search-kbd-bd: #d4d4d4;
+  --search-modal-bg: #1e1e1e;
+  --search-modal-rule: #2f2f2f;
+  --search-scrim: rgba(51, 51, 51, .75);
+
+  --menu-fg: #dbdbdb;
+  --menu-title-fg: #dbdbdb;
+  --menu-current-bg: #ffab00;
+  --menu-current-fg: #404040;
+
+  --drawer-bg: #191919;
+  --drawer-fg: #ffffff;
+  --drawer-fg-dim: #dbdbdb;
+  --drawer-rule: #454545;
+  --drawer-utils-rule: #dbdbdb;
+
+  --doc-title-fg: #dbdbdb;
+  --doc-meta-fg: #999999;
+  --doc-heading-fg: #dbdbdb;
+  --doc-body-fg: #b4bac0;
+
+  /* Figma's dark frame kept the light chip fill (#f7f7f7 on #b4bac0 text),
+     which is unreadable. Re-tokenised off the dark search field. */
+  --code-bg: #262626;
+  --code-bd: #2f2f2f;
+  --code-fg: #dbdbdb;
+
+  --toc-rail: #333333;
+  --toc-rail-active: #dbdbdb;
+  --toc-fg: #8e8e8e;
+  --toc-fg-active: #dbdbdb;
+
+  /* the dark comp collapses both footer greys onto the body colour */
+  --pagenav-fg: #b4bac0;
+  --pagenav-meta-fg: #b4bac0;
+}
+
+/* ---------- reset ---------- */
+
+@view-transition { navigation: auto; }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 120ms;
+  animation-timing-function: ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--doc-body-fg);
+  font: var(--docs-body);
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ---------- header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--header-h);
+  background: var(--bg-header);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.site-header__inner {
+  position: relative;
+  width: 100%;
+  max-width: calc(100% - 40px);
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.brand {
+  flex: none;
+  display: block;
+  position: relative;
+  width: 33.121px;
+  height: 32px;
+}
+
+.site-nav {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 0.5px);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+}
+
+/* Britti Sans has 13/3 ascent/descent per em, so at line-height:1 the cap block
+   sits ~1px above the box centre. The lopsided 9/7 padding optically re-centres
+   it. It is applied to EVERY nav link (not just the pill) so all labels keep a
+   shared baseline; the pill's 32px height is unchanged. Horizontal padding stays
+   on the pill alone so link spacing is untouched. */
+.site-nav a {
+  font: 400 16px/1 var(--font-display);
+  color: var(--nav-fg);
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 0 7px;
+}
+
+.site-nav a.is-current {
+  background: var(--nav-pill-bg);
+  color: var(--nav-pill-fg);
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: none;
+}
+
+.search-field {
+  width: 210px;
+  padding: 6px 13px;
+  border: 1px solid var(--search-bd);
+  border-radius: 27px;
+  background: var(--search-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-field__hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-field__label {
+  font: 400 14px/1 var(--font-display);
+  color: var(--search-fg);
+  opacity: .8;
+}
+
+/* Hidden until search_bar.js adds is-mac or is-win, so the chip never shows a
+   shortcut for the wrong platform. */
+.search-field__kbd {
+  display: none;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 3px;
+  border: 1px solid var(--search-kbd-bd);
+  border-radius: 5px;
+  background: var(--search-bg);
+  font: 400 12px/1 var(--font-display);
+  color: var(--search-kbd-bd);
+}
+
+.search-field__kbd.is-mac,
+.search-field__kbd.is-win { display: inline-flex; }
+
+/* The Mac chip sets the command glyph flush against the K. */
+.search-field__kbd.is-mac { gap: 0; }
+.search-field__kbd.is-mac .search-field__ctrl { display: none; }
+.search-field__kbd.is-win .search-field__cmd { display: none; }
+
+/* The command mark is centred on its own ink, but a line box reserves descender
+   space that "K" and "Ctrl" never use, so the letters' ink rides .058em above
+   the centre. Dropping the text lands it on the mark and centres the whole
+   label in the chip; the mark itself is already where it belongs. */
+.search-field__ctrl,
+.search-field__k {
+  position: relative;
+  top: .058em;
+}
+
+.search-field__cmd {
+  width: 13px;
+  height: 13px;
+  background: currentColor;
+  -webkit-mask: url("../img/docs-command.svg") no-repeat center / 13px 13px;
+  mask: url("../img/docs-command.svg") no-repeat center / 13px 13px;
+}
+
+.search-field img { width: 16px; height: 16px; }
+
+.header-utils { display: flex; align-items: center; gap: 14px; }
+.header-utils__lang { display: flex; align-items: center; }
+.header-utils__lang img { width: 20px; height: 20px; }
+.header-utils__lang span {
+  font: 400 14px/normal var(--font-display);
+  color: #e5e5e5;
+}
+.header-utils__theme { display: flex; align-items: center; text-decoration: none; }
+.header-utils__theme img { width: 20px; height: 20px; }
+
+.store-btn {
+  padding: 9px 15px;
+  border-radius: 10px;
+  background: var(--store-bg);
+  color: var(--store-fg);
+  font: 400 14px/1 var(--font-display);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ---------- article footer ---------- */
+
+/* Rule, centred "last updated", then the previous/next row, per the Figma
+   footer sections. The rules below override the purchased theme's
+   .article-footer block in page.styl, which centred all three on one line. */
+.article-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  /* Breathing room between the last paragraph and the rule. */
+  margin: 80px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--pagenav-fg);
+  text-align: left;
+  line-height: normal;
+}
+
+.article-footer-updated {
+  display: block;
+  font: 400 16px/1.7 var(--font-ui, Inter, sans-serif);
+  color: var(--pagenav-meta-fg);
+  text-align: center;
+}
+
+.doc-pagenav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* With only a "next" link the flex row would park it on the left, so the two
+   sides are pinned rather than relying on space-between alone. */
+.doc-pagenav__item--prev { margin-right: auto; }
+.doc-pagenav__item--next { margin-left: auto; text-align: right; }
+
+.doc-pagenav__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Matches the 140-of-350 columns in the narrow comp; on wide columns the
+     titles are far shorter than this and stay on one line. */
+  max-width: 40%;
+  text-decoration: none;
+}
+
+.doc-pagenav__label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font: 500 20px/1 var(--font-display, "Britti Sans", sans-serif);
+  /* The comp draws these at #ffaa00 in both themes rather than the #f1b335
+     used for inline body links, so it is written out instead of tokenised. */
+  color: #ffaa00;
+}
+
+.doc-pagenav__item--next .doc-pagenav__label { justify-content: flex-end; }
+
+.doc-pagenav__arrow {
+  flex: none;
+  width: 15px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask: var(--icon) no-repeat center / 15px 20px;
+  mask: var(--icon) no-repeat center / 15px 20px;
+}
+
+.doc-pagenav__item--prev .doc-pagenav__arrow { --icon: url("../img/docs-arrow-left.svg"); }
+.doc-pagenav__item--next .doc-pagenav__arrow { --icon: url("../img/docs-arrow-right.svg"); }
+
+.doc-pagenav__title {
+  font: 400 16px/1.7 var(--font-ui, Inter, sans-serif);
+  color: var(--pagenav-fg);
+}
+
+/* ---------- shell ---------- */
+
+.docs-shell {
+  position: relative;
+  padding-top: var(--gutter-top);
+  padding-bottom: 108px;
+}
+
+/* ---------- sidebar ---------- */
+
+.doc-sidebar {
+  position: absolute;
+  top: var(--gutter-top);
+  bottom: 0;
+  left: 20px;
+  width: var(--sidebar-w);
+}
+
+.doc-sidebar__inner {
+  position: sticky;
+  top: calc(var(--header-h) + var(--gutter-top));
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.doc-sidebar__overview,
+.doc-sidebar__title {
+  margin: 0;
+  font: var(--menu-h1);
+  color: var(--menu-title-fg);
+}
+
+.doc-sidebar__overview a,
+.doc-sidebar__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Collapsible group header, per Figma 320:5634 — title fills the row, an 18px
+   chevron sits at the end behind 4px of right padding. The chevron is one SVG
+   masked with currentColor (rotated when collapsed) so it follows the theme
+   instead of shipping a hardcoded #404040 stroke twice. */
+.doc-sidebar__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 4px 0 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.doc-sidebar__toggle-text { flex: 1 0 0; min-width: 0; }
+
+.doc-sidebar__toggle::after {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: url("../img/sidebar-chevron-down.svg") no-repeat center / 18px 18px;
+  mask: url("../img/sidebar-chevron-down.svg") no-repeat center / 18px 18px;
+  transition: transform .28s cubic-bezier(.22, 1, .36, 1);
+}
+
+.doc-sidebar__toggle[aria-expanded="false"]::after { transform: rotate(-90deg); }
+
+.doc-sidebar__toggle:focus-visible {
+  outline: 2px solid var(--menu-current-bg);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.doc-sidebar__group { display: flex; flex-direction: column; }
+
+.doc-sidebar__list-motion {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    grid-template-rows .28s cubic-bezier(.22, 1, .36, 1),
+    opacity .18s ease-out;
+}
+
+.doc-sidebar__group.is-collapsed .doc-sidebar__list-motion {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows .28s cubic-bezier(.22, 1, .36, 1),
+    opacity .16s ease-out,
+    visibility 0s linear .28s;
+}
+
+.doc-sidebar__list {
+  min-height: 0;
+  margin: 14px 0 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: translateY(0);
+  transition:
+    margin-top .28s cubic-bezier(.22, 1, .36, 1),
+    transform .28s cubic-bezier(.22, 1, .36, 1);
+}
+
+.doc-sidebar__group.is-collapsed .doc-sidebar__list {
+  margin-top: 0;
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doc-sidebar__toggle::after,
+  .doc-sidebar__list-motion,
+  .doc-sidebar__list { transition: none !important; }
+}
+
+.doc-sidebar__list a {
+  display: block;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font: var(--menu-body);
+  color: var(--menu-fg);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.doc-sidebar__list a:hover { background: rgba(127, 127, 127, .12); }
+
+.doc-sidebar__list a.is-current {
+  background: var(--menu-current-bg);
+  color: var(--menu-current-fg);
+}
+
+/* ---------- article ---------- */
+
+.doc-article {
+  width: var(--article-w);
+  margin: 0 auto;
+}
+
+.doc-article__head { display: flex; flex-direction: column; gap: 2px; }
+
+.doc-article__head h1 {
+  margin: 0;
+  font: var(--docs-h1);
+  color: var(--doc-title-fg);
+}
+
+.doc-article__meta {
+  margin: 0;
+  font: 400 15px/1.6 var(--font-ui);
+  color: var(--doc-meta-fg);
+}
+
+.doc-article__body {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.doc-block { display: flex; flex-direction: column; gap: 20px; }
+.doc-sect { display: flex; flex-direction: column; gap: 14px; }
+.doc-sect--tight { gap: 8px; }
+
+.doc-article h2 {
+  margin: 0;
+  font: var(--docs-h2);
+  color: var(--doc-heading-fg);
+}
+
+.doc-article h3 {
+  margin: 0;
+  font: var(--docs-h3);
+  color: var(--doc-heading-fg);
+}
+
+.doc-article p {
+  margin: 0;
+  font: var(--docs-body);
+  color: var(--doc-body-fg);
+}
+
+.doc-article a.doc-link {
+  color: var(--doc-link-fg);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.doc-article a.doc-link--plain {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+code.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  margin: 0 1px;
+  border: 1px solid var(--code-bd);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font: 400 15px/1.7 var(--font-mono);
+  vertical-align: baseline;
+}
+
+/* dot list */
+.doc-dots { margin: 0; padding: 0; list-style: none; }
+
+.doc-dots li {
+  display: flex;
+  align-items: center;
+  min-height: 26px;
+}
+
+.doc-dots li::before {
+  content: "";
+  flex: none;
+  width: 30px;
+  height: 26px;
+  background: url("../img/docs-bullet.svg") no-repeat 0 0 / 30px 26px;
+}
+
+.doc-dots li p { flex: 1 1 auto; }
+
+/* numbered list */
+.doc-steps { margin: 0; padding: 0; list-style: none; counter-reset: doc-step; }
+
+.doc-steps li {
+  display: flex;
+  align-items: center;
+  min-height: 26px;
+  counter-increment: doc-step;
+}
+
+.doc-steps li::before {
+  content: counter(doc-step) ".";
+  flex: none;
+  width: 30px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--docs-body);
+  color: var(--doc-body-fg);
+}
+
+.doc-steps li p { flex: 0 1 auto; }
+.doc-steps li .line { flex: 1 1 auto; display: flex; align-items: center; }
+
+/* figures */
+.doc-figures { display: flex; flex-direction: column; gap: 20px; }
+
+.doc-figures img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- table of contents ---------- */
+
+.doc-toc {
+  position: absolute;
+  top: var(--gutter-top);
+  bottom: 0;
+  left: calc(50% + (var(--article-w) / 2) + var(--toc-gap));
+  width: var(--toc-w);
+}
+
+.doc-toc__inner {
+  position: sticky;
+  top: calc(var(--header-h) + var(--gutter-top));
+  max-height: calc(100vh - var(--header-h) - (var(--gutter-top) * 2));
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.doc-toc ol { margin: 0; padding: 0; list-style: none; }
+
+.doc-toc a {
+  display: block;
+  padding: 7px 0 7px 20px;
+  border-left: 2px solid var(--toc-rail);
+  font: var(--menu-body);
+  color: var(--toc-fg);
+  text-decoration: none;
+}
+
+.doc-toc a.is-current {
+  border-left-color: var(--toc-rail-active);
+  color: var(--toc-fg-active);
+}
+
+/* ---------- narrow viewports ---------- */
+
+/* ---------- docs layout breakpoints ----------
+   Column sizes are fixed (sidebar 220, TOC 220, gutter 50); only the article
+   flexes. Each breakpoint is the width at which the next column stops fitting,
+   not a round number:
+
+     >=1440   three columns   20 + 220 + 50 + 860 + 50 + 220 + 20 = 1440
+     1170..   two columns     20 + 220 + 50 + 840 + 40 = 1170
+     <1170    one column      sidebar folds into the mobile nav
+*/
+
+/* Below 1440 the TOC no longer fits; the article absorbs the freed space and
+   stops centring on the viewport, sitting to the right of the sidebar instead. */
+@media (max-width: 1439px) {
+  .doc-toc { display: none; }
+  .doc-article {
+    /* 330 = 20 left + 220 sidebar + 50 gutter + 40 right */
+    width: min(960px, calc(100% - 330px));
+    margin: 0 0 0 calc(20px + var(--sidebar-w) + var(--toc-gap));
+  }
+}
+
+/* 1170 is the narrowest two columns work at before the sidebar starts eating
+   into the article. Below it the article is centred and full width again, and
+   the header folds its nav into the hamburger at the same width so the sidebar
+   links stay reachable - see the header breakpoints further down. */
+@media (max-width: 1169px) {
+  .doc-sidebar { display: none; }
+  .doc-article {
+    width: min(920px, calc(100% - var(--article-gutter) * 2));
+    margin: 0 auto;
+  }
+}
+
+/* ---------- production theme integration ---------- */
+
+html,
+body {
+  min-height: 100%;
+  background: var(--bg-page);
+}
+
+body {
+  overflow-x: hidden;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+::-webkit-scrollbar { width: 0; height: 0; }
+
+#container {
+  height: auto;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.site-header { position: sticky; }
+/* leaf overflows the 33.121x32 box by -3.73% left / -3.45% top, per Figma 162:157 */
+.brand img {
+  position: absolute;
+  top: -1.104px;
+  left: -1.235px;
+  width: 34.3566px;
+  height: 33.1039px;
+  max-width: none;
+}
+
+/* Figma spaces the six labels with a flat 40px gap and lets the row hug its
+   content. The old fixed 593px width stretched those gaps to 53px. */
+.site-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.site-nav li { margin: 0; padding: 0; display: flex; align-items: center; }
+.site-nav li.current_page_item a {
+  background: var(--nav-pill-bg);
+  color: var(--nav-pill-fg);
+  border-radius: 10px;
+  padding-left: 15px;  /* vertical padding comes from .site-nav a */
+  padding-right: 15px;
+}
+
+.search-field,
+.header-utils__lang,
+.header-utils__theme,
+#mobile-nav-toggle,
+#search-container-close {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* .search-field is deliberately absent: it carries the 1px #848484 outline of
+   the Figma pill, which this reset used to strip. */
+.header-utils__lang,
+.header-utils__theme,
+#mobile-nav-toggle,
+#search-container-close {
+  border: 0;
+}
+
+.search-field { height: 32px; }
+
+.header-utils__lang,
+.header-utils__theme {
+  padding: 0;
+  background: transparent;
+}
+
+.header-language { position: relative; }
+
+.header-language::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: max(100%, 150px);
+  height: 12px;
+}
+
+.header-language__menu {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 150px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  border: 1px solid var(--toc-rail);
+  border-radius: 10px;
+  background: var(--bg-page);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+}
+
+.header-language:hover .header-language__menu,
+.header-language:focus-within .header-language__menu { display: block; }
+
+.header-language__menu a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--doc-body-fg);
+  font: var(--menu-body);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-language__menu a:hover {
+  background: var(--menu-current-bg);
+  color: var(--menu-current-fg);
+}
+
+.docs-shell { min-height: calc(100vh - var(--header-h)); }
+
+.doc-sidebar__inner {
+  width: calc(100% + 12px);
+  height: calc(100vh - var(--header-h) - var(--gutter-top));
+  margin-left: -12px;
+  padding: 0 8px var(--gutter-top) 12px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.doc-sidebar__overview a.is-current {
+  display: block;
+  padding: 5px 12px;
+  margin-left: -12px;
+  border-radius: 6px;
+  background: var(--menu-current-bg);
+  color: var(--menu-current-fg);
+}
+
+.doc-article__body {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.doc-article__body > :first-child { margin-top: 0; }
+
+.doc-article__body h1,
+.doc-article__body h2,
+.doc-article__body h3,
+.doc-article__body h4,
+.doc-article__body h5,
+.doc-article__body h6 {
+  position: relative;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.doc-article__body h1 { margin: 30px 0 14px; font: var(--docs-h1); }
+.doc-article__body h2 { margin: 20px 0 14px; font: var(--docs-h2); }
+.doc-article__body h3 { margin: 20px 0 14px; font: var(--docs-h3); }
+.doc-article__body h4,
+.doc-article__body h5,
+.doc-article__body h6 {
+  margin: 24px 0 12px;
+  font: 700 15px/1.3 var(--font-ui);
+  color: var(--doc-heading-fg);
+}
+
+.doc-article__body p {
+  margin: 0;
+  font: var(--docs-body);
+  color: var(--doc-body-fg);
+}
+
+.doc-article__body p + p { margin-top: 14px; }
+
+.doc-article__body a {
+  color: var(--doc-link-fg);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.doc-article__body strong { font-weight: 700; }
+
+.doc-article__body hr {
+  display: none;
+}
+
+.doc-article__body ul,
+.doc-article__body ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-article__body p + ul,
+.doc-article__body p + ol { margin-top: 8px; }
+
+.doc-article__body ul li,
+.doc-article__body ol li {
+  position: relative;
+  display: block;
+  min-height: 26px;
+  padding-left: 30px;
+  font: var(--docs-body);
+  color: var(--doc-body-fg);
+}
+
+.doc-article__body ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 26px;
+  background: url("../img/docs-bullet.svg") no-repeat 0 0 / 30px 26px;
+}
+
+.doc-article__body ol { counter-reset: doc-step; }
+.doc-article__body ol li { counter-increment: doc-step; }
+.doc-article__body ol li::before {
+  content: counter(doc-step) ".";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--docs-body);
+  color: var(--doc-body-fg);
+}
+
+.doc-article__body code {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  margin: 0 1px;
+  border: 1px solid var(--code-bd);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font: 400 15px/1.7 var(--font-mono);
+  vertical-align: baseline;
+}
+
+.doc-article__body pre,
+.doc-article__body .highlight {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.doc-article__body pre code {
+  display: block;
+  padding: 18px;
+  border: 0;
+}
+
+.doc-article__body img,
+.doc-article__body video {
+  display: block;
+  width: 100%;
+  max-width: var(--article-w);
+  height: auto;
+  margin: 20px 0 0;
+}
+
+.doc-article__body .doc-figures {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 30px 0 0;
+}
+
+.doc-article__body .doc-figures + .doc-figures { margin-top: 20px; }
+
+.doc-article__body .doc-figure-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-block: min(40px, max(0px, calc(50% - 380px)));
+  padding-inline: max(0px, calc(50% - 380px));
+  overflow: hidden;
+  border-radius: var(--doc-image-radius);
+  background: #f4a126 url("../img/docs-figure-background.webp") center / cover no-repeat;
+}
+
+.doc-article__body .doc-figure-frame img {
+  width: auto;
+  max-width: min(100%, var(--doc-image-max));
+  height: auto;
+  margin: 0;
+  border-radius: var(--doc-image-radius);
+  object-fit: contain;
+}
+
+.doc-article__body img + br { display: none; }
+
+.doc-article__body blockquote,
+.doc-article__body .note {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border: 1px solid var(--code-bd);
+  border-left: 3px solid var(--doc-link-fg);
+  border-radius: 6px;
+  background: var(--code-bg);
+  color: var(--doc-body-fg);
+}
+
+.doc-article__body .doc-table-scroll {
+  width: 100%;
+  margin: 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: var(--code-bd) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.doc-article__body .doc-table-scroll:focus-visible {
+  outline: 2px solid var(--doc-link-fg);
+  outline-offset: 3px;
+}
+
+.doc-article__body .doc-table-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.doc-article__body .doc-table-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--code-bd);
+}
+
+.doc-article__body .doc-table-scroll table {
+  display: table;
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  overflow: visible;
+}
+
+.doc-article__body th,
+.doc-article__body td {
+  min-width: 140px;
+  padding: 10px 14px !important;
+  border: 1px solid var(--code-bd);
+  color: var(--doc-body-fg);
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-align: left;
+}
+
+.article-heading .article-anchor {
+  display: none;
+  margin-left: 8px;
+  color: var(--doc-meta-fg);
+  text-decoration: none;
+}
+
+.article-heading:hover .article-anchor { display: inline; }
+
+.doc-toc .toc,
+.doc-toc .toc-child {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-toc .toc-child { padding-left: 0; font-size: inherit; }
+
+.doc-toc .toc-link,
+.doc-toc__top {
+  position: relative;
+  display: block;
+  padding: 7px 0 7px 20px;
+  border-left: 2px solid var(--toc-rail);
+  color: var(--toc-fg);
+  font: var(--menu-body);
+  text-decoration: none;
+}
+
+.doc-toc .toc-link.active {
+  border-left-color: var(--toc-rail-active);
+  color: var(--toc-fg-active);
+}
+
+.doc-toc__top { margin-top: 8px; }
+
+/* ---------- search overlay ----------
+   Rebuilt from the Figma search frames. Everything here overrides the legacy
+   rules in _partial/header.styl, which still describe the old full-bleed
+   white overlay; css/zima is linked before css/docs-ui, so equal-specificity
+   selectors here win and header.styl is left untouched.
+
+   Geometry comes straight off the comps: the card is 900 wide with a 62px
+   gutter, which at 1024 resolves to exactly 900 and at 768 to 644 — one
+   min() expresses the whole desktop ramp. Below 768 the comps drop the card
+   and the scrim entirely and the search becomes a full-screen sheet. */
+
+#search-container {
+  --search-modal-w: min(900px, calc(100vw - 124px));
+  --search-modal-top: 160px;
+  /* the bar's own inset; the close button is a sibling of the card in the
+     markup, so it has to be positioned against these same two values */
+  --search-bar-pad-x: 30px;
+  --search-bar-pad-y: 20px;
+}
+
+/* The comps put a Background blur on the scrim, so the page behind the card
+   goes soft rather than just dim. Only reachable above 767 — below that the
+   sheet is opaque and nothing shows through, so the blur is switched off
+   there instead of paying for a full-viewport compositing pass. */
+#search-container .search-bg {
+  background: var(--search-scrim);
+  opacity: 1;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+/* the card: input bar pinned, results scrolling under it */
+.search-content-container {
+  position: absolute;
+  top: var(--search-modal-top);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--search-modal-w);
+  height: auto;
+  max-height: calc(100dvh - var(--search-modal-top) - 40px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--search-modal-bg);
+}
+
+#search-input-wrap {
+  flex: none;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  padding: var(--search-bar-pad-y) var(--search-bar-pad-x);
+  border-bottom: 1px solid var(--search-modal-rule);
+}
+
+#search-input {
+  /* block, not the inline-block it inherits: an inline input adds the line
+     box's baseline gap under itself and the 64px bar of the comp renders 68 */
+  display: block;
+  width: 100%;
+  /* the close button overlays the right end of the bar */
+  padding-right: 46px;
+  text-indent: 0;
+  font: 500 18px/1.3 var(--font-display);
+  color: var(--menu-fg);
+}
+
+#search-input::placeholder { color: var(--doc-meta-fg); opacity: 1; }
+#search-input::-webkit-search-cancel-button { display: none; }
+
+#search-container-close {
+  top: calc(var(--search-modal-top) + var(--search-bar-pad-y) + 1px);
+  right: calc(50% - var(--search-modal-w) / 2 + var(--search-bar-pad-x));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  /* it is a <button>, so the UA grey chrome has to go */
+  padding: 0;
+  border: 0;
+  background: none;
+  line-height: 1;
+  color: var(--menu-fg);
+  cursor: pointer;
+}
+
+/* Mask the exported close icon into the existing semantic span so only one X
+   is rendered and it follows the active theme color. */
+.search-close-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  -webkit-mask: url("../img/docs-close.svg") no-repeat center / 22px 22px;
+  mask: url("../img/docs-close.svg") no-repeat center / 22px 22px;
+}
+
+#resultContent {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+  overflow-y: auto;
+  padding: 8px 16px 16px;
+  color: var(--doc-body-fg);
+}
+
+/* ---------- result rows ----------
+   Two row types share one skeleton. Type A is a page hit and reads
+   "breadcrumb over title"; Type B is a heading inside a page and adds a 22px
+   marker column so the heading rows nest visibly under the page rows.
+
+   Expected markup (rendering is owned elsewhere; these are the hooks):
+
+     <div class="search-group">
+       <p class="search-group__label">Recent</p>
+       <a class="search-result" href="…">
+         <span class="search-result__marker" aria-hidden="true">#</span>  <!-- type B only -->
+         <span class="search-result__text">
+           <span class="search-result__meta">ZimaOS › Setup &amp; Storage</span>
+           <span class="search-result__title">RAID Options</span>
+         </span>
+       </a>
+     </div>
+     <div class="search-rule"></div>                                      */
+
+.search-group { display: block; }
+
+.search-group__label {
+  margin: 0;
+  padding: 14px 14px 6px;
+  font: 500 13px/1.3 var(--font-ui);
+  letter-spacing: .02em;
+  color: var(--doc-meta-fg);
+}
+
+.search-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-result__marker {
+  flex: none;
+  width: 22px;
+  font: 400 13px/1.3 var(--font-ui);
+  color: var(--doc-meta-fg);
+}
+
+.search-result__text {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* a breadcrumb that wraps stops reading as a breadcrumb, so it clips instead */
+.search-result__meta {
+  font: 400 13px/1.3 var(--font-ui);
+  color: var(--doc-meta-fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result__title {
+  font: 500 16px/1.3 var(--font-ui);
+  color: var(--doc-title-fg);
+}
+
+.search-result__snippet {
+  display: -webkit-box;
+  overflow: hidden;
+  font: 400 12px/1.45 var(--font-ui);
+  color: var(--doc-meta-fg);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Hover and keyboard selection are the same visual, reusing the sidebar's
+   "current" pair. --menu-current-bg is a saturated #ffab00 in dark, so the
+   breadcrumb switches off --doc-meta-fg (#999) to a dimmed current-fg —
+   grey on amber fails contrast in both themes. */
+.search-result:hover,
+.search-result:focus-visible,
+.search-result.is-current {
+  background: var(--menu-current-bg);
+  outline: none;
+}
+
+.search-result:hover .search-result__title,
+.search-result:focus-visible .search-result__title,
+.search-result.is-current .search-result__title { color: var(--menu-current-fg); }
+
+.search-result:hover .search-result__meta,
+.search-result:hover .search-result__marker,
+.search-result:hover .search-result__snippet,
+.search-result:focus-visible .search-result__meta,
+.search-result:focus-visible .search-result__marker,
+.search-result:focus-visible .search-result__snippet,
+.search-result.is-current .search-result__meta,
+.search-result.is-current .search-result__marker,
+.search-result.is-current .search-result__snippet {
+  color: var(--menu-current-fg);
+  opacity: .7;
+}
+
+/* recent query: one line, no breadcrumb — that is what separates it from a
+   result row at a glance */
+.search-recent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-recent__query {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: 500 16px/1.3 var(--font-ui);
+  color: var(--doc-title-fg);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.search-recent__remove {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: 400 13px/1.3 var(--font-ui);
+  color: var(--doc-meta-fg);
+  cursor: pointer;
+}
+
+.search-recent:hover,
+.search-recent:focus-within,
+.search-recent.is-current { background: var(--menu-current-bg); }
+
+.search-recent:hover .search-recent__query,
+.search-recent:focus-within .search-recent__query,
+.search-recent.is-current .search-recent__query { color: var(--menu-current-fg); }
+
+.search-recent:hover .search-recent__remove,
+.search-recent:focus-within .search-recent__remove,
+.search-recent.is-current .search-recent__remove {
+  color: var(--menu-current-fg);
+  opacity: .7;
+}
+
+.search-rule {
+  margin: 12px 14px;
+  height: 1px;
+  background: var(--search-modal-rule);
+}
+
+.search-empty {
+  padding: 22px 14px 26px;
+  font: 400 15px/1.6 var(--font-ui);
+  color: var(--doc-meta-fg);
+}
+
+.search-results { display: block; }
+
+.search-zero {
+  display: flex;
+  min-height: 240px;
+  padding: 48px 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.search-zero__title {
+  margin: 0;
+  font: 500 18px/1.35 var(--font-ui);
+  color: var(--doc-title-fg);
+}
+
+.search-zero__hint {
+  margin: 8px 0 0;
+  font: 400 13px/1.5 var(--font-ui);
+  color: var(--doc-meta-fg);
+}
+
+/* The current flat list keeps working until the rows above are emitted.
+   header.styl reaches these with `#resultContent ul.search-result-list li`,
+   so the type selectors are carried here too — without them the legacy
+   20px list padding and 4px row padding out-specify this block. */
+#resultContent ul.search-result-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#resultContent ul.search-result-list li { padding: 0; }
+
+#resultContent ul.search-result-list li a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font: 500 16px/1.3 var(--font-ui);
+  color: var(--doc-title-fg);
+  text-decoration: none;
+}
+
+#resultContent ul.search-result-list li:hover,
+#resultContent ul.search-result-list li a:hover {
+  background: var(--menu-current-bg);
+  color: var(--menu-current-fg);
+}
+
+/* Below 768 the comps drop the card: the sheet is the screen. 767 rather than
+   768 because the 768 comp is still a 644-wide modal and only the 760 one is
+   full-bleed. */
+@media (max-width: 767px) {
+  .search-content-container {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  #search-container .search-bg {
+    background: var(--search-modal-bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  #search-container-close {
+    top: calc(var(--search-bar-pad-y) + 1px);
+    right: var(--search-bar-pad-x);
+  }
+}
+
+#search-container-close {
+  padding: 0;
+  background: transparent;
+}
+
+/* Hamburger, Figma 402:15150 - a 32x32 hit area holding three 1.2px bars at
+   10 / 15.4 / 20.8, the last one short. The legacy stylus rule parks it at the
+   left gutter, half-fades it and stretches every bar to the full width, so all
+   three have to be overridden here. */
+#mobile-nav-toggle {
+  position: relative;
+  display: none;
+  left: auto;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  opacity: 1;
+}
+
+#mobile-nav-toggle .mobile-nav-toggle-bar {
+  left: 9.4px;
+  width: 13.2px;
+  height: 1.2px;
+  background: var(--nav-fg);
+  border-radius: 0;
+  transform-origin: center;
+}
+
+#mobile-nav-toggle .mobile-nav-toggle-bar:first-child { top: 10px; }
+#mobile-nav-toggle .mobile-nav-toggle-bar:nth-child(2) { top: 15.4px; }
+#mobile-nav-toggle .mobile-nav-toggle-bar:last-child { top: 20.8px; width: 8.4px; }
+
+/* Open state: the bars converge on the middle row and cross. The inherited
+   rotations assume equal-width bars anchored left, which the short third bar
+   would break, so the geometry is restated rather than inherited. */
+.mobile-nav-on #mobile-nav-toggle .mobile-nav-toggle-bar {
+  top: 15.4px;
+  width: 13.2px;
+}
+.mobile-nav-on #mobile-nav-toggle .mobile-nav-toggle-bar:first-child { transform: rotate(45deg); }
+.mobile-nav-on #mobile-nav-toggle .mobile-nav-toggle-bar:nth-child(2) { opacity: 0; }
+.mobile-nav-on #mobile-nav-toggle .mobile-nav-toggle-bar:last-child { transform: rotate(-45deg); }
+
+/* ---------- header breakpoints ----------
+   Read off the Figma comps site-header-1920 / 1440 / 1280 / 1170 / 1024 / 768
+   / 390. Every width keeps the same 20px side gutter and the same 32px content
+   row; what changes is how much of the row survives:
+
+     >=1441   search is the full 210x32 pill
+     <=1440   search collapses to a bare 30x30 icon
+     <=1169   nav and Store fold into the hamburger, tools gap 18 -> 10. Same
+              width the docs sidebar folds at, so the sidebar links stay
+              reachable through the mobile nav.
+     <=600    language and theme drop out, leaving search + hamburger
+*/
+
+@media (max-width: 1440px) {
+  .search-field {
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+    border: 0;
+    background: transparent;
+    justify-content: center;
+  }
+  .search-field__hint { display: none; }
+}
+
+@media (max-width: 1169px) {
+  .site-nav { display: none; }
+  .store-btn { display: none; }
+  .header-tools { gap: 10px; }
+  #mobile-nav-toggle { display: block; }
+}
+
+@media (max-width: 600px) {
+  /* The 350 comp opens the gap under the date by 6px, and the run-up to the
+     rule tightens from 80 to 60 on a phone. */
+  .article-footer { gap: 34px; margin-top: 60px; }
+
+  :root { --gutter-top: 26px; }
+
+  /* The 390 comp keeps the 20px gutter and drops both utility controls, leaving
+     search + hamburger. Language is still reachable from the picker at the
+     bottom of the mobile nav; the theme toggle has no other home yet. */
+  .header-utils { display: none; }
+  .doc-article__head h1 { font-size: 30px; }
+  .doc-article__meta { font-size: 13px; }
+  .doc-article__body { margin-top: 34px; }
+  .doc-article__body h2 { font-size: 20px; }
+  .doc-article__body h3 { font-size: 16px; line-height: 1.35; }
+  .doc-article__body p,
+  .doc-article__body ul li,
+  .doc-article__body ol li { font-size: 15px; }
+  .doc-article__body img,
+  .doc-article__body video { margin-top: 16px; }
+  .docs-shell { padding-bottom: 70px; }
+}
+
+/* ---------- mobile drawer ----------
+   Figma 418:8 (light) and 436:17394 (dark). The drawer renders the same
+   doc_sidebar markup the desktop column does, and the comps give it the same
+   geometry - 26px between blocks, 14px title to list, 4px between links, 5/12
+   link padding, radius 6. So the .doc-sidebar rules are left to do that work
+   and only the drawer's own chrome is restated below.
+
+   Content sits in a 220px column inside a 260px drawer, i.e. a 20px gutter. */
+
+/* background-color rather than the shorthand: the legacy rule puts a
+   `transition: .4s` on every property here, so the fill cross-fades on a theme
+   swap and there is no reason to hand the transition a whole shorthand. */
+#mobile-nav { background-color: var(--drawer-bg); }
+
+#mobile-nav-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 26px 20px;
+  bottom: 48px; /* clears the utility bar: 1px rule + 47px row */
+}
+
+/* Site menu: 40px rows with a hairline under every row, the last one included. */
+#mobile-nav-list { border-bottom: 0; }
+#mobile-nav-list .menu-item { border-bottom: 1px solid var(--drawer-rule); }
+
+.mobile-nav-link {
+  padding: 12px 0;
+  font: 400 16px/1 var(--font-display);
+  color: var(--drawer-fg-dim);
+}
+
+#mobile-nav-list .current_page_item .mobile-nav-link { color: var(--drawer-fg); }
+
+/* Britti Sans Bold matches both comps and the file's Menu/H1 text style. The
+   desktop column still resolves --menu-h1 to Inter Bold, so the two differ
+   until that token is settled. */
+#mobile-nav .doc-sidebar__overview,
+#mobile-nav .doc-sidebar__title {
+  margin: 0;
+  padding: 0;
+  font: 700 16px/1 var(--font-display);
+  color: var(--menu-title-fg);
+}
+
+#mobile-nav .doc-sidebar__overview a { color: inherit; text-decoration: none; }
+
+/* The desktop pill hangs 12px into the sidebar's own left padding, which the
+   drawer does not have; flush left keeps it aligned with the links below. */
+#mobile-nav .doc-sidebar__overview a.is-current { margin-left: 0; }
+
+/* ---------- drawer utility bar ---------- */
+
+#mobile-nav-utils {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 47px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--drawer-utils-rule);
+  background-color: var(--drawer-bg);
+  color: var(--menu-title-fg);
+}
+
+.mobile-nav-lang { position: relative; display: flex; align-items: center; }
+
+.mobile-nav-lang__label {
+  display: flex;
+  align-items: center;
+  font: 400 14px/normal var(--font-display);
+  color: inherit;
+}
+
+.mobile-nav-theme {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Masked rather than <img> so both icons follow the drawer's text colour
+   instead of shipping the hardcoded #e5e5e5 fill of the header artwork. */
+.mobile-nav-icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask: var(--icon) no-repeat center / 20px 20px;
+  mask: var(--icon) no-repeat center / 20px 20px;
+}
+
+.mobile-nav-icon--globe { --icon: url("../img/docs-globe.svg"); }
+.mobile-nav-icon--theme { --icon: url("../img/docs-theme.svg"); }

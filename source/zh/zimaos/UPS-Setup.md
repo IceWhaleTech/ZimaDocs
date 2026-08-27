@@ -4,7 +4,6 @@ description: 学习如何在 ZimaOS 1.5.3 及更高版本中连接、启用和�
 type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
-permalink: /zh/zimaos/ups-setup.html
 ---
 ## 介绍
 从 **ZimaOS v1.5.3** 开始，ZimaOS 正式支持 **UPS（不间断电源）**，允许您的 NAS 在停电时继续运行，并在需要时安全关闭。连接兼容的 USB UPS 后，ZimaOS 可以实现以下功能：
@@ -98,7 +97,7 @@ permalink: /zh/zimaos/ups-setup.html
 
 ---
 ## 支持设备列表
-[ZimaOS 支持的 UPS 设备兼容性列表](https://www.zimaspace.com/docs/zimaos/zimaos-ups-compatibility-list)  
+[ZimaOS 支持的 UPS 设备兼容性列表](../hardware/ups-compatibility-list)
 
 该列表并非详尽无遗，可能会随时更新。  
 如果您的 UPS 未列出，并不意味着不支持。

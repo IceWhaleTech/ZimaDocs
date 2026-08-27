@@ -1,111 +1,85 @@
 ---
-title: Características
-description:
-type: “Docs”
-tip: El formato fijo de la barra superior no debe ser eliminado, la descripción es el resumen del artículo, si no se completa, se tomará el primer párrafo del contenido
-permalink: /es/zimaos/features.html
+title: Funciones de ZimaOS
+seo_title: "Funciones de ZimaOS: acceso remoto, almacenamiento, RAID y App Store"
+description: "Un recorrido por el panel de ZimaOS. Acceso remoto, uso compartido de archivos, gestión del almacenamiento, opciones RAID, máquinas virtuales y App Store con instalación de aplicaciones Docker en un clic."
+type: Docs
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-# Construir Estación de Datos
-# Acceso Remoto
-##  Tu Puerta de Entrada al Acceso Remoto
-[Ingresa a la función Remota de ZimaCube](/zimaos/Romote-Access), una solución poderosa que permite a los usuarios gestionar y acceder a sus datos desde cualquier lugar del mundo. Ya sea que estés manejando documentos urgentes de forma remota o disfrutando de tu biblioteca multimedia en casa, ZimaCube asegura que tus datos estén siempre al alcance, de manera eficiente y segura.
 
-## Acceso al segundo dispositivo anfitrión:
-Si tienes otra computadora en la oficina, pero el ZimaCube no está contigo, aún puedes usar el ID de Conexión.
-### Configurando el Acceso Remoto a ZimaCube
-* Abre la configuración de la red en ZimaOS y copia el ID de la Red.
-![](https://manage.icewhale.io/api/static/docs/1726647865007_image.png)
-* Descarga e instala el cliente de Zima desde [find.zimaspace.com](https://find.zimaspace.com/).
-![](https://manage.icewhale.io/api/static/docs/1726648388482_image.png)
+Si acabas de seguir la guía **[Primeros pasos](./get-started "Configura ZimaOS desde el primer arranque con ZimaClient y la creación de una cuenta")**, tu dispositivo ya está conectado y preparado. El acceso remoto está activo, el almacenamiento está compartido y tu cuenta está configurada. Ese primer momento en el que todo el panel cobra vida resulta realmente satisfactorio.
 
-* Inicia el cliente, ingresa tu ID de Red y detalles del usuario para iniciar sesión.
-![](https://manage.icewhale.io/api/static/docs/1726647966224_image.png)
-![](https://manage.icewhale.io/api/static/docs/1726647980176_image.png)
-![](https://manage.icewhale.io/api/static/docs/1726647985810_image.png)
+Esta página recorre lo que puede hacer ZimaOS e indica dónde encontrar las guías detalladas de cada función. Piensa en ella como un mapa: si algo te interesa, sigue el enlace para profundizar.
 
-### Maximizando Tu Experiencia Remota
-Aquí hay algunos consejos para garantizar una experiencia de acceso remoto sin problemas:
+## Accede a tu dispositivo desde cualquier lugar
 
-* Conexión Estable: Siempre conecta tanto tu ZimaCube como el dispositivo remoto a redes confiables.
-* Seguridad Primero: Actualiza regularmente tu ID de Red para prevenir accesos no autorizados.
-![](https://manage.icewhale.io/api/static/docs/1726648028645_image.png)
-Con estos pasos, la funcionalidad Remota de ZimaCube es fácil de configurar y optimizar para una gestión de datos remota segura y eficiente.
-## Potencia Tu Vida Digital
-La función Remota de ZimaCube no solo se trata de acceder a datos; se trata de simplificar tu vida digital. No importa dónde estés, ya sea en casa, en la oficina, o en movimiento, ZimaCube ofrece una forma confiable y segura de acceder a tus datos. Activa ZimaCube Remoto hoy y transforma la forma en que gestionas tu contenido digital.
+La mayoría de los dispositivos NAS obligan a configurar el reenvío de puertos o una VPN para conectarse desde fuera de casa. ZimaOS no. La primera vez que te conectas mediante ZimaClient, se crea automáticamente un canal cifrado de igual a igual. A partir de entonces, puedes acceder al dispositivo desde cualquier lugar.
 
-Para más detalles sobre la función Remota de ZimaCube y nuestras otras ofertas, visita nuestro sitio web o contacta a nuestro equipo de servicio al cliente. ¡Estamos emocionados de ayudarte a tomar control de tus datos!
-# Almacenamiento Compartido
+Tus datos siguen siendo privados. La conexión está cifrada de extremo a extremo y no hay ningún servidor de terceros en medio. Puedes desactivar el acceso remoto en Ajustes cuando quieras.
 
-En esta sección, exploraremos las diversas categorías de almacenamiento, opciones de compartición y configuraciones de permisos disponibles en ZimaOS.
-### Clasificación del Almacenamiento
-ZimaOS divide el almacenamiento en tres tipos principales:
-### USB
-Puedes habilitar un solo disco en ZimaOS para un uso normal, facilitando el acceso a tus datos.
-### Disco Único
-Los discos pueden ser habilitados individualmente en ZimaOS para un uso normal.
-### Raid
-La habilitación de RAID en ZimaOS permite un uso más seguro de los discos, proporcionando redundancia y protección de datos mejorada.
-![](https://manage.icewhale.io/api/static/docs/1727085879635_image.png)
-## Compartiendo Almacenamiento
-ZimaOS comparte almacenamiento de disco único y RAID por defecto. Aunque no es posible dejar de compartir estos almacenamientos, puedes modificar las configuraciones de compartición según sea necesario. Los dispositivos USB no se comparten automáticamente. Para compartir una unidad USB, navega a la carpeta raíz, selecciona el dispositivo USB apropiado y compártelo.
-![](https://manage.icewhale.io/api/static/docs/1727085956483_image.png)
-## Configuraciones de Permiso
-ZimaOS soporta la configuración multiusuario de SMB, permitiendo establecer los permisos de lectura y escritura de los usuarios. Puedes gestionar fácilmente los permisos, añadir o eliminar usuarios a través del panel de administración.
-![](https://manage.icewhale.io/api/static/docs/1727085985786_image.png)
-![](https://manage.icewhale.io/api/static/docs/1727085991929_image.png)
-## Compartición de Conexiones
-Después de compartir exitosamente el almacenamiento, recibirás un mensaje con los detalles de conexión.
-![](https://manage.icewhale.io/api/static/docs/1727086027486_image.png)
-### Pasos para conectar:
-1. **En Mac o Windows**: Conéctate utilizando la dirección proporcionada en el mensaje.
-2. **Ingresa la dirección**: Ingresa la dirección copiada en el explorador de archivos y presiona Enter.
-![](https://manage.icewhale.io/api/static/docs/1727086114235_image.png)
-Una vez conectado, verás el servidor conectado en la red.
-![](https://manage.icewhale.io/api/static/docs/1727086136328_image.png)
-Este enfoque de gestión de almacenamiento sin problemas permite que ZimaOS garantice un acceso a datos conveniente, seguro y flexible.
+No recopilamos ni almacenamos tus archivos personales, registros de conexión o datos de uso, ni tenemos acceso a ellos. El acceso remoto funciona mediante un canal cifrado de igual a igual. Ningún servidor de terceros se interpone entre tú y tu dispositivo. Nuestras prácticas de privacidad están completamente documentadas y abiertas a la revisión de la comunidad.
 
-# Máquina Virtual
-# Tienda de Aplicaciones
+**[Política de privacidad](../help-center/privacy-policy "Política de privacidad de ZimaOS sobre el tratamiento de tus datos y conexiones")**
 
-Experiencia del primer usuario de ZimaCube, Luke:
-Luke es un diseñador que necesita acceder de manera remota a una gran cantidad de archivos de diseño y proyectos de edición en su trabajo. También es un entusiasta del cine y la televisión con una gran cantidad de películas y archivos de música sin pérdida. Aunque no sabe nada de código, le gusta explorar nuevas funciones y jugar con varios dispositivos. Como usuario antiguo de Synology durante siete años, cuando experimentó ZimaCube por primera vez, quedó impresionado por su simple proceso de configuración y la innovadora Tienda de Aplicaciones. La Tienda de Aplicaciones de ZimaOS no solo es tan poderosa como Docker, sino que también realiza la instalación de aplicaciones con un solo clic, lo que simplifica enormemente el proceso de operación. Luke utiliza a menudo Jellyfin y Emby. En Synology, necesita modificar manualmente los puertos y configurar el reenvío de puertos del router, pero en ZimaOS, todo esto se completa automáticamente por el sistema, lo que facilita mucho su uso. Para “novatos” y “perezosos” como él, esto es sin duda una bendición. Solo abre la Tienda de Aplicaciones y haz clic en instalar, y la aplicación puede ser utilizada directamente sin operaciones complicadas. La facilidad de uso y eficiencia de ZimaCube le han dado una gran sorpresa y satisfacción.
-![](https://manage.icewhale.io/api/static/docs/1726648441217_image.png)
-## Introducción
-ZimaOS tiene como objetivo proporcionar una interfaz amigable, características poderosas y una experiencia fácil de usar, convirtiéndolo en tu primer Sistema de Gestión de Datos. Esta filosofía hace que ZimaOS se destaque de muchos otros sistemas NAS en el mercado, logrando verdaderamente una experiencia Lista para Usar.
-El diseño de la Tienda de Aplicaciones de ZimaOS mejora aún más su usabilidad. En otros sistemas NAS, instalar y administrar aplicaciones puede requerir que los usuarios tengan cierto conocimiento de Docker y realicen mapeo manual de puertos y configuraciones de rutas. Sin embargo, en ZimaOS, la Tienda de Aplicaciones proporciona una función de instalación con un clic. Los usuarios solo necesitan hacer clic en el botón de instalación, y el sistema completará automáticamente todas las configuraciones necesarias, incluyendo configuraciones de puertos y mapeo de rutas, realzando verdaderamente la instalación y uso instantáneo de aplicaciones.
-Esta guía te proporciona una introducción detallada sobre cómo usar la tienda de aplicaciones de ZimaOS, incluyendo la esencia de la tienda de aplicaciones, introducciones a tiendas de terceros y pasos de instalación personalizada de la aplicación.
-![](https://manage.icewhale.io/api/static/docs/1726648480871_image.png)
-## La esencia de las tiendas de aplicaciones
-La esencia de una tienda de aplicaciones:
-La tienda de aplicaciones es una plataforma integrada que proporciona funciones de gestión centralizada. Los usuarios pueden usar la tienda de aplicaciones para:
+<table style="width:100%; table-layout:fixed;">
+  <tr>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885802_zimaclient-ios-v-1-6-dash.png" alt="Pantalla del panel de ZimaClient para iOS con el estado del dispositivo, el uso del almacenamiento y la información del sistema" style="max-width:100%; height:auto;">
+    </td>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885801_zimaclient-ios-v-1-6-files.png" alt="Pantalla de archivos de ZimaClient para iOS con las carpetas compartidas y los archivos del servidor doméstico" style="max-width:100%; height:auto;">
+    </td>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885803_zimaclient-ios-v-1-6-app.png" alt="Pantalla de aplicaciones de ZimaClient para iOS con las aplicaciones instaladas y su estado de ejecución" style="max-width:100%; height:auto;">
+    </td>
+    <td style="width:25%; text-align:center; vertical-align:top; padding:4px;">
+      <img src="https://manage.icewhale.io/api/static/docs/1786263885804_zimaclient-ios-v-1-6-photos.png" alt="Pantalla de fotos de ZimaClient para iOS con la fototeca sincronizada desde el servidor doméstico" style="max-width:100%; height:auto;">
+    </td>
+  </tr>
+</table>
 
-* Encontrar aplicaciones rápida y fácilmente: No necesitas buscar en todas partes, todas las aplicaciones en un solo lugar.
-* Descargar e instalar de manera segura: Las aplicaciones son auditadas para reducir el riesgo de software malicioso.
-* Recordatorio de actualización: La tienda de aplicaciones te recordará automáticamente el estado de versión de las aplicaciones existentes, asegurando que puedas gestionar la aplicación para mantenerla actualizada.
-La mayoría de estas aplicaciones pertenecen a contenedores Docker con plantillas preconfiguradas, y los usuarios solo necesitan tirar de las imágenes para instalarlas.
-Actualmente, la tienda de aplicaciones de ZimaOS incluye casi un centenar de aplicaciones, cubriendo diversos tipos de aplicaciones tales como aplicaciones de video, gestión de álbumes, copias de seguridad, sistemas de archivos, colaboración en equipo y bloqueo de anuncios.
-## Introducción a las tiendas de terceros:
-Pero luego IceWhale se dio cuenta de que el poder de la comunidad era enorme, tenían una creatividad e intuición increíbles. Por lo tanto, IceWhale decidió abrir esta interfaz y aprovechar las extraordinarias ideas y habilidades innovadoras de los miembros de la comunidad. Actualmente, se han establecido ocho tiendas de aplicaciones de terceros, con un total de casi 500 aplicaciones y un gran volumen de descargas.
-Las contribuciones de la comunidad han mejorado significativamente el ecosistema, impulsando el crecimiento y la mejora continua de ZimaOS.
-¡También damos la bienvenida a más guerreros a construir su propio sistema de tienda! ![](https://manage.icewhale.io/api/static/docs/1726648635825_image.png)
-Los pasos para añadir una tienda de terceros son también muy simples. Solo abre el centro de aplicaciones, haz clic en el botón AÑADIR en la parte superior derecha de la lista, y entra la dirección de la tienda de terceros. [AppStore-Play](https://play.cuse.eu.org/Cp0204-AppStore-Play.zip)Por ejemplo,
-![](https://manage.icewhale.io/api/static/docs/1726648696012_image.png)
-Después de confirmar la adición y esperar un momento, 99 aplicaciones se convirtieron en 235 aplicaciones (estos dos números cambiarán con el mantenimiento de los desarrolladores), indicando que la tienda de terceros [AppStore-Play] fue añadida con éxito.
-![](https://manage.icewhale.io/api/static/docs/1726648852875_image.png)
-Tutoriales en video: https://www.youtube.com/watch?v=N9LUoOQTrqs&t=52s
+**[Acceso remoto](./remote-access "Configura el acceso remoto para poder llegar a tu servidor doméstico desde cualquier lugar")** · **[Descargar ZimaClient](./zimaclient-install "Instala y configura ZimaClient en el ordenador y el móvil para acceder al dispositivo")** · **[ID de red](./remote-id "Encuentra el ID de red de ZimaOS y úsalo para conectarte desde otros dispositivos")**
 
-## Instalación personalizada de la aplicación
-Si estas tiendas aún no pueden satisfacer tus necesidades, también puedes personalizar la instalación de aplicaciones. Como el dispositivo de cada uno es diferente, las plantillas preescritas por los desarrolladores no pueden cubrir todo, por lo que ajustar estas plantillas se ha convertido en un curso requerido para los usuarios de Docker. De esta manera, puedes ajustar y optimizar de forma flexible el proceso de instalación de aplicaciones según tus necesidades específicas y situación del dispositivo para lograr los mejores resultados. Esto no solo mejora la compatibilidad y el rendimiento de la aplicación, sino que también satisface mejor las necesidades únicas de los individuos y libera completamente el potencial del dispositivo.
+## Guarda, comparte y protege tus archivos
 
-No te preocupes, la instalación personalizada también es muy sencilla. Solo necesitas encontrar la aplicación que deseas añadir en Docker Hub, copiar el archivo YAML con un clic, seleccionar Importar y luego configurar los recursos.
-Enlace al video: https://www.youtube.com/watch?v=ToV6vRIl3Nk&t=91s
-En la interfaz de instalación personalizada, los recursos que el contenedor usará están registrados en detalle. Puedes aprender información relevante y pasos de operación en detalle a través de este enlace: https://icewhale.community/t/tutorial-how-to-understand-docker-apps-paths-on-zimaos-take-plex-as-an-example/3395
+La configuración del almacenamiento depende del uso que vayas a dar al dispositivo.
 
-## Resumen:
-Con la guía anterior, puedes dominar fácilmente las habilidades de uso de la tienda de aplicaciones de ZimaOS, ya sea descargando aplicaciones oficiales, añadiendo tiendas de terceros o personalizando instalaciones. Con estas características, puedes aprovechar al máximo el poder de la comunidad y las ventajas de los contenedores Docker para crear un sistema NAS que satisfaga todas tus necesidades.
+Para la mayoría de los hogares recomendamos empezar con dos unidades idénticas en RAID 1. Los datos se duplican en ambas unidades, de modo que si una falla no pierdes nada. Los archivos aparecen en Finder y en el Explorador de archivos de todos los ordenadores de la casa, sin las esperas de carga ni las cuotas mensuales del almacenamiento en la nube. Si quieres mantener una copia externa de tus archivos más importantes, la aplicación Files puede conectarse a Google Drive, Dropbox u OneDrive para realizar copias selectivas.
 
-Es la contribución y la innovación continua de la comunidad lo que ha permitido que ZimaOS continúe creciendo y se convierta en la plataforma preferida en la mente de los usuarios. ¡Comienza a explorar ahora y haz que tu sistema NAS sea más poderoso y diverso!
+Tu música, tus fotos y tus vídeos se transmiten directamente desde el dispositivo a cualquier pantalla de la red. Como capa adicional de protección, la aplicación Files puede copiar de forma selectiva tus carpetas más importantes en Google Drive, Dropbox u OneDrive.
 
-Gracias por leer esta guía. Espero que pueda ayudarte a utilizar ZimaOS de mejor manera. Si tienes alguna pregunta o sugerencia, por favor únete a la comunidad y compártelo y discútelo con nosotros.
+![Página de ajustes de almacenamiento de ZimaOS con la lista de discos y las opciones para combinar unidades en un almacenamiento RAID](https://manage.icewhale.io/api/static/docs/1786262061523_zimaos-storage-settings.png)
 
-¡Te deseo un uso placentero!
+Si gestionas una pequeña empresa o conservas archivos familiares irremplazables, RAID 5 ofrece más espacio utilizable y mantiene la protección frente al fallo de una unidad. Empieza con tres unidades y añade más después. Los datos permanecen disponibles incluso mientras sustituyes un disco averiado. ZimaOS también admite RAID 0, RAID 1 y RAID 6 para otros escenarios.
+
+Si necesitas instantáneas, sumas de comprobación e integridad de datos avanzada, también puedes usar **[ZFS](../developer/zfs-setup "Configura ZFS en ZimaOS para obtener instantáneas, sumas de comprobación e integridad de datos")**.
+
+Una vez configurado, el almacenamiento aparece automáticamente en la red local: en Mac se muestra en Finder y, en Windows, en el Explorador de archivos. El acceso está protegido por tu cuenta de ZimaOS. Puedes crear cuentas independientes para familiares o compañeros de equipo, cada una con sus propios permisos de lectura y escritura.
+
+**[Configuración del almacenamiento](./storage-setup "Elige la configuración de almacenamiento y las opciones RAID que mejor se adapten a tus necesidades")** · **[Uso compartido de archivos SMB](./smb-troubleshooting "Comparte archivos mediante SMB para que aparezcan en Finder y en el Explorador de archivos")** · **[Conectar unidades en la nube](./cloud-drive-connect "Conecta Google Drive, Dropbox u OneDrive a ZimaOS para realizar copias de seguridad")** · **[Opciones RAID](./raid-options "Explicación de los niveles RAID y JBOD con instrucciones de configuración paso a paso")** · **[Mover datos entre unidades](./data-migration "Mueve imágenes Docker, datos de aplicaciones y carpetas entre unidades en ZimaOS")**
+
+
+## Instala aplicaciones con un clic
+
+Aquí es donde el dispositivo deja de limitarse a guardar archivos y se convierte en un servidor doméstico. La App Store se amplió considerablemente en ZimaOS 1.7.
+
+**Instalación con un clic.** Hay cientos de aplicaciones disponibles con un solo clic y no necesitas conocer Docker. Instala Pi-hole para bloquear anuncios en toda la red doméstica o Jellyfin para crear tu propio servidor de streaming. La interfaz está diseñada para explorar, con categorías y recomendaciones que te ayudan a encontrar lo que necesitas.
+
+**Gestiona todo en un solo lugar.** Todas las aplicaciones instaladas se encuentran en una única página. Puedes ver cuáles están en ejecución, buscar actualizaciones y ajustar la configuración básica sin tocar un archivo de configuración. Si algo falla, dispones de registros integrados y un terminal cuando los necesites.
+
+**Para usuarios avanzados.** Importa cualquier archivo YAML de Docker Compose, edita directamente las configuraciones y ejecuta conjuntos de varios contenedores con control completo de su ciclo de vida. ZimaOS gestiona la capa de Docker para que puedas centrarte en lo que estás creando.
+
+La comunidad mantiene varias tiendas de terceros con cientos de aplicaciones adicionales. Tu hardware, tus aplicaciones, tus reglas. Nada depende de una suscripción ni de la nube de otra persona.
+
+**[Descripción general de App Store](./app-store/ "Explora las categorías de App Store para contenido multimedia, aplicaciones autoalojadas e IA")** — streaming multimedia, aplicaciones autoalojadas, IA y proyectos creativos
+
+## Importa primero tus datos
+
+Sé que la App Store resulta tentadora. Probablemente ya la hayas recorrido y tengas tres cosas que quieres probar. Pero si pudiera repetir mi primera configuración, organizaría el almacenamiento antes de instalar nada. Evita problemas más adelante.
+
+Empieza por las unidades. Un solo disco es la opción más sencilla. Dos unidades idénticas en RAID 1 aportan redundancia sin complejidad. RAID 5 abarca tres o más discos cuando necesitas más espacio con protección. Las unidades USB sirven como espacio adicional o almacenamiento portátil. La página **[Configuración del almacenamiento](./storage-setup "Elige la configuración de almacenamiento y las opciones RAID que mejor se adapten a tus necesidades")** asigna una configuración recomendada a cada escenario, mientras que **[Opciones RAID](./raid-options "Explicación de los niveles RAID y JBOD con instrucciones de configuración paso a paso")** sirve como referencia técnica.
+
+A continuación, decide dónde se guardarán los datos de tus aplicaciones. Cada aplicación instalada almacena sus archivos en algún lugar del dispositivo. La guía **[Rutas de almacenamiento de aplicaciones](./docker-app-paths "Dónde guardan sus datos las aplicaciones y cómo moverlos entre unidades")** indica dónde y explica cómo trasladar después esos datos a una unidad más grande. Configurarlo pronto evita tener que migrar los datos de las aplicaciones más adelante.
+
+Después, importa tu contenido. **[Copia de seguridad del teléfono](./phone-backup "Realiza automáticamente una copia de seguridad de tu teléfono en ZimaOS con ZimaClient")** y **[Copia de seguridad del ordenador](./computer-backup "Realiza una copia de seguridad de tu ordenador en ZimaOS mediante Finder, el Explorador o sincronización")** cubren los dispositivos que utilizas a diario. **[Migrar desde otro NAS](./synology-to-zimacube-migration "Mueve archivos de un NAS Synology a ZimaOS mediante un proceso por fases")** y **[Conectar unidades en la nube](./cloud-drive-connect "Conecta Google Drive, Dropbox u OneDrive a ZimaOS para realizar copias de seguridad")** cubren las dos fuentes más habituales.
+
+Estas guías y muchas más están organizadas en la **[Descripción general de ZimaOS](./ "Descripción general de la documentación de ZimaOS sobre configuración, almacenamiento y uso compartido")**, dentro de Configuración y almacenamiento. Después, instala lo que quieras. Te lo has ganado.

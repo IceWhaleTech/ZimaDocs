@@ -1,4 +1,4 @@
-<nav id="mobile-nav">
+<nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
       
@@ -8,14 +8,25 @@
       {{ doc_sidebar('mobile-nav') }}
     {% endif %}
   </div>
-  <div id="mobile-lang-select-wrap">
-    <span id="mobile-lang-select-label" style="display:none">
-      <i class="fa fa-globe"></i>
-      <span>{{ lang_name(page.lang) }}</span></span>
-    <select id="mobile-lang-select" data-canonical="{{ canonical_path_for_nav() }}">
-      {% for lang, value in site.data.languages %}
-        <option value="{{ lang }}"{% if page.lang === lang %} selected{% endif %}>{{ lang_name(lang) }}</option>
-      {% endfor %}
-    </select>
+  {# Utility bar, Figma 436:17722. Mirrors .header-utils, which is hidden below
+     600 - this is where the theme toggle lives on a phone. #}
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>{{ page.lang | upper }}</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        {% for lang, value in site.data.languages %}
+          <option value="{{ url_for_locale(lang, canonical_path_for_nav()) }}" data-lang="{{ lang }}"{% if page.lang === lang %} selected{% endif %}>{{ lang_name(lang) }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    {% if page.layout === 'page' or page.layout === 'index' %}
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    {% endif %}
   </div>
 </nav>

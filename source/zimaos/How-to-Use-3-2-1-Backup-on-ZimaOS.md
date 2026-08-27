@@ -1,146 +1,84 @@
 ---
-title: How to Use 3-2-1 Backup on ZimaOS？
-description: "Set up 3-2-1 backup on ZimaOS to protect your data with three copies, two media types and one offsite location. Covers backup configuration and scheduling."
+title: 3-2-1 Backup on ZimaOS
+seo_title: "ZimaOS Backup Plan: The 3-2-1 Strategy for Your NAS Data"
+description: "Build a complete backup plan on ZimaOS with the 3-2-1 rule. Back up folders, USB drives, and cloud storage in one task, schedule automatic runs, and keep an offsite copy."
 type: Docs
 author: vicky
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
-permalink: /zimaos/how-to-use-3-2-1-backup-on-zimaos.html
 ---
 
-In this era of data explosion, important files not only carry the fruits of our work but also record moments of our lives. However, hard drive failures, accidental deletions, and unforeseen disasters can wipe out these precious materials in an instant.
+Hard drives fail, files get deleted by accident, and houses have floods. A backup plan is what stands between those moments and losing everything.
 
+One thing to be clear about first: RAID is not a backup. RAID protects you from a single drive failure while the device keeps running. It does nothing against accidental deletion, ransomware, or a power surge that takes out the whole machine. A real backup plan covers those too.
 
+## The 3-2-1 Rule
 
-To address this, ZimaOS v1.4.3 introduces the brand-new **3-2-1 backup feature**—a globally recognized golden standard for data protection—ensuring that every piece of your important data is safeguarded with multiple layers of protection, leaving nothing to chance.
+The 3-2-1 rule is the standard answer to the question of how many backups are enough.
 
+- **3 copies** of your data: the original plus two backups, so no single failure destroys everything.
+- **2 different types of media**: such as the drives in your device plus an external USB drive, to diversify the risk.
+- **1 copy offsite**: somewhere physically separate, so a fire or theft at home does not take all copies with it.
 
+## Set Up a Backup Task
 
-### **What is the 3-2-1 backup rule?**
+ZimaOS has a built-in Backup app that handles all of this in one place.
 
-*   3 – Keep at least **three copies** of your data (the original + two backups) to avoid single points of failure.
-    
-*   2 – Store the copies on **two different types of media** (e.g., local hard drive, external USB, cloud storage) to diversify risk.
-    
-*  1 – Keep at least **one copy offsite** to protect against physical threats such as fire, flood, or theft.
-    
+1. Launch the **Backup** app from the dashboard.
 
-This method is a widely recognized golden backup strategy, commonly used in both enterprise and personal data protection solutions.
+![ZimaOS desktop showing the Backup app icon to launch the backup tool](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
 
-  
+2. Click **Add new backup** to open the task creation wizard.
 
-### **How to** **start** **3-2-1 backup in ZimaOS?**
+![Backup task creation wizard with the Add new backup button](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
 
-1.  Open the Backup App
-   Launch the “Backup” application from the desktop.
-    
+3. Choose the data source: **Cloud** (Google Drive, Dropbox, and more), **LAN** (shared folders from other devices), **USB** (external drives), or **Zima** (files stored on this device).
 
-![](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
+Backups from **[Phone Backup](./phone-backup "Back up your phone to ZimaOS automatically with ZimaClient")** and **[Computer Backup](./computer-backup "Back up your computer to ZimaOS with Finder, Explorer, or sync")** land in your storage as regular folders, so they fit into a backup task like anything else stored on the device.
 
-2. Create a New Backup Task
-   Click “Add new backup” to enter the backup task creation wizard.
-    
+![Backup data source selection showing Cloud, LAN, USB, and Zima options](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
+4. If you picked a cloud source, sign in and authorize access.
 
-3.  Select the Data Source
-    
+![Google account sign-in screen for authorizing cloud backup access](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
 
-*   **Cloud** (cloud storage such as Google Drive, Dropbox, etc.)
-    
-*   **LAN** (shared folders from other devices on the local network)
-    
-*   **USB** (external hard drives, USB flash drives, etc.)
-    
-*   **Zima** (Files Stored in this ZimaOS)
-    
+![Cloud storage authorization step in the backup task wizard](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
+5. Select the folders you want to back up, or the entire directory structure.
 
-4.   Sign In and Authorize (if using cloud storage)
-   For example, if you choose Google Drive, you will need to sign in to your Google account and complete the authorization process.
-    
+![Backup content selection screen for choosing folders or entire directories](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
+6. Set the destination: a local disk, another Zima device, an external drive, or the cloud.
 
-  
+![Backup destination options for local disks, other NAS devices, USB, or cloud](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
+7. Click **Start**. The backup runs with progress shown in real time.
 
-  
+![Backup task running with real-time progress displayed](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
 
-5.   Select the Content to Back Up
-    
+A video walkthrough of the same steps is available on [YouTube](https://www.youtube.com/watch?v=pUVMsS1tcyY).
 
-     You can choose specific folders or the entire directory structure.
+## Backup Automatically
 
-![](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
+A backup plan only works if it runs without you remembering to run it.
 
-  
+- **Scheduled backup** runs on its own at the interval you set.
+- **Multiple tasks** can run side by side without interfering, so photos, documents, and app data each get their own schedule.
+- **Resume and fault tolerance** continues an interrupted transfer instead of starting over.
 
-6.   Set the Backup Destination
-You can sync the data to a local disk, another Zima device, an external hard drive, or upload it directly to the cloud.
-    
+![Backup app task list showing multiple backup tasks running concurrently](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
+## Cloud Sync Is Not Backup
 
-7.  Start Backup with One Click
-    
+A folder synced to the cloud is not a backup. Sync mirrors changes in both directions, so deleting a file locally deletes it everywhere. A backup keeps versions and only writes forward. When you use the cloud in your backup plan, use the Backup app's cloud destination so you get versions and restore points, not a mirror of your mistakes.
 
-     Click the **“Start”** button, and ZimaOS will automatically execute the backup while displaying the progress in real time.
+The cloud also earns its place as the offsite copy in your 3-2-1 plan. See **[Connect Cloud Drives](./cloud-drive-connect "Connect Google Drive, Dropbox, or OneDrive to ZimaOS for backup")** for working with cloud storage.
 
-![](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
+## Restore and Verify
 
-  
+A backup you have never restored is a plan you have never tested. After your first backup finishes, restore one file and open it. Ten minutes of verification now beats discovering a silent problem the day you actually need the backup.
 
-**Now you’ve completed your 3-2-1 backup!**
-Please view the video tutorial: 
-https://www.youtube.com/watch?v=pUVMsS1tcyY
-  
+## Next
 
-#### Feature Highlights & Optimizations
-
-*   **Multi-Task Concurrency** 
-Create multiple backup tasks simultaneously without interference, ensuring efficient data protection.
-    
-
-![](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
-
-*   **Scheduled Backup**
-    
-
-      Supports setting automatic schedules or manual triggers, allowing backups to run as planned without manual intervention.
-
-  
-
-*   **Version Retention**
-    
-
-     Automatically keeps the latest 5 versions, making it easy to quickly roll back to a previous state after accidental deletion or modification.
-
-  
-
-*   **Resume and Fault Tolerance**
-    
-
-    If the network is interrupted or a device is disconnected, the system will automatically resume the unfinished portion, avoiding duplicate transfers.
-
-
-See more guidance on the 3-2-1 backup strategy:
-https://www.zimaspace.com/blog/nas-backup-raid-and-the-3-2-1-strategy-explained.html
-
-### **Summary:**
-
-Whether it's work files, family photo albums, or treasured archives, 3-2-1 backup builds a solid wall of protection for your data.
-
-In ZimaOS, we've not only made this golden strategy accessible, but also made it smarter and more efficient.
-
-Start today and enjoy peace of mind with triple security for your important data.
-
-
-
-
-If you encounter any questions, technical issues, or need further guidance during use, feel free to reach out to our official support team via direct message: 
-X: http://bit.ly/45Ef2Du or FB: http://bit.ly/3HofnB3. 
-
-We promise a quick response within 48 hours, along with professional, personalized assistance.
-
+- **[RAID Options](./raid-options "RAID levels and JBOD explained with step-by-step setup instructions")** — what RAID protects, and what it does not
+- **[Phone Backup](./phone-backup "Back up your phone to ZimaOS automatically with ZimaClient")** — get the phone data into the plan
+- **[Move Data Between Drives](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")** — when a drive fills up

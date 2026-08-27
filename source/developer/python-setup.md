@@ -1,0 +1,43 @@
+---
+title: Setup Python
+seo_title: "Set Up Python on ZimaOS for Scripting and Automation"
+description: “Set up a Python development environment on ZimaOS. Install Python, manage packages with pip, and run scripts on your ZimaCube NAS device.”
+type: “Docs”
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+---
+## Modify /etc/profile
+Add the following two lines to the profile
+```language
+export HOME="/DATA"
+export PATH="/DATA/.local/bin:/opt/bin:$PATH"
+```
+Execute Refresh
+`source /etc/profile`
+## Install opkg
+`wget -O - http://bin.entware.net/x64-k3.2/installer/generic.sh | /bin/sh`
+## Git related issues
+### Install git-http
+`opkg install git-http`
+## How to pull GitHub projects without password
+How to pull GitHub projects without password
+Due to some problems, git cannot find ssh public key normally. So we can use gh tool to avoid password.
+Download gh to `/opt/bin` (managed by opkg package). Then log in to the account with gh.
+When pulling the project, use the third gh pull method, so that git and pull can be.
+### Python
+ZimaOS has installed Python 3.12.5
+![](https://manage.icewhale.io/api/static/docs/1727164432814_image.png)
+It is recommended to use the nevn virtual environment for development
+```language
+mkdir project
+cd project
+python -m venv .
+source ./bin/activate
+```
+## Modify the configuration of vscode
+Add the following configuration to the code mode configuration
+```language
+"remote.SSH.serverInstallPath": {
+        "XXX.XXX.XXX.XXX": "/DATA",
+    },
+```
+![](https://manage.icewhale.io/api/static/docs/1727164529080_image.png)

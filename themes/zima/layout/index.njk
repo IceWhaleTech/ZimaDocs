@@ -1,15 +1,116 @@
-<header id="banner">
-  <div class="overlay-main site-bg-primary opacity-06"></div>
-  <div class="inner">
-    <h2 id="banner-title">{{ page.subtitle }}</h2>
-    <h4 id="banner-subtitle">{{ page.intro }}</h4>
-  </div>
-</header>
-
-<div id="content-wrap">
-  <div class="wrapper">
-    <div class="inner">
-      {{ page.content }}
+{# The landing page owns its full-bleed layout. All text comes from the theme
+   language files so every locale renders the same structure. #}
+{% macro acc_row(id, number, label, body, image_key, open) %}
+<li class="zl-acc__item{% if open %} is-open{% endif %}">
+  <button class="zl-acc__head" type="button" id="{{ id }}-h{{ number }}" aria-controls="{{ id }}-p{{ number }}" aria-expanded="{% if open %}true{% else %}false{% endif %}"{% if image_key %} data-zl-img="{{ image_key }}"{% endif %}>
+    <span class="zl-acc__label">{{ label }}</span>
+    <span class="zl-acc__icon" aria-hidden="true"></span>
+  </button>
+  <div class="zl-acc__panel" id="{{ id }}-p{{ number }}" role="region" aria-labelledby="{{ id }}-h{{ number }}">
+    <div class="zl-acc__panelInner">
+      <p class="zl-acc__body">{{ body }}</p>
     </div>
   </div>
-</div>
+</li>
+{% endmacro %}
+{% set latest_release_info = latest_release() %}
+
+<main class="zl-home">
+  <section class="zl-hero">
+    <div class="zl-hero__copy">
+      <h1 class="zl-hero__title">{{ __('index.hero_title') }}</h1>
+      <p class="zl-hero__sub">{{ __('index.hero_subtitle') }}</p>
+      <div class="zl-hero__cta">
+        <a class="zl-btn zl-btn--primary" href="{{ url_for_lang('/zimaos/get-started') }}">{{ __('index.get_started') }}</a>
+        <a class="zl-btn zl-btn--ghost" href="{{ url_for_lang('/zimaos/') }}">{{ __('index.browse_docs') }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="zl-feat" data-zl-feature>
+    <div class="zl-feat__inner">
+      <div class="zl-feat__copy">
+        <h2 class="zl-feat__title">{{ __('index.setup_title') }}</h2>
+        <p class="zl-feat__sub">{{ __('index.setup_subtitle') }}</p>
+        <ul class="zl-acc">
+          {{ acc_row('setup', 1, __('index.setup_install_title'), __('index.setup_install_body'), 'install', true) }}
+          {{ acc_row('setup', 2, __('index.setup_storage_title'), __('index.setup_storage_body'), 'storage', false) }}
+          {{ acc_row('setup', 3, __('index.setup_connect_title'), __('index.setup_connect_body'), 'connect', false) }}
+        </ul>
+        <a class="zl-feat__link" href="{{ url_for_lang('/zimaos/') }}">
+          <span>{{ __('index.setup_link') }}</span>
+          <span class="zl-feat__arrow" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="zl-feat__art">
+        <img class="zl-art is-active" src="{{ url_for('/images/home/setup-install.webp') }}" data-zl-key="install" width="560" height="520" alt="{{ __('index.setup_install_alt') }}" fetchpriority="high">
+        <img class="zl-art" src="{{ url_for('/images/home/setup-storage.webp') }}" data-zl-key="storage" width="560" height="520" alt="{{ __('index.setup_storage_alt') }}" loading="lazy">
+        <img class="zl-art" src="{{ url_for('/images/home/setup-connect.webp') }}" data-zl-key="connect" width="560" height="520" alt="{{ __('index.setup_connect_alt') }}" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="zl-feat zl-feat--flip" data-zl-feature>
+    <div class="zl-feat__inner">
+      <div class="zl-feat__copy">
+        <h2 class="zl-feat__title">{{ __('index.apps_title') }}</h2>
+        <p class="zl-feat__sub">{{ __('index.apps_subtitle') }}</p>
+        <ul class="zl-acc">
+          {{ acc_row('apps', 1, __('index.apps_media_title'), __('index.apps_media_body'), 'media', true) }}
+          {{ acc_row('apps', 2, __('index.apps_selfhosted_title'), __('index.apps_selfhosted_body'), 'selfhosted', false) }}
+          {{ acc_row('apps', 3, __('index.apps_ai_title'), __('index.apps_ai_body'), 'localai', false) }}
+        </ul>
+        <a class="zl-feat__link" href="{{ url_for_lang('/zimaos/app-store/') }}">
+          <span>{{ __('index.apps_link') }}</span>
+          <span class="zl-feat__arrow" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="zl-feat__art">
+        <img class="zl-art is-active" src="{{ url_for('/images/home/apps-media.webp') }}" data-zl-key="media" width="560" height="520" alt="{{ __('index.apps_media_alt') }}" loading="lazy">
+        <img class="zl-art" src="{{ url_for('/images/home/apps-selfhosted.webp') }}" data-zl-key="selfhosted" width="560" height="520" alt="{{ __('index.apps_selfhosted_alt') }}" loading="lazy">
+        <img class="zl-art" src="{{ url_for('/images/home/apps-localai.webp') }}" data-zl-key="localai" width="560" height="520" alt="{{ __('index.apps_ai_alt') }}" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="zl-feat" data-zl-feature>
+    <div class="zl-feat__inner">
+      <div class="zl-feat__copy">
+        <h2 class="zl-feat__title">{{ __('index.deeper_title') }}</h2>
+        <p class="zl-feat__sub">{{ __('index.deeper_subtitle') }}</p>
+        <ul class="zl-acc">
+          {{ acc_row('deeper', 1, __('index.deeper_storage_title'), __('index.deeper_storage_body'), null, true) }}
+          {{ acc_row('deeper', 2, __('index.deeper_network_title'), __('index.deeper_network_body'), null, false) }}
+          {{ acc_row('deeper', 3, __('index.deeper_api_title'), __('index.deeper_api_body'), null, false) }}
+        </ul>
+        <a class="zl-feat__link" href="{{ url_for_lang('/developer/') }}">
+          <span>{{ __('index.deeper_link') }}</span>
+          <span class="zl-feat__arrow" aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="zl-feat__art">
+        <img class="zl-art is-active" src="{{ url_for('/images/home/deeper.webp') }}" width="560" height="520" alt="{{ __('index.deeper_alt') }}" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="zl-news">
+    <div class="zl-news__inner">
+      <h2 class="zl-news__title">{{ __('index.news_title') }}</h2>
+      <a class="zl-news__card" href="{{ url_for_lang(latest_release_info.path) }}">
+        <div class="zl-news__copy">
+          <span class="zl-news__tag">{{ __('index.news_tag') }}</span>
+          <h3 class="zl-news__headline">{{ __('index.news_headline', latest_release_info.version) }}</h3>
+          <p class="zl-news__desc">{{ __('index.news_description') }}</p>
+          <span class="zl-news__link">
+            <span>{{ __('index.news_link') }}</span>
+            <span class="zl-news__arrow" aria-hidden="true"></span>
+          </span>
+        </div>
+        <div class="zl-news__art">
+          <img src="{{ url_for('/images/home/whatsnew.webp') }}" width="460" height="260" alt="{{ __('index.news_alt') }}" loading="lazy">
+        </div>
+      </a>
+    </div>
+  </section>
+</main>

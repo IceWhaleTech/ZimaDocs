@@ -4,7 +4,6 @@ description: Aprenda a conectar, ativar e configurar uma UPS USB no ZimaOS 1.5.3
 type: Docs
 author: icewhale123456
 tip: A barra superior tem formato fixo, não a apague. A descrição é o resumo do artigo; caso não seja preenchida, será utilizada a primeira parte do conteúdo.
-permalink: /pt-PT/zimaos/ups-setup.html
 ---
 
 ## Introdução  
@@ -108,7 +107,7 @@ O seu NAS agora tem **proteção real contra quedas de energia** e pode funciona
 ---
 
 ## Lista de Dispositivos Compatíveis
-[Listagem de Dispositivos UPS Compatíveis com ZimaOS](https://www.zimaspace.com/docs/zimaos/zimaos-ups-compatibility-list)
+[Listagem de Dispositivos UPS Compatíveis com ZimaOS](../hardware/ups-compatibility-list)
 
 Esta lista não é exaustiva e pode ser atualizada com o tempo.  
 Se a sua UPS não estiver listada, isso não significa automaticamente que não seja compatível.

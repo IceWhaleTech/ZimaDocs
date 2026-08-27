@@ -1,7 +1,8 @@
-function set_image_size(image, width, height) 
+function set_image_size(image, width, height)
 {
-    image.setAttribute("width", width + "px");
-    image.setAttribute("height", height + "px");
+    if (!Number.isFinite(width) || !Number.isFinite(height)) return;
+    image.setAttribute("width", Math.round(width));
+    image.setAttribute("height", Math.round(height));
 }
 
 function hexo_resize_image()
@@ -11,43 +12,33 @@ function hexo_resize_image()
     {
         var img = imgs[i];
 
-        var src = img.getAttribute('src').toString();
+        var src = img.getAttribute('src');
+        if (!src || src.indexOf('?') === -1) continue;
+        var query = src.slice(src.indexOf('?') + 1);
 
-        var fields = src.match(/(?<=\?)\d*x\d*/g);
-        if (fields && fields.length == 1)
+        var sizeMatch = query.match(/^(\d*)x(\d*)$/);
+        if (sizeMatch && (sizeMatch[1] || sizeMatch[2]))
         {
-            var values = fields[0].split("x");
-            if (values.length == 2)
+            var width = parseFloat(sizeMatch[1]);
+            var height = parseFloat(sizeMatch[2]);
+            var n_width = img.naturalWidth;
+            var n_height = img.naturalHeight;
+            if ((!width || !height) && n_width && n_height)
             {
-                var width = values[0];
-                var height = values[1];
-
-                if (!(width.length && height.length))
-                {
-                    var n_width = img.naturalWidth;
-                    var n_height = img.naturalHeight;
-                    if (width.length > 0)
-                    {
-                        height = n_height*width/n_width;
-                    }
-                    if (height.length > 0)
-                    {
-                        width = n_width*height/n_height;
-                    }
-                }
-                set_image_size(img, width, height);
+                if (width) height = n_height * width / n_width;
+                if (height) width = n_width * height / n_height;
             }
+            set_image_size(img, width, height);
             continue;
         }
 
-        fields = src.match(/(?<=\?)\d*/g);
-        if (fields && fields.length == 1)
+        if (/^\d+(?:\.\d+)?$/.test(query))
         {
-            var scale = parseFloat(fields[0].toString());
+            var scale = parseFloat(query);
             var width = scale/100.0*img.naturalWidth;
             var height = scale/100.0*img.naturalHeight;
             set_image_size(img, width, height);
         }
     }
 }
-window.onload = hexo_resize_image;
+window.addEventListener('load', hexo_resize_image);

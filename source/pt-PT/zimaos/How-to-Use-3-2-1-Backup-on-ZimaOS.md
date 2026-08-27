@@ -1,128 +1,84 @@
 ---
-title: Como usar o backup 3-2-1 no ZimaOS?
-description: Aprenda rapidamente a usar o backup 3-2-1 no ZimaOS
+title: Cópia de segurança 3-2-1 no ZimaOS
+seo_title: "Plano de cópias de segurança do ZimaOS: estratégia 3-2-1 para os dados do NAS"
+description: "Crie um plano de cópias de segurança completo no ZimaOS com a regra 3-2-1. Copie pastas, unidades USB e armazenamento na nuvem numa única tarefa, agende execuções automáticas e mantenha uma cópia externa."
 type: Docs
 author: vicky
-tip: A barra superior fixa, por favor, não a exclua. A descrição é o resumo do artigo; se não for preenchida, o conteúdo da primeira seção será automaticamente usado.
-permalink: /pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos.html
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
-Nesta era de explosão de dados, arquivos importantes não apenas carregam os frutos do nosso trabalho, mas também registram momentos das nossas vidas. No entanto, falhas no disco rígido, exclusões acidentais e desastres imprevistos podem apagar esses materiais preciosos instantaneamente.
+Os discos rígidos falham, os ficheiros são eliminados por engano e as casas sofrem inundações. Um plano de cópias de segurança é o que separa esses momentos da perda de tudo.
 
-Para resolver isso, o ZimaOS v1.4.3 introduz o novo recurso **backup 3-2-1**—um padrão globalmente reconhecido de proteção de dados—garantindo que cada pedaço dos seus dados importantes seja protegido com várias camadas de segurança, não deixando nada ao acaso.
+Primeiro, é importante esclarecer uma coisa: RAID não é uma cópia de segurança. O RAID protege contra a falha de uma única unidade enquanto o dispositivo continua a funcionar. Não protege contra eliminações acidentais, ransomware ou uma sobretensão que danifique a máquina inteira. Um verdadeiro plano de cópias de segurança também abrange esses riscos.
 
-### **O que é a regra do backup 3-2-1?**
+## A regra 3-2-1
 
-*   **· 3** – Mantenha pelo menos **três cópias** dos seus dados (o original + duas cópias de backup) para evitar pontos únicos de falha.
-    
-*   **· 2** – Armazene as cópias em **dois tipos diferentes de mídia** (ex: disco rígido local, USB externo, armazenamento em nuvem) para diversificar o risco.
-    
-*   **· 1** – Mantenha pelo menos **uma cópia fora do local** para proteger contra ameaças físicas, como fogo, inundação ou roubo.
-    
+A regra 3-2-1 é a resposta padrão à pergunta sobre quantas cópias de segurança são suficientes.
 
-Este método é uma estratégia de backup amplamente reconhecida, comumente usada tanto em soluções de proteção de dados empresariais quanto pessoais.
+- **3 cópias** dos dados: o original e duas cópias de segurança, para que uma única falha não destrua tudo.
+- **2 tipos de suporte diferentes**: por exemplo, as unidades do dispositivo e uma unidade USB externa, para diversificar o risco.
+- **1 cópia externa**: num local fisicamente separado, para que um incêndio ou roubo em casa não leve todas as cópias.
 
-### **Como começar o backup 3-2-1 no ZimaOS?**
+## Configurar uma tarefa de cópia de segurança
 
-1. **1. Abra o aplicativo de Backup** 
-Inicie o aplicativo “Backup” a partir da área de trabalho.
-    
+O ZimaOS inclui uma aplicação Backup que trata de tudo isto num só lugar.
 
-![](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
+1. Abra a aplicação **Backup** a partir do painel.
 
-2. **2. Crie uma nova tarefa de backup** 
-Clique em **“Adicionar novo backup”** para acessar o assistente de criação de tarefas de backup.
-    
+![Ambiente de trabalho do ZimaOS com o ícone da aplicação Backup para abrir a ferramenta de cópia de segurança](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
+2. Clique em **Adicionar nova cópia de segurança** para abrir o assistente de criação de tarefas.
 
-3. **3. Selecione a fonte de dados**
-    
+![Assistente de criação de tarefas de cópia de segurança com o botão Adicionar nova cópia de segurança](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
 
-*   **· Nuvem** (armazenamento em nuvem, como Google Drive, Dropbox, etc.)
-    
-*   **· LAN** (pastas compartilhadas de outros dispositivos na rede local)
-    
-*   **· USB** (discos rígidos externos, pen drives, etc.)
-    
-*   **· Zima** (arquivos armazenados neste ZimaOS)
-    
+3. Escolha a origem dos dados: **Nuvem** (Google Drive, Dropbox e outros), **LAN** (pastas partilhadas de outros dispositivos), **USB** (unidades externas) ou **Zima** (ficheiros guardados neste dispositivo).
 
-![](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
+As cópias de **[Cópia de segurança do telemóvel](./phone-backup "Efetuar automaticamente uma cópia de segurança do telemóvel para o ZimaOS com o ZimaClient")** e **[Cópia de segurança do computador](./computer-backup "Efetuar uma cópia de segurança do computador para o ZimaOS através do Finder, Explorador ou sincronização")** chegam ao armazenamento como pastas normais, pelo que podem ser incluídas numa tarefa como qualquer outro conteúdo guardado no dispositivo.
 
-4. **4. Faça login e autorize** (se estiver usando armazenamento em nuvem)
-   Por exemplo, se escolher o Google Drive, será necessário fazer login na sua conta do Google e concluir o processo de autorização.
-    
+![Seleção da origem dos dados da cópia de segurança com as opções Nuvem, LAN, USB e Zima](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
+4. Se escolheu uma origem na nuvem, inicie sessão e autorize o acesso.
 
-  
+![Ecrã de início de sessão da conta Google para autorizar o acesso à cópia de segurança na nuvem](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
+![Passo de autorização do armazenamento na nuvem no assistente de tarefas de cópia de segurança](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
 
-  
+5. Selecione as pastas que pretende copiar ou toda a estrutura de diretórios.
 
-5. **5. Selecione o conteúdo para fazer backup**
-    
+![Ecrã de seleção de conteúdos da cópia de segurança para escolher pastas ou diretórios completos](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
 
-Você pode escolher pastas específicas ou toda a estrutura de diretórios.
+6. Defina o destino: um disco local, outro dispositivo Zima, uma unidade externa ou a nuvem.
 
-![](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
+![Opções de destino da cópia de segurança para discos locais, outros dispositivos NAS, USB ou nuvem](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
 
-  
+7. Clique em **Iniciar**. A cópia de segurança é executada com o progresso apresentado em tempo real.
 
-6. **6. Defina o destino do backup** 
-Você pode sincronizar os dados para um disco local, outro dispositivo Zima, um disco rígido externo ou enviá-los diretamente para a nuvem.
-    
+![Tarefa de cópia de segurança em execução com o progresso apresentado em tempo real](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
 
-![](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
+Está disponível no [YouTube](https://www.youtube.com/watch?v=pUVMsS1tcyY) um vídeo com os mesmos passos.
 
-7. **7. Inicie o backup com um clique**
-    
+## Automatizar as cópias de segurança
 
-Clique no botão **“Iniciar”** e o ZimaOS executará o backup automaticamente, exibindo o progresso em tempo real.
+Um plano de cópias de segurança só funciona se for executado sem ter de se lembrar de o iniciar.
 
-![](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
+- A **cópia agendada** é executada automaticamente no intervalo definido.
+- Podem ser executadas **várias tarefas** em paralelo sem interferências, para que as fotografias, os documentos e os dados das aplicações tenham cada um o seu próprio horário.
+- A **retoma e tolerância a falhas** continua uma transferência interrompida em vez de recomeçar.
 
-  
+![Lista de tarefas da aplicação Backup com várias tarefas de cópia de segurança em execução simultânea](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
 
-**Agora você completou seu backup 3-2-1!**
+## A sincronização na nuvem não é uma cópia de segurança
 
-  
+Uma pasta sincronizada com a nuvem não é uma cópia de segurança. A sincronização replica as alterações nos dois sentidos, pelo que eliminar um ficheiro localmente o elimina em todo o lado. Uma cópia de segurança mantém versões e escreve apenas para a frente. Quando utilizar a nuvem no seu plano, escolha o destino na nuvem da aplicação Backup para obter versões e pontos de restauro, em vez de replicar os seus erros.
 
-#### Destaques e otimizações
+A nuvem também serve como cópia externa no plano 3-2-1. Consulte **[Ligar unidades na nuvem](./cloud-drive-connect "Ligar o Google Drive, Dropbox ou OneDrive ao ZimaOS para efetuar cópias de segurança")** para trabalhar com armazenamento na nuvem.
 
-*   **· Execução de múltiplas tarefas** 
-Crie várias tarefas de backup simultaneamente sem interferência, garantindo proteção eficiente dos dados.
-    
+## Restaurar e verificar
 
-![](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
+Uma cópia de segurança que nunca restaurou é um plano que nunca testou. Quando a primeira cópia terminar, restaure um ficheiro e abra-o. Dez minutos de verificação agora são preferíveis a descobrir um problema silencioso no dia em que realmente precisar da cópia.
 
-*   **· Backup agendado**
-    
+## Seguinte
 
-      Suporta a configuração de agendamentos automáticos ou gatilhos manuais, permitindo que os backups ocorram conforme o planejado, sem intervenção manual.
-
-  
-
-*   **· Retenção de versões**
-    
-
-     Mantém automaticamente as últimas 5 versões, facilitando o retorno rápido a um estado anterior após exclusões ou modificações acidentais.
-
-  
-
-*   **· Retomar e tolerância a falhas**
-    
-
-    Se a rede for interrompida ou um dispositivo for desconectado, o sistema retoma automaticamente a parte não finalizada, evitando transferências duplicadas.
-
-  
-
-### **Resumo:**
-
-Seja arquivos de trabalho, álbuns de fotos da família ou arquivos preciosos, o backup 3-2-1 constrói uma parede sólida de proteção para seus dados.
-
-No ZimaOS, não só tornamos essa estratégia dourada acessível, como também a tornamos mais inteligente e eficiente.
-
-Comece hoje e desfrute da tranquilidade com segurança tripla para seus dados importantes.
+- **[Opções RAID](./raid-options "Explicação dos níveis RAID e JBOD com instruções de configuração passo a passo")** — o que o RAID protege e o que não protege
+- **[Cópia de segurança do telemóvel](./phone-backup "Efetuar automaticamente uma cópia de segurança do telemóvel para o ZimaOS com o ZimaClient")** — incluir os dados do telemóvel no plano
+- **[Mover dados entre unidades](./data-migration "Mover imagens Docker, dados de aplicações e pastas entre unidades no ZimaOS")** — quando uma unidade fica cheia
