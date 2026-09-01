@@ -1,16 +1,19 @@
 ---
 title: 隐私政策
-description: "ZimaOS 隐私政策 — IceWhale 如何处理您的数据、收集哪些信息以及您的隐私权利。我们不存储、不分析、不出售您的个人数据。"
+seo_title: "ZimaOS 隐私政策：我们如何处理您的数据与连接"
+description: "ZimaOS 隐私政策 — IceWhale 如何处理您的数据、可选集成以及您的隐私权利。"
 type: Docs
 author: Lauren Pan
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
-_最后更新日期：2024 年 7 月 12 日_
+_最后更新日期：2026 年 8 月 31 日_
 
 本隐私声明说明了 **IceWhale Technology Limited**（"公司"、"我们"）在您使用 ZimaOS 及相关服务时如何处理您的信息。
 
 如果您有任何疑问或不同意这些做法，请停止使用并通过 **support@icewhale.org** 与我们联系。
+
+本政策中的一般性声明适用于 ZimaOS 核心功能。特定集成的相关条款仅在您启用这些集成时适用。
 
 ---
 
@@ -46,6 +49,24 @@ _最后更新日期：2024 年 7 月 12 日_
 | 教育信息 | 学生记录、目录信息 | 否 |
 | 从其他信息推断的数据 | 用户画像、偏好摘要 | 否 |
 | 敏感个人信息 | — | 否 |
+
+---
+
+## Google API 服务
+
+本节仅在您选择将 Google 服务连接至 Zima Agent 时适用。
+
+### Gmail
+
+经您授权后，Zima 会使用满足功能所需的最低权限 `gmail.modify`，用于搜索和读取相关电子邮件及附件、提供您请求的写作辅助，以及创建或更新草稿。仅当您请求使用这些功能时，系统才会访问 Gmail 数据，且不会将其用于无关用途。
+
+Gmail 邮件、元数据和附件会在您的 Zima 设备或自行管理的 NAS 上处理，不会经过或存储在 IceWhale 运营的服务器上。IceWhale 服务器仅用于协助完成 Google OAuth 授权和令牌刷新。
+
+当您请求 AI 辅助时，所需的 Gmail 内容可能会从您的设备直接发送至已配置的 OpenAI API，而不会经过 IceWhale 服务器。这些内容不会用于训练或改进通用 AI 模型。
+
+保存在对话、附件或工作区文件中的 OAuth 凭据和 Gmail 内容会保留在您的设备上。相关凭据会保留至您断开 Gmail 连接、重置应用程序或卸载 Zima Agent 为止。您可以通过删除相关对话、文件或应用数据来删除本地 Gmail 数据。断开 Gmail 连接不会删除 Gmail 中的邮件，也不会删除已保存到您的设备或备份中的副本。
+
+我们不会出售 Google 用户数据，也不会将其用于广告共享。人工访问仅限于您主动请求的支持、安全调查或法律要求。我们对 Google 数据的使用遵循 [Google API 服务用户数据政策](https://developers.google.com/terms/api-services-user-data-policy)，包括“有限使用”要求。
 
 ---
 

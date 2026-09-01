@@ -1,16 +1,19 @@
 ---
 title: Política de Privacidade
-description: "Política de Privacidade do ZimaOS — como a IceWhale trata os seus dados, que informações são recolhidas e os seus direitos de privacidade. Não armazenamos, analisamos nem vendemos os seus dados pessoais."
+seo_title: "Política de Privacidade do ZimaOS: como são tratados os seus dados e ligações"
+description: "Política de Privacidade do ZimaOS — como a IceWhale trata os seus dados, as integrações opcionais e os seus direitos de privacidade."
 type: Docs
 author: Lauren Pan
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
-_Última atualização: 12 de julho de 2024_
+_Última atualização: 31 de agosto de 2026_
 
 Este aviso de privacidade descreve como a **IceWhale Technology Limited** ("Empresa", "nós") processa as suas informações quando utiliza o ZimaOS e serviços relacionados.
 
 Se tiver dúvidas ou não concordar com estas práticas, interrompa a utilização e contacte-nos através de **support@icewhale.org**.
+
+As declarações gerais desta política aplicam-se às principais funcionalidades do ZimaOS. As secções específicas de cada integração aplicam-se quando ativa essas integrações.
 
 ---
 
@@ -46,6 +49,24 @@ A tabela seguinte descreve as categorias de dados comuns e se as recolhemos:
 | Informações educativas | Registos de estudante, informações de diretório | Não |
 | Inferências de outros dados | Perfis de utilizador, resumos de preferências | Não |
 | Informações pessoais sensíveis | — | Não |
+
+---
+
+## Serviços de API da Google
+
+Esta secção aplica-se apenas quando opta por ligar um serviço da Google ao Zima Agent.
+
+### Gmail
+
+Com a sua autorização, o Zima utiliza a permissão mínima necessária `gmail.modify` para pesquisar e ler mensagens de e-mail e anexos relevantes, prestar a assistência de escrita solicitada e criar ou atualizar rascunhos. Os dados do Gmail são acedidos apenas quando solicita estas funcionalidades e não são utilizados para fins não relacionados.
+
+As mensagens, os metadados e os anexos do Gmail são processados no seu dispositivo Zima ou NAS autogerido e não passam por servidores operados pela IceWhale nem são neles armazenados. Os servidores da IceWhale apenas facilitam a autorização Google OAuth e a renovação de tokens.
+
+Quando solicita assistência de IA, o conteúdo necessário do Gmail pode ser enviado diretamente do seu dispositivo para a API da OpenAI configurada, sem passar pelos servidores da IceWhale. Esse conteúdo não é utilizado para treinar nem melhorar modelos de IA generalizados.
+
+As credenciais OAuth e o conteúdo do Gmail guardado em conversas, anexos ou ficheiros do espaço de trabalho permanecem no seu dispositivo. As credenciais são mantidas até desligar o Gmail, repor a aplicação ou desinstalar o Zima Agent. Pode eliminar os dados locais do Gmail apagando as conversas, os ficheiros ou os dados da aplicação relacionados. Desligar o Gmail não elimina as mensagens no Gmail nem as cópias já guardadas no seu dispositivo ou em cópias de segurança.
+
+Não vendemos dados de utilizadores da Google nem os partilhamos para fins publicitários. O acesso humano limita-se ao suporte que solicitar, a investigações de segurança ou a requisitos legais. A nossa utilização de dados da Google segue a [Política de Dados do Utilizador dos Serviços de API da Google](https://developers.google.com/terms/api-services-user-data-policy), incluindo os requisitos de Utilização Limitada.
 
 ---
 
