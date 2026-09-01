@@ -1,17 +1,19 @@
 ---
 title: Privacy Policy
 seo_title: "ZimaOS Privacy Policy: How Your Data and Connections Are Handled"
-description: "ZimaOS Privacy Policy — how IceWhale handles your data, what information is collected, and your privacy rights. We do not store, analyze, or sell your personal data."
+description: "ZimaOS Privacy Policy — how IceWhale handles your data, optional integrations, and your privacy rights."
 type: Docs
 author: Lauren Pan
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
-_Last updated July 12, 2024_
+_Last updated August 31, 2026_
 
 This privacy notice describes how **IceWhale Technology Limited** ("Company," "we," "us," or "our") processes your information when you use ZimaOS and related services.
 
 If you have questions or do not agree with these practices, please discontinue use and contact us at **support@icewhale.org**.
+
+The general statements in this policy apply to core ZimaOS features. Integration-specific sections apply when you enable those integrations.
 
 ---
 
@@ -47,6 +49,24 @@ The following table outlines common data categories and whether we collect them:
 | Education information | Student records, directory info | No |
 | Inferences from other data | User profiles, preference summaries | No |
 | Sensitive personal information | — | No |
+
+---
+
+## Google API Services
+
+This section applies only when you choose to connect a Google service to Zima Agent.
+
+### Gmail
+
+With your authorization, Zima uses the minimum required `gmail.modify` permission to search and read relevant emails and attachments, provide requested writing assistance, and create or update drafts. Gmail data is accessed only when you request these features and is not used for unrelated purposes.
+
+Gmail messages, metadata, and attachments are processed on your Zima device or self-managed NAS and do not pass through or get stored on IceWhale-operated servers. IceWhale servers only facilitate Google OAuth authorization and token refresh.
+
+When you request AI assistance, necessary Gmail content may be sent directly from your device to the configured OpenAI API, without passing through IceWhale servers. It is not used to train or improve generalized AI models.
+
+OAuth credentials and Gmail content saved in conversations, attachments, or workspace files remain on your device. Credentials are retained until you disconnect Gmail, reset the application, or uninstall Zima Agent. You can delete local Gmail data by deleting the related conversations, files, or application data. Disconnecting Gmail does not delete messages in Gmail or copies already saved to your device or backups.
+
+We do not sell Google user data or share it for advertising. Human access is limited to support you request, security investigations, or legal requirements. Our use of Google data follows the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 ---
 

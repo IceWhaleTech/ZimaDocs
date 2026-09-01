@@ -617,12 +617,6 @@ a { color: inherit; }
   color: var(--doc-title-fg);
 }
 
-.doc-article__meta {
-  margin: 0;
-  font: 400 15px/1.6 var(--font-ui);
-  color: var(--doc-meta-fg);
-}
-
 .doc-article__body {
   margin-top: 40px;
   display: flex;
@@ -1629,18 +1623,16 @@ body {
 }
 
 @media (max-width: 600px) {
-  /* The 350 comp opens the gap under the date by 6px, and the run-up to the
-     rule tightens from 80 to 60 on a phone. */
+  /* The run-up to the article footer tightens from 80 to 60 on a phone. */
   .article-footer { gap: 34px; margin-top: 60px; }
 
   :root { --gutter-top: 26px; }
 
   /* The 390 comp keeps the 20px gutter and drops both utility controls, leaving
      search + hamburger. Language is still reachable from the picker at the
-     bottom of the mobile nav; the theme toggle has no other home yet. */
+     bottom of the mobile nav alongside theme and Store. */
   .header-utils { display: none; }
   .doc-article__head h1 { font-size: 30px; }
-  .doc-article__meta { font-size: 13px; }
   .doc-article__body { margin-top: 34px; }
   .doc-article__body h2 { font-size: 20px; }
   .doc-article__body h3 { font-size: 16px; line-height: 1.35; }
@@ -1649,7 +1641,7 @@ body {
   .doc-article__body ol li { font-size: 15px; }
   .doc-article__body img,
   .doc-article__body video { margin-top: 16px; }
-  .docs-shell { padding-bottom: 70px; }
+  .docs-shell { padding-bottom: 36px; }
 }
 
 /* ---------- mobile drawer ----------
@@ -1737,6 +1729,17 @@ body {
   background: none;
   color: inherit;
   cursor: pointer;
+}
+
+.mobile-nav-store {
+  margin-left: auto;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: var(--store-bg);
+  color: var(--store-fg);
+  font: 400 14px/1 var(--font-display);
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Masked rather than <img> so both icons follow the drawer's text colour
