@@ -28,7 +28,7 @@ Based on this tutorial, we will demonstrate how to use the ZimaBoard’s pre-bui
 
 On the PC, log in to ZimaBoard’s CasaOS panel via ```casaos.local```
 
-![Openwrt eMMc Boot Log In CasaOS](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.png)
+![Openwrt eMMc Boot Log In CasaOS](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.webp)
 
 
 ### Upload the OpenWRT image
@@ -47,7 +47,7 @@ On the PC, log in to ZimaBoard’s CasaOS panel via ```casaos.local```
 1. Write the OpenWRT Image to the ZimaBoard eMMC using the DD command
     a.a.Login to the ZimaBoard system via Terminal, SSH on your PC（Terminal out connection, need to know the IP address of your machine）
 
-![OpenWRT Connect SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.png)
+![OpenWRT Connect SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.webp)
 
 2. Login with your CasaOS account and password
 {% note danger %}
@@ -58,13 +58,13 @@ Default Account Password
 
 3. Enter lsblk and review to see if you are getting the target eMMC name, which should be mmcblk0
 
-![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.png)
+![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.webp)
 
 4. Unzip the image file (if your OpenWrt file is a zip archive)
 ```
 gzip -d [.gz or .img.gz image name]
 ```
-![Unzip OpenWRT Image](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.png)
+![Unzip OpenWRT Image](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.webp)
 
 5. Check that the decompression is working! Make sure there are no abnormalities in the image file
 
@@ -91,7 +91,7 @@ gzip -d [.gz or .img.gz image name]
 
 **2. Reboot and log in to your OpenWrt system**
    
-![Enter To Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.png)
+![Enter To Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.webp)
 
 ## Summary
 I prefer to run a purely separate system and service on each ZimaBoard. So, this is a much simpler way than booting OpenWRT on the ZimaBoard with a USB stick. If you are interested in having your ZimaBoard running dual systems at the same time, consider making a USB stick and switching the system the ZimaBoard is logged into via the Bios configuration.

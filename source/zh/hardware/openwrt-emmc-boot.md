@@ -26,7 +26,7 @@ ZimaBoard 的性能介于 Raspberry Pi 和 MicroServer 之间，价格定位合�
 
 在 PC 上，通过 ```casaos.local``` 登录 ZimaBoard 的 CasaOS 面板
 
-![Openwrt eMMc Boot Log In CasaOS](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.png)
+![Openwrt eMMc Boot Log In CasaOS](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.webp)
 
 
 ## 上传 OpenWRT 映像
@@ -45,7 +45,7 @@ ZimaBoard 的性能介于 Raspberry Pi 和 MicroServer 之间，价格定位合�
 1. 使用 DD 命令将 OpenWRT 映像写入 ZimaBoard 的 eMMC
     a. 通过终端 SSH 登录 ZimaBoard 系统（终端输出连接，需要知道您机器的 IP 地址）
 
-![OpenWRT Connect SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.png)
+![OpenWRT Connect SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.webp)
 
 2. 使用您的 CasaOS 账户和密码登录
 {% note danger %}
@@ -56,13 +56,13 @@ ZimaBoard 的性能介于 Raspberry Pi 和 MicroServer 之间，价格定位合�
 
 3. 输入 lsblk 并检查以确认您获取到目标 eMMC 名称，应该是 mmcblk0
 
-![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.png)
+![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.webp)
 
 4. 解压缩映像文件（如果您的 OpenWrt 文件是 zip 压缩包）
 ```
 gzip -d [.gz 或 .img.gz 映像名称]
 ```
-![Unzip OpenWRT Image](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.png)
+![Unzip OpenWRT Image](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.webp)
 
 5. 检查解压缩是否成功！确保映像文件没有异常
 
@@ -89,7 +89,7 @@ gzip -d [.gz 或 .img.gz 映像名称]
 
 **2. 重启并登录您的 OpenWrt 系统**
    
-![Enter To Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.png)
+![Enter To Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.webp)
 
 # 总结
 我更喜欢在每个 ZimaBoard 上运行一个完全独立的系统和服务。因此，这比在 ZimaBoard 上通过 USB 设备启动 OpenWRT 的方式要简单得多。如果您有兴趣让您的 ZimaBoard 同时运行双系统，请考虑制作一个 USB 设备并通过 BIOS 配置切换 ZimaBoard 登录的系统。

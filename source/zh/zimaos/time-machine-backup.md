@@ -55,7 +55,7 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 
 ## 恢复文件
 
-需要找回文件时，可从 Time Machine 界面进行恢复。Apple 指南提供了详细说明：[在 Mac 上恢复使用 Time Machine 备份的项目](https://support.apple.com/zh-cn/guide/mac-help/mh11422/11.0/mac/11.0)。
+需要找回文件时，可从 Time Machine 界面进行恢复。Apple 指南提供了详细说明：[在 Mac 上恢复使用 Time Machine 备份的项目](https://support.apple.com/zh-cn/guide/mac-help/mh11422/mac)。
 
 ## 下一步
 

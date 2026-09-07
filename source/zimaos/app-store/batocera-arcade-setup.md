@@ -53,19 +53,19 @@ description: "Build a 75-inch 4K retro arcade with ZimaBoard and Batocera Linux.
 
 **Open your Balena and click on Flash from the file and select the Batocera you have just downloaded.**
 
-![Open balenaetcher](/images//Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![Open balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 **- step3**
 
 **Select the ```SD memory or USB drive``` you need to boot from** 
 
-![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 **- step4**
 
 **Enter your host password to start the conversion**
 
-![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 ## 3.Power on ZimaBoard
 
@@ -73,7 +73,7 @@ description: "Build a 75-inch 4K retro arcade with ZimaBoard and Batocera Linux.
 
 **With the ZimaBoard turned off, we insert the micro ```SD card or USB drive``` prepared with Batocera.**
 
-![Zimaboard Connect Usb](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png)
+![Zimaboard Connect Usb](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.webp)
 
 **When booting, long press to enter the Bios interface, select the ```U disk boot```**
 

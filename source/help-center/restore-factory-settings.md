@@ -32,11 +32,11 @@ ZimaBoard related preparation.
 
 ####  Open [BalenaEtcher](https://www.balena.io/etcher/)
 
-![Open Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.png)
+![Open Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.webp)
 
 #### Select the system image 
 
-![Choose Image](/images/Restore-factory-settings/choose-image.png)
+![Choose Image](/images/Restore-factory-settings/choose-image.webp)
 
 #### Select your inserted USB drive
 

@@ -56,5 +56,5 @@ Con el tiempo, las aplicaciones acumulan caché y pueden ocupar espacio sin que 
 ## Siguiente paso
 
 - **[Configuración del almacenamiento](./storage-setup "Elige una configuración de almacenamiento con opciones RAID adaptadas a tus necesidades")** — decide qué unidades guardarán los datos
-- **[Mover datos entre unidades](./data-migration "Mueve imágenes Docker, datos de aplicaciones y carpetas entre unidades en ZimaOS")** — utiliza la herramienta integrada cuando una unidad se llene
+- **[Migración de datos](./data-migration "Mueve imágenes Docker, datos de aplicaciones y carpetas entre unidades en ZimaOS")** — utiliza la herramienta integrada cuando una unidad se llene
 - **[Resumen de App Store](./app-store/ "Explora las categorías de App Store para contenido multimedia, aplicaciones autoalojadas e IA")** — descubre qué aplicaciones puedes instalar

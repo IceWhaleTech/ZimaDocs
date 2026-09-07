@@ -37,7 +37,7 @@ tip: Do not remove this front matter block. The description field is used for th
   </tr>
 </table>
 
-**[リモートアクセス](./remote-access "どこからでもホームサーバーにアクセスできるようリモートアクセスを設定する")** · **[ZimaClient をダウンロード](./zimaclient-install "デバイスへのアクセス用にデスクトップとモバイルで ZimaClient をインストールして設定する")** · **[ネットワーク ID](./remote-id "ZimaOS のネットワーク ID を確認し、ほかのデバイスからの接続に使用する")**
+**[リモートアクセス](./remote-access "どこからでもホームサーバーにアクセスできるようリモートアクセスを設定する")** · **[ZimaClient をダウンロード](./zimaclient-install "デバイスへのアクセス用にデスクトップとモバイルで ZimaClient をインストールして設定する")**
 
 ## ファイルを保存、共有、保護
 
@@ -55,7 +55,7 @@ tip: Do not remove this front matter block. The description field is used for th
 
 ストレージを設定すると、ローカルネットワークに自動的に表示されます。Mac では Finder、Windows ではエクスプローラーに表示されます。アクセスは ZimaOS アカウントで保護されます。家族やチームメンバーごとに、読み取り／書き込み権限が異なるアカウントを作成できます。
 
-**[ストレージ設定](./storage-setup "ニーズに合った RAID オプションでストレージ構成を選ぶ")** · **[SMB ファイル共有](./smb-troubleshooting "SMB でファイルを共有し、Finder とエクスプローラーに表示する")** · **[クラウドドライブを接続](./cloud-drive-connect "Google Drive、Dropbox、OneDrive を ZimaOS に接続してバックアップする")** · **[RAID オプション](./raid-options "RAID レベルと JBOD の説明、および詳しい設定手順")** · **[ドライブ間でデータを移動](./data-migration "Docker イメージ、アプリデータ、フォルダーを ZimaOS のドライブ間で移動する")**
+**[ストレージ設定](./storage-setup "ニーズに合った RAID オプションでストレージ構成を選ぶ")** · **[SMB ファイル共有](./smb-troubleshooting "SMB でファイルを共有し、Finder とエクスプローラーに表示する")** · **[クラウドドライブを接続](./cloud-drive-connect "Google Drive、Dropbox、OneDrive を ZimaOS に接続してバックアップする")** · **[RAID オプション](./raid-options "RAID レベルと JBOD の説明、および詳しい設定手順")** · **[データ移行](./data-migration "Docker イメージ、アプリデータ、フォルダーを ZimaOS のドライブ間で移動する")**
 
 
 ## ワンクリックでアプリをインストール

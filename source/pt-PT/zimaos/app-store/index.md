@@ -15,15 +15,16 @@ Executar os seus próprios serviços dá-lhe controlo real: o hardware é seu, o
 
 É aqui que a maioria das pessoas começa. Transforme o NAS num centro de streaming para filmes, séries, música e fotografias em qualquer ecrã da casa.
 
+- **[Sincronização de fotografias em massa](./cli-guide "Sincronize milhares de fotografias através da linha de comandos")** — ideal para bibliotecas de grande dimensão
+- **[Cópia de fotografias com Immich](./immich-photo-backup "Configure o Immich em detalhe para proteger a biblioteca")** — definições avançadas de cópia de segurança
 - **[Servidor multimédia Jellyfin](./media-server-setup-with-jellyfin "Configure o Jellyfin para transmitir filmes, séries e música a partir do NAS")** — gratuito, de código aberto e compatível com muitos dispositivos
+- **[Servidor de câmaras NVR](./nvr-camera-server "Ligue câmaras de segurança ao NAS com deteção de objetos por IA")** — vigilância e deteção de objetos no seu servidor
+- **[Sincronização de fotografias com Immich](./sync-photos-with-immich "Sincronize as fotografias do telemóvel com o NAS através do Immich")** — uma alternativa autoalojada ao Google Photos
 - **[Servidor multimédia Plex](./plex-setup-guide "Instale o Plex Media Server e transmita a biblioteca para qualquer dispositivo")** — interface cuidada e aplicações para praticamente todas as plataformas
+- **[Servidor DLNA](./dlna-server-setup "Transmita conteúdo para televisores antigos e dispositivos DLNA")** — compatibilidade com leitores DLNA
 - **[Transcodificação Plex por GPU](./plex-and-gpu-transcoding "Ative a transcodificação por hardware para reproduzir 4K sem interrupções")** — utilize aceleração de hardware para conteúdo 4K
 - **[Servidor Emby](./setup-emby-server "Configure o Emby Media Server para transmitir entre dispositivos")** — uma opção intermédia entre Jellyfin e Plex
-- **[Sincronização de fotografias com Immich](./sync-photos-with-immich "Sincronize as fotografias do telemóvel com o NAS através do Immich")** — uma alternativa autoalojada ao Google Photos
-- **[Cópia de fotografias com Immich](./immich-photo-backup "Configure o Immich em detalhe para proteger a biblioteca")** — definições avançadas de cópia de segurança
-- **[Servidor DLNA](./dlna-server-setup "Transmita conteúdo para televisores antigos e dispositivos DLNA")** — compatibilidade com leitores DLNA
-- **[Servidor de câmaras NVR](./nvr-camera-server "Ligue câmaras de segurança ao NAS com deteção de objetos por IA")** — vigilância e deteção de objetos no seu servidor
-- **[Sincronização de fotografias em massa](./cli-guide "Sincronize milhares de fotografias através da linha de comandos")** — ideal para bibliotecas de grande dimensão
+- **[Komga](./komga-setup "Execute o Komga no ZimaOS como servidor de banda desenhada")** — um servidor multimédia para banda desenhada, manga e livros eletrónicos
 
 ## Aplicações autoalojadas
 
@@ -39,10 +40,11 @@ Estas são algumas das aplicações mais utilizadas pela comunidade. Cada uma su
 - **[Transferência de torrents](./webtorrent-feature "Transfira torrents diretamente para o armazenamento do NAS")** — guarde as transferências no NAS
 - **[Guia de configuração do Syncthing](./syncthing-install "Configure opções avançadas do Syncthing")** — ajustes detalhados para vários dispositivos
 
-## IA e aprendizagem automática
+## Agentes e inferência
 
 Executar IA no seu próprio hardware evita que os dados saiam de casa. A comunidade tem avançado rapidamente nesta direção.
 
+- **[DeepSeek Harness](./deepseek-harness-setup "Execute o DeepSeek Harness no servidor doméstico como agente físico")** — um agente de IA físico no seu servidor doméstico que faz vibe coding e automatiza tarefas
 - **[Ativar pesquisa com IA](./enable-ai "Pesquise ficheiros com linguagem natural no servidor doméstico")** — encontre conteúdo através de perguntas normais
 - **[Implementar DeepSeek R1](./deploy-deepseek-r1 "Execute o DeepSeek R1 localmente no servidor de agentes")** — utilize um modelo potente em hardware Zima
 - **[Transferir modelos de IA](./llm-manual-download "Transfira modelos para instalações offline")** — prepare ambientes isolados ou com pouca largura de banda

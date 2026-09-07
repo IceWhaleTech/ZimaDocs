@@ -28,7 +28,7 @@ https://www.zimaspace.com/zimaos/download
 Nota:
 O ZimaClient **apresenta o ícone na barra de menus**. Clique no ícone para abrir e utilizar o cliente.
 
-Para ligar o ZimaCube através do ZimaClient, consulte este [documento](./remote-access).
+Para ligar o ZimaCube através do ZimaClient, consulte este [documento](./get-started "Configurar o ZimaOS desde o primeiro arranque com o ZimaClient e a criação de conta").
 |![](https://manage.icewhale.io/api/static/docs/1728618411227_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618433316_image.png) |
 |:---:|:---:|
 |![](https://manage.icewhale.io/api/static/docs/1728618448765_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618468465_image.png)|

@@ -60,8 +60,8 @@ ZimaBoardが正常に動作している場合、BIOSのアップグレードは�
 
 **1. BIOSアップデートの完了を待つ**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.jpg)
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.webp)
 
 **2. 完了！**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.jpg) -->
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.webp) -->

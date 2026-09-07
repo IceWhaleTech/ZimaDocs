@@ -60,8 +60,8 @@ Uma operação inadequada pode fazer com que a ZimaBoard não inicie.
 
 **1. Aguarde a conclusão da atualização da BIOS**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.jpg)
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.webp)
 
 **2. Pronto!**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.jpg) -->
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.webp) -->

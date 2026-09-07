@@ -68,6 +68,16 @@ License:  The WebFont(s) listed in this document must follow the YouWorkForThem
                  U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Figma uses the no-ligature JetBrains Mono face for inline and block code.
+   The bundled regular webfont makes the result independent of local fonts. */
+@font-face {
+  font-family: "JetBrains Mono NL";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-regular.woff2") format("woff2");
+}
+
 /* ---------- design tokens ---------- */
 
 :root {
@@ -144,6 +154,9 @@ License:  The WebFont(s) listed in this document must follow the YouWorkForThem
   --code-bg: #f7f7f7;
   --code-bd: #d5d5d5;
   --code-fg: #404040;
+  --toast-bg: rgba(32, 32, 32, .94);
+  --toast-bd: rgba(255, 255, 255, .12);
+  --toast-fg: #ffffff;
 
   --toc-rail: #ececec;
   --toc-rail-active: #000000;
@@ -188,6 +201,9 @@ License:  The WebFont(s) listed in this document must follow the YouWorkForThem
   --code-bg: #262626;
   --code-bd: #2f2f2f;
   --code-fg: #dbdbdb;
+  --toast-bg: rgba(247, 247, 247, .96);
+  --toast-bd: rgba(255, 255, 255, .16);
+  --toast-fg: #202020;
 
   --toc-rail: #333333;
   --toc-rail-active: #dbdbdb;
@@ -200,19 +216,6 @@ License:  The WebFont(s) listed in this document must follow the YouWorkForThem
 }
 
 /* ---------- reset ---------- */
-
-@view-transition { navigation: auto; }
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 120ms;
-  animation-timing-function: ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) { animation: none; }
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -668,6 +671,8 @@ code.chip {
   background: var(--code-bg);
   color: var(--code-fg);
   font: 400 15px/1.7 var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
   vertical-align: baseline;
 }
 
@@ -690,24 +695,18 @@ code.chip {
 
 .doc-dots li p { flex: 1 1 auto; }
 
-/* numbered list */
-.doc-steps { margin: 0; padding: 0; list-style: none; counter-reset: doc-step; }
-
-.doc-steps li {
-  display: flex;
-  align-items: center;
-  min-height: 26px;
-  counter-increment: doc-step;
+/* Native markers preserve <ol start> when images split a Markdown list. */
+.doc-steps {
+  margin: 0;
+  padding-left: 30px;
+  list-style: decimal outside;
 }
 
-.doc-steps li::before {
-  content: counter(doc-step) ".";
-  flex: none;
-  width: 30px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.doc-steps li {
+  min-height: 26px;
+}
+
+.doc-steps li::marker {
   font: var(--docs-body);
   color: var(--doc-body-fg);
 }
@@ -986,8 +985,16 @@ body {
 .doc-article__body ul,
 .doc-article__body ol {
   margin: 0;
+}
+
+.doc-article__body ul {
   padding: 0;
   list-style: none;
+}
+
+.doc-article__body ol {
+  padding-left: 30px;
+  list-style: decimal outside;
 }
 
 .doc-article__body p + ul,
@@ -996,11 +1003,19 @@ body {
 .doc-article__body ul li,
 .doc-article__body ol li {
   position: relative;
-  display: block;
   min-height: 26px;
-  padding-left: 30px;
   font: var(--docs-body);
   color: var(--doc-body-fg);
+}
+
+.doc-article__body ul li {
+  display: block;
+  padding-left: 30px;
+}
+
+.doc-article__body ol li {
+  display: list-item;
+  padding-left: 0;
 }
 
 .doc-article__body ul li::before {
@@ -1013,18 +1028,7 @@ body {
   background: url("../img/docs-bullet.svg") no-repeat 0 0 / 30px 26px;
 }
 
-.doc-article__body ol { counter-reset: doc-step; }
-.doc-article__body ol li { counter-increment: doc-step; }
-.doc-article__body ol li::before {
-  content: counter(doc-step) ".";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.doc-article__body ol li::marker {
   font: var(--docs-body);
   color: var(--doc-body-fg);
 }
@@ -1042,17 +1046,202 @@ body {
   vertical-align: baseline;
 }
 
-.doc-article__body pre,
-.doc-article__body .highlight {
+.doc-article__body .code-block {
+  position: relative;
+  width: 100%;
   margin: 20px 0;
+  padding: 12px 46px 12px 16px;
+  border: 1px solid var(--code-bd);
   border-radius: 8px;
-  overflow: auto;
+  overflow: hidden;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font: 400 16px/1.7 var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
-.doc-article__body pre code {
+.doc-article__body .code-block pre,
+.doc-article__body .code-block code {
   display: block;
-  padding: 18px;
+  margin: 0;
+  padding: 0;
   border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.doc-article__body .code-block pre {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: var(--code-bd) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.doc-article__body .code-block pre::-webkit-scrollbar,
+.doc-article__body .code-block__scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.doc-article__body .code-block pre::-webkit-scrollbar-thumb,
+.doc-article__body .code-block__scroller::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--code-bd);
+}
+
+.doc-article__body .code-block > .code-block__scroller {
+  width: 100%;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.doc-article__body .code-block > .code-block__scroller table {
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+}
+
+.doc-article__body .code-block th,
+.doc-article__body .code-block td {
+  min-width: 0;
+  padding: 0 !important;
+  border: 0;
+  color: inherit;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.doc-article__body .code-block .gutter {
+  padding-right: 16px !important;
+  color: var(--doc-meta-fg);
+  text-align: right;
+  user-select: none;
+}
+
+.doc-article__body .code-block .line {
+  height: auto;
+  min-height: 1.7em;
+}
+
+.doc-article__body .code-block figcaption {
+  margin: 0 0 8px;
+  color: var(--code-fg);
+  font: 600 12px/1.4 var(--font-ui);
+}
+
+.code-block__copy {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 30px;
+  height: 28px;
+  padding: 4px 0 4px 10px;
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  background: transparent;
+  color: var(--code-fg);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.code-block__copy:hover { opacity: .72; }
+
+.code-block__copy:focus-visible {
+  outline: 2px solid var(--doc-link-fg);
+  outline-offset: 2px;
+}
+
+.code-block__copy-icon {
+  display: block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.code-block__copy-icon--success { display: none; }
+
+.code-block__copy.is-copied {
+  color: var(--code-fg);
+  opacity: 1;
+}
+
+.code-block__copy.is-copied .code-block__copy-icon--default { display: none; }
+.code-block__copy.is-copied .code-block__copy-icon--success { display: block; }
+
+.code-block__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.code-copy-toast {
+  position: fixed;
+  z-index: 40;
+  left: 50%;
+  bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--toast-bd);
+  border-radius: 999px;
+  background: var(--toast-bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16);
+  color: var(--toast-fg);
+  font: 500 13px/1.4 var(--font-ui);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 8px) scale(.98);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    opacity .16s ease-out,
+    transform .22s cubic-bezier(.22, 1, .36, 1),
+    visibility 0s linear .22s;
+}
+
+.code-copy-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) scale(1);
+  transition-delay: 0s;
+}
+
+.code-copy-toast__icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-copy-toast {
+    transform: translate(-50%, 0);
+    transition: none;
+  }
 }
 
 .doc-article__body img,

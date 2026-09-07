@@ -97,12 +97,12 @@ A conclusão prática é simples: na primeira cópia grande, coloque o telemóve
 {% note tip %}
 - Execute a primeira cópia grande através de Wi-Fi em vez de dados móveis para evitar limites de utilização.
 - Antes de trocar de telemóvel, abra o ZimaClient uma vez e deixe-o concluir uma última cópia de segurança.
-- Cada membro da família inicia sessão com a sua própria conta ZimaOS, pelo que as fotografias de cada pessoa permanecem na respetiva biblioteca. A **[Fototeca familiar](./family-photo-library "Criar uma fototeca familiar no ZimaOS com as fotografias de todos")** reúne-as quando quiser.
+- Cada membro da família inicia sessão com a sua própria conta ZimaOS, pelo que as fotografias de cada pessoa permanecem na respetiva biblioteca.
 - Se a cópia parar, aproximar-se do router resolve a maioria dos casos.
 {% endnote %}
 
 ## Seguinte
 
 - **[Cópia de segurança do computador](./computer-backup "Efetuar uma cópia de segurança do computador para o ZimaOS através do Finder, Explorador ou sincronização")** — inclua também o portátil
-- **[Pré-visualização de fotografias](./photos-preview "Consultar as fotografias do ZimaOS nos modos grelha, cascata e justificado")** — consulte a biblioteca depois de a importar
+- **[Fotografias](./photos "Explore a biblioteca de fotografias por cronologia, mapa e coleções")** — consulte a biblioteca depois de a importar
 - **[Estratégia de cópia de segurança 3-2-1](./how-to-use-3-2-1-backup-on-zimaos "Proteger os dados com a regra de cópia de segurança 3-2-1 no NAS")** — uma única cópia não é um plano

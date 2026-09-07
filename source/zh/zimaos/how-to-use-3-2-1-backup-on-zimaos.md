@@ -4,81 +4,98 @@ seo_title: "ZimaOS 备份计划：保护 NAS 数据的 3-2-1 策略"
 description: "使用 3-2-1 原则在 ZimaOS 上构建完整的备份计划。通过一项任务备份文件夹、USB 硬盘和云存储，安排自动运行，并保留一份异地副本。"
 type: Docs
 author: vicky
-tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+tip: 请勿删除此前置信息块。description 字段用于文章摘要；如果留空，将改用第一段内容。
 ---
 
-硬盘会故障，文件会被意外删除，房屋也可能遭遇洪水。备份计划能够避免这些意外最终导致你失去一切。
+硬盘会故障，文件会被误删，房屋会遭遇水灾。备份计划就是挡在这些时刻与失去一切之间的东西。
 
-首先需要明确一点：RAID 不是备份。RAID 可以在设备继续运行的同时，保护你免受单盘故障的影响；但它无法应对意外删除、勒索软件，或导致整台机器损坏的电涌。真正的备份计划也必须覆盖这些风险。
+首先要说清楚一件事：RAID 不是备份。RAID 保护你在单块硬盘故障时设备继续运行，但对误删除、勒索软件或烧毁整机的电涌毫无办法。真正的备份计划要覆盖这些。
 
 ## 3-2-1 原则
 
-对于“多少份备份才足够”这个问题，3-2-1 原则是标准答案。
+3-2-1 原则是"多少份备份才够"这个问题的标准答案。
 
-- **3 份数据副本**：一份原始数据加两份备份，避免单次故障摧毁所有内容。
-- **2 种不同的存储介质**：例如设备内的硬盘加一块外置 USB 硬盘，用于分散风险。
-- **1 份异地副本**：存放在物理位置不同的地方，避免家中发生火灾或盗窃时所有副本一同丢失。
+- **3 份数据副本**：原件加两份备份，任何单点故障都不会毁掉一切。
+- **2 种不同介质**：例如设备内的硬盘加外接 USB 硬盘，分散风险。
+- **1 份异地副本**：存放在物理上分离的位置，家中的火灾或失窃不会带走所有副本。
+
+ZimaOS 在系统层面支持这一策略。一个应用覆盖计划的所有环节。
+
+## 一个应用，所有方向
+
+3-2-1 原则要求把副本放到不同的地方。大多数 NAS 方案靠拼凑三四个不同的工具来满足：一个管 USB 复制，一个管云同步，一个管局域网传输。ZimaOS 走了不同的路。
+
+Backup 应用基于简单的 from-to 思路工作。选择数据从哪里来：**Cloud**、**LAN**、**USB** 或 **Zima**。选择数据到哪里去：本地磁盘、另一台 Zima 设备、外接硬盘或云端。每一种组合都是一项任务、一个计划、一段旅程。
+
+这一个抽象覆盖了整个 3-2-1 计划：工作副本、第二种介质和异地环节。你不需要学四个工具，只需学一个。
 
 ## 设置备份任务
 
-ZimaOS 内置 Backup 应用，可以在一个地方完成所有这些工作。
+1. 从仪表盘启动 **Backup** 应用。
 
-1. 从仪表板启动 **Backup** 应用。
+![ZimaOS 桌面显示用于启动备份工具的 Backup 应用图标](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
 
-![ZimaOS 桌面上用于启动备份工具的 Backup 应用图标](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
+2. 点击 **Add new backup** 打开任务创建向导。
 
-2. 点击**添加新备份**，打开任务创建向导。
+![备份任务创建向导，显示 Add new backup 按钮](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
 
-![带有“添加新备份”按钮的备份任务创建向导](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
+3. 选择数据源：**Cloud**（Google Drive、Dropbox 等）、**LAN**（其他设备的共享文件夹）、**USB**（外接硬盘）或 **Zima**（本设备上存储的文件）。
 
-3. 选择数据来源：**云端**（Google Drive、Dropbox 等）、**LAN**（其他设备的共享文件夹）、**USB**（外置硬盘），或 **Zima**（存储在本设备上的文件）。
+**[手机备份](./phone-backup "使用 ZimaClient 将手机照片和文件自动备份到 ZimaOS")** 和 **[电脑备份](./computer-backup "通过 Finder、文件资源管理器或同步任务将电脑备份到 ZimaOS")** 的数据以普通文件夹的形式落到存储中，因此可以像设备上的任何内容一样纳入备份任务。
 
-通过**[手机备份](./phone-backup "通过 ZimaClient 自动将手机备份到 ZimaOS")**和**[电脑备份](./computer-backup "通过 Finder、文件资源管理器或同步功能将电脑备份到 ZimaOS")**导入的数据，会以普通文件夹的形式保存在存储空间中，因此可以像设备上的其他内容一样加入备份任务。
+![备份数据源选择，显示 Cloud、LAN、USB 和 Zima 选项](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
 
-![备份数据来源选择界面，显示云端、LAN、USB 和 Zima 选项](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
+4. 如果选择了云端数据源，请登录并授权访问。
 
-4. 如果选择了云端来源，请登录并授权访问。
+5. 选择要备份的文件夹，或整个目录结构。
 
-![用于授权云备份访问的 Google 账户登录界面](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
+![备份内容选择界面，用于选择文件夹或整个目录](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
 
-![备份任务向导中的云存储授权步骤](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
+6. 设置目的地：本地磁盘、另一台 Zima 设备、外接硬盘或云端。
 
-5. 选择要备份的文件夹，或选择整个目录结构。
+![备份目的地选项：本地磁盘、其他 NAS、USB 或云端](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
 
-![用于选择文件夹或整个目录的备份内容选择界面](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
+7. 点击 **Start**。备份开始运行，进度实时显示。
 
-6. 设置目标位置：本地硬盘、另一台 Zima 设备、外置硬盘或云端。
+![备份任务运行中，实时显示进度](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
 
-![本地硬盘、其他 NAS 设备、USB 或云端等备份目标选项](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
+同样的步骤有视频演示，见 [YouTube](https://www.youtube.com/watch?v=pUVMsS1tcyY)。
 
-7. 点击**开始**。备份会开始运行，并实时显示进度。
+## 自动备份
 
-![正在运行的备份任务，实时显示备份进度](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
+备份计划只有在无需你记得启动时才会真正生效。
 
-你还可以在 [YouTube](https://www.youtube.com/watch?v=pUVMsS1tcyY) 上观看相同步骤的视频演示。
+- **定时备份**按你设定的间隔自动运行。
+- **多项任务**可以互不干扰地并行运行，照片、文档和应用数据各按各的计划。
+- **断点续传与容错**让中断的传输从断点继续，而不是从头再来。
 
-## 自动执行备份
+![Backup 应用任务列表，显示多项备份任务同时运行](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
 
-如果备份计划还要依靠你记得手动运行，它就无法真正发挥作用。
+## 一个数据源，多个目的地
 
-- **计划备份**会按照你设置的时间间隔自动运行。
-- **多项任务**可以并行运行且互不干扰，因此照片、文档和应用数据都能拥有各自的计划。
-- **断点续传和容错**会从中断的位置继续传输，而不是从头开始。
+有些文件夹值得拥有不止一份副本。家庭照片、工作文档、财务记录——当数据无法重来，3-2-1 原则要求它们同时存在于多个地方。
 
-![Backup 应用任务列表，显示多项备份任务正在同时运行](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
+Backup 应用用"一个数据源、多个目的地"解决这个问题。让每个任务指向同一个文件夹，并为每个任务设置各自的目的地：
+
+- **第二种介质：**同一文件夹备份到另一块本地磁盘或局域网中的另一台 Zima 设备。
+- **异地环：**同一文件夹备份到云端。
+
+![Backup 应用任务列表，显示同一文件夹备份到不同目的地的两个任务](/images/guides/backup-one-source-many-destinations.png)
+
+每个任务都有自己的计划，因此两个环可以按不同节奏运行——本地副本每晚一次，云端副本每周一次。任务相互独立，一个目的地出问题不会影响另一个继续运行。
 
 ## 云同步不是备份
 
-同步到云端的文件夹并不等于备份。同步会双向镜像更改，因此在本地删除文件，也会将其从所有位置删除。备份会保留版本，并且只向前写入。在备份计划中使用云端时，请选择 Backup 应用的云端目标位置，以获得版本和还原点，而不是镜像你的误操作。
+同步到云端的文件夹不是备份。同步会双向镜像变更，本地删除文件，处处都会删除。备份保留版本，只向前写入。在备份计划中使用云端时，请使用 Backup 应用的云端目的地，这样得到的是版本和恢复点，而不是你错误的镜像。
 
-云端也可以作为 3-2-1 计划中的异地副本。有关云存储的使用方法，请参阅**[连接云盘](./cloud-drive-connect "将 Google Drive、Dropbox 或 OneDrive 连接到 ZimaOS 进行备份")**。
+云端也在你的 3-2-1 计划中承担异地副本的角色。使用云存储的方法参见**[连接云盘](./cloud-drive-connect "将 Google Drive、Dropbox 或 OneDrive 连接到 ZimaOS")**。
 
-## 恢复并验证
+## 恢复与验证
 
-从未恢复过的备份，就等于从未测试过的计划。首次备份完成后，请恢复一个文件并打开它。现在花十分钟验证，总比真正需要备份时才发现隐藏问题要好。
+从未恢复过的备份，是从未测试过的计划。第一次备份完成后，恢复一个文件并打开它。现在花十分钟验证，远好于真正需要备份那天才发现一个沉默的问题。
 
 ## 下一步
 
-- **[RAID 选项](./raid-options "了解 RAID 级别和 JBOD，并按照分步说明完成设置")** — 了解 RAID 能保护什么、不能保护什么
-- **[手机备份](./phone-backup "通过 ZimaClient 自动将手机备份到 ZimaOS")** — 将手机数据纳入备份计划
-- **[在硬盘间移动数据](./data-migration "在 ZimaOS 的硬盘之间移动 Docker 镜像、应用数据和文件夹")** — 硬盘空间不足时使用
+- **[RAID 选项](./raid-options "了解 RAID 级别、JBOD 以及详细设置步骤")** — RAID 保护什么、不保护什么
+- **[手机备份](./phone-backup "使用 ZimaClient 将手机照片和文件自动备份到 ZimaOS")** — 把手机数据纳入计划
+- **[连接其他 NAS](./synology-to-zimacube-migration "将其他 NAS 连接到 ZimaOS，迁移文件或跨设备备份")** — 计划中的 LAN 环节

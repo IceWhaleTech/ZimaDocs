@@ -27,7 +27,7 @@ De manera similar, aquí ya has adquirido una cuenta de My World por defecto: [*
 
 ## Ingresa a CasaOS
 
-![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png)
+![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.webp)
 
 ## Abre la tienda de aplicaciones y selecciona instalación personalizada
 
@@ -42,11 +42,11 @@ itzg/minecraft-server
 
 ## Copia [Cli]（<https://hub.docker.com/r/itzg/minecraft-server>)
 
-![Copia Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.png).
+![Copia Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.webp).
 
 ## Verifica el entorno
 
-![Verifica el entorno del servidor de Minecraft](/images/Minecraft-Friendship-Service/minecraft-check-environment.png)
+![Verifica el entorno del servidor de Minecraft](/images/Minecraft-Friendship-Service/minecraft-check-environment.webp)
 
 {% note dinfo %}
 **Atención**

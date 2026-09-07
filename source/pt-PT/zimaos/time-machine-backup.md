@@ -55,7 +55,7 @@ Se a cópia falhar, verifique a ligação de rede e confirme que o serviço SMB 
 
 ## Restaurar ficheiros
 
-Quando precisar de recuperar um ficheiro, restaure-o através da interface do Time Machine. O guia da Apple explica o processo em detalhe: [Restaurar elementos com cópia de segurança do Time Machine no Mac](https://support.apple.com/zh-cn/guide/mac-help/mh11422/11.0/mac/11.0).
+Quando precisar de recuperar um ficheiro, restaure-o através da interface do Time Machine. O guia da Apple explica o processo em detalhe: [Restaurar elementos com cópia de segurança do Time Machine no Mac](https://support.apple.com/pt-pt/guide/mac-help/mh11422/mac).
 
 ## A seguir
 

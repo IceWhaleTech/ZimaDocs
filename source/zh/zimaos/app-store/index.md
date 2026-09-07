@@ -15,15 +15,16 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 
 大多数人从这里开始。把 NAS 变成家庭流媒体中心，让电影、电视剧、音乐和照片能够在家中的任意屏幕上播放。
 
+- **[批量照片同步](./cli-guide "通过命令行将数千张照片批量同步到 NAS")** — 适合一次迁移大量照片
+- **[Immich 照片备份](./immich-photo-backup "深入配置 Immich，用于备份照片库")** — 进一步设置 Immich 照片备份
 - **[Jellyfin 媒体服务器](./media-server-setup-with-jellyfin "使用 Jellyfin 从 NAS 串流电影、电视剧和音乐")** — 免费开源，支持多种设备
+- **[NVR 摄像机服务器](./nvr-camera-server "将安防摄像机连接到 NAS，并启用 AI 目标检测")** — 接入安防摄像机并使用 AI 目标检测
+- **[Immich 照片同步](./sync-photos-with-immich "使用自托管 Immich 将手机照片同步到 NAS")** — Google Photos 的自托管替代方案
 - **[Plex 媒体服务器](./plex-setup-guide "安装 Plex Media Server，并将媒体库串流到任意设备")** — 界面成熟，并为各类设备提供客户端
+- **[DLNA 服务器](./dlna-server-setup "设置 DLNA，将媒体串流到旧款电视和 DLNA 设备")** — 将内容播放到旧款智能电视和 DLNA 设备
 - **[Plex GPU 转码](./plex-and-gpu-transcoding "在 Plex 中启用 GPU 硬件转码，实现流畅的 4K 播放")** — 启用硬件加速，流畅播放 4K 内容
 - **[Emby 服务器](./setup-emby-server "设置 Emby Media Server，在不同设备间串流内容")** — 兼顾 Jellyfin 的开放性与 Plex 的易用性
-- **[Immich 照片同步](./sync-photos-with-immich "使用自托管 Immich 将手机照片同步到 NAS")** — Google Photos 的自托管替代方案
-- **[Immich 照片备份](./immich-photo-backup "深入配置 Immich，用于备份照片库")** — 进一步设置 Immich 照片备份
-- **[DLNA 服务器](./dlna-server-setup "设置 DLNA，将媒体串流到旧款电视和 DLNA 设备")** — 将内容播放到旧款智能电视和 DLNA 设备
-- **[NVR 摄像机服务器](./nvr-camera-server "将安防摄像机连接到 NAS，并启用 AI 目标检测")** — 接入安防摄像机并使用 AI 目标检测
-- **[批量照片同步](./cli-guide "通过命令行将数千张照片批量同步到 NAS")** — 适合一次迁移大量照片
+- **[Komga](./komga-setup "在 ZimaOS 上运行 Komga 漫画与电子书服务器")** — 漫画、杂志和电子书的媒体服务器
 
 ## 自托管应用
 
@@ -39,10 +40,11 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 - **[种子下载器](./webtorrent-feature "使用 WebTorrent 将种子内容直接下载到 NAS")** — 直接把下载内容保存到 NAS
 - **[Syncthing 设置指南](./syncthing-install "为多设备同步配置更高级的 Syncthing 设置")** — 更详细的 Syncthing 配置说明
 
-## AI 与机器学习
+## 智能体与推理
 
 在自己的硬件上运行 AI，意味着数据无需离开家中。最近，社区在这个方向上投入了很多创造力。
 
+- **[DeepSeek Harness](./deepseek-harness-setup "在家庭服务器上运行 DeepSeek Harness，一个物理 AI 智能体")** — 住在你家庭服务器上的物理 AI 智能体，氛围编程并自动执行任务
 - **[启用 AI 搜索](./enable-ai "在家庭服务器上启用 AI 搜索，用自然语言查找文件")** — 使用自然语言搜索所有文件
 - **[部署 DeepSeek R1](./deploy-deepseek-r1 "在智能体服务器上部署 DeepSeek R1，本地运行大语言模型")** — 在 Zima 硬件上本地运行高性能模型
 - **[下载 AI 模型](./llm-manual-download "为离线环境下载 AI 模型")** — 适用于离线或低带宽环境

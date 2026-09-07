@@ -31,14 +31,14 @@ typora-root-url: ..
 ## 1.Abre balenaEtcher
 
 
-![Open Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![Open Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 ## 2. Haz clic en “Flash from file” y selecciona la imagen del sistema que descargaste anteriormente.
 
 ![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
 
 
-![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
+![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.webp)
 
 ## 3.Haz clic en “Select target” y selecciona tu unidad USB insertada en el cuadro de diálogo.
 

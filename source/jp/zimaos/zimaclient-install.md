@@ -28,7 +28,7 @@ https://www.zimaspace.com/zimaos/download
 注意：
 ZimaClientは**メニューバーにアイコンを表示**します。アイコンをクリックしてクライアントを開きます。
 
-ZimaClientでZimaCubeへ接続する方法は、この[ドキュメント](./remote-access)を参照してください。
+ZimaClientでZimaCubeへ接続する方法は、この[ドキュメント](./get-started "ZimaClient とアカウント作成を使用して、初回起動から ZimaOS をセットアップする")を参照してください。
 |![](https://manage.icewhale.io/api/static/docs/1728618411227_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618433316_image.png) |
 |:---:|:---:|
 |![](https://manage.icewhale.io/api/static/docs/1728618448765_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618468465_image.png)|

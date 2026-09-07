@@ -25,17 +25,17 @@ title: 专用系统的基本功能
 **密码：`casaos`**
 {% endnote %}
 
-![登录Jellyfin](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg)
+![登录Jellyfin](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.webp)
 
 ## 使用Jellyfin流媒体播放视频！
 
 ### 浏览库
 
-![浏览Jellyfin库](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.jpeg)
+![浏览Jellyfin库](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.webp)
 
 ### 电影信息
 
-![使用Jellyfin观看电影详情](/images/Basic-functions-of-dedicated-systems/watching-move-details.jpeg)
+![使用Jellyfin观看电影详情](/images/Basic-functions-of-dedicated-systems/watching-move-details.webp)
 
 ### 播放
 
@@ -86,11 +86,11 @@ Emby提供了多种观看电影的方式；您可以在计算机、手机、电�
 
 ### 查看照片信息
 
-![使用PhotoPrism查看照片信息](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.png)
+![使用PhotoPrism查看照片信息](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.webp)
 
 ### 批量编辑照片
 
-![使用PhotoPrism编辑照片](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.png)
+![使用PhotoPrism编辑照片](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.webp)
 
 ### 创建相册
 

@@ -68,7 +68,7 @@ Unraid OS允许复杂的媒体爱好者、游戏玩家和其他高速数据用�
 
 ## 从安装USB闪存驱动器启动
 
-![启动Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.png)
+![启动Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.webp)
 
 ## 选择操作系统
 

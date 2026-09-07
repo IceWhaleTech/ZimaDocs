@@ -29,13 +29,13 @@ typora-root-url: ..
 
 ## 1. 打开 balenaEtcher
 
-![打开 Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![打开 Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 ## 2. 点击“从文件刷写”并选择您之前下载的系统镜像。
 
 ![使用 Balenaetcher 将镜像写入 USB](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
 
-![使用 Balenaetcher 将镜像写入 USB](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
+![使用 Balenaetcher 将镜像写入 USB](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.webp)
 
 ## 3. 点击“选择目标”，在弹出对话框中选择您插入的USB驱动器。
 

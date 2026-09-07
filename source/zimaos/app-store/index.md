@@ -15,15 +15,16 @@ There is a certain feeling that comes with running your own services. The hardwa
 
 This is where most people start. Turn your NAS into a streaming box — movies, TV, music, photos, all accessible from any screen in the house.
 
+- **[Bulk Photo Sync](./cli-guide "Bulk sync thousands of photos to your NAS from the command line")** — for when you have thousands of photos to move
+- **[Immich Photo Backup](./immich-photo-backup "Deeper Immich configuration for backing up your photo library")** — deeper dive into Immich configuration
 - **[Jellyfin Media Server](./media-server-setup-with-jellyfin "Set up Jellyfin to stream movies, TV, and music from your NAS")** — free and open source, runs on everything
+- **[NVR Camera Server](./nvr-camera-server "Connect security cameras to your NAS with AI object detection")** — connect security cameras with AI object detection
+- **[Immich Photo Sync](./sync-photos-with-immich "Sync photos from your phone to your NAS with self-hosted Immich")** — a self-hosted alternative to Google Photos
 - **[Plex Media Server](./plex-setup-guide "Install Plex Media Server and stream your library to any device")** — polished interface with companion apps for every device
+- **[DLNA Server](./dlna-server-setup "Set up DLNA to stream media to older TVs and DLNA devices")** — stream to older smart TVs and DLNA devices
 - **[Plex GPU Transcoding](./plex-and-gpu-transcoding "Enable GPU hardware transcoding in Plex for smooth 4K streaming")** — enable hardware acceleration for smooth 4K
 - **[Emby Server](./setup-emby-server "Set up Emby Media Server for streaming across your devices")** — good middle ground between Jellyfin and Plex
-- **[Immich Photo Sync](./sync-photos-with-immich "Sync photos from your phone to your NAS with self-hosted Immich")** — a self-hosted alternative to Google Photos
-- **[Immich Photo Backup](./immich-photo-backup "Deeper Immich configuration for backing up your photo library")** — deeper dive into Immich configuration
-- **[DLNA Server](./dlna-server-setup "Set up DLNA to stream media to older TVs and DLNA devices")** — stream to older smart TVs and DLNA devices
-- **[NVR Camera Server](./nvr-camera-server "Connect security cameras to your NAS with AI object detection")** — connect security cameras with AI object detection
-- **[Bulk Photo Sync](./cli-guide "Bulk sync thousands of photos to your NAS from the command line")** — for when you have thousands of photos to move
+- **[Komga](./komga-setup "Run Komga on ZimaOS as a comic and e-book server")** — a media server for comics, manga, and e-books
 
 ## Self-Hosted Apps
 
@@ -39,10 +40,11 @@ These are the apps our community runs the most. Each one replaces a subscription
 - **[Torrent Downloader](./webtorrent-feature "Download torrents directly to your NAS storage with WebTorrent")** — download torrents directly to your NAS storage
 - **[Syncthing Setup Guide](./syncthing-install "Advanced Syncthing configuration for syncing across your devices")** — more detailed Syncthing configuration
 
-## AI and Machine Learning
+## Agents & Inference
 
 Running AI on your own hardware means your data never leaves your house. Our community has been pushing hard in this direction lately.
 
+- **[DeepSeek Harness](./deepseek-harness-setup "Run DeepSeek Harness on your home server as a physical AI agent")** — a physical AI agent on your home server that vibecodes and automates tasks
 - **[Enable AI Search](./enable-ai "Enable AI search on your home server to find files naturally")** — natural language search across all your files
 - **[Deploy DeepSeek R1](./deploy-deepseek-r1 "Deploy DeepSeek R1 on your agent server to run an LLM locally")** — a capable LLM that runs locally on Zima hardware
 - **[Download AI Models](./llm-manual-download "Download AI models to your agent server for offline setups")** — grab models for offline or low-bandwidth setups

@@ -49,19 +49,19 @@ For detailed steps, please see Universal Third Party System Installation
 
 **Insert the USB stick into the ZimaBoard, boot up and click “DEL” to log into the BIOS Page**
 
-![Enter To OpenWRT Bios](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-to-bios.png)
+![Enter To OpenWRT Bios](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-to-bios.webp)
 
 ### 4. Selection in BIOS
 
 **In the Boot option, configure the USB flash drive as Boot Option #1, save the settings, and reboot. After boot, enter the USB drive OpenWRT**
 
-![Choose OpenWRT Boot](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-choose-boot.png)
+![Choose OpenWRT Boot](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-choose-boot.webp)
 
 ### 5. Find the IP and Login to OpenWRT
 
 **Configure your OpenWRT system IP address information and use a PC browser to log into the OpenWRT Luci page**
 
-![Log In OpenWRT Luci](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-openwrt-luci.png)
+![Log In OpenWRT Luci](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-openwrt-luci.webp)
 
 ## Successful Login ！！！！
 

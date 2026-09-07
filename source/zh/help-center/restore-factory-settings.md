@@ -29,11 +29,11 @@ ZimaBoard 相关准备。
 
 ### 打开 [BalenaEtcher](https://www.balena.io/etcher/)
 
-![打开 Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.png)
+![打开 Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.webp)
 
 ### 选择系统镜像
 
-![选择镜像](/images/Restore-factory-settings/choose-image.png)
+![选择镜像](/images/Restore-factory-settings/choose-image.webp)
 
 ### 选择插入的 USB 驱动器
 

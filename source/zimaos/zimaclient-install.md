@@ -28,7 +28,7 @@ https://www.zimaspace.com/zimaos/download
 Notes:
 ZimaClient will **display its icon in the taskbar** and you can open and operate the client by clicking on the icon.
 
-How to connect to ZimaCube via ZimaClient, please refer to this [document](./remote-access)
+How to connect to ZimaCube via ZimaClient, please refer to this [document](./get-started "Set up ZimaOS from first boot with ZimaClient and account creation")
 |![](https://manage.icewhale.io/api/static/docs/1728618411227_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618433316_image.png) |
 |:---:|:---:|
 |![](https://manage.icewhale.io/api/static/docs/1728618448765_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618468465_image.png)|

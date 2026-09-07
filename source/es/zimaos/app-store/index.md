@@ -15,15 +15,16 @@ Ejecutar tus propios servicios ofrece una sensación especial: el hardware es tu
 
 La mayoría de las personas empieza aquí. Convierte el NAS en un centro de streaming para ver películas, series, música y fotos desde cualquier pantalla de la casa.
 
+- **[Sincronización masiva de fotos](./cli-guide "Sincroniza miles de fotos desde la línea de comandos")** — ideal para migrar bibliotecas de gran tamaño
+- **[Copia de fotos con Immich](./immich-photo-backup "Configura Immich en profundidad para proteger tu fototeca")** — ajustes avanzados de copia de seguridad
 - **[Servidor multimedia Jellyfin](./media-server-setup-with-jellyfin "Configura Jellyfin para transmitir películas, series y música desde el NAS")** — gratuito, de código abierto y compatible con muchos dispositivos
+- **[Servidor de cámaras NVR](./nvr-camera-server "Conecta cámaras de seguridad al NAS con detección de objetos por IA")** — vigilancia y detección de objetos en tu propio servidor
+- **[Sincronización de fotos con Immich](./sync-photos-with-immich "Sincroniza las fotos del teléfono con el NAS mediante Immich")** — una alternativa autoalojada a Google Photos
 - **[Servidor multimedia Plex](./plex-setup-guide "Instala Plex Media Server y transmite tu biblioteca a cualquier dispositivo")** — interfaz cuidada y aplicaciones para prácticamente cualquier plataforma
+- **[Servidor DLNA](./dlna-server-setup "Transmite contenido a televisores antiguos y dispositivos DLNA")** — compatible con televisores y reproductores DLNA
 - **[Transcodificación de Plex por GPU](./plex-and-gpu-transcoding "Activa la transcodificación por hardware para reproducir 4K con fluidez")** — utiliza aceleración de hardware para el contenido 4K
 - **[Servidor Emby](./setup-emby-server "Configura Emby Media Server para transmitir contenido entre dispositivos")** — un buen punto intermedio entre Jellyfin y Plex
-- **[Sincronización de fotos con Immich](./sync-photos-with-immich "Sincroniza las fotos del teléfono con el NAS mediante Immich")** — una alternativa autoalojada a Google Photos
-- **[Copia de fotos con Immich](./immich-photo-backup "Configura Immich en profundidad para proteger tu fototeca")** — ajustes avanzados de copia de seguridad
-- **[Servidor DLNA](./dlna-server-setup "Transmite contenido a televisores antiguos y dispositivos DLNA")** — compatible con televisores y reproductores DLNA
-- **[Servidor de cámaras NVR](./nvr-camera-server "Conecta cámaras de seguridad al NAS con detección de objetos por IA")** — vigilancia y detección de objetos en tu propio servidor
-- **[Sincronización masiva de fotos](./cli-guide "Sincroniza miles de fotos desde la línea de comandos")** — ideal para migrar bibliotecas de gran tamaño
+- **[Komga](./komga-setup "Ejecuta Komga en ZimaOS como servidor de cómics y libros electrónicos")** — un servidor multimedia para cómics, manga y libros electrónicos
 
 ## Aplicaciones autoalojadas
 
@@ -39,10 +40,11 @@ Estas son algunas de las aplicaciones más utilizadas por la comunidad. Cada una
 - **[Descargador de torrents](./webtorrent-feature "Descarga torrents directamente en el almacenamiento del NAS")** — guarda las descargas directamente en el NAS
 - **[Guía de configuración de Syncthing](./syncthing-install "Configura opciones avanzadas de Syncthing")** — ajustes más detallados para varios dispositivos
 
-## IA y aprendizaje automático
+## Agentes e inferencia
 
 Ejecutar IA en tu propio hardware evita que los datos salgan de casa. La comunidad está avanzando con rapidez en esta dirección.
 
+- **[DeepSeek Harness](./deepseek-harness-setup "Ejecuta DeepSeek Harness en tu servidor doméstico como agente físico")** — un agente de IA físico en tu servidor doméstico que hace vibe coding y automatiza tareas
 - **[Activar la búsqueda con IA](./enable-ai "Busca archivos mediante lenguaje natural en el servidor doméstico")** — encuentra contenido con preguntas normales
 - **[Desplegar DeepSeek R1](./deploy-deepseek-r1 "Ejecuta DeepSeek R1 localmente en tu servidor de agentes")** — utiliza un modelo potente en hardware Zima
 - **[Descargar modelos de IA](./llm-manual-download "Descarga modelos para instalaciones sin conexión")** — prepara entornos aislados o con poco ancho de banda

@@ -327,6 +327,18 @@ hexo.extend.helper.register('doc_content', function(str) {
     paragraph.remove();
   });
 
+  $('.highlight').each(function() {
+    const block = $(this).addClass('code-block code-block--highlighted');
+    block.children('.doc-table-scroll').addClass('code-block__scroller');
+  });
+
+  $('pre').each(function() {
+    const pre = $(this);
+    if (pre.closest('.highlight').length || pre.parent().hasClass('code-block')) return;
+
+    pre.wrap('<div class="code-block code-block--plain"></div>');
+  });
+
   if (basename(this.page.path) === 'how-to-install-zimaos.html') {
     $('.doc-figures').addClass('doc-figures--install-card');
     $('ul').last().find('a').removeClass('doc-link').addClass('doc-link--plain');

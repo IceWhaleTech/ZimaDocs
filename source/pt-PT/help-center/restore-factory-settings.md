@@ -30,11 +30,11 @@ Preparação relacionada ao ZimaBoard.
 
 ### Abra o [BalenaEtcher](https://www.balena.io/etcher/)
 
-![Abra o Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.png)
+![Abra o Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.webp)
 
 ### Selecione a imagem do sistema 
 
-![Escolha a Imagem](/images/Restore-factory-settings/choose-image.png)
+![Escolha a Imagem](/images/Restore-factory-settings/choose-image.webp)
 
 ### Selecione seu pen drive inserido
 

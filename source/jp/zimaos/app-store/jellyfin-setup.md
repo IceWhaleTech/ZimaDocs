@@ -26,17 +26,17 @@ TIPS
 **パスワード:`casaos`**
 {% endnote %}
 
-![ログインJellyfin](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg)
+![ログインJellyfin](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.webp)
 
 ## Jellyfinで動画をストリーミング！
 
 ### ライブラリをブラウズする
 
-![Jellyfinライブラリを見る](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.jpeg)
+![Jellyfinライブラリを見る](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.webp)
 
 ### 映画情報
 
-![Jellyfinで映画の詳細を見る](/images/Basic-functions-of-dedicated-systems/watching-move-details.jpeg)
+![Jellyfinで映画の詳細を見る](/images/Basic-functions-of-dedicated-systems/watching-move-details.webp)
 
 ### 再生
 
@@ -92,12 +92,12 @@ TIPS
 
 ### 写真情報を見る
 
-![Photoprismで写真情報を見る](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.png)
+![Photoprismで写真情報を見る](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.webp)
 
 
 ### 写真のバッチ編集
 
-![Photoprismでの写真編集](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.png)
+![Photoprismでの写真編集](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.webp)
 
 
 ### アルバムの作成

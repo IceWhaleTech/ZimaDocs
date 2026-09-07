@@ -55,7 +55,7 @@ If the backup fails, check the network connection and confirm that the SMB servi
 
 ## Restore Files
 
-When you need a file back, restore it from the Time Machine interface. Apple's guide covers it in detail: [Restore items backed up with Time Machine on Mac](https://support.apple.com/zh-cn/guide/mac-help/mh11422/11.0/mac/11.0).
+When you need a file back, restore it from the Time Machine interface. Apple's guide covers it in detail: [Restore items backed up with Time Machine on Mac](https://support.apple.com/guide/mac-help/mh11422/mac).
 
 ## Next
 

@@ -29,17 +29,17 @@ TIPS
 **Password:`casaos`**
 {% endnote %}
 
-![Log In Jellyfin ](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg)
+![Log In Jellyfin ](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.webp)
 
 ### StreamVideos with Jellyfin!
 
 #### Browse the Library
 
-![Watching Jellyfin Library](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.jpeg)
+![Watching Jellyfin Library](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.webp)
 
 #### Movie Information
 
-![Use Jellyfin Watching Move Details](/images/Basic-functions-of-dedicated-systems/watching-move-details.jpeg)
+![Use Jellyfin Watching Move Details](/images/Basic-functions-of-dedicated-systems/watching-move-details.webp)
 
 #### Playback
 
@@ -96,13 +96,13 @@ Password:`casaos`
 
 #### View Photos Information
 
-![Using Photoprism watching photos informatin](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.png)
+![Using Photoprism watching photos informatin](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.webp)
 
 
 #### Batch Editing Photos
 
 
-![Using Photoprism Sditing Photos ](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.png)
+![Using Photoprism Sditing Photos ](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.webp)
 
 
 #### Create Albums

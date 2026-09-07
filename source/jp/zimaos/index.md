@@ -1,7 +1,7 @@
 ---
 title: ZimaOS 概要
 seo_title: "ZimaOS セットアップガイド：ストレージ、共有、バックアップ、システム設定"
-description: "ZimaOS を初めて使う方向けのセットアップガイドです。ZimaOS のインストール、ファイル共有、バックアップ、クラウドストレージ接続、NAS のシステム設定を説明します。"
+description: "NAS 向けの ZimaOS セットアップガイド：システムのインストール、ストレージと Photos ライブラリの設定、バックアップ、クラウドドライブ接続、リモートアクセスと設定の管理。"
 type: "Docs"
 author: Lauren Pan
 tip: このフロントマターブロックは削除しないでください。description は記事の要約に使用され、空欄の場合は本文の最初の段落が使用されます。
@@ -25,19 +25,21 @@ ZimaOS を無理なく使い始められるように、必要なガイドをま�
 
 - **[スマートフォンのバックアップ](./phone-backup "ZimaClient で写真やファイルを ZimaOS に自動バックアップする")** — スマートフォンの写真とファイルを自動保存します
 - **[コンピューターのバックアップ](./computer-backup "Finder、エクスプローラー、同期機能でコンピューターを ZimaOS にバックアップする")** — ノート PC のアクセスと定期バックアップを設定します
+- **[写真](./photos "ZimaOS で写真ライブラリを閲覧、検索、再発見する")** — 撮ったものすべてのライブラリ
+- **[Photos 対応フォーマット](./photos-supported-formats "サムネイルとメタデータの動作を含む、ZimaOS Photos がインデックスするフォーマット一覧")** — Photos が読み取り・再生できるもの
 - **[クラウドドライブの接続](./cloud-drive-connect "Google Drive、Dropbox、OneDrive を ZimaOS に接続する")** — クラウドサービスからデータを取り込みます
-- **[別の NAS から移行](./synology-to-zimacube-migration "Synology NAS から ZimaOS へ段階的にファイルを移行する")** — Synology から移行する際の推奨手順です
-- **[Synology 手動転送](./from-synology-to-zimacube-migrate-all-files "ZimaOS Files に Synology DSM 共有をマウントしてファイルをコピーする")** — SMB を使った手動移行を順番に説明します
+- **[ほかのNASを接続する](./synology-to-zimacube-migration "Synology NASをZimaOSに接続してファイルを移行またはデバイス間バックアップする")** — ファイルを移行するか、バックアップ計画に組み込む
 - **[ドライブ間のデータ移行](./data-migration "Docker イメージ、アプリデータ、フォルダーを ZimaOS のドライブ間で移動する")** — ドライブの空き容量が不足したときに内蔵ツールで移動します
 - **[3-2-1 バックアップ](./how-to-use-3-2-1-backup-on-zimaos "3-2-1 ルールで NAS のデータを保護する")** — 重要なデータ全体を守るバックアップ計画です
-- **[Time Machine バックアップ](./time-machine-backup "ネットワーク経由で Mac を ZimaOS にバックアップする")** — Mac を ZimaOS にバックアップします
 
 ## アクセスと共有
 
 データの準備ができたら、必要なユーザーや端末から安全にアクセスできるようにします。
 
 - **[リモートアクセス](./remote-access "外出先からホームサーバーへ接続できるようにする")** — 自宅の外から ZimaOS にアクセスします
+- **[Tailscale と WireGuard](./app-store/tailscale-wireguard-remote-access "Tailscale または WireGuard でホームサーバーへのリモートアクセスを構築する")** — 標準プロトコルの方法
 - **[ZimaClient のダウンロード](./zimaclient-install "デスクトップとモバイルに ZimaClient をインストールする")** — クライアントをインストールしてファイルを閲覧します
+- **[Thunderbolt 直接接続](./thunderbolt-direct-connect "コンピューターを Thunderbolt で ZimaOS に接続して最高速度を得る")** — コンピューターと NAS を結ぶ最速のケーブル
 - **[SMB ファイル共有](./smb-troubleshooting "Finder とエクスプローラーに表示される SMB 共有を設定する")** — ローカルネットワークでファイルを共有します
 - **[リンクで共有](./share-via-link "アカウントなしで開けるファイル共有リンクを作成する")** — ファイルを共有するためのリンクを発行します
 - **[Samba マルチユーザー設定](./samba-member-setup "Samba 共有にユーザー単位のアクセス権を設定する")** — ユーザーごとに共有権限を割り当てます
@@ -49,7 +51,6 @@ ZimaOS を無理なく使い始められるように、必要なガイドをま�
 - **[ZimaOS のインストール](./how-to-install-zimaos "ZimaOS を最初からインストールする手順")** — イメージを USB ドライブに書き込み、端末を起動します
 - **[Proxmox へのインストール](./install-zimaos-on-proxmox-ve "Proxmox VE 上の仮想マシンとして ZimaOS を実行する")** — ZimaOS を仮想マシンで動かします
 - **[CasaOS から移行](./casaos-to-zimaos-migration "ホームサーバー環境を CasaOS から ZimaOS に移行する")** — 既存の CasaOS 環境を移します
-- **[ネットワーク ID の取得](./remote-id "ZimaOS のネットワーク ID を確認して別の端末から接続する")** — 端末固有のネットワーク識別子を確認します
 - **[パスワードのリセット](./password-recovery "ZimaOS アカウントのパスワードを復旧または変更する")** — パスワードを復旧、変更します
 
 ## システム
@@ -58,8 +59,10 @@ ZimaOS を無理なく使い始められるように、必要なガイドをま�
 
 - **[UPS 設定](./ups-setup "UPS を NAS に接続して停電から保護する")** — 突然の停電に備えます
 - **[システム復旧](./system-recovery "障害やリセット後に ZimaOS を復旧する")** — システム障害後に ZimaOS を復元します
+- **[ネットワーク設定のリセット](./reset-network-settings "接続の問題を解決するために ZimaOS のネットワーク設定をリセットする")** — リセットで接続の問題を解決します
 - **[オフラインインストール](./offline-install "インターネット接続なしで ZimaOS をインストールする")** — オフライン環境で導入します
 - **[検索機能](./zimaos-search "ZimaOS の検索で NAS 内のファイルをすばやく探す")** — ストレージ全体からファイルを検索します
+- **[Time Machine バックアップ](./time-machine-backup "ネットワーク経由で Mac を ZimaOS にバックアップする")** — Mac を ZimaOS にバックアップします
 
 ---
 

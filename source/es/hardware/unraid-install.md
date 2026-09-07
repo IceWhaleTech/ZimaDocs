@@ -68,7 +68,7 @@ Selecciona las siguientes opciones según la especificación:
 
 ## Arrancar desde la Memoria USB de Instalación
 
-![Boot Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.png)
+![Boot Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.webp)
 
 ## Elegir SO
 

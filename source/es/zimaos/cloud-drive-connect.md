@@ -7,53 +7,82 @@ author: Lauren Pan
 tip: No elimines este bloque de Front Matter. El campo description se utiliza como resumen del artículo; si se deja vacío, se utilizará el primer párrafo.
 ---
 
-Las unidades en la nube hacen bien su trabajo: están disponibles en todas partes, son fiables y otras personas ya comparten archivos contigo a través de ellas. Tu dispositivo ZimaOS destaca en lo demás: velocidad dentro de tu propia red, capacidad real y datos que permanecen bajo tu control. Al conectar ambos entornos, puedes mover los datos entre ellos a medida que cambien tus necesidades. Traslada parte de tus datos de la nube al NAS para reducir el coste de una suscripción o utiliza la nube como copia externa cifrada del NAS. Tú decides dónde se guarda cada elemento.
+Las unidades en la nube hacen bien su trabajo: están disponibles en todas partes, son fiables y otras personas ya comparten archivos contigo a través de ellas. Tu dispositivo ZimaOS destaca en lo demás: velocidad dentro de tu propia red, capacidad real y datos que permanecen bajo tu control. Al conectar ambos entornos, puedes mover los datos entre ellos a medida que cambien tus necesidades. Traslada parte de tus datos de la nube al NAS para reducir el coste de una suscripción o utiliza la nube como copia externa del NAS. Tú decides dónde se guarda cada elemento.
 
 ## Montar unidades en la nube en Files
 
-La aplicación Files se conecta directamente a **Google Drive**, **Dropbox** y **OneDrive**. Solo tienes que conectarla una vez para que las carpetas en la nube aparezcan junto al almacenamiento local.
+La aplicación Files se conecta directamente a **Google Drive**, **Dropbox** y **OneDrive**. Tres pasos y tus carpetas en la nube aparecen junto a tu almacenamiento local.
 
-1. Abre **Files** en el panel de ZimaOS.
-2. Añade una unidad en la nube desde la lista de almacenamiento.
-3. Inicia sesión en la cuenta de la nube y autoriza el acceso.
+### Paso 1: Añadir una unidad en la nube
 
-![Aplicación ZimaOS Files con las opciones para conectar Google Drive, Dropbox y OneDrive](/images/guides/files-cloud-drive-mount.png)
+Abre **Files** en el panel de ZimaOS y añade una unidad en la nube desde la lista de almacenamiento.
 
-Después de conectarla, la unidad en la nube aparece junto a los espacios de almacenamiento y puedes explorar sus carpetas como cualquier otra.
+![Aplicación Files de ZimaOS mostrando las opciones de conexión de Google Drive, Dropbox y OneDrive](/images/guides/files-cloud-drive-mount.png)
 
-![Barra lateral de ZimaOS Files con una unidad en la nube conectada junto a los espacios locales](/images/guides/files-cloud-drive-list.png)
+### Paso 2: Autorizar tu dispositivo
 
-## Trabajar entre el almacenamiento local y la nube
+Inicia sesión con tu cuenta en la nube y autoriza el acceso. Lo que autorizas es tu dispositivo ZimaOS, no a un tercero. Cada solicitud parte de tu propio hardware y viaja directamente entre tu dispositivo y tu proveedor de nube. Nada pasa por terceros, así que tu privacidad y la seguridad del acceso quedan en tus manos.
 
-Cuando la nube está montada, pasar de un entorno al otro deja de ser un proyecto aparte.
+![Pantalla de autorización de Files de ZimaOS para conectar tu dispositivo con la cuenta en la nube](/images/guides/files-cloud-drive-authorize.png)
 
-Abre un archivo de la nube, edítalo y vuelve a guardarlo allí. Arrastra una carpeta local a la unidad en la nube cuando quieras conservar otra copia. Descarga archivos de la nube cuando necesites tenerlos en un almacenamiento local rápido. Si trasladas suficientes datos al dispositivo, a menudo podrás cambiar a un plan de nube más económico. Files realiza la transferencia con verificación, de modo que una migración grande no termine con archivos dañados sin que te enteres.
+### Paso 3: Gestionarlo todo desde tu dispositivo
 
-A continuación se muestra cómo mover datos desde una unidad en la nube al almacenamiento local.
+Una vez conectada, la unidad aparece en Files junto a tus espacios de almacenamiento locales. Tu dispositivo ZimaOS se convierte en el único lugar desde el que gestionar todo entre tus nubes: copia automática, migración por lotes o acceso directo, desde un solo panel.
 
-1. En Files, abre la unidad en la nube y selecciona la carpeta que quieras mover.
+![Files de ZimaOS mostrando unidades en la nube junto al almacenamiento local para una gestión unificada](/images/guides/files-cloud-drive-list.png)
 
-![ZimaOS Files con una carpeta en la nube seleccionada para la migración](/images/guides/files-cloud-migrate-select.png)
+## Trabajar entre lo local y la nube
 
-2. Elige el espacio de almacenamiento de destino.
+Con la nube montada, mover datos entre ambos mundos deja de ser un proyecto.
 
-![Diálogo de migración de ZimaOS Files para elegir el espacio de almacenamiento de destino](/images/guides/files-cloud-migrate-destination.png)
+Abre un archivo desde la nube, edítalo y vuelve a guardarlo. Arrastra una carpeta local a la unidad en la nube cuando quieras una copia en otro lugar. Si mueves suficientes datos a tu dispositivo, a menudo puedes bajar a un plan de nube más barato. La transferencia se ejecuta en Files con verificación, de modo que una migración grande no termina con archivos dañados en silencio.
 
-3. Inicia la transferencia. El progreso se muestra en tiempo real.
+Aquí tienes un traslado de una unidad en la nube al almacenamiento local, paso a paso.
 
-![Progreso de migración de ZimaOS Files con la transferencia ejecutándose en tiempo real](/images/guides/files-cloud-migrate-progress.png)
+### Paso 1: Seleccionar la carpeta
 
-4. Al terminar, Files verifica el resultado y confirma que los archivos están intactos.
+En Files, abre la unidad en la nube y selecciona la carpeta que quieres mover.
 
-![Migración de ZimaOS Files completada y verificada, con los archivos intactos](/images/guides/files-cloud-migrate-verified.png)
+![Files de ZimaOS mostrando una carpeta en la nube seleccionada para migrar](/images/guides/files-cloud-migrate-select.png)
+
+### Paso 2: Elegir el destino
+
+Elige el espacio de almacenamiento de destino.
+
+![Diálogo de migración de Files de ZimaOS para elegir el espacio de almacenamiento de destino](/images/guides/files-cloud-migrate-destination.png)
+
+### Paso 3: Confirmar conflictos y originales
+
+Antes de iniciar la transferencia, Files te pide que confirmes dos opciones.
+
+- **Conflictos.** Si ya existe un archivo en el destino, elige qué hacer: omitirlo, sobrescribirlo o conservar ambos.
+- **Originales.** Elige si los archivos originales permanecen en la unidad en la nube o se eliminan tras una migración verificada.
+
+### Paso 4: Iniciar y verificar
+
+Inicia la transferencia. El progreso se muestra en tiempo real. Al terminar, Files verifica el resultado y confirma que los archivos están intactos.
+
+![Progreso de la migración de Files de ZimaOS mostrando la transferencia en tiempo real](/images/guides/files-cloud-migrate-progress.png)
+
+![Migración de Files de ZimaOS completada con verificación que confirma que los archivos están intactos](/images/guides/files-cloud-migrate-verified.png)
+
+## Varias cuentas y desconexión
+
+Una sola cuenta rara vez cuenta toda la historia. Puedes conectar más de una cuenta del mismo servicio y cada una aparece en Files como su propia entrada. Dos Google Drive o dos OneDrive funcionan en paralelo como cualquier otro espacio de almacenamiento.
+
+![Files de ZimaOS mostrando dos cuentas del mismo servicio en la nube como entradas separadas](/images/guides/files-cloud-multi-account.png)
+
+Cuando una unidad en la nube haya cumplido su función, elimínala de Files. La conexión se cierra y los datos en la nube permanecen donde estaban, en el proveedor. Todo lo que ya hayas copiado al almacenamiento local se queda en local.
+
+![Files de ZimaOS mostrando la opción de eliminar una unidad en la nube conectada](/images/guides/files-cloud-disconnect.png)
 
 ## La copia externa
 
 Una unidad en la nube conectada asume una segunda función en el plan de copias de seguridad: se convierte en la copia externa de tu **[estrategia de copia de seguridad 3-2-1](./how-to-use-3-2-1-backup-on-zimaos "Protege los datos de tu NAS con la regla de copia de seguridad 3-2-1")**.
 
-El almacenamiento local contiene la copia de trabajo, una segunda unidad guarda la copia local y la nube conserva una copia cifrada que sobrevive a un incendio o una inundación. Es la misma nube que ya utilizas, ahora dedicada a una tarea para la que resulta especialmente adecuada.
+El almacenamiento local contiene la copia de trabajo, una segunda unidad guarda la copia local y la nube conserva una copia externa que sobrevive a un incendio o una inundación. Es la misma nube que ya utilizas, ahora dedicada a una tarea para la que resulta especialmente adecuada.
 
-## Siguiente paso
+## Siguiente
 
 - **[Estrategia de copia de seguridad 3-2-1](./how-to-use-3-2-1-backup-on-zimaos "Protege los datos de tu NAS con la regla de copia de seguridad 3-2-1")** — crea el plan de protección completo
 - **[Copia de seguridad del teléfono](./phone-backup "Copia automáticamente el teléfono en ZimaOS con ZimaClient")** — lleva también a casa los datos del teléfono
