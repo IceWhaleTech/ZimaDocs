@@ -37,7 +37,7 @@ Não recolhemos nem armazenamos os seus ficheiros pessoais, registos de ligaçã
   </tr>
 </table>
 
-**[Acesso remoto](./remote-access "Configurar o acesso remoto para poder aceder ao servidor doméstico a partir de qualquer lugar")** · **[Transferir o ZimaClient](./zimaclient-install "Instalar e configurar o ZimaClient no computador e no telemóvel para aceder ao dispositivo")** · **[ID de rede](./remote-id "Encontrar o ID de rede do ZimaOS e utilizá-lo para estabelecer ligação a partir de outros dispositivos")**
+**[Acesso remoto](./remote-access "Configurar o acesso remoto para poder aceder ao servidor doméstico a partir de qualquer lugar")** · **[Transferir o ZimaClient](./zimaclient-install "Instalar e configurar o ZimaClient no computador e no telemóvel para aceder ao dispositivo")**
 
 ## Guarde, partilhe e proteja os seus ficheiros
 
@@ -55,7 +55,7 @@ Se pretender instantâneos, somas de verificação e integridade de dados avanç
 
 Depois de configurado, o armazenamento aparece automaticamente na rede local. Num Mac, aparece no Finder; no Windows, no Explorador de Ficheiros. O acesso é protegido pela sua conta ZimaOS. Pode criar contas separadas para familiares ou colegas de equipa, cada uma com as respetivas permissões de leitura e escrita.
 
-**[Configuração de armazenamento](./storage-setup "Escolher a configuração de armazenamento com opções RAID adequadas às suas necessidades")** · **[Partilha de ficheiros SMB](./smb-troubleshooting "Partilhar ficheiros através de SMB para que apareçam no Finder e no Explorador de Ficheiros")** · **[Ligar unidades na nuvem](./cloud-drive-connect "Ligar o Google Drive, Dropbox ou OneDrive ao ZimaOS para efetuar cópias de segurança")** · **[Opções RAID](./raid-options "Explicação dos níveis RAID e JBOD com instruções de configuração passo a passo")** · **[Mover dados entre unidades](./data-migration "Mover imagens Docker, dados de aplicações e pastas entre unidades no ZimaOS")**
+**[Configuração de armazenamento](./storage-setup "Escolher a configuração de armazenamento com opções RAID adequadas às suas necessidades")** · **[Partilha de ficheiros SMB](./smb-troubleshooting "Partilhar ficheiros através de SMB para que apareçam no Finder e no Explorador de Ficheiros")** · **[Ligar unidades na nuvem](./cloud-drive-connect "Ligar o Google Drive, Dropbox ou OneDrive ao ZimaOS para efetuar cópias de segurança")** · **[Opções RAID](./raid-options "Explicação dos níveis RAID e JBOD com instruções de configuração passo a passo")** · **[Migração de dados](./data-migration "Mover imagens Docker, dados de aplicações e pastas entre unidades no ZimaOS")**
 
 
 ## Instale aplicações com um clique

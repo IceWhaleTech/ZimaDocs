@@ -46,19 +46,19 @@ typora-root-url: ..
 
 **将 USB 吊牌插入 ZimaBoard，开机后点击“DEL”进入 BIOS 页面**
 
-![Enter To OpenWRT Bios](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-to-bios.png)
+![Enter To OpenWRT Bios](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-to-bios.webp)
 
 ## 4. BIOS 中的选择
 
 **在启动选项中，将 USB 闪存驱动器配置为启动选项 #1，保存设置并重启。重启后，进入 USB 驱动器的 OpenWRT**
 
-![Choose OpenWRT Boot](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-choose-boot.png)
+![Choose OpenWRT Boot](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-choose-boot.webp)
 
 ## 5. 查找 IP 并登录 OpenWRT
 
 **配置您的 OpenWRT 系统 IP 地址信息，并使用 PC 浏览器进入 OpenWRT Luci 页面**
 
-![Log In OpenWRT Luci](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-openwrt-luci.png)
+![Log In OpenWRT Luci](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-openwrt-luci.webp)
 
 # 成功登录！！！！
 

@@ -30,11 +30,11 @@ ZimaBoard関連の準備。
 
 ### [BalenaEtcher](https://www.balena.io/etcher/)を開く
 
-![BalenaEtcherを開く](/images/Restore-factory-settings/open-balenaetcher.png)
+![BalenaEtcherを開く](/images/Restore-factory-settings/open-balenaetcher.webp)
 
 ### システムイメージを選択 
 
-![イメージを選ぶ](/images/Restore-factory-settings/choose-image.png)
+![イメージを選ぶ](/images/Restore-factory-settings/choose-image.webp)
 
 ### 挿入したUSBドライブを選択
 

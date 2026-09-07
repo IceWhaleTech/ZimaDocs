@@ -47,19 +47,19 @@ Raspberry PiとMicroServerの間のパフォーマンスと価格ポジショニ
 
 **USBスティックをZimaBoardに挿入し、起動して「DEL」をクリックしてBIOSページにログイン**
 
-![OpenWRT BIOSに入る](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-to-bios.png)
+![OpenWRT BIOSに入る](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-to-bios.webp)
 
 ## 4. BIOSでの選択
 
 **ブートオプションでUSBフラッシュドライブをブートオプション#1として設定し、設定を保存して再起動します。再起動後、USBドライブOpenWRTに入ります。**
 
-![OpenWRTブートを選択](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-choose-boot.png)
+![OpenWRTブートを選択](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-choose-boot.webp)
 
 ## 5. IPを見つけてOpenWRTにログイン
 
 **OpenWRTシステムのIPアドレス情報を設定し、PCブラウザを使用してOpenWRT Luciページにログイン**
 
-![OpenWRT Luciにログイン](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-openwrt-luci.png)
+![OpenWRT Luciにログイン](/images/All_in_one_routing_All-in-one%20routing%20system-OpenWRT/install-openwrt-router-system-enter-openwrt-luci.webp)
 
 # ログイン成功！！！！
 

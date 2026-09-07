@@ -27,17 +27,17 @@ DICAS
 **Senha:`casaos`**
 {% endnote %}
 
-![Log In Jellyfin ](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.jpeg)
+![Log In Jellyfin ](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-login.webp)
 
 ## Transmitir Vídeos com Jellyfin!
 
 ### Navegar pela Biblioteca
 
-![Assistindo Biblioteca Jellyfin](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.jpeg)
+![Assistindo Biblioteca Jellyfin](/images/Basic-functions-of-dedicated-systems/watching-jellyfin-library.webp)
 
 ### Informações do Filme
 
-![Use Jellyfin Assistindo Detalhes do Filme](/images/Basic-functions-of-dedicated-systems/watching-move-details.jpeg)
+![Use Jellyfin Assistindo Detalhes do Filme](/images/Basic-functions-of-dedicated-systems/watching-move-details.webp)
 
 ### Reprodução
 
@@ -93,12 +93,12 @@ Senha:`casaos`
 
 ### Ver Informações das Fotos
 
-![Usando Photoprism assistindo informações das fotos](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.png)
+![Usando Photoprism assistindo informações das fotos](/images/Basic-functions-of-dedicated-systems/photo-view-photo-information.webp)
 
 
 ### Edição em Lote de Fotos
 
-![Usando Photoprism Editando Fotos ](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.png)
+![Usando Photoprism Editando Fotos ](/images/Basic-functions-of-dedicated-systems/photo-editing-photo.webp)
 
 
 ### Criar Álbuns

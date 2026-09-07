@@ -27,7 +27,7 @@ title: 我的世界服务器–使用 ZimaBoard 构建一个我的世界服务�
 
 ## 进入 CasaOS
 
-![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png)
+![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.webp)
 
 ## 打开应用商店并选择自定义安装
 
@@ -42,11 +42,11 @@ itzg/minecraft-server
 
 ## 复制 [Cli]（<https://hub.docker.com/r/itzg/minecraft-server>)
 
-![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.png).
+![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.webp).
 
 ## 检查环境
 
-![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.png)
+![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.webp)
 
 {% note dinfo %}
 **注意**

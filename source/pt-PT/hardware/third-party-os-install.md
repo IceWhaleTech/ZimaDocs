@@ -31,14 +31,14 @@ typora-root-url: ..
 ## 1. Abra o balenaEtcher
 
 
-![Abrir Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![Abrir Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 ## 2. Clique em “Flash from file” e selecione a imagem do sistema que você baixou anteriormente.
 
 ![Usando Balenaetcher Escrever Imagem em USB](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
 
 
-![Usando Balenaetcher Escrever Imagem em USB](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
+![Usando Balenaetcher Escrever Imagem em USB](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.webp)
 
 ## 3. Clique em “Select target” e selecione seu pen drive USB inserido na caixa de diálogo.
 

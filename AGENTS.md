@@ -232,6 +232,15 @@ source/zh/zimaos/get-started.md
 4. 确认 Markdown 使用最终 `/images/...` 路径和最终扩展名，不引用本地绝对路径、构建产物或已删除文件。
 5. 执行第 11 节的干净构建与链接验证，确保图片能够生成并且页面中不存在资源断链。
 
+审计与压缩使用仓库脚本 `scripts/images.js`：
+
+```bash
+pnpm docs:images:check                # 全站审计：缺文件、超 800KiB、超 1520px、GIF
+pnpm docs:images:optimize <相对路径>  # PNG/JPEG 转 WebP（超宽自动缩至 1520），同步更新全语言引用，验证产物后再删原图
+```
+
+不得使用系统 `sips` 写 WebP（本机不支持该输出格式）；批量转换必须先用脚本完成一次产物验证，确认文件存在且非空后才允许删除原图。
+
 ## 7. Menu、Sidebar 与翻译 Key
 
 顶部 Menu 当前固定为：

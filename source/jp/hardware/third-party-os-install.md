@@ -31,14 +31,14 @@ typora-root-url: ..
 ## 1. balenaEtcherを開く
 
 
-![Open Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![Open Balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 ## 2. “ファイルからフラッシュ”をクリックし、先にダウンロードしたシステムイメージを選択します。
 
 ![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/intall-ubuntu-system-choose-image-in-balenaetcher.png)
 
 
-![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.png)
+![Using Balenaetcher Write Image In Usb](/images/Installing-Ubuntu-System/install-ubuntu-system-choose-image-in-balenaetcher1.webp)
 
 ## 3. “ターゲットを選択”をクリックし、ダイアログボックスで挿入したUSBドライブを選択します。
 

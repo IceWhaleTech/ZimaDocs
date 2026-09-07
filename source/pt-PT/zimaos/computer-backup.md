@@ -21,7 +21,7 @@ Transfira o ZimaClient para **[Windows ou macOS](https://www.zimaspace.com/zimao
 
 1. Abra o ZimaClient. A aplicação procura na rede local e apresenta os dispositivos NAS com ZimaOS que encontrar. Selecione o seu e clique para estabelecer ligação.
 
-![Ecrã de descoberta de dispositivos do ZimaClient com os dispositivos NAS que executam ZimaOS encontrados na rede local](/images/guides/zimaclient-desktop-discovery.png)
+![Ecrã de descoberta de dispositivos do ZimaClient com os dispositivos NAS que executam ZimaOS encontrados na rede local](/images/guides/zimaclient-desktop-discovery.webp)
 
 2. Selecione o dispositivo e inicie sessão com a sua conta ZimaOS. Assinale **memorizar palavra-passe** para manter a sessão iniciada.
 
@@ -98,7 +98,7 @@ Para a primeira cópia grande, ligue o cabo e deixe-a terminar.
 
 **Substituiu o computador.** Instale o ZimaClient, inicie sessão com a mesma conta ZimaOS e adicione novamente as pastas. Os dados no NAS permanecem intactos.
 
-**O destino está a ficar sem espaço.** Direcione a cópia para um espaço de armazenamento maior ou utilize a ferramenta integrada em **[Mover dados entre unidades](./data-migration "Mover imagens Docker, dados de aplicações e pastas entre unidades no ZimaOS")** para libertar espaço.
+**O destino está a ficar sem espaço.** Direcione a cópia para um espaço de armazenamento maior ou utilize a ferramenta integrada em **[Migração de dados](./data-migration "Mover imagens Docker, dados de aplicações e pastas entre unidades no ZimaOS")** para libertar espaço.
 
 ## Sugestões práticas
 

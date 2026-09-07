@@ -21,7 +21,7 @@ ZimaOS 设备需要开机并连接网络。首次连接时，电脑和设备应�
 
 1. 打开 ZimaClient。它会扫描本地网络，并列出找到的运行 ZimaOS 的 NAS 设备。选择你的设备并点击连接。
 
-![ZimaClient 设备发现界面，显示在本地网络中找到的运行 ZimaOS 的 NAS 设备](/images/guides/zimaclient-desktop-discovery.png)
+![ZimaClient 设备发现界面，显示在本地网络中找到的运行 ZimaOS 的 NAS 设备](/images/guides/zimaclient-desktop-discovery.webp)
 
 2. 选择设备，使用 ZimaOS 账户登录。勾选**记住密码**，以保持登录状态。
 

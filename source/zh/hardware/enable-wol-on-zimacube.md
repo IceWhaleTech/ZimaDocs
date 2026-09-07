@@ -59,8 +59,8 @@
 
 **1. 等待BIOS更新完成**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.jpg)
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.webp)
 
 **2. 完成！**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.jpg) -->
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.webp) -->

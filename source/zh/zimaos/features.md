@@ -37,7 +37,7 @@ tip: Do not remove this front matter block. The description field is used for th
   </tr>
 </table>
 
-**[远程访问](./remote-access "配置远程访问，让你可以从任何地方连接家庭服务器")** · **[下载 ZimaClient](./zimaclient-install "在桌面端和移动端安装并设置 ZimaClient，以访问设备")** · **[网络 ID](./remote-id "查找 ZimaOS 网络 ID，并用它从其他设备连接")**
+**[远程访问](./remote-access "配置远程访问，让你可以从任何地方连接家庭服务器")** · **[下载 ZimaClient](./zimaclient-install "在桌面端和移动端安装并设置 ZimaClient，以访问设备")**
 
 ## 存储、共享和保护文件
 

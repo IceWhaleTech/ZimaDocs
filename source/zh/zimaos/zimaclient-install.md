@@ -28,7 +28,7 @@ https://www.zimaspace.com/zimaos/download
 注意：
 ZimaClient 会**在菜单栏中显示图标**。单击图标即可打开并操作客户端。
 
-有关通过 ZimaClient 连接 ZimaCube 的方法，请参阅此[文档](./remote-access)。
+有关通过 ZimaClient 连接 ZimaCube 的方法，请参阅此[文档](./get-started "通过 ZimaClient 和账户创建，从首次启动开始设置 ZimaOS")。
 |![](https://manage.icewhale.io/api/static/docs/1728618411227_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618433316_image.png) |
 |:---:|:---:|
 |![](https://manage.icewhale.io/api/static/docs/1728618448765_image.png)| ![](https://manage.icewhale.io/api/static/docs/1728618468465_image.png)|

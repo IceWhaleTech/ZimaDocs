@@ -52,19 +52,19 @@ title: 使用ZimaBoard和Batocera.linux构建75英寸4K街机
 
 **打开Balena，点击"文件闪存"，然后选择刚下载的Batocera。**
 
-![打开balenaetcher](/images//Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![打开balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 **- 步骤3**
 
 **选择您需要启动的```SD内存或USB驱动器```** 
 
-![选择USB驱动器](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![选择USB驱动器](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 **- 步骤4**
 
 **输入您的主机密码以启动转化**
 
-![选择USB驱动器](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![选择USB驱动器](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 # 3. 开启ZimaBoard电源
 
@@ -72,7 +72,7 @@ title: 使用ZimaBoard和Batocera.linux构建75英寸4K街机
 
 **在ZimaBoard关闭的情况下，我们插入已经准备好的带有Batocera的micro ```SD卡或USB驱动器```。**
 
-![Zimaboard连接USB](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png)
+![Zimaboard连接USB](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.webp)
 
 **启动时，长按以进入BIOS界面，选择```U盘启动```**
 

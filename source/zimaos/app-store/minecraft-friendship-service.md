@@ -28,7 +28,7 @@ Similarly, we assume you have already purchased a “My World” account (refer 
 
 1.  Enter CasaOS
 
-![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png)
+![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.webp)
 
 2. Open the App Store and Select “Custom Install”
 
@@ -44,11 +44,11 @@ itzg/minecraft-server
 3.  Copy [CLI]
 （<https://hub.docker.com/r/itzg/minecraft-server>)
 
-![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.png).
+![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.webp).
 
 4.  Check Environment
 
-![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.png)
+![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.webp)
 
 {% note dinfo %}
 **Attention**

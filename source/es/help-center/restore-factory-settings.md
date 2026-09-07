@@ -29,11 +29,11 @@ Preparación relacionada con ZimaBoard.
 
 ###  Abra [BalenaEtcher](https://www.balena.io/etcher/)
 
-![Abrir Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.png)
+![Abrir Balenaetcher](/images/Restore-factory-settings/open-balenaetcher.webp)
 
 ### Seleccione la imagen del sistema 
 
-![Elegir Imagen](/images/Restore-factory-settings/choose-image.png)
+![Elegir Imagen](/images/Restore-factory-settings/choose-image.webp)
 
 ### Seleccione su unidad USB insertada
 

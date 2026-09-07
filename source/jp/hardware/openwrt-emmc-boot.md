@@ -24,7 +24,7 @@ ZimaBoardの性能はRaspberry PiとMicroServerの中間に位置し、価格帯
 
 PCから```casaos.local```経由でZimaBoardのCasaOSパネルにログイン
 
-![Openwrt eMMc Boot Log In CasaOS](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.png)
+![Openwrt eMMc Boot Log In CasaOS](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.webp)
 
 
 ## OpenWRTイメージをアップロード
@@ -43,7 +43,7 @@ PCから```casaos.local```経由でZimaBoardのCasaOSパネルにログイン
 1. DDコマンドを使用してOpenWRTイメージをZimaBoardのeMMCに書き込みます
     a. ターミナル経由でZimaBoardシステムにログインし、PC上でSSH（ターミナルの出力接続、マシンのIPアドレスを知っている必要があります）
 
-![OpenWRT Connect SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.png)
+![OpenWRT Connect SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.webp)
 
 2. CasaOSのアカウントとパスワードでログイン
 {% note danger %}
@@ -54,13 +54,13 @@ PCから```casaos.local```経由でZimaBoardのCasaOSパネルにログイン
 
 3. lsblkを入力して、ターゲットのeMMC名（mmcblk0であるべき）を確認します
 
-![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.png)
+![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.webp)
 
 4. イメージファイルを解凍します（OpenWrtファイルがzipアーカイブの場合）
 ```
 gzip -d [.gzまたは.img.gzのイメージ名]
 ```
-![Unzip OpenWRT Image](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.png)
+![Unzip OpenWRT Image](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.webp)
 
 5. 解凍が正常に行われているか確認します！イメージファイルに異常がないことを確認してください
 
@@ -87,7 +87,7 @@ gzip -d [.gzまたは.img.gzのイメージ名]
 
 **2. 再起動し、OpenWrtシステムにログインします**
    
-![Enter To Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.png)
+![Enter To Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.webp)
 
 # まとめ
 私は、各ZimaBoardで完全に独立したシステムとサービスを運用することを好みます。したがって、USBメモリでZimaBoardでOpenWRTを起動するよりも、この方法ははるかに簡単です。もし、ZimaBoardで同時にデュアルシステムを運用したい場合は、USBメモリを作成し、BIOS構成を通じてZimaBoardがログインしているシステムを切り替えることを検討してください。

@@ -1,48 +1,72 @@
 ---
 title: リモートアクセス
 seo_title: "ZimaOSのリモートアクセス：どこからでも自宅サーバーに接続"
-description: "どこからでもZimaOSのデータにアクセスできます。CloudflareトンネルとZimaClientによるリモートアクセスを設定し、外出先から安全にファイルを管理します。"
+description: "ZimaOSのリモートアクセスの仕組み：暗号化されたピアツーピア接続、自動の最速経路選択、デバイスのリモート ID、複数デバイスの切り替え、標準プロトコルの選択肢。"
 type: Docs
+author: Lauren Pan
 tip: このFront Matterブロックは削除しないでください。descriptionフィールドは記事の概要に使用され、空の場合は最初の段落が代わりに使用されます。
 ---
-## 外出先からデータを利用する
-旅行中に自宅の防犯カメラを確認したり、自宅サーバーのファイルへアクセスしたりしたくても、データに接続できず困ったことはありませんか。コミュニティメンバーのGrandilは、ノルウェーからアイルランドのサーバーへ接続してZimaOSを利用し、モバイルローミング中でも快適に接続できました。レビューは[こちら](https://www.youtube.com/watch?v=ZDmO2h0tE0c)から確認できます。
+リモートアクセスは、毎日意識せずに使っている静かな機能です。ホームサーバーは自宅に置いたまま、カフェやオフィス、別の国からアクセスできます。接続は初めてサインインした瞬間に設定されています。
 
-変化の速い現代では、個人利用でも業務利用でも、効率よくデータへアクセスできることが重要です。リモートアクセスは生産性を高め、安全性を確保し、場所の制約をなくします。
+## リモートアクセスの仕組み
 
-### ZimaClientをダウンロードする
-まだZimaClientでZimaCubeに接続していない場合は、メインデバイスから https://www.zimaspace.com/zimaos/download にアクセスしてクライアントをダウンロードしてください。
-![](https://manage.icewhale.io/api/static/docs/1728381740811_image.png)
-### デバイスへ接続する
-1. ZimaCubeの電源が入っており、ネットワークに接続されていることを確認します。
-2. ZimaClientを開き、Scan and Connect Zimaを選択します。
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://manage.icewhale.io/api/static/docs/1728439070524_image.png" alt="画像1" style="height: 200px; object-fit: cover; margin-right: 10px;" />
-  <img src="https://manage.icewhale.io/api/static/docs/1728439097159_image.png" alt="画像2" style="height: 200px; object-fit: cover;" />
-</div>
+ZimaClient と ZimaOS は、お使いのデバイスとホームサーバーの間に**暗号化されたピアツーピア**の通信経路を確立します。データはデバイス間を直接移動します。**途中に第三者のサーバーはなく**、通信内容を誰かに読み取られることもありません。
 
-3. 一覧からZimaCubeのIPアドレスを選択し、Connectをクリックします。画面の案内に従ってユーザー名とパスワードを作成します。
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://manage.icewhale.io/api/static/docs/1728381985338_image.png" alt="画像1" style="height: 200px; object-fit: cover; margin-right: 10px;" />
-  <img src="https://manage.icewhale.io/api/static/docs/1728381994632_image.png" alt="画像2" style="height: 200px; object-fit: cover;" />
-</div>
+![スマートフォンと ZimaOS ホームサーバーの間の暗号化されたピアツーピア通信経路の図](/images/guides/remote-access-how-it-works.webp)
 
-**デバイスへの接続に成功すると**、ここにZimaCubeとConnect via...などの表示が現れ、リモートアクセスが設定済みであることを確認できます。
-![](https://manage.icewhale.io/api/static/docs/1728459310497_image.png)
+接続は最速の経路も自動で選びます。自宅のネットワークではローカル LAN を使い、Thunderbolt を接続すれば直接ケーブルに切り替わります。外出先ではインターネットやテザリング経由で動作します。これらの設定は一切不要です。ZimaClient が最速の経路を見つけて選択します。
 
-*ZimaOSの設定でリモートアクセスを無効にしている場合は接続できません。*
-![](https://manage.icewhale.io/api/static/docs/1728459277560_image.png)
+制御はデバイス側に残ります。ZimaOS はリモート接続のために独自のネットワークコントローラーを実行しており、外部の第三者がネットワークの管理権限を持つことはありません。ZimaOS はファイル、接続ログ、利用データを収集、保存、アクセスすることはありません。
 
-### リモートアクセスを利用する
-最初の接続に成功すると、接続情報がデバイスに自動保存されます。どこにいてもZimaClientを開くだけで、すぐにリモート接続を確立できます。
-自宅のLANから離れたとき、ZimaCubeのリモートアクセス状態は次のように表示されます。
-![](https://manage.icewhale.io/api/static/docs/1728382289343_image.png)
+リモートアクセスを完全にオフにすることもできます。ダッシュボードで**設定 > ネットワーク**を開き、スイッチをオフにします。リモート接続はそこで停止しますが、自宅ネットワークとローカル接続は通常どおり機能し続けます。通信経路を再び開きたいときは、いつでもオンに戻せます。
 
-### 2台目のメインデバイスからアクセスする
-オフィスに**2台目**のコンピューターがあり、ZimaCubeが手元にない場合でも、Connect IDを使用できます。詳しくは[こちら](./features#Second-host-device-access)を参照してください。
+## スマートフォンとパソコンから接続する
 
+新しいデバイスでの最初のサインインがすべてのセットアップを完了します。その後は接続が自動で行われます。ZimaClient を開くだけで、自宅でも外出先でも接続されます。開封したばかりのデバイスの場合は、まず**[スタートガイド](./get-started "ZimaClient とアカウント作成を使用して、初回起動から ZimaOS をセットアップする")**に従ってください。
 
-### 参考情報
-ノートパソコンとZimaCubeの接続は、ZimaClientアプリとZimaOSによって自動的に確立されます。P2P通信を使用し、両者のデータ転送は暗号化されるため、すべてのデータがデバイス間で直接転送されます。
+クライアントを開くと、接続以上のものが手に入ります。デバイスパネルにはホームサーバーの IP と接続状態が表示され、ZimaOS ダッシュボードをワンクリックで開くボタンがあります。どこにいても、ダッシュボードはワンタップで開きます。
 
-また、ZimaClientを使用してZimaOSへ初めて正常に接続した時点で、リモートアクセス用の通信経路も設定されます。それ以降は、このデバイスからいつでも、どこからでもZimaOSへアクセスできます。
+![ホームサーバーの IP、接続状態、ダッシュボードボタンが表示された ZimaClient のデバイスパネル](/images/guides/zimaclient-connection-info.png)
+
+スマートフォンでは、同じクライアントが日常的に使う機能を担います。ファイルと写真でコンテンツにすぐアクセスでき、外出中もバックアップが動作し続けます。詳しくは**[スマートフォンのバックアップ](./phone-backup "ZimaClient でスマートフォンを ZimaOS に自動バックアップする")**と**[写真](./photos "タイムライン、地図、コレクションで ZimaOS の写真ライブラリを閲覧する")**をご覧ください。
+
+パソコンでは、ZimaClient がストレージを Finder またはエクスプローラーにマウントし、バックアップフォルダーを動かし続けます。全体の流れは**[パソコンのバックアップ](./computer-backup "Finder、エクスプローラー、同期を使用してコンピューターを ZimaOS にバックアップする")**をご覧ください。
+
+## デバイスのリモート ID
+
+リモート ID は、リモート接続におけるデバイスの一意の識別情報です。他のユーザーはこの ID を通じてデバイスにアクセスするため、共有フォルダーのパスワードとして扱ってください。
+
+確認するには、ZimaOS ダッシュボードで**設定**を開き、**ネットワーク**タブに切り替えてリモート ID をコピーします。
+
+![デバイスのリモート ID とコピーオプションが表示された ZimaOS 設定のネットワークタブ](/images/guides/remote-id-location.webp)
+
+安全に保つために知っておくべきことは 2 つあります。
+
+- リモート ID が漏洩すると、共有フォルダーが露出する可能性があります。ID は他人に渡さないでください。
+- 漏洩が疑われる場合は、リモート ID の横にある **...** ボタンをクリックしてリセットします。漏洩した ID はすぐに無効になります。既存の接続と共有は無効になるため、リセット後はデバイスを再接続する必要があります。
+
+![デバイスのリモート ID のリセットオプションが表示された ZimaOS 設定のネットワークタブ](/images/guides/remote-id-reset.png)
+
+## 複数のデバイス
+
+ZimaOS デバイスを複数持つことは例外ではなく普通のことです。ZimaClient はすべてのデバイスを一覧表示し、切り替えはデバイスリストでのワンタップで完了します。
+
+![切り替え可能な複数の ZimaOS ホームサーバーが表示された ZimaClient のデバイスリスト](/images/guides/zimaclient-device-switch.png)
+
+各デバイスに独自のアイコンを設定して見分けやすくしましょう。ZimaOS ダッシュボードで**設定 > 一般**を開き、**デバイス情報**の横にある設定ボタンをクリックします。アイコンはデバイスに紐づくため、どの画面でもクライアントに同じ識別情報が表示されます。
+
+![カスタムデバイスアイコンが表示された ZimaOS 設定の一般ページ。1 つはパルサー波形のアルバムジャケット風](/images/guides/zimaclient-device-icons.png)
+
+2 台目のパソコンでデバイスが手元にない場合は、Connect ID が役立ちます。ローカルスキャンの代わりに Connect ID でサインインすれば、同じように接続できます。詳しくは**[機能一覧](./features "リモートアクセス、ストレージ、アプリを含む ZimaOS の機能を確認する")**をご覧ください。
+
+## ZimaClient か標準プロトコルか
+
+ZimaClient は組み込みの方法です。サインインするだけで、ネットワーク設定を何も行わずにリモート接続が機能します。接続はピアツーピアで行われるため、データはデバイス間を直接移動します。
+
+接続をオープンなプロトコルで運用したい場合は、公式 App Store に 4 つのアプリが用意されています。Tailscale、WireGuard Easy、Firefly、NetBird です。自分のアカウントや鍵を持ち込むだけで、Linux、Android、その他のプラットフォームの標準クライアントで接続できます。比較とセットアップ手順は**[Tailscale と WireGuard によるリモートアクセス](./app-store/tailscale-wireguard-remote-access "Tailscale または WireGuard でホームサーバーへのリモートアクセスを構築する")**をご覧ください。
+
+## 次へ
+
+- **[ZimaClient をダウンロード](./zimaclient-install "デバイスへのアクセス用にデスクトップとモバイルで ZimaClient をインストールして設定する")** — 持ち歩くすべてのデバイス向けのクライアント
+- **[Tailscale と WireGuard によるリモートアクセス](./app-store/tailscale-wireguard-remote-access "Tailscale または WireGuard でホームサーバーへのリモートアクセスを構築する")** — 標準プロトコルの方法
+- **[SMB ファイル共有](./smb-troubleshooting "SMB でファイルを共有し、Finder とエクスプローラーに表示する")** — ローカルネットワークでの共有

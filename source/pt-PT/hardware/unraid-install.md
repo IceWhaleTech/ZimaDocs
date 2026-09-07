@@ -68,7 +68,7 @@ Selecione as seguintes opções de acordo com a especificação:
 
 ## Inicialize a partir do Pen Drive USB de Instalação
 
-![Iniciar Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.png)
+![Iniciar Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.webp)
 
 ## Escolha o SO
 

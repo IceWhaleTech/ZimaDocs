@@ -70,7 +70,7 @@ Select the following options according to the specification:
 
 ### Boot from the Installation USB stick
 
-![Boot Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.png)
+![Boot Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.webp)
 
 ### Choose OS
 

@@ -97,12 +97,12 @@ La conclusión práctica es sencilla: para la primera copia grande, coloca el te
 {% note tip %}
 - Ejecuta la primera copia grande mediante Wi-Fi y no con datos móviles para evitar límites de consumo.
 - Antes de cambiar de teléfono, abre ZimaClient una vez y deja que termine una última copia.
-- Cada miembro de la familia inicia sesión con su propia cuenta de ZimaOS, de modo que las fotos de cada persona permanecen en su propia biblioteca. La **[Fototeca familiar](./family-photo-library "Crea una fototeca familiar en ZimaOS con las fotos de todos")** permite reunirlas cuando quieras.
+- Cada miembro de la familia inicia sesión con su propia cuenta de ZimaOS, de modo que las fotos de cada persona permanecen en su propia biblioteca.
 - Si la copia se detiene, acercarse al router resuelve la mayoría de los casos.
 {% endnote %}
 
 ## Siguiente
 
 - **[Copia de seguridad del ordenador](./computer-backup "Realiza una copia de seguridad de tu ordenador en ZimaOS mediante Finder, el Explorador o sincronización")** — incorpora también el portátil
-- **[Vista previa de fotos](./photos-preview "Explora tus fotos de ZimaOS en los modos cuadrícula, cascada y justificado")** — explora la biblioteca cuando ya esté importada
+- **[Fotos](./photos "Explora tu biblioteca de fotos por cronología, mapa y colecciones")** — explora la biblioteca cuando ya esté importada
 - **[Estrategia de copia de seguridad 3-2-1](./how-to-use-3-2-1-backup-on-zimaos "Protege los datos con la regla de copia de seguridad 3-2-1 en tu NAS")** — una sola copia no es un plan

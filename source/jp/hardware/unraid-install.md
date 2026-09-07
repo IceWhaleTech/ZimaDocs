@@ -68,7 +68,7 @@ Unraid OSは、洗練されたメディア愛好家、ゲーマー、その他�
 
 ## インストールUSBスティックから起動
 
-![Boot Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.png)
+![Boot Unraid](/images/Unraid-First-Experience-At-$129-Installation/unraid-first-experience-at-$129-usb-boot.webp)
 
 ## OSの選択
 

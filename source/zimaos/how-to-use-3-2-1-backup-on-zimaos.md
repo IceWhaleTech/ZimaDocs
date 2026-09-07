@@ -19,9 +19,17 @@ The 3-2-1 rule is the standard answer to the question of how many backups are en
 - **2 different types of media**: such as the drives in your device plus an external USB drive, to diversify the risk.
 - **1 copy offsite**: somewhere physically separate, so a fire or theft at home does not take all copies with it.
 
-## Set Up a Backup Task
+ZimaOS supports this strategy at the system level. One app covers every ring of the plan.
 
-ZimaOS has a built-in Backup app that handles all of this in one place.
+## One App, Every Direction
+
+The 3-2-1 rule asks for copies in different places. Most NAS setups answer that by stitching together three or four different tools: one for USB copies, one for cloud sync, one for LAN transfers. ZimaOS takes a different approach.
+
+The Backup app works on a simple from-to idea. Pick where the data comes from: **Cloud**, **LAN**, **USB**, or **Zima**. Pick where it goes: a local disk, another Zima device, an external drive, or the cloud. Every combination is one task, one schedule, one journey.
+
+That one abstraction covers the whole 3-2-1 plan: the working copy, the second media, and the offsite ring. You do not learn four tools. You learn one.
+
+## Set Up a Backup Task
 
 1. Launch the **Backup** app from the dashboard.
 
@@ -38,10 +46,6 @@ Backups from **[Phone Backup](./phone-backup "Back up your phone to ZimaOS autom
 ![Backup data source selection showing Cloud, LAN, USB, and Zima options](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
 
 4. If you picked a cloud source, sign in and authorize access.
-
-![Google account sign-in screen for authorizing cloud backup access](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
-
-![Cloud storage authorization step in the backup task wizard](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
 
 5. Select the folders you want to back up, or the entire directory structure.
 
@@ -67,6 +71,19 @@ A backup plan only works if it runs without you remembering to run it.
 
 ![Backup app task list showing multiple backup tasks running concurrently](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
 
+## One Source, Many Destinations
+
+Some folders deserve more than one copy. Family photos, work documents, financial records — when the data is irreplaceable, the 3-2-1 rule asks for it in several places at once.
+
+The Backup app handles that with one source and many destinations. Point every task at the same folder, and give each task its own destination:
+
+- **Second media:** the same folder to another local disk or another Zima device on the LAN.
+- **Offsite ring:** the same folder to the cloud.
+
+![Backup app task list showing two tasks that copy the same folder to different destinations](/images/guides/backup-one-source-many-destinations.png)
+
+Each task keeps its own schedule, so the two rings can run at different rhythms — the local copy every night, the cloud copy once a week. The tasks are independent, so a problem with one destination never stops the other from running.
+
 ## Cloud Sync Is Not Backup
 
 A folder synced to the cloud is not a backup. Sync mirrors changes in both directions, so deleting a file locally deletes it everywhere. A backup keeps versions and only writes forward. When you use the cloud in your backup plan, use the Backup app's cloud destination so you get versions and restore points, not a mirror of your mistakes.
@@ -81,4 +98,4 @@ A backup you have never restored is a plan you have never tested. After your fir
 
 - **[RAID Options](./raid-options "RAID levels and JBOD explained with step-by-step setup instructions")** — what RAID protects, and what it does not
 - **[Phone Backup](./phone-backup "Back up your phone to ZimaOS automatically with ZimaClient")** — get the phone data into the plan
-- **[Move Data Between Drives](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")** — when a drive fills up
+- **[Connect Another NAS](./synology-to-zimacube-migration "Connect another NAS to ZimaOS to move files or back up across devices")** — the LAN ring of the plan

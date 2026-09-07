@@ -59,8 +59,8 @@ Una operación inadecuada puede causar que el ZimaBoard no arranque.
 
 **1. Espere a que se complete la actualización del BIOS**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.jpg)
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.webp)
 
 **2. ¡Listo!**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.jpg) -->
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.webp) -->

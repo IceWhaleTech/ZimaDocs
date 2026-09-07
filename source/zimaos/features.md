@@ -37,7 +37,7 @@ We do not collect, store, or have access to your personal files, connection logs
   </tr>
 </table>
 
-**[Remote Access](./remote-access "Configure remote access so your home server is reachable anywhere")** · **[Download ZimaClient](./zimaclient-install "Install and set up ZimaClient on desktop and mobile for device access")** · **[Network ID](./remote-id "Find your ZimaOS Network ID and use it to connect from other devices")**
+**[Remote Access](./remote-access "Configure remote access so your home server is reachable anywhere")** · **[Download ZimaClient](./zimaclient-install "Install and set up ZimaClient on desktop and mobile for device access")**
 
 ## Store, Share, and Protect Your Files
 
@@ -55,7 +55,7 @@ If you want snapshots, checksums, and advanced data integrity, **[ZFS is availab
 
 Once storage is configured, it appears automatically on your local network. On a Mac it shows up in Finder. On Windows, File Explorer. Access is protected by your ZimaOS account. You can create separate accounts for family members or teammates, each with their own read and write permissions.
 
-**[Storage Setup](./storage-setup "Choose your storage setup with RAID options matched to your needs")** · **[SMB File Sharing](./smb-troubleshooting "Share files over SMB so they appear in Finder and File Explorer")** · **[Connect Cloud Drives](./cloud-drive-connect "Connect Google Drive, Dropbox, or OneDrive to ZimaOS for backup")** · **[RAID Options](./raid-options "RAID levels and JBOD explained with step-by-step setup instructions")** · **[Move Data Between Drives](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")**
+**[Storage Setup](./storage-setup "Choose your storage setup with RAID options matched to your needs")** · **[SMB File Sharing](./smb-troubleshooting "Share files over SMB so they appear in Finder and File Explorer")** · **[Connect Cloud Drives](./cloud-drive-connect "Connect Google Drive, Dropbox, or OneDrive to ZimaOS for backup")** · **[RAID Options](./raid-options "RAID levels and JBOD explained with step-by-step setup instructions")** · **[Data Migration](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")**
 
 
 ## Install Apps with One Click

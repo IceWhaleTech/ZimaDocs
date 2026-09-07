@@ -52,19 +52,19 @@ title: Construye una Máquina Arcade 4K de 75 pulgadas con ZimaBoard y Batocera.
 
 **Abre tu Balena y haz clic en Flash desde el archivo y selecciona el Batocera que acabas de descargar.**
 
-![Open balenaetcher](/images//Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![Open balenaetcher](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 **- paso3**
 
 **Selecciona la ```memoria SD o unidad USB``` que necesitas para arrancar desde** 
 
-![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 **- paso4**
 
 **Ingresa tu contraseña de host para iniciar la conversión**
 
-![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![choose usb drive](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 # 3. Enciende ZimaBoard
 
@@ -72,7 +72,7 @@ title: Construye una Máquina Arcade 4K de 75 pulgadas con ZimaBoard y Batocera.
 
 **Con el ZimaBoard apagado, insertamos la ```tarjeta micro SD o unidad USB``` preparada con Batocera.**
 
-![Zimaboard Connect Usb](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png)
+![Zimaboard Connect Usb](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.webp)
 
 **Al arrancar, mantén presionado para entrar en la interfaz del BIOS, selecciona el ```arranque desde el disco U```**
 

@@ -1,7 +1,7 @@
 ---
 title: ZimaOS 概览
 seo_title: "ZimaOS 设置指南：存储、共享、备份与系统设置"
-description: "面向新用户的 ZimaOS 设置指南，包含安装 ZimaOS、配置文件共享、设置备份、连接云存储以及管理 NAS 系统设置的分步说明。"
+description: "面向 NAS 的 ZimaOS 设置指南：安装系统、配置存储与 Photos 照片库、运行备份、连接云盘，并管理远程访问与设置。"
 type: "Docs"
 author: Lauren Pan
 tip: 请勿删除此前置信息块。description 字段用于文章摘要；如留空，将使用正文第一段。
@@ -25,19 +25,21 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 
 - **[手机备份](./phone-backup "使用 ZimaClient 将手机照片和文件自动备份到 ZimaOS")** — 自动备份手机中的照片和文件
 - **[电脑备份](./computer-backup "通过 Finder、文件资源管理器或同步任务将电脑备份到 ZimaOS")** — 为笔记本电脑设置访问和定时备份
+- **[照片](./photos "在 ZimaOS 上浏览、搜索和重新发现你的照片库")** — 收纳你拍摄的一切
+- **[Photos 支持的格式](./photos-supported-formats "ZimaOS Photos 可索引的格式，以及缩略图和元数据的行为说明")** — Photos 能读取和播放什么
 - **[连接云盘](./cloud-drive-connect "将 Google Drive、Dropbox 或 OneDrive 连接到 ZimaOS")** — 从 Google Drive、Dropbox 和 OneDrive 导入数据
-- **[从其他 NAS 迁移](./synology-to-zimacube-migration "分阶段将文件从群晖 NAS 迁移到 ZimaOS")** — 从群晖迁移时推荐使用的流程
-- **[群晖手动传输](./from-synology-to-zimacube-migrate-all-files "在 ZimaOS Files 中挂载群晖 DSM 共享并复制文件")** — SMB 手动迁移的分步指南
+- **[连接其他 NAS](./synology-to-zimacube-migration "将其他 NAS 连接到 ZimaOS，迁移文件或跨设备备份")** — 迁移文件，或把它纳入你的备份计划
 - **[在磁盘之间迁移数据](./data-migration "在 ZimaOS 的磁盘之间迁移 Docker 镜像、应用数据和文件夹")** — 磁盘空间不足时使用内置迁移工具
 - **[3-2-1 备份](./how-to-use-3-2-1-backup-on-zimaos "使用 3-2-1 备份原则保护 NAS 数据")** — 建立覆盖全部重要数据的备份方案
-- **[Time Machine 备份](./time-machine-backup "通过网络使用 Time Machine 将 Mac 备份到 NAS")** — 将 Mac 通过网络备份到 ZimaOS
 
 ## 访问与共享
 
 数据准备好后，让需要的人和设备能够安全访问。
 
 - **[远程访问](./remote-access "配置远程访问，随时连接家中的服务器")** — 离开家后仍可访问 ZimaOS
+- **[Tailscale 与 WireGuard](./app-store/tailscale-wireguard-remote-access "使用 Tailscale 或 WireGuard 为你的家庭服务器设置远程访问")** — 标准协议路线
 - **[下载 ZimaClient](./zimaclient-install "在桌面端和移动端安装 ZimaClient 并连接设备")** — 安装桌面客户端并浏览文件
+- **[Thunderbolt 直连](./thunderbolt-direct-connect "通过 Thunderbolt 将电脑连接到 ZimaOS，以获得最高速度")** — 电脑与 NAS 之间最快的线缆
 - **[SMB 文件共享](./smb-troubleshooting "通过 SMB 共享文件，使其显示在 Finder 和文件资源管理器中")** — 在局域网内共享文件
 - **[通过链接共享](./share-via-link "创建无需账户即可访问的文件分享链接")** — 生成链接并将文件分享给其他人
 - **[Samba 多用户设置](./samba-member-setup "在 ZimaOS 上为 Samba 共享配置按用户控制的权限")** — 为每位用户分配不同的共享访问权限
@@ -49,7 +51,6 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 - **[安装 ZimaOS](./how-to-install-zimaos "从零开始安装 ZimaOS 的分步指南")** — 将系统镜像写入 USB 设备并启动安装
 - **[安装到 Proxmox](./install-zimaos-on-proxmox-ve "在 Proxmox VE 中以虚拟机方式运行 ZimaOS")** — 将 ZimaOS 作为虚拟机运行
 - **[从 CasaOS 迁移](./casaos-to-zimaos-migration "将家庭服务器配置从 CasaOS 迁移到 ZimaOS")** — 把现有 CasaOS 环境迁移到 ZimaOS
-- **[获取网络 ID](./remote-id "查找 ZimaOS 网络 ID，并从其他设备建立连接")** — 查看设备唯一的网络标识符
 - **[重置密码](./password-recovery "恢复或重置 ZimaOS 账户密码")** — 找回或修改 ZimaOS 密码
 
 ## 系统
@@ -58,8 +59,10 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 
 - **[UPS 设置](./ups-setup "将 UPS 连接到 NAS，防止断电导致数据损坏")** — 防范突然断电
 - **[系统恢复](./system-recovery "发生故障或重置后恢复 NAS 上的 ZimaOS")** — 在系统故障后恢复 ZimaOS
+- **[重置网络设置](./reset-network-settings "重置 ZimaOS 网络设置以解决连接问题")** — 通过重置解决连接问题
 - **[离线安装](./offline-install "在没有互联网连接时安装 ZimaOS")** — 无网络环境下安装 ZimaOS
 - **[搜索功能](./zimaos-search "使用 ZimaOS 搜索快速查找 NAS 中的文件")** — 跨存储空间快速查找文件
+- **[Time Machine 备份](./time-machine-backup "通过网络使用 Time Machine 将 Mac 备份到 NAS")** — 将 Mac 通过网络备份到 ZimaOS
 
 ---
 

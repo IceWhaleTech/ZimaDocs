@@ -1,7 +1,7 @@
 ---
 title: Visão geral do ZimaOS
 seo_title: "Guias do ZimaOS: armazenamento, partilha, cópias de segurança e sistema"
-description: "Guias de configuração do ZimaOS para principiantes, incluindo instalação, partilha de ficheiros, cópias de segurança, ligação à nuvem e gestão do NAS."
+description: "Guias do ZimaOS para o seu NAS: instale o sistema, configure o armazenamento e a biblioteca Photos, faça cópias, ligue nuvens e gira o acesso remoto."
 type: "Docs"
 author: Lauren Pan
 tip: Não remova este bloco de metadados. O campo description é utilizado como resumo do artigo; se ficar vazio, será usado o primeiro parágrafo.
@@ -25,19 +25,21 @@ Depois da configuração inicial, importe os conteúdos e decida onde cada tipo 
 
 - **[Cópia de segurança do telemóvel](./phone-backup "Faça cópias automáticas das fotografias e dos ficheiros do telemóvel com o ZimaClient")** — proteja automaticamente os dados do telemóvel
 - **[Cópia de segurança do computador](./computer-backup "Copie o computador para o ZimaOS através do Finder, Explorador ou sincronização")** — configure o acesso e as cópias agendadas do portátil
+- **[Fotografias](./photos "Navegue, pesquise e redescubra a sua biblioteca de fotografias no ZimaOS")** — a biblioteca de tudo o que fotografa
+- **[Formatos suportados do Photos](./photos-supported-formats "Os formatos que o ZimaOS Photos indexa, com o comportamento de miniaturas e metadados")** — o que o Photos lê e reproduz
 - **[Ligar unidades na nuvem](./cloud-drive-connect "Ligue o Google Drive, Dropbox ou OneDrive ao ZimaOS")** — importe dados dos principais serviços de nuvem
-- **[Migrar de outro NAS](./synology-to-zimacube-migration "Migre ficheiros de um NAS Synology para o ZimaOS por etapas")** — siga o percurso recomendado a partir de Synology
-- **[Transferência manual de Synology](./from-synology-to-zimacube-migrate-all-files "Monte partilhas do Synology DSM em Files e copie os ficheiros")** — procedimento manual através de SMB
-- **[Mover dados entre unidades](./data-migration "Mova imagens Docker, dados de aplicações e pastas entre unidades")** — utilize a ferramenta integrada quando uma unidade fica cheia
+- **[Ligar outro NAS](./synology-to-zimacube-migration "Ligue outro NAS ao ZimaOS para mover ficheiros ou fazer cópias entre dispositivos")** — mova ficheiros ou adicione-o ao seu plano de cópias
+- **[Migração de dados](./data-migration "Mova imagens Docker, dados de aplicações e pastas entre unidades")** — utilize a ferramenta integrada quando uma unidade fica cheia
 - **[Cópia de segurança 3-2-1](./how-to-use-3-2-1-backup-on-zimaos "Proteja o NAS com a regra de cópia de segurança 3-2-1")** — crie um plano que proteja todos os dados importantes
-- **[Cópia com Time Machine](./time-machine-backup "Faça cópias do Mac para o ZimaOS através da rede")** — proteja o Mac com o Time Machine
 
 ## Acesso e partilha
 
 Quando os dados estiverem organizados, disponibilize-os com segurança aos utilizadores e dispositivos certos.
 
 - **[Acesso remoto](./remote-access "Configure o acesso remoto ao servidor doméstico")** — ligue-se ao ZimaOS fora de casa
+- **[Tailscale e WireGuard](./app-store/tailscale-wireguard-remote-access "Configure o acesso remoto com Tailscale ou WireGuard no seu servidor doméstico")** — o caminho dos protocolos padrão
 - **[Transferir o ZimaClient](./zimaclient-install "Instale o ZimaClient no computador e no telemóvel")** — instale o cliente para navegar nos ficheiros
+- **[Ligação direta Thunderbolt](./thunderbolt-direct-connect "Ligar o computador ao ZimaOS através de Thunderbolt para obter a velocidade máxima")** — o cabo mais rápido entre o computador e o NAS
 - **[Partilha de ficheiros SMB](./smb-troubleshooting "Partilhe ficheiros por SMB no Finder e no Explorador")** — disponibilize ficheiros na rede local
 - **[Partilhar por ligação](./share-via-link "Crie ligações de partilha que não exigem uma conta")** — envie ficheiros através de uma ligação
 - **[Samba com vários utilizadores](./samba-member-setup "Defina permissões por utilizador nas partilhas Samba")** — atribua níveis de acesso diferentes
@@ -49,7 +51,6 @@ Escolha a forma de instalar o ZimaOS que melhor corresponde ao hardware e ao amb
 - **[Instalar o ZimaOS](./how-to-install-zimaos "Instale o ZimaOS de raiz, passo a passo")** — grave a imagem numa unidade USB e arranque o dispositivo
 - **[Instalar no Proxmox](./install-zimaos-on-proxmox-ve "Execute o ZimaOS como máquina virtual no Proxmox VE")** — utilize o ZimaOS numa máquina virtual
 - **[Migrar do CasaOS](./casaos-to-zimaos-migration "Transfira o servidor doméstico do CasaOS para o ZimaOS")** — migre a configuração existente
-- **[Obter o ID de rede](./remote-id "Encontre o ID de rede do ZimaOS e ligue outros dispositivos")** — consulte o identificador único do dispositivo
 - **[Repor a palavra-passe](./password-recovery "Recupere ou altere a palavra-passe da conta ZimaOS")** — recupere o acesso à conta
 
 ## Sistema
@@ -58,8 +59,10 @@ Mantenha o dispositivo estável e preparado para recuperar de uma falha.
 
 - **[Configuração de UPS](./ups-setup "Ligue uma UPS ao NAS para proteção contra falhas de energia")** — evite danos provocados por cortes inesperados
 - **[Recuperação do sistema](./system-recovery "Restaure o ZimaOS depois de uma falha ou reposição")** — recupere o sistema quando algo corre mal
+- **[Repor definições de rede](./reset-network-settings "Reponha a rede do ZimaOS para resolver problemas de ligação")** — resolva problemas de ligação repondo
 - **[Instalação offline](./offline-install "Instale o ZimaOS sem ligação à Internet")** — implemente o sistema num ambiente isolado
 - **[Função de pesquisa](./zimaos-search "Encontre rapidamente ficheiros em todo o NAS")** — pesquise em todas as unidades
+- **[Cópia com Time Machine](./time-machine-backup "Faça cópias do Mac para o ZimaOS através da rede")** — proteja o Mac com o Time Machine
 
 ---
 

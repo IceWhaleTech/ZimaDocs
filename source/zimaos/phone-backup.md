@@ -97,12 +97,12 @@ The practical takeaway: for the first big backup, put the phone next to the rout
 {% note tip %}
 - Run the first big backup on Wi-Fi instead of cellular to avoid data caps.
 - Before you switch phones, open ZimaClient once and let it finish a final backup.
-- Each family member signs in with their own ZimaOS account, so everyone's photos stay in their own library. The **[Family Photo Library](./family-photo-library "Build a family photo library on ZimaOS with everyone's photos")** brings them together when you want them to.
+- Each family member signs in with their own ZimaOS account, so everyone's photos stay in their own library.
 - If the backup stalls, moving closer to the router fixes most cases.
 {% endnote %}
 
 ## Next
 
 - **[Computer Backup](./computer-backup "Back up your computer to ZimaOS with Finder, Explorer, or sync")** — bring your laptop in too
-- **[Photos Preview](./photos-preview "Browse your ZimaOS photos in grid, waterfall, and justified modes")** — browse the library once it is in
+- **[Photos](./photos "Browse your photo library by timeline, map, and collections on ZimaOS")** — browse the library once it is in
 - **[3-2-1 Backup Strategy](./how-to-use-3-2-1-backup-on-zimaos "Protect data with the 3-2-1 backup rule on your NAS")** — one backup is not a plan

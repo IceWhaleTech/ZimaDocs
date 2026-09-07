@@ -55,7 +55,7 @@ MacとZimaOSデバイスを同じネットワークに接続すると、Time Mac
 
 ## ファイルを復元する
 
-ファイルを取り戻す必要がある場合は、Time Machineの画面から復元します。詳しい手順はAppleのガイドを参照してください：[MacでTime Machineを使ってバックアップした項目を復元する](https://support.apple.com/zh-cn/guide/mac-help/mh11422/11.0/mac/11.0)。
+ファイルを取り戻す必要がある場合は、Time Machineの画面から復元します。詳しい手順はAppleのガイドを参照してください：[MacでTime Machineを使ってバックアップした項目を復元する](https://support.apple.com/ja-jp/guide/mac-help/mh11422/mac)。
 
 ## 次に読む
 

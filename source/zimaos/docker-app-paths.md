@@ -56,5 +56,5 @@ Over time, apps accumulate cached data that can quietly eat disk space. The **Se
 ## Next
 
 - **[Storage Setup](./storage-setup "Choose your storage setup with RAID options matched to your needs")** — decide which drives hold your data
-- **[Move Data Between Drives](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")** — the built-in tool when a drive fills up
+- **[Data Migration](./data-migration "Move Docker images, app data, and folders between drives on ZimaOS")** — the built-in tool when a drive fills up
 - **[App Store Overview](./app-store/ "Browse App Store categories for media, self-hosted apps, and AI")** — see what apps you can install

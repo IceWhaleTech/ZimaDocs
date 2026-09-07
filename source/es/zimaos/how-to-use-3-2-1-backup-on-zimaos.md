@@ -4,81 +4,98 @@ seo_title: "Plan de copias de seguridad de ZimaOS: estrategia 3-2-1 para los dat
 description: "Crea un plan de copias de seguridad completo en ZimaOS con la regla 3-2-1. Copia carpetas, unidades USB y almacenamiento en la nube en una sola tarea, programa ejecuciones automáticas y conserva una copia externa."
 type: Docs
 author: vicky
-tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
+tip: No elimines este bloque de Front Matter. El campo description se utiliza como resumen del artículo; si se deja vacío, se utilizará el primer párrafo.
 ---
 
-Los discos duros fallan, los archivos se eliminan por accidente y las casas se inundan. Un plan de copias de seguridad es lo que evita que esos momentos provoquen la pérdida de todo.
+Los discos fallan, los archivos se borran por accidente y las casas se inundan. Un plan de copias de seguridad es lo que se interpone entre esos momentos y perderlo todo.
 
-Primero hay que dejar algo claro: RAID no es una copia de seguridad. RAID te protege frente al fallo de una sola unidad mientras el dispositivo sigue funcionando. No protege contra una eliminación accidental, el ransomware ni una subida de tensión que inutilice todo el equipo. Un verdadero plan de copias de seguridad también cubre esos riesgos.
+Una cosa que hay que dejar clara primero: RAID no es una copia de seguridad. RAID te protege del fallo de un solo disco mientras el dispositivo sigue funcionando. No hace nada contra el borrado accidental, el ransomware o una subida de tensión que se lleve toda la máquina. Un plan de copias de verdad cubre también todo eso.
 
 ## La regla 3-2-1
 
-La regla 3-2-1 es la respuesta habitual a la pregunta de cuántas copias de seguridad son suficientes.
+La regla 3-2-1 es la respuesta estándar a la pregunta de cuántas copias son suficientes.
 
-- **3 copias** de tus datos: el original y dos copias de seguridad, para que un único fallo no lo destruya todo.
-- **2 tipos de soporte diferentes**: por ejemplo, las unidades del dispositivo y una unidad USB externa, para diversificar el riesgo.
+- **3 copias** de tus datos: el original más dos copias, para que ningún fallo único lo destruya todo.
+- **2 tipos de soporte distintos**: como los discos de tu dispositivo más un disco USB externo, para diversificar el riesgo.
 - **1 copia externa**: en un lugar físicamente separado, para que un incendio o un robo en casa no se lleve todas las copias.
 
-## Configura una tarea de copia de seguridad
+ZimaOS soporta esta estrategia a nivel de sistema. Una sola aplicación cubre todos los anillos del plan.
 
-ZimaOS incluye una aplicación Backup que gestiona todo desde un solo lugar.
+## Una aplicación, todas las direcciones
+
+La regla 3-2-1 pide copias en sitios distintos. La mayoría de los NAS responden cosiendo tres o cuatro herramientas diferentes: una para copias USB, otra para sincronizar con la nube, otra para transferencias LAN. ZimaOS adopta un enfoque distinto.
+
+La aplicación Backup funciona con una idea simple de origen a destino. Elige de dónde vienen los datos: **Cloud**, **LAN**, **USB** o **Zima**. Elige a dónde van: un disco local, otro dispositivo Zima, una unidad externa o la nube. Cada combinación es una tarea, una programación, un viaje.
+
+Esa única abstracción cubre todo el plan 3-2-1: la copia de trabajo, el segundo soporte y el anillo externo. No aprendes cuatro herramientas. Aprendes una.
+
+## Configurar una tarea de copia
 
 1. Abre la aplicación **Backup** desde el panel.
 
-![Escritorio de ZimaOS con el icono de la aplicación Backup para abrir la herramienta de copia de seguridad](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
+![Escritorio de ZimaOS mostrando el icono de la aplicación Backup](https://manage.icewhale.io/api/static/docs/1755069939384_copyImage.png)
 
-2. Haz clic en **Añadir nueva copia de seguridad** para abrir el asistente de creación de tareas.
+2. Haz clic en **Add new backup** para abrir el asistente de creación de tareas.
 
-![Asistente de creación de tareas de copia de seguridad con el botón Añadir nueva copia de seguridad](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
+![Asistente de creación de tareas de copia con el botón Add new backup](https://manage.icewhale.io/api/static/docs/1755069940811_copyImage.png)
 
-3. Elige la fuente de datos: **Nube** (Google Drive, Dropbox y otros), **LAN** (carpetas compartidas de otros dispositivos), **USB** (unidades externas) o **Zima** (archivos guardados en este dispositivo).
+3. Elige la fuente de datos: **Cloud** (Google Drive, Dropbox y más), **LAN** (carpetas compartidas de otros dispositivos), **USB** (unidades externas) o **Zima** (archivos almacenados en este dispositivo).
 
-Las copias de **[Copia de seguridad del teléfono](./phone-backup "Realiza automáticamente una copia de seguridad de tu teléfono en ZimaOS con ZimaClient")** y **[Copia de seguridad del ordenador](./computer-backup "Realiza una copia de seguridad de tu ordenador en ZimaOS mediante Finder, el Explorador o sincronización")** llegan al almacenamiento como carpetas normales, por lo que puedes incluirlas en una tarea igual que cualquier otro contenido guardado en el dispositivo.
+Las copias de **[Copia de seguridad del teléfono](./phone-backup "Realiza automáticamente una copia de seguridad de tu teléfono en ZimaOS con ZimaClient")** y **[Copia de seguridad del ordenador](./computer-backup "Realiza una copia de seguridad de tu ordenador en ZimaOS mediante Finder, el Explorador o sincronización")** aterrizan en tu almacenamiento como carpetas normales, así que encajan en una tarea de copia como cualquier otra cosa del dispositivo.
 
-![Selección de la fuente de datos de la copia de seguridad con las opciones Nube, LAN, USB y Zima](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
+![Selección de fuente de datos de copia mostrando las opciones Cloud, LAN, USB y Zima](https://manage.icewhale.io/api/static/docs/1755069942195_copyImage.png)
 
-4. Si has elegido una fuente en la nube, inicia sesión y autoriza el acceso.
+4. Si elegiste una fuente en la nube, inicia sesión y autoriza el acceso.
 
-![Pantalla de inicio de sesión de una cuenta de Google para autorizar el acceso a la copia de seguridad en la nube](https://manage.icewhale.io/api/static/docs/1755069943543_copyImage.png)
+5. Selecciona las carpetas que quieras copiar, o toda la estructura de directorios.
 
-![Paso de autorización del almacenamiento en la nube en el asistente de tareas de copia de seguridad](https://manage.icewhale.io/api/static/docs/1755069944297_copyImage.png)
+![Pantalla de selección de contenido de copia para elegir carpetas o directorios completos](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
 
-5. Selecciona las carpetas que quieras copiar o toda la estructura de directorios.
+6. Establece el destino: un disco local, otro dispositivo Zima, una unidad externa o la nube.
 
-![Pantalla de selección de contenido de la copia de seguridad para elegir carpetas o directorios completos](https://manage.icewhale.io/api/static/docs/1755069945701_copyImage.png)
+![Opciones de destino de copia para discos locales, otros NAS, USB o la nube](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
 
-6. Define el destino: un disco local, otro dispositivo Zima, una unidad externa o la nube.
+7. Haz clic en **Start**. La copia se ejecuta con el progreso en tiempo real.
 
-![Opciones de destino de la copia de seguridad para discos locales, otros dispositivos NAS, USB o la nube](https://manage.icewhale.io/api/static/docs/1755069947027_copyImage.png)
+![Tarea de copia en ejecución con el progreso en tiempo real](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
 
-7. Haz clic en **Iniciar**. La copia se ejecutará y mostrará el progreso en tiempo real.
+Hay un recorrido en vídeo de los mismos pasos en [YouTube](https://www.youtube.com/watch?v=pUVMsS1tcyY).
 
-![Tarea de copia de seguridad en ejecución con el progreso mostrado en tiempo real](https://manage.icewhale.io/api/static/docs/1755069948294_copyImage.png)
+## Copiar automáticamente
 
-Puedes ver un vídeo con los mismos pasos en [YouTube](https://www.youtube.com/watch?v=pUVMsS1tcyY).
+Un plan de copias solo funciona si se ejecuta sin que tengas que acordarte de lanzarlo.
 
-## Automatiza las copias de seguridad
+- **Copia programada** se ejecuta sola en el intervalo que establezcas.
+- **Varias tareas** pueden funcionar en paralelo sin interferir, para que fotos, documentos y datos de aplicaciones tengan cada uno su propia programación.
+- **Reanudación y tolerancia a fallos** continúa una transferencia interrumpida en lugar de empezar de cero.
 
-Un plan de copias de seguridad solo funciona si se ejecuta sin que tengas que recordarlo.
+![Lista de tareas de la aplicación Backup mostrando varias tareas ejecutándose a la vez](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
 
-- La **copia programada** se ejecuta automáticamente con el intervalo que definas.
-- Pueden ejecutarse **varias tareas** en paralelo sin interferirse, de modo que las fotos, los documentos y los datos de aplicaciones tengan cada uno su propio horario.
-- La **reanudación y tolerancia a fallos** continúa una transferencia interrumpida en lugar de empezar desde cero.
+## Un origen, muchos destinos
 
-![Lista de tareas de la aplicación Backup con varias tareas de copia de seguridad ejecutándose simultáneamente](https://manage.icewhale.io/api/static/docs/1755069949757_copyImage.png)
+Algunas carpetas merecen más de una copia. Fotos familiares, documentos de trabajo, registros financieros: cuando los datos son irremplazables, la regla 3-2-1 pide tenerlos en varios sitios a la vez.
 
-## La sincronización en la nube no es una copia de seguridad
+La aplicación Backup lo resuelve con un origen y muchos destinos. Apunta cada tarea a la misma carpeta y dale a cada tarea su propio destino:
 
-Una carpeta sincronizada con la nube no es una copia de seguridad. La sincronización refleja los cambios en ambos sentidos, por lo que eliminar un archivo localmente lo elimina en todas partes. Una copia de seguridad conserva versiones y solo escribe hacia delante. Cuando utilices la nube en tu plan, elige el destino en la nube de la aplicación Backup para obtener versiones y puntos de restauración, en lugar de duplicar tus errores.
+- **Segundo soporte:** la misma carpeta a otro disco local o a otro dispositivo Zima en la LAN.
+- **Anillo externo:** la misma carpeta a la nube.
 
-La nube también cumple la función de copia externa en tu plan 3-2-1. Consulta **[Conectar unidades en la nube](./cloud-drive-connect "Conecta Google Drive, Dropbox u OneDrive a ZimaOS para realizar copias de seguridad")** para trabajar con almacenamiento en la nube.
+![Lista de tareas de la aplicación Backup mostrando dos tareas que copian la misma carpeta a destinos distintos](/images/guides/backup-one-source-many-destinations.png)
 
-## Restaura y verifica
+Cada tarea mantiene su propia programación, así que los dos anillos pueden funcionar a ritmos distintos: la copia local cada noche y la copia en la nube una vez a la semana. Las tareas son independientes, así que un problema en un destino nunca detiene al otro.
 
-Una copia que nunca has restaurado es un plan que nunca has probado. Cuando termine la primera copia de seguridad, restaura un archivo y ábrelo. Diez minutos de verificación ahora son mejores que descubrir un problema silencioso el día que realmente necesites la copia.
+## Sincronizar con la nube no es una copia
+
+Una carpeta sincronizada con la nube no es una copia de seguridad. La sincronización refleja los cambios en ambas direcciones, así que borrar un archivo en local lo borra en todas partes. Una copia guarda versiones y solo escribe hacia delante. Cuando uses la nube en tu plan de copias, usa el destino de nube de la aplicación Backup para obtener versiones y puntos de restauración, no un espejo de tus errores.
+
+La nube también se gana su puesto como copia externa de tu plan 3-2-1. Consulta **[Conectar unidades en la nube](./cloud-drive-connect "Conecta Google Drive, Dropbox o OneDrive a ZimaOS")** para trabajar con almacenamiento en la nube.
+
+## Restaurar y verificar
+
+Una copia que nunca has restaurado es un plan que nunca has probado. Después de tu primera copia, restaura un archivo y ábrelo. Diez minutos de verificación ahora valen más que descubrir un problema silencioso el día que de verdad necesitas la copia.
 
 ## Siguiente
 
-- **[Opciones RAID](./raid-options "Explicación de los niveles RAID y JBOD con instrucciones de configuración paso a paso")** — qué protege RAID y qué no
-- **[Copia de seguridad del teléfono](./phone-backup "Realiza automáticamente una copia de seguridad de tu teléfono en ZimaOS con ZimaClient")** — incorpora los datos del teléfono al plan
-- **[Mover datos entre unidades](./data-migration "Mueve imágenes Docker, datos de aplicaciones y carpetas entre unidades en ZimaOS")** — para cuando una unidad se llena
+- **[Opciones de RAID](./raid-options "Compara los niveles RAID y JBOD con instrucciones de configuración")** — qué protege RAID y qué no
+- **[Copia de seguridad del teléfono](./phone-backup "Realiza automáticamente una copia de seguridad de tu teléfono en ZimaOS con ZimaClient")** — mete los datos del teléfono en el plan
+- **[Conectar otro NAS](./synology-to-zimacube-migration "Conecta otro NAS a ZimaOS para mover archivos o hacer copias entre dispositivos")** — el anillo LAN del plan

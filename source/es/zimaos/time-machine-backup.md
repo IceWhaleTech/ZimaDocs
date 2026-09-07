@@ -55,7 +55,7 @@ Si la copia falla, comprueba la conexión de red y confirma que el servicio SMB 
 
 ## Restaurar archivos
 
-Cuando necesites recuperar un archivo, restáuralo desde la interfaz de Time Machine. La guía de Apple explica el proceso en detalle: [Restaurar elementos de los que se ha creado una copia con Time Machine en el Mac](https://support.apple.com/zh-cn/guide/mac-help/mh11422/11.0/mac/11.0).
+Cuando necesites recuperar un archivo, restáuralo desde la interfaz de Time Machine. La guía de Apple explica el proceso en detalle: [Restaurar elementos de los que se ha creado una copia con Time Machine en el Mac](https://support.apple.com/es-es/guide/mac-help/mh11422/mac).
 
 ## Siguiente paso
 

@@ -62,8 +62,8 @@ Improper operation can cause the ZimaBoard to fail to start.
 
 **1. Wait for the BIOS update to complete**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.jpg)
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-wating.webp)
 
 **2. Done!**
 
-![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.jpg) --> 
+![](/images/Upgrade-Motherboard-BIOS-Version/bios-update-successful.webp) -->

@@ -1,46 +1,67 @@
 ---
-title: ドライブ間でデータを移動する
-seo_title: "ZimaOSでドライブ間のデータを移動：Docker、アプリデータ、フォルダー"
+title: データ移行
+seo_title: "ZimaOSのデータ移行：Docker、アプリデータ、フォルダーをドライブ間で移動"
 description: "ZimaOSに組み込まれたData Migrationツールを使用して、Dockerイメージ、アプリデータ、ユーザーフォルダーを別のストレージ領域へ移動します。"
 type: Docs
 author: Lauren Pan
 tip: このFront Matterブロックは削除しないでください。descriptionフィールドは記事の概要に使用され、空の場合は最初の段落が代わりに使用されます。
 ---
+ドライブがいっぱいになったとき、または大きなドライブに交換するとき、何かを再インストールする必要はありません。組み込みのData Migrationツールが、データのカテゴリ全体を1回の実行で別のストレージ領域へ移します。
 
-ドライブの空き容量がなくなっても、再インストールする必要はありません。組み込みの移行ツールを使用すると、Dockerイメージ、アプリデータ、ユーザーフォルダーを、動作を維持したまま別のストレージ領域へ移動できます。
+## 移動できるもの
 
-## 移動できるデータ
+ツールが扱うカテゴリは3つです。
 
-- Dockerイメージ
-- Dockerアプリケーションデータ
-- ユーザーデータベース（Gallery、Downloads、Documents、Media、Backup）
+- **Dockerイメージ。** アプリが動作するためのパッケージ。アプリをインストールし続けると、このカテゴリが最も早く増えます。
+- **Dockerアプリデータ。** インストール済みアプリが書き込んだすべてのデータをまとめて移動します。
+- **ユーザーフォルダー。** 写真、ダウンロード、ドキュメント、メディア、バックアップ。
 
-## 移動手順
+アプリ単位ではなくカテゴリ単位で移動します。1つのアプリだけを移したい場合や、アプリのファイルがどこにあるかを知りたい場合は、**[アプリの保存先](./docker-app-paths "アプリデータの保存場所と移動方法を確認する")** をご覧ください。
 
-![ストレージフォルダーの一覧とData Migration項目を表示するZimaOSのSettings画面](https://manage.icewhale.io/api/static/docs/1727178430378_image.png)
+## コンテナデータがシステムドライブを圧迫したとき
 
-1. **Settings > Data Migration** を開きます。
-2. 移行する項目を選択し、右側の **Modify Location** ボタンをクリックします。
+システムドライブは通常最も小さく、コンテナはデフォルトでそこへ書き込みます。Dockerイメージとアプリデータは静かに増え続け、やがてアップデートが失敗し、アプリの動作が不安定になります。
 
-![選択可能な各項目の横にModify LocationボタンがあるData Migration画面](https://manage.icewhale.io/api/static/docs/1727178444256_image.png)
+アプリデータの保存先を早めに設定することが予防策で、**[アプリの保存先](./docker-app-paths "アプリデータの保存場所と移動方法を確認する")** で説明しています。すでにシステムドライブがいっぱいなら、Data Migrationツールが1回の実行で解決します。Dockerイメージとアプリデータをストレージ領域へ移せば、システムドライブは再び空きます。
 
-3. 新しいストレージ領域を選択し、**Next** をクリックします。
+## RAIDデータを移行するとき
 
-![ストレージ領域の選択とNextボタンを表示するData Migrationウィザード](https://manage.icewhale.io/api/static/docs/1727178450237_image.png)
+RAIDアレイのドライブ交換や、より大きなアレイへの移行も同じ手順です。各カテゴリを新しいストレージ領域へ1つずつ移します。最後のカテゴリが終われば、古いアレイは役目を終えて退役できます。アプリは常に動き続け、移行によって再インストールや再設定が行われることはありません。
 
-4. "I acknowledge and confirm this action" のチェックボックスをオンにし、**Start Migration** をクリックします。
+## 移動方法
 
-![確認用チェックボックスとStart Migrationボタンを表示するData Migration確認画面](https://manage.icewhale.io/api/static/docs/1727178455511_image.png)
+1. **設定 > Data Migration** を開きます。
 
-5. 進行状況が全画面で表示され、移行中はほかの操作を実行できません。
+![ストレージフォルダーが一覧表示されたZimaOS設定のData Migrationエントリ](/images/guides/data-migration-entry.webp)
 
-![移行状態を全画面で表示するData Migration進行状況画面](https://manage.icewhale.io/api/static/docs/1727178460307_image.png)
+2. 移行したい項目を選び、右側の **Modify Location** ボタンをクリックします。
 
-6. 完了すると、移行の詳細がポップアップに表示されます。
+![各項目の横にModify Locationボタンが表示されたData Migrationページ](/images/guides/data-migration-modify-location.webp)
 
-![完了した移行の詳細を表示するData Migration完了ポップアップ](https://manage.icewhale.io/api/static/docs/1727178465734_image.png)
+3. 新しいストレージ領域を選び、**Next** をクリックします。
+
+![ストレージ領域の選択とNextボタンが表示されたData Migrationウィザード](/images/guides/data-migration-choose-space.webp)
+
+4. 競合の扱いを確認します。移動先に同じファイルがすでにある場合の動作を選びます：スキップ、上書き、両方保持。元のファイルを古いドライブに残すか、検証済みの移行後に削除するかも選びます。その後、確認チェックボックスにチェックを入れ、**Start Migration** をクリックします。
+
+
+5. 進捗は全画面で表示され、移行中はほかの操作はできません。
+
+![全画面の移行ステータスが表示されたData Migrationの進捗画面](/images/guides/data-migration-progress.webp)
+
+6. 完了すると、ポップアップに移行の詳細が表示されます。大規模な移行では、結果の完全なレポートも提供されます。
+
+![完了した移行の詳細が表示されたData Migrationの完了ポップアップ](/images/guides/data-migration-done.webp)
+
+![大規模な移行の完全な結果が表示されたData Migrationのレポートページ](/images/guides/data-migration-report.webp)
+
+## 制限事項
+
+ツールが移行するのは上記の3カテゴリです。システムパーティションや、これらのカテゴリ以外のデータは対象外です。
 
 ## 関連情報
 
-- **[アプリの保存先](./docker-app-paths "アプリがドライブ上のどこにデータを保存し、どのように移動するかを確認する")** — 移動する前にアプリデータの保存場所を確認する
-- **[ストレージ設定](./storage-setup "用途に合ったRAIDオプションでストレージ構成を選択する")** — ストレージ領域を計画する
+- **[アプリの保存先](./docker-app-paths "アプリデータの保存場所と移動方法を確認する")** — アプリ単位の移動とアプリデータの保存場所
+- **[ストレージ設定](./storage-setup "用途に合わせてドライブとストレージ構成を選ぶ")** — ストレージ領域の計画
+- **[ほかのNASを接続する](./synology-to-zimacube-migration "Synology NASをZimaOSに接続してファイルを移行またはデバイス間バックアップする")** — デバイス間のデータ移動はFilesアプリを使います
+- **[3-2-1バックアップ戦略](./how-to-use-3-2-1-backup-on-zimaos "NASのデータを3-2-1バックアップルールで保護する")** — プランのオフサイトとセカンドデバイスのリング

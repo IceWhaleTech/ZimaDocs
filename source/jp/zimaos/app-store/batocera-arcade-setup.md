@@ -52,19 +52,19 @@ title: ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作�
 
 **Balenaを開き、「ファイルからフラッシュ」をクリックし、ダウンロードしたBatoceraを選択します。**
 
-![Balenaetcherを開く](/images//Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.jpg)
+![Balenaetcherを開く](/images/Installing-Ubuntu-System/install-ubuntu-system-open-balenaetcher.webp)
 
 **- ステップ3**
 
 **ブートするために必要な```SDメモリまたはUSBドライブ```を選択します。** 
 
-![USBドライブを選択](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![USBドライブを選択](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 **- ステップ4**
 
 **変換を開始するためにホストパスワードを入力します。**
 
-![USBドライブを選択](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.jpeg)
+![USBドライブを選択](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-choose-usb-drive.webp)
 
 # 3.ZimaBoardを電源オン
 
@@ -72,7 +72,7 @@ title: ZimaBoardとBatocera.linuxで75インチ4Kアーケードマシンを作�
 
 **ZimaBoardの電源がオフの状態で、Batocera用に準備した```SDカードまたはUSBドライブ```を挿入します。**
 
-![ZimaBoardにUSBを接続](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.png)
+![ZimaBoardにUSBを接続](/images/Build-a-75-inch-4K-Arcade-with-ZimaBoard-and-Batocera/Build-a-75-4K-Arcade-with-ZimaBoard-and-Batocera-zimaboard-connect-usb.webp)
 
 **ブート中、長押ししてBIOSインターフェースに入ります。```Uディスクブート```を選択します。**
 

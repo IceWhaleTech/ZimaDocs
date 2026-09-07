@@ -26,7 +26,7 @@ Basado en este tutorial, demostraremos cómo utilizar el sistema preconstruido d
 
 En el PC, inicia sesión en el panel CasaOS del ZimaBoard a través de ```casaos.local```
 
-![Iniciar sesión en CasaOS de Openwrt eMMc](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.png)
+![Iniciar sesión en CasaOS de Openwrt eMMc](/images/Openwrt-emmc-boot/openwrt-emmc-boot-log-in-casaos.webp)
 
 
 ## Subir la imagen de OpenWRT
@@ -45,7 +45,7 @@ En el PC, inicia sesión en el panel CasaOS del ZimaBoard a través de ```casaos
 1. Escribe la imagen de OpenWRT en la eMMC del ZimaBoard usando el comando DD
     a.a.Inicia sesión en el sistema del ZimaBoard a través de Terminal, SSH en tu PC (la conexión de Terminal de salida, necesitas saber la dirección IP de tu máquina)
 
-![Conectar OpenWRT SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.png)
+![Conectar OpenWRT SSH](/images/Openwrt-emmc-boot/openwrt-emmc-boot-connect-ssh.webp)
 
 2. Inicia sesión con tu cuenta y contraseña de CasaOS
 {% note danger %}
@@ -56,13 +56,13 @@ Contraseña de cuenta predeterminada
 
 3. Ingresa lsblk y revisa para ver si estás obteniendo el nombre de la eMMC de destino, que debería ser mmcblk0
 
-![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.png)
+![](/images/Openwrt-emmc-boot/openwrt-emmc-boot-find-emmc-name.webp)
 
 4. Descomprime el archivo de imagen (si tu archivo OpenWrt es un archivo zip)
 ```
 gzip -d [.gz o .img.gz nombre de imagen]
 ```
-![Descomprimir imagen de OpenWRT](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.png)
+![Descomprimir imagen de OpenWRT](/images/Openwrt-emmc-boot/openwrt-emmc-boot-unzip-image-file.webp)
 
 5. ¡Verifica que la descompresión esté funcionando! Asegúrate de que no haya anormalidades en el archivo de imagen
 
@@ -89,7 +89,7 @@ gzip -d [.gz o .img.gz nombre de imagen]
 
 **2. Reinicia e inicia sesión en tu sistema OpenWrt**
    
-![Entrar a Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.png)
+![Entrar a Openwrt Luci](/images/Openwrt-emmc-boot/openwrt-emmc-boot-enter-to-openwrt-luci.webp)
 
 # Resumen
 Prefiero ejecutar un sistema y servicio completamente separado en cada ZimaBoard. Así que, este es un modo mucho más simple que arrancar OpenWRT en el ZimaBoard con una memoria USB. Si estás interesado en tener tu ZimaBoard ejecutando sistemas duales al mismo tiempo, considera hacer una memoria USB y cambiar el sistema al que está conectado el ZimaBoard a través de la configuración de la BIOS.

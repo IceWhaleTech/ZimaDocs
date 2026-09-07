@@ -27,7 +27,7 @@ title: Minecraft サーバー - ZimaBoardでMinecraftサーバーを構築する
 
 ## CasaOSに入る
 
-![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.png)
+![minecraft-casa-home-page](/images/Minecraft-Friendship-Service/minecraft-casa-home-page.webp)
 
 ## アプリストアを開いてカスタムインストールを選択
 
@@ -42,11 +42,11 @@ itzg/minecraft-server
 
 ## [Cli]（<https://hub.docker.com/r/itzg/minecraft-server>）をコピー
 
-![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.png).
+![Copy Minecraft Server Cli](/images/Minecraft-Friendship-Service/minecraft-copy-cli.webp).
 
 ## 環境をチェック
 
-![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.png)
+![Check Minecraft Server Environment](/images/Minecraft-Friendship-Service/minecraft-check-environment.webp)
 
 {% note dinfo %}
 **注意**
