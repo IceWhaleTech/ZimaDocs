@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS で AMD Ryzen AI MAX+ 395 の NPU を試す：実測と現実的な限界 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS（カーネル 6.18.9）上で AMD Ryzen AI MAX+ 395 の XDNA2 NPU を実機検証：NPU の有効化、ファームウェアとドライバーのバージョン固定、そして Linux で NPU ベースの AI 推論が今日使えるかどうかを解説します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS で AMD Ryzen AI MAX+ 395 の NPU を試す：実測と現実的な限界">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS（カーネル 6.18.9）上で AMD Ryzen AI MAX+ 395 の XDNA2 NPU を実機検証：NPU の有効化、ファームウェアとドライバーのバージョン固定、そして Linux で NPU ベースの AI 推論が今日使えるかどうかを解説します。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-09-07T06:35:41.094Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.094Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaOS で AMD Ryzen AI MAX+ 395 の NPU を試す",
+      "description": "ZimaOS（カーネル 6.18.9）上で AMD Ryzen AI MAX+ 395 の XDNA2 NPU を実機検証：NPU の有効化、ファームウェアとドライバーのバージョン固定、そして Linux で NPU ベースの AI 推論が今日使えるかどうかを解説します。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.094Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/jp/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZimaOS で AMD Ryzen AI MAX+ 395 の NPU を試す"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/hardware/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/jp/hardware/quick-start">クイックスタート</a></li><li><a class="" href="/docs/jp/hardware/zimacube-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/hardware-details">ハードウェア詳細</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on-setup">自動電源オンの設定</a></li><li><a class="" href="/docs/jp/hardware/pc-direct">PC 直接接続</a></li><li><a class="" href="/docs/jp/hardware/hdd-interface-guide">HDD インターフェースガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-guide">7 番ベイ利用ガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-install">7 番ベイの取り付け</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on">自動電源オン</a></li><li><a class="" href="/docs/jp/hardware/gpu-expansion">GPU 拡張</a></li><li><a class="" href="/docs/jp/hardware/raid-ssd-expansion">RAID SSD 拡張</a></li><li><a class="" href="/docs/jp/hardware/bios-configuration">BIOS 設定</a></li><li><a class="" href="/docs/jp/hardware/zimacube-fan-diy">DIY ファンガイド</a></li><li><a class="" href="/docs/jp/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 転送速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">対応ネットワークアダプター</a></li><li><a class="" href="/docs/jp/hardware/enable-wol-on-zimacube">Wake-on-LAN を有効化</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/jp/hardware/zimaboard-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/zimaboard-quick-start">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/hardware-interface">ハードウェアインターフェース</a></li><li><a class="" href="/docs/jp/hardware/power-on-zimaboard-2">ZimaBoard 2 の電源を入れる</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">ファン取り付けと PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/jp/hardware/power-on-zimablade">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/zimablade-overview">はじめに</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">互換性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/jp/hardware/7th-bay-led">7 番ベイ LED インジケーター</a></li><li><a class="" href="/docs/jp/hardware/ups-compatibility-list">UPS 互換性リスト</a></li><li><a class="" href="/docs/jp/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/jp/hardware/supported-disk-formats">対応ディスク形式</a></li><li><a class="" href="/docs/jp/hardware/ax210-wifi-6e">AX210 Wi-Fi モジュール</a></li><li><a class="" href="/docs/jp/hardware/wake-on-lan-setup">Wake-on-LAN 設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">サードパーティ OS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/jp/hardware/install-unraid">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/install-truenas">TrueNAS を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-x86-install">OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux のインストール</a></li><li><a class="" href="/docs/jp/hardware/openwrt-usb-install">USB から OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-emmc-boot">OpenWrt eMMC 起動</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-install">OMV のインストール</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-setup">OMV の設定</a></li><li><a class="" href="/docs/jp/hardware/unraid-install">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/third-party-os-install">サードパーティ OS</a></li><li><a class="" href="/docs/jp/hardware/minimal-ubuntu-server-build">Ubuntu Server の設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">サードパーティ製ハードウェアの検証</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="is-current" href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaOS で AMD Ryzen AI MAX+ 395 の NPU を試す</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="概要" class="article-heading">概要<a class="article-anchor" href="#概要" aria-hidden="true"></a></h2><p>この記事は、カーネル <code class="chip">6.18.9</code> の ZimaOS を実行するホスト上で、AMD Ryzen AI MAX+ 395 プロセッサの NPU で小さな AI モデルを動かす試みを記録したものです。XDNA2 NPU の有効化、ドライバーレベルでの検証、現実的な推論経路のすべてを試した過程を追います。その結果、この NPU が Linux 上で今日何ができて何ができないのか、そしてその理由が明確になります。</p>
+<h2 id="TL-DR" class="article-heading">TL;DR<a class="article-anchor" href="#TL-DR" aria-hidden="true"></a></h2><p>AMD XDNA2 NPU の Linux 向け推論ソフトウェアスタックは、エンジニアリング検証の閾値を超えておらず、まだ本番環境として使用できません。すべての障壁はハードウェアそのものではなく、Linux 側の AMD ソフトウェアの成熟度に起因しています。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>観点</th>
+<th>判定</th>
+<th>1 行の根拠</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NPU ハードウェア</td>
+<td>成熟</td>
+<td>量産 IP。このホストで正しく検出され、計算可能</td>
+</tr>
+<tr>
+<td>Windows ソフトウェアスタック</td>
+<td>成熟</td>
+<td>公式 ONNX Runtime EP と whisper.cpp が動作</td>
+</tr>
+<tr>
+<td>Linux ソフトウェアスタック</td>
+<td>本番未対応</td>
+<td>ドライバー・ファームウェア・ランタイムのバージョン連鎖が破綻。公式フレームワーク不在</td>
+</tr>
+<tr>
+<td>ローカルで到達した最高状態</td>
+<td>有効化 + プログラマブル + 演算子実行 + 実モデル prefill</td>
+<td>完全なモデル生成はドライバーバージョンにロックされている</td>
+</tr>
+</tbody></table></div>
+<p>NPU は Windows では製品、Linux では開発者の遊び場です。本番では AI 推論に iGPU&#x2F;dGPU（ROCm または Vulkan）を使い、NPU 経路は「AMD の Linux スタックが成熟したら再評価」とマークしてください。現時点ではコンピュートドライバーの起動と演算子の実行まではできますが、ファームウェア・ドライバー・ランタイム間のバージョン断絶と公式フレームワークの不在により、NPU は Linux 上で完全な製品としては機能しません。</p>
+<h2 id="テスト環境" class="article-heading">テスト環境<a class="article-anchor" href="#テスト環境" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>プロセッサ: AMD Ryzen AI MAX+ 395（Strix Halo）、XDNA2 NPU、定格 50 TOPS</li>
+<li>プラットフォーム: ZimaOS 1.7 以降、カーネル <code class="chip">6.18.9</code></li>
+<li>NPU の PCI デバイス ID: <code class="chip">0x1022:0x17f0</code></li>
+</ul>
+<p>目標: このホストの NPU 上で小さなモデルを動かすこと。</p>
+<h2 id="検出と有効化" class="article-heading">検出と有効化<a class="article-anchor" href="#検出と有効化" aria-hidden="true"></a></h2><p>検出: <code class="chip">lspci</code> で XDNA2 NPU を確認。カーネルモジュール <code class="chip">amdxdna</code> はロードされますが、ファームウェアが存在しないため <code class="chip">/dev/accel/accel0</code> は作成されません。ドライバーは <code class="chip">amdnpu/17f0_11/npu.sbin</code> を期待しますが、このファイルはディスクのどこにも存在しません。</p>
+<p>有効化: XRT をソースからビルドしてバージョン <code class="chip">2.21.75</code> にしました（Ubuntu リポジトリには <code class="chip">2.13</code> しかありません）。ビルドにはコンテナを使用。2 つの落とし穴を回避した後、NPU が認識されます：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ xrt-smi examine</span><br><span class="line">XRT  Version: 2.21.75 · amdxdna Version: 6.18.9 · NPU Firmware Version: 1.0.0.166</span><br><span class="line">|BDF            |Name         |</span><br><span class="line">|[0000:c7:00.1] |RyzenAI-npu5 |</span><br></pre></td></tr></table></div></figure>
+
+<p>落とし穴は 2 つありました。</p>
+<ol class="doc-steps">
+<li>コンテナは <code class="chip">--ulimit memlock=-1</code> で起動する必要があります。デフォルトの 8 MB 制限ではデバイスマッピングが失敗します。</li>
+<li>ホストで hugepages を予約し、<code class="chip">/dev/hugepages</code> をマウントする必要があります。ホストのファームウェアは ZimaOS の <code class="chip">zimaos-driver</code> パッケージ（<code class="chip">/opt/zimaos/drivers/firmware/</code>）が管理しています。</li>
+</ol>
+<h2 id="低レベル検証" class="article-heading">低レベル検証<a class="article-anchor" href="#低レベル検証" aria-hidden="true"></a></h2><p>pyxrt によるプログラマブルアクセス：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python3 verify_pyxrt.py</span><br><span class="line">device: &lt;pyxrt.device object at 0x7f46d2a039f0&gt;  ·  pyxrt roundtrip: OK</span><br></pre></td></tr></table></div></figure>
+
+<p>IRON&#x2F;axpy 演算子の実行（mlir-aie 1.4.2、160 テストすべて合格）：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python -m pytest test.py -x -q</span><br><span class="line">============================= 160 passed in 36.22s =============================</span><br></pre></td></tr></table></div></figure>
+
+<p>NPU は完全に有効化され、プログラマブルにアドレス指定でき、実際に AIE 演算子を実行します。これがこのホストにおける NPU 能力のベースラインです。</p>
+<h2 id="試行-1：公式-ONNX-Runtime-EP-——-Linux-では未有効" class="article-heading">試行 1：公式 ONNX Runtime EP —— Linux では未有効<a class="article-anchor" href="#試行-1：公式-ONNX-Runtime-EP-——-Linux-では未有効" aria-hidden="true"></a></h2><p>AMD 公式ドキュメントと公式 issue トラッカーからの調査：</p>
+<ul class="doc-dots">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html" title="公式 ONNX Runtime Vitis-AI Execution Provider ドキュメント" class="doc-link">ONNX Runtime Vitis-AI Execution Provider ドキュメント</a>には「Ryzen AI Linux support is not enabled in this release」とあり、このプロバイダーは AMD64 では Windows 専用です。</li>
+<li>AMD 公式 issue #319&#x2F;#333&#x2F;#341 はすべて OPEN のまま応答なし（<code class="chip">voe</code> モジュール欠落 &#x2F; <code class="chip">onnxruntime_providers_ryzenai.so</code> 欠落）。</li>
+<li>AMD Ryzen AI 1.8 リリースノート：「Model generation is not supported on Linux in this release.」</li>
+</ul>
+<p><strong>結論</strong>: 公式推論フレームワーク経路は Linux x86_64 には存在しません。このルートは除外されます。</p>
+<h2 id="試行-2：FastFlowLM-——-ファームウェア-x2F-ドライバープロトコルにロックされる" class="article-heading">試行 2：FastFlowLM —— ファームウェア&#x2F;ドライバープロトコルにロックされる<a class="article-anchor" href="#試行-2：FastFlowLM-——-ファームウェア-x2F-ドライバープロトコルにロックされる" aria-hidden="true"></a></h2><p>イメージのビルドは成功（463 MB）、Llama-3.2-1B-NPU2 のダウンロードも成功しましたが、推論は即座に中断します：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ flm run llama3.2:1b</span><br><span class="line">[FLM]  Prefill chunk 1/1 with 46 tokens</span><br><span class="line">[ERROR]  Insertion error: runlist failed execution (ERT_CMD_STATE_ABORT)</span><br></pre></td></tr></table></div></figure>
+
+<p><code class="chip">validate</code> が正確な理由を報告します（ファームウェアとドライバーの両方がバージョン不適合）：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ fastflowlm validate -j</span><br><span class="line">&#123; &quot;fw_build&quot;: 166, &quot;fw_major&quot;: 1, &quot;fw_minor&quot;: 0, &quot;fw_ok&quot;: false,</span><br><span class="line">  &quot;drm_version&quot;: &quot;0.1&quot;, &quot;kernel_ok&quot;: false, &quot;ready&quot;: false &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>FastFlowLM の <code class="chip">main.cpp</code> ソースを読むと、その必須要件が確認できます：ファームウェアは最低 <code class="chip">1.1.0.0</code>、<code class="chip">amdxdna</code> デバイスの DRM バージョンは最低 <code class="chip">0.6</code>（メインラインドライバーは <code class="chip">0.1</code> を報告）。</p>
+<h2 id="ファームウェアアップグレード実験：プロトコルの行き詰まり" class="article-heading">ファームウェアアップグレード実験：プロトコルの行き詰まり<a class="article-anchor" href="#ファームウェアアップグレード実験：プロトコルの行き詰まり" aria-hidden="true"></a></h2><p>kernel-firmware&#x2F;drm-firmware GitLab プロジェクトの amd-ipu-staging ブランチで、より新しいファームウェア <code class="chip">npu.sbin.1.1.2.65</code>（「Release 1.1.2.65」を内蔵、1.1.0.0 以上）が見つかりました。インストール後、probe が失敗します：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ dmesg | grep -iE &quot;amdxdna.*protocol&quot;</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* aie2_check_protocol: Incompatible firmware protocol major 7 minor 2</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* aie2_hw_start: firmware is not alive</span><br></pre></td></tr></table></div></figure>
+
+<p>メインラインカーネルソースの <code class="chip">aie2_check_protocol</code> を読むと：ファームウェアのプロトコル major はドライバーの <code class="chip">protocol_major</code> と等しくなければなりません。メインライン <code class="chip">6.18.9</code> ドライバー（npu5）はプロトコル <strong>6.12</strong> を使用し、ファームウェア <code class="chip">1.1.2.65</code> はプロトコル <strong>7</strong> を話すため、互換性がありません。変更はロールバックされ、XRT&#x2F;pyxrt 環境は無傷です。</p>
+<p><strong>重要な発見</strong>: ドライバーのプロトコルバージョンはリリース間で破綻しています。新しいファームウェア（プロトコル 7）には新しいドライバー（プロトコル 7）が必要で、そのドライバーにはまだどの安定ブランチにも入っていないカーネルが必要です。カーネルソースから、プロトコル 7 のサポートは未リリースの master（将来の 6.20&#x2F;7.0）にのみ存在し、6.18&#x2F;6.19 安定版にはないことが確認できます。</p>
+<h2 id="試行-3：ツリー外ドライバー-——-ZimaOS-のカスタムカーネルではロードできない" class="article-heading">試行 3：ツリー外ドライバー —— ZimaOS のカスタムカーネルではロードできない<a class="article-anchor" href="#試行-3：ツリー外ドライバー-——-ZimaOS-のカスタムカーネルではロードできない" aria-hidden="true"></a></h2><p>プロトコル 7 のドライバーを得るため、kernel.org からメインライン <code class="chip">6.18.9</code> のヘッダーツリーをビルドし、上流 xdna-driver の <code class="chip">amdxdna.ko</code> を vermagic 完全一致でコンパイルしました。ロードは失敗します：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ insmod amdxdna.ko</span><br><span class="line">insmod: ERROR: could not insert module ...: Unknown symbol in module</span><br><span class="line">$ dmesg | grep amdxdna</span><br><span class="line">amdxdna: Unknown symbol drm_gem_shmem_pin_locked (err -2)</span><br><span class="line">amdxdna: Unknown symbol drm_gem_shmem_vmap_locked (err -2)  ... (13 drm_gem_shmem_* symbols missing in total)</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>根本原因</strong>: ZimaOS カーネルは Buildroot のカスタムビルドで、その <code class="chip">drm_shmem_helper</code> がメインライン <code class="chip">6.18.9</code> ソースと一致しないため、AMD 公式ツリー外ドライバーの ABI が合いません。これはロールバックされました。これで FastFlowLM ルートは完全に閉じました（ファームウェア・ドライバー・カーネルが壊れた連鎖を形成）。</p>
+<h2 id="試行-4：IRON-Llama-——-prefill-で突破口、decode-で最終的な壁" class="article-heading">試行 4：IRON Llama —— prefill で突破口、decode で最終的な壁<a class="article-anchor" href="#試行-4：IRON-Llama-——-prefill-で突破口、decode-で最終的な壁" aria-hidden="true"></a></h2><p>FastFlowLM やプロトコル 7 に依存しない mlir-aie&#x2F;IRON ニアメタルツールチェーンで別ルートを取りました。環境は amd&#x2F;IRON リポジトリから構築し（mlir_aie 1.4.2.dev16 + CPU 専用 torch + 演算子依存関係）、モデルは HF トークンを避けるため ModelScope 経由でダウンロードしました。</p>
+<p>コンパイル: すべての AIE 演算子（RMSNorm&#x2F;GEMM&#x2F;GEMV&#x2F;RoPE&#x2F;Softmax&#x2F;FFN）がコンパイルに成功。</p>
+<p>Prefill は成功 —— 完全な transformer フォワードパスが NPU 上で実行され、最初のトークンを正しく生成します：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python llama_npu.py model.safetensors tokenizer.model --num-tokens 1 --prompt-len 13</span><br><span class="line">SCENE I. King John</span><br><span class="line">[Prefill] Time to first token: 2.022 s   [Total] Tokens per second: 0.495</span><br></pre></td></tr></table></div></figure>
+
+<p>Decode は失敗し、2 つの層でブロックされます：</p>
+<p>まず、XRT API（2.21.75）に欠落があります：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">AttributeError: &#x27;pyxrt.run&#x27; object has no attribute &#x27;get_ctrl_scratchpad_bo&#x27;</span><br></pre></td></tr></table></div></figure>
+
+<p>次に、pyxrt 2.26 モジュールを自前ビルド（FastFlowLM イメージから抽出した XRT 2.26 libs + xdna-driver ソースの狙い撃ちビルド。メインラインドライバーとの互換性を検証済み：<code class="chip">get_ctrl_scratchpad_bo: True</code>、デバイス&#x2F;BO 通信も通過）した後でも、fused カーネルの実行は失敗します：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">RuntimeError: DRM_IOCTL_AMDXDNA_EXEC_CMD IOCTL failed (err=-22): Invalid argument</span><br><span class="line">$ dmesg | grep amdxdna</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* amdxdna_cmd_submit: HW Context is not ready</span><br></pre></td></tr></table></div></figure>
+
+<p>ドライバーソース <code class="chip">amdxdna_ctx.c</code> を読むと：送信には hwctx 状態 <code class="chip">READY</code> が必要です。decode の fused カーネルは ELF 経由で hwctx をロードしますが、これは新しい経路であり、メインライン <code class="chip">6.18.9</code> ドライバーは READY に到達させることができません。</p>
+<p><strong>結論</strong>: NPU 上での prefill（実モデルのフォワードパス）は達成。decode（完全な生成）はドライバーバージョンにロックされています —— FastFlowLM と同じ壁です。</p>
+<h2 id="レイヤー別ソフトウェアスタック分析" class="article-heading">レイヤー別ソフトウェアスタック分析<a class="article-anchor" href="#レイヤー別ソフトウェアスタック分析" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>レイヤー</th>
+<th>成熟度</th>
+<th>主要な結論</th>
+<th>根拠</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ハードウェア（XDNA2）</td>
+<td>準備完了</td>
+<td>量産 IP。8 列すべて検出され、計算可能</td>
+<td>検出と有効化</td>
+</tr>
+<tr>
+<td>カーネルドライバー（amdxdna）</td>
+<td>限定的</td>
+<td>プロトコル 6.12 は動作。プロトコル 7 は安定カーネルに入らず。ツリー外ドライバーはロード不可</td>
+<td>検出 &#x2F; アップグレード実験 &#x2F; ツリー外ドライバー</td>
+</tr>
+<tr>
+<td>ファームウェア</td>
+<td>限定的</td>
+<td>1.0.x はプロトコル 6、1.1.x はプロトコル 7 に縛られる。新しいファームウェアには新しいドライバーが必要</td>
+<td>ファームウェアアップグレード実験</td>
+</tr>
+<tr>
+<td>ユーザー空間ランタイム（XRT）</td>
+<td>限定的</td>
+<td>2.21 と 2.26 が分裂。新しい API は新しいバージョンに依存</td>
+<td>IRON Llama</td>
+</tr>
+<tr>
+<td>推論フレームワーク</td>
+<td>未準備</td>
+<td>公式 EP は Linux で未有効。FastFlowLM はバージョン一致に依存。IRON はニアメタルでエンドツーエンドではない</td>
+<td>試行 1、2、4</td>
+</tr>
+<tr>
+<td>モデル形式</td>
+<td>限定的</td>
+<td>汎用形式やデプロイパイプラインが存在しない。各ベンダーが独自コンパイルチェーンを持つ</td>
+<td>試行 2、4</td>
+</tr>
+<tr>
+<td>システム統合</td>
+<td>限定的</td>
+<td>ディストリビューションへの強い依存。ZimaOS のカスタムカーネルと読み取り専用 &#x2F;lib&#x2F;modules がアップグレードをロック</td>
+<td>検出 &#x2F; ツリー外ドライバー</td>
+</tr>
+</tbody></table></div>
+<h2 id="障壁と根本原因" class="article-heading">障壁と根本原因<a class="article-anchor" href="#障壁と根本原因" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>プロトコルの行き詰まり</strong>: 新しいファームウェア（プロトコル 7）、新しいドライバー（プロトコル 7）、安定カーネル（プロトコル 7 なし）が閉ループを形成しない。</li>
+<li><strong>公式フレームワーク不在</strong>: ONNX Runtime Vitis-AI EP は Linux x86_64 で明示的に未有効。公式 issue は応答なし、ロードマップなし。</li>
+<li><strong>ディストリビューション依存</strong>: ZimaOS のカスタムカーネルの DRM 層がメインラインと異なるため、AMD 公式ツリー外ドライバーすらロードできない。</li>
+<li><strong>エコシステムの断片化</strong>: 標準のモデル形式やデプロイパイプラインがなく、モデルコンパイルは各ベンダーの独自ツールチェーンに依存。</li>
+<li><strong>デバッグ体験</strong>: エラー（EINVAL、プロトコル不一致、「hwctx not ready」）に公式のトラブルシューティング経路がなく、コミュニティが解決している。</li>
+</ol>
+<h2 id="プラットフォーム成熟度の比較" class="article-heading">プラットフォーム成熟度の比較<a class="article-anchor" href="#プラットフォーム成熟度の比較" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>観点</th>
+<th>Windows</th>
+<th>Linux（現状）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公式 ONNX EP</td>
+<td>準備完了</td>
+<td>未有効</td>
+</tr>
+<tr>
+<td>NPU 推論フレームワーク（whisper.cpp など）</td>
+<td>準備完了</td>
+<td>「Planned」</td>
+</tr>
+<tr>
+<td>ドライバー&#x2F;ファームウェアのバージョン管理</td>
+<td>ベンダー管理</td>
+<td>ディストリビューションごとに断片化</td>
+</tr>
+<tr>
+<td>本番での可用性</td>
+<td>準備完了</td>
+<td>エンジニアリング検証を超えていない</td>
+</tr>
+</tbody></table></div>
+<h2 id="結論と推奨事項" class="article-heading">結論と推奨事項<a class="article-anchor" href="#結論と推奨事項" aria-hidden="true"></a></h2><p><strong>技術的結論</strong>: NPU ハードウェアは成熟しており、Windows ソフトウェアスタックも成熟しています。Linux ソフトウェアスタック（ドライバープロトコルの進化、公式フレームワーク、バージョン管理）は活発に開発中で、エンジニアリング検証を通過していません。ローカルで到達した最高状態は「有効化 + プログラマブル + 演算子実行 + 実モデル prefill」であり、完全なモデル生成は不可能です。障壁はハードウェアではなくソフトウェアであり、理論上は AMD の Linux スタックの成熟とともに解消されるはずです。</p>
+<p>推奨事項：</p>
+<ol class="doc-steps">
+<li><strong>本番選定</strong>: Linux では NPU 推論に依存しないでください。AI 推論には iGPU&#x2F;dGPU（ROCm または Vulkan）を使用してください —— llama.cpp + Vulkan はすでにこのホストで 14B から 35B のモデルを実行しています。</li>
+<li><strong>NPU ロードマップ</strong>: 「AMD の Linux スタックが成熟したら再評価」とマークしてください。</li>
+<li><strong>どうしても NPU を使う場合</strong>: プロトタイピングまたは低電力エッジ検証のみに適しており、専門家レベルの IRON 開発が必要です。本番経路ではありません。</li>
+<li><strong>技術的備蓄</strong>: この環境（IRON、pyxrt 2.26、モデル、カーネルヘッダーツリー）はアーカイブ済みで、カーネルアップグレード後にすぐ再試行できます。</li>
+</ol>
+<p><strong>アンロック条件（チェックリスト）</strong>：</p>
+<ul class="doc-dots">
+<li><input disabled type="checkbox"> 安定カーネル（6.20&#x2F;7.0 以降）がプロトコル 7 の amdxdna を搭載</li>
+<li><input disabled type="checkbox"> AMD が Linux 向け onnxruntime-vitisai &#x2F; voe wheel をリリース</li>
+<li><input disabled type="checkbox"> ZimaOS がカーネルをアップグレード（FastFlowLM または IRON decode が直接動く可能性）</li>
+<li><input disabled type="checkbox"> whisper.cpp の NPU オフロードが Linux をサポート</li>
+</ul>
+<h2 id="付録：検証済みアセット（カーネルアップグレード後の再利用用）" class="article-heading">付録：検証済みアセット（カーネルアップグレード後の再利用用）<a class="article-anchor" href="#付録：検証済みアセット（カーネルアップグレード後の再利用用）" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>アセット</th>
+<th>場所</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IRON 環境（mlir_aie 1.4.2.dev16 + torch）</td>
+<td>コンテナ <code class="chip">npu-dev</code>、<code class="chip">/work/ironenv2/</code></td>
+</tr>
+<tr>
+<td>自前ビルドの pyxrt 2.26</td>
+<td><code class="chip">/work/pyxrt_build/build/</code></td>
+</tr>
+<tr>
+<td>XRT 2.26 libs（隔離）</td>
+<td><code class="chip">/work/xrt226/</code></td>
+</tr>
+<tr>
+<td>Llama-3.2-1B モデル</td>
+<td><code class="chip">/DATA/npu-dev/llama-3.2-1b/</code></td>
+</tr>
+<tr>
+<td>カーネルヘッダーツリー</td>
+<td><code class="chip">/DATA/npu-dev/kernel-src/</code></td>
+</tr>
+<tr>
+<td>FastFlowLM イメージとモデルキャッシュ</td>
+<td><code class="chip">/DATA/npu-dev/fastflowlm/</code>、<code class="chip">/DATA/npu-dev/flm-cache/</code></td>
+</tr>
+<tr>
+<td>ファームウェア&#x2F;ドライバーのバックアップとロールバックスクリプト</td>
+<td><code class="chip">/DATA/npu-dev/fw-backup/</code></td>
+</tr>
+</tbody></table></div>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.094Z" itemprop="dateModified">最終更新日: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/hardware/minimal-ubuntu-server-build"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">Ubuntu Server の設定</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%86%E3%82%B9%E3%83%88%E7%92%B0%E5%A2%83"><span class="toc-text">テスト環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A4%9C%E5%87%BA%E3%81%A8%E6%9C%89%E5%8A%B9%E5%8C%96"><span class="toc-text">検出と有効化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8E%E3%83%AC%E3%83%99%E3%83%AB%E6%A4%9C%E8%A8%BC"><span class="toc-text">低レベル検証</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%A6%E8%A1%8C-1%EF%BC%9A%E5%85%AC%E5%BC%8F-ONNX-Runtime-EP-%E2%80%94%E2%80%94-Linux-%E3%81%A7%E3%81%AF%E6%9C%AA%E6%9C%89%E5%8A%B9"><span class="toc-text">試行 1：公式 ONNX Runtime EP —— Linux では未有効</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%A6%E8%A1%8C-2%EF%BC%9AFastFlowLM-%E2%80%94%E2%80%94-%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2-x2F-%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%AB%E3%83%AD%E3%83%83%E3%82%AF%E3%81%95%E3%82%8C%E3%82%8B"><span class="toc-text">試行 2：FastFlowLM —— ファームウェア&#x2F;ドライバープロトコルにロックされる</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%95%E3%82%A1%E3%83%BC%E3%83%A0%E3%82%A6%E3%82%A7%E3%82%A2%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E5%AE%9F%E9%A8%93%EF%BC%9A%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%AE%E8%A1%8C%E3%81%8D%E8%A9%B0%E3%81%BE%E3%82%8A"><span class="toc-text">ファームウェアアップグレード実験：プロトコルの行き詰まり</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%A6%E8%A1%8C-3%EF%BC%9A%E3%83%84%E3%83%AA%E3%83%BC%E5%A4%96%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC-%E2%80%94%E2%80%94-ZimaOS-%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%A7%E3%81%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84"><span class="toc-text">試行 3：ツリー外ドライバー —— ZimaOS のカスタムカーネルではロードできない</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A9%A6%E8%A1%8C-4%EF%BC%9AIRON-Llama-%E2%80%94%E2%80%94-prefill-%E3%81%A7%E7%AA%81%E7%A0%B4%E5%8F%A3%E3%80%81decode-%E3%81%A7%E6%9C%80%E7%B5%82%E7%9A%84%E3%81%AA%E5%A3%81"><span class="toc-text">試行 4：IRON Llama —— prefill で突破口、decode で最終的な壁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E5%88%A5%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E5%88%86%E6%9E%90"><span class="toc-text">レイヤー別ソフトウェアスタック分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%9C%E5%A3%81%E3%81%A8%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0"><span class="toc-text">障壁と根本原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E6%88%90%E7%86%9F%E5%BA%A6%E3%81%AE%E6%AF%94%E8%BC%83"><span class="toc-text">プラットフォーム成熟度の比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AB%96%E3%81%A8%E6%8E%A8%E5%A5%A8%E4%BA%8B%E9%A0%85"><span class="toc-text">結論と推奨事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%98%E9%8C%B2%EF%BC%9A%E6%A4%9C%E8%A8%BC%E6%B8%88%E3%81%BF%E3%82%A2%E3%82%BB%E3%83%83%E3%83%88%EF%BC%88%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E5%BE%8C%E3%81%AE%E5%86%8D%E5%88%A9%E7%94%A8%E7%94%A8%EF%BC%89"><span class="toc-text">付録：検証済みアセット（カーネルアップグレード後の再利用用）</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/hardware/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/jp/hardware/quick-start">クイックスタート</a></li><li><a class="" href="/docs/jp/hardware/zimacube-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/hardware-details">ハードウェア詳細</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on-setup">自動電源オンの設定</a></li><li><a class="" href="/docs/jp/hardware/pc-direct">PC 直接接続</a></li><li><a class="" href="/docs/jp/hardware/hdd-interface-guide">HDD インターフェースガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-guide">7 番ベイ利用ガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-install">7 番ベイの取り付け</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on">自動電源オン</a></li><li><a class="" href="/docs/jp/hardware/gpu-expansion">GPU 拡張</a></li><li><a class="" href="/docs/jp/hardware/raid-ssd-expansion">RAID SSD 拡張</a></li><li><a class="" href="/docs/jp/hardware/bios-configuration">BIOS 設定</a></li><li><a class="" href="/docs/jp/hardware/zimacube-fan-diy">DIY ファンガイド</a></li><li><a class="" href="/docs/jp/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 転送速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">対応ネットワークアダプター</a></li><li><a class="" href="/docs/jp/hardware/enable-wol-on-zimacube">Wake-on-LAN を有効化</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/jp/hardware/zimaboard-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/zimaboard-quick-start">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/hardware-interface">ハードウェアインターフェース</a></li><li><a class="" href="/docs/jp/hardware/power-on-zimaboard-2">ZimaBoard 2 の電源を入れる</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">ファン取り付けと PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/jp/hardware/power-on-zimablade">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/zimablade-overview">はじめに</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">互換性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/jp/hardware/7th-bay-led">7 番ベイ LED インジケーター</a></li><li><a class="" href="/docs/jp/hardware/ups-compatibility-list">UPS 互換性リスト</a></li><li><a class="" href="/docs/jp/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/jp/hardware/supported-disk-formats">対応ディスク形式</a></li><li><a class="" href="/docs/jp/hardware/ax210-wifi-6e">AX210 Wi-Fi モジュール</a></li><li><a class="" href="/docs/jp/hardware/wake-on-lan-setup">Wake-on-LAN 設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">サードパーティ OS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/jp/hardware/install-unraid">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/install-truenas">TrueNAS を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-x86-install">OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux のインストール</a></li><li><a class="" href="/docs/jp/hardware/openwrt-usb-install">USB から OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-emmc-boot">OpenWrt eMMC 起動</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-install">OMV のインストール</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-setup">OMV の設定</a></li><li><a class="" href="/docs/jp/hardware/unraid-install">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/third-party-os-install">サードパーティ OS</a></li><li><a class="" href="/docs/jp/hardware/minimal-ubuntu-server-build">Ubuntu Server の設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">サードパーティ製ハードウェアの検証</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="is-current" href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">ストア</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

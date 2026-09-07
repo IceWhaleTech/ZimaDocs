@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -91,8 +89,8 @@
 <meta property="og:description" content="Configure NFS file sharing on ZimaOS to mount ZimaCube storage on Linux or macOS clients. Covers server setup, exports, and client mount commands.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1739500988306_image.png">
-<meta property="article:published_time" content="2026-09-01T09:43:51.337Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.337Z">
+<meta property="article:published_time" content="2026-09-07T06:35:40.894Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:40.894Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1739500988306_image.png">
@@ -128,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.337Z"
+      "datePublished": "2026-09-07T06:35:40.894Z"
     }
   </script>
 
@@ -405,9 +403,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>ZimaOS currently provides CLI and GUI support for SAMBA. In versions after 1.3.2, ZimaOS also integrates NFS functionality (at CLI level). This tutorial demonstrates how to use NFS on ZimaOS to share folders and access them from Windows, macOS, and Ubuntu.<br>You need to create or find a folder for sharing first. Here, I will use <code class="chip">/DATA/C/demo</code>as an example.</p>
 <h2 id="Edit-the-Configuration-File" class="article-heading">Edit the Configuration File<a class="article-anchor" href="#Edit-the-Configuration-File" aria-hidden="true"></a></h2><p>Use <code class="chip">vi</code> to edit the <code class="chip">/etc/exports</code>file, which is the configuration file for NFS.</p>
 <ol class="doc-steps">
-<li>Obtain root privileges<br>you need to enter the ZimaOS web terminal and obtain the root privilege.<br>ZimaOS dashboard -&gt; Settings -&gt; General -&gt; Developer mode -&gt; Web-based terminal<br>Log in and switch to root<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></div></figure></li>
-<li>Edit the configuration file<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">vi /etc/exports</span><br></pre></td></tr></table></div></figure></li>
-<li>In the &#x2F;etc&#x2F;exports, paste this line<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">/DATA/C/demo *(rw,sync,no_subtree_check)</span><br></pre></td></tr></table></div></figure>
+<li>Obtain root privileges<br>you need to enter the ZimaOS web terminal and obtain the root privilege.<br>ZimaOS dashboard -&gt; Settings -&gt; General -&gt; Developer mode -&gt; Web-based terminal<br>Log in and switch to root<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></div></figure></li>
+<li>Edit the configuration file<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">vi /etc/exports</span><br></pre></td></tr></table></div></figure></li>
+<li>In the &#x2F;etc&#x2F;exports, paste this line<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">/DATA/C/demo *(rw,sync,no_subtree_check)</span><br></pre></td></tr></table></div></figure>
 Note:</li>
 </ol>
 <ul class="doc-dots">
@@ -447,52 +445,52 @@ Note:</li>
 </ul>
 <p>It will work automatically, even after reboot.</p>
 <h2 id="Bring-the-Configuration-File-into-Effect" class="article-heading">Bring the Configuration File into Effect<a class="article-anchor" href="#Bring-the-Configuration-File-into-Effect" aria-hidden="true"></a></h2><p>In some cases,you may need to run this command in the shell to make the configuraion effective.</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl restart nfs-server</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl restart nfs-server</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
 <p>or</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">exportfs -a</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">exportfs -a</span><br></pre></td></tr></table></div></figure>
 
 <h2 id="Use（Mount-x2F-Unmount-the-NFS-Folders" class="article-heading">Use（Mount&#x2F;Unmount) the NFS Folders<a class="article-anchor" href="#Use（Mount-x2F-Unmount-the-NFS-Folders" aria-hidden="true"></a></h2><h3 id="On-ZimaOS-x2F-Ubuntu" class="article-heading">On ZimaOS&#x2F;Ubuntu<a class="article-anchor" href="#On-ZimaOS-x2F-Ubuntu" aria-hidden="true"></a></h3><p>Tested on ZimaOS 1.3.2-beta2 and Ubuntu 22.04.5 LTS</p>
 <ol class="doc-steps">
-<li>Here on a client machine<br>open Terminal<br>switch to root first<br>make a dir for mounting<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br><span class="line">mkdir /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
-<li>mount the nfs folder<br>this ip is the Server’s IP<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount 10.0.0.71:/DATA/C/demo /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
-<li>Now you can view and use your sharing<br>you may want to remove the mounted NFS folders one day<br>Just check mounted folders<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></div></figure>
-or<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount | grep nfs</span><br></pre></td></tr></table></div></figure></li>
-<li>unmount the nfs folders<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">umount /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
+<li>Here on a client machine<br>open Terminal<br>switch to root first<br>make a dir for mounting<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br><span class="line">mkdir /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
+<li>mount the nfs folder<br>this ip is the Server’s IP<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount 10.0.0.71:/DATA/C/demo /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
+<li>Now you can view and use your sharing<br>you may want to remove the mounted NFS folders one day<br>Just check mounted folders<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></div></figure>
+or<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount | grep nfs</span><br></pre></td></tr></table></div></figure></li>
+<li>unmount the nfs folders<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">umount /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <h3 id="On-macOS" class="article-heading">On macOS<a class="article-anchor" href="#On-macOS" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Tested on macOS Sequoia on M4 Chip<br>make a directory for mounting<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mkdir ~/demo</span><br></pre></td></tr></table></div></figure></li>
-<li>mount the nfs folder<br>you need to use sudo to mount<br>it will prompt you to input the password<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mount -t nfs -o resvport 10.0.0.71:/DATA/C/demo ~/demo</span><br></pre></td></tr></table></div></figure></li>
-<li>open the folder for using<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">open .</span><br></pre></td></tr></table></div></figure></li>
-<li>you may want to remove the mounted NFS folders one day<br>Just check mounted folders<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></div></figure>
-or<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount | grep nfs</span><br></pre></td></tr></table></div></figure></li>
-<li>unmount the nfs folders<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo umount /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
+<li>Tested on macOS Sequoia on M4 Chip<br>make a directory for mounting<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mkdir ~/demo</span><br></pre></td></tr></table></div></figure></li>
+<li>mount the nfs folder<br>you need to use sudo to mount<br>it will prompt you to input the password<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mount -t nfs -o resvport 10.0.0.71:/DATA/C/demo ~/demo</span><br></pre></td></tr></table></div></figure></li>
+<li>open the folder for using<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">open .</span><br></pre></td></tr></table></div></figure></li>
+<li>you may want to remove the mounted NFS folders one day<br>Just check mounted folders<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></div></figure>
+or<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount | grep nfs</span><br></pre></td></tr></table></div></figure></li>
+<li>unmount the nfs folders<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo umount /mnt/demo</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <h3 id="On-Windows" class="article-heading">On Windows<a class="article-anchor" href="#On-Windows" aria-hidden="true"></a></h3><p>Tested on Windows 11</p>
 <ol class="doc-steps">
 <li><p>you may need enter to CMD first<br>since the terminal may place you in Powershell by default on Windows 11</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">cmd</span><br></pre></td></tr></table></div></figure></li>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">cmd</span><br></pre></td></tr></table></div></figure></li>
 <li><p>You may need to change W: to an available character that is not occupied</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount \\10.0.0.71\DATA\C\demo W:</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount \\10.0.0.71\DATA\C\demo W:</span><br></pre></td></tr></table></div></figure>
 <p>Now you can view and use your sharing</p>
 </li>
 <li><p>you may want to remove the mounted NFS folders one day<br>Just check mounted folders</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">net use</span><br></pre></td></tr></table></div></figure></li>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">net use</span><br></pre></td></tr></table></div></figure></li>
 <li><p>unmount the nfs folders</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">net use W: /delete</span><br></pre></td></tr></table></div></figure></li>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">net use W: /delete</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p>The screenshot after mounting on Windows:</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1739500988306_image.png"></span></p>
 <h2 id="Useful-Tips" class="article-heading">Useful Tips<a class="article-anchor" href="#Useful-Tips" aria-hidden="true"></a></h2><p>Here are some commands that you may need further.<br>On the ZimaOS server</p>
 <ol class="doc-steps">
-<li>check the status of nfs-service<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl status nfs-server</span><br></pre></td></tr></table></div></figure></li>
-<li>remove or comment out the line of &#x2F;etc&#x2F;exports to disable sharing<br>run this to make it effective<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">exportfs -a</span><br></pre></td></tr></table></div></figure>
-or<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl restart nfs-server</span><br></pre></td></tr></table></div></figure></li>
+<li>check the status of nfs-service<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl status nfs-server</span><br></pre></td></tr></table></div></figure></li>
+<li>remove or comment out the line of &#x2F;etc&#x2F;exports to disable sharing<br>run this to make it effective<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">exportfs -a</span><br></pre></td></tr></table></div></figure>
+or<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl restart nfs-server</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p>If you encounter any issues during use, feel free to let us know at any time. You can also join our <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">community</a> and <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.com/invite/uuNfKzG5" class="doc-link">Discord</a> to discuss more about NAS and ZimaOS. We look forward to your feedback!</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.337Z" itemprop="dateModified">Last updated: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.894Z" itemprop="dateModified">Last updated: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/developer/zfs-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">ZFS Setup</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/developer/folder-encryption"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Encrypted Folders</span></a></nav>
     </footer>
   </main>
@@ -859,6 +857,9 @@ or<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

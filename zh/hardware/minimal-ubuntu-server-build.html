@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -90,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="本教程最初由 ZaNgA 创建，我们感谢他的贡献。  本教程将引导你设置 ZimaBoard 作为一个紧凑且可靠的家庭实验室或边缘服务器：  在 ZimaBoard 上安装 最新的 Ubuntu LTS（最小化） 使用 mdadm 配置 两个 SATA 磁盘为 RAID-1 镜像 安装并验证 Docker 引擎  本指南假设你对基本的 Linux 命令行有一定了解，并使用">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-09-01T09:43:51.561Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.561Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.115Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.115Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.561Z"
+      "datePublished": "2026-09-07T06:35:41.115Z"
     }
   </script>
 
@@ -345,6 +343,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="is-current" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
   </nav>
 </aside>
 
@@ -385,7 +393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <hr>
 <h2 id="3-创建启动-USB" class="article-heading">3. 创建启动 USB<a class="article-anchor" href="#3-创建启动-USB" aria-hidden="true"></a></h2><p>在 Linux 上：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=ubuntu-24.04-live-server-amd64.iso of=/dev/sdX bs=4M status=progress oflag=<span class="built_in">sync</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=ubuntu-24.04-live-server-amd64.iso of=/dev/sdX bs=4M status=progress oflag=<span class="built_in">sync</span></span><br></pre></td></tr></table></div></figure>
 
 <p>将 <code class="chip">/dev/sdX</code> 替换为你的 USB 设备。</p>
 <p>在 Windows&#x2F;macOS 上：</p>
@@ -425,125 +433,125 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <hr>
 <h3 id="5-2-绑定-Ubuntu-Pro" class="article-heading">5.2 绑定 Ubuntu Pro<a class="article-anchor" href="#5-2-绑定-Ubuntu-Pro" aria-hidden="true"></a></h3><p>在 ZimaBoard 上：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro attach &lt;YOUR_TOKEN_HERE&gt;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro attach &lt;YOUR_TOKEN_HERE&gt;</span><br></pre></td></tr></table></div></figure>
 
 <p>验证状态：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">pro status</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">pro status</span><br></pre></td></tr></table></div></figure>
 
 <p>你应该看到 <code class="chip">esm-infra</code> 和 <code class="chip">esm-apps</code> 已启用。</p>
 <hr>
-<h3 id="5-3-启用推荐的服务" class="article-heading">5.3 启用推荐的服务<a class="article-anchor" href="#5-3-启用推荐的服务" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> esm-infra esm-apps</span><br></pre></td></tr></table></div></figure>
+<h3 id="5-3-启用推荐的服务" class="article-heading">5.3 启用推荐的服务<a class="article-anchor" href="#5-3-启用推荐的服务" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> esm-infra esm-apps</span><br></pre></td></tr></table></div></figure>
 
 <p>可选（推荐用于服务器）：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> livepatch</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> livepatch</span><br></pre></td></tr></table></div></figure>
 
 <blockquote>
 <p>Livepatch 允许在不重启的情况下进行内核安全修复。</p>
 </blockquote>
 <hr>
-<h3 id="5-4-更新系统" class="article-heading">5.4 更新系统<a class="article-anchor" href="#5-4-更新系统" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
+<h3 id="5-4-更新系统" class="article-heading">5.4 更新系统<a class="article-anchor" href="#5-4-更新系统" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="6-更新基础系统" class="article-heading">6. 更新基础系统<a class="article-anchor" href="#6-更新基础系统" aria-hidden="true"></a></h2><p>登录并更新：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="7-识别-SATA-磁盘" class="article-heading">7. 识别 SATA 磁盘<a class="article-anchor" href="#7-识别-SATA-磁盘" aria-hidden="true"></a></h2><p>列出块设备：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">lsblk -o NAME,SIZE,TYPE,MODEL</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">lsblk -o NAME,SIZE,TYPE,MODEL</span><br></pre></td></tr></table></div></figure>
 
 <p>示例：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sda   1.8T 磁盘  Samsung_SSD</span><br><span class="line">sdb   1.8T 磁盘  Samsung_SSD</span><br><span class="line">mmcblk0 32G 磁盘 eMMC</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sda   1.8T 磁盘  Samsung_SSD</span><br><span class="line">sdb   1.8T 磁盘  Samsung_SSD</span><br><span class="line">mmcblk0 32G 磁盘 eMMC</span><br></pre></td></tr></table></div></figure>
 
 <p>我们将镜像 <strong>&#x2F;dev&#x2F;sda</strong> 和 <strong>&#x2F;dev&#x2F;sdb</strong>。</p>
 <hr>
-<h2 id="8-安装-RAID-工具" class="article-heading">8. 安装 RAID 工具<a class="article-anchor" href="#8-安装-RAID-工具" aria-hidden="true"></a></h2><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y mdadm</span><br></pre></td></tr></table></div></figure>
+<h2 id="8-安装-RAID-工具" class="article-heading">8. 安装 RAID 工具<a class="article-anchor" href="#8-安装-RAID-工具" aria-hidden="true"></a></h2><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y mdadm</span><br></pre></td></tr></table></div></figure>
 
 <p>安装过程中，当系统询问是否自动启动 RAID 数组时选择 <strong>是</strong>。</p>
 <hr>
-<h2 id="9-创建-RAID-1-镜像" class="article-heading">9. 创建 RAID-1 镜像<a class="article-anchor" href="#9-创建-RAID-1-镜像" aria-hidden="true"></a></h2><h3 id="擦除现有签名（推荐）" class="article-heading">擦除现有签名（推荐）<a class="article-anchor" href="#擦除现有签名（推荐）" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo wipefs -a /dev/sda</span><br><span class="line">sudo wipefs -a /dev/sdb</span><br></pre></td></tr></table></div></figure>
+<h2 id="9-创建-RAID-1-镜像" class="article-heading">9. 创建 RAID-1 镜像<a class="article-anchor" href="#9-创建-RAID-1-镜像" aria-hidden="true"></a></h2><h3 id="擦除现有签名（推荐）" class="article-heading">擦除现有签名（推荐）<a class="article-anchor" href="#擦除现有签名（推荐）" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo wipefs -a /dev/sda</span><br><span class="line">sudo wipefs -a /dev/sdb</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="创建数组" class="article-heading">创建数组<a class="article-anchor" href="#创建数组" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --create /dev/md0 \</span><br><span class="line">  --level=1 \</span><br><span class="line">  --raid-devices=2 \</span><br><span class="line">  /dev/sda /dev/sdb</span><br></pre></td></tr></table></div></figure>
+<h3 id="创建数组" class="article-heading">创建数组<a class="article-anchor" href="#创建数组" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --create /dev/md0 \</span><br><span class="line">  --level=1 \</span><br><span class="line">  --raid-devices=2 \</span><br><span class="line">  /dev/sda /dev/sdb</span><br></pre></td></tr></table></div></figure>
 
 <p>监控同步进度：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="10-创建文件系统" class="article-heading">10. 创建文件系统<a class="article-anchor" href="#10-创建文件系统" aria-hidden="true"></a></h2><p>格式化数组（例如：ext4）：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></div></figure>
 
 <p>创建挂载点：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data</span><br></pre></td></tr></table></div></figure>
 
 <p>挂载：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mount /dev/md0 /srv/data</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mount /dev/md0 /srv/data</span><br></pre></td></tr></table></div></figure>
 
 <hr>
-<h2 id="11-持久化-RAID-配置" class="article-heading">11. 持久化 RAID 配置<a class="article-anchor" href="#11-持久化-RAID-配置" aria-hidden="true"></a></h2><h3 id="保存-mdadm-配置" class="article-heading">保存 mdadm 配置<a class="article-anchor" href="#保存-mdadm-配置" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --detail --scan | sudo <span class="built_in">tee</span> -a /etc/mdadm/mdadm.conf</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></div></figure>
+<h2 id="11-持久化-RAID-配置" class="article-heading">11. 持久化 RAID 配置<a class="article-anchor" href="#11-持久化-RAID-配置" aria-hidden="true"></a></h2><h3 id="保存-mdadm-配置" class="article-heading">保存 mdadm 配置<a class="article-anchor" href="#保存-mdadm-配置" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --detail --scan | sudo <span class="built_in">tee</span> -a /etc/mdadm/mdadm.conf</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></div></figure>
 
 <h3 id="持久化挂载" class="article-heading">持久化挂载<a class="article-anchor" href="#持久化挂载" aria-hidden="true"></a></h3><p>获取 UUID：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">blkid /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">blkid /dev/md0</span><br></pre></td></tr></table></div></figure>
 
 <p>编辑 <code class="chip">/etc/fstab</code>：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></div></figure>
 
 <p>添加：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">UUID=&lt;uuid&gt;  /srv/data  ext4  defaults,nofail  0  2</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">UUID=&lt;uuid&gt;  /srv/data  ext4  defaults,nofail  0  2</span><br></pre></td></tr></table></div></figure>
 
 <p>测试：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo umount /srv/data</span><br><span class="line">sudo mount -a</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo umount /srv/data</span><br><span class="line">sudo mount -a</span><br></pre></td></tr></table></div></figure>
 
 <hr>
-<h2 id="12-安装-Docker-引擎" class="article-heading">12. 安装 Docker 引擎<a class="article-anchor" href="#12-安装-Docker-引擎" aria-hidden="true"></a></h2><h3 id="安装依赖项" class="article-heading">安装依赖项<a class="article-anchor" href="#安装依赖项" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y ca-certificates curl gnupg</span><br></pre></td></tr></table></div></figure>
+<h2 id="12-安装-Docker-引擎" class="article-heading">12. 安装 Docker 引擎<a class="article-anchor" href="#12-安装-Docker-引擎" aria-hidden="true"></a></h2><h3 id="安装依赖项" class="article-heading">安装依赖项<a class="article-anchor" href="#安装依赖项" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y ca-certificates curl gnupg</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="添加-Docker-GPG-密钥" class="article-heading">添加 Docker GPG 密钥<a class="article-anchor" href="#添加-Docker-GPG-密钥" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \</span><br><span class="line">  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">sudo <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.gpg</span><br></pre></td></tr></table></div></figure>
+<h3 id="添加-Docker-GPG-密钥" class="article-heading">添加 Docker GPG 密钥<a class="article-anchor" href="#添加-Docker-GPG-密钥" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \</span><br><span class="line">  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">sudo <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.gpg</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="添加-Docker-仓库" class="article-heading">添加 Docker 仓库<a class="article-anchor" href="#添加-Docker-仓库" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=<span class="subst">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.gpg] \</span></span><br><span class="line"><span class="string">https://download.docker.com/linux/ubuntu <span class="subst">$(. /etc/os-release &amp;&amp; echo $VERSION_CODENAME)</span> stable&quot;</span> | \</span><br><span class="line">  sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></div></figure>
+<h3 id="添加-Docker-仓库" class="article-heading">添加 Docker 仓库<a class="article-anchor" href="#添加-Docker-仓库" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=<span class="subst">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.gpg] \</span></span><br><span class="line"><span class="string">https://download.docker.com/linux/ubuntu <span class="subst">$(. /etc/os-release &amp;&amp; echo $VERSION_CODENAME)</span> stable&quot;</span> | \</span><br><span class="line">  sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="安装-Docker" class="article-heading">安装 Docker<a class="article-anchor" href="#安装-Docker" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></div></figure>
+<h3 id="安装-Docker" class="article-heading">安装 Docker<a class="article-anchor" href="#安装-Docker" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="13-安装后-Docker-设置" class="article-heading">13. 安装后 Docker 设置<a class="article-anchor" href="#13-安装后-Docker-设置" aria-hidden="true"></a></h2><p>允许你的用户在不使用 sudo 的情况下运行 Docker：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">newgrp docker</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">newgrp docker</span><br></pre></td></tr></table></div></figure>
 
 <p>测试 Docker：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> hello-world</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> hello-world</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="14-（可选）使用-RAID-存储用于-Docker" class="article-heading">14. （可选）使用 RAID 存储用于 Docker<a class="article-anchor" href="#14-（可选）使用-RAID-存储用于-Docker" aria-hidden="true"></a></h2><p>推荐用于容器和卷：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop docker</span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/docker</span><br><span class="line">sudo rsync -aHAX /var/lib/docker/ /srv/data/docker/</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop docker</span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/docker</span><br><span class="line">sudo rsync -aHAX /var/lib/docker/ /srv/data/docker/</span><br></pre></td></tr></table></div></figure>
 
 <p>编辑 Docker 配置：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></div></figure>
 
 <p>添加：</p>
-<figure class="highlight json"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/srv/data/docker&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight json code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/srv/data/docker&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
 
 <p>重启 Docker：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="15-健康检查与维护" class="article-heading">15. 健康检查与维护<a class="article-anchor" href="#15-健康检查与维护" aria-hidden="true"></a></h2><p>检查 RAID 状态：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br><span class="line">sudo mdadm --detail /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br><span class="line">sudo mdadm --detail /dev/md0</span><br></pre></td></tr></table></div></figure>
 
 <p>启用 SMART 监控：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y smartmontools</span><br><span class="line">sudo smartctl -a /dev/sda</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y smartmontools</span><br><span class="line">sudo smartctl -a /dev/sda</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="16-Docker-Compose-基础与示例" class="article-heading">16. Docker Compose 基础与示例<a class="article-anchor" href="#16-Docker-Compose-基础与示例" aria-hidden="true"></a></h2><p>Docker Compose 是在 ZimaBoard 上定义和管理多容器应用的推荐方式。</p>
 <h3 id="安装-Docker-Compose-插件" class="article-heading">安装 Docker Compose 插件<a class="article-anchor" href="#安装-Docker-Compose-插件" aria-hidden="true"></a></h3><p>如果你已经按照上面的 Docker 引擎部分安装了，那么 Compose 插件已经安装好。<br>验证：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose version</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose version</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="17-1-创建标准目录结构" class="article-heading">17.1 创建标准目录结构<a class="article-anchor" href="#17-1-创建标准目录结构" aria-hidden="true"></a></h2><p>使用 RAID-1 数组作为持久化数据存储是最佳实践：</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/compose</span><br><span class="line">sudo <span class="built_in">chown</span> -R <span class="variable">$USER</span>:<span class="variable">$USER</span> /srv/data/compose</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/compose</span><br><span class="line">sudo <span class="built_in">chown</span> -R <span class="variable">$USER</span>:<span class="variable">$USER</span> /srv/data/compose</span><br></pre></td></tr></table></div></figure>
 
 <p>每</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.561Z" itemprop="dateModified">最后更新：2026-09-01</time>
-      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/third-party-os-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">第三方系统</span></a></nav>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.115Z" itemprop="dateModified">最后更新：2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/third-party-os-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">第三方系统</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">AMD Ryzen AI MAX+ 395 NPU</span></a></nav>
     </footer>
   </main>
 
@@ -822,6 +830,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="is-current" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
     
   </div>
   
@@ -899,6 +917,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

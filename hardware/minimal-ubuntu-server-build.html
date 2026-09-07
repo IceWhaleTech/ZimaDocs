@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -90,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="Build a minimal Ubuntu Server setup on ZimaBoard. Install Ubuntu headless, configure networking, and set up SSH for a lightweight home server platform.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-09-01T09:43:51.350Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.350Z">
+<meta property="article:published_time" content="2026-09-07T06:35:40.907Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:40.907Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.350Z"
+      "datePublished": "2026-09-07T06:35:40.907Z"
     }
   </script>
 
@@ -345,6 +343,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="is-current" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
   </nav>
 </aside>
 
@@ -385,7 +393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <hr>
 <h2 id="3-Create-the-Bootable-USB" class="article-heading">3. Create the Bootable USB<a class="article-anchor" href="#3-Create-the-Bootable-USB" aria-hidden="true"></a></h2><p>On Linux:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=ubuntu-24.04-live-server-amd64.iso of=/dev/sdX bs=4M status=progress oflag=<span class="built_in">sync</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=ubuntu-24.04-live-server-amd64.iso of=/dev/sdX bs=4M status=progress oflag=<span class="built_in">sync</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Replace <code class="chip">/dev/sdX</code> with your USB device.</p>
 <p>On Windows&#x2F;macOS:</p>
@@ -425,166 +433,166 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <hr>
 <h3 id="5-2-Attach-Ubuntu-Pro" class="article-heading">5.2 Attach Ubuntu Pro<a class="article-anchor" href="#5-2-Attach-Ubuntu-Pro" aria-hidden="true"></a></h3><p>On the ZimaBoard:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro attach &lt;YOUR_TOKEN_HERE&gt;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro attach &lt;YOUR_TOKEN_HERE&gt;</span><br></pre></td></tr></table></div></figure>
 
 <p>Verify status:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">pro status</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">pro status</span><br></pre></td></tr></table></div></figure>
 
 <p>You should see <code class="chip">esm-infra</code> and <code class="chip">esm-apps</code> enabled.</p>
 <hr>
-<h3 id="5-3-Enable-Recommended-Services" class="article-heading">5.3 Enable Recommended Services<a class="article-anchor" href="#5-3-Enable-Recommended-Services" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> esm-infra esm-apps</span><br></pre></td></tr></table></div></figure>
+<h3 id="5-3-Enable-Recommended-Services" class="article-heading">5.3 Enable Recommended Services<a class="article-anchor" href="#5-3-Enable-Recommended-Services" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> esm-infra esm-apps</span><br></pre></td></tr></table></div></figure>
 
 <p>Optional (recommended for servers):</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> livepatch</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo pro <span class="built_in">enable</span> livepatch</span><br></pre></td></tr></table></div></figure>
 
 <blockquote>
 <p>Livepatch allows kernel security fixes without rebooting.</p>
 </blockquote>
 <hr>
-<h3 id="5-4-Update-the-System" class="article-heading">5.4 Update the System<a class="article-anchor" href="#5-4-Update-the-System" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
+<h3 id="5-4-Update-the-System" class="article-heading">5.4 Update the System<a class="article-anchor" href="#5-4-Update-the-System" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="6-Update-the-Base-System" class="article-heading">6. Update the Base System<a class="article-anchor" href="#6-Update-the-Base-System" aria-hidden="true"></a></h2><p>Log in and update:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="7-Identify-the-SATA-Disks" class="article-heading">7. Identify the SATA Disks<a class="article-anchor" href="#7-Identify-the-SATA-Disks" aria-hidden="true"></a></h2><p>List block devices:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">lsblk -o NAME,SIZE,TYPE,MODEL</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">lsblk -o NAME,SIZE,TYPE,MODEL</span><br></pre></td></tr></table></div></figure>
 
 <p>Example:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sda   1.8T disk  Samsung_SSD</span><br><span class="line">sdb   1.8T disk  Samsung_SSD</span><br><span class="line">mmcblk0 32G disk eMMC</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sda   1.8T disk  Samsung_SSD</span><br><span class="line">sdb   1.8T disk  Samsung_SSD</span><br><span class="line">mmcblk0 32G disk eMMC</span><br></pre></td></tr></table></div></figure>
 
 <p>We will mirror <strong>&#x2F;dev&#x2F;sda</strong> and <strong>&#x2F;dev&#x2F;sdb</strong>.</p>
 <hr>
-<h2 id="8-Install-RAID-Tools" class="article-heading">8. Install RAID Tools<a class="article-anchor" href="#8-Install-RAID-Tools" aria-hidden="true"></a></h2><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y mdadm</span><br></pre></td></tr></table></div></figure>
+<h2 id="8-Install-RAID-Tools" class="article-heading">8. Install RAID Tools<a class="article-anchor" href="#8-Install-RAID-Tools" aria-hidden="true"></a></h2><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y mdadm</span><br></pre></td></tr></table></div></figure>
 
 <p>During installation, choose <strong>Yes</strong> when asked to start RAID arrays automatically.</p>
 <hr>
-<h2 id="9-Create-the-RAID‑1-Mirror" class="article-heading">9. Create the RAID‑1 Mirror<a class="article-anchor" href="#9-Create-the-RAID‑1-Mirror" aria-hidden="true"></a></h2><h3 id="Wipe-Existing-Signatures-Recommended" class="article-heading">Wipe Existing Signatures (Recommended)<a class="article-anchor" href="#Wipe-Existing-Signatures-Recommended" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo wipefs -a /dev/sda</span><br><span class="line">sudo wipefs -a /dev/sdb</span><br></pre></td></tr></table></div></figure>
+<h2 id="9-Create-the-RAID‑1-Mirror" class="article-heading">9. Create the RAID‑1 Mirror<a class="article-anchor" href="#9-Create-the-RAID‑1-Mirror" aria-hidden="true"></a></h2><h3 id="Wipe-Existing-Signatures-Recommended" class="article-heading">Wipe Existing Signatures (Recommended)<a class="article-anchor" href="#Wipe-Existing-Signatures-Recommended" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo wipefs -a /dev/sda</span><br><span class="line">sudo wipefs -a /dev/sdb</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="Create-the-Array" class="article-heading">Create the Array<a class="article-anchor" href="#Create-the-Array" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --create /dev/md0 \</span><br><span class="line">  --level=1 \</span><br><span class="line">  --raid-devices=2 \</span><br><span class="line">  /dev/sda /dev/sdb</span><br></pre></td></tr></table></div></figure>
+<h3 id="Create-the-Array" class="article-heading">Create the Array<a class="article-anchor" href="#Create-the-Array" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --create /dev/md0 \</span><br><span class="line">  --level=1 \</span><br><span class="line">  --raid-devices=2 \</span><br><span class="line">  /dev/sda /dev/sdb</span><br></pre></td></tr></table></div></figure>
 
 <p>Monitor sync progress:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="10-Create-a-Filesystem" class="article-heading">10. Create a Filesystem<a class="article-anchor" href="#10-Create-a-Filesystem" aria-hidden="true"></a></h2><p>Format the array (example: ext4):</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></div></figure>
 
 <p>Create a mount point:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data</span><br></pre></td></tr></table></div></figure>
 
 <p>Mount it:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mount /dev/md0 /srv/data</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mount /dev/md0 /srv/data</span><br></pre></td></tr></table></div></figure>
 
 <hr>
-<h2 id="11-Persist-RAID-Configuration" class="article-heading">11. Persist RAID Configuration<a class="article-anchor" href="#11-Persist-RAID-Configuration" aria-hidden="true"></a></h2><h3 id="Save-mdadm-Configuration" class="article-heading">Save mdadm Configuration<a class="article-anchor" href="#Save-mdadm-Configuration" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --detail --scan | sudo <span class="built_in">tee</span> -a /etc/mdadm/mdadm.conf</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></div></figure>
+<h2 id="11-Persist-RAID-Configuration" class="article-heading">11. Persist RAID Configuration<a class="article-anchor" href="#11-Persist-RAID-Configuration" aria-hidden="true"></a></h2><h3 id="Save-mdadm-Configuration" class="article-heading">Save mdadm Configuration<a class="article-anchor" href="#Save-mdadm-Configuration" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo mdadm --detail --scan | sudo <span class="built_in">tee</span> -a /etc/mdadm/mdadm.conf</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></div></figure>
 
 <h3 id="Persist-the-Mount" class="article-heading">Persist the Mount<a class="article-anchor" href="#Persist-the-Mount" aria-hidden="true"></a></h3><p>Get UUID:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">blkid /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">blkid /dev/md0</span><br></pre></td></tr></table></div></figure>
 
 <p>Edit <code class="chip">/etc/fstab</code>:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/fstab</span><br></pre></td></tr></table></div></figure>
 
 <p>Add:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">UUID=&lt;uuid&gt;  /srv/data  ext4  defaults,nofail  0  2</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">UUID=&lt;uuid&gt;  /srv/data  ext4  defaults,nofail  0  2</span><br></pre></td></tr></table></div></figure>
 
 <p>Test:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo umount /srv/data</span><br><span class="line">sudo mount -a</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo umount /srv/data</span><br><span class="line">sudo mount -a</span><br></pre></td></tr></table></div></figure>
 
 <hr>
-<h2 id="12-Install-Docker-Engine" class="article-heading">12. Install Docker Engine<a class="article-anchor" href="#12-Install-Docker-Engine" aria-hidden="true"></a></h2><h3 id="Install-Dependencies" class="article-heading">Install Dependencies<a class="article-anchor" href="#Install-Dependencies" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y ca-certificates curl gnupg</span><br></pre></td></tr></table></div></figure>
+<h2 id="12-Install-Docker-Engine" class="article-heading">12. Install Docker Engine<a class="article-anchor" href="#12-Install-Docker-Engine" aria-hidden="true"></a></h2><h3 id="Install-Dependencies" class="article-heading">Install Dependencies<a class="article-anchor" href="#Install-Dependencies" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y ca-certificates curl gnupg</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="Add-Docker-GPG-Key" class="article-heading">Add Docker GPG Key<a class="article-anchor" href="#Add-Docker-GPG-Key" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \</span><br><span class="line">  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">sudo <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.gpg</span><br></pre></td></tr></table></div></figure>
+<h3 id="Add-Docker-GPG-Key" class="article-heading">Add Docker GPG Key<a class="article-anchor" href="#Add-Docker-GPG-Key" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo install -m 0755 -d /etc/apt/keyrings</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \</span><br><span class="line">  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</span><br><span class="line">sudo <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.gpg</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="Add-Docker-Repository" class="article-heading">Add Docker Repository<a class="article-anchor" href="#Add-Docker-Repository" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=<span class="subst">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.gpg] \</span></span><br><span class="line"><span class="string">https://download.docker.com/linux/ubuntu <span class="subst">$(. /etc/os-release &amp;&amp; echo $VERSION_CODENAME)</span> stable&quot;</span> | \</span><br><span class="line">  sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></div></figure>
+<h3 id="Add-Docker-Repository" class="article-heading">Add Docker Repository<a class="article-anchor" href="#Add-Docker-Repository" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [arch=<span class="subst">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.gpg] \</span></span><br><span class="line"><span class="string">https://download.docker.com/linux/ubuntu <span class="subst">$(. /etc/os-release &amp;&amp; echo $VERSION_CODENAME)</span> stable&quot;</span> | \</span><br><span class="line">  sudo <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="Install-Docker" class="article-heading">Install Docker<a class="article-anchor" href="#Install-Docker" aria-hidden="true"></a></h3><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></div></figure>
+<h3 id="Install-Docker" class="article-heading">Install Docker<a class="article-anchor" href="#Install-Docker" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="13-Post‑Installation-Docker-Setup" class="article-heading">13. Post‑Installation Docker Setup<a class="article-anchor" href="#13-Post‑Installation-Docker-Setup" aria-hidden="true"></a></h2><p>Allow your user to run Docker without sudo:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">newgrp docker</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br><span class="line">newgrp docker</span><br></pre></td></tr></table></div></figure>
 
 <p>Test Docker:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> hello-world</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> hello-world</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="14-Optional-Use-RAID-Storage-for-Docker" class="article-heading">14. (Optional) Use RAID Storage for Docker<a class="article-anchor" href="#14-Optional-Use-RAID-Storage-for-Docker" aria-hidden="true"></a></h2><p>Recommended for containers and volumes:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop docker</span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/docker</span><br><span class="line">sudo rsync -aHAX /var/lib/docker/ /srv/data/docker/</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl stop docker</span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/docker</span><br><span class="line">sudo rsync -aHAX /var/lib/docker/ /srv/data/docker/</span><br></pre></td></tr></table></div></figure>
 
 <p>Edit Docker config:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/docker/daemon.json</span><br></pre></td></tr></table></div></figure>
 
 <p>Add:</p>
-<figure class="highlight json"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/srv/data/docker&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight json code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/srv/data/docker&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Restart Docker:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="15-Health-Checks-amp-Maintenance" class="article-heading">15. Health Checks &amp; Maintenance<a class="article-anchor" href="#15-Health-Checks-amp-Maintenance" aria-hidden="true"></a></h2><p>Check RAID status:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br><span class="line">sudo mdadm --detail /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /proc/mdstat</span><br><span class="line">sudo mdadm --detail /dev/md0</span><br></pre></td></tr></table></div></figure>
 
 <p>Enable SMART monitoring:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y smartmontools</span><br><span class="line">sudo smartctl -a /dev/sda</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo apt install -y smartmontools</span><br><span class="line">sudo smartctl -a /dev/sda</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="16-Docker-Compose-Basics-amp-Examples" class="article-heading">16. Docker Compose Basics &amp; Examples<a class="article-anchor" href="#16-Docker-Compose-Basics-amp-Examples" aria-hidden="true"></a></h2><p>Docker Compose is the recommended way to define and manage multi‑container applications on your ZimaBoard.</p>
 <h3 id="Install-Docker-Compose-Plugin" class="article-heading">Install Docker Compose Plugin<a class="article-anchor" href="#Install-Docker-Compose-Plugin" aria-hidden="true"></a></h3><p>If you followed the Docker Engine section above, the Compose plugin is already installed.<br>Verify:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose version</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose version</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="17-1-Create-a-Standard-Directory-Layout" class="article-heading">17.1 Create a Standard Directory Layout<a class="article-anchor" href="#17-1-Create-a-Standard-Directory-Layout" aria-hidden="true"></a></h2><p>Using the RAID‑1 array for persistent data is best practice:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/compose</span><br><span class="line">sudo <span class="built_in">chown</span> -R <span class="variable">$USER</span>:<span class="variable">$USER</span> /srv/data/compose</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /srv/data/compose</span><br><span class="line">sudo <span class="built_in">chown</span> -R <span class="variable">$USER</span>:<span class="variable">$USER</span> /srv/data/compose</span><br></pre></td></tr></table></div></figure>
 
 <p>Each application gets its own folder:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">/srv/data/compose/</span><br><span class="line">├── portainer/</span><br><span class="line">├── samba/</span><br><span class="line">├── uptime-kuma/</span><br><span class="line">└── monitoring/</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">/srv/data/compose/</span><br><span class="line">├── portainer/</span><br><span class="line">├── samba/</span><br><span class="line">├── uptime-kuma/</span><br><span class="line">└── monitoring/</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="17-2-Example-1-Portainer-Docker-Management-UI" class="article-heading">17.2 Example 1: Portainer (Docker Management UI)<a class="article-anchor" href="#17-2-Example-1-Portainer-Docker-Management-UI" aria-hidden="true"></a></h2><p>Create directory:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/portainer</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/portainer</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/portainer</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/portainer</span><br></pre></td></tr></table></div></figure>
 
 <p>Create <code class="chip">docker-compose.yml</code>:</p>
-<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">portainer:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">portainer/portainer-ce:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">portainer</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;9000:9000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">portainer_data:/data</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">portainer_data:</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">portainer:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">portainer/portainer-ce:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">portainer</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;9000:9000&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">portainer_data:/data</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">portainer_data:</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Start:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></div></figure>
 
 <p>Access:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">http://&lt;zimaboard-ip&gt;:9000</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">http://&lt;zimaboard-ip&gt;:9000</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="17-3-Example-2-Samba-File-Server-on-RAID-Storage" class="article-heading">17.3 Example 2: Samba File Server (on RAID Storage)<a class="article-anchor" href="#17-3-Example-2-Samba-File-Server-on-RAID-Storage" aria-hidden="true"></a></h2><p>Create directory:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/samba</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/samba</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/samba</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/samba</span><br></pre></td></tr></table></div></figure>
 
 <p>Create shared folder:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/share</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/share</span><br></pre></td></tr></table></div></figure>
 
 <p><code class="chip">docker-compose.yml</code>:</p>
-<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">samba:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dperson/samba</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">samba</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;139:139&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;445:445&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/srv/data/share:/mount</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">&gt;</span></span><br><span class="line"><span class="string">      -u &quot;user;password&quot; \</span></span><br><span class="line"><span class="string">      -s &quot;data;/mount;yes;no;no&quot;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">samba:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">dperson/samba</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">samba</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;139:139&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;445:445&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/srv/data/share:/mount</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">&gt;</span></span><br><span class="line"><span class="string">      -u &quot;user;password&quot; \</span></span><br><span class="line"><span class="string">      -s &quot;data;/mount;yes;no;no&quot;</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Start:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="17-4-Example-3-Uptime-Kuma-Service-Monitoring" class="article-heading">17.4 Example 3: Uptime Kuma (Service Monitoring)<a class="article-anchor" href="#17-4-Example-3-Uptime-Kuma-Service-Monitoring" aria-hidden="true"></a></h2><p>Create directory:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/uptime-kuma</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/uptime-kuma</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/uptime-kuma</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/uptime-kuma</span><br></pre></td></tr></table></div></figure>
 
 <p><code class="chip">docker-compose.yml</code>:</p>
-<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">uptime-kuma:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">louislam/uptime-kuma:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">uptime-kuma</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3001:3001&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">uptime-kuma-data:/app/data</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">uptime-kuma-data:</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">uptime-kuma:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">louislam/uptime-kuma:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">uptime-kuma</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3001:3001&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">uptime-kuma-data:/app/data</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">uptime-kuma-data:</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Access:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">http://&lt;zimaboard-ip&gt;:3001</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">http://&lt;zimaboard-ip&gt;:3001</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="17-5-Example-4-Basic-Monitoring-cAdvisor-Node-Exporter" class="article-heading">17.5 Example 4: Basic Monitoring (cAdvisor + Node Exporter)<a class="article-anchor" href="#17-5-Example-4-Basic-Monitoring-cAdvisor-Node-Exporter" aria-hidden="true"></a></h2><p>Create directory:</p>
-<figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/monitoring</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/monitoring</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /srv/data/compose/monitoring</span><br><span class="line"><span class="built_in">cd</span> /srv/data/compose/monitoring</span><br></pre></td></tr></table></div></figure>
 
 <p><code class="chip">docker-compose.yml</code>:</p>
-<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">cadvisor:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gcr.io/cadvisor/cadvisor:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">cadvisor</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/:/rootfs:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run:/var/run:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/sys:/sys:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/lib/docker/:/var/lib/docker:ro</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">node-exporter:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">prom/node-exporter:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">node-exporter</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;9100:9100&quot;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3.8&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">cadvisor:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gcr.io/cadvisor/cadvisor:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">cadvisor</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/:/rootfs:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run:/var/run:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/sys:/sys:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/lib/docker/:/var/lib/docker:ro</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">node-exporter:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">prom/node-exporter:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">node-exporter</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;9100:9100&quot;</span></span><br></pre></td></tr></table></div></figure>
 
 <hr>
-<h2 id="17-6-Common-Docker-Compose-Commands" class="article-heading">17.6 Common Docker Compose Commands<a class="article-anchor" href="#17-6-Common-Docker-Compose-Commands" aria-hidden="true"></a></h2><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Start services</span></span><br><span class="line">docker compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># Stop services</span></span><br><span class="line">docker compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># View logs</span></span><br><span class="line">docker compose logs -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update images</span></span><br><span class="line">docker compose pull</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></div></figure>
+<h2 id="17-6-Common-Docker-Compose-Commands" class="article-heading">17.6 Common Docker Compose Commands<a class="article-anchor" href="#17-6-Common-Docker-Compose-Commands" aria-hidden="true"></a></h2><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Start services</span></span><br><span class="line">docker compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># Stop services</span></span><br><span class="line">docker compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># View logs</span></span><br><span class="line">docker compose logs -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update images</span></span><br><span class="line">docker compose pull</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 <h2 id="18-Result" class="article-heading">18. Result<a class="article-anchor" href="#18-Result" aria-hidden="true"></a></h2><p>You now have:</p>
@@ -597,8 +605,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.350Z" itemprop="dateModified">Last updated: 2026-09-01</time>
-      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/third-party-os-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Third-Party Systems</span></a></nav>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.907Z" itemprop="dateModified">Last updated: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/third-party-os-install"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Third-Party Systems</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">AMD Ryzen AI MAX+ 395 NPU</span></a></nav>
     </footer>
   </main>
 
@@ -877,6 +885,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="is-current" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
     
   </div>
   
@@ -954,6 +972,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

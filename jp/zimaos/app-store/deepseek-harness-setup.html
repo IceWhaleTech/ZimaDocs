@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS で DeepSeek Harness をデプロイ：ホームサーバーを物理 AI エージェントに | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/deepseek-harness-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/deepseek-harness-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS アプリストアから DeepSeek Harness をワンクリックでインストールし、任意の AI モデルプロバイダーを接続し、エージェントのデータ用にホストフォルダーを承認して、スマートフォンから操作します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS で DeepSeek Harness をデプロイ：ホームサーバーを物理 AI エージェントに">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/app-store/deepseek-harness-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS アプリストアから DeepSeek Harness をワンクリックでインストールし、任意の AI モデルプロバイダーを接続し、エージェントのデータ用にホストフォルダーを承認して、スマートフォンから操作します。">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-app-store.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-installed.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-volumes.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-workspace.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-models.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-first-task.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-work-demo.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-resource-manager.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-phone-apps.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-phone-ui.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-docker-socket.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-sandbox-permission.webp">
+<meta property="article:published_time" content="2026-09-07T06:35:41.097Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.097Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-app-store.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaOS で DeepSeek Harness をデプロイする方法",
+      "description": "ZimaOS アプリストアから DeepSeek Harness をワンクリックでインストールし、任意の AI モデルプロバイダーを接続し、エージェントのデータ用にホストフォルダーを承認して、スマートフォンから操作します。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.097Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "ZimaOS で DeepSeek Harness をデプロイする方法"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/deepseek-harness-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/deepseek-harness-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/deepseek-harness-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/deepseek-harness-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">App Store 概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li><li><a class="" href="/docs/jp/zimaos/app-store/adminer-setup-guide">Adminer データベース管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">エージェントと推論</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="is-current" href="/docs/jp/zimaos/app-store/deepseek-harness-setup">DeepSeek Harness エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaOS で DeepSeek Harness をデプロイする方法</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="概要" class="article-heading">概要<a class="article-anchor" href="#概要" aria-hidden="true"></a></h2><p>DeepSeek Harness は ZimaOS アプリカタログでネイティブにサポートされており、セットアップ全体は数分で完了します。最新のアプリ情報は <a href="https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.dsh-harness" class="doc-link">DeepSeek Harness の App Store ページ</a>をご覧ください。</p>
+<p>DeepSeek Harness（dsh）は DeepSeek のオープンソース AI エージェントです。ホームサーバーに住む親切なプログラマーを思い浮かべてください。ブラウザーで話しかけ、やりたいことを説明すると、NAS 上のフォルダーで計画を立てて作業を完了します。プログラミングの知識は不要です。技術的な部分はエージェントが代わりにやってくれます。</p>
+<p>ZimaOS にインストールすると、自分のハードウェア上で 24 時間 365 日稼働します。ZimaClient を通じてスマートフォンから操作でき、プロジェクトはクラウドではなく自分のドライブに置かれます。</p>
+<h2 id="前提条件" class="article-heading">前提条件<a class="article-anchor" href="#前提条件" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>稼働中の ZimaOS ホームサーバー。</li>
+<li>最小ハードウェア要件：デュアルコア CPU と 2 GB 以上のメモリ。</li>
+<li>任意の AI モデルプロバイダーの API キー — DeepSeek、OpenAI（GPT）、Anthropic、OpenRouter、その他のサードパーティプロバイダーがすべて利用でき、自分のハードウェア上のローカル推論モデルも利用できます（本シリーズの次のチュートリアルで扱います）。キーは下の「モデルプロバイダーを追加する」セクションで 1 分で入手できます。</li>
+</ul>
+<h2 id="アプリカタログ" class="article-heading">アプリカタログ<a class="article-anchor" href="#アプリカタログ" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>ZimaOS アプリカタログで DeepSeek Harness を探します。<strong>App Store</strong> を開き、「DeepSeek Harness」を検索します。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-app-store.webp" alt="App Store の検索結果に DeepSeek Harness のアプリカードとインストールボタンが表示されている"></span></p>
+<ol start="2" class="doc-steps">
+<li><strong>インストール</strong>をクリックして少し待ちます。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-installed.webp" alt="ZimaOS ダッシュボードのアプリ一覧で DeepSeek Harness がインストール済みと表示されている"></span></p>
+<ol start="3" class="doc-steps">
+<li><strong>すぐに使えます！</strong></li>
+</ol>
+<h2 id="データディレクトリを承認する" class="article-heading">データディレクトリを承認する<a class="article-anchor" href="#データディレクトリを承認する" aria-hidden="true"></a></h2><p>エージェントがワークスペースを保存するには、ドライブ上のフォルダーが必要です。インストール直後に実行してください。</p>
+<ol class="doc-steps">
+<li><p>アプリカードで右上のオプションメニューをクリックし、コンテナ設定を開きます。</p>
+</li>
+<li><p><strong>ボリューム</strong>（またはパスマッピング）セクションでボリュームルールを追加します。<strong>コンテナパス</strong>を <code class="chip">/root/</code> に、<strong>ホストパス</strong>をエージェントのデータに使いたいフォルダー（例: <code class="chip">/media/SSD-Storage/DSH</code>）に設定します。</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-volumes.webp" alt="アプリ設定のボリュームセクションで、エージェントのデータフォルダーがコンテナのルートからホストフォルダーにマッピングされている"></span></p>
+<ol start="3" class="doc-steps">
+<li>コンテナを再起動します — NAS の再起動は不要です。これ以降、エージェントが作成するすべてのワークスペースはドライブ上のそのフォルダーに直接保存されます。</li>
+</ol>
+<h2 id="最初のワークスペースを作成する" class="article-heading">最初のワークスペースを作成する<a class="article-anchor" href="#最初のワークスペースを作成する" aria-hidden="true"></a></h2><p>アプリカードから DeepSeek Harness を開きます — ブラウザーに Web UI が表示されます。最初のワークスペースを作成します。上記のフォルダー承認により、エージェントが作成するものはすべてドライブに直接保存されます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-workspace.webp" alt="DeepSeek Harness Web UI で最初のワークスペースを作成している"></span></p>
+<h2 id="モデルプロバイダーを追加する" class="article-heading">モデルプロバイダーを追加する<a class="article-anchor" href="#モデルプロバイダーを追加する" aria-hidden="true"></a></h2><p><strong>設定 &gt; モデル</strong>でプロバイダーを追加し、API キーを貼り付けます。</p>
+<ul class="doc-dots">
+<li><strong>DeepSeek</strong> — <a target="_blank" rel="noopener external nofollow noreferrer" href="https://platform.deepseek.com/" title="API キーと請求のための DeepSeek プラットフォーム" class="doc-link">DeepSeek プラットフォーム</a>で登録してキーをコピーします</li>
+<li><strong>GPT (OpenAI)</strong> — OpenAI キーを使用します</li>
+<li><strong>OpenRouter</strong> — 1 つのキーで多数のモデルを利用できます</li>
+<li>自分のハードウェア上のモデルサーバー — 本シリーズの次のチュートリアルで扱います</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-models.webp" alt="DeepSeek Harness Web UI の設定ページで、モデルプロバイダーが追加され API キーが保存されている"></span></p>
+<h2 id="最初のタスク" class="article-heading">最初のタスク<a class="article-anchor" href="#最初のタスク" aria-hidden="true"></a></h2><p>エージェントに最初の本物の仕事を任せましょう。欲しいアプリを平易な言葉で説明します — 下の例は、ZimaOS ホストの CPU、メモリ、ディスク、ネットワークをリアルタイムに表示するリソースモニターをコンテナアプリとして作るよう依頼しています。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-first-task.webp" alt="DeepSeek Harness Web UI のセッションに、リソースモニターのタスクとエージェントの計画が表示されている"></span></p>
+<p>作業の様子を見てみましょう。セッションには計画、コード、結果が表示されます — あなたは 1 行もコードを書きません。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-work-demo.webp" alt="エージェントがワークスペースでリソースモニターアプリを計画し作成する画面の録画"></span></p>
+<p>数回のやり取りの後、エージェントはアイデアを実際のアプリに変えます — あなたの側にコーディングの知識は不要です。完成するのはシステムレベルのリソースマネージャーで、24 時間稼働し、ZimaOS のディスク健全性、ネットワークセキュリティ、コンテナのライフサイクルを見守ります。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-resource-manager.webp" alt="完成したリソースマネージャーがディスク、ネットワーク、コンテナのライブメトリクスを表示する画面の録画"></span></p>
+<h2 id="モバイルから-DeepSeek-Harness-にアクセスする" class="article-heading">モバイルから DeepSeek Harness にアクセスする<a class="article-anchor" href="#モバイルから-DeepSeek-Harness-にアクセスする" aria-hidden="true"></a></h2><p>ZimaClient モバイルアプリから DeepSeek Harness にアクセスします — ホームサーバーへの直接 P2P 接続で、クラウドリレーも VPN 設定も不要です。自宅でも外出先でも使えます。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th><img src="/docs/images/app-store/dsh-phone-apps.png" alt="ZimaClient モバイルアプリで App Store のアプリ一覧が表示されている"></th>
+<th><img src="/docs/images/app-store/dsh-phone-ui.png" alt="ZimaClient 経由でスマートフォンに開いた DeepSeek Harness Web UI でアクティブなセッションが表示されている"></th>
+</tr>
+</thead>
+</table></div>
+<p>P2P 接続により、エージェントの作業進捗とすべてのセルフホストサービスをいつでもどこでも確認できます — 同じ Web UI がそのままスマートフォンに。</p>
+<h2 id="ホームサーバーはエージェントになった" class="article-heading">ホームサーバーはエージェントになった<a class="article-anchor" href="#ホームサーバーはエージェントになった" aria-hidden="true"></a></h2><p>セットアップは以上です。ホームサーバーはもはや単なるストレージボックスではなく、自分のハードウェアに住む物理エージェントです。</p>
+<ul class="doc-dots">
+<li><strong>スマートフォンから操作</strong> — どこからでも ZimaClient で Web UI を開き、セッションの確認、結果のレビュー、新しいタスクの送信ができます。エージェントは自宅でも外出先でもワンタップの距離です。</li>
+<li><strong>コードを書かないバイブコーディング</strong> — 機能を平易な言葉で説明すれば、エージェントがワークスペースで計画してコードを書きます。コードはクラウドではなく自分のドライブに残ります。</li>
+<li><strong>ホームオートメーション</strong> — ホームサーバー周りのあらゆるタスクを任せられます。ファイルの整理、データからのレポート生成、繰り返し作業の自動化。NAS 自体の上で動くため、24 時間働き続けます。</li>
+<li><strong>壊れたアプリの診断</strong> — Jellyfin のストリーミングが止まったり Home Assistant が落ちたりしたら、症状を貼り付けるだけで、エージェントが NAS 上でログと設定を読み、原因を見つけて修正します。ブラックボックスの中で推測する必要はもうありません。</li>
+<li><strong>アプリスタックのメンテナンス</strong> — エージェントが Docker Compose ファイルを読み、アップグレード、設定変更、移行を一緒に進めます。セルフホストスタックは次のアップデートまでではなく、何年もメンテナンス可能な状態を保てます。</li>
+</ul>
+<h2 id="使用上の注意" class="article-heading">使用上の注意<a class="article-anchor" href="#使用上の注意" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>専用ハードウェアを与える。</strong>エージェントは物理サンドボックスエージェントとして専用デバイスで動かすのが最適です。大量のデータを置いたメイン NAS から離しておけば、サンドボックス内の実験が大事なものに触れることはありません。</li>
+<li><strong>2 つのレベルの承認。</strong>フォルダー承認はエージェントに ZimaOS 上のデータアクセスを与えます。Docker ソケットの承認は 2 つ目の、はるかに高いレベルです — システムレベルのコンテナ管理、SSH レベルの制御に近い権限をエージェントに与えます。各レベルは慎重に付与し、ソケットレベルはタスクが本当に必要とする場合にのみ付与してください。</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-docker-socket.webp" alt="アプリ設定ページで DeepSeek Harness コンテナへの Docker ソケットボリュームの承認が表示されている"></span></p>
+<ul class="doc-dots">
+<li><strong>サンドボックス権限をフルアクセスに設定する。</strong>dsh 内でサンドボックスの実行権限をフルアクセスに設定すると、エージェントは各ステップで承認を求めることなくタスクを実行できます。</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-sandbox-permission.webp" alt="DeepSeek Harness Web UI でサンドボックス権限がフルアクセスに設定されている"></span></p>
+<ul class="doc-dots">
+<li><strong>エージェントが書くものはすべて Files で見える。</strong>ワークスペースのマッピングにより、エージェントが書くすべてのソースコードは承認済みフォルダーに保存されます — いつでも ZimaOS Files で閲覧・確認できます。</li>
+</ul>
+<h2 id="次のステップ" class="article-heading">次のステップ<a class="article-anchor" href="#次のステップ" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>ローカル推論:</strong> プロバイダーを自分のハードウェア上のモデルサーバーに向ければ、エージェントは完全にオフラインで動きます — 本シリーズの次のチュートリアル。</li>
+<li><strong>dsh でサービスを自動化:</strong> ZimaOS 上で自動化サービスを構築・運用します — 本シリーズの後続チュートリアル。</li>
+</ul>
+<h2 id="参考リンク" class="article-heading">参考リンク<a class="article-anchor" href="#参考リンク" aria-hidden="true"></a></h2><p>詳細は DeepSeek Harness の公式ドキュメントをご覧ください。</p>
+<ul class="doc-dots">
+<li>インストールとすべてのデプロイ方法 – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sdkwork-ai/deepseek-harness-desktop/blob/master/INSTALL.md" title="DeepSeek Harness 公式インストールガイド" class="doc-link">インストールガイド</a></li>
+<li>Web UI の使い方 – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/index.md" title="DeepSeek Harness Web UI 公式ガイド" class="doc-link">Web UI ガイド</a></li>
+<li>モデルプロバイダー – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/providers.md" title="DeepSeek Harness モデルプロバイダー公式ガイド" class="doc-link">プロバイダーガイド</a></li>
+<li>ソースコード – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/deepseek-ai/deepseek-harness" title="DeepSeek Harness 公式 GitHub リポジトリ" class="doc-link">GitHub リポジトリ</a></li>
+</ul>
+<p>ZimaSpace Tech AI Hub の関連記事：</p>
+<ul class="doc-dots">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/tech-ai-hub/10-best-deepseek-harness-plugins-2026" title="ZimaSpace Tech AI Hub の DeepSeek Harness ベストプラグインガイド" class="doc-link">10 Best DeepSeek Harness Plugins 2026</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/tech-ai-hub/de-minimal-and-creator-explained" title="ZimaSpace Tech AI Hub の DE Minimal と Creator の解説" class="doc-link">DE Minimal and Creator Explained</a></li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.097Z" itemprop="dateModified">最終更新日: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">Tailscale と WireGuard</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/app-store/enable-ai"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">AI 検索を有効化</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%AB%E3%82%BF%E3%83%AD%E3%82%B0"><span class="toc-text">アプリカタログ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E6%89%BF%E8%AA%8D%E3%81%99%E3%82%8B"><span class="toc-text">データディレクトリを承認する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><span class="toc-text">最初のワークスペースを作成する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%A2%E3%83%87%E3%83%AB%E3%83%97%E3%83%AD%E3%83%90%E3%82%A4%E3%83%80%E3%83%BC%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><span class="toc-text">モデルプロバイダーを追加する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%88%9D%E3%81%AE%E3%82%BF%E3%82%B9%E3%82%AF"><span class="toc-text">最初のタスク</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%81%8B%E3%82%89-DeepSeek-Harness-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B"><span class="toc-text">モバイルから DeepSeek Harness にアクセスする</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%9B%E3%83%BC%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AF%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F"><span class="toc-text">ホームサーバーはエージェントになった</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%8A%E3%81%AE%E6%B3%A8%E6%84%8F"><span class="toc-text">使用上の注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A1%E3%81%AE%E3%82%B9%E3%83%86%E3%83%83%E3%83%97"><span class="toc-text">次のステップ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E3%83%AA%E3%83%B3%E3%82%AF"><span class="toc-text">参考リンク</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/app-store/">App Store 概要</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">メディアサーバー</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/jp/zimaos/app-store/cli-guide">写真の一括同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/immich-photo-backup">Immich 写真バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/nvr-camera-server">NVR カメラサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/sync-photos-with-immich">Immich 写真同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-setup-guide">Plex メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/dlna-server-setup">DLNA サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU トランスコード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/setup-emby-server">Emby サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">自宅ホストアプリ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-setup">Syncthing でファイル同期</a></li><li><a class="" href="/docs/jp/zimaos/app-store/webtorrent-feature">Torrent ダウンローダー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/pi-hole-setup">Pi-hole 広告ブロッカー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ngx-install">文書管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/paperless-ai-install">AI 文書処理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/syncthing-install">Syncthing 設定ガイド</a></li><li><a class="" href="/docs/jp/zimaos/app-store/radarr-setup">Radarr 映画管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/azuracast-install">インターネットラジオ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zabbix-install-guide">サーバー監視</a></li><li><a class="" href="/docs/jp/zimaos/app-store/adminer-setup-guide">Adminer データベース管理</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">エージェントと推論</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="is-current" href="/docs/jp/zimaos/app-store/deepseek-harness-setup">DeepSeek Harness エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/enable-ai">AI 検索を有効化</a></li><li><a class="" href="/docs/jp/zimaos/app-store/deploy-deepseek-r1">DeepSeek R1 を導入</a></li><li><a class="" href="/docs/jp/zimaos/app-store/hermes-agent-setup">Hermes エージェント</a></li><li><a class="" href="/docs/jp/zimaos/app-store/llm-manual-download">AI モデルをダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/frigate-ollama-setup">AI 写真説明</a></li><li><a class="" href="/docs/jp/zimaos/app-store/openclaw-agent-setup">OpenClaw エージェント</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">クリエイティブな構築例</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/jp/zimaos/app-store/pve-on-debian-for-i226">Debian で PVE を実行</a></li><li><a class="" href="/docs/jp/zimaos/app-store/awesome-third-party-stores">コミュニティ App Store</a></li><li><a class="" href="/docs/jp/zimaos/app-store/batocera-arcade-setup">Batocera アーケード</a></li><li><a class="" href="/docs/jp/zimaos/app-store/jellyfin-setup">Jellyfin メディアサーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/oculus-quest-media-server">Oculus VR ストリーミング</a></li><li><a class="" href="/docs/jp/zimaos/app-store/minecraft-friendship-service">Minecraft サーバー</a></li><li><a class="" href="/docs/jp/zimaos/app-store/self-hosted-apps">自宅ホストアプリ</a></li><li><a class="" href="/docs/jp/zimaos/app-store/zimablade-cluster-pve">PVE クラスター移行</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">開発者向けリソース</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築・公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/deepseek-harness-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/deepseek-harness-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/deepseek-harness-setup" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/deepseek-harness-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">ストア</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

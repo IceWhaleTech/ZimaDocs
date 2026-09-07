@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -101,8 +99,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1735525670726_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1735525688873_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1735525722686_image.png">
-<meta property="article:published_time" content="2026-09-01T09:43:51.349Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.349Z">
+<meta property="article:published_time" content="2026-09-07T06:35:40.907Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:40.907Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1735524832516_image.png">
@@ -138,7 +136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.349Z"
+      "datePublished": "2026-09-07T06:35:40.907Z"
     }
   </script>
 
@@ -357,6 +355,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
   </nav>
 </aside>
 
@@ -384,18 +392,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Save and exit<br><img src="https://manage.icewhale.io/api/static/docs/1735524887156_image.png"></li>
 </ol>
 <h3 id="Step-2-Get-device-information" class="article-heading">Step 2 Get device information<a class="article-anchor" href="#Step-2-Get-device-information" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Use SSH to connect to ZimaCube<br>Fill in the IP address of your ZimaCube in xxx.xxx.xxx.xxx<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ssh root@xxx.xxx.xxx.xxx</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></li>
-<li>Check the MAC address<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ip a</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<li>Use SSH to connect to ZimaCube<br>Fill in the IP address of your ZimaCube in xxx.xxx.xxx.xxx<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">ssh root@xxx.xxx.xxx.xxx</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></li>
+<li>Check the MAC address<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">ip a</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
 Save MAC address 88:c9:b3:b3:0c:fc<br>Save IP address 10.0.203.220<br>Save broadcast address 10.0.255.255<br><img src="https://manage.icewhale.io/api/static/docs/1735525072064_image.png"></li>
 <li>Use “ethtool” to configure Wake-on-LAN</li>
-<li>Change the WOL trigger wake-up activity from <code class="chip">d</code> (disable) to <code class="chip">g</code> and enter ethtool eth0 to check whether the modification is successful<br>**Note: ZimaCube has WOL function enabled by default. If it is not enabled, you can change it according to the above instructions!<br>**<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">//Modify Command</span><br><span class="line">ethtool -s eth0 wol g</span><br><span class="line">//View Commands</span><br><span class="line">ethtool eth0</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<li>Change the WOL trigger wake-up activity from <code class="chip">d</code> (disable) to <code class="chip">g</code> and enter ethtool eth0 to check whether the modification is successful<br>**Note: ZimaCube has WOL function enabled by default. If it is not enabled, you can change it according to the above instructions!<br>**<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">//Modify Command</span><br><span class="line">ethtool -s eth0 wol g</span><br><span class="line">//View Commands</span><br><span class="line">ethtool eth0</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
 <img src="https://manage.icewhale.io/api/static/docs/1735525352878_image.png"></li>
 </ol>
 <h3 id="Step-3-Set-WOL-to-automatically-enable-after-reboot" class="article-heading">Step 3 Set WOL to automatically enable after reboot<a class="article-anchor" href="#Step-3-Set-WOL-to-automatically-enable-after-reboot" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Create a startup script through systemd and create a new service file:<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">nano /etc/systemd/system/wol.service</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></li>
-<li>Enter the following into the file<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Enable Wake-on-LAN on eth0</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/sbin/ethtool -s eth0 wol g</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+<li>Create a startup script through systemd and create a new service file:<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">nano /etc/systemd/system/wol.service</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></li>
+<li>Enter the following into the file<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Enable Wake-on-LAN on eth0</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line">ExecStart=/sbin/ethtool -s eth0 wol g</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
 <img src="https://manage.icewhale.io/api/static/docs/1735525447586_image.png"></li>
-<li>Press <code class="chip">Ctel+O</code> to save, then press Enter, then press <code class="chip">Ctrl+X</code> to close the file, and then enable the service with the following command:<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl enable wol.service</span><br><span class="line">systemctl start wol.service</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></li>
+<li>Press <code class="chip">Ctel+O</code> to save, then press Enter, then press <code class="chip">Ctrl+X</code> to close the file, and then enable the service with the following command:<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">systemctl enable wol.service</span><br><span class="line">systemctl start wol.service</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></li>
 <li>Restart the system and check if the Wake-on setting is still set to<code class="chip">g</code></li>
 </ol>
 <h3 id="Step-4-Use-WOL-function" class="article-heading">Step 4 Use WOL function<a class="article-anchor" href="#Step-4-Use-WOL-function" aria-hidden="true"></a></h3><p>Shut down the computer on the web page, or enter <code class="chip">shutdown now</code> to shut down the computer</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1735525561055_image.png"></span></p>
@@ -410,7 +418,7 @@ Save MAC address 88:c9:b3:b3:0c:fc<br>Save IP address 10.0.203.220<br>Save broad
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.349Z" itemprop="dateModified">Last updated: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.907Z" itemprop="dateModified">Last updated: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/compatible-network-adapters"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Compatible Network Adapters</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/hardware/zimaboard-hardware-overview"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Hardware Overview</span></a></nav>
     </footer>
   </main>
@@ -690,6 +698,16 @@ Save MAC address 88:c9:b3:b3:0c:fc<br>Save IP address 10.0.203.220<br>Save broad
         <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
     
   </div>
   
@@ -767,6 +785,9 @@ Save MAC address 88:c9:b3:b3:0c:fc<br>Save IP address 10.0.203.220<br>Save broad
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

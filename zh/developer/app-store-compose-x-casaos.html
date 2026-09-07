@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -90,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="为 ZimaOS、家庭服务器、Homelab 和 NAS OS 中的 self-hosted 应用定义 Docker 服务与 x-casaos 元数据。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-09-01T09:43:51.558Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.558Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.112Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.112Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.558Z"
+      "datePublished": "2026-09-07T06:35:41.112Z"
     }
   </script>
 
@@ -385,7 +383,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>一个顶层 <code class="chip">x-casaos</code> 块</li>
 </ul>
 <p><code class="chip">Apps/</code> 下的目录名本身并不是协议层的应用身份。构建过程真正读取的是 compose 内容，尤其是顶层 <code class="chip">name</code> 和 <code class="chip">x-casaos.id</code>。</p>
-<h2 id="最小示例" class="article-heading">最小示例<a class="article-anchor" href="#最小示例" aria-hidden="true"></a></h2><figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my-app</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">my-app:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">myrepo/my-app:1.0.0</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8080</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">index:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">port_map:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">http</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">https://cdn.example.com/my-app/icon.svg</span></span><br><span class="line">  <span class="attr">title:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">My</span> <span class="string">App</span></span><br><span class="line">  <span class="attr">tagline:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">Does</span> <span class="string">amazing</span> <span class="string">things</span></span><br><span class="line">  <span class="attr">description:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">A</span> <span class="string">great</span> <span class="string">app</span> <span class="string">that</span> <span class="string">does</span> <span class="string">amazing</span> <span class="string">things.</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">Your</span> <span class="string">Name</span></span><br><span class="line">  <span class="attr">developer:</span> <span class="string">Original</span> <span class="string">Developer</span></span><br><span class="line">  <span class="attr">category:</span> <span class="string">Productivity</span></span><br><span class="line">  <span class="attr">architectures:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">amd64</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">  <span class="attr">update_at:</span> <span class="string">&quot;2026-03-01&quot;</span></span><br><span class="line">  <span class="attr">release_notes:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">First</span> <span class="string">release</span></span><br></pre></td></tr></table></div></figure>
+<h2 id="最小示例" class="article-heading">最小示例<a class="article-anchor" href="#最小示例" aria-hidden="true"></a></h2><figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">my-app</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">my-app:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">myrepo/my-app:1.0.0</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">target:</span> <span class="number">8080</span></span><br><span class="line">        <span class="attr">published:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">        <span class="attr">protocol:</span> <span class="string">tcp</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">index:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">port_map:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">  <span class="attr">scheme:</span> <span class="string">http</span></span><br><span class="line">  <span class="attr">icon:</span> <span class="string">https://cdn.example.com/my-app/icon.svg</span></span><br><span class="line">  <span class="attr">title:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">My</span> <span class="string">App</span></span><br><span class="line">  <span class="attr">tagline:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">Does</span> <span class="string">amazing</span> <span class="string">things</span></span><br><span class="line">  <span class="attr">description:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">A</span> <span class="string">great</span> <span class="string">app</span> <span class="string">that</span> <span class="string">does</span> <span class="string">amazing</span> <span class="string">things.</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">Your</span> <span class="string">Name</span></span><br><span class="line">  <span class="attr">developer:</span> <span class="string">Original</span> <span class="string">Developer</span></span><br><span class="line">  <span class="attr">category:</span> <span class="string">Productivity</span></span><br><span class="line">  <span class="attr">architectures:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">amd64</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">  <span class="attr">update_at:</span> <span class="string">&quot;2026-03-01&quot;</span></span><br><span class="line">  <span class="attr">release_notes:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">First</span> <span class="string">release</span></span><br></pre></td></tr></table></div></figure>
 
 <h2 id="x-casaos-之外的-Compose-规则" class="article-heading"><code class="chip">x-casaos</code> 之外的 Compose 规则<a class="article-anchor" href="#x-casaos-之外的-Compose-规则" aria-hidden="true"></a></h2><p>对于所有非 <code class="chip">x-casaos</code> 内容，这个仓库不重新定义 Docker Compose 语义，直接以官方文档为准：</p>
 <ul class="doc-dots">
@@ -730,7 +728,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>是一个对象，其值通常是多语言文本</li>
 </ul>
 <p>示例：</p>
-<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">tips:</span></span><br><span class="line">  <span class="attr">before_install:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br><span class="line">    <span class="attr">zh_CN:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">tips:</span></span><br><span class="line">  <span class="attr">before_install:</span></span><br><span class="line">    <span class="attr">en_US:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br><span class="line">    <span class="attr">zh_CN:</span> <span class="string">This</span> <span class="string">app</span> <span class="string">requires</span> <span class="string">at</span> <span class="string">least</span> <span class="string">4GB</span> <span class="string">RAM.</span></span><br></pre></td></tr></table></div></figure>
 
 <p>构建行为：</p>
 <ul class="doc-dots">
@@ -934,7 +932,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.558Z" itemprop="dateModified">最后更新：2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.112Z" itemprop="dateModified">最后更新：2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/developer/app-store-config"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">商店配置</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/developer/app-store-build-output"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">构建产物</span></a></nav>
     </footer>
   </main>
@@ -1301,6 +1299,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

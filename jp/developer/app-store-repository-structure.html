@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -90,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="ZimaOS 互換の self-hosted App Store に必要な Docker Compose、アプリメタデータ、リソース、生成出力の構成を説明します。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-09-01T09:43:51.539Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.539Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.092Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.092Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.539Z"
+      "datePublished": "2026-09-07T06:35:41.092Z"
     }
   </script>
 
@@ -368,10 +366,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>予測しやすいリポジトリ構成にすると、self-hosted ホームサーバー、Homelab、NAS OS 向け Docker アプリの検証、ビルド、公開が容易になります。</p>
 <p>このページでは、v2 プロトコルを使用するストアの最小ソース構成と、生成出力への対応関係を説明します。</p>
 <h2 id="ソースツリー" class="article-heading">ソースツリー<a class="article-anchor" href="#ソースツリー" aria-hidden="true"></a></h2><p>ソースリポジトリは、編集して Git にコミットする対象です。</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">my-appstore/</span><br><span class="line">├── Apps/</span><br><span class="line">│   └── MyApp/</span><br><span class="line">│       ├── docker-compose.yml</span><br><span class="line">│       ├── icon.svg</span><br><span class="line">│       ├── thumbnail.png</span><br><span class="line">│       └── screenshot-1.png</span><br><span class="line">├── store-config.json</span><br><span class="line">└── supported-languages.json</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">my-appstore/</span><br><span class="line">├── Apps/</span><br><span class="line">│   └── MyApp/</span><br><span class="line">│       ├── docker-compose.yml</span><br><span class="line">│       ├── icon.svg</span><br><span class="line">│       ├── thumbnail.png</span><br><span class="line">│       └── screenshot-1.png</span><br><span class="line">├── store-config.json</span><br><span class="line">└── supported-languages.json</span><br></pre></td></tr></table></div></figure>
 
 <p>ローカル開発では、次も追加できます。</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">scripts/</span><br><span class="line">└── build_dist.sh</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">scripts/</span><br><span class="line">└── build_dist.sh</span><br></pre></td></tr></table></div></figure>
 
 <h2 id="ルートの必須ファイル" class="article-heading">ルートの必須ファイル<a class="article-anchor" href="#ルートの必須ファイル" aria-hidden="true"></a></h2><ul class="doc-dots">
 <li><code class="chip">store-config.json</code>: v2 で必須となるストア識別情報ファイル。</li>
@@ -380,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 <p>従来の v1 ストアには、<code class="chip">category-list.json</code>、<code class="chip">recommend-list.json</code>、v1 パッケージファイルもよく含まれます。v1 互換性が必要な間は残して構いませんが、v2 クライアントが利用するのは生成された <code class="chip">dist/</code> 内のファイルです。</p>
 <h2 id="生成ツリー" class="article-heading">生成ツリー<a class="article-anchor" href="#生成ツリー" aria-hidden="true"></a></h2><p>ビルドによって、ソースファイルはデプロイ可能な静的出力に変換されます。</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/</span><br><span class="line">├── index.json</span><br><span class="line">├── index.zh_CN.json</span><br><span class="line">├── store.json</span><br><span class="line">├── store.zh_CN.json</span><br><span class="line">└── apps/</span><br><span class="line">    └── com.example.myapp/</span><br><span class="line">        ├── docker-compose.yml</span><br><span class="line">        ├── docker-compose.amd64.yml</span><br><span class="line">        ├── meta.json</span><br><span class="line">        ├── meta.zh_CN.json</span><br><span class="line">        └── assets/</span><br><span class="line">            ├── icon.svg</span><br><span class="line">            ├── icon.png</span><br><span class="line">            ├── thumbnail.webp</span><br><span class="line">            └── screenshot-1.webp</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/</span><br><span class="line">├── index.json</span><br><span class="line">├── index.zh_CN.json</span><br><span class="line">├── store.json</span><br><span class="line">├── store.zh_CN.json</span><br><span class="line">└── apps/</span><br><span class="line">    └── com.example.myapp/</span><br><span class="line">        ├── docker-compose.yml</span><br><span class="line">        ├── docker-compose.amd64.yml</span><br><span class="line">        ├── meta.json</span><br><span class="line">        ├── meta.zh_CN.json</span><br><span class="line">        └── assets/</span><br><span class="line">            ├── icon.svg</span><br><span class="line">            ├── icon.png</span><br><span class="line">            ├── thumbnail.webp</span><br><span class="line">            └── screenshot-1.webp</span><br></pre></td></tr></table></div></figure>
 
 <h2 id="各場所の役割" class="article-heading">各場所の役割<a class="article-anchor" href="#各場所の役割" aria-hidden="true"></a></h2><ul class="doc-dots">
 <li><code class="chip">Apps/</code>: 編集可能なアプリ定義、ソース Compose、ソースリソース。</li>
@@ -402,7 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.539Z" itemprop="dateModified">最終更新日: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.092Z" itemprop="dateModified">最終更新日: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/developer/app-store-create-from-scratch"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">App Store を作成</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/developer/app-store-config"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">ストア設定</span></a></nav>
     </footer>
   </main>
@@ -769,6 +767,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

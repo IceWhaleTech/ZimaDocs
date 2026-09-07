@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -90,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="组织 Docker Compose、应用元数据、图片资源和生成产物，为 ZimaOS、家庭服务器及 Homelab 构建自托管应用商店。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-09-01T09:43:51.558Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.558Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.112Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.112Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.558Z"
+      "datePublished": "2026-09-07T06:35:41.112Z"
     }
   </script>
 
@@ -368,10 +366,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>清晰的仓库结构有助于在 self-hosted 家庭服务器、Homelab 和 NAS OS 场景中验证、构建并发布 Docker 应用。</p>
 <p>这一页说明使用 v2 协议的商店最小源码结构，以及它如何映射到构建产物。</p>
 <h2 id="源码目录" class="article-heading">源码目录<a class="article-anchor" href="#源码目录" aria-hidden="true"></a></h2><p>源码仓库是你日常编辑和提交的内容：</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">my-appstore/</span><br><span class="line">├── Apps/</span><br><span class="line">│   └── MyApp/</span><br><span class="line">│       ├── docker-compose.yml</span><br><span class="line">│       ├── icon.svg</span><br><span class="line">│       ├── thumbnail.png</span><br><span class="line">│       └── screenshot-1.png</span><br><span class="line">├── store-config.json</span><br><span class="line">└── supported-languages.json</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">my-appstore/</span><br><span class="line">├── Apps/</span><br><span class="line">│   └── MyApp/</span><br><span class="line">│       ├── docker-compose.yml</span><br><span class="line">│       ├── icon.svg</span><br><span class="line">│       ├── thumbnail.png</span><br><span class="line">│       └── screenshot-1.png</span><br><span class="line">├── store-config.json</span><br><span class="line">└── supported-languages.json</span><br></pre></td></tr></table></div></figure>
 
 <p>如果需要本地开发脚本，也可以添加：</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">scripts/</span><br><span class="line">└── build_dist.sh</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">scripts/</span><br><span class="line">└── build_dist.sh</span><br></pre></td></tr></table></div></figure>
 
 <h2 id="根目录必需文件" class="article-heading">根目录必需文件<a class="article-anchor" href="#根目录必需文件" aria-hidden="true"></a></h2><ul class="doc-dots">
 <li><code class="chip">store-config.json</code>：v2 必需的商店身份文件。</li>
@@ -380,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul>
 <p>旧版 v1 商店通常还会有 <code class="chip">category-list.json</code>、<code class="chip">recommend-list.json</code> 和 v1 打包相关文件。需要兼容 v1 时可以继续保留它们，但 v2 客户端消费的是构建后的 <code class="chip">dist/</code> 文件。</p>
 <h2 id="构建产物目录" class="article-heading">构建产物目录<a class="article-anchor" href="#构建产物目录" aria-hidden="true"></a></h2><p>构建会把源码转成可部署的静态产物：</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/</span><br><span class="line">├── index.json</span><br><span class="line">├── index.zh_CN.json</span><br><span class="line">├── store.json</span><br><span class="line">├── store.zh_CN.json</span><br><span class="line">└── apps/</span><br><span class="line">    └── com.example.myapp/</span><br><span class="line">        ├── docker-compose.yml</span><br><span class="line">        ├── docker-compose.amd64.yml</span><br><span class="line">        ├── meta.json</span><br><span class="line">        ├── meta.zh_CN.json</span><br><span class="line">        └── assets/</span><br><span class="line">            ├── icon.svg</span><br><span class="line">            ├── icon.png</span><br><span class="line">            ├── thumbnail.webp</span><br><span class="line">            └── screenshot-1.webp</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/</span><br><span class="line">├── index.json</span><br><span class="line">├── index.zh_CN.json</span><br><span class="line">├── store.json</span><br><span class="line">├── store.zh_CN.json</span><br><span class="line">└── apps/</span><br><span class="line">    └── com.example.myapp/</span><br><span class="line">        ├── docker-compose.yml</span><br><span class="line">        ├── docker-compose.amd64.yml</span><br><span class="line">        ├── meta.json</span><br><span class="line">        ├── meta.zh_CN.json</span><br><span class="line">        └── assets/</span><br><span class="line">            ├── icon.svg</span><br><span class="line">            ├── icon.png</span><br><span class="line">            ├── thumbnail.webp</span><br><span class="line">            └── screenshot-1.webp</span><br></pre></td></tr></table></div></figure>
 
 <h2 id="各部分职责" class="article-heading">各部分职责<a class="article-anchor" href="#各部分职责" aria-hidden="true"></a></h2><ul class="doc-dots">
 <li><code class="chip">Apps/</code>：可编辑的应用定义、源码 compose 和源码资源。</li>
@@ -402,7 +400,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.558Z" itemprop="dateModified">最后更新：2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.112Z" itemprop="dateModified">最后更新：2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/developer/app-store-create-from-scratch"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">创建应用商店</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/developer/app-store-config"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">商店配置</span></a></nav>
     </footer>
   </main>
@@ -769,6 +767,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

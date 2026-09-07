@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Deploy DeepSeek Harness on ZimaOS: Turn Your Home Server into a Physical AI Agent | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zimaos/app-store/deepseek-harness-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/deepseek-harness-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/deepseek-harness-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Install DeepSeek Harness from the ZimaOS App Store in one click, connect any AI model provider, authorize a host folder for the agent&#39;s data, and control it from your phone.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Deploy DeepSeek Harness on ZimaOS: Turn Your Home Server into a Physical AI Agent">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zimaos/app-store/deepseek-harness-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Install DeepSeek Harness from the ZimaOS App Store in one click, connect any AI model provider, authorize a host folder for the agent&#39;s data, and control it from your phone.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-app-store.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-installed.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-volumes.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-workspace.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-models.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-first-task.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-work-demo.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-resource-manager.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-phone-apps.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-phone-ui.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-docker-socket.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-sandbox-permission.webp">
+<meta property="article:published_time" content="2026-09-07T06:35:41.121Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.121Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/app-store/dsh-app-store.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "How to Deploy DeepSeek Harness on ZimaOS",
+      "description": "Install DeepSeek Harness from the ZimaOS App Store in one click, connect any AI model provider, authorize a host folder for the agent's data, and control it from your phone.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.121Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Deploy DeepSeek Harness on ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/deepseek-harness-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/deepseek-harness-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/deepseek-harness-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/deepseek-harness-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">App Store Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li><li><a class="" href="/docs/zimaos/app-store/adminer-setup-guide">Adminer Database Manager</a></li><li><a class="" href="/docs/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale & WireGuard</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">Agents & Inference</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="is-current" href="/docs/zimaos/app-store/deepseek-harness-setup">DeepSeek Harness</a></li><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">How to Deploy DeepSeek Harness on ZimaOS</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Overview" class="article-heading">Overview<a class="article-anchor" href="#Overview" aria-hidden="true"></a></h2><p>DeepSeek Harness is natively supported in the ZimaOS App Catalog, and the whole setup takes just a few minutes. See the <a href="https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.dsh-harness" class="doc-link">DeepSeek Harness App Store page</a> for the latest app details.</p>
+<p>DeepSeek Harness (dsh) is an open-source AI agent from DeepSeek — think of it as a helpful programmer who lives on your home server. You talk to it in a browser, describe what you want, and it plans and does the work in a folder on your NAS. No programming background is needed: the agent does the technical part for you.</p>
+<p>Installed on ZimaOS, it runs 24&#x2F;7 on your own hardware. You control it from your phone through ZimaClient, and your projects stay on your drives, not in the cloud.</p>
+<h2 id="Prerequisites" class="article-heading">Prerequisites<a class="article-anchor" href="#Prerequisites" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>A running ZimaOS home server.</li>
+<li>Minimum hardware: a dual-core CPU and at least 2 GB of memory.</li>
+<li>An API key from any AI model provider — DeepSeek, OpenAI (GPT), Anthropic, OpenRouter, or any other third-party provider all work, and so do local inference models on your own hardware (covered in the next tutorial of this series). Grab a key in one minute in the Add a Model Provider section below.</li>
+</ul>
+<h2 id="App-Catalog" class="article-heading">App Catalog<a class="article-anchor" href="#App-Catalog" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>Find DeepSeek Harness in the ZimaOS App Catalog. Open <strong>App Store</strong> → search for “DeepSeek Harness”.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-app-store.webp" alt="App Store search results showing the DeepSeek Harness app card and its Install button"></span></p>
+<ol start="2" class="doc-steps">
+<li>Click <strong>Install</strong> and wait a moment.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-installed.webp" alt="Apps list in the ZimaOS Dashboard with DeepSeek Harness showing as installed"></span></p>
+<ol start="3" class="doc-steps">
+<li><strong>It’s ready to use!</strong></li>
+</ol>
+<h2 id="Authorize-a-Data-Directory" class="article-heading">Authorize a Data Directory<a class="article-anchor" href="#Authorize-a-Data-Directory" aria-hidden="true"></a></h2><p>The agent needs a folder on your drives to store its workspaces. Do this right after installing:</p>
+<ol class="doc-steps">
+<li><p>On the app card, click the options menu in the upper-right corner to open the container settings.</p>
+</li>
+<li><p>In the <strong>Volumes</strong> (or path mapping) section, add a volume rule: set the <strong>Container Path</strong> to <code class="chip">/root/</code> and the <strong>Host Path</strong> to the folder you want to use for the agent’s data, for example <code class="chip">/media/SSD-Storage/DSH</code>.</p>
+</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-volumes.webp" alt="App settings Volumes section with the agent data folder mapped from the container root to a host folder"></span></p>
+<ol start="3" class="doc-steps">
+<li>Restart the container — no need to restart the NAS. Every workspace the agent creates now lands in that folder on your drives.</li>
+</ol>
+<h2 id="Create-Your-First-Workspace" class="article-heading">Create Your First Workspace<a class="article-anchor" href="#Create-Your-First-Workspace" aria-hidden="true"></a></h2><p>Open DeepSeek Harness from the app card — your browser shows the Web UI. Create your first workspace; thanks to the folder authorization above, everything the agent creates is stored directly on your drives.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-workspace.webp" alt="Creating the first workspace in the DeepSeek Harness Web UI"></span></p>
+<h2 id="Add-a-Model-Provider" class="article-heading">Add a Model Provider<a class="article-anchor" href="#Add-a-Model-Provider" aria-hidden="true"></a></h2><p>Go to <strong>Settings &gt; Models</strong> and add a provider, then paste your API key:</p>
+<ul class="doc-dots">
+<li><strong>DeepSeek</strong> — sign up on the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://platform.deepseek.com/" title="DeepSeek Platform for API keys and billing" class="doc-link">DeepSeek Platform</a> and copy your key</li>
+<li><strong>GPT (OpenAI)</strong> — your OpenAI key</li>
+<li><strong>OpenRouter</strong> — one key for many models</li>
+<li>A model server on your own hardware — covered in the next tutorial of this series</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-models.webp" alt="Settings page in the DeepSeek Harness Web UI with a model provider added and its API key saved"></span></p>
+<h2 id="Your-First-Task" class="article-heading">Your First Task<a class="article-anchor" href="#Your-First-Task" aria-hidden="true"></a></h2><p>Now give the agent its first real job. Describe the app you want in plain words — the example below asks for a resource monitor that shows your ZimaOS host’s CPU, memory, disk, and network in real time, running as a container app.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-first-task.webp" alt="A session in the DeepSeek Harness Web UI with the resource monitor task and the agent&#39;s plan"></span></p>
+<p>Watch it work: the session shows the plan, the code, and the result — without you writing a single line.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-work-demo.webp" alt="Screen recording of the agent planning and writing the resource monitor app in the workspace"></span></p>
+<p>After a few rounds of conversation, the agent turns the idea into a real app — no coding knowledge needed on your side. The result is a system-level resource manager that runs around the clock, keeping an eye on disk health, network security, and container lifecycle on your ZimaOS.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-resource-manager.webp" alt="Screen recording of the finished resource manager showing live disk, network, and container metrics"></span></p>
+<h2 id="Access-DeepSeek-Harness-via-Mobile" class="article-heading">Access DeepSeek Harness via Mobile<a class="article-anchor" href="#Access-DeepSeek-Harness-via-Mobile" aria-hidden="true"></a></h2><p>Access DeepSeek Harness via the ZimaClient mobile app — direct P2P connection to your home server, no cloud relay, no VPN setup required. Works from home or on the go.</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th><img src="/docs/images/app-store/dsh-phone-apps.png" alt="ZimaClient mobile app showing the App Store app list on a phone"></th>
+<th><img src="/docs/images/app-store/dsh-phone-ui.png" alt="DeepSeek Harness Web UI opened through ZimaClient on a phone showing an active session"></th>
+</tr>
+</thead>
+</table></div>
+<p>With the P2P connection you can check your agent’s work progress and all your hosted services anytime, anywhere — the same Web UI, right on your phone.</p>
+<h2 id="Your-Home-Server-Is-Now-an-Agent" class="article-heading">Your Home Server Is Now an Agent<a class="article-anchor" href="#Your-Home-Server-Is-Now-an-Agent" aria-hidden="true"></a></h2><p>That’s the whole setup. Your home server is no longer just a storage box — it’s a physical agent that lives on your own hardware:</p>
+<ul class="doc-dots">
+<li><strong>Control from your phone</strong> — open the Web UI through ZimaClient anywhere and check sessions, review results, or send a new task. Your agent is one tap away, at home or away.</li>
+<li><strong>Vibe coding without writing code</strong> — describe a feature in plain words and let the agent plan and write it in a workspace that lives on your drives, not in the cloud.</li>
+<li><strong>Home automation</strong> — give it any task around your home server: sort and organize files, generate reports from your data, automate repetitive work. It runs on the NAS itself, so it keeps working around the clock.</li>
+<li><strong>Diagnose a broken app</strong> — when Jellyfin stops streaming or Home Assistant goes dark, paste the symptoms and let the agent read the logs and configuration right on the NAS to find and fix the cause. No more guessing inside a black box.</li>
+<li><strong>Maintain your app stack</strong> — the agent reads your Docker Compose files and walks through upgrades, config changes, and migrations with you, so your self-hosted stack stays maintainable for years — not just until the next update.</li>
+</ul>
+<h2 id="Usage-Notes" class="article-heading">Usage Notes<a class="article-anchor" href="#Usage-Notes" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>Give it its own hardware.</strong> The agent works best as a physical sandbox agent on a dedicated device — keep it away from your main NAS with all your data, so experiments in the sandbox never touch what matters.</li>
+<li><strong>Two levels of authorization.</strong> A folder authorization gives the agent data access on ZimaOS. Authorizing the Docker socket is a second, much higher level — it gives the agent system-level container management, close to SSH-level control. Grant each level deliberately, and only grant the socket level when a task truly needs it.</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-docker-socket.webp" alt="App settings page showing the Docker socket volume authorization for the DeepSeek Harness container"></span></p>
+<ul class="doc-dots">
+<li><strong>Set the sandbox permission to full access.</strong> Inside dsh, set the sandbox execution permission to full access so the agent can run tasks without asking for approval at every step.</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/dsh-sandbox-permission.webp" alt="Sandbox permission setting in the DeepSeek Harness Web UI set to full access"></span></p>
+<ul class="doc-dots">
+<li><strong>Everything the agent writes is visible in Files.</strong> Thanks to the workspace mapping, all source code the agent writes lands in the authorized folder — browse and check it in ZimaOS Files anytime.</li>
+</ul>
+<h2 id="Next-Steps" class="article-heading">Next Steps<a class="article-anchor" href="#Next-Steps" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>Local inference:</strong> point the provider at a model server on your own hardware and run the agent fully offline — next tutorial in this series.</li>
+<li><strong>Automating services with dsh:</strong> build and run automation services on ZimaOS — later tutorial in this series.</li>
+</ul>
+<h2 id="Reference-Links" class="article-heading">Reference Links<a class="article-anchor" href="#Reference-Links" aria-hidden="true"></a></h2><p>For further details, consult the official DeepSeek Harness documentation:</p>
+<ul class="doc-dots">
+<li>Installation and all deployment paths – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sdkwork-ai/deepseek-harness-desktop/blob/master/INSTALL.md" title="Official DeepSeek Harness installation guide" class="doc-link">installation guide</a></li>
+<li>Using the Web UI – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/index.md" title="Official guide to the DeepSeek Harness Web UI" class="doc-link">Web UI guide</a></li>
+<li>Model providers – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/providers.md" title="Official guide to DeepSeek Harness model providers" class="doc-link">providers guide</a></li>
+<li>Source code – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/deepseek-ai/deepseek-harness" title="Official DeepSeek Harness repository on GitHub" class="doc-link">GitHub repository</a></li>
+</ul>
+<p>Further reading on the ZimaSpace Tech AI Hub:</p>
+<ul class="doc-dots">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/tech-ai-hub/10-best-deepseek-harness-plugins-2026" title="ZimaSpace Tech AI Hub guide to the best DeepSeek Harness plugins" class="doc-link">10 Best DeepSeek Harness Plugins 2026</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/tech-ai-hub/de-minimal-and-creator-explained" title="ZimaSpace Tech AI Hub explainer on DE Minimal and Creator" class="doc-link">DE Minimal and Creator Explained</a></li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.121Z" itemprop="dateModified">Last updated: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zimaos/app-store/tailscale-wireguard-remote-access"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Tailscale & WireGuard</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zimaos/app-store/enable-ai"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Enable AI Search</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prerequisites"><span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App-Catalog"><span class="toc-text">App Catalog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Authorize-a-Data-Directory"><span class="toc-text">Authorize a Data Directory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Your-First-Workspace"><span class="toc-text">Create Your First Workspace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Add-a-Model-Provider"><span class="toc-text">Add a Model Provider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Your-First-Task"><span class="toc-text">Your First Task</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Access-DeepSeek-Harness-via-Mobile"><span class="toc-text">Access DeepSeek Harness via Mobile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Your-Home-Server-Is-Now-an-Agent"><span class="toc-text">Your Home Server Is Now an Agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage-Notes"><span class="toc-text">Usage Notes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next-Steps"><span class="toc-text">Next Steps</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-Links"><span class="toc-text">Reference Links</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zimaos/app-store/">App Store Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Media Server</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/zimaos/app-store/cli-guide">Bulk Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/immich-photo-backup">Immich Photo Backup</a></li><li><a class="" href="/docs/zimaos/app-store/media-server-setup-with-jellyfin">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/nvr-camera-server">NVR Camera Server</a></li><li><a class="" href="/docs/zimaos/app-store/sync-photos-with-immich">Immich Photo Sync</a></li><li><a class="" href="/docs/zimaos/app-store/plex-setup-guide">Plex Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/dlna-server-setup">DLNA Server</a></li><li><a class="" href="/docs/zimaos/app-store/plex-and-gpu-transcoding">Plex GPU Transcoding</a></li><li><a class="" href="/docs/zimaos/app-store/setup-emby-server">Emby Server</a></li><li><a class="" href="/docs/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Self-Hosted Apps</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/zimaos/app-store/syncthing-setup">File Sync with Syncthing</a></li><li><a class="" href="/docs/zimaos/app-store/webtorrent-feature">Torrent Downloader</a></li><li><a class="" href="/docs/zimaos/app-store/pi-hole-setup">Pi-hole Ad Blocker</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ngx-install">Document Management</a></li><li><a class="" href="/docs/zimaos/app-store/paperless-ai-install">AI Document Processing</a></li><li><a class="" href="/docs/zimaos/app-store/syncthing-install">Syncthing Setup Guide</a></li><li><a class="" href="/docs/zimaos/app-store/radarr-setup">Radarr Movie Manager</a></li><li><a class="" href="/docs/zimaos/app-store/azuracast-install">Web Radio Station</a></li><li><a class="" href="/docs/zimaos/app-store/zabbix-install-guide">Server Monitoring</a></li><li><a class="" href="/docs/zimaos/app-store/adminer-setup-guide">Adminer Database Manager</a></li><li><a class="" href="/docs/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale & WireGuard</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">Agents & Inference</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="is-current" href="/docs/zimaos/app-store/deepseek-harness-setup">DeepSeek Harness</a></li><li><a class="" href="/docs/zimaos/app-store/enable-ai">Enable AI Search</a></li><li><a class="" href="/docs/zimaos/app-store/deploy-deepseek-r1">Deploy DeepSeek R1</a></li><li><a class="" href="/docs/zimaos/app-store/hermes-agent-setup">Hermes Agent</a></li><li><a class="" href="/docs/zimaos/app-store/llm-manual-download">Download AI Models</a></li><li><a class="" href="/docs/zimaos/app-store/frigate-ollama-setup">AI Photo Description</a></li><li><a class="" href="/docs/zimaos/app-store/openclaw-agent-setup">OpenClaw Agent</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Creative Builds</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/zimaos/app-store/pve-on-debian-for-i226">Run PVE on Debian</a></li><li><a class="" href="/docs/zimaos/app-store/awesome-third-party-stores">Community App Stores</a></li><li><a class="" href="/docs/zimaos/app-store/batocera-arcade-setup">Batocera Arcade</a></li><li><a class="" href="/docs/zimaos/app-store/jellyfin-setup">Jellyfin Media Server</a></li><li><a class="" href="/docs/zimaos/app-store/oculus-quest-media-server">Oculus VR Streaming</a></li><li><a class="" href="/docs/zimaos/app-store/minecraft-friendship-service">Minecraft Server</a></li><li><a class="" href="/docs/zimaos/app-store/self-hosted-apps">Self-Hosted Apps</a></li><li><a class="" href="/docs/zimaos/app-store/zimablade-cluster-pve">PVE Cluster Migration</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Developer Resources</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/developer/docker-app-publishing">Build & Publish Apps</a></li><li><a class="" href="/docs/developer/app-store-create-from-scratch">Create an App Store</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/deepseek-harness-setup" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/deepseek-harness-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/deepseek-harness-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/deepseek-harness-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Store</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

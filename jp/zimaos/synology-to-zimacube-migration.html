@@ -2,7 +2,7 @@
 <html lang="jp">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>ほかのNASからZimaOSへ移行：Synology移行ガイド | Zimaspace Docs</title>
+  <title>Synology NASをZimaOSに接続：ファイルの移行またはデバイス間バックアップ | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
@@ -74,26 +74,31 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
   
   <!-- Open Graph -->
   
-  <meta name="description" content="Synology NASからZimaOSへファイルを移動します。FilesのLAN Storageを使用し、両方のデバイスを稼働させながら段階的に移行する推奨手順です。">
+  <meta name="description" content="ほかのNASをZimaOSデバイスに接続します。ネットワーク経由で共有フォルダーをマウントし、ファイルを移行するか、3-2-1計画のデバイス間バックアップに接続を使います。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ほかのNASからZimaOSへ移行：Synology移行ガイド">
+<meta property="og:title" content="Synology NASをZimaOSに接続：ファイルの移行またはデバイス間バックアップ">
 <meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/synology-to-zimacube-migration">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="Synology NASからZimaOSへファイルを移動します。FilesのLAN Storageを使用し、両方のデバイスを稼働させながら段階的に移行する推奨手順です。">
+<meta property="og:description" content="ほかのNASをZimaOSデバイスに接続します。ネットワーク経由で共有フォルダーをマウントし、ファイルを移行するか、3-2-1計画のデバイス間バックアップに接続を使います。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-09-01T09:43:51.547Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.547Z">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-storage-option.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-storage-connect.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-storage-listed.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-copy.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-paste.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-copied.webp">
+<meta property="article:published_time" content="2026-09-07T06:35:41.100Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.100Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/files-lan-storage-option.webp">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -110,8 +115,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "ほかのNASから移行する",
-      "description": "Synology NASからZimaOSへファイルを移動します。FilesのLAN Storageを使用し、両方のデバイスを稼働させながら段階的に移行する推奨手順です。",
+      "headline": "ほかのNASを接続する",
+      "description": "ほかのNASをZimaOSデバイスに接続します。ネットワーク経由で共有フォルダーをマウントし、ファイルを移行するか、3-2-1計画のデバイス間バックアップに接続を使います。",
       
       "author": {
         "@type": "Organization",
@@ -126,7 +131,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.547Z"
+      "datePublished": "2026-09-07T06:35:41.100Z"
     }
   </script>
 
@@ -162,7 +167,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "ほかのNASから移行する"
+          "name": "ほかのNASを接続する"
         }
         
       ]
@@ -294,7 +299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="docs-shell">
   <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
   <nav class="doc-sidebar__inner">
-    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/">概要</a></h4>
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/">ZimaOS 概要</a></h4>
     <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
       <h4 class="doc-sidebar__title">
         <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
@@ -312,7 +317,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/jp/zimaos/phone-backup">スマートフォンのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/computer-backup">コンピューターのバックアップ</a></li><li><a class="is-current" href="/docs/jp/zimaos/synology-to-zimacube-migration">別の NAS から移行</a></li><li><a class="" href="/docs/jp/zimaos/from-synology-to-zimacube-migrate-all-files">Synology 手動転送</a></li><li><a class="" href="/docs/jp/zimaos/data-migration">ドライブ間のデータ移行</a></li><li><a class="" href="/docs/jp/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/jp/zimaos/phone-backup">スマートフォンのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/computer-backup">コンピューターのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/photos">写真</a></li><li><a class="" href="/docs/jp/zimaos/photos-supported-formats">対応フォーマット</a></li><li><a class="" href="/docs/jp/zimaos/cloud-drive-connect">クラウドドライブの接続</a></li><li><a class="is-current" href="/docs/jp/zimaos/synology-to-zimacube-migration">別の NAS から移行</a></li><li><a class="" href="/docs/jp/zimaos/data-migration">データ移行</a></li><li><a class="" href="/docs/jp/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 バックアップ</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
@@ -322,7 +327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="zimaos:install-methods">
@@ -332,7 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/jp/zimaos/how-to-install-zimaos">ZimaOS のインストール</a></li><li><a class="" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve">Proxmox へのインストール</a></li><li><a class="" href="/docs/jp/zimaos/casaos-to-zimaos-migration">CasaOS から移行</a></li><li><a class="" href="/docs/jp/zimaos/remote-id">ネットワーク ID の取得</a></li><li><a class="" href="/docs/jp/zimaos/password-recovery">パスワードのリセット</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/jp/zimaos/how-to-install-zimaos">ZimaOS のインストール</a></li><li><a class="" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve">Proxmox へのインストール</a></li><li><a class="" href="/docs/jp/zimaos/casaos-to-zimaos-migration">CasaOS から移行</a></li><li><a class="" href="/docs/jp/zimaos/password-recovery">パスワードのリセット</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="zimaos:system">
@@ -342,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
       </div>
     </div>
   </nav>
@@ -351,38 +356,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="doc-article" itemscope itemtype="http://schema.org/Article">
     <header class="doc-article__head">
-      <h1 itemprop="name">ほかのNASから移行する</h1>
+      <h1 itemprop="name">ほかのNASを接続する</h1>
     </header>
 
     <div class="doc-article__body" itemprop="articleBody">
-      <p>NASのメーカーを変更しても、最初からやり直す必要はありません。ファイルはそのまま移動でき、新しい環境に慣れるまで古いデバイスも動かし続けられます。このページでは推奨方法を紹介します。詳しい操作手順は、以下のリンク先にあります。</p>
-<h2 id="推奨する方法" class="article-heading">推奨する方法<a class="article-anchor" href="#推奨する方法" aria-hidden="true"></a></h2><p>最も分かりやすい方法はFilesアプリを使用することです。ネットワーク経由で古いデバイスに接続し、必要なデータを必要なときにコピーできます。</p>
+      <p>ほかのNASをZimaOSに接続すると、2つの扉が同時に開きます。ファイルを恒久的に移行することも、接続を維持してデバイス間バックアップに使うこともできます。どちらも最初のステップは同じです。2つのデバイスをネットワークで接続することです。このページではSynology DSMを例に、一連の流れを説明します。</p>
+<h2 id="接続する理由" class="article-heading">接続する理由<a class="article-anchor" href="#接続する理由" aria-hidden="true"></a></h2><p>1つの接続でできることは2つあります。</p>
+<ul class="doc-dots">
+<li><strong>ファイルを移行する。</strong> 大切なフォルダーをZimaOSデバイスに移し、移行期間中は古いNASを稼働させたまま、準備ができたら整理します。</li>
+<li><strong>バックアップ計画に組み込む。</strong> 接続したNASは、**<a href="./how-to-use-3-2-1-backup-on-zimaos" title="NASのデータを3-2-1バックアップルールで保護する" class="doc-link">3-2-1バックアップ計画</a>** のLANソースまたはセカンドデバイスの保存先になります。1つの接続が両方の役割を担います。</li>
+</ul>
+<h2 id="2つのデバイスを接続する" class="article-heading">2つのデバイスを接続する<a class="article-anchor" href="#2つのデバイスを接続する" aria-hidden="true"></a></h2><p>SMBが共通言語です。ZimaOSもほかのNASシステムもSMBをうまく扱えるため、追加のツールなしでネットワーク直接転送ができます。</p>
+<p>始める前に、移動したいフォルダーが古いデバイスで共有されていることを確認します。DSMでは <strong>コントロールパネル &gt; 共有フォルダー</strong> を確認します。共有せずに作成されたフォルダーがある場合は、DSMで新しい共有ディレクトリを作成し、転送したいデータをそこへ移動します。</p>
 <ol class="doc-steps">
-<li>古いデバイスで、移動するフォルダーが共有されていることを確認します。</li>
-<li>ZimaOS Filesで、古いデバイスをLAN Storageとして追加します。</li>
-<li>最も必要なフォルダーからコピーし、ZimaOSのストレージに貼り付けます。</li>
+<li>ZimaOSダッシュボードで <strong>Files</strong> アプリを開きます。</li>
+<li>左側のナビゲーションで <strong>Storage</strong> の横のプラス記号をクリックし、<strong>LAN Storage</strong> をクリックします。</li>
 </ol>
-<p>スクリーンショット付きの詳しい手順は、**<a href="./from-synology-to-zimacube-migrate-all-files" title="Synology DSMの共有をZimaOS Filesにマウントし、ファイルを順番にコピーする" class="doc-link">Synologyからの手動転送</a>** を参照してください。</p>
-<h2 id="時間をかけて移行する" class="article-heading">時間をかけて移行する<a class="article-anchor" href="#時間をかけて移行する" aria-hidden="true"></a></h2><p>すべてを一度に切り替える必要はありません。一括で移動するより、段階的に進めるほうが確実です。</p>
-<p>まず、毎日使用するフォルダーから始めます。それらを新しいデバイスへ移したら、残りは自分のペースで進めてください。最後のコピーが終わるまで、古いデバイスは引き続きファイルを提供できます。</p>
-<p>移行後すぐに行いたいのが、**<a href="./how-to-use-3-2-1-backup-on-zimaos" title="NASのデータを3-2-1バックアップルールで保護する" class="doc-link">3-2-1バックアップ計画</a>** の設定です。移行したばかりのファイルは特に重要であり、1つしかコピーがない状態はバックアップとはいえません。</p>
-<h2 id="次に読む" class="article-heading">次に読む<a class="article-anchor" href="#次に読む" aria-hidden="true"></a></h2><ul class="doc-dots">
-<li><strong><a href="./from-synology-to-zimacube-migrate-all-files" title="Synology DSMの共有をZimaOS Filesにマウントし、ファイルを順番にコピーする" class="doc-link">Synologyからの手動転送</a></strong> — 手動転送の詳しい手順</li>
-<li><strong><a href="./how-to-use-3-2-1-backup-on-zimaos" title="NASのデータを3-2-1バックアップルールで保護する" class="doc-link">3-2-1バックアップ戦略</a></strong> — 移動したファイルを保護する</li>
-<li><strong><a href="./phone-backup" title="ZimaClientでスマートフォンをZimaOSに自動バックアップする" class="doc-link">スマートフォンのバックアップ</a></strong> — 家庭内の残りのデータも取り込む</li>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-lan-storage-option.webp" alt="Storageの横のプラス記号とLAN Storageオプションが表示されたZimaOSのFilesアプリ"></span></p>
+<ol start="3" class="doc-steps">
+<li>ポップアップで相手デバイスのIPアドレスを入力し、<strong>Connect</strong> をクリックします。共有アカウントにユーザー名とパスワードがある場合は、それも入力します。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-lan-storage-connect.webp" alt="相手NASのIPアドレスを入力するZimaOS Filesの接続ポップアップ"></span></p>
+<p>接続に成功すると、デバイスはStorageの下にネットワークデバイスとして表示され、共有ディレクトリが右側に並びます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-lan-storage-listed.webp" alt="共有ディレクトリが一覧表示された状態で接続された相手NASを表示するZimaOSのFiles"></span></p>
+<h2 id="ファイルをコピーする" class="article-heading">ファイルをコピーする<a class="article-anchor" href="#ファイルをコピーする" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>共有ディレクトリを開き、移動したいファイルとフォルダーを選択します。すべて選択することもできます。</li>
+<li>右上の <strong>Copy</strong> ボタンをクリックします。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-lan-copy.webp" alt="ファイルが選択されCopyボタンが表示されたZimaOS Filesの共有ディレクトリ"></span></p>
+<ol start="3" class="doc-steps">
+<li>ZimaOSストレージの移動先ディレクトリへ移動し、<strong>Paste</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-lan-paste.webp" alt="右上にPasteボタンが表示されたZimaOSのストレージディレクトリ"></span></p>
+<blockquote class="note warn"><strong class="note-title">容量の確認</strong><p>コピーする合計サイズより、移動先ストレージの残り容量が大きいことを確認してください。あとは転送を実行するだけです。</p>
+</blockquote>
+
+<p>コピーでは古いデバイスにオリジナルが残ります。自分で整理するまで何も削除されないため、コピーを先に検証するのが安全です。</p>
+<p>転送が完了すると、ファイルはデバイス上のほかのデータと同じようにZimaOSストレージに表示されます。開いてすべて届いていることを確認すれば、退役の準備ができるまで古いNASはサービスを続けられます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/files-lan-copied.webp" alt="コピーされたフォルダーがZimaOSストレージで利用可能になったことを示すZimaOSのFiles"></span></p>
+<h2 id="時間をかけて進める" class="article-heading">時間をかけて進める<a class="article-anchor" href="#時間をかけて進める" aria-hidden="true"></a></h2><p>切り替えに期限はありません。一気に移行するより、段階的な移行のほうがうまくいきます。</p>
+<p>毎日使うフォルダーから始めます。それらが新しいデバイスに移ったら、残りを自分のペースで進めます。最後のコピーが終わるまで、古いデバイスはファイルを提供し続けます。</p>
+<h2 id="移行後" class="article-heading">移行後<a class="article-anchor" href="#移行後" aria-hidden="true"></a></h2><p>ファイルが新しいデバイスに移ったら、**<a href="./how-to-use-3-2-1-backup-on-zimaos" title="NASのデータを3-2-1バックアップルールで保護する" class="doc-link">3-2-1バックアップ計画</a>** で保護します。移行したばかりのライブラリこそ、二度と失いたくないデータです。</p>
+<h2 id="次へ" class="article-heading">次へ<a class="article-anchor" href="#次へ" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="./how-to-use-3-2-1-backup-on-zimaos" title="NASのデータを3-2-1バックアップルールで保護する" class="doc-link">3-2-1バックアップ戦略</a></strong> — 移行したファイルを保護する</li>
+<li><strong><a href="./cloud-drive-connect" title="Google Drive、Dropbox、OneDrive を ZimaOS に接続する" class="doc-link">クラウドドライブの接続</a></strong> — オフサイトのもう半分</li>
+<li><strong><a href="./phone-backup" title="ZimaClient でスマートフォンを ZimaOS に自動バックアップする" class="doc-link">スマートフォンのバックアップ</a></strong> — ご家庭のほかのデータも取り込む</li>
 </ul>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.547Z" itemprop="dateModified">最終更新日: 2026-09-01</time>
-      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/computer-backup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">コンピューターのバックアップ</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/from-synology-to-zimacube-migrate-all-files"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Synology 手動転送</span></a></nav>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.100Z" itemprop="dateModified">最終更新日: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/cloud-drive-connect"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">クラウドドライブの接続</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/data-migration"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">データ移行</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="目次">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%A5%A8%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95"><span class="toc-text">推奨する方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%82%E9%96%93%E3%82%92%E3%81%8B%E3%81%91%E3%81%A6%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B"><span class="toc-text">時間をかけて移行する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A1%E3%81%AB%E8%AA%AD%E3%82%80"><span class="toc-text">次に読む</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E7%90%86%E7%94%B1"><span class="toc-text">接続する理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%81%A4%E3%81%AE%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B"><span class="toc-text">2つのデバイスを接続する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%B3%E3%83%94%E3%83%BC%E3%81%99%E3%82%8B"><span class="toc-text">ファイルをコピーする</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%82%E9%96%93%E3%82%92%E3%81%8B%E3%81%91%E3%81%A6%E9%80%B2%E3%82%81%E3%82%8B"><span class="toc-text">時間をかけて進める</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E8%A1%8C%E5%BE%8C"><span class="toc-text">移行後</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A1%E3%81%B8"><span class="toc-text">次へ</span></a></li></ol>
     </nav>
   </aside>
 </div>
@@ -604,7 +635,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="menu-item current_page_item"><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
     </ul>
     
-      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/">概要</a></h4>
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/">ZimaOS 概要</a></h4>
     <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
       <h4 class="doc-sidebar__title">
         <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
@@ -622,7 +653,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/jp/zimaos/phone-backup">スマートフォンのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/computer-backup">コンピューターのバックアップ</a></li><li><a class="is-current" href="/docs/jp/zimaos/synology-to-zimacube-migration">別の NAS から移行</a></li><li><a class="" href="/docs/jp/zimaos/from-synology-to-zimacube-migrate-all-files">Synology 手動転送</a></li><li><a class="" href="/docs/jp/zimaos/data-migration">ドライブ間のデータ移行</a></li><li><a class="" href="/docs/jp/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/jp/zimaos/phone-backup">スマートフォンのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/computer-backup">コンピューターのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/photos">写真</a></li><li><a class="" href="/docs/jp/zimaos/photos-supported-formats">対応フォーマット</a></li><li><a class="" href="/docs/jp/zimaos/cloud-drive-connect">クラウドドライブの接続</a></li><li><a class="is-current" href="/docs/jp/zimaos/synology-to-zimacube-migration">別の NAS から移行</a></li><li><a class="" href="/docs/jp/zimaos/data-migration">データ移行</a></li><li><a class="" href="/docs/jp/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 バックアップ</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
@@ -632,7 +663,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="zimaos:install-methods">
@@ -642,7 +673,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/jp/zimaos/how-to-install-zimaos">ZimaOS のインストール</a></li><li><a class="" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve">Proxmox へのインストール</a></li><li><a class="" href="/docs/jp/zimaos/casaos-to-zimaos-migration">CasaOS から移行</a></li><li><a class="" href="/docs/jp/zimaos/remote-id">ネットワーク ID の取得</a></li><li><a class="" href="/docs/jp/zimaos/password-recovery">パスワードのリセット</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/jp/zimaos/how-to-install-zimaos">ZimaOS のインストール</a></li><li><a class="" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve">Proxmox へのインストール</a></li><li><a class="" href="/docs/jp/zimaos/casaos-to-zimaos-migration">CasaOS から移行</a></li><li><a class="" href="/docs/jp/zimaos/password-recovery">パスワードのリセット</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="zimaos:system">
@@ -652,7 +683,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
       </div>
     </div>
     
@@ -732,6 +763,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

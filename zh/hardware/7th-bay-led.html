@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -92,8 +90,8 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727168990232_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727169097528_image.png">
-<meta property="article:published_time" content="2026-09-01T09:43:51.561Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.561Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.114Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.114Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727168990232_image.png">
@@ -129,7 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.561Z"
+      "datePublished": "2026-09-07T06:35:41.114Z"
     }
   </script>
 
@@ -348,6 +346,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
   </nav>
 </aside>
 
@@ -446,11 +454,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 <p><strong>示例 JSON 数据</strong>：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 1,  // 呼吸模式的 ID</span><br><span class="line">  &quot;speed&quot;: 4,  // 颜色过渡速度，范围 0-10</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    &#123;&quot;h&quot;: 21, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 1,  // 呼吸模式的 ID</span><br><span class="line">  &quot;speed&quot;: 4,  // 颜色过渡速度，范围 0-10</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    &#123;&quot;h&quot;: 21, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 <p>*** 发送数据到 ESP32:***</p>
 <ol class="doc-steps">
-<li>ESP32 创建一个默认 WiFi 网络，ZimaOS 连接。验证连接：<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping 172.16.1.1</span><br></pre></td></tr></table></div></figure></li>
-<li>向 <code class="chip">172.16.1.1</code> 发送 HTTP POST 请求，携带 JSON 数据：<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -X POST -H &quot;Content-Type: application/json&quot; -d @yourfile.json http://172.16.1.1/post</span><br></pre></td></tr></table></div></figure></li>
+<li>ESP32 创建一个默认 WiFi 网络，ZimaOS 连接。验证连接：<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping 172.16.1.1</span><br></pre></td></tr></table></div></figure></li>
+<li>向 <code class="chip">172.16.1.1</code> 发送 HTTP POST 请求，携带 JSON 数据：<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -X POST -H &quot;Content-Type: application/json&quot; -d @yourfile.json http://172.16.1.1/post</span><br></pre></td></tr></table></div></figure></li>
 <li>检查灯光效果。</li>
 </ol>
 <p><strong>模式 2：常亮模式</strong><br>在常亮模式下，灯带保持单一颜色。</p>
@@ -461,17 +469,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>**亮度 (V)**：范围 0 ~ 255</li>
 </ul>
 <p><strong>示例 JSON 数据</strong>：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 2,</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    &#123;&quot;h&quot;: 21, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 2,</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    &#123;&quot;h&quot;: 21, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 <p>*** 发送数据到 ESP32:***</p>
 <ol class="doc-steps">
 <li>ESP32 创建一个默认 WiFi 网络，ZimaOS 连接。验证连接：</li>
 </ol>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping 172.16.1.1</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping 172.16.1.1</span><br></pre></td></tr></table></div></figure>
 
 <ol start="2" class="doc-steps">
 <li>向 <code class="chip">172.16.1.1</code> 发送 HTTP POST 请求，携带 JSON 数据：</li>
 </ol>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -X POST -H &quot;Content-Type: application/json&quot; -d @yourfile.json http://172.16.1.1/post</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -X POST -H &quot;Content-Type: application/json&quot; -d @yourfile.json http://172.16.1.1/post</span><br></pre></td></tr></table></div></figure>
 
 <ol start="3" class="doc-steps">
 <li>检查灯光效果。</li>
@@ -497,17 +505,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 </ul>
 <p><strong>示例 JSON 数据</strong>：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 5,  // 自定义模式的 ID</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    // 每个对象代表一个灯光的颜色和亮度设置</span><br><span class="line">    &#123;&quot;h&quot;: 0, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 1 红色</span><br><span class="line">    &#123;&quot;h&quot;: 85, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 2 绿色</span><br><span class="line">    &#123;&quot;h&quot;: 168, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 3 蓝色</span><br><span class="line">    &#123;&quot;h&quot;: 42, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 4 黄色</span><br><span class="line">    &#123;&quot;h&quot;: 212, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 5 紫色</span><br><span class="line">    &#123;&quot;h&quot;: 128, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 6 青色</span><br><span class="line">    &#123;&quot;h&quot;: 21, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 7 橙色</span><br><span class="line">    &#123;&quot;h&quot;: 128, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 8 青色</span><br><span class="line">    &#123;&quot;h&quot;: 212, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 9 紫色</span><br><span class="line">    &#123;&quot;h&quot;: 42, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 10 黄色</span><br><span class="line">    &#123;&quot;h&quot;: 168, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 11 蓝色</span><br><span class="line">    &#123;&quot;h&quot;: 85, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,   // 灯 12 绿色</span><br><span class="line">    &#123;&quot;h&quot;: 0, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;   // 灯 13 红色</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;id&quot;: 5,  // 自定义模式的 ID</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    // 每个对象代表一个灯光的颜色和亮度设置</span><br><span class="line">    &#123;&quot;h&quot;: 0, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 1 红色</span><br><span class="line">    &#123;&quot;h&quot;: 85, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 2 绿色</span><br><span class="line">    &#123;&quot;h&quot;: 168, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 3 蓝色</span><br><span class="line">    &#123;&quot;h&quot;: 42, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 4 黄色</span><br><span class="line">    &#123;&quot;h&quot;: 212, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 5 紫色</span><br><span class="line">    &#123;&quot;h&quot;: 128, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 6 青色</span><br><span class="line">    &#123;&quot;h&quot;: 21, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 7 橙色</span><br><span class="line">    &#123;&quot;h&quot;: 128, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 8 青色</span><br><span class="line">    &#123;&quot;h&quot;: 212, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 9 紫色</span><br><span class="line">    &#123;&quot;h&quot;: 42, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 10 黄色</span><br><span class="line">    &#123;&quot;h&quot;: 168, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,  // 灯 11 蓝色</span><br><span class="line">    &#123;&quot;h&quot;: 85, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;,   // 灯 12 绿色</span><br><span class="line">    &#123;&quot;h&quot;: 0, &quot;s&quot;: 255, &quot;v&quot;: 255&#125;   // 灯 13 红色</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
 <p>*** 发送数据到 ESP32:***</p>
 <ol class="doc-steps">
 <li>ESP32 创建一个默认 WiFi 网络，ZimaOS 连接。验证连接：</li>
 </ol>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping 172.16.1.1</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">ping 172.16.1.1</span><br></pre></td></tr></table></div></figure>
 
 <ol start="2" class="doc-steps">
 <li>向 <code class="chip">172.16.1.1</code> 发送 HTTP POST 请求，携带 JSON 数据：</li>
 </ol>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -X POST -H &quot;Content-Type: application/json&quot; -d @yourfile.json http://172.16.1.1/post</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">curl -X POST -H &quot;Content-Type: application/json&quot; -d @yourfile.json http://172.16.1.1/post</span><br></pre></td></tr></table></div></figure>
 
 <ol start="3" class="doc-steps">
 <li>检查灯光效果。</li>
@@ -602,7 +610,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.561Z" itemprop="dateModified">最后更新：2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.114Z" itemprop="dateModified">最后更新：2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/zimablade-overview"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">开始使用</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/hardware/ups-compatibility-list"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">UPS 兼容性列表</span></a></nav>
     </footer>
   </main>
@@ -882,6 +890,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
     
   </div>
   
@@ -959,6 +977,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

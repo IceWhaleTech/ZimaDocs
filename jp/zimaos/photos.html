@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS Photos：ローカルAI検索を備えたセルフホストの写真ライブラリ | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/zimaos/photos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/photos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS Photosで写真ライブラリをセルフホスト。タイムライン、地図、コレクションで閲覧し、すべてのフォーマットを再生し、自分のハードウェア上のローカルAIで検索できます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS Photos：ローカルAI検索を備えたセルフホストの写真ライブラリ">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/photos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS Photosで写真ライブラリをセルフホスト。タイムライン、地図、コレクションで閲覧し、すべてのフォーマットを再生し、自分のハードウェア上のローカルAIで検索できます。">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-add-source.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-browse-wall.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-timeline.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-map.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-collections.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-formats.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-viewer-details.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-ai-search.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-gallery.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-memories.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-collections.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-albums.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-ipad.webp">
+<meta property="article:published_time" content="2026-09-07T06:35:41.100Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.100Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/photos-add-source.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "写真",
+      "description": "ZimaOS Photosで写真ライブラリをセルフホスト。タイムライン、地図、コレクションで閲覧し、すべてのフォーマットを再生し、自分のハードウェア上のローカルAIで検索できます。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.100Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/jp/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "写真"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/photos">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/photos">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/photos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/photos">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/photos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/">ZimaOS 概要</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">セットアップとストレージ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/jp/zimaos/get-started">はじめに</a></li><li><a class="" href="/docs/jp/zimaos/features">機能概要</a></li><li><a class="" href="/docs/jp/zimaos/storage-setup">ストレージ設定</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション</a></li><li><a class="" href="/docs/jp/zimaos/docker-app-paths">アプリの保存先</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同期とバックアップ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/jp/zimaos/phone-backup">スマートフォンのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/computer-backup">コンピューターのバックアップ</a></li><li><a class="is-current" href="/docs/jp/zimaos/photos">写真</a></li><li><a class="" href="/docs/jp/zimaos/photos-supported-formats">対応フォーマット</a></li><li><a class="" href="/docs/jp/zimaos/cloud-drive-connect">クラウドドライブの接続</a></li><li><a class="" href="/docs/jp/zimaos/synology-to-zimacube-migration">別の NAS から移行</a></li><li><a class="" href="/docs/jp/zimaos/data-migration">データ移行</a></li><li><a class="" href="/docs/jp/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 バックアップ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">アクセスと共有</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">インストール方法</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/jp/zimaos/how-to-install-zimaos">ZimaOS のインストール</a></li><li><a class="" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve">Proxmox へのインストール</a></li><li><a class="" href="/docs/jp/zimaos/casaos-to-zimaos-migration">CasaOS から移行</a></li><li><a class="" href="/docs/jp/zimaos/password-recovery">パスワードのリセット</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">システム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">写真</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p><strong>Photos は ZimaOS 1.8 以降で利用できます。</strong></p>
+<p>すべての写真が手の届く場所に。すべての思い出が、また開きたくなるものに。PhotosはZimaOSデバイスをセルフホストの写真ライブラリに変えます。アクションカメラの映像、カメラのRAWファイル、これまで使ってきたすべてのスマートフォンのスナップ。スマートフォン、PC、iPadのどこでも、同じライブラリがあなたを追いかけます。</p>
+<h2 id="1つのライブラリ、すべてのデバイス" class="article-heading">1つのライブラリ、すべてのデバイス<a class="article-anchor" href="#1つのライブラリ、すべてのデバイス" aria-hidden="true"></a></h2><p>ライブラリは特定の端末ではなく、ホームサーバー上にあります。Photosにフォルダーを指定するだけで、すべてをスキャンして取り込みます。どの画面でも、同じライブラリが同時に見えます。</p>
+<p>Photosは「3台のカメラと3つの見る場所」という古い問題を解決します。アクションカメラのメモリーカード、カメラロール、スマートフォンのギャラリーが、1つのライブラリにまとまって並びます。</p>
+<h2 id="写真ソースを追加する" class="article-heading">写真ソースを追加する<a class="article-anchor" href="#写真ソースを追加する" aria-hidden="true"></a></h2><p>Photosは、指定したフォルダーから始まります。</p>
+<p>Photosの左上にある設定ボタンをクリックし、ソースを追加します。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-add-source.webp" alt="ソース追加オプションが表示されたZimaOS Photosの設定画面（左上）"></span></p>
+<p>ZimaOSはすぐにインデックス作成を開始します。何も移動せず、何もコピーしません。データはNAS上のフォルダーに残り、追加したソースはすべてのデバイスに自動で同期されます。スマートフォン、iPad、ブラウザのすべてが同じライブラリを見られます。</p>
+<h2 id="お好みの方法で閲覧する" class="article-heading">お好みの方法で閲覧する<a class="article-anchor" href="#お好みの方法で閲覧する" aria-hidden="true"></a></h2><p>ライブラリを楽しむための4つの閲覧方法があります。</p>
+<ul class="doc-dots">
+<li><strong>フォトウォール。</strong> 写真が壁のように画面いっぱいに広がります。ファイル名とフォルダーパスは背景に消え、写真だけが残ります。</li>
+<li><strong>タイムライン。</strong> 日、月、年で閲覧します。ある1日を拡大し、1年全体まで引きで見られます。</li>
+<li><strong>地図。</strong> あの旅行、あの通りが、訪れた場所のまま表示されます。</li>
+<li><strong>コレクション。</strong> Photosが最高の瞬間をストーリーにまとめます。旅行、顔、季節。自分でも気づいていなかった思い出です。</li>
+</ul>
+<p>4つのビューはすべてのデバイスで使えます。通勤中はスマートフォンで見て、ソファではiPadで続きを楽しめます。ライブラリはZimaOSデバイス上にあるため、どの画面も同じ写真を、それぞれのコピーを持たずに表示します。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-browse-wall.webp" alt="ファイル名なしで写真が画面いっぱいに広がるZimaOS Photosのフォトウォール表示"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-timeline.webp" alt="日、月、年を移動できるZimaOS Photosのタイムライン表示"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-map.webp" alt="撮影された場所に写真が表示されるZimaOS Photosの地図表示"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-collections.webp" alt="旅行、顔、季節のストーリーが並ぶZimaOS Photosのコレクション表示"></span></p>
+<h2 id="すべてのフォーマットを再生" class="article-heading">すべてのフォーマットを再生<a class="article-anchor" href="#すべてのフォーマットを再生" aria-hidden="true"></a></h2><p>アクションカメラの360°映像。iPhoneのLive Photo。カメラのRAWファイル。同じ旅行、同じ日、同じ思い出。Photosはこれらをすべて、1つのライブラリの中で再生します。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-formats.webp" alt="360°映像、Live Photo、RAWファイルが混在するZimaOS Photosライブラリ"></span></p>
+<p>1枚開けば、詳細も一緒に表示されます。カメラ、レンズ、ISO、絞り値がすべて保持されています。関連する写真が隣に集まり、1つの瞬間が次の瞬間へとつながります。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-viewer-details.webp" alt="カメラ設定と関連写真が表示されたZimaOS Photosのビューア"></span></p>
+<h2 id="ローカルAI、プライバシーを設計に" class="article-heading">ローカルAI、プライバシーを設計に<a class="article-anchor" href="#ローカルAI、プライバシーを設計に" aria-hidden="true"></a></h2><p>思い出し方のまま検索できます。ある結婚式。あるビーチ。ある猫。フォルダーを掘り返す必要はありません。思い浮かべた瞬間を、ローカルAIが見つけ出します。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-ai-search.webp" alt="自然言語のクエリから写真を見つけるZimaOS Photosの検索"></span></p>
+<p>デリケートな写真は、自分で開くことを選ぶまでぼかされたままです。AIは自分のハードウェア上で動きます。セルフホストとはそういうことです。ネットワークの外には何も出ません。</p>
+<h2 id="スマートフォンで" class="article-heading">スマートフォンで<a class="article-anchor" href="#スマートフォンで" aria-hidden="true"></a></h2><p>スマートフォンにはWebと同じモジュールが揃っています。ギャラリー、思い出、コレクション、カスタムアルバムです。</p>
+<div style="display:flex; align-items:flex-start; justify-content:center; gap:24px;">
+  <img src="/docs/images/guides/photos-phone-gallery.webp" alt="モバイル画面にフォトウォールを表示するZimaOS Photosのギャラリーモジュール" style="flex:0 0 22%; max-width:22%; height:auto;">
+  <img src="/docs/images/guides/photos-phone-memories.webp" alt="モバイル画面にストーリーを表示するZimaOS Photosの思い出モジュール" style="flex:0 0 22%; max-width:22%; height:auto;">
+  <img src="/docs/images/guides/photos-phone-collections.webp" alt="グループ化されたコレクションを表示するZimaOS Photosのコレクションモジュール" style="flex:0 0 22%; max-width:22%; height:auto;">
+  <img src="/docs/images/guides/photos-phone-albums.webp" alt="ユーザー作成のアルバムを表示するZimaOS Photosのカスタムアルバムモジュール" style="flex:0 0 22%; max-width:22%; height:auto;">
+</div>
+
+<p>新しい写真は自動でライブラリに入ります。ZimaClientがバックグラウンドで同期するので、どこにいてもスマートフォンには常に最新が表示されます。</p>
+<p>新しいスマートフォンでもライブラリは空になりません。同じZimaOSアカウントでサインインすれば、既存のライブラリがデバイスから読み込まれます。</p>
+<h2 id="PCで" class="article-heading">PCで<a class="article-anchor" href="#PCで" aria-hidden="true"></a></h2><p>PCでは、Photosはブラウザで開く同じWeb体験です。ZimaOSダッシュボードを開けば、ライブラリがそこにあります。すべてのビュー、すべてのフォーマット、AI検索、そのすべて。Photosの最も完全な姿です。</p>
+<h2 id="iPadで" class="article-heading">iPadで<a class="article-anchor" href="#iPadで" aria-hidden="true"></a></h2><p>iPadでは、より大きな画面に合わせてインターフェースが調整され、フォトウォールとビューアがゆったりと広がります。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-ipad.webp" alt="大きな画面に合わせて調整されたライブラリを表示するiPad上のZimaOS Photos"></span></p>
+<h2 id="眺めるために作られた" class="article-heading">眺めるために作られた<a class="article-anchor" href="#眺めるために作られた" aria-hidden="true"></a></h2><p>Photosはファイルを運ぶためではなく、作品を味わうために設計されています。コレクションは、忘れていた旅行や顔を浮かび上がらせます。ビューアがカメラ設定を保持するのは、それも作品の一部だからです。スマートフォンの写真は数あるソースの1つであり、**<a href="./phone-backup" title="ZimaClient でスマートフォンを ZimaOS に自動バックアップする" class="doc-link">スマートフォンのバックアップ</a>**を通じて届きます。ライブラリこそが目的地です。</p>
+<p>プライバシーは初期設定です。すべてが自分のハードウェアで動きます。アップロードなし。共有なし。思い出は自分のサーバーに残ります。</p>
+<h2 id="対応フォーマット" class="article-heading">対応フォーマット<a class="article-anchor" href="#対応フォーマット" aria-hidden="true"></a></h2><p>Photosは幅広い静止画フォーマットをインデックスし、メタデータも一緒に取り込みます。</p>
+<ul class="doc-dots">
+<li><strong>スマートフォンと一般的な画像。</strong> JPEG、HEIC、HEIF、AVIF、PNG、WebP、GIF、BMP。</li>
+<li><strong>専用カメラのRAW。</strong> ARW、CR2、CR3、DNG、NEF、ORF、PEF、RAF、RW2、X3F、そして主要なカメラのRAWフォーマットのほとんど。</li>
+<li><strong>プロ用コンテナ。</strong> TIFF、PSD、PSB、JPEG XL、JPEG 2000、EXR。</li>
+</ul>
+<p>内蔵パーサーは標準フィールドを読み取ります。カメラ、レンズ、焦点距離、絞り、露出時間、ISO、GPS、撮影日です。多くのカメラが付加するメーカー独自のメタデータも読み取り、動画のメタデータは別経路で処理するため、映像も同じように検索できます。</p>
+<p>Photosは実行時に外部のメタデータツールに依存しません。パーサーは内蔵なので、デバイスに追加のソフトウェアがなくてもインデックス作成は動き続けます。</p>
+<p>1つ知っておきたいこと：フォーマットがインデックスされても、サムネイルはファイル自体に依存することがあります。内蔵プレビューを持たないRAWファイルでは、サムネイルはデコーダー対応に依存します。いずれの場合も、ファイルはメタデータとともにライブラリに残ります。完全な一覧は**<a href="./photos-supported-formats" title="サムネイルとメタデータの動作を含む、ZimaOS Photos がインデックスするフォーマット一覧" class="doc-link">Photos 対応フォーマット</a>**をご覧ください。</p>
+<h2 id="速さを保つ設計" class="article-heading">速さを保つ設計<a class="article-anchor" href="#速さを保つ設計" aria-hidden="true"></a></h2><p>速さは後付けではなく、設計の一部です。</p>
+<p>サムネイルは3層のキャッシュを通ります。メモリ、3つのサイズ階層を持つ永続ディスクキャッシュ、そして小さなリクエスト用の派生コピーです。一度キャッシュされたサムネイルはミリ秒で返ります。</p>
+<p>RAWファイルには特別な扱いがあります。カメラがJPEGプレビューを埋め込んでいる場合、Photosはセンサー画像全体をデコードせずにそのプレビューを使います。Apple M4 Proでのテストでは、CR2、NEF、PEF、ARWファイルのプレビュールートは29〜100 msで完了し、同じファイルのフルデコードには160〜450 msかかりました。</p>
+<p>スクロールでサーバー全体が止まることはありません。デコードは並行数とメモリの予算で制限されているため、100メガピクセルのRAWで埋まったウォールでも、システムの残りの部分を動かしながら快適に閲覧できます。</p>
+<h2 id="次へ" class="article-heading">次へ<a class="article-anchor" href="#次へ" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="./phone-backup" title="ZimaClient でスマートフォンを ZimaOS に自動バックアップする" class="doc-link">スマートフォンのバックアップ</a></strong> — まずスマートフォンの写真をライブラリへ</li>
+<li><strong><a href="./remote-access" title="どこからでもホームサーバーにアクセスできるようリモートアクセスを設定する" class="doc-link">リモートアクセス</a></strong> — どこからでも同じライブラリを閲覧</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.100Z" itemprop="dateModified">最終更新日: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/computer-backup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">コンピューターのバックアップ</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/photos-supported-formats"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">対応フォーマット</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%81%A4%E3%81%AE%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%80%81%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9"><span class="toc-text">1つのライブラリ、すべてのデバイス</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E7%9C%9F%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B"><span class="toc-text">写真ソースを追加する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%8A%E5%A5%BD%E3%81%BF%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%A7%E9%96%B2%E8%A6%A7%E3%81%99%E3%82%8B"><span class="toc-text">お好みの方法で閲覧する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88%E3%82%92%E5%86%8D%E7%94%9F"><span class="toc-text">すべてのフォーマットを再生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABAI%E3%80%81%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%AB"><span class="toc-text">ローカルAI、プライバシーを設計に</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%B3%E3%81%A7"><span class="toc-text">スマートフォンで</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC%E3%81%A7"><span class="toc-text">PCで</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iPad%E3%81%A7"><span class="toc-text">iPadで</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%BA%E3%82%81%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E4%BD%9C%E3%82%89%E3%82%8C%E3%81%9F"><span class="toc-text">眺めるために作られた</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BE%E5%BF%9C%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88"><span class="toc-text">対応フォーマット</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9F%E3%81%95%E3%82%92%E4%BF%9D%E3%81%A4%E8%A8%AD%E8%A8%88"><span class="toc-text">速さを保つ設計</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A1%E3%81%B8"><span class="toc-text">次へ</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/zimaos/">ZimaOS 概要</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">セットアップとストレージ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/jp/zimaos/get-started">はじめに</a></li><li><a class="" href="/docs/jp/zimaos/features">機能概要</a></li><li><a class="" href="/docs/jp/zimaos/storage-setup">ストレージ設定</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション</a></li><li><a class="" href="/docs/jp/zimaos/docker-app-paths">アプリの保存先</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同期とバックアップ</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/jp/zimaos/phone-backup">スマートフォンのバックアップ</a></li><li><a class="" href="/docs/jp/zimaos/computer-backup">コンピューターのバックアップ</a></li><li><a class="is-current" href="/docs/jp/zimaos/photos">写真</a></li><li><a class="" href="/docs/jp/zimaos/photos-supported-formats">対応フォーマット</a></li><li><a class="" href="/docs/jp/zimaos/cloud-drive-connect">クラウドドライブの接続</a></li><li><a class="" href="/docs/jp/zimaos/synology-to-zimacube-migration">別の NAS から移行</a></li><li><a class="" href="/docs/jp/zimaos/data-migration">データ移行</a></li><li><a class="" href="/docs/jp/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 バックアップ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">アクセスと共有</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">インストール方法</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/jp/zimaos/how-to-install-zimaos">ZimaOS のインストール</a></li><li><a class="" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve">Proxmox へのインストール</a></li><li><a class="" href="/docs/jp/zimaos/casaos-to-zimaos-migration">CasaOS から移行</a></li><li><a class="" href="/docs/jp/zimaos/password-recovery">パスワードのリセット</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">システム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/photos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/photos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/photos" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/photos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/photos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">ストア</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

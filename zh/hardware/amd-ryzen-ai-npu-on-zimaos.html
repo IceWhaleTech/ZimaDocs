@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS 上 AMD Ryzen AI MAX+ 395 NPU：实测表现与真实上限 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="在 ZimaOS（内核 6.18.9）上实测 AMD Ryzen AI MAX+ 395 的 XDNA2 NPU：NPU 启用、固件与驱动版本锁、以及 Linux 上 NPU 推理目前是否可用。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS 上 AMD Ryzen AI MAX+ 395 NPU：实测表现与真实上限">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="在 ZimaOS（内核 6.18.9）上实测 AMD Ryzen AI MAX+ 395 的 XDNA2 NPU：NPU 启用、固件与驱动版本锁、以及 Linux 上 NPU 推理目前是否可用。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-09-07T06:35:41.114Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.114Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaOS 上的 AMD Ryzen AI MAX+ 395 NPU",
+      "description": "在 ZimaOS（内核 6.18.9）上实测 AMD Ryzen AI MAX+ 395 的 XDNA2 NPU：NPU 启用、固件与驱动版本锁、以及 Linux 上 NPU 推理目前是否可用。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.114Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/zh/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZimaOS 上的 AMD Ryzen AI MAX+ 395 NPU"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item current_page_item"><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/hardware/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/zh/hardware/quick-start">快速开始</a></li><li><a class="" href="/docs/zh/hardware/zimacube-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/hardware-details">硬件详情</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on-setup">自动开机方法</a></li><li><a class="" href="/docs/zh/hardware/pc-direct">PC 直连</a></li><li><a class="" href="/docs/zh/hardware/hdd-interface-guide">硬盘接口指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-guide">第七硬盘槽使用指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-install">安装第七硬盘槽</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on">自动开机</a></li><li><a class="" href="/docs/zh/hardware/gpu-expansion">GPU 扩展</a></li><li><a class="" href="/docs/zh/hardware/raid-ssd-expansion">RAID SSD 扩展</a></li><li><a class="" href="/docs/zh/hardware/bios-configuration">BIOS 配置</a></li><li><a class="" href="/docs/zh/hardware/zimacube-fan-diy">DIY 风扇指南</a></li><li><a class="" href="/docs/zh/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 传输速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">兼容的网络适配器</a></li><li><a class="" href="/docs/zh/hardware/enable-wol-on-zimacube">启用网络唤醒</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/zh/hardware/zimaboard-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/zimaboard-quick-start">开机</a></li><li><a class="" href="/docs/zh/hardware/hardware-interface">硬件接口</a></li><li><a class="" href="/docs/zh/hardware/power-on-zimaboard-2">ZimaBoard 2 开机</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">风扇安装与 PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/zh/hardware/power-on-zimablade">开机</a></li><li><a class="" href="/docs/zh/hardware/zimablade-overview">开始使用</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">兼容性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/zh/hardware/7th-bay-led">第七硬盘槽 LED 指示灯</a></li><li><a class="" href="/docs/zh/hardware/ups-compatibility-list">UPS 兼容性列表</a></li><li><a class="" href="/docs/zh/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/zh/hardware/supported-disk-formats">支持的磁盘格式</a></li><li><a class="" href="/docs/zh/hardware/ax210-wifi-6e">AX210 Wi-Fi 模块</a></li><li><a class="" href="/docs/zh/hardware/wake-on-lan-setup">网络唤醒设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">第三方系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="is-current" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaOS 上的 AMD Ryzen AI MAX+ 395 NPU</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="概述" class="article-heading">概述<a class="article-anchor" href="#概述" aria-hidden="true"></a></h2><p>本文记录了一次在运行 ZimaOS（内核 6.18.9）的主机上，尝试在 AMD Ryzen AI MAX+ 395 处理器的 NPU 上运行小模型的完整过程：从启用 XDNA2 NPU、在驱动层验证，到逐一尝试现实可行的推理路径。结果能清晰地展示这颗 NPU 在 Linux 上目前能做什么、不能做什么，以及为什么。</p>
+<h2 id="结论先行" class="article-heading">结论先行<a class="article-anchor" href="#结论先行" aria-hidden="true"></a></h2><p>AMD XDNA2 NPU 在 Linux 上的推理软件栈未达工程验证（EVT）门槛，暂不能作为可用的生产环境。阻塞全部来自 AMD 在 Linux 侧的软件成熟度，与硬件本身无关。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>判断</th>
+<th>一句话依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NPU 硬件</td>
+<td>成熟</td>
+<td>量产 IP，本机正常识别、可计算</td>
+</tr>
+<tr>
+<td>Windows 侧软件栈</td>
+<td>成熟</td>
+<td>官方 ONNX EP &#x2F; whisper.cpp 均可用</td>
+</tr>
+<tr>
+<td>Linux 侧软件栈</td>
+<td>未达 EVT</td>
+<td>驱动、固件、运行时版本三连环断裂，官方框架缺位</td>
+</tr>
+<tr>
+<td>本机实测上限</td>
+<td>启用 + 可编程 + 执行算子 + 真模型 prefill</td>
+<td>完整模型生成被驱动版本锁死</td>
+</tr>
+</tbody></table></div>
+<p>NPU 在 Windows 上是产品，在 Linux 上是开发者实验场。生产选型应使用 iGPU&#x2F;GPU（ROCm&#x2F;Vulkan）承担 AI 推理；NPU 路线应标记为“待 AMD Linux 栈成熟后重新评估”。目前虽然能成功调用计算驱动并执行算子，但驱动、固件和运行时之间的版本断裂，加上官方框架缺位，让它在 Linux 下并不能作为一个完整可用的产品。</p>
+<h2 id="测试环境" class="article-heading">测试环境<a class="article-anchor" href="#测试环境" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>处理器：AMD Ryzen AI MAX+ 395（Strix Halo），XDNA2 NPU，标称 50 TOPS</li>
+<li>平台：ZimaOS 1.7 及以上版本，内核 6.18.9</li>
+<li>NPU 的 PCI 设备 ID：<code class="chip">0x1022:0x17f0</code></li>
+</ul>
+<p>目标：在这台机器的 NPU 上跑一个小模型。</p>
+<h2 id="检测与启用" class="article-heading">检测与启用<a class="article-anchor" href="#检测与启用" aria-hidden="true"></a></h2><p><strong>检测</strong>：<code class="chip">lspci</code> 确认存在 XDNA2 NPU。内核 <code class="chip">amdxdna</code> 驱动模块已加载，但 <code class="chip">/dev/accel/accel0</code> 未生成——因为缺固件。驱动要求 <code class="chip">amdnpu/17f0_11/npu.sbin</code>，全盘找不到。</p>
+<p><strong>启用</strong>：自编译 XRT 2.21.75。Ubuntu 仓库只有 2.13 旧版，因此走源码构建，用容器解决。踩掉两个坑后识别成功：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ xrt-smi examine</span><br><span class="line">XRT  Version: 2.21.75 · amdxdna Version: 6.18.9 · NPU Firmware Version: 1.0.0.166</span><br><span class="line">|BDF            |Name         |</span><br><span class="line">|[0000:c7:00.1] |RyzenAI-npu5 |</span><br></pre></td></tr></table></div></figure>
+
+<p>有两个坑。</p>
+<ol class="doc-steps">
+<li>容器必须加 <code class="chip">--ulimit memlock=-1</code>（默认 8MB 会导致设备映射失败）。</li>
+<li>需宿主预留 hugepages，并挂载 <code class="chip">/dev/hugepages</code>。宿主固件由 ZimaOS 的 <code class="chip">zimaos-driver</code> 管理（<code class="chip">/opt/zimaos/drivers/firmware/</code>）。</li>
+</ol>
+<h2 id="底层验证" class="article-heading">底层验证<a class="article-anchor" href="#底层验证" aria-hidden="true"></a></h2><p>pyxrt 可编程访问：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python3 verify_pyxrt.py</span><br><span class="line">device: &lt;pyxrt.device object at 0x7f46d2a039f0&gt;  ·  pyxrt roundtrip: OK</span><br></pre></td></tr></table></div></figure>
+
+<p>IRON&#x2F;axpy 算子执行（mlir-aie 1.4.2，160 个测试全过）：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python -m pytest test.py -x -q</span><br><span class="line">============================= 160 passed in 36.22s =============================</span><br></pre></td></tr></table></div></figure>
+
+<p>NPU 完全启用、可编程调用、真实执行 AIE 算子。这是本机 NPU 能力的基线。</p>
+<h2 id="尝试一：官方-ONNX-Runtime-EP-——-Linux-未启用" class="article-heading">尝试一：官方 ONNX Runtime EP —— Linux 未启用<a class="article-anchor" href="#尝试一：官方-ONNX-Runtime-EP-——-Linux-未启用" aria-hidden="true"></a></h2><p>调研（AMD 官方文档 + 官方 issue 现状）：</p>
+<ul class="doc-dots">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html" title="官方 ONNX Runtime Vitis-AI Execution Provider 文档" class="doc-link">onnxruntime 官方文档</a>：VitisAI EP 标注 “Ryzen AI Linux support is not enabled in this release”，AMD64 上仅 Windows 可用。</li>
+<li>AMD 官方 issue #319&#x2F;#333&#x2F;#341 全部处于 OPEN 且无回应（缺 <code class="chip">voe</code> 模块 &#x2F; 缺 <code class="chip">onnxruntime_providers_ryzenai.so</code>）。</li>
+<li>AMD Ryzen AI 1.8 release notes：该版本 Linux 上不支持 model generation。</li>
+</ul>
+<p><strong>结论</strong>：官方推理框架路径在 Linux x86_64 上不存在，排除。</p>
+<h2 id="尝试二：FastFlowLM-——-被固件-x2F-驱动协议锁死" class="article-heading">尝试二：FastFlowLM —— 被固件&#x2F;驱动协议锁死<a class="article-anchor" href="#尝试二：FastFlowLM-——-被固件-x2F-驱动协议锁死" aria-hidden="true"></a></h2><p>镜像构建成功（463MB）+ Llama-3.2-1B-NPU2 下载成功，但推理即中止：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ flm run llama3.2:1b</span><br><span class="line">[FLM]  Prefill chunk 1/1 with 46 tokens</span><br><span class="line">[ERROR]  Insertion error: runlist failed execution (ERT_CMD_STATE_ABORT)</span><br></pre></td></tr></table></div></figure>
+
+<p><code class="chip">validate</code> 给出精确原因（固件与驱动版本双重不达标）：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ fastflowlm validate -j</span><br><span class="line">&#123; &quot;fw_build&quot;: 166, &quot;fw_major&quot;: 1, &quot;fw_minor&quot;: 0, &quot;fw_ok&quot;: false,</span><br><span class="line">  &quot;drm_version&quot;: &quot;0.1&quot;, &quot;kernel_ok&quot;: false, &quot;ready&quot;: false &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>读其源码 <code class="chip">main.cpp</code> 确认硬性要求：固件必须 ≥ <code class="chip">1.1.0.0</code>；amdxdna 设备的 DRM 版本必须 ≥ <code class="chip">0.6</code>（主线驱动报告为 <code class="chip">0.1</code>）。</p>
+<h2 id="固件升级实验：协议-7-固件需要协议-7-驱动，闭环断裂" class="article-heading">固件升级实验：协议 7 固件需要协议 7 驱动，闭环断裂<a class="article-anchor" href="#固件升级实验：协议-7-固件需要协议-7-驱动，闭环断裂" aria-hidden="true"></a></h2><p>从 GitLab <code class="chip">kernel-firmware/drm-firmware</code> 的 amd-ipu-staging 分支找到新固件 <code class="chip">npu.sbin.1.1.2.65</code>（内置 “Release 1.1.2.65”，≥ 1.1.0.0）。装上升级后 probe 失败：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ dmesg | grep -iE &quot;amdxdna.*protocol&quot;</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* aie2_check_protocol: Incompatible firmware protocol major 7 minor 2</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* aie2_hw_start: firmware is not alive</span><br></pre></td></tr></table></div></figure>
+
+<p>读主线内核源码 <code class="chip">aie2_check_protocol</code>：固件的 protocol major 必须等于驱动的 <code class="chip">protocol_major</code>。主线 6.18.9 驱动（npu5）协议 &#x3D; <strong>6.12</strong>；<code class="chip">1.1.2.65</code> 固件 &#x3D; <strong>协议 7</strong> → 不兼容。已回滚，XRT&#x2F;pyxrt 环境完好。</p>
+<p><strong>关键发现</strong>：驱动协议版本演进断裂——新固件（协议 7）需要新驱动（协议 7），而新驱动需要的协议 7 支持尚未进入任何稳定内核。查内核源码确认协议 7 支持只存在于未发布的 master（未来的 6.20&#x2F;7.0）；6.18&#x2F;6.19 稳定版均没有。</p>
+<h2 id="尝试三：树外驱动-——-ZimaOS-自定义内核加载不了" class="article-heading">尝试三：树外驱动 —— ZimaOS 自定义内核加载不了<a class="article-anchor" href="#尝试三：树外驱动-——-ZimaOS-自定义内核加载不了" aria-hidden="true"></a></h2><p>为获得协议 7 驱动，从 kernel.org 编出主线 6.18.9 头文件树，编译 xdna-driver 上游的 <code class="chip">amdxdna.ko</code>（vermagic 精确匹配），加载：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ insmod amdxdna.ko</span><br><span class="line">insmod: ERROR: could not insert module ...: Unknown symbol in module</span><br><span class="line">$ dmesg | grep amdxdna</span><br><span class="line">amdxdna: Unknown symbol drm_gem_shmem_pin_locked (err -2)</span><br><span class="line">amdxdna: Unknown symbol drm_gem_shmem_vmap_locked (err -2)  ...（共 13 个 drm_gem_shmem_* 符号缺失）</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>根因</strong>：ZimaOS 内核是 Buildroot 定制构建，其 <code class="chip">drm_shmem_helper</code> 与主线 6.18.9 源码不一致，AMD 官方树外驱动的 ABI 对不上。已回滚。至此 FastFlowLM 路线彻底关闭（固件→驱动→内核三连环断裂）。</p>
+<h2 id="尝试四：IRON-Llama-——-prefill-突破-decode-最终墙" class="article-heading">尝试四：IRON Llama —— prefill 突破 + decode 最终墙<a class="article-anchor" href="#尝试四：IRON-Llama-——-prefill-突破-decode-最终墙" aria-hidden="true"></a></h2><p>换路线：使用 mlir-aie&#x2F;IRON 近金属工具链，它不依赖 FastFlowLM 或协议 7。从 amd&#x2F;IRON 仓库搭环境（mlir_aie 1.4.2.dev16 + torch CPU + 算子依赖），模型经 ModelScope 下载，免去 HF token。</p>
+<p>编译：全部 AIE 算子（RMSNorm&#x2F;GEMM&#x2F;GEMV&#x2F;RoPE&#x2F;Softmax&#x2F;FFN）编译成功。</p>
+<p><strong>prefill 成功</strong>（完整 transformer 前向在 NPU 上执行，正确生成首个 token）：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python llama_npu.py model.safetensors tokenizer.model --num-tokens 1 --prompt-len 13</span><br><span class="line">SCENE I. King John</span><br><span class="line">[Prefill] Time to first token: 2.022 s   [Total] Tokens per second: 0.495</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>decode 失败</strong>（连续生成被两层卡住）：</p>
+<p>① 先缺 XRT API（2.21.75）：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">AttributeError: &#x27;pyxrt.run&#x27; object has no attribute &#x27;get_ctrl_scratchpad_bo&#x27;</span><br></pre></td></tr></table></div></figure>
+
+<p>② 自编 pyxrt 2.26 模块（从 fastflowlm 镜像抽取 XRT 2.26 libs + 对 xdna-driver 源码定向编译，已验证与主线驱动兼容：<code class="chip">get_ctrl_scratchpad_bo: True</code>，设备&#x2F;BO 通信通过）后，fused 内核执行仍失败：</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">RuntimeError: DRM_IOCTL_AMDXDNA_EXEC_CMD IOCTL failed (err=-22): Invalid argument</span><br><span class="line">$ dmesg | grep amdxdna</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* amdxdna_cmd_submit: HW Context is not ready</span><br></pre></td></tr></table></div></figure>
+
+<p>读驱动源码 <code class="chip">amdxdna_ctx.c</code>：提交要求 hwctx 状态为 <code class="chip">READY</code>；decode 的 fused 内核经 ELF 加载 hwctx，这是一条新路径，主线 6.18.9 驱动无法让其达到 READY。</p>
+<p><strong>结论</strong>：prefill（真模型前向）在 NPU 上达成；decode（完整生成）被驱动版本锁死——与 FastFlowLM 是同一堵墙。</p>
+<h2 id="技术栈分层分析" class="article-heading">技术栈分层分析<a class="article-anchor" href="#技术栈分层分析" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>层</th>
+<th>成熟度</th>
+<th>关键结论</th>
+<th>对应证据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>硬件层（XDNA2）</td>
+<td>成熟</td>
+<td>量产 IP，8 列正常识别、可计算</td>
+<td>检测与启用</td>
+</tr>
+<tr>
+<td>内核驱动层（amdxdna）</td>
+<td>有限</td>
+<td>协议 6.12 可用；协议 7 不进稳定内核；树外驱动加载不了</td>
+<td>检测 &#x2F; 固件升级实验 &#x2F; 树外驱动</td>
+</tr>
+<tr>
+<td>固件层</td>
+<td>有限</td>
+<td>1.0.x 绑定协议 6、1.1.x 绑定协议 7；新固件需新驱动</td>
+<td>固件升级实验</td>
+</tr>
+<tr>
+<td>用户态运行时（XRT）</td>
+<td>有限</td>
+<td>2.21 与 2.26 版本割裂；新 API 依赖新版本</td>
+<td>IRON Llama</td>
+</tr>
+<tr>
+<td>推理框架层</td>
+<td>未就绪</td>
+<td>官方 EP 在 Linux 未启用；FastFlowLM 依赖版本巧合；IRON 近金属、非端到端</td>
+<td>尝试一&#x2F;二&#x2F;四</td>
+</tr>
+<tr>
+<td>模型格式层</td>
+<td>有限</td>
+<td>无通用格式或部署管线，各家专有编译链</td>
+<td>尝试二&#x2F;四</td>
+</tr>
+<tr>
+<td>系统集成层</td>
+<td>有限</td>
+<td>发行版绑定严重；ZimaOS 定制内核 + 只读 &#x2F;lib&#x2F;modules 锁死升级</td>
+<td>检测 &#x2F; 树外驱动</td>
+</tr>
+</tbody></table></div>
+<h2 id="阻塞点与根因归纳" class="article-heading">阻塞点与根因归纳<a class="article-anchor" href="#阻塞点与根因归纳" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>协议死锁</strong>：新固件（协议 7）、新驱动（协议 7）、稳定内核（不支持协议 7）三者不闭环。</li>
+<li><strong>官方框架缺位</strong>：onnxruntime VitisAI EP 在 Linux x86_64 明确未启用，官方 issue 长期无回应、无路线图。</li>
+<li><strong>发行版绑定</strong>：ZimaOS 定制内核的 DRM 层与主线不一致，连 AMD 官方树外驱动都加载不了。</li>
+<li><strong>生态割裂</strong>：无标准模型格式或部署管线，模型编译依赖各家专有工具链。</li>
+<li><strong>调试体验</strong>：报错（EINVAL、协议不匹配、hwctx not ready）没有官方排障路径，全靠社区摸索。</li>
+</ol>
+<h2 id="平台成熟度对比" class="article-heading">平台成熟度对比<a class="article-anchor" href="#平台成熟度对比" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Windows</th>
+<th>Linux（当前）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>官方 ONNX EP</td>
+<td>可用</td>
+<td>未启用</td>
+</tr>
+<tr>
+<td>NPU 推理框架（whisper.cpp 等）</td>
+<td>可用</td>
+<td>“planned”</td>
+</tr>
+<tr>
+<td>驱动&#x2F;固件版本管理</td>
+<td>厂商统一</td>
+<td>各发行版割裂</td>
+</tr>
+<tr>
+<td>生产可用性</td>
+<td>可用</td>
+<td>未达工程验证</td>
+</tr>
+</tbody></table></div>
+<h2 id="结论与决策建议" class="article-heading">结论与决策建议<a class="article-anchor" href="#结论与决策建议" aria-hidden="true"></a></h2><p><strong>技术结论</strong>：NPU 硬件成熟、Windows 侧软件栈成熟。Linux 侧软件栈（驱动协议演进、官方框架、版本管理）处于开发阶段，未达工程验证。本机实测上限为：启用 + 可编程 + 执行算子 + 真模型 prefill；完整模型生成不可行。阻塞是软件问题（非硬件），理论上会随 AMD Linux 栈成熟而解除。</p>
+<p>决策建议：</p>
+<ol class="doc-steps">
+<li><strong>生产选型</strong>：Linux 上不要依赖 NPU 推理；用 iGPU&#x2F;GPU（ROCm&#x2F;Vulkan）承担 AI 推理——本机 llama.cpp + Vulkan 已在跑 14B~35B 模型。</li>
+<li><strong>NPU 路线</strong>：标记“待 AMD Linux 栈成熟后重新评估”。</li>
+<li><strong>若坚持 NPU</strong>：仅适合原型或低功耗边缘验证，需要专家级 IRON 开发，不是生产路径。</li>
+<li><strong>技术储备</strong>：本次环境（IRON、pyxrt 2.26、模型、内核头文件树）已存档，内核升级后可快速重试。</li>
+</ol>
+<p><strong>观察点（解锁条件）</strong>：</p>
+<ul class="doc-dots">
+<li><input disabled type="checkbox"> 稳定内核（≥6.20&#x2F;7.0）含协议 7 的 amdxdna</li>
+<li><input disabled type="checkbox"> AMD 发布 Linux 版 onnxruntime-vitisai &#x2F; voe wheel</li>
+<li><input disabled type="checkbox"> ZimaOS 升级内核（届时 FastFlowLM &#x2F; IRON decode 可能直接可用）</li>
+<li><input disabled type="checkbox"> whisper.cpp NPU 卸载支持 Linux</li>
+</ul>
+<h2 id="附录：实测资产清单（供内核升级后复用）" class="article-heading">附录：实测资产清单（供内核升级后复用）<a class="article-anchor" href="#附录：实测资产清单（供内核升级后复用）" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>资产</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IRON 环境（mlir_aie 1.4.2.dev16 + torch）</td>
+<td>容器 <code class="chip">npu-dev</code>，<code class="chip">/work/ironenv2/</code></td>
+</tr>
+<tr>
+<td>自编 pyxrt 2.26</td>
+<td><code class="chip">/work/pyxrt_build/build/</code></td>
+</tr>
+<tr>
+<td>XRT 2.26 libs（隔离）</td>
+<td><code class="chip">/work/xrt226/</code></td>
+</tr>
+<tr>
+<td>Llama-3.2-1B 模型</td>
+<td><code class="chip">/DATA/npu-dev/llama-3.2-1b/</code></td>
+</tr>
+<tr>
+<td>内核头文件树</td>
+<td><code class="chip">/DATA/npu-dev/kernel-src/</code></td>
+</tr>
+<tr>
+<td>FastFlowLM 镜像 + 模型缓存</td>
+<td><code class="chip">/DATA/npu-dev/fastflowlm/</code>、<code class="chip">/DATA/npu-dev/flm-cache/</code></td>
+</tr>
+<tr>
+<td>固件&#x2F;驱动备份与回滚脚本</td>
+<td><code class="chip">/DATA/npu-dev/fw-backup/</code></td>
+</tr>
+</tbody></table></div>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.114Z" itemprop="dateModified">最后更新：2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/minimal-ubuntu-server-build"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">设置 Ubuntu Server</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%E5%85%88%E8%A1%8C"><span class="toc-text">结论先行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-text">测试环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%90%AF%E7%94%A8"><span class="toc-text">检测与启用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E9%AA%8C%E8%AF%81"><span class="toc-text">底层验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E4%B8%80%EF%BC%9A%E5%AE%98%E6%96%B9-ONNX-Runtime-EP-%E2%80%94%E2%80%94-Linux-%E6%9C%AA%E5%90%AF%E7%94%A8"><span class="toc-text">尝试一：官方 ONNX Runtime EP —— Linux 未启用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E4%BA%8C%EF%BC%9AFastFlowLM-%E2%80%94%E2%80%94-%E8%A2%AB%E5%9B%BA%E4%BB%B6-x2F-%E9%A9%B1%E5%8A%A8%E5%8D%8F%E8%AE%AE%E9%94%81%E6%AD%BB"><span class="toc-text">尝试二：FastFlowLM —— 被固件&#x2F;驱动协议锁死</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BA%E4%BB%B6%E5%8D%87%E7%BA%A7%E5%AE%9E%E9%AA%8C%EF%BC%9A%E5%8D%8F%E8%AE%AE-7-%E5%9B%BA%E4%BB%B6%E9%9C%80%E8%A6%81%E5%8D%8F%E8%AE%AE-7-%E9%A9%B1%E5%8A%A8%EF%BC%8C%E9%97%AD%E7%8E%AF%E6%96%AD%E8%A3%82"><span class="toc-text">固件升级实验：协议 7 固件需要协议 7 驱动，闭环断裂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E4%B8%89%EF%BC%9A%E6%A0%91%E5%A4%96%E9%A9%B1%E5%8A%A8-%E2%80%94%E2%80%94-ZimaOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%86%85%E6%A0%B8%E5%8A%A0%E8%BD%BD%E4%B8%8D%E4%BA%86"><span class="toc-text">尝试三：树外驱动 —— ZimaOS 自定义内核加载不了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E5%9B%9B%EF%BC%9AIRON-Llama-%E2%80%94%E2%80%94-prefill-%E7%AA%81%E7%A0%B4-decode-%E6%9C%80%E7%BB%88%E5%A2%99"><span class="toc-text">尝试四：IRON Llama —— prefill 突破 + decode 最终墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88%E5%88%86%E5%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">技术栈分层分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E%E7%82%B9%E4%B8%8E%E6%A0%B9%E5%9B%A0%E5%BD%92%E7%BA%B3"><span class="toc-text">阻塞点与根因归纳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E6%88%90%E7%86%9F%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="toc-text">平台成熟度对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%E4%B8%8E%E5%86%B3%E7%AD%96%E5%BB%BA%E8%AE%AE"><span class="toc-text">结论与决策建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E5%AE%9E%E6%B5%8B%E8%B5%84%E4%BA%A7%E6%B8%85%E5%8D%95%EF%BC%88%E4%BE%9B%E5%86%85%E6%A0%B8%E5%8D%87%E7%BA%A7%E5%90%8E%E5%A4%8D%E7%94%A8%EF%BC%89"><span class="toc-text">附录：实测资产清单（供内核升级后复用）</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item current_page_item"><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/hardware/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/zh/hardware/quick-start">快速开始</a></li><li><a class="" href="/docs/zh/hardware/zimacube-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/hardware-details">硬件详情</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on-setup">自动开机方法</a></li><li><a class="" href="/docs/zh/hardware/pc-direct">PC 直连</a></li><li><a class="" href="/docs/zh/hardware/hdd-interface-guide">硬盘接口指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-guide">第七硬盘槽使用指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-install">安装第七硬盘槽</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on">自动开机</a></li><li><a class="" href="/docs/zh/hardware/gpu-expansion">GPU 扩展</a></li><li><a class="" href="/docs/zh/hardware/raid-ssd-expansion">RAID SSD 扩展</a></li><li><a class="" href="/docs/zh/hardware/bios-configuration">BIOS 配置</a></li><li><a class="" href="/docs/zh/hardware/zimacube-fan-diy">DIY 风扇指南</a></li><li><a class="" href="/docs/zh/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 传输速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">兼容的网络适配器</a></li><li><a class="" href="/docs/zh/hardware/enable-wol-on-zimacube">启用网络唤醒</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/zh/hardware/zimaboard-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/zimaboard-quick-start">开机</a></li><li><a class="" href="/docs/zh/hardware/hardware-interface">硬件接口</a></li><li><a class="" href="/docs/zh/hardware/power-on-zimaboard-2">ZimaBoard 2 开机</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">风扇安装与 PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/zh/hardware/power-on-zimablade">开机</a></li><li><a class="" href="/docs/zh/hardware/zimablade-overview">开始使用</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">兼容性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/zh/hardware/7th-bay-led">第七硬盘槽 LED 指示灯</a></li><li><a class="" href="/docs/zh/hardware/ups-compatibility-list">UPS 兼容性列表</a></li><li><a class="" href="/docs/zh/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/zh/hardware/supported-disk-formats">支持的磁盘格式</a></li><li><a class="" href="/docs/zh/hardware/ax210-wifi-6e">AX210 Wi-Fi 模块</a></li><li><a class="" href="/docs/zh/hardware/wake-on-lan-setup">网络唤醒设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">第三方系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="is-current" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">商店</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

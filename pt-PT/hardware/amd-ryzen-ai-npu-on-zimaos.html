@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS na NPU AMD Ryzen AI MAX+ 395: teste prático e limites reais | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/amd-ryzen-ai-npu-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Uma avaliação prática da NPU AMD Ryzen AI MAX+ 395 (XDNA2) no ZimaOS (kernel 6.18.9). Aborda a ativação da NPU, os bloqueios de versão de firmware e controladores, e se a inferência de IA">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS na NPU AMD Ryzen AI MAX+ 395: teste prático e limites reais">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Uma avaliação prática da NPU AMD Ryzen AI MAX+ 395 (XDNA2) no ZimaOS (kernel 6.18.9). Aborda a ativação da NPU, os bloqueios de versão de firmware e controladores, e se a inferência de IA">
+<meta property="og:locale" content="pt_PT">
+<meta property="article:published_time" content="2026-09-07T06:35:41.104Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.104Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaOS na NPU AMD Ryzen AI MAX+ 395",
+      "description": "Uma avaliação prática da NPU AMD Ryzen AI MAX+ 395 (XDNA2) no ZimaOS (kernel 6.18.9). Aborda a ativação da NPU, os bloqueios de versão de firmware e controladores, e se a inferência de IA baseada na NPU é utilizável hoje no Linux.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.104Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/pt-PT/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZimaOS na NPU AMD Ryzen AI MAX+ 395"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/hardware/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/pt-PT/hardware/quick-start">Início rápido</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-details">Detalhes de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on-setup">Método de arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/pc-direct">Ligação direta ao PC</a></li><li><a class="" href="/docs/pt-PT/hardware/hdd-interface-guide">Guia da interface HDD</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-guide">Utilização da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-install">Instalar a sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on">Arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/gpu-expansion">Expansão de GPU</a></li><li><a class="" href="/docs/pt-PT/hardware/raid-ssd-expansion">Expansão RAID com SSD</a></li><li><a class="" href="/docs/pt-PT/hardware/bios-configuration">Configuração da BIOS</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-fan-diy">Guia de ventoinha DIY</a></li><li><a class="" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt">Velocidade por Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/hardware/compatible-network-adapters">Adaptadores de rede compatíveis</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-wol-on-zimacube">Ativar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/pt-PT/hardware/zimaboard-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/zimaboard-quick-start">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/power-on-zimaboard-2">Ligar o ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalação da ventoinha e PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/pt-PT/hardware/power-on-zimablade">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/zimablade-overview">Primeiros passos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/pt-PT/hardware/7th-bay-led">Indicador LED da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/ups-compatibility-list">Compatibilidade de UPS</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/supported-disk-formats">Formatos de disco suportados</a></li><li><a class="" href="/docs/pt-PT/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/pt-PT/hardware/install-unraid">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/install-truenas">Executar TrueNAS</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-x86-install">Executar OpenWrt</a></li><li><a class="" href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-usb-install">OpenWrt por USB</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-emmc-boot">OpenWrt em eMMC</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/unraid-install">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/third-party-os-install">Sistemas de terceiros</a></li><li><a class="" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Testes de hardware de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="is-current" href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">NPU AMD Ryzen AI MAX+ 395</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaOS na NPU AMD Ryzen AI MAX+ 395</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Descricao-geral" class="article-heading">Descrição geral<a class="article-anchor" href="#Descricao-geral" aria-hidden="true"></a></h2><p>Este artigo documenta uma tentativa prática de executar um pequeno modelo de IA na NPU de um processador AMD Ryzen AI MAX+ 395 com o ZimaOS no kernel <code class="chip">6.18.9</code>. Percorre a ativação da NPU XDNA2, a sua validação ao nível do controlador e o teste de todos os caminhos de inferência realistas. O resultado é uma imagem clara do que a NPU pode e não pode fazer hoje no Linux, e porquê.</p>
+<h2 id="TL-DR" class="article-heading">TL;DR<a class="article-anchor" href="#TL-DR" aria-hidden="true"></a></h2><p>A pilha de software de inferência da NPU AMD XDNA2 no Linux não passou o limiar de validação de engenharia e ainda não pode ser usada como ambiente de produção. Todos os bloqueios vêm da maturidade do software da AMD no lado Linux, não do hardware em si.</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Veredito</th>
+<th>Base numa linha</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hardware da NPU</td>
+<td>Maduro</td>
+<td>IP de produção, corretamente detetado e capaz de computar neste host</td>
+</tr>
+<tr>
+<td>Pilha de software do Windows</td>
+<td>Madura</td>
+<td>O EP oficial do ONNX Runtime e o whisper.cpp funcionam</td>
+</tr>
+<tr>
+<td>Pilha de software do Linux</td>
+<td>Não pronta para produção</td>
+<td>A cadeia controlador&#x2F;firmware&#x2F;runtime está partida; faltam as frameworks oficiais</td>
+</tr>
+<tr>
+<td>Estado mais alto alcançado localmente</td>
+<td>Ativada + programável + executa operadores + prefill de modelo real</td>
+<td>A geração completa do modelo está bloqueada pela versão do controlador</td>
+</tr>
+</tbody></table></div>
+<p>No Windows a NPU é um produto; no Linux é um campo de jogos para programadores. Para produção, use a iGPU&#x2F;dGPU (ROCm ou Vulkan) para a inferência de IA e marque o caminho da NPU como “reavaliar quando a pilha da AMD no Linux amadurecer”. Hoje consegue levantar o controlador de computação e executar operadores, mas as ruturas de versão entre firmware, controlador e runtime, juntamente com a ausência de frameworks oficiais, impedem que a NPU funcione como um produto completo no Linux.</p>
+<h2 id="Ambiente-de-teste" class="article-heading">Ambiente de teste<a class="article-anchor" href="#Ambiente-de-teste" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Processador: AMD Ryzen AI MAX+ 395 (Strix Halo), NPU XDNA2 com 50 TOPS nominais</li>
+<li>Plataforma: ZimaOS 1.7 ou posterior, kernel <code class="chip">6.18.9</code></li>
+<li>ID do dispositivo PCI da NPU: <code class="chip">0x1022:0x17f0</code></li>
+</ul>
+<p>Objetivo: executar um pequeno modelo na NPU deste host.</p>
+<h2 id="Detecao-e-ativacao" class="article-heading">Deteção e ativação<a class="article-anchor" href="#Detecao-e-ativacao" aria-hidden="true"></a></h2><p>Deteção: o <code class="chip">lspci</code> confirma uma NPU XDNA2. O módulo do kernel <code class="chip">amdxdna</code> carrega, mas o <code class="chip">/dev/accel/accel0</code> não é criado porque falta o firmware. O controlador espera <code class="chip">amdnpu/17f0_11/npu.sbin</code>, que não existe em lado nenhum do disco.</p>
+<p>Ativação: o XRT foi compilado a partir do código-fonte como versão <code class="chip">2.21.75</code> (o repositório do Ubuntu só traz a <code class="chip">2.13</code>), usando um contentor para a compilação. Depois de contornar duas armadilhas, a NPU fica reconhecida:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ xrt-smi examine</span><br><span class="line">XRT  Version: 2.21.75 · amdxdna Version: 6.18.9 · NPU Firmware Version: 1.0.0.166</span><br><span class="line">|BDF            |Name         |</span><br><span class="line">|[0000:c7:00.1] |RyzenAI-npu5 |</span><br></pre></td></tr></table></div></figure>
+
+<p>Houve duas armadilhas.</p>
+<ol class="doc-steps">
+<li>O contentor tem de arrancar com <code class="chip">--ulimit memlock=-1</code>; o limite predefinido de 8 MB faz falhar o mapeamento do dispositivo.</li>
+<li>O host tem de reservar hugepages e montar <code class="chip">/dev/hugepages</code>. O firmware do host é gerido pelo pacote <code class="chip">zimaos-driver</code> do ZimaOS em <code class="chip">/opt/zimaos/drivers/firmware/</code>.</li>
+</ol>
+<h2 id="Verificacao-de-baixo-nivel" class="article-heading">Verificação de baixo nível<a class="article-anchor" href="#Verificacao-de-baixo-nivel" aria-hidden="true"></a></h2><p>Acesso programável através do pyxrt:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python3 verify_pyxrt.py</span><br><span class="line">device: &lt;pyxrt.device object at 0x7f46d2a039f0&gt;  ·  pyxrt roundtrip: OK</span><br></pre></td></tr></table></div></figure>
+
+<p>Execução do operador IRON&#x2F;axpy (mlir-aie 1.4.2, os 160 testes passam):</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python -m pytest test.py -x -q</span><br><span class="line">============================= 160 passed in 36.22s =============================</span><br></pre></td></tr></table></div></figure>
+
+<p>A NPU está totalmente ativada, é programável e executa mesmo operadores AIE. Esta é a linha de base da capacidade da NPU neste host.</p>
+<h2 id="Tentativa-1-EP-oficial-do-ONNX-Runtime-nao-ativado-no-Linux" class="article-heading">Tentativa 1: EP oficial do ONNX Runtime - não ativado no Linux<a class="article-anchor" href="#Tentativa-1-EP-oficial-do-ONNX-Runtime-nao-ativado-no-Linux" aria-hidden="true"></a></h2><p>Investigação a partir da documentação oficial da AMD e dos issue trackers oficiais:</p>
+<ul class="doc-dots">
+<li>A <a target="_blank" rel="noopener external nofollow noreferrer" href="https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html" title="Documentação oficial do Execution Provider Vitis-AI do ONNX Runtime" class="doc-link">documentação do Execution Provider Vitis-AI do ONNX Runtime</a> indica “Ryzen AI Linux support is not enabled in this release” — o provider só está disponível no Windows para AMD64.</li>
+<li>Os issues oficiais da AMD #319&#x2F;#333&#x2F;#341 continuam abertos sem resposta (falta o módulo <code class="chip">voe</code> &#x2F; falta o <code class="chip">onnxruntime_providers_ryzenai.so</code>).</li>
+<li>As notas da versão AMD Ryzen AI 1.8 indicam: “Model generation is not supported on Linux in this release.”</li>
+</ul>
+<p><strong>Conclusão</strong>: o caminho da framework de inferência oficial não existe no Linux x86_64. Esta via fica descartada.</p>
+<h2 id="Tentativa-2-FastFlowLM-bloqueado-pelo-protocolo-firmware-x2F-controlador" class="article-heading">Tentativa 2: FastFlowLM - bloqueado pelo protocolo firmware&#x2F;controlador<a class="article-anchor" href="#Tentativa-2-FastFlowLM-bloqueado-pelo-protocolo-firmware-x2F-controlador" aria-hidden="true"></a></h2><p>A imagem compila corretamente (463 MB) e o Llama-3.2-1B-NPU2 é descarregado sem problemas, mas a inferência aborta de imediato:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ flm run llama3.2:1b</span><br><span class="line">[FLM]  Prefill chunk 1/1 with 46 tokens</span><br><span class="line">[ERROR]  Insertion error: runlist failed execution (ERT_CMD_STATE_ABORT)</span><br></pre></td></tr></table></div></figure>
+
+<p>O <code class="chip">validate</code> informa o motivo exato (as versões de firmware e de controlador falham ambas):</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ fastflowlm validate -j</span><br><span class="line">&#123; &quot;fw_build&quot;: 166, &quot;fw_major&quot;: 1, &quot;fw_minor&quot;: 0, &quot;fw_ok&quot;: false,</span><br><span class="line">  &quot;drm_version&quot;: &quot;0.1&quot;, &quot;kernel_ok&quot;: false, &quot;ready&quot;: false &#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>A leitura do código-fonte <code class="chip">main.cpp</code> do FastFlowLM confirma os seus requisitos estritos: o firmware tem de ser pelo menos <code class="chip">1.1.0.0</code>, e a versão DRM do dispositivo <code class="chip">amdxdna</code> tem de ser pelo menos <code class="chip">0.6</code> (o controlador mainline reporta <code class="chip">0.1</code>).</p>
+<h2 id="Experiencia-de-atualizacao-do-firmware-o-impasse-do-protocolo" class="article-heading">Experiência de atualização do firmware: o impasse do protocolo<a class="article-anchor" href="#Experiencia-de-atualizacao-do-firmware-o-impasse-do-protocolo" aria-hidden="true"></a></h2><p>Foi localizado um firmware mais recente <code class="chip">npu.sbin.1.1.2.65</code> (incorpora “Release 1.1.2.65”, maior ou igual a 1.1.0.0) no ramo amd-ipu-staging do projeto kernel-firmware&#x2F;drm-firmware do GitLab. Depois de o instalar, o probe falha:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ dmesg | grep -iE &quot;amdxdna.*protocol&quot;</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* aie2_check_protocol: Incompatible firmware protocol major 7 minor 2</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* aie2_hw_start: firmware is not alive</span><br></pre></td></tr></table></div></figure>
+
+<p>Lendo o código-fonte do kernel mainline em <code class="chip">aie2_check_protocol</code>: o protocol major do firmware tem de ser igual ao <code class="chip">protocol_major</code> do controlador. O controlador mainline <code class="chip">6.18.9</code> (npu5) usa o protocolo <strong>6.12</strong>; o firmware <code class="chip">1.1.2.65</code> fala o protocolo <strong>7</strong>, pelo que são incompatíveis. A alteração foi revertida e o ambiente XRT&#x2F;pyxrt ficou intacto.</p>
+<p><strong>Descoberta-chave</strong>: a versão do protocolo do controlador está partida entre releases. O firmware novo (protocolo 7) precisa de um controlador novo (protocolo 7), que precisa de um kernel que ainda não é distribuído em nenhum ramo estável. O código-fonte do kernel confirma que o suporte do protocolo 7 só existe no master não publicado (futuro 6.20&#x2F;7.0); os kernels estáveis 6.18&#x2F;6.19 não o têm.</p>
+<h2 id="Tentativa-3-controlador-out-of-tree-o-kernel-personalizado-do-ZimaOS-nao-o-carrega" class="article-heading">Tentativa 3: controlador out-of-tree - o kernel personalizado do ZimaOS não o carrega<a class="article-anchor" href="#Tentativa-3-controlador-out-of-tree-o-kernel-personalizado-do-ZimaOS-nao-o-carrega" aria-hidden="true"></a></h2><p>Para obter um controlador de protocolo 7, compilou-se a árvore de cabeçalhos mainline <code class="chip">6.18.9</code> a partir do kernel.org e compilou-se o <code class="chip">amdxdna.ko</code> upstream do xdna-driver com uma correspondência exata de vermagic. O carregamento falha:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ insmod amdxdna.ko</span><br><span class="line">insmod: ERROR: could not insert module ...: Unknown symbol in module</span><br><span class="line">$ dmesg | grep amdxdna</span><br><span class="line">amdxdna: Unknown symbol drm_gem_shmem_pin_locked (err -2)</span><br><span class="line">amdxdna: Unknown symbol drm_gem_shmem_vmap_locked (err -2)  ... (13 drm_gem_shmem_* symbols missing in total)</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>Causa raiz</strong>: o kernel do ZimaOS é uma compilação personalizada do Buildroot cujo <code class="chip">drm_shmem_helper</code> não coincide com o código-fonte mainline <code class="chip">6.18.9</code>, pelo que a ABI do controlador out-of-tree oficial da AMD não encaixa. Isto foi revertido. Com isto, a via do FastFlowLM fica completamente fechada (firmware, controlador e kernel formam uma cadeia partida).</p>
+<h2 id="Tentativa-4-IRON-Llama-um-avanco-no-prefill-e-um-muro-final-no-decode" class="article-heading">Tentativa 4: IRON Llama - um avanço no prefill e um muro final no decode<a class="article-anchor" href="#Tentativa-4-IRON-Llama-um-avanco-no-prefill-e-um-muro-final-no-decode" aria-hidden="true"></a></h2><p>Foi tomada uma via diferente com a cadeia de ferramentas near-metal mlir-aie&#x2F;IRON, que não depende do FastFlowLM nem do protocolo 7. O ambiente foi construído a partir do repositório amd&#x2F;IRON (mlir_aie 1.4.2.dev16 mais torch apenas-CPU e dependências de operadores), e o modelo foi descarregado através do ModelScope para evitar precisar de um token do HF.</p>
+<p>Compilação: todos os operadores AIE (RMSNorm&#x2F;GEMM&#x2F;GEMV&#x2F;RoPE&#x2F;Softmax&#x2F;FFN) compilam com sucesso.</p>
+<p>O prefill funciona — um forward pass completo de transformer executa na NPU e produz corretamente o primeiro token:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">$ python llama_npu.py model.safetensors tokenizer.model --num-tokens 1 --prompt-len 13</span><br><span class="line">SCENE I. King John</span><br><span class="line">[Prefill] Time to first token: 2.022 s   [Total] Tokens per second: 0.495</span><br></pre></td></tr></table></div></figure>
+
+<p>O decode falha, bloqueado em duas camadas:</p>
+<p>Primeiro, falta na API do XRT (2.21.75):</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">AttributeError: &#x27;pyxrt.run&#x27; object has no attribute &#x27;get_ctrl_scratchpad_bo&#x27;</span><br></pre></td></tr></table></div></figure>
+
+<p>Segundo, depois de autocompilar um módulo pyxrt 2.26 (libs do XRT 2.26 extraídas da imagem do FastFlowLM mais uma compilação dirigida do código-fonte do xdna-driver, verificada como compatível com o controlador mainline: <code class="chip">get_ctrl_scratchpad_bo: True</code> e a comunicação dispositivo&#x2F;BO passa), o kernel fundido continua sem executar:</p>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">RuntimeError: DRM_IOCTL_AMDXDNA_EXEC_CMD IOCTL failed (err=-22): Invalid argument</span><br><span class="line">$ dmesg | grep amdxdna</span><br><span class="line">amdxdna 0000:c7:00.1: [drm] *ERROR* amdxdna_cmd_submit: HW Context is not ready</span><br></pre></td></tr></table></div></figure>
+
+<p>Lendo o código-fonte do controlador em <code class="chip">amdxdna_ctx.c</code>: o envio exige o estado de hwctx <code class="chip">READY</code>; o kernel fundido de decode carrega o hwctx através de ELF, um caminho novo que o controlador mainline <code class="chip">6.18.9</code> não consegue levar a READY.</p>
+<p><strong>Conclusão</strong>: o prefill (forward pass de um modelo real) na NPU é conseguido; o decode (geração completa) está bloqueado pela versão do controlador — o mesmo muro que o FastFlowLM.</p>
+<h2 id="Analise-da-pilha-de-software-por-camadas" class="article-heading">Análise da pilha de software por camadas<a class="article-anchor" href="#Analise-da-pilha-de-software-por-camadas" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Camada</th>
+<th>Maturidade</th>
+<th>Conclusão-chave</th>
+<th>Evidência</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hardware (XDNA2)</td>
+<td>Pronta</td>
+<td>IP de produção, as 8 colunas detetadas e capazes de computar</td>
+<td>Deteção e ativação</td>
+</tr>
+<tr>
+<td>Controlador do kernel (amdxdna)</td>
+<td>Limitada</td>
+<td>O protocolo 6.12 funciona; o protocolo 7 nunca entra num kernel estável; o controlador out-of-tree não carrega</td>
+<td>Deteção &#x2F; experiência de atualização &#x2F; out-of-tree</td>
+</tr>
+<tr>
+<td>Firmware</td>
+<td>Limitada</td>
+<td>O 1.0.x está ligado ao protocolo 6, o 1.1.x ao protocolo 7; o firmware novo precisa de um controlador novo</td>
+<td>Experiência de atualização do firmware</td>
+</tr>
+<tr>
+<td>Runtime de espaço de utilizador (XRT)</td>
+<td>Limitada</td>
+<td>O 2.21 e o 2.26 estão divididos; as APIs novas dependem de versões novas</td>
+<td>IRON Llama</td>
+</tr>
+<tr>
+<td>Framework de inferência</td>
+<td>Não pronta</td>
+<td>O EP oficial não está ativado no Linux; o FastFlowLM depende de uma coincidência de versões; o IRON é near-metal e não é de ponta a ponta</td>
+<td>Tentativas 1, 2, 4</td>
+</tr>
+<tr>
+<td>Formato do modelo</td>
+<td>Limitada</td>
+<td>Não há formato universal nem pipeline de implementação; cada fornecedor tem a sua própria cadeia de compilação proprietária</td>
+<td>Tentativas 2, 4</td>
+</tr>
+<tr>
+<td>Integração de sistema</td>
+<td>Limitada</td>
+<td>Forte dependência da distribuição; o kernel personalizado do ZimaOS e o <code class="chip">/lib/modules</code> só de leitura bloqueiam as atualizações</td>
+<td>Deteção &#x2F; out-of-tree</td>
+</tr>
+</tbody></table></div>
+<h2 id="Bloqueios-e-causas-raiz" class="article-heading">Bloqueios e causas raiz<a class="article-anchor" href="#Bloqueios-e-causas-raiz" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>Impasse de protocolo</strong>: o firmware novo (protocolo 7), um controlador novo (protocolo 7) e um kernel estável (sem protocolo 7) não formam um ciclo fechado.</li>
+<li><strong>Sem framework oficial</strong>: o EP Vitis-AI do ONNX Runtime não está explicitamente ativado no Linux x86_64, e os issues oficiais continuam sem resposta e sem roteiro.</li>
+<li><strong>Dependência da distribuição</strong>: a camada DRM do kernel personalizado do ZimaOS difere do mainline, pelo que nem o controlador out-of-tree oficial da AMD consegue carregar.</li>
+<li><strong>Fragmentação do ecossistema</strong>: não há um formato de modelo nem um pipeline de implementação padrão; a compilação do modelo depende da cadeia de ferramentas proprietária de cada fornecedor.</li>
+<li><strong>Experiência de depuração</strong>: os erros (EINVAL, incompatibilidade de protocolo, “hwctx not ready”) não têm um caminho oficial de resolução e são resolvidos pela comunidade.</li>
+</ol>
+<h2 id="Comparacao-de-maturidade-por-plataforma" class="article-heading">Comparação de maturidade por plataforma<a class="article-anchor" href="#Comparacao-de-maturidade-por-plataforma" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Windows</th>
+<th>Linux (atual)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EP oficial do ONNX</td>
+<td>Pronto</td>
+<td>Não ativado</td>
+</tr>
+<tr>
+<td>Frameworks de inferência NPU (whisper.cpp e semelhantes)</td>
+<td>Prontos</td>
+<td>“Planned”</td>
+</tr>
+<tr>
+<td>Gestão de versões de controlador&#x2F;firmware</td>
+<td>Gerida pelo fornecedor</td>
+<td>Fragmentada entre distribuições</td>
+</tr>
+<tr>
+<td>Usabilidade em produção</td>
+<td>Pronta</td>
+<td>Não passa a validação de engenharia</td>
+</tr>
+</tbody></table></div>
+<h2 id="Conclusao-e-recomendacoes" class="article-heading">Conclusão e recomendações<a class="article-anchor" href="#Conclusao-e-recomendacoes" aria-hidden="true"></a></h2><p><strong>Conclusão técnica</strong>: o hardware da NPU é maduro e a pilha de software do Windows é madura. A pilha de software do Linux (evolução do protocolo do controlador, frameworks oficiais, gestão de versões) está em desenvolvimento ativo e não passou a validação de engenharia. O estado mais alto alcançado localmente é ativar + programar + executar operadores + prefill de um modelo real; a geração completa do modelo não é possível. O bloqueio é de software, não de hardware, e em teoria deverá levantar-se à medida que a pilha da AMD no Linux amadurecer.</p>
+<p>Recomendações:</p>
+<ol class="doc-steps">
+<li><strong>Seleção para produção</strong>: no Linux, não dependa da inferência na NPU. Use a iGPU&#x2F;dGPU (ROCm ou Vulkan) para a inferência de IA — o llama.cpp com Vulkan já executa modelos de 14B a 35B neste host.</li>
+<li><strong>Roteiro da NPU</strong>: marque-a como “reavaliar quando a pilha da AMD no Linux amadurecer”.</li>
+<li><strong>Se insistir na NPU</strong>: só serve para protótipos ou validação de borda de baixo consumo e exige desenvolvimento IRON de nível especialista; não é um caminho de produção.</li>
+<li><strong>Reserva técnica</strong>: este ambiente (IRON, pyxrt 2.26, modelos, árvore de cabeçalhos do kernel) está arquivado e pode ser novamente tentado rapidamente após uma atualização do kernel.</li>
+</ol>
+<p><strong>Condições de desbloqueio (checklist)</strong>:</p>
+<ul class="doc-dots">
+<li><input disabled type="checkbox"> Um kernel estável (6.20&#x2F;7.0 ou posterior) inclui amdxdna de protocolo 7</li>
+<li><input disabled type="checkbox"> A AMD publica uma wheel de onnxruntime-vitisai &#x2F; voe para Linux</li>
+<li><input disabled type="checkbox"> O ZimaOS atualiza o seu kernel (o FastFlowLM ou o decode do IRON podem então funcionar diretamente)</li>
+<li><input disabled type="checkbox"> O whisper.cpp com descarga para a NPU ganha suporte no Linux</li>
+</ul>
+<h2 id="Apendice-ativos-verificados-para-reutilizar-apos-uma-atualizacao-do-kernel" class="article-heading">Apêndice: ativos verificados (para reutilizar após uma atualização do kernel)<a class="article-anchor" href="#Apendice-ativos-verificados-para-reutilizar-apos-uma-atualizacao-do-kernel" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Ativo</th>
+<th>Localização</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ambiente IRON (mlir_aie 1.4.2.dev16 + torch)</td>
+<td>contentor <code class="chip">npu-dev</code>, <code class="chip">/work/ironenv2/</code></td>
+</tr>
+<tr>
+<td>pyxrt 2.26 autocompilado</td>
+<td><code class="chip">/work/pyxrt_build/build/</code></td>
+</tr>
+<tr>
+<td>Libs do XRT 2.26 (isoladas)</td>
+<td><code class="chip">/work/xrt226/</code></td>
+</tr>
+<tr>
+<td>Modelo Llama-3.2-1B</td>
+<td><code class="chip">/DATA/npu-dev/llama-3.2-1b/</code></td>
+</tr>
+<tr>
+<td>Árvore de cabeçalhos do kernel</td>
+<td><code class="chip">/DATA/npu-dev/kernel-src/</code></td>
+</tr>
+<tr>
+<td>Imagem e cache de modelos do FastFlowLM</td>
+<td><code class="chip">/DATA/npu-dev/fastflowlm/</code>, <code class="chip">/DATA/npu-dev/flm-cache/</code></td>
+</tr>
+<tr>
+<td>Cópias de segurança de firmware&#x2F;controlador e scripts de rollback</td>
+<td><code class="chip">/DATA/npu-dev/fw-backup/</code></td>
+</tr>
+</tbody></table></div>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.104Z" itemprop="dateModified">Última atualização: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Configurar Ubuntu Server</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Descricao-geral"><span class="toc-text">Descrição geral</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ambiente-de-teste"><span class="toc-text">Ambiente de teste</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Detecao-e-ativacao"><span class="toc-text">Deteção e ativação</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Verificacao-de-baixo-nivel"><span class="toc-text">Verificação de baixo nível</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tentativa-1-EP-oficial-do-ONNX-Runtime-nao-ativado-no-Linux"><span class="toc-text">Tentativa 1: EP oficial do ONNX Runtime - não ativado no Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tentativa-2-FastFlowLM-bloqueado-pelo-protocolo-firmware-x2F-controlador"><span class="toc-text">Tentativa 2: FastFlowLM - bloqueado pelo protocolo firmware&#x2F;controlador</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Experiencia-de-atualizacao-do-firmware-o-impasse-do-protocolo"><span class="toc-text">Experiência de atualização do firmware: o impasse do protocolo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tentativa-3-controlador-out-of-tree-o-kernel-personalizado-do-ZimaOS-nao-o-carrega"><span class="toc-text">Tentativa 3: controlador out-of-tree - o kernel personalizado do ZimaOS não o carrega</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tentativa-4-IRON-Llama-um-avanco-no-prefill-e-um-muro-final-no-decode"><span class="toc-text">Tentativa 4: IRON Llama - um avanço no prefill e um muro final no decode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analise-da-pilha-de-software-por-camadas"><span class="toc-text">Análise da pilha de software por camadas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bloqueios-e-causas-raiz"><span class="toc-text">Bloqueios e causas raiz</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparacao-de-maturidade-por-plataforma"><span class="toc-text">Comparação de maturidade por plataforma</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusao-e-recomendacoes"><span class="toc-text">Conclusão e recomendações</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apendice-ativos-verificados-para-reutilizar-apos-uma-atualizacao-do-kernel"><span class="toc-text">Apêndice: ativos verificados (para reutilizar após uma atualização do kernel)</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/hardware/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/pt-PT/hardware/quick-start">Início rápido</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-details">Detalhes de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on-setup">Método de arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/pc-direct">Ligação direta ao PC</a></li><li><a class="" href="/docs/pt-PT/hardware/hdd-interface-guide">Guia da interface HDD</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-guide">Utilização da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-install">Instalar a sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on">Arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/gpu-expansion">Expansão de GPU</a></li><li><a class="" href="/docs/pt-PT/hardware/raid-ssd-expansion">Expansão RAID com SSD</a></li><li><a class="" href="/docs/pt-PT/hardware/bios-configuration">Configuração da BIOS</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-fan-diy">Guia de ventoinha DIY</a></li><li><a class="" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt">Velocidade por Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/hardware/compatible-network-adapters">Adaptadores de rede compatíveis</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-wol-on-zimacube">Ativar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/pt-PT/hardware/zimaboard-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/zimaboard-quick-start">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/power-on-zimaboard-2">Ligar o ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalação da ventoinha e PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/pt-PT/hardware/power-on-zimablade">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/zimablade-overview">Primeiros passos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/pt-PT/hardware/7th-bay-led">Indicador LED da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/ups-compatibility-list">Compatibilidade de UPS</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/supported-disk-formats">Formatos de disco suportados</a></li><li><a class="" href="/docs/pt-PT/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/pt-PT/hardware/install-unraid">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/install-truenas">Executar TrueNAS</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-x86-install">Executar OpenWrt</a></li><li><a class="" href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-usb-install">OpenWrt por USB</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-emmc-boot">OpenWrt em eMMC</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/unraid-install">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/third-party-os-install">Sistemas de terceiros</a></li><li><a class="" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Testes de hardware de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="is-current" href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">NPU AMD Ryzen AI MAX+ 395</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/hardware/amd-ryzen-ai-npu-on-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

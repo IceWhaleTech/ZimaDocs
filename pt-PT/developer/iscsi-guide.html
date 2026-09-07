@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -101,8 +99,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730363667742_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730363793486_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1730363899468_image.png">
-<meta property="article:published_time" content="2026-09-01T09:43:51.549Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.549Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.102Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.102Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1730362966225_image.png">
@@ -138,7 +136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.549Z"
+      "datePublished": "2026-09-07T06:35:41.102Z"
     }
   </script>
 
@@ -384,23 +382,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <h2 id="Passos-de-operacao" class="article-heading">Passos de operação<a class="article-anchor" href="#Passos-de-operacao" aria-hidden="true"></a></h2><h3 id="Servidor" class="article-heading">Servidor<a class="article-anchor" href="#Servidor" aria-hidden="true"></a></h3><p><em>Certifique-se de que seu ZimaOS foi atualizado para 1.2.5 ou superior.</em></p>
 <ol class="doc-steps">
-<li>Use o comando <code class="chip">sudo -i</code> para entrar no modo superusuário, inicie o targetcli<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">targetcli</span><br></pre></td></tr></table></div></figure></li>
+<li>Use o comando <code class="chip">sudo -i</code> para entrar no modo superusuário, inicie o targetcli<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">targetcli</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730362966225_image.png"></span></p>
 <ol start="2" class="doc-steps">
-<li>Crie um LUN, supondo que <code class="chip">/dev/sde</code> seja usado como backend de armazenamento (Aqui usamos sde. Você pode usar o <code class="chip">lsblk</code> para ver o status do dispositivo e mudar para <code class="chip">sda</code> ou <code class="chip">sdb</code>..):<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd backstores/block</span><br><span class="line">create myblockdev /dev/sde</span><br></pre></td></tr></table></div></figure></li>
+<li>Crie um LUN, supondo que <code class="chip">/dev/sde</code> seja usado como backend de armazenamento (Aqui usamos sde. Você pode usar o <code class="chip">lsblk</code> para ver o status do dispositivo e mudar para <code class="chip">sda</code> ou <code class="chip">sdb</code>..):<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd backstores/block</span><br><span class="line">create myblockdev /dev/sde</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730362990127_image.png"></span></p>
 <ol start="3" class="doc-steps">
-<li>Crie um alvo iSCSI (<code class="chip">iqn.2024-10.com.zima:target1</code> é um exemplo)<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd /iscsi</span><br><span class="line">create iqn.2024-10.com.zima:target1</span><br></pre></td></tr></table></div></figure></li>
+<li>Crie um alvo iSCSI (<code class="chip">iqn.2024-10.com.zima:target1</code> é um exemplo)<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd /iscsi</span><br><span class="line">create iqn.2024-10.com.zima:target1</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730363013870_image.png"></span></p>
 <ol start="4" class="doc-steps">
-<li>Adicione um LUN ao alvo<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd iqn.2024-10.com.zima:target1/tpg1/luns</span><br><span class="line">create /backstores/block/myblockdev</span><br></pre></td></tr></table></div></figure></li>
+<li>Adicione um LUN ao alvo<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd iqn.2024-10.com.zima:target1/tpg1/luns</span><br><span class="line">create /backstores/block/myblockdev</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730363050568_image.png"></span></p>
 <ol start="5" class="doc-steps">
-<li>Defina a ACL (lista de controle de acesso) para permitir a conexão. O IQN aqui precisa ser consistente com o cliente (Abra o Iniciador iSCSI, está na aba de Configuração)<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd ../acls</span><br><span class="line">create iqn.1993-08.org.debian:01:bb1e6772dfb6</span><br></pre></td></tr></table></div></figure></li>
+<li>Defina a ACL (lista de controle de acesso) para permitir a conexão. O IQN aqui precisa ser consistente com o cliente (Abra o Iniciador iSCSI, está na aba de Configuração)<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd ../acls</span><br><span class="line">create iqn.1993-08.org.debian:01:bb1e6772dfb6</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730363186571_image.png"></span></p>
 <h3 id="Cliente" class="article-heading">Cliente<a class="article-anchor" href="#Cliente" aria-hidden="true"></a></h3><p><strong>Windows</strong></p>
@@ -416,18 +414,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <p><strong>Linux</strong></p>
 <ol class="doc-steps">
-<li>Descubra os alvos iSCSI<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">iscsiadm -m discovery -t sendtargets -p &lt;ENDEREÇO_IP&gt;</span><br></pre></td></tr></table></div></figure></li>
+<li>Descubra os alvos iSCSI<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">iscsiadm -m discovery -t sendtargets -p &lt;ENDEREÇO_IP&gt;</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <p>Substitua <code class="chip">&lt;ENDEREÇO_IP&gt;</code> pelo endereço IP do servidor</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1730363793486_image.png"></span></p>
 <ol start="2" class="doc-steps">
-<li>Faça login no alvo iSCSI<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">iscsiadm -m node --login</span><br></pre></td></tr></table></div></figure>
+<li>Faça login no alvo iSCSI<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">iscsiadm -m node --login</span><br></pre></td></tr></table></div></figure>
 <img src="https://manage.icewhale.io/api/static/docs/1730363899468_image.png"></li>
 </ol>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.549Z" itemprop="dateModified">Última atualização: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.102Z" itemprop="dateModified">Última atualização: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/developer/raid-rebuild-after-reinstall"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Reconstruir RAID após reinstalar</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/developer/iscsi-setup"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Configuração de iSCSI</span></a></nav>
     </footer>
   </main>
@@ -794,6 +792,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

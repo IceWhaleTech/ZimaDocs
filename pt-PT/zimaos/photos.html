@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS Photos: biblioteca de fotografias autoalojada com pesquisa de IA local | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/photos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/photos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/photos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Autoaloje a sua biblioteca de fotografias com o ZimaOS Photos. Navegue por cronologia, mapa e coleções, reproduza todos os formatos e pesquise com IA local no seu próprio hardware.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS Photos: biblioteca de fotografias autoalojada com pesquisa de IA local">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/photos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Autoaloje a sua biblioteca de fotografias com o ZimaOS Photos. Navegue por cronologia, mapa e coleções, reproduza todos os formatos e pesquise com IA local no seu próprio hardware.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-add-source.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-browse-wall.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-timeline.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-map.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-collections.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-formats.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-viewer-details.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-ai-search.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-gallery.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-memories.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-collections.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-phone-albums.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/photos-ipad.webp">
+<meta property="article:published_time" content="2026-09-07T06:35:41.110Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.110Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/photos-add-source.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Fotografias",
+      "description": "Autoaloje a sua biblioteca de fotografias com o ZimaOS Photos. Navegue por cronologia, mapa e coleções, reproduza todos os formatos e pesquise com IA local no seu próprio hardware.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.110Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fotografias"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/photos">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/photos">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/photos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/photos">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/photos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral do ZimaOS</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/photos">Fotografias</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos-supported-formats">Formatos suportados</a></li><li><a class="" href="/docs/pt-PT/zimaos/cloud-drive-connect">Ligar unidades na nuvem</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Migração de dados</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Fotografias</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p><strong>O Photos está disponível a partir do ZimaOS 1.8.</strong></p>
+<p>Cada fotografia ao alcance. Cada memória que vale a pena revisitar. O Photos transforma o seu dispositivo ZimaOS numa biblioteca de fotografias autoalojada: gravações de câmaras de ação, ficheiros RAW da sua câmara, instantâneos de todos os telemóveis que já teve. Acompanha-o no telemóvel, no PC e no iPad, com a mesma biblioteca em toda a parte.</p>
+<h2 id="Uma-biblioteca-todos-os-dispositivos" class="article-heading">Uma biblioteca, todos os dispositivos<a class="article-anchor" href="#Uma-biblioteca-todos-os-dispositivos" aria-hidden="true"></a></h2><p>A biblioteca vive no seu servidor doméstico, não num único aparelho. Aponte o Photos para uma pasta e ele digitaliza tudo. Todos os ecrãs veem a mesma biblioteca ao mesmo tempo.</p>
+<p>O Photos resolve o velho problema de três câmaras e três sítios para procurar. O cartão da câmara de ação, o rolo do telemóvel e a galeria acabam todos numa única biblioteca, ordenados em conjunto.</p>
+<h2 id="Adicionar-as-suas-origens" class="article-heading">Adicionar as suas origens<a class="article-anchor" href="#Adicionar-as-suas-origens" aria-hidden="true"></a></h2><p>O Photos começa com as pastas para onde o apontar.</p>
+<p>Clique no botão de definições no canto superior esquerdo do Photos e adicione uma origem.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-add-source.webp" alt="Definições do ZimaOS Photos com a opção de adicionar origem no canto superior esquerdo"></span></p>
+<p>O ZimaOS começa a indexar de imediato. Nada se move e nada é copiado: os dados permanecem nas suas pastas do NAS e as origens adicionadas sincronizam automaticamente em todos os dispositivos. O telemóvel, o iPad e o navegador veem todos a mesma biblioteca.</p>
+<h2 id="Navegue-a-sua-maneira" class="article-heading">Navegue à sua maneira<a class="article-anchor" href="#Navegue-a-sua-maneira" aria-hidden="true"></a></h2><p>Quatro formas de navegar, cada uma feita para desfrutar da biblioteca:</p>
+<ul class="doc-dots">
+<li><strong>Muro de fotografias.</strong> As fotografias espalham-se pelo ecrã como um muro. Os nomes de ficheiro e os caminhos desaparecem e ficam apenas as imagens.</li>
+<li><strong>Cronologia.</strong> Navegue por dia, mês ou ano. Aproxime-se de um único dia, afaste-se para um ano inteiro.</li>
+<li><strong>Mapa.</strong> Aquela viagem, aquela rua, exatamente onde a deixou.</li>
+<li><strong>Coleções.</strong> O Photos transforma os seus melhores momentos em histórias. Viagens, rostos, estações, algumas que nem sabia que tinha.</li>
+</ul>
+<p>As mesmas quatro vistas acompanham-no em todos os dispositivos. Navegue no telemóvel durante o trajeto e continue no iPad no sofá. A biblioteca vive no seu dispositivo ZimaOS, pelo que cada ecrã vê as mesmas fotografias sem guardar a sua própria cópia.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-browse-wall.webp" alt="Vista de muro do ZimaOS Photos com fotografias espalhadas pelo ecrã sem nomes de ficheiro"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-timeline.webp" alt="Vista de cronologia do ZimaOS Photos para saltar entre dias, meses e anos"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-map.webp" alt="Vista de mapa do ZimaOS Photos com as fotografias colocadas onde foram tiradas"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-collections.webp" alt="Vista de coleções do ZimaOS Photos com histórias selecionadas de viagens, rostos e estações"></span></p>
+<h2 id="Todos-os-formatos-sao-reproduzidos" class="article-heading">Todos os formatos são reproduzidos<a class="article-anchor" href="#Todos-os-formatos-sao-reproduzidos" aria-hidden="true"></a></h2><p>Gravações 360° da sua câmara de ação. Live Photos do seu iPhone. Ficheiros RAW da sua câmara. A mesma viagem, o mesmo dia, a mesma memória. O Photos reproduz tudo, misturado numa biblioteca.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-formats.webp" alt="Biblioteca do ZimaOS Photos a misturar gravações 360°, Live Photos e ficheiros RAW"></span></p>
+<p>Abra uma e os detalhes vêm com ela. Câmara, objetiva, ISO e abertura são todos mantidos. As fotografias relacionadas juntam-se ao lado, para que um momento leve ao seguinte.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-viewer-details.webp" alt="Visualizador do ZimaOS Photos com uma fotografia, as definições da câmara e fotografias relacionadas"></span></p>
+<h2 id="IA-local-privada-por-desenho" class="article-heading">IA local, privada por desenho<a class="article-anchor" href="#IA-local-privada-por-desenho" aria-hidden="true"></a></h2><p>Pesquise como se lembra. Um casamento. Uma praia. Um gato. Sem vasculhar pastas, apenas o momento de que se recorda. A IA local encontra-o por si.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-ai-search.webp" alt="Pesquisa do ZimaOS Photos a encontrar fotografias a partir de uma consulta em linguagem natural"></span></p>
+<p>As fotografias sensíveis permanecem desfocadas até optar por abri-las. A IA corre no seu próprio hardware. É isso que significa autoalojado: nada sai da sua rede.</p>
+<h2 id="No-telemovel" class="article-heading">No telemóvel<a class="article-anchor" href="#No-telemovel" aria-hidden="true"></a></h2><p>O telemóvel tem os mesmos módulos que a web: galeria, memórias, coleções e álbuns personalizados.</p>
+<div style="display:flex; align-items:flex-start; justify-content:center; gap:24px;">
+  <img src="/docs/images/guides/photos-phone-gallery.webp" alt="Módulo de galeria do ZimaOS Photos no telemóvel com o muro de fotografias no ecrã móvel" style="flex:0 0 22%; max-width:22%; height:auto;">
+  <img src="/docs/images/guides/photos-phone-memories.webp" alt="Módulo de memórias do ZimaOS Photos no telemóvel com histórias selecionadas no ecrã móvel" style="flex:0 0 22%; max-width:22%; height:auto;">
+  <img src="/docs/images/guides/photos-phone-collections.webp" alt="Módulo de coleções do ZimaOS Photos no telemóvel com coleções agrupadas" style="flex:0 0 22%; max-width:22%; height:auto;">
+  <img src="/docs/images/guides/photos-phone-albums.webp" alt="Módulo de álbuns personalizados do ZimaOS Photos no telemóvel com álbuns criados pelo utilizador" style="flex:0 0 22%; max-width:22%; height:auto;">
+</div>
+
+<p>As fotografias novas chegam à biblioteca sozinhas. O ZimaClient sincroniza-as em segundo plano, pelo que o telemóvel mostra sempre as mais recentes, esteja onde estiver.</p>
+<p>Um telemóvel novo não começa com uma biblioteca vazia: inicie sessão com a mesma conta ZimaOS e a biblioteca existente é carregada a partir do dispositivo.</p>
+<h2 id="No-PC" class="article-heading">No PC<a class="article-anchor" href="#No-PC" aria-hidden="true"></a></h2><p>Num PC, o Photos é a mesma experiência web num navegador. Abra o painel do ZimaOS e a biblioteca está lá, completa: todas as vistas, todos os formatos, a pesquisa com IA, tudo. É a versão mais completa do Photos.</p>
+<h2 id="No-iPad" class="article-heading">No iPad<a class="article-anchor" href="#No-iPad" aria-hidden="true"></a></h2><p>No iPad, a interface adapta-se ao ecrã maior, pelo que o muro e o visualizador se estendem confortavelmente.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/photos-ipad.webp" alt="ZimaOS Photos no iPad com a biblioteca adaptada ao ecrã maior"></span></p>
+<h2 id="Feito-para-apreciar" class="article-heading">Feito para apreciar<a class="article-anchor" href="#Feito-para-apreciar" aria-hidden="true"></a></h2><p>O Photos foi concebido para apreciar as suas imagens, não para arrastar ficheiros. As coleções fazem surgir as viagens e os rostos de que se tinha esquecido. O visualizador mantém as definições da câmara porque fazem parte da obra. As fotografias do telemóvel são uma origem entre muitas e chegam através de <strong><a href="./phone-backup" title="Efetuar automaticamente uma cópia de segurança do telemóvel para o ZimaOS com o ZimaClient" class="doc-link">Cópia de segurança do telemóvel</a></strong>. A biblioteca é o destino.</p>
+<p>A privacidade é a predefinição. Tudo corre no seu hardware. Nada é carregado. Nada é partilhado. As suas memórias permanecem no seu servidor.</p>
+<h2 id="Formatos-suportados" class="article-heading">Formatos suportados<a class="article-anchor" href="#Formatos-suportados" aria-hidden="true"></a></h2><p>O Photos indexa uma vasta gama de formatos de imagem e os seus metadados vêm com eles:</p>
+<ul class="doc-dots">
+<li><strong>Imagens comuns e de telemóvel.</strong> JPEG, HEIC, HEIF, AVIF, PNG, WebP, GIF, BMP.</li>
+<li><strong>RAW de câmaras dedicadas.</strong> ARW, CR2, CR3, DNG, NEF, ORF, PEF, RAF, RW2, X3F e a maioria dos formatos RAW das câmaras mais comuns.</li>
+<li><strong>Contentores profissionais.</strong> TIFF, PSD, PSB, JPEG XL, JPEG 2000, EXR.</li>
+</ul>
+<p>O analisador integrado lê os campos padrão: câmara, objetiva, distância focal, abertura, tempo de exposição, ISO, GPS e data. Também lê os metadados de fabricante que muitas câmaras anexam e trata os metadados de vídeo por um caminho separado, para que as gravações possam ser pesquisadas da mesma forma.</p>
+<p>O Photos não depende de ferramentas de metadados externas em tempo de execução. O analisador é integrado, pelo que a indexação continua a funcionar sem software adicional no dispositivo.</p>
+<p>Um pormenor: um formato pode ser indexado enquanto a miniatura depende do próprio ficheiro. Alguns RAW não trazem pré-visualização incorporada e a miniatura depende então do suporte do descodificador. Em qualquer caso, o ficheiro permanece na biblioteca com os seus metadados. A lista completa está em <strong><a href="./photos-supported-formats" title="Os formatos que o ZimaOS Photos indexa, com o comportamento de miniaturas e metadados" class="doc-link">Formatos suportados do Photos</a></strong>.</p>
+<h2 id="Feito-para-continuar-rapido" class="article-heading">Feito para continuar rápido<a class="article-anchor" href="#Feito-para-continuar-rapido" aria-hidden="true"></a></h2><p>A velocidade faz parte do desenho, não é uma ideia tardia.</p>
+<p>As miniaturas passam por uma cache de três níveis: memória, uma cache de disco persistente com três tamanhos e cópias derivadas para pedidos mais pequenos. Uma vez em cache, uma miniatura é devolvida em milissegundos.</p>
+<p>Os ficheiros RAW recebem tratamento especial. Quando uma câmara incorpora uma pré-visualização JPEG, o Photos utiliza-a em vez de descodificar a imagem completa do sensor. Nos nossos testes num Apple M4 Pro, os percursos de pré-visualização de ficheiros CR2, NEF, PEF e ARW terminaram em 29 a 100 ms, enquanto a descodificação completa dos mesmos ficheiros demorou 160 a 450 ms.</p>
+<p>Percorrer nunca deita o servidor abaixo. A descodificação é limitada por orçamentos de concorrência e memória, pelo que um muro cheio de RAW de 100 megapíxeis continua a ser navegável enquanto o resto do sistema continua a funcionar.</p>
+<h2 id="A-seguir" class="article-heading">A seguir<a class="article-anchor" href="#A-seguir" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="./phone-backup" title="Efetuar automaticamente uma cópia de segurança do telemóvel para o ZimaOS com o ZimaClient" class="doc-link">Cópia de segurança do telemóvel</a></strong> — coloque primeiro as fotografias do telemóvel na biblioteca</li>
+<li><strong><a href="./remote-access" title="Configurar o acesso remoto para poder aceder ao servidor doméstico a partir de qualquer lugar" class="doc-link">Acesso remoto</a></strong> — navegue pela mesma biblioteca a partir de qualquer lugar</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.110Z" itemprop="dateModified">Última atualização: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/computer-backup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Cópia do computador</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/zimaos/photos-supported-formats"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Formatos suportados</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Uma-biblioteca-todos-os-dispositivos"><span class="toc-text">Uma biblioteca, todos os dispositivos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adicionar-as-suas-origens"><span class="toc-text">Adicionar as suas origens</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navegue-a-sua-maneira"><span class="toc-text">Navegue à sua maneira</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Todos-os-formatos-sao-reproduzidos"><span class="toc-text">Todos os formatos são reproduzidos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IA-local-privada-por-desenho"><span class="toc-text">IA local, privada por desenho</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-telemovel"><span class="toc-text">No telemóvel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-PC"><span class="toc-text">No PC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-iPad"><span class="toc-text">No iPad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feito-para-apreciar"><span class="toc-text">Feito para apreciar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatos-suportados"><span class="toc-text">Formatos suportados</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feito-para-continuar-rapido"><span class="toc-text">Feito para continuar rápido</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-seguir"><span class="toc-text">A seguir</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral do ZimaOS</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/photos">Fotografias</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos-supported-formats">Formatos suportados</a></li><li><a class="" href="/docs/pt-PT/zimaos/cloud-drive-connect">Ligar unidades na nuvem</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Migração de dados</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/photos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/photos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/photos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/photos" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/photos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -96,8 +94,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729219416289_img_v3_02fp_7340f5ef-7892-4696-8707-cdda424461cg.jpg">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729220708308_img_v3_02fp_245f1382-835d-4827-8852-f6ab8b166d8g.jpg">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1729220715773_img_v3_02fp_1b36a2a6-e9a5-45d0-acc2-9b3345b3224g.jpg">
-<meta property="article:published_time" content="2026-09-01T09:43:51.338Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.338Z">
+<meta property="article:published_time" content="2026-09-07T06:35:40.894Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:40.894Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg">
@@ -133,7 +131,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.338Z"
+      "datePublished": "2026-09-07T06:35:40.894Z"
     }
   </script>
 
@@ -387,11 +385,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><p>Use the command lsblk to check the available hard drives.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729218009483_98dae94c-9b29-4042-a508-537aa6d1d554.jpeg"></span></p>
 </li>
 <li><p>If MOUNTPOINTS has a mount point, you need to cancel it with the following command.</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729145392591_image.png"></span></p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">umount /dev/sda</span><br></pre></td></tr></table></div></figure></li>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">umount /dev/sda</span><br></pre></td></tr></table></div></figure></li>
 </ol>
 <h2 id="Steps-to-Create-RAID6" class="article-heading">Steps to Create RAID6<a class="article-anchor" href="#Steps-to-Create-RAID6" aria-hidden="true"></a></h2><ol class="doc-steps">
 <li><p>Create the RAID6 array with at least four drives using the following command:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mdadm -Cv /dev/md0 --level=6 --name=foldername --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd --run --homehost=zimaos</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mdadm -Cv /dev/md0 --level=6 --name=foldername --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd --run --homehost=zimaos</span><br></pre></td></tr></table></div></figure>
 <p><code class="chip">/dev/md0</code> is the name of the new RAID device.</p>
 <p><code class="chip">--level=6</code> indicates you’re creating a RAID6 array.</p>
 <p><code class="chip">--name=foldername</code> specifies the name of the RAID array.</p>
@@ -400,26 +398,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729219387443_img_v3_02fp_8fce2dd8-56af-4706-b5de-96cea3b8162g.jpg"></span></p>
 </li>
 <li><p>Format the RAID using the following command:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mkfs.ext4 /dev/md0</span><br></pre></td></tr></table></div></figure>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729219416289_img_v3_02fp_7340f5ef-7892-4696-8707-cdda424461cg.jpg"></span></p>
 </li>
 <li><p>Create a directory for mounting the RAID:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd /media</span><br><span class="line">mkdir foldername</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">cd /media</span><br><span class="line">mkdir foldername</span><br></pre></td></tr></table></div></figure>
 </li>
 <li><p>Mount the RAID using the following command:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount -t ext4 /dev/md0 /media/foldername</span><br></pre></td></tr></table></div></figure></li>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mount -t ext4 /dev/md0 /media/foldername</span><br></pre></td></tr></table></div></figure></li>
 <li><p>Once created, enter the path in the web-based File to display it</p>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729220708308_img_v3_02fp_245f1382-835d-4827-8852-f6ab8b166d8g.jpg"></span></p>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1729220715773_img_v3_02fp_1b36a2a6-e9a5-45d0-acc2-9b3345b3224g.jpg"></span></p>
 </li>
 </ol>
 <h2 id="Notice" class="article-heading">Notice:<a class="article-anchor" href="#Notice" aria-hidden="true"></a></h2><p>If the system is rebooted, you’ll need to reassemble the RAID6 array:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">mdadm -Av /dev/md0 /dev/sda /dev/sdb /dev/sdc /dev/sdd</span><br><span class="line">mount /dev/md0 /media/foldername</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">mdadm -Av /dev/md0 /dev/sda /dev/sdb /dev/sdc /dev/sdd</span><br><span class="line">mount /dev/md0 /media/foldername</span><br></pre></td></tr></table></div></figure>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.338Z" itemprop="dateModified">Last updated: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.894Z" itemprop="dateModified">Last updated: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zimaos/raid-options"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">RAID Options Overview</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/developer/raid-rebuild-after-reinstall"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">RAID Rebuild After Reinstall</span></a></nav>
     </footer>
   </main>
@@ -786,6 +784,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

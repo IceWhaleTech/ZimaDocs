@@ -70,9 +70,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -86,8 +84,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="List of compatible network adapters for ZimaCube including 10GbE and Wi-Fi 6 options. Find verified NICs for maximum network throughput on your NAS.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-09-01T09:43:51.349Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.349Z">
+<meta property="article:published_time" content="2026-09-07T06:35:40.907Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:40.907Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -122,7 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.349Z"
+      "datePublished": "2026-09-07T06:35:40.907Z"
     }
   </script>
 
@@ -341,6 +339,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
   </nav>
 </aside>
 
@@ -374,22 +382,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>OpenSpeedTest Docker App</strong>: This easy-to-install graphical interface tool, available in the ZimaOS App Store, can be used for testing internal network speeds. OpenSpeedTest provides a simple, user-friendly interface, making it an good choice for those who prefer a visual tool over command-line utilities.<br>Both tools are great for testing internal network speeds, with iPerf3 for users who prefer command-line testing and OpenSpeedTest for those looking for a quick and intuitive graphical option.</li>
 </ol>
 <h2 id="Brief-tutorial-on-how-to-use-iperf3" class="article-heading">Brief tutorial on how to use iperf3<a class="article-anchor" href="#Brief-tutorial-on-how-to-use-iperf3" aria-hidden="true"></a></h2><p>You need at least two machines that have iperf3 installed. On ZimaOS, you can refer to this article to learn CLI. On Windows or macOS, you need to install iperf3 first <a href="../zimaos/app-store/cli-guide" class="doc-link">acticle</a>and use it in Terminal app.<br><strong>Setup the Server</strong><br>On the machine you want to use as the server, run:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">iperf3 -s</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">iperf3 -s</span><br></pre></td></tr></table></div></figure>
 <p>This will start the <code class="chip">iperf3</code> server, waiting for connections.<br><strong>Setup the Client</strong><br>On the client machine, run:</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">iperf3 -c &lt;server_ip_address&gt;</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">iperf3 -c &lt;server_ip_address&gt;</span><br></pre></td></tr></table></div></figure>
 
 <p>Replace <code class="chip">&lt;server_ip_address&gt;</code> with the IP address of the machine running the server.<br>This command will initiate a test and display the network bandwidth between the client and server.<br>Run Tests with Custom Parameters<br>You can modify the test settings by using different options:</p>
 <ul class="doc-dots">
 <li>Test duration: <code class="chip">-t &lt;seconds&gt;</code> (default is 10 seconds)</li>
 <li>Number of parallel streams: <code class="chip">-P &lt;num_streams&gt;</code> (default is 1)</li>
-<li>Port number: <code class="chip">-p &lt;port_number&gt;</code> (default is 5201)<br>Example: Run a 30-second test with 4 parallel streams:<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">iperf3 -c &lt;server_ip_address&gt; -t 30 -P 4</span><br></pre></td></tr></table></div></figure></li>
+<li>Port number: <code class="chip">-p &lt;port_number&gt;</code> (default is 5201)<br>Example: Run a 30-second test with 4 parallel streams:<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">iperf3 -c &lt;server_ip_address&gt; -t 30 -P 4</span><br></pre></td></tr></table></div></figure></li>
 </ul>
 <p><strong>Check the Results</strong><br>After the test completes, <code class="chip">iperf3</code> will show you the bandwidth, jitter, and packet loss between the two devices.<br>This is a basic guide to get started with <code class="chip">iperf3</code> for network performance testing. Adjust parameters based on your specific needs!<br>With this compatibility and the recommended speed testing tools, you’ll be able to make the most out of your ZimaCube setup. If you have further questions or feedback, please feel free to reach out to our community or support team!</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.349Z" itemprop="dateModified">Last updated: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.907Z" itemprop="dateModified">Last updated: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/transfer-speeds-over-thunderbolt"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Thunderbolt Transfer Speed</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/hardware/enable-wol-on-zimacube"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Enable Wake-on-LAN</span></a></nav>
     </footer>
   </main>
@@ -669,6 +677,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
     
   </div>
   
@@ -746,6 +764,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

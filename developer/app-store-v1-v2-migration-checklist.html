@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -90,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="Follow the minimum-change checklist for moving a self-hosted Docker app store from v1 to v2 on ZimaOS, home servers, and homelabs.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-09-01T09:43:51.336Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.336Z">
+<meta property="article:published_time" content="2026-09-07T06:35:40.894Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:40.894Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -126,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.336Z"
+      "datePublished": "2026-09-07T06:35:40.894Z"
     }
   </script>
 
@@ -369,11 +367,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Use this checklist when you already have a v1 store and want the smallest practical set of changes for v2 support.</p>
 <p>Goal: one source repository, v2 static output, and optional v1 zip compatibility.</p>
 <h2 id="1-Keep-the-existing-app-tree" class="article-heading">1. Keep the existing app tree<a class="article-anchor" href="#1-Keep-the-existing-app-tree" aria-hidden="true"></a></h2><p>Keep your existing layout:</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">Apps/</span><br><span class="line">└── MyApp/</span><br><span class="line">    ├── docker-compose.yml</span><br><span class="line">    ├── icon.png</span><br><span class="line">    ├── thumbnail.png</span><br><span class="line">    └── screenshot-1.png</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">Apps/</span><br><span class="line">└── MyApp/</span><br><span class="line">    ├── docker-compose.yml</span><br><span class="line">    ├── icon.png</span><br><span class="line">    ├── thumbnail.png</span><br><span class="line">    └── screenshot-1.png</span><br></pre></td></tr></table></div></figure>
 
 <p>You can add SVG icons or cleaner assets later. Asset replacement is not the first migration blocker.</p>
 <h2 id="2-Add-store-config-json" class="article-heading">2. Add <code class="chip">store-config.json</code><a class="article-anchor" href="#2-Add-store-config-json" aria-hidden="true"></a></h2><p>Create this file at the repository root:</p>
-<figure class="highlight json"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;store_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your-store-id&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;en_US&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Your Store Name&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;maintainer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your-name&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://github.com/username/your-appstore&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight json code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;store_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your-store-id&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;en_US&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Your Store Name&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;maintainer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;your-name&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://github.com/username/your-appstore&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Checks:</p>
 <ul class="doc-dots">
@@ -383,11 +381,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><code class="chip">name.en_US</code> is present</li>
 </ul>
 <h2 id="3-Add-supported-languages-json" class="article-heading">3. Add <code class="chip">supported-languages.json</code><a class="article-anchor" href="#3-Add-supported-languages-json" aria-hidden="true"></a></h2><p>Create this file at the repository root:</p>
-<figure class="highlight json"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;en_US&quot;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight json code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;en_US&quot;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Add every locale that your source metadata may define, such as <code class="chip">zh_CN</code> or <code class="chip">de_DE</code>.</p>
 <h2 id="4-Add-x-casaos-id-to-every-app" class="article-heading">4. Add <code class="chip">x-casaos.id</code> to every app<a class="article-anchor" href="#4-Add-x-casaos-id-to-every-app" aria-hidden="true"></a></h2><p>Each app needs a stable top-level app ID:</p>
-<figure class="highlight yaml"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br></pre></td></tr></table></div></figure>
+<figure class="highlight yaml code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="attr">x-casaos:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">com.example.myapp</span></span><br></pre></td></tr></table></div></figure>
 
 <p>Checks:</p>
 <ul class="doc-dots">
@@ -421,7 +419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h2 id="6-Normalize-categories" class="article-heading">6. Normalize categories<a class="article-anchor" href="#6-Normalize-categories" aria-hidden="true"></a></h2><p>Set every app <code class="chip">x-casaos.category</code> to one of:</p>
 <p><code class="chip">Media</code>, <code class="chip">Productivity</code>, <code class="chip">Home</code>, <code class="chip">Networking</code>, <code class="chip">AI</code>, <code class="chip">Finance</code>, <code class="chip">Social</code>, <code class="chip">Developer</code>, <code class="chip">Others</code></p>
 <p>For example, old <code class="chip">Utilities</code> values usually need to become the closest v2 category, often <code class="chip">Productivity</code> or <code class="chip">Others</code>.</p>
-<h2 id="7-Build-v2-output" class="article-heading">7. Build v2 output<a class="article-anchor" href="#7-Build-v2-output" aria-hidden="true"></a></h2><figure class="highlight bash"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">BASE_URL=<span class="string">&quot;https://your-store-domain&quot;</span> \</span><br><span class="line">./scripts/build_dist.sh</span><br></pre></td></tr></table></div></figure>
+<h2 id="7-Build-v2-output" class="article-heading">7. Build v2 output<a class="article-anchor" href="#7-Build-v2-output" aria-hidden="true"></a></h2><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">BASE_URL=<span class="string">&quot;https://your-store-domain&quot;</span> \</span><br><span class="line">./scripts/build_dist.sh</span><br></pre></td></tr></table></div></figure>
 
 <p>Checks:</p>
 <ul class="doc-dots">
@@ -478,7 +476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </tr>
 </tbody></table></div>
 <h2 id="9-Keep-v1-compatibility-if-needed" class="article-heading">9. Keep v1 compatibility if needed<a class="article-anchor" href="#9-Keep-v1-compatibility-if-needed" aria-hidden="true"></a></h2><p>If old clients still depend on your v1 store, keep a workflow step that builds:</p>
-<figure class="highlight text"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/store/main.zip</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">dist/store/main.zip</span><br></pre></td></tr></table></div></figure>
 
 <p>The official repository does this by running the v1 build after the v2 build. That lets one source tree serve both:</p>
 <ul class="doc-dots">
@@ -501,7 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.336Z" itemprop="dateModified">Last updated: 2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.894Z" itemprop="dateModified">Last updated: 2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/developer/app-store-v1-v2-migration"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">Migrate v1 to v2</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/developer/app-store-faq"><span class="doc-pagenav__label">Next<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Developer FAQ</span></a></nav>
     </footer>
   </main>
@@ -868,6 +866,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

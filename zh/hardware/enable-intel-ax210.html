@@ -74,9 +74,7 @@
   
 <link rel="stylesheet" href="/docs/css/zima.css">
 
-  
-<link rel="stylesheet" href="/docs/css/docs-ui.css">
-
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
   <!-- endbuild -->
   
   
@@ -97,8 +95,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1751616224099_image.png">
 <meta property="og:image" content="https://www.zimaspace.com/docs/zh/hardware/![](https://manage.icewhale.io/api/static/docs/1751616926003_image.png)">
 <meta property="og:image" content="https://www.zimaspace.com/docs/zh/hardware/![](https://manage.icewhale.io/api/static/docs/1751616939282_image.png)">
-<meta property="article:published_time" content="2026-09-01T09:43:51.561Z">
-<meta property="article:modified_time" content="2026-09-01T09:43:51.561Z">
+<meta property="article:published_time" content="2026-09-07T06:35:41.114Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.114Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1751615644136_image.png">
@@ -134,7 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-01T09:43:51.561Z"
+      "datePublished": "2026-09-07T06:35:41.114Z"
     }
   </script>
 
@@ -353,6 +351,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
   </nav>
 </aside>
 
@@ -366,13 +374,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p><strong>🎯 目标</strong><br>在ZimaOS上启用AX210 Wi-Fi卡并连接到无线网络—无需图形界面。</p>
 <h2 id="针对ZimaOS-v1-4-2及以上版本" class="article-heading">针对ZimaOS v1.4.2及以上版本<a class="article-anchor" href="#针对ZimaOS-v1-4-2及以上版本" aria-hidden="true"></a></h2><p>Intel AX210是一款高性能无线卡，支持Wi-Fi 6E。许多Zima设备用户依赖它进行无线连接。本指南将带您通过命令行环境启用AX210并连接到Wi-Fi。<br>👉 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS" class="doc-link">点击此处下载最新版本的ZimaOS</a></p>
 <h2 id="步骤1：确认AX210被识别" class="article-heading">步骤1：确认AX210被识别<a class="article-anchor" href="#步骤1：确认AX210被识别" aria-hidden="true"></a></h2><p>运行以下命令：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">lspci | grep -i network</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">lspci | grep -i network</span><br></pre></td></tr></table></div></figure>
 <p>您应该看到类似以下的输出：</p>
 <p><code class="chip">Intel Corporation Wi-Fi 6E AX210...</code></p>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1751615644136_image.png" alt="终端输出通过lspci确认在ZimaOS上检测到Intel AX210 Wi-Fi。"></span></p>
 <p>如果未被检测到，请确保卡插入正确的M.2 E-key插槽，并确保硬件功能正常。</p>
 <h2 id="步骤2：使用nmtui连接Wi-Fi" class="article-heading">步骤2：使用nmtui连接Wi-Fi<a class="article-anchor" href="#步骤2：使用nmtui连接Wi-Fi" aria-hidden="true"></a></h2><p>ZimaOS包含<code class="chip">nmtui</code>命令行工具。通过以下命令启动它：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nmtui</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">sudo nmtui</span><br></pre></td></tr></table></div></figure>
 <p>然后：</p>
 <ul class="doc-dots">
 <li>选择<code class="chip">激活连接</code></li>
@@ -389,7 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </thead>
 </table></div>
 <h2 id="步骤3：验证IP地址和连接性" class="article-heading">步骤3：验证IP地址和连接性<a class="article-anchor" href="#步骤3：验证IP地址和连接性" aria-hidden="true"></a></h2><p>检查您的无线接口状态：</p>
-<figure class="highlight plaintext"><div class="doc-table-scroll" tabindex="0"><table><tr><td class="code"><pre><span class="line">ip a</span><br></pre></td></tr></table></div></figure>
+<figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">ip a</span><br></pre></td></tr></table></div></figure>
 <p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1751616224099_image.png" alt="Linux中ip a命令的终端输出，显示网络接口配置，包括IP地址和状态。"></span></p>
 <p>🖥️ <strong>可选：</strong> 在ZimaOS仪表盘中查看和管理网络设置<br>如果您使用ZimaOS的Web UI（仪表盘），您也可以在此处查看和配置网络设置。<br>示例：</p>
 <p align="center" class="doc-figures">
@@ -398,12 +406,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </p>
 
 <p>🎉 <strong>您已准备就绪！</strong><br>您的AX210 Wi-Fi卡现已连接并准备与ZimaOS一起使用。</p>
-<p>如果您有任何问题，请联系支持邮箱：<a href="mailto:&#115;&#117;&#x70;&#x70;&#x6f;&#114;&#x74;&#64;&#105;&#99;&#101;&#x77;&#x68;&#x61;&#x6c;&#x65;&#x2e;&#111;&#x72;&#x67;" rel="external nofollow noreferrer" class="doc-link">&#115;&#117;&#x70;&#x70;&#x6f;&#114;&#x74;&#64;&#105;&#99;&#101;&#x77;&#x68;&#x61;&#x6c;&#x65;&#x2e;&#111;&#x72;&#x67;</a></p>
+<p>如果您有任何问题，请联系支持邮箱：<a href="mailto:&#x73;&#117;&#112;&#112;&#x6f;&#x72;&#x74;&#64;&#x69;&#99;&#101;&#119;&#x68;&#97;&#x6c;&#101;&#x2e;&#x6f;&#x72;&#x67;" rel="external nofollow noreferrer" class="doc-link">&#x73;&#117;&#112;&#112;&#x6f;&#x72;&#x74;&#64;&#x69;&#99;&#101;&#119;&#x68;&#97;&#x6c;&#101;&#x2e;&#x6f;&#x72;&#x67;</a></p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-01T09:43:51.561Z" itemprop="dateModified">最后更新：2026-09-01</time>
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.114Z" itemprop="dateModified">最后更新：2026-09-07</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/ups-compatibility-list"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">UPS 兼容性列表</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/hardware/supported-disk-formats"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">支持的磁盘格式</span></a></nav>
     </footer>
   </main>
@@ -683,6 +691,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li></ul>
+      </div>
+    </div>
     
   </div>
   
@@ -760,6 +778,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
 
 
 

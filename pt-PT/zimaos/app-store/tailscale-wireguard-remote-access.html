@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Ligue-se ao seu servidor doméstico ZimaOS em qualquer lugar com Tailscale e WireGuard | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/tailscale-wireguard-remote-access">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/tailscale-wireguard-remote-access">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/tailscale-wireguard-remote-access">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Aceda ao seu servidor doméstico ZimaOS com Tailscale, WireGuard Easy, Firefly ou NetBird a partir da App Store oficial. Protocolos abertos, as suas próprias chaves, controlo total.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ligue-se ao seu servidor doméstico ZimaOS em qualquer lugar com Tailscale e WireGuard">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Aceda ao seu servidor doméstico ZimaOS com Tailscale, WireGuard Easy, Firefly ou NetBird a partir da App Store oficial. Protocolos abertos, as suas próprias chaves, controlo total.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/tailscale-app-store-card.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/tailscale-sign-in.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/tailscale-admin-console-device.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/tailscale-ios-app.png">
+<meta property="article:published_time" content="2026-09-07T06:35:41.109Z">
+<meta property="article:modified_time" content="2026-09-07T06:35:41.109Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/app-store/tailscale-app-store-card.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Acesso remoto com Tailscale e WireGuard",
+      "description": "Aceda ao seu servidor doméstico ZimaOS com Tailscale, WireGuard Easy, Firefly ou NetBird a partir da App Store oficial. Protocolos abertos, as suas próprias chaves, controlo total.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-07T06:35:41.109Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Acesso remoto com Tailscale e WireGuard"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/tailscale-wireguard-remote-access">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/tailscale-wireguard-remote-access">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral da App Store</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/webtorrent-feature">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/adminer-setup-guide">Gestor de bases de dados Adminer</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">Agentes e inferência</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">Agente DeepSeek Harness</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Acesso remoto com Tailscale e WireGuard</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>O ZimaClient trata do acesso remoto no ZimaOS desde o momento em que inicia sessão. Mas muitos de vocês já utilizam redes Tailscale ou servidores WireGuard, e a razão é quase sempre a mesma. Querem que a ligação seja construída sobre protocolos abertos, com contas e chaves que controlam. Este guia cobre esses caminhos, instalados diretamente a partir da App Store.</p>
+<h2 id="Porque-protocolos-padrao" class="article-heading">Porquê protocolos padrão<a class="article-anchor" href="#Porque-protocolos-padrao" aria-hidden="true"></a></h2><p>O ZimaOS não recolhe dados do utilizador, independentemente da forma como se liga. A diferença entre os caminhos está em onde fica o controlo.</p>
+<p>O acesso remoto integrado funciona através do ZimaClient. Inicia sessão e a ligação fica configurada por si, ponto a ponto e cifrada. Os protocolos padrão entregam-lhe essa configuração. Traz a sua própria conta Tailscale ou as suas próprias chaves WireGuard. O tráfego permanece ponto a ponto, os clientes funcionam em Linux, Android e outras plataformas, e nada fica preso a um único fornecedor. Se um dia deixar o ZimaOS para trás, a sua rede e as suas configurações vão consigo.</p>
+<p>A App Store oficial inclui quatro aplicações para isto: <strong>Tailscale</strong>, <strong>WireGuard Easy</strong>, <strong>Firefly</strong> e <strong>NetBird</strong>.</p>
+<h2 id="Escolha-a-sua-aplicacao" class="article-heading">Escolha a sua aplicação<a class="article-anchor" href="#Escolha-a-sua-aplicacao" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Aplicação</th>
+<th>O que é</th>
+<th>Ideal para</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tailscale</td>
+<td>Uma VPN em malha baseada em WireGuard que não precisa de portas abertas</td>
+<td>Juntar os seus dispositivos numa rede privada com configuração mínima</td>
+</tr>
+<tr>
+<td>WireGuard Easy</td>
+<td>Uma interface web para gerir um servidor VPN WireGuard</td>
+<td>Gerir o seu próprio servidor WireGuard com um painel</td>
+</tr>
+<tr>
+<td>Firefly</td>
+<td>Um servidor VPN WireGuard baseado em wg-easy</td>
+<td>Um servidor WireGuard com as predefinições já escolhidas</td>
+</tr>
+<tr>
+<td>NetBird</td>
+<td>Uma rede sobreposta baseada em WireGuard com SSO, MFA e controlos de acesso</td>
+<td>Equipas e regras de acesso detalhadas</td>
+</tr>
+</tbody></table></div>
+<p>O Tailscale e o NetBird utilizam os seus próprios serviços para coordenar os dispositivos, enquanto o tráfego permanece ponto a ponto. O WireGuard Easy e o Firefly guardam tudo no seu dispositivo, chaves incluídas.</p>
+<h2 id="Instalar-a-partir-da-App-Store" class="article-heading">Instalar a partir da App Store<a class="article-anchor" href="#Instalar-a-partir-da-App-Store" aria-hidden="true"></a></h2><p>Os primeiros passos são os mesmos para as quatro aplicações:</p>
+<ol class="doc-steps">
+<li>Abra a <strong>App Store</strong> no seu dispositivo ZimaOS.</li>
+<li>Procure a aplicação e clique em <strong>Instalar</strong>.</li>
+<li>Abra a aplicação a partir das aplicações instaladas.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/tailscale-app-store-card.webp" alt="Cartão da aplicação Tailscale na App Store do ZimaOS com o botão Instalar e a descrição"></span></p>
+<p>O Tailscale precisa de mais alguns passos, descritos a seguir. As outras três aplicações são abordadas depois da configuração do cliente.</p>
+<h3 id="Tailscale" class="article-heading">Tailscale<a class="article-anchor" href="#Tailscale" aria-hidden="true"></a></h3><p>No primeiro arranque, o Tailscale pede-lhe para iniciar sessão com a sua conta Tailscale. Abre-se uma página no navegador, autoriza o dispositivo e o seu dispositivo ZimaOS entra na sua tailnet.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/tailscale-sign-in.png" alt="Página de início de sessão do Tailscale a pedir a autorização do seu servidor doméstico na tailnet"></span></p>
+<p>Dê-lhe um nome reconhecível e procure-o depois na <a target="_blank" rel="noopener external nofollow noreferrer" href="https://login.tailscale.com/admin/machines" title="Gere os seus dispositivos Tailscale na consola de administração oficial" class="doc-link">consola de administração do Tailscale</a> com o seu endereço 100.x.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/tailscale-admin-console-device.webp" alt="Consola de administração do Tailscale com o servidor doméstico e o seu endereço 100.x"></span></p>
+<p>Qualquer dispositivo da sua tailnet pode agora chegar ao seu servidor doméstico ZimaOS através desse endereço, esteja onde estiver cada um. Guarde o URL do painel nos marcadores do portátil e inicie sessão a partir de qualquer lugar.</p>
+<h2 id="Instalar-as-aplicacoes-cliente" class="article-heading">Instalar as aplicações cliente<a class="article-anchor" href="#Instalar-as-aplicacoes-cliente" aria-hidden="true"></a></h2><p>O lado do cliente é simples. Instale a aplicação oficial a partir da loja de aplicações do seu dispositivo e ligue-a à sua rede.</p>
+<p>No iOS, ambas as aplicações estão na App Store. No Android, obtenha a aplicação oficial Tailscale ou WireGuard na Google Play. No Linux, instale o cliente oficial do Tailscale ou o wireguard-tools a partir da sua distribuição.</p>
+<p>A configuração é um único passo:</p>
+<ul class="doc-dots">
+<li>Tailscale: abra a aplicação e inicie sessão com a sua conta Tailscale. O dispositivo aparece na sua tailnet.</li>
+<li>WireGuard: importe o ficheiro de configuração ou leia o código QR que criou no ZimaOS.</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/tailscale-ios-app.png" alt="Aplicação Tailscale no iOS com o servidor doméstico ligado à tailnet"></span></p>
+<h2 id="WireGuard-Easy-Firefly-e-NetBird" class="article-heading">WireGuard Easy, Firefly e NetBird<a class="article-anchor" href="#WireGuard-Easy-Firefly-e-NetBird" aria-hidden="true"></a></h2><p>As outras três aplicações seguem o mesmo fluxo de instalação a partir da App Store. Cada uma abre a sua página de gestão após a instalação.</p>
+<p><strong>WireGuard Easy</strong> executa um servidor VPN WireGuard com uma interface web. Crie um cliente por dispositivo e entregue a cada um a sua configuração como código QR ou ficheiro de configuração.</p>
+<p><strong>Firefly</strong> é o servidor WireGuard mais simples, baseado em wg-easy. Crie um cliente, leia o código QR no telemóvel e está ligado.</p>
+<p><strong>NetBird</strong> liga os seus dispositivos numa rede sobreposta baseada em WireGuard com SSO, MFA e controlos de acesso detalhados. Aprove os dispositivos e defina as regras de acesso a partir do painel do NetBird.</p>
+<p>Tenha em atenção:</p>
+<ul class="doc-dots">
+<li>Os servidores WireGuard escutam numa porta UDP. Para chegar ao WireGuard Easy ou ao Firefly a partir de fora da sua rede doméstica, essa porta precisa de um endereço IP público ou de um reencaminhamento de portas no router.</li>
+<li>O NetBird trata do início de sessão e das regras de acesso através do seu próprio serviço. A sua conta ZimaOS não está envolvida.</li>
+</ul>
+<h2 id="Computador-e-configuracao-avancada" class="article-heading">Computador e configuração avançada<a class="article-anchor" href="#Computador-e-configuracao-avancada" aria-hidden="true"></a></h2><p>No computador, o fluxo é o mesmo que no telemóvel. Instale o cliente oficial do Tailscale ou do WireGuard para Windows, macOS ou Linux e, em seguida, inicie sessão com a sua conta Tailscale ou importe a sua configuração WireGuard.</p>
+<p>Para a configuração avançada, a documentação oficial cobre os detalhes:</p>
+<ul class="doc-dots">
+<li>Tailscale: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://tailscale.com/kb/" title="Documentação oficial do Tailscale para configuração e configuração avançada" class="doc-link">Base de conhecimento do Tailscale</a></li>
+<li>WireGuard: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.wireguard.com/install/" title="Site oficial do WireGuard com clientes e instruções de configuração" class="doc-link">Site oficial do WireGuard</a></li>
+<li>WireGuard Easy: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wg-easy/wg-easy" title="Repositório oficial do wg-easy com detalhes de instalação e configuração" class="doc-link">Repositório do wg-easy</a></li>
+<li>NetBird: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.netbird.io/" title="Documentação oficial do NetBird sobre SSO, MFA e regras de acesso" class="doc-link">Documentação do NetBird</a></li>
+</ul>
+<h2 id="O-que-estas-aplicacoes-nao-fazem" class="article-heading">O que estas aplicações não fazem<a class="article-anchor" href="#O-que-estas-aplicacoes-nao-fazem" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Não substituem o ZimaClient. A navegação de fotografias, a <strong><a href="../phone-backup" title="Efetuar automaticamente uma cópia de segurança do telemóvel para o ZimaOS com o ZimaClient" class="doc-link">cópia de segurança do telemóvel</a></strong>, a <strong><a href="../computer-backup" title="Efetuar uma cópia de segurança do computador para o ZimaOS através do Finder, Explorador ou sincronização" class="doc-link">cópia de segurança do computador</a></strong>, o Connect ID e o interruptor de acesso remoto nas definições do ZimaOS pertencem ao ZimaClient. O Tailscale e o WireGuard transportam a ligação. Não fazem cópias de segurança nem sincronizam nada.</li>
+<li>O Tailscale e o NetBird coordenam os dispositivos através dos seus próprios serviços, pelo que a sua conta fica no fornecedor. O tráfego permanece ponto a ponto. Se manter cada peça no seu próprio hardware é importante para si, o WireGuard Easy e o Firefly fazem isso.</li>
+<li>O ZimaOS em si não recolhe dados do utilizador em nenhum destes caminhos.</li>
+</ul>
+<h2 id="Seguinte" class="article-heading">Seguinte<a class="article-anchor" href="#Seguinte" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong><a href="../remote-access" title="Configurar o acesso remoto para poder aceder ao servidor doméstico a partir de qualquer lugar" class="doc-link">Acesso remoto</a></strong> — a opção integrada</li>
+<li><strong><a href="../zimaclient-install" title="Instalar e configurar o ZimaClient no computador e no telemóvel para aceder ao dispositivo" class="doc-link">Transferir o ZimaClient</a></strong> — clientes para computador e telemóvel</li>
+<li><strong><a href="./self-hosted-apps" title="Explore aplicações autoalojadas que pode executar no seu servidor doméstico ZimaOS" class="doc-link">Aplicações autoalojadas</a></strong> — o que mais pode executar no seu dispositivo</li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.109Z" itemprop="dateModified">Última atualização: 2026-09-07</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/app-store/adminer-setup-guide"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Gestor de bases de dados Adminer</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Agente DeepSeek Harness</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Porque-protocolos-padrao"><span class="toc-text">Porquê protocolos padrão</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Escolha-a-sua-aplicacao"><span class="toc-text">Escolha a sua aplicação</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instalar-a-partir-da-App-Store"><span class="toc-text">Instalar a partir da App Store</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tailscale"><span class="toc-text">Tailscale</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instalar-as-aplicacoes-cliente"><span class="toc-text">Instalar as aplicações cliente</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WireGuard-Easy-Firefly-e-NetBird"><span class="toc-text">WireGuard Easy, Firefly e NetBird</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Computador-e-configuracao-avancada"><span class="toc-text">Computador e configuração avançada</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#O-que-estas-aplicacoes-nao-fazem"><span class="toc-text">O que estas aplicações não fazem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seguinte"><span class="toc-text">Seguinte</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral da App Store</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/webtorrent-feature">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/adminer-setup-guide">Gestor de bases de dados Adminer</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">Agentes e inferência</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">Agente DeepSeek Harness</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/tailscale-wireguard-remote-access" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/tailscale-wireguard-remote-access" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
