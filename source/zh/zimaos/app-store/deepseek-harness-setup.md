@@ -108,8 +108,8 @@ DeepSeek Harness（dsh）是 DeepSeek 开发的开源 AI 智能体——你可�
 
 ## 下一步
 
-- **本地推理：**把提供商指向自有硬件上的模型服务器，让智能体完全离线运行——本系列的下一篇教程。
-- **用 dsh 自动化服务：**在 ZimaOS 上构建并运行自动化服务——本系列后续教程。
+- **本地推理：**把提供商指向自有硬件上的模型服务器，让智能体完全离线运行——参见 **[本地大模型推理](../local-llm-inference "在 ZimaOS NAS 上部署经过验证的 35B MoE 私有 AI 服务器")**。
+- **用 dsh 自动化服务：**在 ZimaOS 上构建并运行自动化服务——参见 **[在 ZimaOS 上运行本地 AI Agent](../local-ai-agent-on-zimaos "把 DeepSeek Harness 接入你的本地大模型服务器并开启第一个完全本地任务")**。
 
 ## 参考链接
 

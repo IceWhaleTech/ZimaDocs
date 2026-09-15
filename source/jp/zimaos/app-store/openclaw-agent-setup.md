@@ -5,7 +5,7 @@ type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-## 1. 概要
+## 概要
 
 このチュートリアルでは、CasaOS/ZimaOS を実行しているデバイスに OpenClaw をデプロイし、基本設定を完了させ、Telegram を通じて AI モデルとやり取りできるようにする手順を説明します。Telegram ボットを例として、モデルプロバイダーの設定からボットのペアリングまでの全プロセスをカバーします。
 
@@ -69,7 +69,7 @@ tip: Do not remove this front matter block. The description field is used for th
 
 ---
 
-## 2. 詳細手順（CasaOS の例）
+## 詳細手順（CasaOS の例）
 
 ### 2.1 ターミナルを開く
 
@@ -139,7 +139,7 @@ node /app/dist/index.js config
 
 ### 2.4 モデルの設定
 
-#### 1. プロバイダーを選択
+#### プロバイダーを選択
 
 **Select sections to configure** で **Model** を選択
   ![Cursor on the Model option](https://manage.icewhale.io/api/static/docs/1773220763191_image.png)
@@ -147,7 +147,7 @@ node /app/dist/index.js config
 **Model / auth provider** で **custom provider** を選択
 ![custom provider highlighted](https://manage.icewhale.io/api/static/docs/1773220810816_image.png)
 
-#### 2. モデルパラメータを入力
+#### モデルパラメータを入力
 
 **Base URL** を入力 (例: `https://api.openai.com/v1`)
 ![Base URL input field](https://manage.icewhale.io/api/static/docs/1773220830104_image.png)
@@ -165,7 +165,7 @@ node /app/dist/index.js config
 
 ### 2.5 チャンネルの設定（Telegram の例）
 
-#### 1. チャンネル設定を開く
+#### チャンネル設定を開く
 
 **Select sections to configure** で **Channels** を選択
 ![Cursor on the Channels option](https://manage.icewhale.io/api/static/docs/1773220923167_image.png)
@@ -176,7 +176,7 @@ node /app/dist/index.js config
 リストから **Telegram** を選択
 ![Telegram selected in the channel list](https://manage.icewhale.io/api/static/docs/1773220953934_image.png)
 
-#### 2. ボットトークンを取得
+#### ボットトークンを取得
 
 Telegram の **@BotFather** と会話を開始し、`/newbot` を送信してボットを作成
 BotFather から以下を求められます:
@@ -189,7 +189,7 @@ BotFather から以下を求められます:
 
 > **このトークンを保存** — 次のステップで使用します。
 
-#### 3. ボットトークンを入力
+#### ボットトークンを入力
 
 **Enter Telegram bot token** を選択
 ![Token input option in the menu](https://manage.icewhale.io/api/static/docs/1773221116186_image.png)
@@ -197,7 +197,7 @@ BotFather から以下を求められます:
 BotFather から受け取ったトークンを貼り付けまたは入力
   ![Token input field](https://manage.icewhale.io/api/static/docs/1773221130505_image.png)
 
-#### 4. DM アクセスポリシーを設定
+#### DM アクセスポリシーを設定
 
 **Configure DM access policies now? (default: pairing)** と聞かれたら **Yes** を選択
 ![Policy configuration prompt](https://manage.icewhale.io/api/static/docs/1773221160225_image.png)
@@ -208,7 +208,7 @@ BotFather から受け取ったトークンを貼り付けまたは入力
 **Select sections to configure** に戻り **Continue (Done)** を選択して Telegram 設定を完了
   ![Continue (Done) option highlighted](https://manage.icewhale.io/api/static/docs/1773221202944_image.png)
 
-#### 5. ペアリングを完了
+#### ペアリングを完了
 
 Telegram でボットのチャットを開き `/start` を送信。ボットがペアリングコードを返信するのを待つ
 ![Telegram conversation showing the bot's pairing code reply](https://manage.icewhale.io/api/static/docs/1773221237858_image.png)
@@ -238,17 +238,17 @@ Web UI を初めて開くと、Gateway ダッシュボードで **“pairing req
 
 ![](https://manage.icewhale.io/api/static/docs/1778125603653_image.png)
 
-#### 1. OpenClaw コンテナに入る
+#### OpenClaw コンテナに入る
 ```bash
 docker exec -it openclaw bash
 ```
-#### 2. 保留中デバイスの一覧を表示
+#### 保留中デバイスの一覧を表示
 コンテナ内で:
 ```bash
 node /app/dist/index.js devices list
 ```
 未ペアリングのデバイスがあれば、OpenClaw が request_id を表示
-#### 3. デバイスを承認
+#### デバイスを承認
 以下のコマンドを実行し、`<request_id>` を表示された実際の ID に置換:
 ```bash
 node /app/dist/index.js devices approve <request_id>

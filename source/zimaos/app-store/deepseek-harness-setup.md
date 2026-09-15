@@ -58,7 +58,7 @@ Go to **Settings > Models** and add a provider, then paste your API key:
 - **DeepSeek** — sign up on the [DeepSeek Platform](https://platform.deepseek.com/ "DeepSeek Platform for API keys and billing") and copy your key
 - **GPT (OpenAI)** — your OpenAI key
 - **OpenRouter** — one key for many models
-- A model server on your own hardware — covered in the next tutorial of this series
+- A model server on your own hardware — run one in five steps with **[Local LLM Inference](../local-llm-inference "Run a private AI on your ZimaOS NAS with a verified 35B MoE setup")**
 
 ![Settings page in the DeepSeek Harness Web UI with a model provider added and its API key saved](/images/app-store/dsh-models.webp)
 
@@ -108,8 +108,8 @@ That's the whole setup. Your home server is no longer just a storage box — it'
 
 ## Next Steps
 
-- **Local inference:** point the provider at a model server on your own hardware and run the agent fully offline — next tutorial in this series.
-- **Automating services with dsh:** build and run automation services on ZimaOS — later tutorial in this series.
+- **Local inference:** point the provider at a model server on your own hardware and run the agent fully offline — see **[Local LLM Inference](../local-llm-inference "Run a private AI on your ZimaOS NAS with a verified 35B MoE setup")**.
+- **Automating services with dsh:** build and run automation services on ZimaOS — see **[Local AI Agent on ZimaOS](../local-ai-agent-on-zimaos "Connect DeepSeek Harness to your local LLM server and start your first fully local task")**.
 
 ## Reference Links
 

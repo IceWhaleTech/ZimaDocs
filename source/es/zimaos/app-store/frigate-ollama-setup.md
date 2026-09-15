@@ -223,4 +223,6 @@ Cuando Frigate detecte un objeto de persona en la pantalla de monitoreo, captura
 ![](https://manage.icewhale.io/api/static/docs/1745204647915_image.png)  
 
 En este punto, el sistema de monitoreo inteligente de Frigate y Ollama ha sido exitosamente construido. Puedes verificar el efecto de detección a través de la pantalla en tiempo real, o ingresar a la página de logs e instantáneas para verificar si el análisis de IA está funcionando normalmente.  
-Para optimizar aún más la experiencia, puedes intentar acceder a los servicios de notificación, ajustar los parámetros del modelo o agregar más cámaras.  
+Para optimizar aún más la experiencia, puedes intentar acceder a los servicios de notificación, ajustar los parámetros del modelo o agregar más cámaras.
+
+¿Nuevo en Frigate? Empieza con la instalación en un paso desde la App Store en [Configuración de Frigate](./frigate-setup "Instala Frigate desde la App Store de ZimaOS para vigilancia de cámaras con IA local").

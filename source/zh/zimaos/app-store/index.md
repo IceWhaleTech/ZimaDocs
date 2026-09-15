@@ -18,8 +18,8 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 - **[批量照片同步](./cli-guide "通过命令行将数千张照片批量同步到 NAS")** — 适合一次迁移大量照片
 - **[Immich 照片备份](./immich-photo-backup "深入配置 Immich，用于备份照片库")** — 进一步设置 Immich 照片备份
 - **[Jellyfin 媒体服务器](./media-server-setup-with-jellyfin "使用 Jellyfin 从 NAS 串流电影、电视剧和音乐")** — 免费开源，支持多种设备
-- **[NVR 摄像机服务器](./nvr-camera-server "将安防摄像机连接到 NAS，并启用 AI 目标检测")** — 接入安防摄像机并使用 AI 目标检测
 - **[Immich 照片同步](./sync-photos-with-immich "使用自托管 Immich 将手机照片同步到 NAS")** — Google Photos 的自托管替代方案
+- **[PhotoPrism](./photoprism-setup "在 ZimaOS 上运行 PhotoPrism 自托管 AI 照片相册")** — 具备智能搜索、人脸识别和相册功能的 AI 照片相册
 - **[Plex 媒体服务器](./plex-setup-guide "安装 Plex Media Server，并将媒体库串流到任意设备")** — 界面成熟，并为各类设备提供客户端
 - **[DLNA 服务器](./dlna-server-setup "设置 DLNA，将媒体串流到旧款电视和 DLNA 设备")** — 将内容播放到旧款智能电视和 DLNA 设备
 - **[Plex GPU 转码](./plex-and-gpu-transcoding "在 Plex 中启用 GPU 硬件转码，实现流畅的 4K 播放")** — 启用硬件加速，流畅播放 4K 内容
@@ -32,19 +32,34 @@ tip: 请勿删除此前置信息块。description 字段用于文章摘要；如
 
 - **[使用 Syncthing 同步文件](./syncthing-setup "使用自托管 Syncthing 在设备之间保持文件夹同步")** — 在所有电脑和手机之间同步文件夹
 - **[Pi-hole 广告拦截](./pi-hole-setup "在家庭服务器上使用 Pi-hole 拦截全网广告")** — 自动为网络中的每台设备拦截广告
+- **[AdGuard Home](./adguard-home-setup "在 ZimaOS 上使用 AdGuard Home 拦截全网广告与追踪器")** — 另一款全网广告拦截工具，仪表盘更精致
+- **[Nginx Proxy Manager](./nginx-proxy-manager-setup "使用 Nginx Proxy Manager 设置反向代理和 HTTPS 证书")** — 为你的应用配上友好域名和 HTTPS
 - **[文档管理](./paperless-ngx-install "使用 Paperless-ngx 管理和搜索扫描文档")** — 扫描纸质文档并建立可搜索的资料库
 - **[AI 文档处理](./paperless-ai-install "使用 Paperless-AI 自动标记和分类文档")** — 为 Paperless 增加自动标签和分类
 - **[Radarr 电影管理](./radarr-setup "使用 Radarr 自动下载和管理电影")** — 指定想看的电影，其余流程自动完成
 - **[网络电台](./azuracast-install "使用 AzuraCast 运行自己的网络电台")** — 搭建属于自己的网络广播站
 - **[服务器监控](./zabbix-install-guide "使用 Zabbix 仪表盘监控服务器和网络")** — 掌握服务器与网络运行状态
-- **[种子下载器](./webtorrent-feature "使用 WebTorrent 将种子内容直接下载到 NAS")** — 直接把下载内容保存到 NAS
+- **[Transmission](./transmission-setup "使用 Transmission 将种子直接下载到 NAS")** — 添加种子文件或磁力链接并保存到 NAS
 - **[Syncthing 设置指南](./syncthing-install "为多设备同步配置更高级的 Syncthing 设置")** — 更详细的 Syncthing 配置说明
+- **[Blinko](./blinko-setup "在 ZimaOS 上运行 Blinko 自托管 AI 笔记")** — 用卡片捕捉灵感，用 AI 搜索笔记
+- **[Karakeep](./karakeep-setup "用 Karakeep 收藏一切，让 AI 自动打标")** — 用 AI 打标和摘要的书签管理器
+- **[VoceChat](./vocechat-setup "在 ZimaOS 上运行 VoceChat 私有聊天服务器")** — 为家人或团队准备的私有聊天服务器
+- **[RomM](./romm-setup "在 ZimaOS 上用 RomM 整理你的 ROM 收藏")** — 整洁的游戏收藏库
+- **[Adminer](./adminer-setup-guide "在 ZimaOS 上用 Adminer 查看 SQLite 数据库")** — 一窥应用数据库的内部
+
+## 智能家居
+
+摄像头和传感器是智能家居的眼睛和耳朵——这些应用让画面留在你自己的硬件上。
+
+- **[Frigate](./frigate-setup "在 ZimaOS 上运行 Frigate 本地 AI 网络录像机")** — 带物体检测的本地 AI 摄像头监控
+- **[NVR 摄像机服务器](./nvr-camera-server "将安防摄像机连接到 NAS，并启用 AI 目标检测")** — 接入安防摄像机并使用 AI 目标检测
 
 ## 智能体与推理
 
 在自己的硬件上运行 AI，意味着数据无需离开家中。最近，社区在这个方向上投入了很多创造力。
 
 - **[DeepSeek Harness](./deepseek-harness-setup "在家庭服务器上运行 DeepSeek Harness，一个物理 AI 智能体")** — 住在你家庭服务器上的物理 AI 智能体，氛围编程并自动执行任务
+- **[本地大模型推理](../local-llm-inference "用经过验证的方案在 ZimaOS NAS 上运行私有 AI 服务器")** — 跑在自己硬件上的私有 AI 引擎，无需云端
 - **[启用 AI 搜索](./enable-ai "在家庭服务器上启用 AI 搜索，用自然语言查找文件")** — 使用自然语言搜索所有文件
 - **[部署 DeepSeek R1](./deploy-deepseek-r1 "在智能体服务器上部署 DeepSeek R1，本地运行大语言模型")** — 在 Zima 硬件上本地运行高性能模型
 - **[下载 AI 模型](./llm-manual-download "为离线环境下载 AI 模型")** — 适用于离线或低带宽环境

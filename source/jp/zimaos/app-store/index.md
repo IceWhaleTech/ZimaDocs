@@ -18,8 +18,8 @@ Zima 端末から生まれるさまざまなプロジェクトを見るのは、
 - **[写真の一括同期](./cli-guide "コマンドラインで大量の写真を NAS に同期する")** — 数千枚の写真をまとめて移動するときに便利です
 - **[Immich 写真バックアップ](./immich-photo-backup "写真ライブラリ向けに Immich を詳しく設定する")** — Immich のバックアップ設定をさらに深めます
 - **[Jellyfin メディアサーバー](./media-server-setup-with-jellyfin "Jellyfin で NAS の映画、テレビ、音楽を配信する")** — 無料のオープンソースで、多くの端末に対応します
-- **[NVR カメラサーバー](./nvr-camera-server "監視カメラを NAS に接続して AI 物体検出を使う")** — 監視カメラと AI 物体検出を組み合わせます
 - **[Immich 写真同期](./sync-photos-with-immich "自宅ホストの Immich でスマートフォンの写真を NAS に同期する")** — Google Photos の自宅ホスト代替です
+- **[PhotoPrism](./photoprism-setup "ZimaOS で PhotoPrism を自宅ホストの AI フォトギャラリーとして動かす")** — スマート検索、顔認識、アルバムを備えた AI フォトギャラリーです
 - **[Plex メディアサーバー](./plex-setup-guide "Plex Media Server を導入してライブラリを配信する")** — 洗練された画面と豊富なクライアントがあります
 - **[DLNA サーバー](./dlna-server-setup "古いテレビや DLNA 端末へメディアを配信する")** — DLNA 対応機器へストリーミングします
 - **[Plex GPU トランスコード](./plex-and-gpu-transcoding "Plex の GPU ハードウェア変換で 4K を滑らかに再生する")** — ハードウェアアクセラレーションで 4K を再生します
@@ -32,19 +32,34 @@ Zima 端末から生まれるさまざまなプロジェクトを見るのは、
 
 - **[Syncthing でファイル同期](./syncthing-setup "自宅ホストの Syncthing で端末間のフォルダーを同期する")** — PC とスマートフォンのフォルダーを同期します
 - **[Pi-hole 広告ブロッカー](./pi-hole-setup "ホームサーバーの Pi-hole でネットワーク全体の広告をブロックする")** — ネットワーク内の全端末で広告を自動遮断します
+- **[AdGuard Home](./adguard-home-setup "ZimaOS の AdGuard Home でネットワーク全体の広告とトラッカーをブロックする")** — 洗練されたダッシュボードを備えた、もうひとつのネットワーク全体広告ブロッカーです
+- **[Nginx Proxy Manager](./nginx-proxy-manager-setup "Nginx Proxy Manager でリバースプロキシと HTTPS 証明書を設定する")** — アプリにわかりやすいドメインと HTTPS を付与します
 - **[文書管理](./paperless-ngx-install "Paperless-ngx でスキャン文書を管理、検索する")** — 紙の文書を検索可能な資料にします
 - **[AI 文書処理](./paperless-ai-install "Paperless-AI で文書を自動分類、タグ付けする")** — Paperless に自動分類を追加します
 - **[Radarr 映画管理](./radarr-setup "Radarr で映画の取得と管理を自動化する")** — 見たい映画を指定すると残りを自動化できます
 - **[インターネットラジオ](./azuracast-install "AzuraCast で自分のインターネットラジオ局を運営する")** — 自分のラジオ局を構築します
 - **[サーバー監視](./zabbix-install-guide "Zabbix ダッシュボードでサーバーとネットワークを監視する")** — サーバーとネットワークの状態を確認します
-- **[Torrent ダウンローダー](./webtorrent-feature "WebTorrent で NAS に直接ダウンロードする")** — ダウンロードデータを NAS に直接保存します
+- **[Transmission](./transmission-setup "Transmission で Torrent を NAS に直接ダウンロードする")** — Torrent ファイルやマグネットリンクを追加して NAS に保存します
 - **[Syncthing 設定ガイド](./syncthing-install "複数端末向けに Syncthing を詳しく設定する")** — より高度な Syncthing 設定です
+- **[Blinko](./blinko-setup "ZimaOS で Blinko を自宅ホストの AI ノートツールとして動かす")** — ひらめきをカードで記録し、AI で検索できます
+- **[Karakeep](./karakeep-setup "Karakeep ですべてをブックマークし、AI にタグ付けさせる")** — AI がタグ付けと要約を行うブックマーク管理です
+- **[VoceChat](./vocechat-setup "ZimaOS で VoceChat のプライベートチャットサーバーを動かす")** — 家族やチームのためのプライベートチャットサーバーです
+- **[RomM](./romm-setup "ZimaOS で RomM を使って ROM コレクションを整理する")** — ゲームコレクションをすっきり整理するライブラリです
+- **[Adminer](./adminer-setup-guide "ZimaOS で Adminer を使って SQLite データベースを確認する")** — アプリのデータベースの中を覗けます
+
+## スマートホーム
+
+カメラとセンサーはスマートホームの目と耳です——これらのアプリなら映像を自分のハードウェアに置いたままにできます。
+
+- **[Frigate](./frigate-setup "ZimaOS で Frigate をローカル AI NVR として動かす")** — 物体検出を備えたローカル AI カメラ監視です
+- **[NVR カメラサーバー](./nvr-camera-server "監視カメラを NAS に接続して AI 物体検出を使う")** — 監視カメラと AI 物体検出を組み合わせます
 
 ## エージェントと推論
 
 AI を自分のハードウェアで実行すれば、データを家の外へ送る必要がありません。コミュニティでも活発に開拓されている分野です。
 
 - **[DeepSeek Harness](./deepseek-harness-setup "ホームサーバーで DeepSeek Harness を物理 AI エージェントとして動かす")** — ホームサーバーに住む物理 AI エージェント。バイブコーディングやタスクの自動化ができます
+- **[ローカル LLM 推論](../local-llm-inference "検証済みのセットアップで ZimaOS NAS にプライベート AI サーバーを実行する")** — クラウドなしで、自分のハードウェアで動くプライベート AI エンジンです
 - **[AI 検索を有効化](./enable-ai "自然言語でファイルを探せる AI 検索を有効にする")** — すべてのファイルを自然言語で検索します
 - **[DeepSeek R1 を導入](./deploy-deepseek-r1 "エージェントサーバーに DeepSeek R1 を導入してローカル実行する")** — Zima ハードウェアで高性能 LLM を実行します
 - **[AI モデルをダウンロード](./llm-manual-download "オフライン環境向けに AI モデルをダウンロードする")** — オフラインや低帯域の環境に適しています

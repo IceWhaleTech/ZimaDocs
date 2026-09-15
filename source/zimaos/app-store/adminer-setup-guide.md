@@ -7,7 +7,7 @@ author: Lauren Pan
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
 
-Adminer is a lightweight, browser-based database manager that supports SQLite, MySQL, PostgreSQL, and other database systems. This guide shows you how to install Adminer from the ZimaOS App Store and give it access to a SQLite database directory, using Emby as an example.
+Adminer is a lightweight, browser-based database manager that supports SQLite, MySQL, PostgreSQL, and other database systems. See the [Adminer App Store page](https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.adminer) for the latest app details. This guide shows you how to install Adminer from the ZimaOS App Store and give it access to a SQLite database directory, using Emby as an example.
 
 > **Important:** Adminer provides direct access to application data. Back up the database before making changes, avoid exposing Adminer directly to the public internet, and use read-only queries until you understand the application's database structure.
 
@@ -27,19 +27,22 @@ You can install Adminer without an existing database and configure the directory
 3. Open the Adminer listing and click **Install**.
 4. Wait for the installation to finish and confirm that Adminer appears on the ZimaOS dashboard.
 
-![Adminer listing in the ZimaOS App Store](/images/guides/adminer-app-store.webp)
+![Adminer app page in the ZimaOS App Store under the Developer category](/images/app-store/adminer-app-store.webp)
 
 ## Give Adminer Access to a Database Directory
 
 1. On the ZimaOS dashboard, open the menu in the upper-right corner of the Adminer app tile.
 2. Select **Manage Adminer** to open the container configuration page.
+
+![Edit Adminer page with service configuration, networks, and port 8080](/images/app-store/adminer-config-page.webp)
+
 3. Expand **Volumes**, find **Mount**, and add a mount.
 4. Set the mount type to **Bind mount**.
 5. Under **Host**, select the directory containing the database files. For a default Emby installation, the directory is usually `/DATA/AppData/emby/config/data`.
 6. Under **Container**, enter `/config/data`.
 7. Click **Save**, then restart Adminer if ZimaOS does not restart it automatically.
 
-![Bind-mounting the Emby database directory in the Adminer container settings](/images/guides/adminer-volume-mount.webp)
+![Adminer volumes with the Emby data folder mounted into the container](/images/app-store/adminer-volumes-bind.webp)
 
 For another application, replace the Emby host path with that application's database directory. Mount only the directory Adminer needs instead of granting access to a broader storage path.
 
@@ -50,7 +53,7 @@ For another application, replace the Emby host path with that application's data
 3. Browse to the mounted directory and select the database file, such as `/config/data/library.db`.
 4. Enter any credentials required by the Adminer image and log in.
 
-Adminer images and versions can differ in how they handle SQLite authentication. If the installed image rejects a blank-password SQLite connection, do not weaken unrelated application credentials or expose Adminer publicly. Use an Adminer image or authentication configuration that supports your database and review its update and security status before long-term use.
+Adminer images and versions can differ in how they handle SQLite authentication. Adminer v4+ requires a password for SQLite connections — the official image won't let you log in with a blank password. If the installed image rejects a blank-password SQLite connection, use a panel password plugin or a community image such as `finwo/adminer` (login with `nopassword`). Do not weaken unrelated application credentials or expose Adminer publicly. Review the image's update and security status before long-term use.
 
 ## Example: Inspect Emby's Library Database
 

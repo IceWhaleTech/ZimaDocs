@@ -18,8 +18,8 @@ This is where most people start. Turn your NAS into a streaming box — movies, 
 - **[Bulk Photo Sync](./cli-guide "Bulk sync thousands of photos to your NAS from the command line")** — for when you have thousands of photos to move
 - **[Immich Photo Backup](./immich-photo-backup "Deeper Immich configuration for backing up your photo library")** — deeper dive into Immich configuration
 - **[Jellyfin Media Server](./media-server-setup-with-jellyfin "Set up Jellyfin to stream movies, TV, and music from your NAS")** — free and open source, runs on everything
-- **[NVR Camera Server](./nvr-camera-server "Connect security cameras to your NAS with AI object detection")** — connect security cameras with AI object detection
 - **[Immich Photo Sync](./sync-photos-with-immich "Sync photos from your phone to your NAS with self-hosted Immich")** — a self-hosted alternative to Google Photos
+- **[PhotoPrism](./photoprism-setup "Run PhotoPrism on ZimaOS as a self-hosted AI photo gallery")** — an AI photo gallery with smart search, faces, and albums
 - **[Plex Media Server](./plex-setup-guide "Install Plex Media Server and stream your library to any device")** — polished interface with companion apps for every device
 - **[DLNA Server](./dlna-server-setup "Set up DLNA to stream media to older TVs and DLNA devices")** — stream to older smart TVs and DLNA devices
 - **[Plex GPU Transcoding](./plex-and-gpu-transcoding "Enable GPU hardware transcoding in Plex for smooth 4K streaming")** — enable hardware acceleration for smooth 4K
@@ -32,19 +32,34 @@ These are the apps our community runs the most. Each one replaces a subscription
 
 - **[File Sync with Syncthing](./syncthing-setup "Keep folders in sync across devices with self-hosted Syncthing")** — keep folders in sync across all your computers and phones
 - **[Pi-hole Ad Blocker](./pi-hole-setup "Block ads network-wide with Pi-hole on your home server")** — network-wide ad blocking, works on every device automatically
+- **[AdGuard Home](./adguard-home-setup "Block ads and trackers network-wide with AdGuard Home on ZimaOS")** — another network-wide ad blocker, with a polished dashboard
+- **[Nginx Proxy Manager](./nginx-proxy-manager-setup "Set up reverse proxies and HTTPS certificates with Nginx Proxy Manager")** — give your apps friendly domains and HTTPS
 - **[Document Management](./paperless-ngx-install "Manage and search scanned documents with Paperless-ngx")** — scan paper documents, make them searchable
 - **[AI Document Processing](./paperless-ai-install "Automatically tag and classify documents with Paperless-AI")** — add auto-tagging and classification to Paperless
 - **[Radarr Movie Manager](./radarr-setup "Automate movie downloads and management with Radarr")** — tell it what movies you want, it handles the rest
 - **[Web Radio Station](./azuracast-install "Run your own internet radio station with AzuraCast")** — run your own internet radio station
 - **[Server Monitoring](./zabbix-install-guide "Monitor your servers and network with Zabbix dashboards")** — keep an eye on your servers and network
-- **[Torrent Downloader](./webtorrent-feature "Download torrents directly to your NAS storage with WebTorrent")** — download torrents directly to your NAS storage
+- **[Transmission](./transmission-setup "Download torrents directly to your NAS with Transmission")** — add torrent files or magnet links and save them to your NAS
 - **[Syncthing Setup Guide](./syncthing-install "Advanced Syncthing configuration for syncing across your devices")** — more detailed Syncthing configuration
+- **[Blinko](./blinko-setup "Run Blinko on ZimaOS as a self-hosted AI note tool")** — capture fleeting thoughts as cards and search them with AI
+- **[Karakeep](./karakeep-setup "Bookmark everything with Karakeep and let AI tag it")** — a bookmark manager that tags and summarizes with AI
+- **[VoceChat](./vocechat-setup "Run a private chat server with VoceChat on ZimaOS")** — a private chat server for your family or team
+- **[RomM](./romm-setup "Organize your ROM collection with RomM on ZimaOS")** — a tidy library for your game collection
+- **[Adminer](./adminer-setup-guide "Inspect SQLite databases with Adminer on ZimaOS")** — peek inside your apps' databases
+
+## Smart Home
+
+Cameras and sensors are the eyes and ears of a smart home — these keep the feed on your own hardware.
+
+- **[Frigate](./frigate-setup "Run Frigate on ZimaOS as a local AI NVR for camera monitoring")** — local AI camera monitoring with object detection
+- **[NVR Camera Server](./nvr-camera-server "Connect security cameras to your NAS with AI object detection")** — connect security cameras with AI object detection
 
 ## Agents & Inference
 
 Running AI on your own hardware means your data never leaves your house. Our community has been pushing hard in this direction lately.
 
 - **[DeepSeek Harness](./deepseek-harness-setup "Run DeepSeek Harness on your home server as a physical AI agent")** — a physical AI agent on your home server that vibecodes and automates tasks
+- **[Local LLM Inference](../local-llm-inference "Run a private AI server on your ZimaOS NAS with a verified setup")** — a private AI engine on your own hardware, no cloud
 - **[Enable AI Search](./enable-ai "Enable AI search on your home server to find files naturally")** — natural language search across all your files
 - **[Deploy DeepSeek R1](./deploy-deepseek-r1 "Deploy DeepSeek R1 on your agent server to run an LLM locally")** — a capable LLM that runs locally on Zima hardware
 - **[Download AI Models](./llm-manual-download "Download AI models to your agent server for offline setups")** — grab models for offline or low-bandwidth setups

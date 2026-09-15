@@ -108,8 +108,8 @@ Esa es toda la configuración. Tu servidor doméstico ya no es solo una caja de 
 
 ## Próximos pasos
 
-- **Inferencia local:** apunta el proveedor a un servidor de modelos en tu propio hardware y ejecuta el agente totalmente sin conexión — el próximo tutorial de esta serie.
-- **Automatizar servicios con dsh:** crea y ejecuta servicios de automatización en ZimaOS — un tutorial posterior de esta serie.
+- **Inferencia local:** apunta el proveedor a un servidor de modelos en tu propio hardware y ejecuta el agente totalmente sin conexión — consulta **[Inferencia de LLM local](../local-llm-inference "Ejecuta una IA privada en tu NAS ZimaOS con una configuración 35B MoE verificada")**.
+- **Automatizar servicios con dsh:** crea y ejecuta servicios de automatización en ZimaOS — consulta **[Agente de IA local en ZimaOS](../local-ai-agent-on-zimaos "Conecta DeepSeek Harness a tu servidor LLM local y lanza tu primera tarea totalmente local")**.
 
 ## Enlaces de referencia
 

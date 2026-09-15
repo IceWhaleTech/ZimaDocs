@@ -108,8 +108,8 @@ Com a ligação P2P pode verificar o progresso do seu agente e todos os seus ser
 
 ## Próximos passos
 
-- **Inferência local:** aponte o fornecedor para um servidor de modelos no seu próprio hardware e execute o agente totalmente offline — o próximo tutorial desta série.
-- **Automatizar serviços com o dsh:** crie e execute serviços de automação no ZimaOS — um tutorial posterior desta série.
+- **Inferência local:** aponte o fornecedor para um servidor de modelos no seu próprio hardware e execute o agente totalmente offline — consulte **[Inferência de LLM local](../local-llm-inference "Execute uma IA privada no seu NAS ZimaOS com uma configuração 35B MoE verificada")**.
+- **Automatizar serviços com o dsh:** crie e execute serviços de automação no ZimaOS — consulte **[Agente de IA local no ZimaOS](../local-ai-agent-on-zimaos "Ligue o DeepSeek Harness ao seu servidor LLM local e inicie a sua primeira tarefa totalmente local")**.
 
 ## Ligações de referência
 

@@ -1,66 +1,181 @@
 ---
-title: ZimaBoardの始め方
-description:
-type: “Docs”
-tip: 上部バーの固定形式は削除しないでください、descriptionは記事の説明であり、未入力の場合は内容の最初の段落の文字列が切り取られます。
+title: ZimaOS で Emby をセットアップする
+seo_title: "ZimaOS の Emby サーバー：メディアライブラリのインストールと設定"
+description: "ZimaOS に Emby をインストールし、メディアライブラリを設定します。アプリストアからのインストール、セットアップウィザード、ファイルの命名、追加フォルダのマッピングをカバーします。"
+type: Docs
+author: Lauren Pan
+tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-# ホームサーバーの最初の見た目
 
-![Zimaboard ホームサーバー](/images/Get-Started-with-ZimaBoard/quick-get-start-zimaboard-homeserve.jpg)
+## 概要
 
-**専門家であろうと初心者であろうと、このクイックスタートチュートリアルでは、ZimaBoardの基本的なハードウェア仕様、予め構築されたホームサーバーの基本的なアプリケーション、デバッグと開発のための基本的なアカウント権限システムについて説明します。**
+Emby は ZimaOS アプリカタログでネイティブにサポートされています。最新のアプリ情報については [Emby アプリストアページ](https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.emby)をご覧ください。
 
-**この短いチュートリアルを通じて、15分以内に自宅に新しい個人データセンターを設定できるようになります。さあ、始めましょう！**
+Emby は、動画ファイルのフォルダをストリーミングサービスのように振る舞うものに変えます。映画や番組を読み取り、ポスターとあらすじを取得し、スマートフォン、ブラウザ、テレビアプリに再生します。
 
-# ハードウェアの準備
+インストール自体は ZimaOS アプリストアから数分で完了します。本当の作業のほとんどは、ファイルをどこに置くかを決め、Emby にその読み方を伝えることです。
 
-![ZimaBoard クイックスタート準備](/images/Get-Started-with-ZimaBoard/quickstart-preparation.jpg)
+## インストールの前に
 
-{% note warn Tips %}
-1. ZimaBoardにマウスとキーボードを接続する必要はありません。ネットワークケーブルを接続した後、ネットワークを介してZimaBoardのすべてのサービスに直接アクセスできます。
-2. 初めて使用する場合は、画面を用意し、miniDP / miniDP to HDMIを使用し、ZimaBoardのIPアドレスを覚えておくことを推奨します。
-{% endnote %}
+Emby にはドライブ上に 2 つの場所が必要です。1 つは Emby 自身の設定とアートワークを保持します。もう 1 つは動画ファイルを保持します。
 
-# 電源とネットワークケーブルの接続
+まずストレージを設定します。ドライブがまだ未設定の場合は、[ストレージ構成の選択](../storage-setup "ニーズに合った RAID オプションでストレージ構成を選択") で RAID とシングルディスクの選択肢、そして成長するメディアライブラリにどちらが合うかを確認できます。
 
-![ZimaBoard 電源接続](/images/Get-Started-with-ZimaBoard/quickstart-power-connect.jpg)
+次に、アプリデータの保存先を確認します。アプリはデフォルトでシステムドライブに書き込みますが、アートワークとメタデータが積み重なるとメディアサーバーはすぐにそのドライブを埋め尽くします。[アプリのデータ保存場所](../docker-app-paths "Docker コンテナのパスと ZimaOS アプリのデータ保存場所を理解する") で、何かをインストールする前にアプリデータをストレージアレイに向ける方法を確認できます。
 
-# システムを始めるための3ステップ
+## Emby のインストール
 
-{% note warn Tips %}
-1. コンピュータが必要です。
-2. コンピュータがZimaBoardと同じルーターに接続されていることを確認してください。
-{% endnote %}
+ZimaOS ダッシュボードから App Store を開き、Emby を検索します。Zima App Store の Media カテゴリに 1 件の結果が表示されます。
 
-## ブラウザで新しいタブを開き、http:**`//casaos.local`**を入力します。
+![Media カテゴリに Emby アプリカードが表示された ZimaOS アプリストアの検索結果](/images/app-store/emby-app-store-search.webp)
 
-![CasaOSにアクセス](/images/Get-Started-with-ZimaBoard/casaos-enter-casa-local.jpg)
+ZimaOS パッケージはストレージがすでにマッピングされた状態で提供されます。映画は `/DATA/Media/Movies` に、番組は `/DATA/Media/TV Shows` に置かれ、どちらも Files アプリからアクセスできます。Emby はコンテナ内からこれらを `/data/movies` と `/data/tvshows` として読み取ります。
 
-**`/casaos.local`**にアクセスできない場合は、IPアドレスを使用してシステムにアクセスしてください -[IPアドレスの確認方法](../../../help-center/find-ip-address)
+Install をクリックし、コンテナのプルを待ちます。準備ができると Emby がダッシュボードに表示され、アイコンをクリックすると Web インターフェースが開きます。
 
-## システムに入る
+![Files、Backup、ZVM、Immich と並んだ ZimaOS ダッシュボードの Emby アプリアイコン](/images/app-store/emby-installed-on-dashboard.webp)
 
-![CasaOS ホームページ](/images/Get-Started-with-ZimaBoard/casaos-welcome.jpg)
+## セットアップウィザードの実行
 
-## アカウントを作成する
+初回起動時には短いウィザードが案内されます。どの選択肢も後から簡単に変更できるので、深く考えすぎる必要はありません。
 
-CasaOSでアカウントを作成するをクリックします。
+**言語。** 表示言語を選択します。これは Emby のインターフェースを制御するもので、ライブラリのメタデータ言語（後でライブラリごとに設定）ではありません。
 
-![CasaOS アカウント作成](/images/Get-Started-with-ZimaBoard/casaos-create-account.jpg)
+![優先表示言語のドロップダウンがある Emby セットアップウィザードのウェルカム画面](/images/app-store/emby-wizard-language.webp)
 
-## システムを更新する
+**ユーザーとパスワード。** 最初のアカウントを作成します。これはサーバー上に保存される Emby アカウントで、ZimaOS ログインとは別です。家族全員が後でそれぞれのアカウントを持て、視聴履歴も個別に保持されます。
 
-システムを更新すると、より良い体験が得られます。
+![ユーザー名とパスワードで最初のユーザーアカウントを作成する Emby ウィザード画面](/images/app-store/emby-wizard-first-user.webp)
 
-![CasaOS 更新](/images/Get-Started-with-ZimaBoard/casaos-update.jpg)
+**完了。** ユーザー画面とこの画面の間で、ウィザードはライブラリの設定を求めます。これについては次の 2 つのセクションで詳しく説明します。設定が完了すると、Emby がセットアップを確認して最初のスキャンを開始し、Finish ボタンでダッシュボードに移動します。
 
-## 楽しんでください！
+![セットアップ完了を確認し Finish ボタンが表示された Emby ウィザードの最終画面](/images/app-store/emby-wizard-finished.webp)
 
-![CasaOS メイン](/images/Get-Started-with-ZimaBoard/casaos-main.jpg)
+## 追加する前にファイル名を整える
 
-{% note warn 予めインストールされたアプリのデフォルトアカウント %}
-ユーザー名:casaos
-パスワード:casaos
-{% endnote %}
+Emby はファイル名とフォルダ名を読み取り、オンラインデータベースと照合してメディアを識別します。良い名前なら最初のスキャンで正しいポスターと説明が得られます。雑な名前だと、手作業で修正する必要のある空白だらけのライブラリになります。
 
-[![Discord カード](https://discordapp.com/api/guilds/884667213326463016/widget.png?style=banner2)](https://discord.gg/knqAbbBbeX)
+以下のレイアウトでストレージ上の Media フォルダにファイルをコピーします。
+
+```text
+/DATA/Media/
+  Movies/
+    Arrival (2016)/
+      Arrival (2016).mkv
+    Dune (2021)/
+      Dune (2021).mkv
+  TV Shows/
+    Severance/
+      Season 01/
+        Severance S01E01.mkv
+        Severance S01E02.mkv
+```
+
+映画では括弧内の年が重要です。リメイクはタイトルを共有するため、年がそれらを区別します。番組では、SxxExx パターンが Emby がエピソードを正しいシーズンに配置するために読み取るものです。
+
+映画とテレビ番組は別々のトップレベルフォルダに分けてください。それぞれが Emby の独立したライブラリとなり、独自のメタデータルールを持ちます。
+
+## 最初のライブラリを作成する
+
+ウィザードは Setup Media Libraries という画面に到達しますが、まだ何もありません。New Library をクリックしてライブラリを定義するダイアログを開きます。
+
+![ライブラリがゼロで New Library ボタンが表示された Emby ウィザードのライブラリ画面](/images/app-store/emby-wizard-new-library.webp)
+
+コンテンツタイプとして Movies を選択し、表示名はそのままにします。Folders の下には `/data/movies` がすでにリストされており、先ほど埋めた Movies フォルダを指しているため、探し回る必要はありません。
+
+![コンテンツタイプ、マッピング済みフォルダ、ライブラリ設定が表示された Emby New Library ダイアログ](/images/app-store/emby-new-library-settings.webp)
+
+次にメタデータの言語と国を設定します。これは Emby がタイトルとあらすじをリクエストする言語を決めるもので、ウィザードで選んだインターフェース言語とは独立しています。
+
+リアルタイム監視はオンのままにします。Emby がフォルダを監視し、新しいファイルが届くとすぐに取り込むため、映画を追加するたびにスキャンをトリガーする必要がありません。
+
+さらに下にあるメタデータダウンローダーからのコレクション情報のインポートをオンにします。Emby がシリーズに属する映画をグループ化するので、『ロード・オブ・ザ・リング』三部作がアルファベット順に散らばらずにまとまります。
+
+最後の決定はアートワークの保存場所です。Emby には 3 つの選択肢があり、相互排他的ではありません。
+
+| オプション | 動作 | 使用する場面 |
+|-|-|-|
+| メディア画像をメディアフォルダに保存 | ポスターと背景画を動画ファイルの隣に書き込む | アートワークをファイルと一緒に移動させたい場合、または別のプレイヤーが同じフォルダを読む場合 |
+| メタデータフォルダにキャッシュコピーを保持 | アートワークを Emby 自身のデータフォルダ内に保存 | デフォルトの選択肢。メディアフォルダをきれいに保ち、読み込みが速い |
+| インターネットから画像を事前ダウンロード | オンデマンドではなくスキャン中にアートワークを取得 | 最初の起動から閲覧が瞬時であることを望む大規模ライブラリ |
+
+OK をクリックしてライブラリを保存します。Emby がスキャンを開始し、通常のコレクションなら 1〜2 分でポスターが埋まり始めます。
+
+ウィザードを完了し、左サイドバーの Movies を開きます。Emby が一致させたすべてのファイルが、ポスター、年、あらすじ付きでそこにあります。
+
+![最初のスキャン後にポスター付きの 1 本の映画が表示された Emby Movies ライブラリ](/images/app-store/emby-first-movie-scanned.webp)
+
+## 他のフォルダからメディアを追加する
+
+Emby はコンテナにマッピングされたフォルダしか見えません。ZimaOS では `/data/movies` と `/data/tvshows` です。USB ドライブ、2 つ目のストレージプール、システムのどこかのフォルダなど、それ以外はすべて不可視のままです。これがライブラリが空で戻ってくる最も一般的な理由です。
+
+マッピングは 1 分でできます。ZimaOS ダッシュボードに戻り、Emby アイコンを右クリックして Manage を選択します。
+
+![Manage、Logs、Stop、Restart のオプションが開いた ZimaOS の Emby アプリメニュー](/images/app-store/emby-app-manage-menu.webp)
+
+パネルは Volumes で開き、Emby がすでに読んでいるフォルダがバインドマウントとしてリストされます。Mount の横のプラスアイコンをクリックして新しい行を追加し、Host 側のフォルダボタンで追加したいものを選択します。
+
+![ドライブ上でホストフォルダピッカーが開いた ZimaOS の Emby コンテナ設定](/images/app-store/emby-app-add-bind-mount.webp)
+
+右側の Container 列は Emby が見る名前です。`/data` の下に認識しやすい名前を付け、保存してアプリを再起動させます。
+
+![コンテナパスがハイライトされた Emby アプリ設定の新しいバインドマウント](/images/app-store/emby-app-container-path.webp)
+
+Emby に戻り、右上の歯車アイコンから Settings を開きます。左サイドバーの Emby Server の下で Library をクリックし、Movies ライブラリをクリックして編集します。
+
+![Movies ライブラリとパスがリストされた Emby サーバー設定の Library ページ](/images/app-store/emby-settings-library.webp)
+
+Folders の横にある Add をクリックします。Select Path ダイアログにはコンテナ内に存在するパスがリストされるので、新しいマウントに付けた名前までスクロールして確定します。既存のフォルダに加わり、両方が同じライブラリに供給されます。
+
+![マッピング済みフォルダリストの上に Add ボタンがある Emby Movies ライブラリ設定](/images/app-store/emby-library-add-folder.webp)
+
+![新しいマウントを含むコンテナフォルダがリストされた Emby Select Path ダイアログ](/images/app-store/emby-select-path-dialog.webp)
+
+![デフォルトフォルダと追加フォルダが並んだ Emby Movies ライブラリ設定](/images/app-store/emby-library-both-folders.webp)
+
+この方法で追加したフォルダは、アプリに同梱されていたものとまったく同じように動作します。リアルタイム監視、メタデータ、アートワークはすべて同じように機能します。
+
+設定を保存し、サイドバーから Movies を開きます。マッピングしたばかりのフォルダのファイルが、すでにスキャン済みのものと並んで表示されます。
+
+![新しいスキャン後にポスター付きの数十本の映画が表示された Emby Movies ライブラリ](/images/app-store/emby-movies-library-full.webp)
+
+## ハードウェアトランスコーディング
+
+トランスコーディングは、クライアントがファイルをそのまま再生できないときに発生します——Emby がその場で変換します。CPU だけでは 4K ストリームがすべてのコアを占有することがありますが、GPU があれば同じ作業はほとんど負担になりません。
+
+ハードウェアトランスコーディングは Emby Premiere の機能です。クライアントがファイルを直接再生できるなら、そもそも必要ないかもしれません。
+
+有効にするには：
+
+1. Emby の **Settings** → **Transcoding** を開きます。
+2. **Enable hardware acceleration when available** をオンにします。
+3. GPU に合ったデコーダーを選びます：ZimaCube の統合グラフィックスなら **Intel Quick Sync Video**、GPU スロットに取り付けた専用カードなら **NVIDIA NVENC**。
+4. 保存してストリームを開始し、ダッシュボードで再生セッションにハードウェアデコードが表示されることを確認します。
+
+専用 GPU の取り付けについては [GPU 拡張](../../hardware/gpu-expansion "AI とトランスコーディング用のグラフィックカードを ZimaCube に追加") をご覧ください。ZimaOS での GPU トランスコーディングの実例は [Plex と GPU トランスコーディング](./plex-and-gpu-transcoding "ZimaOS デバイスで Plex の GPU トランスコーディングを有効にする") をご覧ください。
+
+## うまくいかないとき
+
+**スキャン後にライブラリが空。** Emby はコンテナにマッピングされたパスしか読み取りません。ZimaOS でアプリ設定を開き、メディアフォルダがボリュームリストにあることを確認します。ない場合は追加し、Emby のライブラリページから Scan Library Files を実行します。
+
+**ポスターとタイトルが間違っている。** ほぼ常に命名の問題です。ファイルを タイトル (年) の形式にリネームして再スキャンします。頑固なものは、アイテムをクリックして Identify を選び、正しいタイトルを手動で検索します。
+
+**再生がカクつく、またはバッファリングする。** ファイルの再生中にダッシュボードを開きます。トランスコーディングセッションがある場合は、クライアントが元の形式を読めないということなので、そのクライアントをダイレクトプレイに設定するか、ファイルをネイティブで処理できる形式で保存します。トランスコーディングが避けられない場合は、上記のハードウェアトランスコーディングのセクションを確認してください。ダイレクトプレイでもカクつく場合は、ネットワークに原因があります。
+
+**新しいファイルが表示されない。** 一部の環境では、リアルタイム監視が SMB 経由でコピーされたファイルを見逃します。Scan Library Files を手動でトリガーし、毎回発生する場合は Settings の Scheduled Tasks でスキャンをスケジュールします。
+
+**再起動後に Emby にアクセスできない。** コンテナに 1 分の起動時間を与えます。それでもダウンのままなら、ZimaOS の Settings と Apps でコンテナの状態を確認し、設定を保持しているストレージがマウントされていることを確認します。
+
+## 関連ガイド
+
+Emby はライブラリを自動で満たし続けるツールとよく合います：
+
+- [Radarr セットアップ](./radarr-setup "映画のダウンロードを自動化してメディアライブラリを最新に保つ") — 新作リリースを監視し、Emby がすでに読んでいるフォルダにファイルを整理します
+- [Jellyfin セットアップ](./media-server-setup-with-jellyfin "NAS にオープンソースの Jellyfin メディアサーバーをセットアップ") — 有料ティアのないオープンソースの代替
+- [Plex セットアップ](./plex-setup-guide "ホームサーバーで Plex のライブラリと再生を設定") — 最も幅広いデバイスサポートの選択肢
+- [DLNA サーバー](./dlna-server-setup "DLNA で NAS から古いテレビやプレイヤーにストリーミング") — アプリストア以前の古いテレビ向け
+- [App Store 概要](../app-store/ "メディア、セルフホストアプリ、AI の App Store カテゴリを閲覧") — ZimaOS で動くその他のもの
+
+## ヘルプが必要ですか？
+
+ZimaOS での Emby のインストールや使用で問題が発生した場合は、[ZimaSpace Discord コミュニティ](https://discord.gg/f9nzbmpMtU "ZimaOS サポートのための ZimaSpace Discord コミュニティに参加")にご参加ください。チームとコミュニティメンバーが喜んでお手伝いします。

@@ -2,9 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
+const cheerio = require('cheerio');
 const yaml = require('js-yaml');
 const {
   LOCALES,
+  PUBLIC_ROOT,
   REPO_ROOT,
   SOURCE_ROOT,
   canonicalKey,
@@ -95,6 +97,17 @@ function main() {
     if (menu[key] && canonicalKey('/docs' + menu[key]) !== canonicalKey('/docs' + expectedPath)) {
       errors.push('menu landing mismatch for ' + key);
     }
+  }
+
+  const htmlFiles = walkFiles(PUBLIC_ROOT, file => file.endsWith('.html'));
+  if (!htmlFiles.length) errors.push('public/ has no HTML files; run a clean build first');
+  for (const file of htmlFiles) {
+    const $ = cheerio.load(fs.readFileSync(file, 'utf8'));
+    const articleH1 = $('.doc-article__body h1');
+    if (!articleH1.length) continue;
+
+    const relative = toPosix(path.relative(PUBLIC_ROOT, file));
+    errors.push(relative + ' contains ' + articleH1.length + ' article-body h1 element(s)');
   }
 
   failIfErrors(errors, 'Docs structure');

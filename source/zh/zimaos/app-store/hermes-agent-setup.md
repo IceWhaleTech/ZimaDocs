@@ -8,6 +8,8 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ## 概述
 
+Hermes Agent 是面向 ZimaOS 的自托管 AI 智能体，能够从对话中学习并记住内容。它全天候运行在您自己的硬件上，您可以通过其 Web 界面或 Telegram 机器人与它对话——数据始终留在家里。
+
 本教程将指导您在已部署 Hermes Agent 的设备上配置模型服务和消息平台，实现通过 Telegram 与 AI 模型进行交互。以 Telegram 为例，涵盖从模型提供商配置到机器人验证的完整流程。
 
 > **注意：** 在大多数情况下，您可以直接通过 Hermes WebUI 配置模型和消息服务。如果找不到对应选项，请参考本教程在容器终端中完成配置。
