@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   {% if page.layout === 'page' or page.layout === 'index' %}
-  <script>
+  {# Cloudflare Rocket Loader must not defer this first-paint theme decision. #}
+  <script data-cfasync="false">
     (function () {
       var savedTheme = null;
       try {
@@ -19,8 +20,13 @@
   </script>
   {% endif %}
   <style>
-    html, body { background: #ffffff; }
-    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+    html, body { background: #ffffff; color-scheme: light; }
+    {% if page.layout === 'page' or page.layout === 'index' %}
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme]), html:not([data-theme]) body { background: #0f0f0f; color-scheme: dark; }
+    }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; color-scheme: dark; }
+    {% endif %}
   </style>
   <!-- Canonical links -->
   <link rel="canonical" href="{{ canonical_url(page.lang) }}">
