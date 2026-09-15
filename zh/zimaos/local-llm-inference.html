@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>在你的 ZimaOS NAS 上运行私有 AI：经实测的 35B MoE 方案 | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/local-llm-inference">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/local-llm-inference">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="把你的 ZimaCube 变成私有 AI 服务器——让 AI agent 代劳部署，或按实测过的手动步骤用 Qwen3.6-35B-A3B 和 llama.cpp 自己搭建。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="在你的 ZimaOS NAS 上运行私有 AI：经实测的 35B MoE 方案">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/local-llm-inference">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="把你的 ZimaCube 变成私有 AI 服务器——让 AI agent 代劳部署，或按实测过的手动步骤用 Qwen3.6-35B-A3B 和 llama.cpp 自己搭建。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-09-15T09:07:49.760Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.760Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "在 ZimaOS 上部署本地大模型推理",
+      "description": "把你的 ZimaCube 变成私有 AI 服务器——让 AI agent 代劳部署，或按实测过的手动步骤用 Qwen3.6-35B-A3B 和 llama.cpp 自己搭建。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.760Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "在 ZimaOS 上部署本地大模型推理"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/local-llm-inference">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/local-llm-inference">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/local-llm-inference">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/local-llm-inference">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/local-llm-inference">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">ZimaOS 概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/photos">照片</a></li><li><a class="" href="/docs/zh/zimaos/photos-supported-formats">支持的格式</a></li><li><a class="" href="/docs/zh/zimaos/cloud-drive-connect">连接云盘</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">数据迁移</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale 与 WireGuard</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">本地 AI</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-local-ai"><li><a class="is-current" href="/docs/zh/zimaos/local-llm-inference">本地大模型推理</a></li><li><a class="" href="/docs/zh/zimaos/local-ai-agent-on-zimaos">本地 AI 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li><li><a class="" href="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">ZVM Next 社区预览</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">在 ZimaOS 上部署本地大模型推理</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="概述" class="article-heading">概述<a class="article-anchor" href="#概述" aria-hidden="true"></a></h2><p>把你的 ZimaOS NAS 变成私有 AI 服务器。没有云端，没有 API 账单，一切都在你自己的硬盘上。</p>
+<p><strong>它是引擎，不是聊天机器人。</strong> 本指南部署的是一个 OpenAI 兼容的 API 服务器——<code class="chip">http://&lt;your-nas-ip&gt;:8080/v1</code> 这个端点并不是聊天窗口。聊天机器人只是它的一个客户端。更大的价值在于：局域网里的每个 AI 应用和 agent 都可以接入这同一个端点。把 <a href="./app-store/deepseek-harness-setup" title="从 ZimaOS 应用商店安装 DeepSeek Harness 并创建你的第一个工作区" class="doc-link">DeepSeek Harness</a> 或任何编码 agent 指向它，agent 本身——而不只是你的聊天——就完全在你自己的硬件上本地运行。</p>
+<p><strong>性能是实测的，不是纸面的。</strong> 一台装有 RTX PRO 2000 显卡的 ZimaCube 用 35B 混合专家模型可以达到 <strong>65–70 tokens&#x2F;s</strong> 的回答速度——回复比你的阅读速度还快。浓缩一周的会议纪要、跨你自己的文档回答问题、响应智能家居 agent 的请求：你还没读完自己的问题，回复已经流出来了。干活的显卡功耗只有 70 W——桌面游戏主机的零头。在这个速度下，大多数日常 agent 工作——以及背后的个人数据——可以完全留在你自己的硬件上。</p>
+<h2 id="开始之前" class="article-heading">开始之前<a class="article-anchor" href="#开始之前" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>一台有闲置 PCIe 插槽并装有 <strong>NVIDIA GPU</strong> 的 ZimaOS 设备——计算能力 8.0 或更高，显存 16 GB 或以上。以下方案在装有 RTX PRO 2000 的 ZimaCube 上验证过。</li>
+<li><strong>ZimaOS 1.7 或更高版本</strong>，插入显卡后会自动激活 NVIDIA 驱动。</li>
+<li>验证显卡：打开终端运行 <code class="chip">nvidia-smi</code>。能看到显卡，就说明准备好了。</li>
+</ul>
+<blockquote>
+<p>如果显卡没有被识别，参见 <a href="../hardware/gpu-expansion" title="为你的 ZimaCube 添加用于 AI 和转码的显卡" class="doc-link">GPU 扩展</a> 了解物理安装。</p>
+</blockquote>
+<h2 id="路径-A：让-AI-Agent-代劳" class="article-heading">路径 A：让 AI Agent 代劳<a class="article-anchor" href="#路径-A：让-AI-Agent-代劳" aria-hidden="true"></a></h2><p>如果你的 ZimaOS 上装有 DeepSeek Harness（或其他编码 agent），整个搭建过程就变成一场对话。</p>
+<ol class="doc-steps">
+<li><p><strong>从应用商店安装 DeepSeek Harness</strong>——参见 <a href="./app-store/deepseek-harness-setup" title="从 ZimaOS 应用商店安装 DeepSeek Harness 并创建你的第一个工作区" class="doc-link">部署 DeepSeek Harness</a>。</p>
+</li>
+<li><p><strong>给 agent 它需要的权限。</strong></p>
+<ul class="doc-dots">
+<li>文件夹授权让它能在你的硬盘上工作。</li>
+<li>Docker socket 授权允许系统级的容器管理。</li>
+</ul>
+<p>两者在 DeepSeek Harness 指南的使用说明里都有覆盖。</p>
+<p>这个任务只要求 agent 安装和配置软件——你的数据不参与其中。搭建期间授予 socket 权限；如果介意，完成后可以撤销。</p>
+</li>
+<li><p><strong>开始对话，把已知信息交给它。</strong> 把下面这段粘贴进对话，然后持续沟通，直到 agent 报告成功：</p>
+<blockquote>
+<p>在这台 ZimaOS 主机上搭建一个本地 LLM 服务器。以下是你需要知道的全部信息：</p>
+<ul class="doc-dots">
+<li><strong>模型：</strong> Qwen3.6-35B-A3B，GGUF 格式，IQ3_XXS 量化。用 <code class="chip">hf</code> CLI 从 Hugging Face 仓库 <code class="chip">unsloth/Qwen3.6-35B-A3B-GGUF</code> 下载 <code class="chip">Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf</code>（约 12.3 GB）。</li>
+<li><strong>引擎：</strong> 用容器镜像 <code class="chip">ghcr.io/ggml-org/llama.cpp:server-cuda</code> 运行 llama.cpp server。无需编译任何东西。</li>
+<li><strong>GPU：</strong> 把所有层都放在 GPU 上（<code class="chip">--n-gpu-layers 99</code>）。如果模型在这台 NAS 级机器上回落到 CPU，速度会崩溃。</li>
+<li><strong>设置：</strong> 16 GB 显卡上 128K 上下文，开启 flash attention，采样温度 0.7。永远不要把温度设为 0——贪婪采样会让这个模型无限重复。</li>
+<li><strong>验证：</strong> OpenAI 兼容端点必须在 <code class="chip">http://&lt;host-ip&gt;:8080/v1</code> 上应答。发送一个简短的 chat completion 确认，然后报告容器名称和你所做操作的摘要。</li>
+</ul>
+<p>如果哪里失败了，说明你尝试了什么、报错内容是什么。在改动任何系统级设置之前先问我。</p>
+</blockquote>
+</li>
+<li><p><strong>在浏览器里验证。</strong> 打开 <code class="chip">http://&lt;your-nas-ip&gt;:8080/v1/models</code>——能看到 JSON 模型列表就说明服务器在运行。</p>
+<p>如果出了任何问题，把下文「遇到问题时」一节的笔记发给 agent，然后继续对话。</p>
+</li>
+</ol>
+<p><strong>追求完全私密的最后一步：</strong> 在 agent 的模型设置里，把模型提供商切换到你的新本地端点。从此，agent 就在你自己的模型、你自己的硬件上运行——整个闭环都在家里。</p>
+<h2 id="路径-B：手动搭建" class="article-heading">路径 B：手动搭建<a class="article-anchor" href="#路径-B：手动搭建" aria-hidden="true"></a></h2><p>五个步骤，全程终端操作。</p>
+<h3 id="第-1-步：安装-GPU" class="article-heading">第 1 步：安装 GPU<a class="article-anchor" href="#第-1-步：安装-GPU" aria-hidden="true"></a></h3><p>打开机箱，把显卡插进 PCIe 插槽，完成——这块卡不需要供电线。</p>
+<p>完整流程：<a href="../hardware/gpu-expansion" title="为你的 ZimaCube 添加用于 AI 和转码的显卡" class="doc-link">GPU 扩展</a>。</p>
+<h3 id="第-2-步：拉取引擎镜像" class="article-heading">第 2 步：拉取引擎镜像<a class="article-anchor" href="#第-2-步：拉取引擎镜像" aria-hidden="true"></a></h3><p>容器化的 llama.cpp server 内置了 sm_80–120 的 CUDA 内核，无需任何编译：</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker pull ghcr.io/ggml-org/llama.cpp:server-cuda</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="第-3-步：获取模型" class="article-heading">第 3 步：获取模型<a class="article-anchor" href="#第-3-步：获取模型" aria-hidden="true"></a></h3><p>下载 <strong>Qwen3.6-35B-A3B</strong> 的 <strong>IQ3_XXS</strong> 量化 GGUF 文件——约 12.3 GB，选择这个量化是为了让整个模型装进 16 GB 显存，并给 128K 上下文留出空间。</p>
+<p>如果你的设备网络受限，参见 <a href="./app-store/llm-manual-download" title="在 ZimaOS 上为离线使用手动下载 LLM 模型" class="doc-link">如何手动下载大语言模型</a>。</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p models/llm</span><br><span class="line">hf download unsloth/Qwen3.6-35B-A3B-GGUF \</span><br><span class="line">  Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf --local-dir models/llm</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="第-4-步：启动服务器" class="article-heading">第 4 步：启动服务器<a class="article-anchor" href="#第-4-步：启动服务器" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run -d --name llm-server --gpus all -p 8080:8080 \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$PWD</span>/models/llm:/models&quot;</span> \</span><br><span class="line">  ghcr.io/ggml-org/llama.cpp:server-cuda \</span><br><span class="line">  -m /models/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf \</span><br><span class="line">  --host 0.0.0.0 --port 8080 \</span><br><span class="line">  -c 131072 --n-gpu-layers 99 -fa on --temp 0.7 --parallel 1</span><br></pre></td></tr></table></div></figure>
+
+<p><code class="chip">--n-gpu-layers 99</code> 把所有层都留在 GPU 上。在 NAS 级 CPU 上这不是可选项——模型一旦溢出到 CPU，速度就会崩溃。</p>
+<h3 id="第-5-步：打个招呼" class="article-heading">第 5 步：打个招呼<a class="article-anchor" href="#第-5-步：打个招呼" aria-hidden="true"></a></h3><p>服务器在 <code class="chip">http://&lt;your-nas-ip&gt;:8080/v1</code> 上暴露 OpenAI 兼容 API：</p>
+<figure class="highlight python code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line">client = OpenAI(base_url=<span class="string">&quot;http://&lt;nas-ip&gt;:8080/v1&quot;</span>, api_key=<span class="string">&quot;sk-none&quot;</span>)</span><br><span class="line">resp = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">&quot;Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf&quot;</span>,</span><br><span class="line">    messages=[&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Summarize my Documents folder&quot;</span>&#125;],</span><br><span class="line">    temperature=<span class="number">0.7</span>,</span><br><span class="line">    max_tokens=<span class="number">2048</span>,</span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(resp.choices[<span class="number">0</span>].message.content)</span><br></pre></td></tr></table></div></figure>
+
+<p>整个搭建就是这样。把任何东西指向它——笔记应用的 AI 搜索、照片整理工具、你自己的脚本——它们每一个现在都在你自己的硬件上运行。</p>
+<h2 id="实测数据" class="article-heading">实测数据<a class="article-anchor" href="#实测数据" aria-hidden="true"></a></h2><p>在运行 ZimaOS、装有 RTX PRO 2000 的 ZimaCube 上实测：</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>回答速度</td>
+<td>65–70 tokens&#x2F;s——比阅读速度还快。同卡上 27B 稠密模型只有 18–23；MoE 架构是原因</td>
+</tr>
+<tr>
+<td>上下文</td>
+<td>64K 舒适——一部长篇小说的体量；128K 可用——你自己文档的小型文库；256K 在 16 GB 里装不下</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>负载 55–70 W，空闲 6–12 W——比游戏本还低，安静到忘了它在运行。适合 24&#x2F;7 常开</td>
+</tr>
+<tr>
+<td>稳定性</td>
+<td>多轮对话和长文档检索均已验证</td>
+</tr>
+</tbody></table></div>
+<h2 id="遇到问题时" class="article-heading">遇到问题时<a class="article-anchor" href="#遇到问题时" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>服务器一直起不来。</strong> 运行 <code class="chip">nvidia-smi</code> 确认 GPU 在列。然后用 <code class="chip">docker logs llm-server</code> 读日志——前几行通常会指出缺失的部分。</li>
+<li><strong>启动时端口冲突。</strong> 日志显示端口绑定错误：NAS 上另一个应用已经占用了 8080——这是自托管世界里非常常见的端口。挑一个空闲的主机端口，把所有客户端指向它——例如用 <code class="chip">-p 8088:8080</code> 启动容器，并把 Base URL 设为 <code class="chip">http://&lt;your-nas-ip&gt;:8088/v1</code>。</li>
+<li><strong>速度突然下降。</strong> 模型有一部分回落到 CPU 了。保持 <code class="chip">--n-gpu-layers 99</code>；如果你改用 Ollama，运行 <code class="chip">ollama ps</code> 查看 GPU&#x2F;CPU 分配——Ollama 会悄悄做 offload。</li>
+<li><strong>模型无限重复。</strong> 你把温度设成了 0。这个模型家族需要 <strong>0.6–0.7</strong>；贪婪采样会毁掉它。</li>
+<li><strong>回答半句就停。</strong> 思考空间用完了。模型先思考再回答，思考 token 也计入上限——把 <code class="chip">max_tokens</code> 保持在 <strong>2048 或更高</strong>。</li>
+</ul>
+<h2 id="参考链接" class="article-heading">参考链接<a class="article-anchor" href="#参考链接" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>llama.cpp – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ggml-org/llama.cpp" title="GitHub 上 llama.cpp 的源码和发布" class="doc-link">GitHub 仓库</a></li>
+<li>llama.cpp server – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ggml-org/llama.cpp/tree/master/tools/server" title="llama.cpp HTTP 服务器文档" class="doc-link">服务器文档</a></li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.760Z" itemprop="dateModified">最后更新：2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/samba-member-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Samba 多用户设置</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/zimaos/local-ai-agent-on-zimaos"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">本地 AI 智能体</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="toc-text">开始之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84-A%EF%BC%9A%E8%AE%A9-AI-Agent-%E4%BB%A3%E5%8A%B3"><span class="toc-text">路径 A：让 AI Agent 代劳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84-B%EF%BC%9A%E6%89%8B%E5%8A%A8%E6%90%AD%E5%BB%BA"><span class="toc-text">路径 B：手动搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85-GPU"><span class="toc-text">第 1 步：安装 GPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E6%8B%89%E5%8F%96%E5%BC%95%E6%93%8E%E9%95%9C%E5%83%8F"><span class="toc-text">第 2 步：拉取引擎镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9E%8B"><span class="toc-text">第 3 步：获取模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-4-%E6%AD%A5%EF%BC%9A%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">第 4 步：启动服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-5-%E6%AD%A5%EF%BC%9A%E6%89%93%E4%B8%AA%E6%8B%9B%E5%91%BC"><span class="toc-text">第 5 步：打个招呼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%B5%8B%E6%95%B0%E6%8D%AE"><span class="toc-text">实测数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98%E6%97%B6"><span class="toc-text">遇到问题时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">ZimaOS 概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/photos">照片</a></li><li><a class="" href="/docs/zh/zimaos/photos-supported-formats">支持的格式</a></li><li><a class="" href="/docs/zh/zimaos/cloud-drive-connect">连接云盘</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">数据迁移</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale 与 WireGuard</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">本地 AI</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-local-ai"><li><a class="is-current" href="/docs/zh/zimaos/local-llm-inference">本地大模型推理</a></li><li><a class="" href="/docs/zh/zimaos/local-ai-agent-on-zimaos">本地 AI 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li><li><a class="" href="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">ZVM Next 社区预览</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/local-llm-inference" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/local-llm-inference" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/local-llm-inference" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/local-llm-inference" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/local-llm-inference" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">商店</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

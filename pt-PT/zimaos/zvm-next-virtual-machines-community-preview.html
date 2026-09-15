@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>O futuro das máquinas virtuais no ZimaOS | ZimaSpace | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/zvm-next-virtual-machines-community-preview">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Antevisão de importações mais fáceis de imagens de VM, redes mais seguras, instantâneos de discos, cópias de segurança e melhorias de fiabilidade para o ZimaOS.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="O futuro das máquinas virtuais no ZimaOS | ZimaSpace">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Antevisão de importações mais fáceis de imagens de VM, redes mais seguras, instantâneos de discos, cópias de segurança e melhorias de fiabilidade para o ZimaOS.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zvm-next-workstreams.svg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/image-import-pipeline.svg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/vm-network-modes.svg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/snapshot-vs-backup.svg">
+<meta property="article:published_time" content="2026-09-15T09:07:49.750Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.750Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/zvm-next-workstreams.svg">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "O que estamos a desenvolver a seguir para as máquinas virtuais no ZimaOS",
+      "description": "Antevisão de importações mais fáceis de imagens de VM, redes mais seguras, instantâneos de discos, cópias de segurança e melhorias de fiabilidade para o ZimaOS.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.750Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "O que estamos a desenvolver a seguir para as máquinas virtuais no ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/zvm-next-virtual-machines-community-preview">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/zvm-next-virtual-machines-community-preview">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/zvm-next-virtual-machines-community-preview">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral do ZimaOS</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos">Fotografias</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos-supported-formats">Formatos suportados</a></li><li><a class="" href="/docs/pt-PT/zimaos/cloud-drive-connect">Ligar unidades na nuvem</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Migração de dados</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">IA local</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-local-ai"><li><a class="" href="/docs/pt-PT/zimaos/local-llm-inference">Inferência LLM local</a></li><li><a class="" href="/docs/pt-PT/zimaos/local-ai-agent-on-zimaos">Agente de IA local</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">Pré-visualização comunitária do ZVM Next</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">O que estamos a desenvolver a seguir para as máquinas virtuais no ZimaOS</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="O-que-estamos-a-desenvolver-a-seguir-para-as-maquinas-virtuais-no-ZimaOS" class="article-heading">O que estamos a desenvolver a seguir para as máquinas virtuais no ZimaOS<a class="article-anchor" href="#O-que-estamos-a-desenvolver-a-seguir-para-as-maquinas-virtuais-no-ZimaOS" aria-hidden="true"></a></h2><p><strong>Uma antevisão do desenvolvimento de importações mais fáceis de imagens, redes mais seguras, instantâneos de discos, cópias de segurança e das melhorias de fiabilidade que as sustentam.</strong></p>
+<blockquote>
+<p><strong>Antevisão de desenvolvimento:</strong> este não é um anúncio de lançamento nem uma promessa de data de entrega. As funcionalidades assinaladas como <strong>Em validação</strong>, <strong>Protótipo</strong> ou <strong>Investigação</strong> podem mudar antes de chegarem a uma versão pública do ZimaOS. A disponibilidade também pode depender da distribuição do pacote ZimaOS, do hardware anfitrião, do sistema operativo convidado e da configuração de armazenamento ou rede.</p>
+</blockquote>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/zvm-next-workstreams.svg" alt="Visão geral desenhada à mão dos quatro eixos de trabalho do ZVM Next: importação de imagens, redes, recuperação e compatibilidade."></span></p>
+<p><em>Quatro eixos de trabalho, a avançar a ritmos diferentes. As etiquetas de estado deste artigo continuam a ser a fonte fidedigna.</em></p>
+<p>Algumas cargas de trabalho adaptam-se perfeitamente a um contentor. Outras precisam de um sistema operativo completo.</p>
+<p>Um utilitário exclusivo para Windows. Um appliance Home Assistant. Uma máquina de teste Linux isolada. Um laboratório de routers que pode reconstruir sem afetar o resto da rede. É nestas tarefas que uma VM justifica o seu lugar num servidor doméstico.</p>
+<p>O ZVM é o serviço de máquinas virtuais que oferece essa experiência no ZimaOS. Já fornece a base para criar e executar VMs, mas a comunidade também nos mostrou onde a experiência precisa de melhorar. Importar uma imagem de disco existente ainda exige demasiados passos manuais. As redes em bridge são fáceis de interpretar mal. O arranque automático, os instantâneos, as cópias de segurança e a recuperação precisam de salvaguardas mais claras. E, quando uma operação falha, a mensagem deve ajudá-lo a corrigir o problema, não limitar-se a informar que algo correu mal.</p>
+<p>Temos transformado esses relatos numa direção mais focada para o ZVM. Eis o que está agora a ser reforçado, o que se encontra em validação ativa e o que ainda está em investigação.</p>
+<h3 id="Resumo-dos-estados" class="article-heading">Resumo dos estados<a class="article-anchor" href="#Resumo-dos-estados" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>O que significa</th>
+<th>Exemplos atuais</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Base alfa</strong></td>
+<td>O código faz parte da linha alfa atual; a disponibilidade nos dispositivos continua a depender da distribuição do pacote ZimaOS.</td>
+<td>Reforço da autenticação no percurso da consola de VM baseada no navegador.</td>
+</tr>
+<tr>
+<td><strong>Em validação</strong></td>
+<td>A implementação principal existe, mas os testes de compatibilidade e atualização ainda estão em curso.</td>
+<td>Importação direta de imagens, conversão faseada, verificações de integridade e limpeza após falhas.</td>
+</tr>
+<tr>
+<td><strong>Protótipo</strong></td>
+<td>O design está implementado em código e testes, mas o seu comportamento e a interface podem ainda mudar.</td>
+<td>Redes multimodo, alterações protegidas às bridges, eventos de arranque automático, instantâneos de discos e criação de cópias de segurança completas.</td>
+</tr>
+<tr>
+<td><strong>Investigação</strong></td>
+<td>Uma direção que estamos a investigar, não uma funcionalidade de lançamento confirmada.</td>
+<td>Passthrough de USB, PCIe, GPU e NIC física; cópia de segurança incremental; fluxos de migração mais abrangentes.</td>
+</tr>
+</tbody></table></div>
+<p>Utilizamos estas etiquetas de forma intencional. O facto de uma funcionalidade aparecer num ramo de desenvolvimento ou protótipo não significa que esteja pronta para a sua VM de produção.</p>
+<h3 id="Importe-a-imagem-que-ja-tem" class="article-heading">Importe a imagem que já tem<a class="article-anchor" href="#Importe-a-imagem-que-ja-tem" aria-hidden="true"></a></h3><p>Muitos projetos autoalojados publicam um disco virtual pronto a executar em vez de um instalador. Colocar essa imagem numa VM pode obrigá-lo a convertê-la manualmente, movê-la para o diretório correto e, depois, ligá-la a uma nova máquina.</p>
+<p>A experiência que pretendemos é muito mais simples: escolha a imagem, escolha onde a VM deve armazená-la e deixe o ZVM tratar da preparação.</p>
+<p>O primeiro objetivo de compatibilidade abrange:</p>
+<ul class="doc-dots">
+<li>Suportes de instalação ISO</li>
+<li>QCOW2</li>
+<li>VDI</li>
+<li>VMDK</li>
+<li>Discos raw ou IMG</li>
+<li>Pacotes OVA com metadados OVF</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/image-import-pipeline.svg" alt="Fluxo de importação de imagens do ZVM, desde a seleção da origem até à deteção de conteúdo, verificação, preparação e conclusão atómica."></span></p>
+<p><em>Cada percurso termina numa cópia verificada e pronta para a VM ou num passo de limpeza; nunca num disco incompleto apresentado como pronto.</em></p>
+<p>Suportar um formato significa mais do que confiar na extensão do nome do ficheiro. O ZVM inspeciona o conteúdo, valida a imagem e copia-a ou converte-a para a localização de armazenamento selecionada para a VM. Por predefinição, os discos que não são ISO usam QCOW2, enquanto raw continua a ser uma opção avançada. A VM concluída aponta para a cópia gerida, pelo que remover o carregamento ou a transferência original não deverá inutilizá-la.</p>
+<p>O pipeline de importação foi concebido tanto para a possibilidade de falha como para o sucesso:</p>
+<ol class="doc-steps">
+<li>Preparar a origem sem a tratar como um disco concluído.</li>
+<li>Detetar o formato real e rejeitar imagens não suportadas ou danificadas.</li>
+<li>Verificar um valor SHA-256 opcional.</li>
+<li>Inspecionar arquivos OVA e rejeitar path traversal ou entradas não seguras.</li>
+<li>Copiar ou converter para um ficheiro temporário <code class="chip">.partial</code>.</li>
+<li>Sincronizar, verificar e mudar atomicamente o nome da imagem concluída.</li>
+<li>Remover os dados temporários após um cancelamento ou uma falha.</li>
+</ol>
+<p>Sempre que possível, este processo também preserva o comportamento de disco esparso. Um disco com grande capacidade virtual não deve consumir de imediato a mesma quantidade de armazenamento físico.</p>
+<p>O objetivo a longo prazo para a interface é reunir carregamentos locais, caminhos selecionados no ZimaOS Files, transferências por URL e modelos de sistema integrados no mesmo fluxo de configuração da VM. Esta fase destina-se à importação de uma imagem para uma VM. Não constitui uma biblioteca de imagens separada e não inclui a exportação de VMs.</p>
+<p><strong>Estado: Em validação.</strong> O backend de importação direta e os testes de regressão existem, incluindo uma correção para nomes com versões, como <code class="chip">appliance-1.2.3.qcow2</code>. Continua a ser necessária uma cobertura mais ampla de dispositivos, imagens e sistemas operativos convidados.</p>
+<h3 id="As-redes-devem-ser-uma-escolha-nao-um-teste-de-vocabulario" class="article-heading">As redes devem ser uma escolha, não um teste de vocabulário<a class="article-anchor" href="#As-redes-devem-ser-uma-escolha-nao-um-teste-de-vocabulario" aria-hidden="true"></a></h3><p>Os modos de rede virtual podem parecer quase idênticos num formulário, embora se comportem de formas muito diferentes na rede. O ZVM deve explicar essa diferença antes de carregar em Guardar.</p>
+<p>O protótipo de rede atribui um modo explícito a cada NIC virtual:</p>
+<ul class="doc-dots">
+<li><strong>NAT</strong> para uma rede privada simples com acesso de saída.</li>
+<li><strong>Bridge Linux</strong> quando a VM deve aparecer diretamente na LAN e comunicar com o anfitrião.</li>
+<li><strong>macvtap</strong> para uma ligação mais direta, com um aviso claro de que a comunicação do anfitrião para o convidado costuma estar indisponível.</li>
+<li><strong>Desligada</strong> para um laboratório isolado ou uma NIC que será ligada mais tarde.</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/vm-network-modes.svg" alt="Quatro cartões de topologia comparam NAT, bridge Linux, macvtap e redes de VM desligadas."></span></p>
+<p><em>As etiquetas podem parecer semelhantes num formulário de definições, mas o anfitrião, a VM e a LAN não comunicam da mesma forma.</em></p>
+<p>O objetivo do produto é permitir 1-8 NICs configuradas de forma independente por VM. O planeamento de NAT também inclui reservas DHCP e reencaminhamento de portas TCP ou UDP. Se uma porta do anfitrião estiver duplicada ou já estiver ocupada, o ZVM deve comunicar um conflito em vez de substituir silenciosamente outra regra.</p>
+<p>As alterações às bridges exigem cuidados especiais num servidor doméstico sem monitor. Mover a interface física que transporta a ligação de gestão do ZimaOS pode desligar o mesmo navegador utilizado para fazer a alteração. O protótipo trata essa operação como uma transação: verifica a configuração proposta, aplica-a, monitoriza a conectividade e reverte-a se o novo percurso não ficar operacional.</p>
+<p>A mesma transparência deve aplicar-se às alterações que exigem o encerramento. Se não for possível ligar uma NIC a quente em segurança no anfitrião ou no convidado, o ZVM deve guardar a configuração pedida, assinalá-la como reinício pendente e evitar dar a entender que a VM em execução já corresponde à mesma.</p>
+<p><strong>Estado: Protótipo.</strong> Os modos explícitos de interface, as APIs de interface, as políticas NAT persistentes, as regras de reencaminhamento, a configuração inicial de rede estática e as alterações protegidas às bridges Linux têm implementações funcionais em ramos. As matrizes de hardware e atualização não estão concluídas.</p>
+<h3 id="Um-instantaneo-nao-e-uma-copia-de-seguranca" class="article-heading">Um instantâneo não é uma cópia de segurança<a class="article-anchor" href="#Um-instantaneo-nao-e-uma-copia-de-seguranca" aria-hidden="true"></a></h3><p>Um instantâneo é um ponto de reversão próximo. Uma cópia de segurança é uma cópia separada, destinada a sobreviver a um problema com a VM ou o armazenamento original. Colocar ambos sob um único botão vago tornaria a recuperação mais difícil, não mais fácil.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/snapshot-vs-backup.svg" alt="Comparação lado a lado entre um instantâneo apenas do disco e um pacote independente de cópia de segurança completa."></span></p>
+<p><em>Os instantâneos e as cópias de segurança resolvem problemas diferentes. O restauro de cópias de segurança continua a ser um marco posterior.</em></p>
+<h4 id="Instantaneos-de-discos-para-reversao-local" class="article-heading">Instantâneos de discos para reversão local<a class="article-anchor" href="#Instantaneos-de-discos-para-reversao-local" aria-hidden="true"></a></h4><p>O primeiro design de instantâneos abrange apenas os discos. Não captura a RAM nem retoma uma aplicação na instrução exata onde parou.</p>
+<p>No caso de uma VM QCOW2 desligada, o ZVM pode copiar diretamente um disco estável. Numa VM em execução, o protótipo cria um overlay externo temporário para estabelecer uma vista do disco num determinado momento, copia a base estável e, depois, consolida e redireciona o disco ativo para o caminho original. A VM não fica dependente de uma cadeia crescente de overlays geridos pelo ZVM.</p>
+<p>Por predefinição, a captura é <strong>consistente em caso de falha</strong>, de forma semelhante ao estado do disco após uma perda inesperada de energia. Se o convidado tiver um QEMU Guest Agent capaz de responder, o ZVM pode disponibilizar uma captura <strong>em repouso</strong> para que o sistema de ficheiros possa descarregar e suspender as operações em torno do instantâneo. O ZVM verifica essa capacidade em tempo de execução, em vez de apresentar uma opção que pode não funcionar.</p>
+<p>O restauro de um instantâneo de disco exige que a VM esteja desligada. Antes de substituir discos, o protótipo escreve um diário de recuperação e gere temporariamente o arranque automático. Se um restauro de vários discos for interrompido, pode reverter a operação em vez de deixar a VM com discos de momentos diferentes. As capturas em execução também verificam o espaço disponível e monitorizam o overlay temporário enquanto a cópia decorre.</p>
+<h4 id="Copias-de-seguranca-completas-para-uma-copia-independente" class="article-heading">Cópias de segurança completas para uma cópia independente<a class="article-anchor" href="#Copias-de-seguranca-completas-para-uma-copia-independente" aria-hidden="true"></a></h4><p>O protótipo de cópia de segurança cria um pacote <code class="chip">.zvm-backup</code> num diretório existente selecionado através do ZimaOS Files. Regista a configuração inativa da VM, cópias independentes dos discos QCOW2, somas de verificação SHA-256, tamanhos dos ficheiros, mapeamentos dos discos originais e um manifesto com versão.</p>
+<p>A segurança do destino faz parte da funcionalidade. O ZVM é executado com acesso elevado ao armazenamento, pelo que a implementação rejeita caminhos do sistema operativo, localizações de metadados do ZVM e fugas baseadas em ligações simbólicas, em vez de depender de uma simples verificação de texto.</p>
+<p><strong>Limitação importante:</strong> a criação e a listagem de pacotes de cópia de segurança fazem parte do protótipo atual. O restauro de uma VM a partir de um pacote de cópia de segurança é um marco separado e não deve ser considerado disponível. Os instantâneos de discos também não incluem o estado da memória.</p>
+<p><strong>Estado: Protótipo.</strong> A API, a implementação do serviço, os diários de interrupção, as verificações de caminhos e os testes específicos existem em código ainda em desenvolvimento. Os testes com libvirt real, perda de energia, pouco espaço e vários discos continuam a ser critérios obrigatórios para o lançamento.</p>
+<h3 id="O-arranque-automatico-nao-deve-ser-uma-opcao-misteriosa" class="article-heading">O arranque automático não deve ser uma opção misteriosa<a class="article-anchor" href="#O-arranque-automatico-nao-deve-ser-uma-opcao-misteriosa" aria-hidden="true"></a></h3><p>O arranque automático é útil para o Home Assistant, uma VM de router ou qualquer serviço que deva regressar depois de o anfitrião reiniciar. Também apresenta riscos quando uma VM depende de armazenamento ou redes que ainda não estão prontos.</p>
+<p>O trabalho atual torna a definição existente de arranque automático visível através da API e regista eventos de sucesso ou falha quando esta é alterada. O design mais abrangente acrescenta prioridade de arranque e um atraso configurável, aguardando depois pelos recursos necessários do anfitrião antes de iniciar as VMs dependentes.</p>
+<p><strong>Estado: Protótipo.</strong> O controlo básico do arranque automático e os relatórios de eventos estão agora a ser testados. A ordenação baseada em dependências e o atraso são objetivos de design, não comportamentos concluídos.</p>
+<h3 id="As-pequenas-correcoes-tambem-sao-importantes" class="article-heading">As pequenas correções também são importantes<a class="article-anchor" href="#As-pequenas-correcoes-tambem-sao-importantes" aria-hidden="true"></a></h3><p>As novas funcionalidades não ajudam se uma atualização, uma sessão de consola ou uma operação falhada deixar uma VM num estado pouco claro. Várias correções menos visíveis avançam em paralelo com o trabalho de maior dimensão:</p>
+<ul class="doc-dots">
+<li><strong>Segurança do acesso à consola:</strong> o proxy VNC baseado no navegador segue agora o percurso de autenticação esperado na linha atual de código alfa. A disponibilidade nos dispositivos continua a acompanhar a distribuição do pacote ZimaOS.</li>
+<li><strong>Tratamento mais seguro da identidade:</strong> a autenticação deixou de confiar num endereço reencaminhado controlado pelo cliente para decidir se um pedido é local.</li>
+<li><strong>Nomes de imagens com pontos:</strong> nomes de ficheiro como <code class="chip">appliance-1.2.3.qcow2</code> mantêm a versão útil em vez de serem abreviados incorretamente.</li>
+<li><strong>Carregamentos cancelados:</strong> o carregamento interrompido de uma imagem remove o respetivo ficheiro parcial, em vez de o deixar para trás como se pudesse ser utilizado.</li>
+<li><strong>Definições guardadas face às definições em execução:</strong> o trabalho de rede lê a definição persistente da VM e pode apresentar um reinício pendente, em vez de confundir o estado em execução com o estado guardado.</li>
+<li><strong>Reconciliação da rede:</strong> as reservas DHCP duplicadas, os conflitos de reencaminhamento e as políticas de rede do anfitrião aplicadas parcialmente recebem validação explícita e um tratamento orientado para a reversão.</li>
+</ul>
+<p>Outros relatos, incluindo frames binários da consola no navegador, ciclos de restabelecimento da ligação, comportamento do teclado, instalação do Windows, apresentação do GRUB e compatibilidade de atualização, continuam no plano de regressão. O facto de estarem a ser investigados não significa que já tenham sido todos corrigidos.</p>
+<h3 id="A-sua-VM-existente-deve-continuar-a-ser-sua" class="article-heading">A sua VM existente deve continuar a ser sua<a class="article-anchor" href="#A-sua-VM-existente-deve-continuar-a-ser-sua" aria-hidden="true"></a></h3><p>As VMs da comunidade contêm frequentemente XML editado manualmente, dispositivos invulgares, firmware personalizado ou definições criadas por uma versão mais antiga do ZimaOS. Reescrever toda a definição para alterar um campo poderia apagar precisamente a personalização que torna a VM útil.</p>
+<p>O design do ZVM Next adota uma abordagem aditiva:</p>
+<ul class="doc-dots">
+<li>Detetar as VMs existentes sem as alterar.</li>
+<li>Modificar apenas os nós XML controlados pela operação solicitada.</li>
+<li>Preservar UUIDs, endereços MAC existentes, caminhos dos discos, NVRAM, arranque automático e dispositivos não alterados.</li>
+<li>Explicar se uma funcionalidade pode ser aplicada em execução, exige encerramento, necessita de conversão explícita ou não é suportada.</li>
+<li>Impedir que uma nova operação falhada torne a VM não arrancável com a configuração anterior.</li>
+</ul>
+<p>Antes de uma versão estável, a matriz de regressão planeada abrange VMs existentes com Windows, Linux, Home Assistant OS e OpenWRT ou pfSense em cenários de utilização de funcionalidades, reinício, atualização e reversão.</p>
+<h3 id="O-passthrough-nao-e-apenas-uma-caixa-de-verificacao" class="article-heading">O passthrough não é apenas uma caixa de verificação<a class="article-anchor" href="#O-passthrough-nao-e-apenas-uma-caixa-de-verificacao" aria-hidden="true"></a></h3><p>O passthrough de hardware é uma das funcionalidades mais pedidas pela comunidade. É também uma das mais fáceis de tornar inseguras quando se oculta demasiada complexidade.</p>
+<p>A atribuição de USB pode ser relativamente contida. O passthrough de PCIe e GPU depende dos grupos IOMMU, do firmware, da associação de controladores, do comportamento de reposição do dispositivo e do que mais partilha o mesmo grupo. O passthrough de NIC física pode remover uma interface de que o próprio ZimaOS precisa. Uma caixa de verificação não torna seguro um hardware incompatível.</p>
+<p>Por esse motivo, o passthrough de PCIe, GPU e NIC física continua a ser uma direção de <strong>Investigação&#x2F;Antevisão</strong>. Qualquer antevisão pública precisa de uma matriz de compatibilidade, avisos claros sobre o impacto no anfitrião, instruções de recuperação e uma forma de desativar a funcionalidade de modo independente.</p>
+<p>As cópias de segurança incrementais, a migração online de armazenamento, a migração entre anfitriões, os clusters, a alta disponibilidade, o armazenamento distribuído, os instantâneos de RAM e a deduplicação de cópias de segurança também ficam fora do âmbito central atual.</p>
+<h3 id="Ajude-nos-a-testar-cargas-de-trabalho-reais" class="article-heading">Ajude-nos a testar cargas de trabalho reais<a class="article-anchor" href="#Ajude-nos-a-testar-cargas-de-trabalho-reais" aria-hidden="true"></a></h3><p>Partilhamos os limites, além das ideias, porque o feedback mais útil começa com uma carga de trabalho real.</p>
+<p>Diga-nos:</p>
+<ol class="doc-steps">
+<li>Que formato de imagem e appliance pretende importar?</li>
+<li>Precisa de NAT, uma verdadeira bridge Linux, macvtap ou um laboratório isolado com várias NICs?</li>
+<li>Um instantâneo consistente em caso de falha continua a ser útil quando o QEMU Guest Agent não está instalado?</li>
+<li>Onde devem ficar as cópias de segurança completas e que proteção de espaço livre espera?</li>
+<li>Que dispositivo USB, PCIe, GPU ou NIC pretende encaminhar por passthrough?</li>
+<li>Que erro atual de VM o impede de avançar hoje?</li>
+</ol>
+<p>Num relatório de erro, inclua o hardware Zima ou o modelo do anfitrião x86, as versões do ZimaOS e ZVM, o sistema operativo convidado, o tipo de firmware da VM, o formato do disco e a localização de armazenamento, o modo de rede, a ação exata que falhou e o erro completo apresentado na interface.</p>
+<p>Participe na discussão na <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">Comunidade ZimaSpace</a>. Esses detalhes ajudam outros membros da comunidade e a equipa Zima a comparar o seu relato com casos conhecidos.</p>
+<p>O nosso objetivo não é colocar todas as opções do libvirt num formulário Web. É tornar os fluxos de trabalho de VM importantes num servidor doméstico compreensíveis, recuperáveis e suficientemente seguros para confiar neles no reinício seguinte.</p>
+<h3 id="Perguntas-frequentes" class="article-heading">Perguntas frequentes<a class="article-anchor" href="#Perguntas-frequentes" aria-hidden="true"></a></h3><h4 id="Todas-estas-funcionalidades-estao-disponiveis-agora" class="article-heading">Todas estas funcionalidades estão disponíveis agora?<a class="article-anchor" href="#Todas-estas-funcionalidades-estao-disponiveis-agora" aria-hidden="true"></a></h4><p>Não. A tabela de estados distingue o trabalho da base alfa, a validação ativa, os protótipos e a investigação. Este artigo é uma atualização de rumo, não notas de lançamento.</p>
+<h4 id="Os-instantaneos-incluirao-o-estado-da-memoria-da-VM" class="article-heading">Os instantâneos incluirão o estado da memória da VM?<a class="article-anchor" href="#Os-instantaneos-incluirao-o-estado-da-memoria-da-VM" aria-hidden="true"></a></h4><p>Não no design central atual. A primeira implementação captura apenas os discos. Por predefinição, os instantâneos de VMs em execução são consistentes em caso de falha e podem colocar o sistema de ficheiros em repouso quando o QEMU Guest Agent está disponível.</p>
+<h4 id="E-possivel-importar-qualquer-imagem-OVA-VMDK-ou-VDI" class="article-heading">É possível importar qualquer imagem OVA, VMDK ou VDI?<a class="article-anchor" href="#E-possivel-importar-qualquer-imagem-OVA-VMDK-ou-VDI" aria-hidden="true"></a></h4><p>Esses formatos fazem parte do objetivo de compatibilidade, mas as imagens reais variam. O firmware, a arquitetura, os controladores, os drivers, a encriptação, os danos e os metadados OVF específicos de fornecedores podem ainda tornar uma imagem incompatível. O ZVM deve rejeitar casos não suportados com uma explicação que permita agir, em vez de criar uma VM que não consegue arrancar.</p>
+<h4 id="O-restauro-de-copias-de-seguranca-ja-e-suportado" class="article-heading">O restauro de cópias de segurança já é suportado?<a class="article-anchor" href="#O-restauro-de-copias-de-seguranca-ja-e-suportado" aria-hidden="true"></a></h4><p>Não. O protótipo atual cria e lista pacotes de cópia de segurança completa. O restauro a partir desses pacotes está planeado como um fluxo de trabalho separado e testado explicitamente.</p>
+<h4 id="O-passthrough-de-GPU-funcionara-em-todos-os-dispositivos-Zima" class="article-heading">O passthrough de GPU funcionará em todos os dispositivos Zima?<a class="article-anchor" href="#O-passthrough-de-GPU-funcionara-em-todos-os-dispositivos-Zima" aria-hidden="true"></a></h4><p>Não. Depende da CPU, do firmware, do agrupamento IOMMU, da GPU, do controlador do anfitrião, do controlador do convidado e do comportamento de reposição. Continua a ser uma área de investigação e antevisão até que a matriz de suporte e o percurso de recuperação estejam claros.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.750Z" itemprop="dateModified">Última atualização: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/time-machine-backup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Cópia com Time Machine</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#O-que-estamos-a-desenvolver-a-seguir-para-as-maquinas-virtuais-no-ZimaOS"><span class="toc-text">O que estamos a desenvolver a seguir para as máquinas virtuais no ZimaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Resumo-dos-estados"><span class="toc-text">Resumo dos estados</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Importe-a-imagem-que-ja-tem"><span class="toc-text">Importe a imagem que já tem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#As-redes-devem-ser-uma-escolha-nao-um-teste-de-vocabulario"><span class="toc-text">As redes devem ser uma escolha, não um teste de vocabulário</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Um-instantaneo-nao-e-uma-copia-de-seguranca"><span class="toc-text">Um instantâneo não é uma cópia de segurança</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Instantaneos-de-discos-para-reversao-local"><span class="toc-text">Instantâneos de discos para reversão local</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Copias-de-seguranca-completas-para-uma-copia-independente"><span class="toc-text">Cópias de segurança completas para uma cópia independente</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O-arranque-automatico-nao-deve-ser-uma-opcao-misteriosa"><span class="toc-text">O arranque automático não deve ser uma opção misteriosa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#As-pequenas-correcoes-tambem-sao-importantes"><span class="toc-text">As pequenas correções também são importantes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-sua-VM-existente-deve-continuar-a-ser-sua"><span class="toc-text">A sua VM existente deve continuar a ser sua</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O-passthrough-nao-e-apenas-uma-caixa-de-verificacao"><span class="toc-text">O passthrough não é apenas uma caixa de verificação</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajude-nos-a-testar-cargas-de-trabalho-reais"><span class="toc-text">Ajude-nos a testar cargas de trabalho reais</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Perguntas-frequentes"><span class="toc-text">Perguntas frequentes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Todas-estas-funcionalidades-estao-disponiveis-agora"><span class="toc-text">Todas estas funcionalidades estão disponíveis agora?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Os-instantaneos-incluirao-o-estado-da-memoria-da-VM"><span class="toc-text">Os instantâneos incluirão o estado da memória da VM?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#E-possivel-importar-qualquer-imagem-OVA-VMDK-ou-VDI"><span class="toc-text">É possível importar qualquer imagem OVA, VMDK ou VDI?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-restauro-de-copias-de-seguranca-ja-e-suportado"><span class="toc-text">O restauro de cópias de segurança já é suportado?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-passthrough-de-GPU-funcionara-em-todos-os-dispositivos-Zima"><span class="toc-text">O passthrough de GPU funcionará em todos os dispositivos Zima?</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral do ZimaOS</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos">Fotografias</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos-supported-formats">Formatos suportados</a></li><li><a class="" href="/docs/pt-PT/zimaos/cloud-drive-connect">Ligar unidades na nuvem</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Migração de dados</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">IA local</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-local-ai"><li><a class="" href="/docs/pt-PT/zimaos/local-llm-inference">Inferência LLM local</a></li><li><a class="" href="/docs/pt-PT/zimaos/local-ai-agent-on-zimaos">Agente de IA local</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li><li><a class="is-current" href="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">Pré-visualização comunitária do ZVM Next</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/zvm-next-virtual-machines-community-preview" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/zvm-next-virtual-machines-community-preview" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/zvm-next-virtual-machines-community-preview" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -100,8 +100,8 @@
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150080211_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150117572_image.png">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727150133237_image.png">
-<meta property="article:published_time" content="2026-09-07T06:35:41.112Z">
-<meta property="article:modified_time" content="2026-09-07T06:35:41.112Z">
+<meta property="article:published_time" content="2026-09-15T09:07:49.752Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.752Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727149654477_image.png">
@@ -137,7 +137,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-07T06:35:41.112Z"
+      "datePublished": "2026-09-15T09:07:49.752Z"
     }
   </script>
 
@@ -333,7 +333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li><li><a class="" href="/docs/zh/developer/introducing-libvirt-go">libvirt-go 介绍</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="developer:app-store-development">
@@ -376,32 +376,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <div class="doc-article__body" itemprop="articleBody">
-      <h1 id="如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" class="article-heading">如何分享和获取NAS上的文件？SAMBA可能是最重要的方式<a class="article-anchor" href="#如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" aria-hidden="true"></a></h1><p>当我们谈论网络附加存储时，我们希望我们的文件能够存储、管理在一个地方，并在任何地方都能访问。但是，这一切是如何实现的呢？</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149654477_image.png"></span></p><p>您可以通过访问ZimaOS的WebUI来随时访问您的数据，WebUI拥有组织良好的界面和流畅的体验。然而，当您的工作涉及文件引用，或者您需要对文件系统层次结构进行更复杂的操作时，通过像SMB&#x2F;SAMBA这样的技术将NAS驱动器挂载到您的客户端系统将是更好的方式。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149678738_image.png"></span></p><p>SMB（服务器消息块）是一种内置于Windows系统中的协议，用于在网络上共享文件和其他服务。SAMBA实现了SMB协议，丰富了类*nix系统的文件共享方法。ZimaOS配备了SAMBA，使文件共享和传输非常方便。在以下内容中，我们将描述SMB和SAMBA，并为了方便起见将其统一称为SMB。</p>
-<h2 id="在ZimaOS上创建共享文件夹" class="article-heading">在ZimaOS上创建共享文件夹<a class="article-anchor" href="#在ZimaOS上创建共享文件夹" aria-hidden="true"></a></h2><p>在ZimaOS的仪表板上启动文件应用程序，找到您想共享的文件所在的目标文件夹。右键单击文件夹并选择共享。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149714447_image.png"></span></p><p>一个对话框窗口将提示您需要的URLs，以在相应系统上挂载共享文件夹。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149728058_image.png"></span></p><p>这两个URLs是供专业用户手动挂载驱动器的。此外，在相应系统上使用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/" class="doc-link">Zima客户端</a>，我们可以使挂载过程更简单。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149849839_image.png"></span></p>
-<h2 id="在Windows上挂载您的SMB共享文件夹" class="article-heading">在Windows上挂载您的SMB共享文件夹<a class="article-anchor" href="#在Windows上挂载您的SMB共享文件夹" aria-hidden="true"></a></h2><p>从<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/" class="doc-link">findzima</a>下载Zima-latest setup.exe并打开它。它将启动安装过程，Zima客户端将在安装后自动启动。您将在任务栏右侧找到Zima图标，由于未连接状态，图标显示为问号。<br>右键单击该图标，选择扫描并连接到Zima。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149936501_image.png"></span></p><p>找到您的Zima设备并单击连接。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149952959_image.png"></span></p><p>Zima.exe将提示您输入WebUI的用户名和密码以登录。之后，您的zima.exe图标将从问号变为ZIMA标志，这意味着您的zima.exe已进入登录状态。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149972815_image.png"></span></p><p>右键单击zima图标，选择在文件资源管理器中打开，这将把您的共享文件夹挂载到Windows系统并自动打开！</p>
+      <h2 id="如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" class="article-heading">如何分享和获取NAS上的文件？SAMBA可能是最重要的方式<a class="article-anchor" href="#如何分享和获取NAS上的文件？SAMBA可能是最重要的方式" aria-hidden="true"></a></h2><p>当我们谈论网络附加存储时，我们希望我们的文件能够存储、管理在一个地方，并在任何地方都能访问。但是，这一切是如何实现的呢？</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149654477_image.png"></span></p><p>您可以通过访问ZimaOS的WebUI来随时访问您的数据，WebUI拥有组织良好的界面和流畅的体验。然而，当您的工作涉及文件引用，或者您需要对文件系统层次结构进行更复杂的操作时，通过像SMB&#x2F;SAMBA这样的技术将NAS驱动器挂载到您的客户端系统将是更好的方式。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149678738_image.png"></span></p><p>SMB（服务器消息块）是一种内置于Windows系统中的协议，用于在网络上共享文件和其他服务。SAMBA实现了SMB协议，丰富了类*nix系统的文件共享方法。ZimaOS配备了SAMBA，使文件共享和传输非常方便。在以下内容中，我们将描述SMB和SAMBA，并为了方便起见将其统一称为SMB。</p>
+<h3 id="在ZimaOS上创建共享文件夹" class="article-heading">在ZimaOS上创建共享文件夹<a class="article-anchor" href="#在ZimaOS上创建共享文件夹" aria-hidden="true"></a></h3><p>在ZimaOS的仪表板上启动文件应用程序，找到您想共享的文件所在的目标文件夹。右键单击文件夹并选择共享。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149714447_image.png"></span></p><p>一个对话框窗口将提示您需要的URLs，以在相应系统上挂载共享文件夹。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149728058_image.png"></span></p><p>这两个URLs是供专业用户手动挂载驱动器的。此外，在相应系统上使用<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/" class="doc-link">Zima客户端</a>，我们可以使挂载过程更简单。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149849839_image.png"></span></p>
+<h3 id="在Windows上挂载您的SMB共享文件夹" class="article-heading">在Windows上挂载您的SMB共享文件夹<a class="article-anchor" href="#在Windows上挂载您的SMB共享文件夹" aria-hidden="true"></a></h3><p>从<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/" class="doc-link">findzima</a>下载Zima-latest setup.exe并打开它。它将启动安装过程，Zima客户端将在安装后自动启动。您将在任务栏右侧找到Zima图标，由于未连接状态，图标显示为问号。<br>右键单击该图标，选择扫描并连接到Zima。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149936501_image.png"></span></p><p>找到您的Zima设备并单击连接。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149952959_image.png"></span></p><p>Zima.exe将提示您输入WebUI的用户名和密码以登录。之后，您的zima.exe图标将从问号变为ZIMA标志，这意味着您的zima.exe已进入登录状态。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727149972815_image.png"></span></p><p>右键单击zima图标，选择在文件资源管理器中打开，这将把您的共享文件夹挂载到Windows系统并自动打开！</p>
 <blockquote>
 <p>注意：要正常工作，您的Windows和ZimaOS需要处于同一局域网（LAN）中。</p>
 </blockquote>
-<h2 id="在macOS上挂载您的SMB共享文件夹" class="article-heading">在macOS上挂载您的SMB共享文件夹<a class="article-anchor" href="#在macOS上挂载您的SMB共享文件夹" aria-hidden="true"></a></h2><p>和上面一样，我们也为Mac用户在<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/" class="doc-link">findzima</a>准备了zima应用程序。Mac zima应用程序的使用与Windows相似。只需参考上述内容。</p>
+<h3 id="在macOS上挂载您的SMB共享文件夹" class="article-heading">在macOS上挂载您的SMB共享文件夹<a class="article-anchor" href="#在macOS上挂载您的SMB共享文件夹" aria-hidden="true"></a></h3><p>和上面一样，我们也为Mac用户在<a target="_blank" rel="noopener external nofollow noreferrer" href="https://findzima.com/" class="doc-link">findzima</a>准备了zima应用程序。Mac zima应用程序的使用与Windows相似。只需参考上述内容。</p>
 <p>您还记得文件应用程序在您完成创建共享文件夹时提示了什么吗？在macOS上，我们将使用您刚才获得的URLs进行手动挂载！</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727150063996_image.png"></span></p><p>在您的Mac上打开Finder并按CMD+K，然后将相应的URL复制粘贴到输入框中。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727150080211_image.png"></span></p><p>点击连接。此时，在提示对话框中，选择访客并点击连接。</p>
 <blockquote>
 <p>对于ZimaOS v1.2.3的用户，选择注册用户并输入正确的用户名和密码。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727150117572_image.png"></span></p><p>现在，您将看到共享文件夹打开，并且它将在Finder应用程序的左侧栏中列出。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727150133237_image.png"></span></p><p>Windows资源管理器的URL怎么处理？Zima自动挂载与手动通过URL挂载驱动器有什么区别？</p>
 </blockquote>
 <p>目前我们的SMB共享使用访客账户。在未来的版本中，我们将引入多个用户共享功能并加强权限管理。我们希望这些功能能满足每个人的多样化需求。</p>
-<h2 id="不仅仅是局域网" class="article-heading">不仅仅是局域网<a class="article-anchor" href="#不仅仅是局域网" aria-hidden="true"></a></h2><p>实际上，不仅在局域网上，而且在直连网络和广域网（WAN）上，您也可以轻松连接Zima设备并将共享目录映射为网络驱动器。我们将发布相关的教程。感谢您持续的关注。</p>
+<h3 id="不仅仅是局域网" class="article-heading">不仅仅是局域网<a class="article-anchor" href="#不仅仅是局域网" aria-hidden="true"></a></h3><p>实际上，不仅在局域网上，而且在直连网络和广域网（WAN）上，您也可以轻松连接Zima设备并将共享目录映射为网络驱动器。我们将发布相关的教程。感谢您持续的关注。</p>
 <p>如果您在使用过程中遇到任何问题，请随时告诉我们。您还可以加入我们的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">社区</a>和<a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.com/invite/uuNfKzG5" class="doc-link">Discord</a>，以讨论关于NAS和ZimaOS的更多内容。我们期待您的反馈！</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.112Z" itemprop="dateModified">最后更新：2026-09-07</time>
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.752Z" itemprop="dateModified">最后更新：2026-09-15</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/developer/rsync-backup-clones"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Rsync 备份克隆</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/developer/zimaos-qts-two-way-sync-guide"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">QTS 双向同步</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="目录">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E4%BA%AB%E5%92%8C%E8%8E%B7%E5%8F%96NAS%E4%B8%8A%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%9FSAMBA%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">如何分享和获取NAS上的文件？SAMBA可能是最重要的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8ZimaOS%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在ZimaOS上创建共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Windows%E4%B8%8A%E6%8C%82%E8%BD%BD%E6%82%A8%E7%9A%84SMB%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在Windows上挂载您的SMB共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8macOS%E4%B8%8A%E6%8C%82%E8%BD%BD%E6%82%A8%E7%9A%84SMB%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在macOS上挂载您的SMB共享文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-text">不仅仅是局域网</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%86%E4%BA%AB%E5%92%8C%E8%8E%B7%E5%8F%96NAS%E4%B8%8A%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%9FSAMBA%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">如何分享和获取NAS上的文件？SAMBA可能是最重要的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8ZimaOS%E4%B8%8A%E5%88%9B%E5%BB%BA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在ZimaOS上创建共享文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8Windows%E4%B8%8A%E6%8C%82%E8%BD%BD%E6%82%A8%E7%9A%84SMB%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在Windows上挂载您的SMB共享文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8macOS%E4%B8%8A%E6%8C%82%E8%BD%BD%E6%82%A8%E7%9A%84SMB%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">在macOS上挂载您的SMB共享文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-text">不仅仅是局域网</span></a></li></ol></li></ol>
     </nav>
   </aside>
 </div>
@@ -651,7 +651,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li><li><a class="" href="/docs/zh/developer/introducing-libvirt-go">libvirt-go 介绍</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="developer:app-store-development">

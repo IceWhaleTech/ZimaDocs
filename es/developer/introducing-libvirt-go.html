@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Presentamos libvirt-go: una API de libvirt sin Cgo | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/es/developer/introducing-libvirt-go">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/introducing-libvirt-go">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Descubre libvirt-go, un binding experimental basado en purego que surgió del trabajo de ingeniería de ZVM para compilar sin cgo y acceder a libvirt teniendo en cuenta sus versiones.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Presentamos libvirt-go: una API de libvirt sin Cgo">
+<meta property="og:url" content="https://www.zimaspace.com/docs/es/developer/introducing-libvirt-go">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Descubre libvirt-go, un binding experimental basado en purego que surgió del trabajo de ingeniería de ZVM para compilar sin cgo y acceder a libvirt teniendo en cuenta sus versiones.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/libvirt-go-launch-hero.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/libvirt-go-architecture.webp">
+<meta property="article:published_time" content="2026-09-15T09:07:49.509Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.509Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/libvirt-go-launch-hero.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Presentamos libvirt-go: una API de libvirt para Go sin Cgo",
+      "description": "Descubre libvirt-go, un binding experimental basado en purego que surgió del trabajo de ingeniería de ZVM para compilar sin cgo y acceder a libvirt teniendo en cuenta sus versiones.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.509Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/es/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Presentamos libvirt-go: una API de libvirt para Go sin Cgo"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/es/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="site-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item current_page_item"><a href="/docs/es/developer/" class="site-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="site-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Foro</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Buscar">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Empezar a buscar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ES</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/introducing-libvirt-go">English</a></li>
+            
+              <li><a href="/docs/zh/developer/introducing-libvirt-go">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/introducing-libvirt-go">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/introducing-libvirt-go">Português</a></li>
+            
+              <li><a href="/docs/es/developer/introducing-libvirt-go">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Tienda</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Buscar"
+     data-search-recent="Recientes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="No hay resultados para «{query}»"
+     data-search-no-results-hint="Prueba con otra palabra clave o revisa la ortografía."
+     data-search-remove="Eliminar"
+     data-search-overview="Resumen"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Tienda de apps"
+     data-search-hardware="Hardware"
+     data-search-developer="Desarrollo"
+     data-search-help-center="Centro de ayuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Empezar a buscar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/es/zimaos/how-to-install-zimaos"
+       data-title="Instalar ZimaOS"
+       data-meta="ZimaOS › Métodos de instalación"></a>
+    <a href="/docs/es/zimaos/get-started"
+       data-title="Primeros pasos"
+       data-meta="ZimaOS › Configuración y almacenamiento"></a>
+    <a href="/docs/es/zimaos/app-store/awesome-third-party-stores"
+       data-title="Tiendas de apps de la comunidad"
+       data-meta="Tienda de apps › Proyectos creativos"></a>
+    <a href="/docs/es/zimaos/remote-access"
+       data-title="Acceso remoto"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+    <a href="/docs/es/zimaos/zimaclient-install"
+       data-title="Descargar ZimaClient"
+       data-meta="ZimaOS › Acceso y uso compartido"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/developer/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">Almacenamiento y sistemas de archivos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/es/developer/zfs-setup">Configuración de ZFS</a></li><li><a class="" href="/docs/es/developer/nfs-on-zimaos">Archivos compartidos por NFS</a></li><li><a class="" href="/docs/es/developer/folder-encryption">Carpetas cifradas</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Resumen de opciones RAID</a></li><li><a class="" href="/docs/es/developer/raid6-setup">Crear RAID 6</a></li><li><a class="" href="/docs/es/developer/raid-rebuild-after-reinstall">Reconstruir RAID tras reinstalar</a></li><li><a class="" href="/docs/es/developer/iscsi-guide">Guía de uso de iSCSI</a></li><li><a class="" href="/docs/es/developer/iscsi-setup">Configuración de iSCSI</a></li><li><a class="" href="/docs/es/developer/rsync-backup-clones">Clones de copia con Rsync</a></li><li><a class="" href="/docs/es/developer/synology-smb-connect">Conectar Synology por SMB</a></li><li><a class="" href="/docs/es/developer/zimaos-qts-two-way-sync-guide">Sincronización bidireccional con QTS</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">Redes y protocolos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/es/developer/networking">Configuración de red</a></li><li><a class="" href="/docs/es/developer/how-to-open-ssh-in-zimaos">Activar SSH</a></li><li><a class="" href="/docs/es/developer/nas-transfer-speed-troubleshooting">Velocidad de transferencia</a></li><li><a class="" href="/docs/es/developer/ssh-setup">Configuración avanzada de SSH</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li><li><a class="is-current" href="/docs/es/developer/introducing-libvirt-go">Presentación de libvirt-go</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo de App Store</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una App Store</a></li><li><a class="" href="/docs/es/developer/app-store-repository-structure">Estructura del repositorio</a></li><li><a class="" href="/docs/es/developer/app-store-config">Configuración de la tienda</a></li><li><a class="" href="/docs/es/developer/app-store-compose-x-casaos">Docker Compose y x-casaos</a></li><li><a class="" href="/docs/es/developer/app-store-build-output">Resultados de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-assets-localization">Recursos y localización</a></li><li><a class="" href="/docs/es/developer/app-store-ci-cd">CI/CD de App Store</a></li><li><a class="" href="/docs/es/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/es/developer/app-store-validation-workflow">Flujo de validación</a></li><li><a class="" href="/docs/es/developer/app-store-build-workflow">Flujo de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-publishing-workflow">Flujo de publicación</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration">Migrar de v1 a v2</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration-checklist">Lista de migración</a></li><li><a class="" href="/docs/es/developer/app-store-faq">FAQ para desarrolladores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">API de ZimaOS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/es/developer/openapi-developer-guide">Guía de la API de ZimaOS</a></li><li><a class="" href="/docs/es/developer/openapi-live-preview">Explorador de la API</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">Historial de versiones</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/es/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/es/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/es/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/es/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/es/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/es/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/es/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/es/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/es/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/es/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/es/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/es/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/es/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/es/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/es/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/es/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/es/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/es/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/es/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/es/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/es/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Presentamos libvirt-go: una API de libvirt para Go sin Cgo</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Presentamos-libvirt-go-una-API-de-libvirt-para-Go-sin-Cgo" class="article-heading">Presentamos libvirt-go: una API de libvirt para Go sin Cgo<a class="article-anchor" href="#Presentamos-libvirt-go-una-API-de-libvirt-para-Go-sin-Cgo" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/libvirt-go-launch-hero.webp" alt="Un sistema Zima que ejecuta ZVM junto a un terminal que muestra una compilación de Go con cgo desactivado."></span></p>
+<p>Hoy, ZimaSpace Engineering presenta <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Ns2Kracy/libvirt-go" class="doc-link">libvirt-go</a>, una vista previa experimental para desarrolladores de un binding de Go para libvirt sin cgo, creado con purego. El proyecto surgió de nuestro trabajo en ZVM y de las necesidades prácticas de la virtualización en servidores domésticos, donde los usuarios crean y gestionan máquinas para cargas de trabajo como Home Assistant OS, Windows y pfSense. Publicamos ahora la biblioteca para que los desarrolladores de Go y libvirt puedan examinar el enfoque y ayudar a comprobar sus límites. libvirt-go no se incluye en ninguna versión publicada de ZimaOS. Sigue siendo un experimento independiente que pretendemos utilizar de forma gradual para mejorar el backend actual de ZVM.</p>
+<h3 id="El-problema-al-que-me-enfrente-al-desarrollar-ZVM" class="article-heading">El problema al que me enfrenté al desarrollar ZVM<a class="article-anchor" href="#El-problema-al-que-me-enfrente-al-desarrollar-ZVM" aria-hidden="true"></a></h3><p>Mientras desarrollaba ZVM, necesitaba código Go para definir, iniciar, detener, inspeccionar y eliminar máquinas virtuales mediante libvirt. Estas operaciones permiten gestionar el ciclo de vida habitual de las VM de servidores domésticos, incluida la conexión del almacenamiento y la configuración de las interfaces de red. Quería que el backend cubriera una mayor parte de ese ciclo de vida sin dificultar la creación de compilaciones de lanzamiento.</p>
+<p>El principal problema era la compilación cruzada con cgo. Quería que las compilaciones cruzadas de lanzamiento se ejecutaran con <code class="chip">CGO_ENABLED=0</code>, lo que excluye el código cgo de la compilación. Un binding basado en cgo requiere más que un compilador de Go cuando un desarrollador compila ZVM para otro destino. La máquina de compilación también necesita las cabeceras de desarrollo de libvirt, metadatos de pkg-config que apunten a ellas y un compilador de C funcional para la plataforma de destino. Cada dependencia añade suposiciones sobre el host y el destino a un proceso de lanzamiento que debería producir binarios de Go coherentes.</p>
+<p>También tenía que tener en cuenta la versión de libvirt instalada en cada sistema de destino. Una máquina puede exponer un símbolo o una API que no exista en una instalación anterior. Las comprobaciones en tiempo de compilación con un conjunto concreto de cabeceras no pueden describir todos los entornos de ejecución que necesitamos gestionar. Por tanto, la API de Go necesita una cobertura deliberada, conocimiento de las versiones en tiempo de ejecución y un comportamiento claro cuando una función no está disponible. La propiedad de los recursos también importa: los identificadores de VM, conexiones y callbacks necesitan reglas de liberación explícitas para que las operaciones prolongadas del ciclo de vida no filtren recursos nativos.</p>
+<p>Esa experiencia me llevó a crear libvirt-go con purego, cargando libvirt de forma dinámica y llamándolo sin cgo. Lo inicié como un experimento independiente inspirado en ZVM y pretendo adoptar de forma gradual las partes que resulten útiles en el backend existente después de probarlas. Hoy, ninguna versión publicada de ZimaOS incluye esta integración.</p>
+<h3 id="¿Por-que-crear-otro-binding-para-Go" class="article-heading">¿Por qué crear otro binding para Go?<a class="article-anchor" href="#¿Por-que-crear-otro-binding-para-Go" aria-hidden="true"></a></h3><p>Los bindings de Go existentes llevan años dando servicio a los usuarios de libvirt y a los proyectos de virtualización en Go. libvirt-go sigue una vía diferente para resolver un conjunto concreto de restricciones que encontré mientras trabajaba en ZVM. Las compilaciones de aplicaciones deben funcionar con <code class="chip">CGO_ENABLED=0</code>, de modo que el entorno de compilación no necesite las cabeceras de libvirt, <code class="chip">pkg-config</code> ni un compilador de C para la plataforma de destino. Esto facilita mantener la compilación cruzada dentro de un proceso de lanzamiento centrado en Go.</p>
+<p>El binario resultante sigue accediendo a la biblioteca compartida nativa de libvirt dentro del proceso. No hay ningún servicio auxiliar ni protocolo independiente entre la aplicación Go y libvirt. El proyecto genera una API de bajo nivel amplia a partir de los metadatos upstream de libvirt y después añade wrappers escritos a mano y conscientes de la propiedad para los identificadores de recursos y los valores que necesitan ciclos de vida más seguros en Go.</p>
+<p>El descubrimiento de símbolos en tiempo de ejecución es otro objetivo central. Una instalación de libvirt puede ser anterior a los metadatos utilizados para la generación, mientras que una distribución puede incorporar de forma retroactiva determinadas funciones más recientes. libvirt-go comprueba los símbolos que están presentes en realidad, lo que permite a quienes llaman a la API gestionar de forma explícita las operaciones no disponibles, en lugar de asumir que una versión utilizada durante la compilación describe todos los destinos. Esta combinación encaja con las restricciones de compilación cruzada y despliegue de ZVM. También puede resultar adecuada para otros proyectos de Go que necesiten compilaciones sin cgo, acceso a libvirt dentro del proceso y una compatibilidad deliberada entre distintas instalaciones de Linux.</p>
+<h3 id="Como-funciona-libvirt-go" class="article-heading">Cómo funciona libvirt-go<a class="article-anchor" href="#Como-funciona-libvirt-go" aria-hidden="true"></a></h3><p>libvirt-go cuenta con una capa de bajo nivel generada y una capa de alto nivel escrita a mano. En tiempo de ejecución, <code class="chip">purego</code> abre la biblioteca compartida nativa de libvirt y vincula los símbolos de C a funciones que Go puede llamar. Esto mantiene cgo fuera de la compilación de la aplicación, mientras libvirt continúa ejecutándose en el mismo proceso. Por tanto, la máquina que ejecuta el programa sigue necesitando una biblioteca compartida de libvirt compatible.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/libvirt-go-architecture.webp" alt="Arquitectura de libvirt-go desde una aplicación Go, pasando por los wrappers de alto nivel, los bindings de RawAPI generados y purego, hasta las bibliotecas nativas de libvirt."></span></p>
+<p>El generador lee los metadatos XML de la API oficial de libvirt 12.6.0 incluidos en este repositorio. En las API principal, de administración, QEMU y LXC, esos metadatos producen exactamente 568 funciones y 1.093 enumeraciones. La superficie generada expone métodos públicos <code class="chip">RawAPI</code> con tipos adecuados para <code class="chip">purego</code>. Su catálogo también registra el enrutamiento de las bibliotecas de origen, por lo que cada función se busca en la biblioteca principal de libvirt o en su biblioteca de extensión de administración, QEMU o LXC. Los datos generados de registro de símbolos conectan los nombres con los destinos de las llamadas, y las versiones de introducción registran cuándo añadió libvirt originalmente cada función. La ausencia de bibliotecas de extensión afecta a sus propios símbolos sin impedir que se cargue la biblioteca principal.</p>
+<p>La generación aporta amplitud, mientras que los wrappers escritos a mano aportan reglas de comportamiento que las declaraciones XML no pueden expresar por sí solas. Estos wrappers controlan la propiedad de las conexiones, los dominios, los streams y otros identificadores nativos. Copian los valores de retorno asignados en datos de Go y liberan las asignaciones nativas cuando es necesario. También conservan los valores de Go durante el tiempo que necesitan las llamadas nativas, gestionan el registro y la limpieza de callbacks y convierten los registros de errores locales de cada hilo de libvirt en errores estructurados de Go. Estos detalles son importantes porque una llamada correcta puede transferir una referencia, devolver memoria que debe liberarse o registrar trabajo que continúa activo después de que termine la llamada.</p>
+<p>La compatibilidad se muestra a quienes llaman a la API en lugar de ocultarse en el cargador. <code class="chip">HasSymbol</code> indica si las bibliotecas cargadas exportan una función generada. <code class="chip">SymbolVersion</code> indica la versión de libvirt en la que se introdujo un símbolo conocido. Cuando una función solicitada no está presente, las llamadas raw generadas y las llamadas de alto nivel devuelven un <code class="chip">SymbolUnavailableError</code>. Ese error encapsula <code class="chip">ErrSymbolUnavailable</code>, por lo que la inspección normal de errores de Go puede reconocer la condición común y conservar al mismo tiempo el nombre del símbolo y la versión en la que se introdujo.</p>
+<p>Este modelo símbolo por símbolo admite instalaciones antiguas de libvirt y funciones incorporadas de forma retroactiva por las distribuciones. Se basa en lo que exporta la biblioteca durante la ejecución en lugar de tratar su versión numérica como una lista completa de capacidades. <code class="chip">RawAPI</code> sigue disponible para operaciones especializadas que no cuentan con un wrapper de alto nivel, pero quienes usen llamadas raw conservan la responsabilidad sobre los centinelas de fallo de C, la propiedad nativa y la gestión de errores locales de cada hilo. La capa de alto nivel es el punto de partida más seguro para el código de las aplicaciones.</p>
+<h3 id="Pruebalo" class="article-heading">Pruébalo<a class="article-anchor" href="#Pruebalo" aria-hidden="true"></a></h3><p>El ejemplo del repositorio abre la URI <code class="chip">test:///default</code> de libvirt en modo de solo lectura y enumera sus dominios:</p>
+<!-- markdownlint-disable MD010 -->
+<figure class="highlight go code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line"></span><br><span class="line">	libvirt <span class="string">&quot;github.com/Ns2Kracy/libvirt-go&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	conn, err := libvirt.NewConnectReadOnly(<span class="string">&quot;test:///default&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> _, err := conn.Close(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Printf(<span class="string">&quot;close connection: %v&quot;</span>, err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	domains, err := conn.ListAllDomains(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, domain := <span class="keyword">range</span> domains &#123;</span><br><span class="line">		name, nameErr := domain.GetName()</span><br><span class="line">		<span class="keyword">if</span> err := domain.Free(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Printf(<span class="string">&quot;free domain: %v&quot;</span>, err)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> nameErr != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatal(nameErr)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println(name)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<!-- markdownlint-enable MD010 -->
+
+<p>Desde la raíz del repositorio, ejecuta el ejemplo con cgo desactivado en una máquina<br>Linux compatible que tenga libvirt instalado:</p>
+<figure class="highlight sh code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">CGO_ENABLED=0 go run ./examples/list-domains</span><br></pre></td></tr></table></div></figure>
+
+<p><code class="chip">test:///default</code> es el controlador de pruebas sintéticas de libvirt. Proporciona recursos de ejemplo y no modifica invitados reales. La compilación no necesita archivos de desarrollo de libvirt. El programa sigue necesitando una biblioteca compartida de libvirt compatible durante la ejecución.</p>
+<h3 id="Limites-actuales-y-validacion" class="article-heading">Límites actuales y validación<a class="article-anchor" href="#Limites-actuales-y-validacion" aria-hidden="true"></a></h3><p>libvirt-go sigue siendo experimental y no se recomienda para cargas de trabajo de producción. Linux amd64 es la única plataforma probada y compatible en tiempo de ejecución. Linux arm64 solo se comprueba mediante compilación. Este proyecto no ha probado las rutas del cargador para macOS, FreeBSD y NetBSD, que siguen sin ser compatibles.</p>
+<p>Se necesita una biblioteca compartida nativa de libvirt compatible durante la ejecución. Eliminar cgo de la compilación de la aplicación elimina la dependencia de la cadena de herramientas de C durante la compilación; no sustituye a libvirt. Las aplicaciones deben cerrar las conexiones y liberar de forma explícita los recursos devueltos según las reglas de propiedad de cada API. Quienes usen <code class="chip">RawAPI</code> también deben reconocer los centinelas de fallo nativos y recuperar los errores locales de cada hilo de libvirt en el mismo hilo del sistema operativo. No se ha validado ningún entorno de producción con libvirt&#x2F;QEMU&#x2F;KVM.</p>
+<p>Las evidencias aportadas por las pruebas se mantienen separadas de estos límites de soporte. La CI automatizada ejecuta pruebas unitarias con cgo desactivado para el generador, los diseños ABI y las funciones auxiliares de gestión de la propiedad; pruebas de integración sintéticas con <code class="chip">test:///default</code> en Ubuntu 22.04 y 24.04; además de comprobaciones de condiciones de carrera y del código generado. Una tarea condicionada de integración real inicia un daemon QEMU&#x2F;libvirt aislado en un runner efímero de Ubuntu y prueba recursos desechables, callbacks del ciclo de vida de los invitados y la limpieza. Las comprobaciones de compatibilidad abarcan diferentes entornos de ejecución de libvirt empaquetados y el comportamiento ante símbolos ausentes. Govulncheck y CodeQL añaden análisis de seguridad de las dependencias y el código.</p>
+<p>Estas comprobaciones aportan datos útiles sobre el comportamiento de la API y el aislamiento de las pruebas. No demuestran su fiabilidad durante transferencias de almacenamiento, streams, carga de callbacks ni cambios continuos y prolongados en los invitados en entornos de producción.</p>
+<h3 id="Proximos-pasos" class="article-heading">Próximos pasos<a class="article-anchor" href="#Proximos-pasos" aria-hidden="true"></a></h3><p>Una de las vías previstas consiste en utilizar libvirt-go para mejorar de forma gradual el backend actual de ZVM después de que cada parte demuestre su utilidad durante las pruebas. La biblioteca seguirá siendo un paquete independiente, disponible para otros proyectos de Go que necesiten acceso a libvirt dentro del proceso con compilaciones sin cgo. El trabajo a corto plazo se centra en ampliar los wrappers de alto nivel, probar los streams y callbacks bajo carga, reforzar la cobertura del ciclo de vida de los recursos, probar una matriz de compatibilidad más amplia entre versiones antiguas y nuevas de libvirt y hacer que Linux arm64 avance desde las comprobaciones de compilación hacia la validación en tiempo de ejecución. No se anuncia ninguna versión de ZimaOS, fecha de lanzamiento ni calendario de integración.</p>
+<h3 id="Prueba-la-vista-previa-para-desarrolladores" class="article-heading">Prueba la vista previa para desarrolladores<a class="article-anchor" href="#Prueba-la-vista-previa-para-desarrolladores" aria-hidden="true"></a></h3><p>Prueba la <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Ns2Kracy/libvirt-go" class="doc-link">vista previa de libvirt-go para desarrolladores</a> y abre una <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Ns2Kracy/libvirt-go/issues" class="doc-link">incidencia específica en GitHub</a> cuando encuentres una carencia. Incluye tu distribución y arquitectura de Linux, la versión instalada de libvirt, el wrapper de alto nivel ausente o el símbolo no disponible y un ejemplo mínimo que reproduzca el problema.</p>
+<p>Los informes sobre el comportamiento en versiones antiguas de libvirt y Linux arm64 resultan de especial utilidad. Para los errores de recursos, callbacks o streams, describe el orden de limpieza e indica si el problema se reproduce con <code class="chip">test:///default</code> o con un daemon real. Agradecemos las contribuciones. Si quieres añadir un wrapper que falta, empieza por una incidencia que indique la función de libvirt subyacente y el comportamiento de propiedad, de modo que la implementación y las pruebas puedan revisarse conjuntamente.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.509Z" itemprop="dateModified">Última actualización: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/developer/contributions"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Contribuciones de la comunidad</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/developer/docker-app-publishing"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Crear y publicar aplicaciones</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contenidos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Presentamos-libvirt-go-una-API-de-libvirt-para-Go-sin-Cgo"><span class="toc-text">Presentamos libvirt-go: una API de libvirt para Go sin Cgo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#El-problema-al-que-me-enfrente-al-desarrollar-ZVM"><span class="toc-text">El problema al que me enfrenté al desarrollar ZVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%C2%BFPor-que-crear-otro-binding-para-Go"><span class="toc-text">¿Por qué crear otro binding para Go?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Como-funciona-libvirt-go"><span class="toc-text">Cómo funciona libvirt-go</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pruebalo"><span class="toc-text">Pruébalo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limites-actuales-y-validacion"><span class="toc-text">Límites actuales y validación</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Proximos-pasos"><span class="toc-text">Próximos pasos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prueba-la-vista-previa-para-desarrolladores"><span class="toc-text">Prueba la vista previa para desarrolladores</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantente en contacto<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Únete a nuestra lista de suscriptores para recibir las últimas noticias, actualizaciones y ofertas especiales.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Ingresa tu dirección de correo electrónico">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Suscribirse
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Productos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accesorios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Soporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contacto</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Términos de Servicio</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envío</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galería</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Hecho con IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidad</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Acerca de Nosotros</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/es/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/es/zimaos/app-store/" class="mobile-nav-link">Tienda de apps</a></li><li class="menu-item "><a href="/docs/es/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item current_page_item"><a href="/docs/es/developer/" class="mobile-nav-link">Desarrollo</a></li><li class="menu-item "><a href="/docs/es/help-center/" class="mobile-nav-link">Centro de ayuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Foro</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/es/developer/">Resumen</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">Almacenamiento y sistemas de archivos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/es/developer/zfs-setup">Configuración de ZFS</a></li><li><a class="" href="/docs/es/developer/nfs-on-zimaos">Archivos compartidos por NFS</a></li><li><a class="" href="/docs/es/developer/folder-encryption">Carpetas cifradas</a></li><li><a class="" href="/docs/es/zimaos/raid-options">Resumen de opciones RAID</a></li><li><a class="" href="/docs/es/developer/raid6-setup">Crear RAID 6</a></li><li><a class="" href="/docs/es/developer/raid-rebuild-after-reinstall">Reconstruir RAID tras reinstalar</a></li><li><a class="" href="/docs/es/developer/iscsi-guide">Guía de uso de iSCSI</a></li><li><a class="" href="/docs/es/developer/iscsi-setup">Configuración de iSCSI</a></li><li><a class="" href="/docs/es/developer/rsync-backup-clones">Clones de copia con Rsync</a></li><li><a class="" href="/docs/es/developer/synology-smb-connect">Conectar Synology por SMB</a></li><li><a class="" href="/docs/es/developer/zimaos-qts-two-way-sync-guide">Sincronización bidireccional con QTS</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">Redes y protocolos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/es/developer/networking">Configuración de red</a></li><li><a class="" href="/docs/es/developer/how-to-open-ssh-in-zimaos">Activar SSH</a></li><li><a class="" href="/docs/es/developer/nas-transfer-speed-troubleshooting">Velocidad de transferencia</a></li><li><a class="" href="/docs/es/developer/ssh-setup">Configuración avanzada de SSH</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li><li><a class="is-current" href="/docs/es/developer/introducing-libvirt-go">Presentación de libvirt-go</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">Desarrollo de App Store</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/es/developer/docker-app-publishing">Crear y publicar aplicaciones</a></li><li><a class="" href="/docs/es/developer/app-store-create-from-scratch">Crear una App Store</a></li><li><a class="" href="/docs/es/developer/app-store-repository-structure">Estructura del repositorio</a></li><li><a class="" href="/docs/es/developer/app-store-config">Configuración de la tienda</a></li><li><a class="" href="/docs/es/developer/app-store-compose-x-casaos">Docker Compose y x-casaos</a></li><li><a class="" href="/docs/es/developer/app-store-build-output">Resultados de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-assets-localization">Recursos y localización</a></li><li><a class="" href="/docs/es/developer/app-store-ci-cd">CI/CD de App Store</a></li><li><a class="" href="/docs/es/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/es/developer/app-store-validation-workflow">Flujo de validación</a></li><li><a class="" href="/docs/es/developer/app-store-build-workflow">Flujo de compilación</a></li><li><a class="" href="/docs/es/developer/app-store-publishing-workflow">Flujo de publicación</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration">Migrar de v1 a v2</a></li><li><a class="" href="/docs/es/developer/app-store-v1-v2-migration-checklist">Lista de migración</a></li><li><a class="" href="/docs/es/developer/app-store-faq">FAQ para desarrolladores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">API de ZimaOS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/es/developer/openapi-developer-guide">Guía de la API de ZimaOS</a></li><li><a class="" href="/docs/es/developer/openapi-live-preview">Explorador de la API</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">Historial de versiones</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/es/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/es/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/es/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/es/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/es/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/es/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/es/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/es/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/es/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/es/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/es/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/es/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/es/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/es/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/es/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/es/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/es/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/es/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/es/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/es/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/es/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ES</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/introducing-libvirt-go" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/introducing-libvirt-go" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/developer/introducing-libvirt-go" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/developer/introducing-libvirt-go" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/developer/introducing-libvirt-go" data-lang="es" selected>Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Tienda</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

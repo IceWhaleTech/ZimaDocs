@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Frigate no ZimaOS: NVR local com IA para vigilância e gravação de câmaras | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/frigate-setup">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/app-store/frigate-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/app-store/frigate-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/frigate-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/app-store/frigate-setup">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/app-store/frigate-setup">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Instale o Frigate a partir da App Store do ZimaOS — vigilância de câmaras com IA, deteção de movimento e gravação no seu próprio hardware.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Frigate no ZimaOS: NVR local com IA para vigilância e gravação de câmaras">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/frigate-setup">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Instale o Frigate a partir da App Store do ZimaOS — vigilância de câmaras com IA, deteção de movimento e gravação no seu próprio hardware.">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/frigate-app-store.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/frigate-installed-dashboard.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/frigate-config-form.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/frigate-logs-view.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/app-store/frigate-logs-credentials.webp">
+<meta property="article:published_time" content="2026-09-15T09:07:49.746Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.746Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/app-store/frigate-app-store.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Como executar o Frigate no ZimaOS",
+      "description": "Instale o Frigate a partir da App Store do ZimaOS — vigilância de câmaras com IA, deteção de movimento e gravação no seu próprio hardware.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.746Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "App Store",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/app-store/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Como executar o Frigate no ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/app-store/frigate-setup">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/app-store/frigate-setup">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/app-store/frigate-setup">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/app-store/frigate-setup">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/app-store/frigate-setup">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral da App Store</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/photoprism-setup">PhotoPrism</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/transmission-setup">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/adguard-home-setup">AdGuard Home</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/adminer-setup-guide">Gestor de bases de dados Adminer</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nginx-proxy-manager-setup">Nginx Proxy Manager</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/karakeep-setup">Karakeep</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/vocechat-setup">VoceChat</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/romm-setup">RomM</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/blinko-setup">Blinko</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:smart-home">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-smart-home">
+          <span class="doc-sidebar__toggle-text">Casa inteligente</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-smart-home"><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/frigate-setup">Frigate</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-ai">
+          <span class="doc-sidebar__toggle-text">Agentes e inferência</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">Agente DeepSeek Harness</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-creative-builds"><li><a class="" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Como executar o Frigate no ZimaOS</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Descricao-geral" class="article-heading">Descrição geral<a class="article-anchor" href="#Descricao-geral" aria-hidden="true"></a></h2><p>O Frigate tem suporte nativo no App Catalog do ZimaOS. Consulte a <a href="https://www.zimaspace.com/zimaos/app-store/app/org.icewhale.frigate" class="doc-link">página do Frigate na App Store</a> para obter os detalhes mais recentes da aplicação.</p>
+<p>O Frigate é um gravador de vídeo em rede (NVR) de código aberto com deteção de objetos em tempo real com IA — oferece-lhe vigilância de câmaras local e privada, deteção de movimento e gravação, tudo a correr no seu próprio hardware e sem enviar imagens para a nuvem.</p>
+<h2 id="Pre-requisitos" class="article-heading">Pré-requisitos<a class="article-anchor" href="#Pre-requisitos" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Uma instalação do ZimaOS em funcionamento.</li>
+<li>Uma ou mais câmaras IP compatíveis com RTSP ou ONVIF.</li>
+<li>Uma porta livre para a interface web (por predefinição: <strong>8971</strong>).</li>
+<li><em>(Opcional)</em> Um Google Coral TPU ou uma iGPU Intel&#x2F;AMD para acelerar a deteção de objetos.</li>
+</ul>
+<h2 id="App-Catalog" class="article-heading">App Catalog<a class="article-anchor" href="#App-Catalog" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>Encontre o Frigate no App Catalog do ZimaOS. Abra a <strong>App Store</strong> → procure por “Frigate”.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/frigate-app-store.webp" alt="Página da aplicação Frigate na App Store do ZimaOS com o botão de instalação"></span></p>
+<ol start="2" class="doc-steps">
+<li><strong>Está pronto a usar!</strong></li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/frigate-installed-dashboard.webp" alt="Ícone do Frigate no painel do ZimaOS após a conclusão da instalação"></span></p>
+<h2 id="Configuracao" class="article-heading">Configuração<a class="article-anchor" href="#Configuracao" aria-hidden="true"></a></h2><p>Os passos seguintes <strong>NÃO são necessários</strong> — pode começar imediatamente com a configuração <strong>PREDEFINIDA</strong>.</p>
+<p>O ZimaOS suporta vários métodos de configuração, incluindo edição por formulário e edição secundária em YAML.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/frigate-config-form.webp" alt="Definições do contentor Frigate com portas, volumes e mapeamentos de dispositivos"></span></p>
+<p>As definições principais que pode querer ajustar:</p>
+<ul class="doc-dots">
+<li><strong>Volumes</strong> — onde são guardadas a configuração e as gravações do Frigate (por predefinição: <code class="chip">/DATA/AppData/frigate/config</code>, montado em <code class="chip">/config</code>, e <code class="chip">/DATA/AppData/frigate/media</code>, montado em <code class="chip">/media/frigate</code>).</li>
+<li><strong>Porta</strong> — a porta externa para aceder à interface web (por predefinição: 8971).</li>
+<li><strong>Dispositivo de deteção</strong> — <em>(opcional)</em> mapeie um Coral PCIe (<code class="chip">/dev/apex_0</code>), um Coral USB (<code class="chip">/dev/bus/usb</code>) ou uma iGPU Intel&#x2F;AMD (<code class="chip">/dev/dri/renderD128</code>) para deteção com aceleração por hardware.</li>
+</ul>
+<h2 id="Configuracao-inicial" class="article-heading">Configuração inicial<a class="article-anchor" href="#Configuracao-inicial" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>Abra o Frigate a partir do ambiente de trabalho do ZimaOS. Na primeira vez que o abrir, poderá ver um aviso de segurança — isto é normal, uma vez que o Frigate usa um certificado autoassinado. Clique em <strong>Advanced</strong> e depois em <strong>Continue to …</strong> para prosseguir.</li>
+<li>No primeiro início de sessão, precisará do seu nome de utilizador e palavra-passe iniciais. Clique nos três pontos no canto superior direito do ícone da aplicação Frigate → <strong>Settings</strong>, abra <strong>Terminal and Logs</strong>, clique em <strong>Logs</strong> e depois no ícone de ecrã inteiro para ampliar a vista.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/frigate-logs-view.webp" alt="Definições da aplicação Frigate com os registos abertos e ampliados para ecrã inteiro"></span></p>
+<ol start="3" class="doc-steps">
+<li>Procure a secção rodeada de asteriscos (<code class="chip">****</code>) — contém o seu nome de utilizador e palavra-passe. Use esta informação para iniciar sessão no Frigate.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/app-store/frigate-logs-credentials.webp" alt="Registo de arranque do Frigate com as credenciais de administrador predefinidas entre asteriscos"></span></p>
+<ol start="4" class="doc-steps">
+<li><p>Adicione as suas câmaras e configure a deteção, a gravação e mais, editando o ficheiro <code class="chip">config.yml</code> em <code class="chip">/DATA/AppData/frigate/config/config.yml</code>. Consulte a referência completa na documentação oficial abaixo.</p>
+</li>
+<li><p>O Frigate está a funcionar quando consegue abrir a interface, iniciar sessão e ver uma câmara ligada sem erros de transmissão. Abra <strong>Live</strong> e confirme que a câmara mostra uma imagem atual.</p>
+</li>
+</ol>
+<h2 id="Guias-relacionados" class="article-heading">Guias relacionados<a class="article-anchor" href="#Guias-relacionados" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Combine o Frigate com um LLM local para descrições de eventos com IA — consulte <a href="./frigate-ollama-setup" title="Descreva eventos de câmara em linguagem natural com o Frigate e um modelo Ollama local" class="doc-link">Descrição de fotos com IA usando Frigate e Ollama</a>.</li>
+<li>Prefere um servidor de câmaras mais simples e baseado no navegador? Consulte <a href="./nvr-camera-server" title="Configure um NVR Kerberos.io para videovigilância no ZimaOS" class="doc-link">Servidor de câmaras NVR</a> como alternativa.</li>
+</ul>
+<h2 id="Documentacao-oficial" class="article-heading">Documentação oficial<a class="article-anchor" href="#Documentacao-oficial" aria-hidden="true"></a></h2><p>As definições ao nível da aplicação do Frigate — câmaras, deteção de objetos, gravação, instantâneos, notificações, Home Assistant, aceleração por hardware e mais — vivem todas dentro do ficheiro <code class="chip">config.yml</code> e são independentes do ZimaOS. Para a referência completa, siga a documentação oficial do Frigate:</p>
+<ul class="doc-dots">
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/" title="Documentação oficial do Frigate" class="doc-link">Documentação do Frigate</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/" title="Referência de configuração do Frigate para todas as definições" class="doc-link">Referência de configuração</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/cameras" title="Guia de configuração de câmaras do Frigate" class="doc-link">Câmaras</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/objects" title="Definições de deteção de objetos do Frigate" class="doc-link">Deteção de objetos</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/object_detectors" title="Configuração de detetores do Frigate para Coral TPU e GPUs" class="doc-link">Detetores</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/hardware_acceleration_video" title="Guia de aceleração por hardware do Frigate" class="doc-link">Aceleração por hardware</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/record" title="Configuração de gravação do Frigate" class="doc-link">Gravação</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/snapshots" title="Configuração de instantâneos do Frigate" class="doc-link">Instantâneos</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/zones" title="Guia de zonas e máscaras do Frigate" class="doc-link">Zonas e máscaras</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/notifications" title="Configuração de notificações do Frigate" class="doc-link">Notificações</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/configuration/authentication" title="Definições de autenticação do Frigate" class="doc-link">Autenticação</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.frigate.video/integrations/home-assistant" title="Guia de integração do Frigate com o Home Assistant" class="doc-link">Home Assistant</a></li>
+</ul>
+<h2 id="Precisa-de-ajuda" class="article-heading">Precisa de ajuda?<a class="article-anchor" href="#Precisa-de-ajuda" aria-hidden="true"></a></h2><p>Se tiver problemas ao instalar ou usar o Frigate no ZimaOS, junte-se à <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU" title="Junte-se à comunidade Discord do ZimaSpace para suporte do ZimaOS" class="doc-link">comunidade Discord do ZimaSpace</a>. A nossa equipa e os membros da comunidade terão todo o gosto em ajudar.</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.746Z" itemprop="dateModified">Última atualização: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/app-store/blinko-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Blinko</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Servidor de câmaras NVR</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Descricao-geral"><span class="toc-text">Descrição geral</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-requisitos"><span class="toc-text">Pré-requisitos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App-Catalog"><span class="toc-text">App Catalog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuracao"><span class="toc-text">Configuração</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuracao-inicial"><span class="toc-text">Configuração inicial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Guias-relacionados"><span class="toc-text">Guias relacionados</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Documentacao-oficial"><span class="toc-text">Documentação oficial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Precisa-de-ajuda"><span class="toc-text">Precisa de ajuda?</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/app-store/">Visão geral da App Store</a></h4>
+    <div class="doc-sidebar__group" data-group="app-store:media-server">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-media-server">
+          <span class="doc-sidebar__toggle-text">Servidor multimédia</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-media-server"><li><a class="" href="/docs/pt-PT/zimaos/app-store/cli-guide">Sincronização em massa</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/immich-photo-backup">Cópia de fotografias com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/media-server-setup-with-jellyfin">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/sync-photos-with-immich">Sincronização com Immich</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/photoprism-setup">PhotoPrism</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-setup-guide">Servidor multimédia Plex</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/dlna-server-setup">Servidor DLNA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/plex-and-gpu-transcoding">Transcodificação Plex por GPU</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/setup-emby-server">Servidor Emby</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/komga-setup">Komga</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:self-hosted-apps">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-self-hosted-apps">
+          <span class="doc-sidebar__toggle-text">Aplicações autoalojadas</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-self-hosted-apps"><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-setup">Sincronização com Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/transmission-setup">Transferência de torrents</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/pi-hole-setup">Bloqueador Pi-hole</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/adguard-home-setup">AdGuard Home</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ngx-install">Gestão de documentos</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/paperless-ai-install">Processamento de documentos com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/syncthing-install">Configuração do Syncthing</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/radarr-setup">Gestor de filmes Radarr</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/azuracast-install">Rádio na Internet</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zabbix-install-guide">Monitorização de servidores</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/adminer-setup-guide">Gestor de bases de dados Adminer</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nginx-proxy-manager-setup">Nginx Proxy Manager</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/karakeep-setup">Karakeep</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/vocechat-setup">VoceChat</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/romm-setup">RomM</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/blinko-setup">Blinko</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:smart-home">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-smart-home">
+          <span class="doc-sidebar__toggle-text">Casa inteligente</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-smart-home"><li><a class="is-current" href="/docs/pt-PT/zimaos/app-store/frigate-setup">Frigate</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/nvr-camera-server">Servidor de câmaras NVR</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-ai">
+          <span class="doc-sidebar__toggle-text">Agentes e inferência</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-ai"><li><a class="" href="/docs/pt-PT/zimaos/app-store/deepseek-harness-setup">Agente DeepSeek Harness</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/enable-ai">Ativar pesquisa com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/deploy-deepseek-r1">Implementar DeepSeek R1</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/hermes-agent-setup">Agente Hermes</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/llm-manual-download">Transferir modelos de IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/frigate-ollama-setup">Descrição de fotografias com IA</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/openclaw-agent-setup">Agente OpenClaw</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:creative-builds">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-creative-builds">
+          <span class="doc-sidebar__toggle-text">Projetos criativos</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-creative-builds"><li><a class="" href="/docs/pt-PT/zimaos/app-store/pve-on-debian-for-i226">Executar PVE em Debian</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores">Lojas de aplicações da comunidade</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/batocera-arcade-setup">Arcade Batocera</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/jellyfin-setup">Servidor multimédia Jellyfin</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/oculus-quest-media-server">Streaming Oculus VR</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/minecraft-friendship-service">Servidor Minecraft</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/self-hosted-apps">Aplicações autoalojadas</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/zimablade-cluster-pve">Migração de cluster PVE</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="app-store:developer-resources">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-app-store-developer-resources">
+          <span class="doc-sidebar__toggle-text">Recursos para Programadores</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-app-store-developer-resources"><li><a class="" href="/docs/pt-PT/developer/docker-app-publishing">Criar e publicar aplicações</a></li><li><a class="" href="/docs/pt-PT/developer/app-store-create-from-scratch">Criar uma loja de aplicações</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/app-store/frigate-setup" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/app-store/frigate-setup" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/app-store/frigate-setup" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/app-store/frigate-setup" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/app-store/frigate-setup" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

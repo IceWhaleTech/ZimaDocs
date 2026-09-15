@@ -88,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="「リンクで共有」の仕組みはじめにより速く、安全で、効率的なファイル共有体験を提供するために、WebTorrent技術を利用した新機能—リンク経由のファイル共有を導入しました。 この記事では、この技術の仕組み、技術的特徴、使用時に考慮すべきリスクについて簡単に説明します。より詳細な技術情報については、WebTorrentの公式ドキュメントを参照してください。  1. WebT">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-09-07T06:35:41.100Z">
-<meta property="article:modified_time" content="2026-09-07T06:35:41.100Z">
+<meta property="article:published_time" content="2026-09-15T09:07:49.737Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.737Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -124,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-07T06:35:41.100Z"
+      "datePublished": "2026-09-15T09:07:49.737Z"
     }
   </script>
 
@@ -323,6 +323,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="is-current" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">ローカル AI</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-local-ai"><li><a class="" href="/docs/jp/zimaos/local-llm-inference">ローカル LLM 推論</a></li><li><a class="" href="/docs/jp/zimaos/local-ai-agent-on-zimaos">ローカル AI エージェント</a></li></ul>
+      </div>
+    </div>
     <div class="doc-sidebar__group" data-group="zimaos:install-methods">
       <h4 class="doc-sidebar__title">
         <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
@@ -340,7 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/zvm-next-virtual-machines-community-preview">ZVM Next コミュニティプレビュー</a></li></ul>
       </div>
     </div>
   </nav>
@@ -353,7 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <div class="doc-article__body" itemprop="articleBody">
-      <h1 id="「リンクで共有」の仕組み" class="article-heading">「リンクで共有」の仕組み<a class="article-anchor" href="#「リンクで共有」の仕組み" aria-hidden="true"></a></h1><h3 id="はじめに" class="article-heading">はじめに<a class="article-anchor" href="#はじめに" aria-hidden="true"></a></h3><p>より速く、安全で、効率的なファイル共有体験を提供するために、<strong>WebTorrent</strong>技術を利用した新機能—リンク経由のファイル共有を導入しました。</p>
+      <h2 id="「リンクで共有」の仕組み" class="article-heading">「リンクで共有」の仕組み<a class="article-anchor" href="#「リンクで共有」の仕組み" aria-hidden="true"></a></h2><h4 id="はじめに" class="article-heading">はじめに<a class="article-anchor" href="#はじめに" aria-hidden="true"></a></h4><p>より速く、安全で、効率的なファイル共有体験を提供するために、<strong>WebTorrent</strong>技術を利用した新機能—リンク経由のファイル共有を導入しました。</p>
 <p>この記事では、この技術の仕組み、技術的特徴、使用時に考慮すべきリスクについて簡単に説明します。より詳細な技術情報については、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/webtorrent/webtorrent/blob/master/docs/faq.md" class="doc-link">WebTorrentの公式ドキュメント</a>を参照してください。</p>
 <hr>
 <p><strong>1.</strong> <strong><strong>WebTorrent技術とは？</strong></strong></p>
@@ -380,20 +390,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li><strong>法的責任</strong>：ファイルを共有する法的権利を持っていることを確認し、著作権やその他の法的権利を侵害しないようにしてください。</li>
 <li><strong>サイバーセキュリティ</strong>：WebTorrentはある程度のセキュリティ保護を提供しますが、ユーザーは常に警戒し、マルウェア攻撃を防ぐためにセキュリティソフトを定期的に更新するべきです。</li>
 </ul>
-<h3 id="結論" class="article-heading">結論<a class="article-anchor" href="#結論" aria-hidden="true"></a></h3><p>WebTorrent技術に基づく新機能「リンクで共有」は、ユーザーに強力で効率的、安全なファイル共有ソリューションを提供します。この新しいツールを活用することをお勧めしますが、上記のリスクを考慮に入れて、私たちのサービスの安全かつ適法な使用を確保してください。</p>
-<h3 id="サポート" class="article-heading">サポート<a class="article-anchor" href="#サポート" aria-hidden="true"></a></h3><p>WebTorrent技術やファイル共有機能について質問がある場合は、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU" class="doc-link">Discord</a>または<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">IceWhale Community</a>で私たちのチームにサポートを依頼してください。</p>
+<h4 id="結論" class="article-heading">結論<a class="article-anchor" href="#結論" aria-hidden="true"></a></h4><p>WebTorrent技術に基づく新機能「リンクで共有」は、ユーザーに強力で効率的、安全なファイル共有ソリューションを提供します。この新しいツールを活用することをお勧めしますが、上記のリスクを考慮に入れて、私たちのサービスの安全かつ適法な使用を確保してください。</p>
+<h4 id="サポート" class="article-heading">サポート<a class="article-anchor" href="#サポート" aria-hidden="true"></a></h4><p>WebTorrent技術やファイル共有機能について質問がある場合は、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU" class="doc-link">Discord</a>または<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">IceWhale Community</a>で私たちのチームにサポートを依頼してください。</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.100Z" itemprop="dateModified">最終更新日: 2026-09-07</time>
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.737Z" itemprop="dateModified">最終更新日: 2026-09-15</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/smb-troubleshooting"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">SMB ファイル共有</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/samba-member-setup"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Samba マルチユーザー設定</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="目次">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%8C%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%A7%E5%85%B1%E6%9C%89%E3%80%8D%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">「リンクで共有」の仕組み</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B5%90%E8%AB%96"><span class="toc-text">結論</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"><span class="toc-text">サポート</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8C%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%A7%E5%85%B1%E6%9C%89%E3%80%8D%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">「リンクで共有」の仕組み</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B5%90%E8%AB%96"><span class="toc-text">結論</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"><span class="toc-text">サポート</span></a></li></ol></li></ol></li></ol>
     </nav>
   </aside>
 </div>
@@ -646,6 +656,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/jp/zimaos/remote-access">リモートアクセス</a></li><li><a class="" href="/docs/jp/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale と WireGuard</a></li><li><a class="" href="/docs/jp/zimaos/zimaclient-install">ZimaClient のダウンロード</a></li><li><a class="" href="/docs/jp/zimaos/thunderbolt-direct-connect">Thunderbolt 直接接続</a></li><li><a class="" href="/docs/jp/zimaos/smb-troubleshooting">SMB ファイル共有</a></li><li><a class="is-current" href="/docs/jp/zimaos/share-via-link">リンクで共有</a></li><li><a class="" href="/docs/jp/zimaos/samba-member-setup">Samba マルチユーザー設定</a></li></ul>
       </div>
     </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">ローカル AI</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-local-ai"><li><a class="" href="/docs/jp/zimaos/local-llm-inference">ローカル LLM 推論</a></li><li><a class="" href="/docs/jp/zimaos/local-ai-agent-on-zimaos">ローカル AI エージェント</a></li></ul>
+      </div>
+    </div>
     <div class="doc-sidebar__group" data-group="zimaos:install-methods">
       <h4 class="doc-sidebar__title">
         <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
@@ -663,7 +683,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/jp/zimaos/ups-setup">UPS 設定</a></li><li><a class="" href="/docs/jp/zimaos/system-recovery">システム復旧</a></li><li><a class="" href="/docs/jp/zimaos/offline-install">オフラインインストール</a></li><li><a class="" href="/docs/jp/zimaos/reset-network-settings">ネットワーク設定のリセット</a></li><li><a class="" href="/docs/jp/zimaos/zimaos-search">検索機能</a></li><li><a class="" href="/docs/jp/zimaos/time-machine-backup">Time Machine バックアップ</a></li><li><a class="" href="/docs/jp/zimaos/zvm-next-virtual-machines-community-preview">ZVM Next コミュニティプレビュー</a></li></ul>
       </div>
     </div>
     

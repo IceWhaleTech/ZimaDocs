@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS 虚拟机的下一步 | ZimaSpace | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/zvm-next-virtual-machines-community-preview">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/zvm-next-virtual-machines-community-preview">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="开发预览：ZimaOS 计划简化虚拟机镜像导入、提高网络安全性，并加入磁盘快照、备份和可靠性改进。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS 虚拟机的下一步 | ZimaSpace">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="开发预览：ZimaOS 计划简化虚拟机镜像导入、提高网络安全性，并加入磁盘快照、备份和可靠性改进。">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zvm-next-workstreams.svg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/image-import-pipeline.svg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/vm-network-modes.svg">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/snapshot-vs-backup.svg">
+<meta property="article:published_time" content="2026-09-15T09:07:49.761Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.761Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/zvm-next-workstreams.svg">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "ZimaOS 虚拟机的下一步开发计划",
+      "description": "开发预览：ZimaOS 计划简化虚拟机镜像导入、提高网络安全性，并加入磁盘快照、备份和可靠性改进。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.761Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/zh/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ZimaOS 虚拟机的下一步开发计划"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/zvm-next-virtual-machines-community-preview">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/zvm-next-virtual-machines-community-preview">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/zvm-next-virtual-machines-community-preview">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">ZimaOS 概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/photos">照片</a></li><li><a class="" href="/docs/zh/zimaos/photos-supported-formats">支持的格式</a></li><li><a class="" href="/docs/zh/zimaos/cloud-drive-connect">连接云盘</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">数据迁移</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale 与 WireGuard</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">本地 AI</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-local-ai"><li><a class="" href="/docs/zh/zimaos/local-llm-inference">本地大模型推理</a></li><li><a class="" href="/docs/zh/zimaos/local-ai-agent-on-zimaos">本地 AI 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li><li><a class="is-current" href="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">ZVM Next 社区预览</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">ZimaOS 虚拟机的下一步开发计划</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="ZimaOS-虚拟机的下一步开发计划" class="article-heading">ZimaOS 虚拟机的下一步开发计划<a class="article-anchor" href="#ZimaOS-虚拟机的下一步开发计划" aria-hidden="true"></a></h2><p><strong>开发预览：更简单的镜像导入、更安全的网络、磁盘快照、备份，以及支撑这些功能的可靠性改进。</strong></p>
+<blockquote>
+<p><strong>开发预览：</strong> 本文不是版本发布公告，也不承诺交付日期。标记为<strong>验证中</strong>、<strong>原型</strong>或<strong>研究</strong>的功能在进入公开 ZimaOS 版本前可能发生变化。功能是否可用还可能取决于 ZimaOS 软件包的推送进度、主机硬件、客户机操作系统以及存储或网络配置。</p>
+</blockquote>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/zvm-next-workstreams.svg" alt="ZVM Next 工作概览：镜像导入、网络、恢复和兼容性。"></span></p>
+<p><em>四项工作以不同速度推进。本文中的状态标签是当前状态的唯一准确信息来源。</em></p>
+<p>有些工作负载非常适合运行在容器中，另一些则需要完整的操作系统。</p>
+<p>只能在 Windows 上运行的实用工具、Home Assistant 虚拟设备、隔离的 Linux 测试机，或是一个可以重建且不会影响其余网络的路由器实验环境。这些任务正是虚拟机在家庭服务器上发挥价值的地方。</p>
+<p>ZVM 是 ZimaOS 中提供这套体验的虚拟机服务。它已经具备创建和运行虚拟机所需的基础能力，而社区也向我们指出了体验仍需改进的地方。导入现有磁盘镜像仍然需要太多手动步骤。桥接网络容易让人误解。自动启动、快照、备份和恢复需要更明确的保护措施。操作失败时，提示信息也应该帮助你解决问题，而不只是告诉你出了错。</p>
+<p>我们一直在把这些反馈汇总为更明确的 ZVM 改进方向。下面将介绍目前正在强化的内容、处于积极验证阶段的内容，以及仍在研究的内容。</p>
+<h3 id="状态概览" class="article-heading">状态概览<a class="article-anchor" href="#状态概览" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>含义</th>
+<th>当前示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Alpha 基础功能</strong></td>
+<td>代码已进入当前 Alpha 版本线；设备何时可用仍取决于 ZimaOS 软件包的推送进度。</td>
+<td>强化基于浏览器的虚拟机控制台访问路径的身份验证。</td>
+</tr>
+<tr>
+<td><strong>验证中</strong></td>
+<td>主要实现已经完成，但兼容性和升级测试仍在进行。</td>
+<td>直接导入镜像、分阶段转换、完整性检查和失败清理。</td>
+</tr>
+<tr>
+<td><strong>原型</strong></td>
+<td>设计已经在代码和测试中运行，但行为和 UI 仍可能变化。</td>
+<td>多模式网络、带保护机制的桥接更改、自动启动事件、磁盘快照和完整备份创建。</td>
+</tr>
+<tr>
+<td><strong>研究</strong></td>
+<td>我们正在探索的方向，并非承诺发布的功能。</td>
+<td>USB、PCIe、GPU 和物理网卡直通；增量备份；更广泛的迁移工作流。</td>
+</tr>
+</tbody></table></div>
+<p>我们特意使用这些标签。某项功能出现在开发分支或原型中，并不意味着它已经可以用于你的生产虚拟机。</p>
+<h3 id="导入你已有的镜像" class="article-heading">导入你已有的镜像<a class="article-anchor" href="#导入你已有的镜像" aria-hidden="true"></a></h3><p>许多自托管项目发布的是可以直接运行的虚拟磁盘，而不是安装程序。要把这类镜像导入虚拟机，你可能需要手动转换格式、将其移动到正确的目录，然后再把它接入一台新虚拟机。</p>
+<p>我们希望让这个过程简单得多：选择镜像，选择虚拟机的存储位置，其余准备工作交给 ZVM。</p>
+<p>第一批兼容目标包括：</p>
+<ul class="doc-dots">
+<li>ISO 安装介质</li>
+<li>QCOW2</li>
+<li>VDI</li>
+<li>VMDK</li>
+<li>raw 或 IMG 磁盘</li>
+<li>包含 OVF 元数据的 OVA 软件包</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/image-import-pipeline.svg" alt="ZVM 镜像导入流程：从选择来源开始，依次经过内容检测、验证、准备和原子化完成。"></span></p>
+<p><em>每条路径最终都会得到经过验证、可供虚拟机使用的副本，或进入清理步骤；绝不会把未完成的磁盘显示为可用。</em></p>
+<p>支持一种格式不能只靠文件扩展名判断。ZVM 会检查内容、验证镜像，并将其复制或转换到为虚拟机选择的存储位置。非 ISO 磁盘默认转换为 QCOW2，同时保留 raw 作为高级选项。完成后的虚拟机会指向这个受管理的副本，因此删除最初上传或下载的文件不应影响虚拟机运行。</p>
+<p>导入管线在设计时对失败和成功同样谨慎：</p>
+<ol class="doc-steps">
+<li>暂存源文件，但不将其视为已经完成的磁盘。</li>
+<li>检测真实格式，并拒绝不支持或已损坏的镜像。</li>
+<li>检查可选的 SHA-256 值。</li>
+<li>检查 OVA 归档，并拒绝路径遍历或不安全的条目。</li>
+<li>复制或转换为临时 <code class="chip">.partial</code> 文件。</li>
+<li>同步并验证完成的镜像，再通过原子重命名使其生效。</li>
+<li>取消或失败后删除临时数据。</li>
+</ol>
+<p>在条件允许时，这一过程还会保留稀疏磁盘特性。虚拟容量很大的磁盘不应立刻占用同等大小的物理存储空间。</p>
+<p>更长期的 UI 目标是让本地上传、在 ZimaOS Files 中选择的路径、URL 下载和内置系统模板汇入同一个虚拟机配置流程。当前阶段解决的是为虚拟机导入镜像，而不是建立独立的镜像库，也不包含虚拟机导出功能。</p>
+<p><strong>状态：验证中。</strong> 直接导入后端和回归测试已经存在，其中包括针对 <code class="chip">appliance-1.2.3.qcow2</code> 这类带版本号文件名的修复。我们仍需扩大对设备、镜像和客户机操作系统的覆盖范围。</p>
+<h3 id="网络模式应该是一道选择题，而不是术语考试" class="article-heading">网络模式应该是一道选择题，而不是术语考试<a class="article-anchor" href="#网络模式应该是一道选择题，而不是术语考试" aria-hidden="true"></a></h3><p>不同的虚拟网络模式在表单中看起来可能几乎一样，但数据在实际网络中的传输方式大不相同。ZVM 应该在你按下“保存”之前解释清楚这些差异。</p>
+<p>网络原型为每个虚拟网卡提供明确的模式：</p>
+<ul class="doc-dots">
+<li><strong>NAT</strong>：适用于能够访问外部网络的简单私有网络。</li>
+<li><strong>Linux bridge</strong>：适用于虚拟机需要直接出现在局域网中并与主机通信的场景。</li>
+<li><strong>macvtap</strong>：适用于更直接的连接方式，并明确警告主机与客户机之间通常无法通信。</li>
+<li><strong>断开连接</strong>：适用于隔离的实验环境，或稍后才会连接的网卡。</li>
+</ul>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/vm-network-modes.svg" alt="四张拓扑卡片对比 NAT、Linux bridge、macvtap 和断开连接的虚拟机网络。"></span></p>
+<p><em>这些标签在设置表单中可能看起来相似，但主机、虚拟机和局域网之间的通信方式并不相同。</em></p>
+<p>产品目标是让每台虚拟机拥有 1-8 个可独立配置的网卡。NAT 规划还包括 DHCP 地址保留和 TCP 或 UDP 端口转发。如果主机端口重复或已被占用，ZVM 应该报告冲突，而不是悄悄替换另一条规则。</p>
+<p>在无头家庭服务器上，更改桥接配置需要格外谨慎。移动承载 ZimaOS 管理连接的物理接口，可能会断开正在执行这项更改的浏览器。原型将这项操作视为一个事务：检查拟议配置、应用配置、监控连接状况，并在新路径未能恢复正常时回滚。</p>
+<p>对于需要关机才能生效的更改，也应同样如实说明。如果主机或客户机无法安全地热插拔网卡，ZVM 应保存请求的配置，将其标记为等待重启，并且不应假装正在运行的虚拟机已经应用了该配置。</p>
+<p><strong>状态：原型。</strong> 明确的接口模式、接口 API、持久化 NAT 策略、转发规则、静态网络预配置以及带保护机制的 Linux bridge 更改都已有可运行的分支实现。硬件和升级测试矩阵尚未完成。</p>
+<h3 id="快照不是备份" class="article-heading">快照不是备份<a class="article-anchor" href="#快照不是备份" aria-hidden="true"></a></h3><p>快照是位于原存储附近的回滚点。备份则是一份独立副本，用于在原虚拟机或存储出现问题时继续保留数据。如果把两者放在一个含糊的按钮后面，恢复只会变得更困难。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/snapshot-vs-backup.svg" alt="并排对比仅含磁盘的快照与独立的完整备份包。"></span></p>
+<p><em>快照和备份解决的是不同问题。从备份恢复仍是后续里程碑。</em></p>
+<h4 id="用磁盘快照进行本地回滚" class="article-heading">用磁盘快照进行本地回滚<a class="article-anchor" href="#用磁盘快照进行本地回滚" aria-hidden="true"></a></h4><p>首个快照设计仅包含磁盘。它不会捕获内存，也不能让应用从停止时的确切指令处恢复运行。</p>
+<p>对于已关机的 QCOW2 虚拟机，ZVM 可以直接复制稳定的磁盘。对于正在运行的虚拟机，原型会创建一个临时外部叠加层，以获得某一时间点的磁盘视图；然后复制稳定的基础磁盘，再提交数据并将活动磁盘切回原始路径。虚拟机不会依赖一条不断增长的 ZVM 管理叠加层链。</p>
+<p>默认快照具有<strong>崩溃一致性</strong>，类似意外断电后的磁盘状态。如果客户机中的 QEMU Guest Agent 能够正常响应，ZVM 可以提供<strong>静默</strong>捕获，让文件系统围绕快照执行刷新和冻结。ZVM 会在运行时检查这项能力，而不是显示一个可能无法生效的开关。</p>
+<p>恢复磁盘快照前必须关闭虚拟机。替换磁盘之前，原型会写入恢复日志，并临时接管自动启动设置。如果多磁盘恢复被中断，它可以回滚，而不是让虚拟机混用不同时间点的磁盘。实时捕获还会检查可用空间，并在复制期间监控临时叠加层。</p>
+<h4 id="用完整备份保留独立副本" class="article-heading">用完整备份保留独立副本<a class="article-anchor" href="#用完整备份保留独立副本" aria-hidden="true"></a></h4><p>备份原型会在通过 ZimaOS Files 选择的现有目录中创建 <code class="chip">.zvm-backup</code> 备份包。它会记录非活动状态的虚拟机配置、独立的 QCOW2 磁盘副本、SHA-256 校验和、文件大小、原始磁盘映射以及带版本的清单。</p>
+<p>目标位置安全性也是这项功能的一部分。ZVM 以较高的存储访问权限运行，因此实现会拒绝操作系统路径、ZVM 元数据位置以及基于符号链接的逃逸路径，而不是依赖简单的文本检查。</p>
+<p><strong>重要限制：</strong> 创建和列出备份包属于当前原型的一部分。从备份包恢复虚拟机是单独的里程碑，不能假定该功能已经可用。磁盘快照也不包含内存状态。</p>
+<p><strong>状态：原型。</strong> API、服务实现、中断日志、路径检查和针对性测试已存在于开发中的代码里。真实 libvirt、断电、空间不足和多磁盘测试仍是发布门槛。</p>
+<h3 id="自动启动不该是一个令人费解的开关" class="article-heading">自动启动不该是一个令人费解的开关<a class="article-anchor" href="#自动启动不该是一个令人费解的开关" aria-hidden="true"></a></h3><p>对于 Home Assistant、路由器虚拟机或任何应在主机重启后恢复运行的服务，自动启动很有用。但如果虚拟机依赖的存储或网络尚未就绪，自动启动也会带来风险。</p>
+<p>当前工作会通过 API 公开现有的自动启动设置，并在设置变更时记录成功或失败事件。更完整的设计会加入启动优先级和可配置延迟，然后等待主机所需资源就绪，再启动依赖这些资源的虚拟机。</p>
+<p><strong>状态：原型。</strong> 基本的自动启动控制和事件报告目前正在测试。依赖感知的启动顺序和延迟是设计目标，尚未成为完整功能。</p>
+<h3 id="小修复同样重要" class="article-heading">小修复同样重要<a class="article-anchor" href="#小修复同样重要" aria-hidden="true"></a></h3><p>如果升级、控制台会话或失败的操作让虚拟机处于不明确的状态，新功能也无济于事。多项不太显眼的修复正在与大型功能同步推进：</p>
+<ul class="doc-dots">
+<li><strong>控制台访问安全：</strong> 在当前 Alpha 代码版本线中，基于浏览器的 VNC 代理现在会遵循预期的身份验证路径。设备何时可用仍取决于 ZimaOS 软件包的推送进度。</li>
+<li><strong>更安全的身份处理：</strong> 身份验证不再通过客户端可控的转发地址来判断请求是否来自本地。</li>
+<li><strong>带点号的镜像名称：</strong> <code class="chip">appliance-1.2.3.qcow2</code> 这类文件名会保留有用的版本号，而不会被错误截短。</li>
+<li><strong>已取消的上传：</strong> 镜像上传中断后会删除未完成的文件，不会将其遗留为看似可用的文件。</li>
+<li><strong>已保存设置与实时设置：</strong> 网络功能会读取持久化的虚拟机定义，并能显示等待重启状态，避免混淆运行状态和已保存状态。</li>
+<li><strong>网络协调：</strong> 对重复的 DHCP 地址保留、转发冲突和仅部分应用的主机网络策略执行明确验证，并采用面向回滚的处理方式。</li>
+</ul>
+<p>其他问题报告仍在回归计划中，包括浏览器控制台二进制帧、重连循环、键盘行为、Windows 安装、GRUB 显示和升级兼容性。正在调查并不意味着这些问题已经全部修复。</p>
+<h3 id="你现有的虚拟机应继续由你掌控" class="article-heading">你现有的虚拟机应继续由你掌控<a class="article-anchor" href="#你现有的虚拟机应继续由你掌控" aria-hidden="true"></a></h3><p>社区虚拟机通常包含手动编辑的 XML、非常规设备、自定义固件，或由旧版 ZimaOS 创建的设置。为了更改一个字段而重写整个定义，可能会恰好删掉让这台虚拟机有用的定制内容。</p>
+<p>ZVM Next 设计采用增量方式：</p>
+<ul class="doc-dots">
+<li>发现现有虚拟机，但不对其进行更改。</li>
+<li>只修改请求的操作所负责的 XML 节点。</li>
+<li>保留 UUID、现有 MAC 地址、磁盘路径、NVRAM、自动启动设置和未涉及的设备。</li>
+<li>说明某项功能能否实时应用、是否需要关机、是否需要明确转换，或是否不受支持。</li>
+<li>确保新的操作失败后，虚拟机仍能使用之前的配置启动。</li>
+</ul>
+<p>在稳定版发布前，计划中的回归测试矩阵会覆盖现有 Windows、Linux、Home Assistant OS，以及 OpenWRT 或 pfSense 虚拟机，测试功能使用、重启、升级和回滚场景。</p>
+<h3 id="直通不只是一个复选框" class="article-heading">直通不只是一个复选框<a class="article-anchor" href="#直通不只是一个复选框" aria-hidden="true"></a></h3><p>硬件直通是社区呼声最高的功能之一。如果隐藏过多复杂细节，它也很容易变得不安全。</p>
+<p>USB 分配可以相对独立。PCIe 和 GPU 直通则取决于 IOMMU 分组、固件、驱动绑定、设备重置行为，以及同一分组中还共享了哪些设备。物理网卡直通可能会移除 ZimaOS 自身所需的接口。一个复选框无法让不兼容的硬件变得安全。</p>
+<p>因此，PCIe、GPU 和物理网卡直通仍属于<strong>研究&#x2F;预览</strong>方向。任何公开预览都需要兼容性矩阵、明确的主机影响警告、恢复说明，以及独立禁用该功能的方法。</p>
+<p>增量备份、在线存储迁移、跨主机迁移、集群、高可用、分布式存储、内存快照和备份去重也不在当前核心范围内。</p>
+<h3 id="帮助我们测试真实工作负载" class="article-heading">帮助我们测试真实工作负载<a class="article-anchor" href="#帮助我们测试真实工作负载" aria-hidden="true"></a></h3><p>我们在分享想法的同时也说明边界，因为最有用的反馈始于真实工作负载。</p>
+<p>请告诉我们：</p>
+<ol class="doc-steps">
+<li>你想导入哪种镜像格式和哪个虚拟设备？</li>
+<li>你需要 NAT、真正的 Linux bridge、macvtap，还是隔离的多网卡实验环境？</li>
+<li>未安装 QEMU Guest Agent 时，崩溃一致性快照对你是否仍有用？</li>
+<li>完整备份应该存放在哪里？你希望获得怎样的可用空间保护？</li>
+<li>你想直通哪款 USB、PCIe、GPU 或网卡设备？</li>
+<li>目前哪个虚拟机问题正在阻碍你？</li>
+</ol>
+<p>提交问题报告时，请附上你的 Zima 硬件或 x86 主机型号、ZimaOS 和 ZVM 版本、客户机操作系统、虚拟机固件类型、磁盘格式和存储位置、网络模式、导致失败的确切操作，以及 UI 中显示的完整错误信息。</p>
+<p>欢迎加入 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">ZimaSpace 社区</a>参与讨论。这些细节可以帮助其他社区成员和 Zima 团队将你的报告与已知案例进行对照。</p>
+<p>我们的目标并不是把 libvirt 的每个开关都搬进网页表单，而是让家庭服务器上真正重要的虚拟机工作流变得易于理解、可以恢复，并且足够安全，让你放心迎接下一次重启。</p>
+<h3 id="常见问题" class="article-heading">常见问题<a class="article-anchor" href="#常见问题" aria-hidden="true"></a></h3><h4 id="所有这些功能现在都可以使用吗？" class="article-heading">所有这些功能现在都可以使用吗？<a class="article-anchor" href="#所有这些功能现在都可以使用吗？" aria-hidden="true"></a></h4><p>不是。状态表区分了 Alpha 基础功能、验证中、原型和研究。本文是方向更新，不是版本说明。</p>
+<h4 id="快照会包含虚拟机的内存状态吗？" class="article-heading">快照会包含虚拟机的内存状态吗？<a class="article-anchor" href="#快照会包含虚拟机的内存状态吗？" aria-hidden="true"></a></h4><p>当前核心设计不会包含。首个实现只捕获磁盘。正在运行的虚拟机默认创建崩溃一致性快照，并且在 QEMU Guest Agent 可用时可以让文件系统进入静默状态。</p>
+<h4 id="每个-OVA、VMDK-或-VDI-镜像都能导入吗？" class="article-heading">每个 OVA、VMDK 或 VDI 镜像都能导入吗？<a class="article-anchor" href="#每个-OVA、VMDK-或-VDI-镜像都能导入吗？" aria-hidden="true"></a></h4><p>这些格式属于兼容目标，但真实镜像各不相同。固件、架构、控制器、驱动程序、加密、损坏和供应商专用的 OVF 元数据仍可能导致镜像不兼容。ZVM 应该拒绝不支持的情况，并给出可供采取行动的说明，而不是创建一台无法启动的虚拟机。</p>
+<h4 id="已经支持从备份恢复了吗？" class="article-heading">已经支持从备份恢复了吗？<a class="article-anchor" href="#已经支持从备份恢复了吗？" aria-hidden="true"></a></h4><p>还没有。当前原型可以创建和列出完整备份包。从这些备份包恢复是单独规划的工作流，需要经过明确测试。</p>
+<h4 id="GPU-直通能在每台-Zima-设备上运行吗？" class="article-heading">GPU 直通能在每台 Zima 设备上运行吗？<a class="article-anchor" href="#GPU-直通能在每台-Zima-设备上运行吗？" aria-hidden="true"></a></h4><p>不能。它取决于 CPU、固件、IOMMU 分组、GPU、主机驱动、客户机驱动和重置行为。在明确支持矩阵和恢复路径之前，它仍属于研究和预览领域。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.761Z" itemprop="dateModified">最后更新：2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/zimaos/time-machine-backup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">Time Machine 备份</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZimaOS-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92"><span class="toc-text">ZimaOS 虚拟机的下一步开发计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A6%82%E8%A7%88"><span class="toc-text">状态概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E4%BD%A0%E5%B7%B2%E6%9C%89%E7%9A%84%E9%95%9C%E5%83%8F"><span class="toc-text">导入你已有的镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E5%BA%94%E8%AF%A5%E6%98%AF%E4%B8%80%E9%81%93%E9%80%89%E6%8B%A9%E9%A2%98%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E6%9C%AF%E8%AF%AD%E8%80%83%E8%AF%95"><span class="toc-text">网络模式应该是一道选择题，而不是术语考试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E4%B8%8D%E6%98%AF%E5%A4%87%E4%BB%BD"><span class="toc-text">快照不是备份</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E7%A3%81%E7%9B%98%E5%BF%AB%E7%85%A7%E8%BF%9B%E8%A1%8C%E6%9C%AC%E5%9C%B0%E5%9B%9E%E6%BB%9A"><span class="toc-text">用磁盘快照进行本地回滚</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E5%AE%8C%E6%95%B4%E5%A4%87%E4%BB%BD%E4%BF%9D%E7%95%99%E7%8B%AC%E7%AB%8B%E5%89%AF%E6%9C%AC"><span class="toc-text">用完整备份保留独立副本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8%E4%B8%8D%E8%AF%A5%E6%98%AF%E4%B8%80%E4%B8%AA%E4%BB%A4%E4%BA%BA%E8%B4%B9%E8%A7%A3%E7%9A%84%E5%BC%80%E5%85%B3"><span class="toc-text">自动启动不该是一个令人费解的开关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E4%BF%AE%E5%A4%8D%E5%90%8C%E6%A0%B7%E9%87%8D%E8%A6%81"><span class="toc-text">小修复同样重要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E7%8E%B0%E6%9C%89%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BA%94%E7%BB%A7%E7%BB%AD%E7%94%B1%E4%BD%A0%E6%8E%8C%E6%8E%A7"><span class="toc-text">你现有的虚拟机应继续由你掌控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E9%80%9A%E4%B8%8D%E5%8F%AA%E6%98%AF%E4%B8%80%E4%B8%AA%E5%A4%8D%E9%80%89%E6%A1%86"><span class="toc-text">直通不只是一个复选框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E6%88%91%E4%BB%AC%E6%B5%8B%E8%AF%95%E7%9C%9F%E5%AE%9E%E5%B7%A5%E4%BD%9C%E8%B4%9F%E8%BD%BD"><span class="toc-text">帮助我们测试真实工作负载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E8%BF%99%E4%BA%9B%E5%8A%9F%E8%83%BD%E7%8E%B0%E5%9C%A8%E9%83%BD%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F"><span class="toc-text">所有这些功能现在都可以使用吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E4%BC%9A%E5%8C%85%E5%90%AB%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%86%85%E5%AD%98%E7%8A%B6%E6%80%81%E5%90%97%EF%BC%9F"><span class="toc-text">快照会包含虚拟机的内存状态吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AA-OVA%E3%80%81VMDK-%E6%88%96-VDI-%E9%95%9C%E5%83%8F%E9%83%BD%E8%83%BD%E5%AF%BC%E5%85%A5%E5%90%97%EF%BC%9F"><span class="toc-text">每个 OVA、VMDK 或 VDI 镜像都能导入吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%B2%E7%BB%8F%E6%94%AF%E6%8C%81%E4%BB%8E%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%E4%BA%86%E5%90%97%EF%BC%9F"><span class="toc-text">已经支持从备份恢复了吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GPU-%E7%9B%B4%E9%80%9A%E8%83%BD%E5%9C%A8%E6%AF%8F%E5%8F%B0-Zima-%E8%AE%BE%E5%A4%87%E4%B8%8A%E8%BF%90%E8%A1%8C%E5%90%97%EF%BC%9F"><span class="toc-text">GPU 直通能在每台 Zima 设备上运行吗？</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item "><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/zimaos/">ZimaOS 概览</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">设置与存储</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/zh/zimaos/get-started">开始使用</a></li><li><a class="" href="/docs/zh/zimaos/features">功能概览</a></li><li><a class="" href="/docs/zh/zimaos/storage-setup">存储设置</a></li><li><a class="" href="/docs/zh/zimaos/raid-options">RAID 选项</a></li><li><a class="" href="/docs/zh/zimaos/docker-app-paths">应用存储路径</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">同步与备份</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/zh/zimaos/phone-backup">手机备份</a></li><li><a class="" href="/docs/zh/zimaos/computer-backup">电脑备份</a></li><li><a class="" href="/docs/zh/zimaos/photos">照片</a></li><li><a class="" href="/docs/zh/zimaos/photos-supported-formats">支持的格式</a></li><li><a class="" href="/docs/zh/zimaos/cloud-drive-connect">连接云盘</a></li><li><a class="" href="/docs/zh/zimaos/synology-to-zimacube-migration">从其他 NAS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/data-migration">数据迁移</a></li><li><a class="" href="/docs/zh/zimaos/how-to-use-3-2-1-backup-on-zimaos">3-2-1 备份策略</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">访问与共享</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/zh/zimaos/remote-access">远程访问</a></li><li><a class="" href="/docs/zh/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale 与 WireGuard</a></li><li><a class="" href="/docs/zh/zimaos/zimaclient-install">下载 ZimaClient</a></li><li><a class="" href="/docs/zh/zimaos/thunderbolt-direct-connect">Thunderbolt 直连</a></li><li><a class="" href="/docs/zh/zimaos/smb-troubleshooting">SMB 文件共享</a></li><li><a class="" href="/docs/zh/zimaos/share-via-link">通过链接共享</a></li><li><a class="" href="/docs/zh/zimaos/samba-member-setup">Samba 多用户设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">本地 AI</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-local-ai"><li><a class="" href="/docs/zh/zimaos/local-llm-inference">本地大模型推理</a></li><li><a class="" href="/docs/zh/zimaos/local-ai-agent-on-zimaos">本地 AI 智能体</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">安装方式</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/zh/zimaos/how-to-install-zimaos">安装 ZimaOS</a></li><li><a class="" href="/docs/zh/zimaos/install-zimaos-on-proxmox-ve">安装到 Proxmox</a></li><li><a class="" href="/docs/zh/zimaos/casaos-to-zimaos-migration">从 CasaOS 迁移</a></li><li><a class="" href="/docs/zh/zimaos/password-recovery">重置密码</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/zh/zimaos/ups-setup">UPS 设置</a></li><li><a class="" href="/docs/zh/zimaos/system-recovery">系统恢复</a></li><li><a class="" href="/docs/zh/zimaos/offline-install">离线安装</a></li><li><a class="" href="/docs/zh/zimaos/reset-network-settings">重置网络设置</a></li><li><a class="" href="/docs/zh/zimaos/zimaos-search">搜索功能</a></li><li><a class="" href="/docs/zh/zimaos/time-machine-backup">Time Machine 备份</a></li><li><a class="is-current" href="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview">ZVM Next 社区预览</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/zvm-next-virtual-machines-community-preview" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/zvm-next-virtual-machines-community-preview" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/zimaos/zvm-next-virtual-machines-community-preview" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/zimaos/zvm-next-virtual-machines-community-preview" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">商店</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

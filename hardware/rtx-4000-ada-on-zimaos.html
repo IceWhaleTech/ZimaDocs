@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>NVIDIA RTX 4000 SFF Ada LLM Inference on ZimaOS: 256K Context at 74.5 t/s | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/hardware/rtx-4000-ada-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/rtx-4000-ada-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="A hands-on benchmark of the NVIDIA RTX 4000 SFF Ada 20 GB on a ZimaCube running ZimaOS: containerized llama.cpp with Qwen3.6-35B-A3B, 256K context memory accounting, MTP speculative decodi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NVIDIA RTX 4000 SFF Ada LLM Inference on ZimaOS: 256K Context at 74.5 t&#x2F;s">
+<meta property="og:url" content="https://www.zimaspace.com/docs/hardware/rtx-4000-ada-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="A hands-on benchmark of the NVIDIA RTX 4000 SFF Ada 20 GB on a ZimaCube running ZimaOS: containerized llama.cpp with Qwen3.6-35B-A3B, 256K context memory accounting, MTP speculative decodi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-15T09:07:49.522Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.522Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "NVIDIA RTX 4000 SFF Ada Local LLM Inference Performance Test",
+      "description": "A hands-on benchmark of the NVIDIA RTX 4000 SFF Ada 20 GB on a ZimaCube running ZimaOS: containerized llama.cpp with Qwen3.6-35B-A3B, 256K context memory accounting, MTP speculative decoding, power draw, and the recommended setup.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.522Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "NVIDIA RTX 4000 SFF Ada Local LLM Inference Performance Test"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="site-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="site-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Forum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Search">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Searching</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>EN</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/rtx-4000-ada-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/rtx-4000-ada-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/rtx-4000-ada-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/rtx-4000-ada-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Store</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Search"
+     data-search-recent="Recent"
+     data-search-suggested="Suggested"
+     data-search-no-results="No results for “{query}”"
+     data-search-no-results-hint="Try another keyword or check the spelling."
+     data-search-remove="Remove"
+     data-search-overview="Overview"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="App Store"
+     data-search-hardware="Hardware"
+     data-search-developer="Developer"
+     data-search-help-center="Help Center">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Start searching">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zimaos/how-to-install-zimaos"
+       data-title="Install ZimaOS"
+       data-meta="ZimaOS › Install Methods"></a>
+    <a href="/docs/zimaos/get-started"
+       data-title="Get Started"
+       data-meta="ZimaOS › Setup & Storage"></a>
+    <a href="/docs/zimaos/app-store/awesome-third-party-stores"
+       data-title="Community App Stores"
+       data-meta="App Store › Creative Builds"></a>
+    <a href="/docs/zimaos/remote-access"
+       data-title="Remote Access"
+       data-meta="ZimaOS › Access & Share"></a>
+    <a href="/docs/zimaos/zimaclient-install"
+       data-title="Download ZimaClient"
+       data-meta="ZimaOS › Access & Share"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/hardware/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/hardware/quick-start">Quick Start</a></li><li><a class="" href="/docs/hardware/zimacube-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/hardware-details">Hardware Details</a></li><li><a class="" href="/docs/hardware/auto-power-on-setup">Auto Power-On Method</a></li><li><a class="" href="/docs/hardware/pc-direct">PC Direct Connection</a></li><li><a class="" href="/docs/hardware/hdd-interface-guide">HDD Interface Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-guide">7th Bay Usage Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-install">Install 7th Bay</a></li><li><a class="" href="/docs/hardware/auto-power-on">Auto Power-On</a></li><li><a class="" href="/docs/hardware/gpu-expansion">GPU Expansion</a></li><li><a class="" href="/docs/hardware/rtx-pro-2000-on-zimaos">RTX PRO 2000 Performance Test</a></li><li><a class="" href="/docs/hardware/raid-ssd-expansion">RAID SSD Expansion</a></li><li><a class="" href="/docs/hardware/bios-configuration">BIOS Configuration</a></li><li><a class="" href="/docs/hardware/zimacube-fan-diy">DIY Fan Guide</a></li><li><a class="" href="/docs/hardware/zimacube-backplane-replacement">Replace Backplane</a></li><li><a class="" href="/docs/hardware/transfer-speeds-over-thunderbolt">Thunderbolt Transfer Speed</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">Compatible Network Adapters</a></li><li><a class="" href="/docs/hardware/enable-wol-on-zimacube">Enable Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/hardware/zimaboard-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/zimaboard-quick-start">Power On</a></li><li><a class="" href="/docs/hardware/hardware-interface">Hardware Interface</a></li><li><a class="" href="/docs/hardware/power-on-zimaboard-2">Power On ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Fan Installation & PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/hardware/power-on-zimablade">Power On</a></li><li><a class="" href="/docs/hardware/zimablade-overview">Get Started</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibility</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/hardware/7th-bay-led">7th Bay LED Indicator</a></li><li><a class="" href="/docs/hardware/ups-compatibility-list">UPS Compatibility List</a></li><li><a class="" href="/docs/hardware/enable-intel-ax210">Intel AX210 WiFi</a></li><li><a class="" href="/docs/hardware/supported-disk-formats">Supported Disk Formats</a></li><li><a class="" href="/docs/hardware/ax210-wifi-6e">AX210 WiFi Module</a></li><li><a class="" href="/docs/hardware/wake-on-lan-setup">Wake-on-LAN Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Third-Party Systems</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li><li><a class="is-current" href="/docs/hardware/rtx-4000-ada-on-zimaos">RTX 4000 SFF Ada Performance Test</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">NVIDIA RTX 4000 SFF Ada Local LLM Inference Performance Test</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Overview" class="article-heading">Overview<a class="article-anchor" href="#Overview" aria-hidden="true"></a></h2><p>This article documents a hands-on benchmark of the NVIDIA RTX 4000 SFF Ada Generation 20 GB — a 70 W card with no external power connector that fits the ZimaCube — running local LLM inference on ZimaOS 1.7.1 through a containerized llama.cpp server. The 20 GB of VRAM is the key difference from the 16 GB <a href="./rtx-pro-2000-on-zimaos" title="Full benchmark report of the NVIDIA RTX PRO 2000 on ZimaOS" class="doc-link">RTX PRO 2000</a>: it unlocks the model’s native 256K context window.</p>
+<p>For the five-step deployment walkthrough, see <a href="../zimaos/local-llm-inference" title="Deploy a private AI server on your ZimaOS NAS in five steps" class="doc-link">Local LLM Inference</a>.</p>
+<h2 id="TL-DR" class="article-heading">TL;DR<a class="article-anchor" href="#TL-DR" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Finding</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Deployment</td>
+<td>Containerized — <code class="chip">ghcr.io/ggml-org/llama.cpp:server-cuda</code>, no local compile</td>
+</tr>
+<tr>
+<td>Best model</td>
+<td><strong>Qwen3.6-35B-A3B, unsloth UD-IQ3_XXS (13.21 GB)</strong></td>
+</tr>
+<tr>
+<td>Decode speed</td>
+<td><strong>74.5 t&#x2F;s</strong> (Q3_K_S reaches 83.3 t&#x2F;s but costs 2.3 GB more)</td>
+</tr>
+<tr>
+<td>Context</td>
+<td><strong>256K native context achieved</strong> with KV q4 quantization</td>
+</tr>
+<tr>
+<td>MTP speculative decoding</td>
+<td>Tested and abandoned — acceptance 62–72% but decode gain is small and unstable</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>69.8 W at the 70 W wall, 83 °C under full load</td>
+</tr>
+</tbody></table></div>
+<p>In one sentence: with 20 GB of VRAM, the RTX 4000 SFF Ada runs the same 35B MoE model as the 16 GB tier but with the full 256K context window — the recommended setup fits in 14.5 GB with room to spare.</p>
+<h2 id="Test-Environment" class="article-heading">Test Environment<a class="article-anchor" href="#Test-Environment" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPU</td>
+<td>NVIDIA RTX 4000 SFF Ada Generation, Compute Capability 8.9, 20475 MiB</td>
+</tr>
+<tr>
+<td>Device</td>
+<td>ZimaCube (compatible PCIe slot, 70 W no external power)</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>ZimaOS 1.7.1 — driver 580.105.08 auto-activated on card insertion</td>
+</tr>
+<tr>
+<td>Runtime</td>
+<td>Docker + nvidia-container-toolkit, <code class="chip">--gpus all</code> verified</td>
+</tr>
+<tr>
+<td>Engine</td>
+<td><code class="chip">ghcr.io/ggml-org/llama.cpp:server-cuda</code> (4.3 GB image, CUDA sm_80–120 kernels bundled, no local build)</td>
+</tr>
+<tr>
+<td>Model format</td>
+<td>GGUF</td>
+</tr>
+</tbody></table></div>
+<p>Unless noted otherwise, benchmarks use llama-bench with <code class="chip">-p 512 -n 256 -r 3</code> (prompt 512 tokens, generate 256 tokens, mean of 3 runs).</p>
+<h2 id="Benchmark-Results" class="article-heading">Benchmark Results<a class="article-anchor" href="#Benchmark-Results" aria-hidden="true"></a></h2><h3 id="Quantization-Comparison-llama-bench-512-x2F-256" class="article-heading">Quantization Comparison (llama-bench, 512&#x2F;256)<a class="article-anchor" href="#Quantization-Comparison-llama-bench-512-x2F-256" aria-hidden="true"></a></h3><p>The quantization source decides whether the model keeps its <strong>MTP (next-token prediction) layer</strong>: the <code class="chip">prithivMLmods/...-MTP-GGUF</code> quants keep MTP, while the <code class="chip">unsloth/...-GGUF</code> UD quants strip it (loading reports <code class="chip">model doesn&#39;t contain MTP layers</code>).</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Quantization</th>
+<th>Size</th>
+<th>MTP</th>
+<th>Decode t&#x2F;s</th>
+<th>Prefill t&#x2F;s</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Q3_K_S (standard K-quant)</td>
+<td>15.55 GB</td>
+<td>Yes</td>
+<td><strong>83.3</strong></td>
+<td>1692.6</td>
+<td>Best CUDA kernel fit</td>
+</tr>
+<tr>
+<td><strong>IQ3_XXS (unsloth UD)</strong></td>
+<td><strong>13.21 GB</strong></td>
+<td>No</td>
+<td><strong>74.5</strong></td>
+<td><strong>1771.2</strong></td>
+<td>10.6% slower decode, saves 2.3 GB</td>
+</tr>
+</tbody></table></div>
+<p>The 20 GB card should take <strong>IQ3_XXS</strong>: it leaves room for 256K context with KV q4. Q3_K_S at 15.55 GB cannot even load on a 16 GB card.</p>
+<p>The model choice itself is the same as on the 16 GB tier: Qwen3.6-35B-A3B is the strongest model that fits this class of card, and its hybrid MoE architecture is built for agent and coding scenarios — the full bandwidth analysis is on the <a href="./rtx-pro-2000-on-zimaos" title="Full benchmark report of the NVIDIA RTX PRO 2000 on ZimaOS" class="doc-link">RTX PRO 2000</a> page. For serious coding and knowledge-base workloads, the 122B &#x2F; Flash tier is the next step and requires larger cards.</p>
+<h3 id="Optimization-Switches-A-x2F-B-llama-bench-512-x2F-256-mean-of-3-runs" class="article-heading">Optimization Switches A&#x2F;B (llama-bench, 512&#x2F;256, mean of 3 runs)<a class="article-anchor" href="#Optimization-Switches-A-x2F-B-llama-bench-512-x2F-256-mean-of-3-runs" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Prefill</th>
+<th>Decode</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Baseline (no optimizations)</td>
+<td>1713.3</td>
+<td>83.7</td>
+</tr>
+<tr>
+<td>+ flash-attn</td>
+<td>1295.6 (−24%)</td>
+<td>84.2</td>
+</tr>
+<tr>
+<td>+ KV q8</td>
+<td>1692.6</td>
+<td>83.3</td>
+</tr>
+<tr>
+<td>+ ubatch 2048</td>
+<td><strong>2312.9 (+36%)</strong></td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h3 id="Flash-Attention-and-Long-Context" class="article-heading">Flash-Attention and Long Context<a class="article-anchor" href="#Flash-Attention-and-Long-Context" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Prompt</th>
+<th>Prefill with fa&#x3D;on</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4096</td>
+<td>1691.7</td>
+</tr>
+<tr>
+<td>8192</td>
+<td>1635.1</td>
+</tr>
+<tr>
+<td>16384</td>
+<td>1580.8</td>
+</tr>
+</tbody></table></div>
+<p>With fa&#x3D;off, even 4096 tokens fail with <code class="chip">failed to create context</code>. Flash attention is a hard requirement for long contexts with this model.</p>
+<h3 id="256K-Context-Memory-Accounting" class="article-heading">256K Context Memory Accounting<a class="article-anchor" href="#256K-Context-Memory-Accounting" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Result</th>
+<th>VRAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KV f16 + 256K</td>
+<td>Out of memory</td>
+<td>&gt;20 GB</td>
+</tr>
+<tr>
+<td>KV q8 + 256K (no MTP)</td>
+<td>Works</td>
+<td>~18.35 GB (Q3_K_S) &#x2F; 16186 MiB (IQ3_XXS)</td>
+</tr>
+<tr>
+<td>KV q4 + 256K (no MTP)</td>
+<td>Works</td>
+<td><strong>14906 MiB (IQ3_XXS)</strong></td>
+</tr>
+<tr>
+<td>KV q4 + 256K + MTP</td>
+<td>Works (Q3_K_S)</td>
+<td>18894 MiB</td>
+</tr>
+</tbody></table></div>
+<h3 id="MTP-Speculative-Decoding" class="article-heading">MTP Speculative Decoding<a class="article-anchor" href="#MTP-Speculative-Decoding" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Measurement</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Real acceptance rate (server logs)</td>
+<td><strong>62–72%</strong></td>
+</tr>
+<tr>
+<td>Decode gain, natural short replies</td>
+<td>+3.9%</td>
+</tr>
+<tr>
+<td>Decode gain, fixed 256 tokens, temp&#x3D;0.8</td>
+<td>+26.1%</td>
+</tr>
+<tr>
+<td>Decode gain, greedy temp&#x3D;0</td>
+<td>−10.1%</td>
+</tr>
+</tbody></table></div>
+<p>MTP is rejected for the 20 GB tier: acceptance is high, but decode is bandwidth-locked — the MoE model must read about 3B active experts per token regardless. The gain is small and unstable, so the recommendation is to skip MTP.</p>
+<h3 id="Agent-Workload-DeepSeek-Harness-at-Long-Context" class="article-heading">Agent Workload: DeepSeek Harness at Long Context<a class="article-anchor" href="#Agent-Workload-DeepSeek-Harness-at-Long-Context" aria-hidden="true"></a></h3><p>Measured with a real DeepSeek Harness agent session as the workload:</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Total context</th>
+<th>Decode t&#x2F;s</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>76K</td>
+<td>39.2</td>
+</tr>
+<tr>
+<td>101K</td>
+<td>33.0</td>
+</tr>
+</tbody></table></div>
+<p>Decode slows as context grows (larger KV reads plus more attention). This is the inherent cost of long context, not a fault — no overflow, no truncation. Even at ~100K context, ~33 t&#x2F;s is still fluid for a streaming agent. For DeepSeek Harness and Codex-style coding agents, this 256K window is the reason to pick this card over the 16 GB tier.</p>
+<h3 id="Power-and-Temperature-full-load" class="article-heading">Power and Temperature (full load)<a class="article-anchor" href="#Power-and-Temperature-full-load" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Power draw</td>
+<td>69.8 W (at the 70 W limit)</td>
+</tr>
+<tr>
+<td>Temperature</td>
+<td>83 °C (normal; throttling threshold is ~90 °C+)</td>
+</tr>
+<tr>
+<td>Utilization</td>
+<td>96–100%</td>
+</tr>
+<tr>
+<td>Power-limit adjustability</td>
+<td>Not adjustable (<code class="chip">-pl</code> rejected, exit 4)</td>
+</tr>
+</tbody></table></div>
+<h2 id="Why-MTP-Does-Not-Help-Here" class="article-heading">Why MTP Does Not Help Here<a class="article-anchor" href="#Why-MTP-Does-Not-Help-Here" aria-hidden="true"></a></h2><p>On the 16 GB <a href="./rtx-pro-2000-on-zimaos" title="Full benchmark report of the NVIDIA RTX PRO 2000 on ZimaOS" class="doc-link">RTX PRO 2000</a>, decode is capped by memory bandwidth at about 65–70 t&#x2F;s. The 4000 SFF Ada has more bandwidth (320 GB&#x2F;s), which lifts decode to 74–83 t&#x2F;s — but the same MoE bandwidth logic still applies: every token must read the ~3B active experts. MTP adds a draft model on top, and with 62–72% acceptance the real gain is a few percent on natural text, negative under greedy sampling. The memory is better spent on KV q4 and the 256K window.</p>
+<h2 id="Recommended-Configuration-20-GB-Tier" class="article-heading">Recommended Configuration (20 GB Tier)<a class="article-anchor" href="#Recommended-Configuration-20-GB-Tier" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quantization</td>
+<td>Qwen3.6-35B-A3B <strong>UD-IQ3_XXS</strong> (13.21 GB)</td>
+</tr>
+<tr>
+<td>Flash attention</td>
+<td>On</td>
+</tr>
+<tr>
+<td>KV cache</td>
+<td>q4_0</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>256K</td>
+</tr>
+<tr>
+<td>ubatch</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>MTP</td>
+<td>Skip</td>
+</tr>
+<tr>
+<td>VRAM</td>
+<td><strong>14906 MiB (14.56 GB, ~5.5 GB headroom)</strong></td>
+</tr>
+</tbody></table></div>
+<p>Start the server in one command:</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run -d --name llm-server --gpus all -p 8080:8080 \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$PWD</span>/models/llm:/models&quot;</span> \</span><br><span class="line">  ghcr.io/ggml-org/llama.cpp:server-cuda \</span><br><span class="line">  -m /models/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf \</span><br><span class="line">  --host 0.0.0.0 --port 8080 \</span><br><span class="line">  -c 262144 --n-gpu-layers 999 \</span><br><span class="line">  -fa on --cache-type-k q4_0 --cache-type-v q4_0</span><br></pre></td></tr></table></div></figure>
+
+<p>The service exposes an OpenAI-compatible endpoint at <code class="chip">http://&lt;host-ip&gt;:8080/v1</code> (API key is a placeholder, the server does not authenticate). Any OpenAI-format client or agent can connect directly.</p>
+<h2 id="Tier-Comparison" class="article-heading">Tier Comparison<a class="article-anchor" href="#Tier-Comparison" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Combination</th>
+<th>VRAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20 GB</td>
+<td>IQ3_XXS + 256K + KV q4</td>
+<td>14.5 GB</td>
+</tr>
+<tr>
+<td>20 GB</td>
+<td>Q3_K_S + 256K + KV q4 + MTP</td>
+<td>18.45 GB (tight)</td>
+</tr>
+<tr>
+<td>16 GB</td>
+<td>IQ3_XXS + 128K + KV q4</td>
+<td>~14 GB (Q3_K_S OOMs on load)</td>
+</tr>
+</tbody></table></div>
+<h2 id="Limitations" class="article-heading">Limitations<a class="article-anchor" href="#Limitations" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>MTP data points and long-context decay are single samples; variance was not strictly evaluated. The optimization matrix (A&#x2F;B table) is a mean of 3 runs.</li>
+<li>Only the 20 GB single-card tier was verified on hardware. The 16&#x2F;24&#x2F;32 GB tiers follow the theoretical compatibility matrix and are not covered by these measurements.</li>
+<li>NVFP4 (Blackwell-only), EAGLE, and power-limit tuning are not available on this card and were not included.</li>
+</ol>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.522Z" itemprop="dateModified">Last updated: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Previous</span><span class="doc-pagenav__title">AMD Ryzen AI MAX+ 395 NPU</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Contents">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-Environment"><span class="toc-text">Test Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Benchmark-Results"><span class="toc-text">Benchmark Results</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quantization-Comparison-llama-bench-512-x2F-256"><span class="toc-text">Quantization Comparison (llama-bench, 512&#x2F;256)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optimization-Switches-A-x2F-B-llama-bench-512-x2F-256-mean-of-3-runs"><span class="toc-text">Optimization Switches A&#x2F;B (llama-bench, 512&#x2F;256, mean of 3 runs)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flash-Attention-and-Long-Context"><span class="toc-text">Flash-Attention and Long Context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#256K-Context-Memory-Accounting"><span class="toc-text">256K Context Memory Accounting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MTP-Speculative-Decoding"><span class="toc-text">MTP Speculative Decoding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Agent-Workload-DeepSeek-Harness-at-Long-Context"><span class="toc-text">Agent Workload: DeepSeek Harness at Long Context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Power-and-Temperature-full-load"><span class="toc-text">Power and Temperature (full load)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-MTP-Does-Not-Help-Here"><span class="toc-text">Why MTP Does Not Help Here</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recommended-Configuration-20-GB-Tier"><span class="toc-text">Recommended Configuration (20 GB Tier)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tier-Comparison"><span class="toc-text">Tier Comparison</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Limitations"><span class="toc-text">Limitations</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Keep in touch<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Join our subscribers list to get the latest news, updates and special offers.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Enter your email address">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Subscribe
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Products</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Accessories</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Resource</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Support</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contact</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Refund Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Privacy Policy</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Terms of Service</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Shipping Policy</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explore</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Gallery</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Made with IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Community</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">About Us</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distributors</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Affiliate</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/developer/" class="mobile-nav-link">Developer</a></li><li class="menu-item "><a href="/docs/help-center/" class="mobile-nav-link">Help Center</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Forum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/hardware/">Overview</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/hardware/quick-start">Quick Start</a></li><li><a class="" href="/docs/hardware/zimacube-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/hardware-details">Hardware Details</a></li><li><a class="" href="/docs/hardware/auto-power-on-setup">Auto Power-On Method</a></li><li><a class="" href="/docs/hardware/pc-direct">PC Direct Connection</a></li><li><a class="" href="/docs/hardware/hdd-interface-guide">HDD Interface Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-guide">7th Bay Usage Guide</a></li><li><a class="" href="/docs/hardware/7th-bay-install">Install 7th Bay</a></li><li><a class="" href="/docs/hardware/auto-power-on">Auto Power-On</a></li><li><a class="" href="/docs/hardware/gpu-expansion">GPU Expansion</a></li><li><a class="" href="/docs/hardware/rtx-pro-2000-on-zimaos">RTX PRO 2000 Performance Test</a></li><li><a class="" href="/docs/hardware/raid-ssd-expansion">RAID SSD Expansion</a></li><li><a class="" href="/docs/hardware/bios-configuration">BIOS Configuration</a></li><li><a class="" href="/docs/hardware/zimacube-fan-diy">DIY Fan Guide</a></li><li><a class="" href="/docs/hardware/zimacube-backplane-replacement">Replace Backplane</a></li><li><a class="" href="/docs/hardware/transfer-speeds-over-thunderbolt">Thunderbolt Transfer Speed</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">Compatible Network Adapters</a></li><li><a class="" href="/docs/hardware/enable-wol-on-zimacube">Enable Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/hardware/zimaboard-hardware-overview">Hardware Overview</a></li><li><a class="" href="/docs/hardware/zimaboard-quick-start">Power On</a></li><li><a class="" href="/docs/hardware/hardware-interface">Hardware Interface</a></li><li><a class="" href="/docs/hardware/power-on-zimaboard-2">Power On ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Fan Installation & PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/hardware/power-on-zimablade">Power On</a></li><li><a class="" href="/docs/hardware/zimablade-overview">Get Started</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibility</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/hardware/7th-bay-led">7th Bay LED Indicator</a></li><li><a class="" href="/docs/hardware/ups-compatibility-list">UPS Compatibility List</a></li><li><a class="" href="/docs/hardware/enable-intel-ax210">Intel AX210 WiFi</a></li><li><a class="" href="/docs/hardware/supported-disk-formats">Supported Disk Formats</a></li><li><a class="" href="/docs/hardware/ax210-wifi-6e">AX210 WiFi Module</a></li><li><a class="" href="/docs/hardware/wake-on-lan-setup">Wake-on-LAN Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Third-Party Systems</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/hardware/install-unraid">Run Unraid</a></li><li><a class="" href="/docs/hardware/install-truenas">Run TrueNAS</a></li><li><a class="" href="/docs/hardware/openwrt-x86-install">Run OpenWrt</a></li><li><a class="" href="/docs/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux Installation</a></li><li><a class="" href="/docs/hardware/openwrt-usb-install">OpenWrt via USB</a></li><li><a class="" href="/docs/hardware/openwrt-emmc-boot">OpenWrt eMMC Boot</a></li><li><a class="" href="/docs/hardware/openmediavault-install">Install OMV</a></li><li><a class="" href="/docs/hardware/openmediavault-setup">OMV Configuration</a></li><li><a class="" href="/docs/hardware/unraid-install">Run Unraid</a></li><li><a class="" href="/docs/hardware/third-party-os-install">Third-Party Systems</a></li><li><a class="" href="/docs/hardware/minimal-ubuntu-server-build">Ubuntu Server Setup</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Third-Party Hardware Tests</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li><li><a class="is-current" href="/docs/hardware/rtx-4000-ada-on-zimaos">RTX 4000 SFF Ada Performance Test</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>EN</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/rtx-4000-ada-on-zimaos" data-lang="en" selected>English</option>
+        
+          <option value="/docs/zh/hardware/rtx-4000-ada-on-zimaos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/rtx-4000-ada-on-zimaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/rtx-4000-ada-on-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Store</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -89,8 +89,8 @@
 <meta property="og:description" content="协议范围： 本页重点介绍单个 Docker 应用的适配。当前 v2 商店字段、locale 大小写、仓库结构和构建产物请以 Docker Compose 与 x-casaos、仓库结构 和 构建产物 为准。  ZimaOS Docker应用适配手册如何将应用发布到ZimaOS  Docker应用发布与适配教程 PC应用编译与上线教程 云应用迁移教程  ZimaOS Doc">
 <meta property="og:locale">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1727166335257_image.png">
-<meta property="article:published_time" content="2026-09-07T06:35:41.112Z">
-<meta property="article:modified_time" content="2026-09-07T06:35:41.112Z">
+<meta property="article:published_time" content="2026-09-15T09:07:49.751Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.751Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1727166335257_image.png">
@@ -126,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-07T06:35:41.112Z"
+      "datePublished": "2026-09-15T09:07:49.751Z"
     }
   </script>
 
@@ -322,7 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li><li><a class="" href="/docs/zh/developer/introducing-libvirt-go">libvirt-go 介绍</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="developer:app-store-development">
@@ -368,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <blockquote>
 <p><strong>协议范围：</strong> 本页重点介绍单个 Docker 应用的适配。当前 v2 商店字段、locale 大小写、仓库结构和构建产物请以 <a href="./app-store-compose-x-casaos" class="doc-link">Docker Compose 与 x-casaos</a>、<a href="./app-store-repository-structure" class="doc-link">仓库结构</a> 和 <a href="./app-store-build-output" class="doc-link">构建产物</a> 为准。</p>
 </blockquote>
-<h1 id="ZimaOS-Docker应用适配手册" class="article-heading">ZimaOS Docker应用适配手册<a class="article-anchor" href="#ZimaOS-Docker应用适配手册" aria-hidden="true"></a></h1><p>如何将应用发布到ZimaOS</p>
+<h2 id="ZimaOS-Docker应用适配手册" class="article-heading">ZimaOS Docker应用适配手册<a class="article-anchor" href="#ZimaOS-Docker应用适配手册" aria-hidden="true"></a></h2><p>如何将应用发布到ZimaOS</p>
 <ol class="doc-steps">
 <li>Docker应用发布与适配教程</li>
 <li>PC应用编译与上线教程</li>
@@ -376,35 +376,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <p>ZimaOS Docker应用清单与推荐配置</p>
 <p>模块化里程碑：优先进行应用升级而不需要重启</p>
-<h2 id="应用倾向性判断" class="article-heading">应用倾向性判断<a class="article-anchor" href="#应用倾向性判断" aria-hidden="true"></a></h2><blockquote>
+<h3 id="应用倾向性判断" class="article-heading">应用倾向性判断<a class="article-anchor" href="#应用倾向性判断" aria-hidden="true"></a></h3><blockquote>
 <p>初步预测应用适配工作量，是否可以直接适配，是否需要自行构建镜像等。</p>
 </blockquote>
 <p>一般来说，应用的官方网站可以大致分为以下三种倾向性：</p>
-<h3 id="Docker自部署" class="article-heading">Docker自部署<a class="article-anchor" href="#Docker自部署" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Docker自部署" class="article-heading">Docker自部署<a class="article-anchor" href="#Docker自部署" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>难度：🌟</li>
 <li>特点：官方网站或GitHub优先提供自部署选项。</li>
 <li>例如：LocalAI, OpenWebUI 和 Nextcloud 等。</li>
 <li>这意味着该应用的开发者可能在自部署环境中开发和测试过。这也意味着应用本身具有自部署经验，且开发者及社区通常也有相应经验，适配起来相对容易。</li>
 <li>很有可能会提供一个最小配置的AIO镜像，然后我们可以直接进行配置。</li>
 </ul>
-<h3 id="PC自部署" class="article-heading">PC自部署<a class="article-anchor" href="#PC自部署" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="PC自部署" class="article-heading">PC自部署<a class="article-anchor" href="#PC自部署" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>难度：🌟🌟🌟</li>
 <li>特点：官方网站或GitHub优先提供Win&#x2F;Mac&#x2F;Linux的下载，但主要通过WebUI提供主界面。</li>
 <li>例如：AUTOMATIC1111&#x2F;stable-diffusion-webui</li>
 <li>代表了该应用的安装过程，这通常由开发者和社区验证过。但可能没有现成的Docker镜像，因为这不是该项目启动时的重点。</li>
 <li>如果没有现成的docker镜像，可以相对容易地将其打包成Docker镜像，因为安装过程中几乎不需要担心错误。只需要配置所需环境并预先安装依赖项。</li>
 </ul>
-<h3 id="云服务" class="article-heading">云服务<a class="article-anchor" href="#云服务" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="云服务" class="article-heading">云服务<a class="article-anchor" href="#云服务" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>难度：🌟🌟🌟🌟🌟</li>
 <li>特点：官方网站或GitHub建议使用他们提供的云服务，并同时提供自部署方式。通常应用也被描述为一个可以解决多种需求的全方位平台。</li>
 <li>例如：Dify, TaskingAI 等。</li>
 <li>该应用的开发者通常优先考虑云集群的部署环境，并且很可能基于K8s等容器编排环境进行开发。提供的自部署选项通常是通过docker compose或k8s构建的。启动一个完整的应用涉及多个容器服务和多个镜像，同时需要大量的环境变量甚至外部文件，以使应用能够正常启动。</li>
 <li>这类应用需要花费大量精力学习启动过程中需要的各种服务关系，以及大量环境变量的含义和设置方法。同时，如果超出了ZimaOS的应用能力，自己构建镜像将相对困难，因为需要了解该程序所用技术栈的具体配置方法。</li>
 </ul>
-<h2 id="了解应用组件" class="article-heading">了解应用组件<a class="article-anchor" href="#了解应用组件" aria-hidden="true"></a></h2><blockquote>
+<h3 id="了解应用组件" class="article-heading">了解应用组件<a class="article-anchor" href="#了解应用组件" aria-hidden="true"></a></h3><blockquote>
 <p>分析应用依赖了哪些重复服务，不同配置的影响，用户需要关注哪些内容。</p>
 </blockquote>
-<h3 id="分析服务需求" class="article-heading">分析服务需求<a class="article-anchor" href="#分析服务需求" aria-hidden="true"></a></h3><p>通常，每个应用都有自己的独立前端和后端，可能依赖一些共同服务，如：</p>
+<h4 id="分析服务需求" class="article-heading">分析服务需求<a class="article-anchor" href="#分析服务需求" aria-hidden="true"></a></h4><p>通常，每个应用都有自己的独立前端和后端，可能依赖一些共同服务，如：</p>
 <ul class="doc-dots">
 <li>各种数据库：mysql, redis, pg等。</li>
 <li>各种共享API：</li>
@@ -420,13 +420,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote>
 <p>由于当前阶段不支持共享服务和预装&#x2F;推荐依赖，<br>对于应用开发者&#x2F;适配者：<br>可以在适配时优先考虑使用开箱即用的AIO镜像，或者考虑将所需服务打包在镜像或compose中。<br>对于ZimaOS开发者：<br>考虑支持预装和推荐的依赖。</p>
 </blockquote>
-<h3 id="分析数据存储需求" class="article-heading">分析数据存储需求<a class="article-anchor" href="#分析数据存储需求" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="分析数据存储需求" class="article-heading">分析数据存储需求<a class="article-anchor" href="#分析数据存储需求" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>应用运行时生成的临时文件目录</li>
 <li>应用恢复&#x2F;迁移时需要的持久文件目录</li>
 <li>用户需要管理&#x2F;使用的文件目录</li>
 </ul>
 <p>在清楚了解后，根据ZimaOS定义的数据目录结构进行相应的初始化映射，并通过适当的提示告知用户他们需要关注的目录。</p>
-<h3 id="分析端口需求" class="article-heading">分析端口需求<a class="article-anchor" href="#分析端口需求" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="分析端口需求" class="article-heading">分析端口需求<a class="article-anchor" href="#分析端口需求" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>WebUI服务的端口，HTTP&#x2F;HTTPS<ul class="doc-dots">
 <li>通常系统可以自由分配，修改不会影响正常使用</li>
 <li>有些应用可能对这些端口有特定要求，需要明确</li>
@@ -452,7 +452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote>
 <p>由于当前阶段ZimaOS不支持灵活的端口分配，<br>对于应用开发者&#x2F;适配者：<br>可以在适配过程中根据应用特点配置端口并提供提示。<br>对于ZimaOS开发者：<br>可以考虑支持定义的端口分配机制。</p>
 </blockquote>
-<h3 id="分析设备需求" class="article-heading">分析设备需求<a class="article-anchor" href="#分析设备需求" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="分析设备需求" class="article-heading">分析设备需求<a class="article-anchor" href="#分析设备需求" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>GPU需求</li>
 <li>CPU需求</li>
 <li>USB设备需求</li>
@@ -462,16 +462,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote>
 <p>由于当前阶段ZimaOS不支持灵活的设备分配，<br>对于应用开发者&#x2F;适配者：<br>可以在适配过程中根据应用特点配置设备并提供提示。<br>对于ZimaOS开发者：<br>可以考虑支持定义的设备分配机制，以及设备需求的检测和反馈机制。</p>
 </blockquote>
-<h3 id="分析运行时需求" class="article-heading">分析运行时需求<a class="article-anchor" href="#分析运行时需求" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="分析运行时需求" class="article-heading">分析运行时需求<a class="article-anchor" href="#分析运行时需求" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>nvidia</li>
 <li>…</li>
 </ul>
 <p>这种需求较少，但推荐在适配时了解相关的运行时需求，进行配置并适当写入提示信息。</p>
-<h2 id="阅读官方自部署方案" class="article-heading">阅读官方自部署方案<a class="article-anchor" href="#阅读官方自部署方案" aria-hidden="true"></a></h2><blockquote>
+<h3 id="阅读官方自部署方案" class="article-heading">阅读官方自部署方案<a class="article-anchor" href="#阅读官方自部署方案" aria-hidden="true"></a></h3><blockquote>
 <p>在适配时优先学习官方最佳实践</p>
 </blockquote>
 <p>官方的自部署方案和文档通常包含一些优秀的实际案例和部署技巧，提前阅读可以加速适配。</p>
-<h2 id="适配到ZimaOS-Docker应用" class="article-heading">适配到ZimaOS Docker应用<a class="article-anchor" href="#适配到ZimaOS-Docker应用" aria-hidden="true"></a></h2><blockquote>
+<h3 id="适配到ZimaOS-Docker应用" class="article-heading">适配到ZimaOS Docker应用<a class="article-anchor" href="#适配到ZimaOS-Docker应用" aria-hidden="true"></a></h3><blockquote>
 <p>现在可以将之前学到的信息整合，适配到ZimaOS应用中。</p>
 </blockquote>
 <p>在开始编写时，可以参考之前应用的文件进行编写：<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/CasaOS-AppStore/tree/main/Apps" class="doc-link">https://github.com/IceWhaleTech/CasaOS-AppStore/tree/main/Apps</a></p>
@@ -485,14 +485,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>测试安装</li>
 <li>提交到GitHub</li>
 </ol>
-<h3 id="旧版-x-casaos-示例" class="article-heading">旧版 x-casaos 示例<a class="article-anchor" href="#旧版-x-casaos-示例" aria-hidden="true"></a></h3><blockquote>
+<h4 id="旧版-x-casaos-示例" class="article-heading">旧版 x-casaos 示例<a class="article-anchor" href="#旧版-x-casaos-示例" aria-hidden="true"></a></h4><blockquote>
 <p>此处保留精简示例用于说明应用适配流程。完整的 v2 必填字段和允许的分类请以 <a href="./app-store-compose-x-casaos" class="doc-link">Docker Compose 与 x-casaos</a> 为准。</p>
 </blockquote>
 <figure class="highlight plaintext code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">x-casaos:</span><br><span class="line">    id: org.syncthing.syncthing       # 稳定的反向域名应用 ID</span><br><span class="line">    architectures:                  # 支持的架构列表</span><br><span class="line">        - amd64</span><br><span class="line">        - arm</span><br><span class="line">        - arm64</span><br><span class="line">    version: &quot;1.0.0&quot;                # v2 商店展示的应用版本</span><br><span class="line">    main: syncthing                 # `services`下主服务的名称</span><br><span class="line">    author: CasaOS团队</span><br><span class="line">    category: Productivity</span><br><span class="line">    description:                    # 支持多语言</span><br><span class="line">        en_US: Syncthing是一个持续文件同步程序。它实时同步两个或更多计算机之间的文件，安全地保护您的数据免受窥探。您的数据仅属于您，您有权选择存储位置、是否与第三方共享以及如何通过互联网传输。</span><br><span class="line">    developer: Syncthing</span><br><span class="line">    icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Syncthing/icon.png</span><br><span class="line">    tagline:                        # 支持多语言</span><br><span class="line">        en_US: 免费、安全且分布式的文件同步工具。</span><br><span class="line">    thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Jellyfin/thumbnail.jpg</span><br><span class="line">    title:                          # 支持多语言</span><br><span class="line">        en_US: Syncthing</span><br><span class="line">    tips:</span><br><span class="line">        before_install:</span><br><span class="line">            en_US: |</span><br><span class="line">                (用户需要在安装前阅读的一些注意事项，如默认`用户名`和`密码`——支持markdown格式！)</span><br><span class="line">    index: /                        # Web界面的索引页，例如index.html</span><br><span class="line">    port_map: &quot;8384&quot;                # Web界面的端口</span><br></pre></td></tr></table></div></figure>
 
-<h3 id="字段描述" class="article-heading">字段描述<a class="article-anchor" href="#字段描述" aria-hidden="true"></a></h3><h4 id="Descriptions" class="article-heading">Descriptions<a class="article-anchor" href="#Descriptions" aria-hidden="true"></a></h4><p>详细描述</p>
-<h4 id="Tagline" class="article-heading">Tagline<a class="article-anchor" href="#Tagline" aria-hidden="true"></a></h4><p>尽量用一句话表达精髓。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727166335257_image.png"></span></p>
-<h3 id="图标和截图要求" class="article-heading">图标和截图要求<a class="article-anchor" href="#图标和截图要求" aria-hidden="true"></a></h3><h4 id="图标" class="article-heading">图标<a class="article-anchor" href="#图标" aria-hidden="true"></a></h4><ul class="doc-dots">
+<h4 id="字段描述" class="article-heading">字段描述<a class="article-anchor" href="#字段描述" aria-hidden="true"></a></h4><h5 id="Descriptions" class="article-heading">Descriptions<a class="article-anchor" href="#Descriptions" aria-hidden="true"></a></h5><p>详细描述</p>
+<h5 id="Tagline" class="article-heading">Tagline<a class="article-anchor" href="#Tagline" aria-hidden="true"></a></h5><p>尽量用一句话表达精髓。</p><p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1727166335257_image.png"></span></p>
+<h4 id="图标和截图要求" class="article-heading">图标和截图要求<a class="article-anchor" href="#图标和截图要求" aria-hidden="true"></a></h4><h5 id="图标" class="article-heading">图标<a class="article-anchor" href="#图标" aria-hidden="true"></a></h5><ul class="doc-dots">
 <li>优先使用官方Logo的SVG图像</li>
 <li><ul class="doc-dots">
 <li>通常在官方网站的头部</li>
@@ -501,26 +501,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>次要使用PNG图像</li>
 <li>如果没有图标，找设计师绘制一个</li>
 </ul>
-<h4 id="截图" class="article-heading">截图<a class="article-anchor" href="#截图" aria-hidden="true"></a></h4><ul class="doc-dots">
+<h5 id="截图" class="article-heading">截图<a class="article-anchor" href="#截图" aria-hidden="true"></a></h5><ul class="doc-dots">
 <li>优先使用官方提供的截图</li>
 <li>次要使用运行时截图</li>
 </ul>
-<h4 id="设计干预" class="article-heading">设计干预<a class="article-anchor" href="#设计干预" aria-hidden="true"></a></h4><ul class="doc-dots">
+<h5 id="设计干预" class="article-heading">设计干预<a class="article-anchor" href="#设计干预" aria-hidden="true"></a></h5><ul class="doc-dots">
 <li>设计师决定是否干预修改</li>
 </ul>
-<h3 id="其他提示" class="article-heading">其他提示<a class="article-anchor" href="#其他提示" aria-hidden="true"></a></h3><h3 id="容器需要访问其他主机端口" class="article-heading">容器需要访问其他主机端口<a class="article-anchor" href="#容器需要访问其他主机端口" aria-hidden="true"></a></h3><p>如果主机上运行其他服务（例如Chroma, LocalAi或LMStudio），需要使用<code class="chip">http://host.docker.internal:xxxx</code>从Docker容器访问主机服务，因为<code class="chip">localhost:xxxx</code></p>
+<h4 id="其他提示" class="article-heading">其他提示<a class="article-anchor" href="#其他提示" aria-hidden="true"></a></h4><h4 id="容器需要访问其他主机端口" class="article-heading">容器需要访问其他主机端口<a class="article-anchor" href="#容器需要访问其他主机端口" aria-hidden="true"></a></h4><p>如果主机上运行其他服务（例如Chroma, LocalAi或LMStudio），需要使用<code class="chip">http://host.docker.internal:xxxx</code>从Docker容器访问主机服务，因为<code class="chip">localhost:xxxx</code></p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-07T06:35:41.112Z" itemprop="dateModified">最后更新：2026-09-07</time>
-      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/developer/contributions"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">社区贡献</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/developer/app-store-create-from-scratch"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">创建应用商店</span></a></nav>
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.751Z" itemprop="dateModified">最后更新：2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/developer/introducing-libvirt-go"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">libvirt-go 介绍</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/developer/app-store-create-from-scratch"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">创建应用商店</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="目录">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ZimaOS-Docker%E5%BA%94%E7%94%A8%E9%80%82%E9%85%8D%E6%89%8B%E5%86%8C"><span class="toc-text">ZimaOS Docker应用适配手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%80%BE%E5%90%91%E6%80%A7%E5%88%A4%E6%96%AD"><span class="toc-text">应用倾向性判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker%E8%87%AA%E9%83%A8%E7%BD%B2"><span class="toc-text">Docker自部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PC%E8%87%AA%E9%83%A8%E7%BD%B2"><span class="toc-text">PC自部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1"><span class="toc-text">云服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%BA%94%E7%94%A8%E7%BB%84%E4%BB%B6"><span class="toc-text">了解应用组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%E9%9C%80%E6%B1%82"><span class="toc-text">分析服务需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E9%9C%80%E6%B1%82"><span class="toc-text">分析数据存储需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%AB%AF%E5%8F%A3%E9%9C%80%E6%B1%82"><span class="toc-text">分析端口需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%AE%BE%E5%A4%87%E9%9C%80%E6%B1%82"><span class="toc-text">分析设备需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%BF%90%E8%A1%8C%E6%97%B6%E9%9C%80%E6%B1%82"><span class="toc-text">分析运行时需求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E5%AE%98%E6%96%B9%E8%87%AA%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88"><span class="toc-text">阅读官方自部署方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%88%B0ZimaOS-Docker%E5%BA%94%E7%94%A8"><span class="toc-text">适配到ZimaOS Docker应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A7%E7%89%88-x-casaos-%E7%A4%BA%E4%BE%8B"><span class="toc-text">旧版 x-casaos 示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="toc-text">字段描述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Descriptions"><span class="toc-text">Descriptions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tagline"><span class="toc-text">Tagline</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87%E5%92%8C%E6%88%AA%E5%9B%BE%E8%A6%81%E6%B1%82"><span class="toc-text">图标和截图要求</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87"><span class="toc-text">图标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%AA%E5%9B%BE"><span class="toc-text">截图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%B9%B2%E9%A2%84"><span class="toc-text">设计干预</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%8F%90%E7%A4%BA"><span class="toc-text">其他提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96%E4%B8%BB%E6%9C%BA%E7%AB%AF%E5%8F%A3"><span class="toc-text">容器需要访问其他主机端口</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZimaOS-Docker%E5%BA%94%E7%94%A8%E9%80%82%E9%85%8D%E6%89%8B%E5%86%8C"><span class="toc-text">ZimaOS Docker应用适配手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%80%BE%E5%90%91%E6%80%A7%E5%88%A4%E6%96%AD"><span class="toc-text">应用倾向性判断</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker%E8%87%AA%E9%83%A8%E7%BD%B2"><span class="toc-text">Docker自部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PC%E8%87%AA%E9%83%A8%E7%BD%B2"><span class="toc-text">PC自部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1"><span class="toc-text">云服务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%BA%94%E7%94%A8%E7%BB%84%E4%BB%B6"><span class="toc-text">了解应用组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%9C%8D%E5%8A%A1%E9%9C%80%E6%B1%82"><span class="toc-text">分析服务需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E9%9C%80%E6%B1%82"><span class="toc-text">分析数据存储需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%AB%AF%E5%8F%A3%E9%9C%80%E6%B1%82"><span class="toc-text">分析端口需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%AE%BE%E5%A4%87%E9%9C%80%E6%B1%82"><span class="toc-text">分析设备需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%BF%90%E8%A1%8C%E6%97%B6%E9%9C%80%E6%B1%82"><span class="toc-text">分析运行时需求</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E5%AE%98%E6%96%B9%E8%87%AA%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88"><span class="toc-text">阅读官方自部署方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%88%B0ZimaOS-Docker%E5%BA%94%E7%94%A8"><span class="toc-text">适配到ZimaOS Docker应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A7%E7%89%88-x-casaos-%E7%A4%BA%E4%BE%8B"><span class="toc-text">旧版 x-casaos 示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5%E6%8F%8F%E8%BF%B0"><span class="toc-text">字段描述</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Descriptions"><span class="toc-text">Descriptions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Tagline"><span class="toc-text">Tagline</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87%E5%92%8C%E6%88%AA%E5%9B%BE%E8%A6%81%E6%B1%82"><span class="toc-text">图标和截图要求</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87"><span class="toc-text">图标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%88%AA%E5%9B%BE"><span class="toc-text">截图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%B9%B2%E9%A2%84"><span class="toc-text">设计干预</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%8F%90%E7%A4%BA"><span class="toc-text">其他提示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96%E4%B8%BB%E6%9C%BA%E7%AB%AF%E5%8F%A3"><span class="toc-text">容器需要访问其他主机端口</span></a></li></ol></li></ol></li></ol>
     </nav>
   </aside>
 </div>
@@ -770,7 +770,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/zh/developer/python-setup">Python 环境</a></li><li><a class="" href="/docs/zh/developer/how-to-contribute">贡献指南</a></li><li><a class="" href="/docs/zh/developer/contributions">社区贡献</a></li><li><a class="" href="/docs/zh/developer/introducing-libvirt-go">libvirt-go 介绍</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="developer:app-store-development">

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>libvirt-goの紹介：Cgoを使わないLibvirt API | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/developer/introducing-libvirt-go">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/developer/introducing-libvirt-go">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/developer/introducing-libvirt-go">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZVMのエンジニアリング作業から生まれた実験的なpuregoバインディング、libvirt-goをご紹介します。cgoを使わないビルドと、バージョンを考慮したlibvirtアクセスを実現します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="libvirt-goの紹介：Cgoを使わないLibvirt API">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/developer/introducing-libvirt-go">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZVMのエンジニアリング作業から生まれた実験的なpuregoバインディング、libvirt-goをご紹介します。cgoを使わないビルドと、バージョンを考慮したlibvirtアクセスを実現します。">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/libvirt-go-launch-hero.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/libvirt-go-architecture.webp">
+<meta property="article:published_time" content="2026-09-15T09:07:49.728Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.728Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/libvirt-go-launch-hero.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "libvirt-goの紹介：Cgoを使わないGo向けLibvirt API",
+      "description": "ZVMのエンジニアリング作業から生まれた実験的なpuregoバインディング、libvirt-goをご紹介します。cgoを使わないビルドと、バージョンを考慮したlibvirtアクセスを実現します。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.728Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Developer",
+          "item": "https://www.zimaspace.com/docs/jp/developer/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "libvirt-goの紹介：Cgoを使わないGo向けLibvirt API"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item current_page_item"><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/developer/introducing-libvirt-go">English</a></li>
+            
+              <li><a href="/docs/zh/developer/introducing-libvirt-go">中文</a></li>
+            
+              <li><a href="/docs/jp/developer/introducing-libvirt-go">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/developer/introducing-libvirt-go">Português</a></li>
+            
+              <li><a href="/docs/es/developer/introducing-libvirt-go">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/developer/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">ストレージとファイルシステム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-storage-and-filesystem"><li><a class="" href="/docs/jp/developer/zfs-setup">ZFS 設定</a></li><li><a class="" href="/docs/jp/developer/nfs-on-zimaos">NFS ファイル共有</a></li><li><a class="" href="/docs/jp/developer/folder-encryption">暗号化フォルダー</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション概要</a></li><li><a class="" href="/docs/jp/developer/raid6-setup">RAID 6 を作成</a></li><li><a class="" href="/docs/jp/developer/raid-rebuild-after-reinstall">再インストール後の RAID 再構築</a></li><li><a class="" href="/docs/jp/developer/iscsi-guide">iSCSI 利用ガイド</a></li><li><a class="" href="/docs/jp/developer/iscsi-setup">iSCSI 設定</a></li><li><a class="" href="/docs/jp/developer/rsync-backup-clones">Rsync バックアップクローン</a></li><li><a class="" href="/docs/jp/developer/synology-smb-connect">Synology SMB 接続</a></li><li><a class="" href="/docs/jp/developer/zimaos-qts-two-way-sync-guide">QTS 双方向同期</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">ネットワークとプロトコル</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-networking-and-protocols"><li><a class="" href="/docs/jp/developer/networking">ネットワーク設定</a></li><li><a class="" href="/docs/jp/developer/how-to-open-ssh-in-zimaos">SSH を有効化</a></li><li><a class="" href="/docs/jp/developer/nas-transfer-speed-troubleshooting">ネットワーク転送速度</a></li><li><a class="" href="/docs/jp/developer/ssh-setup">SSH 高度な設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-development">
+          <span class="doc-sidebar__toggle-text">開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/jp/developer/python-setup">Python 環境</a></li><li><a class="" href="/docs/jp/developer/how-to-contribute">貢献ガイド</a></li><li><a class="" href="/docs/jp/developer/contributions">コミュニティの貢献</a></li><li><a class="is-current" href="/docs/jp/developer/introducing-libvirt-go">libvirt-go の紹介</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">App Store 開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-app-store-development"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築、公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li><li><a class="" href="/docs/jp/developer/app-store-repository-structure">リポジトリ構成</a></li><li><a class="" href="/docs/jp/developer/app-store-config">ストア設定</a></li><li><a class="" href="/docs/jp/developer/app-store-compose-x-casaos">Docker Compose と x-casaos</a></li><li><a class="" href="/docs/jp/developer/app-store-build-output">ビルド出力</a></li><li><a class="" href="/docs/jp/developer/app-store-assets-localization">アセットとローカライズ</a></li><li><a class="" href="/docs/jp/developer/app-store-ci-cd">App Store CI/CD</a></li><li><a class="" href="/docs/jp/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/jp/developer/app-store-validation-workflow">検証ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-build-workflow">ビルドワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-publishing-workflow">公開ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration">v1 から v2 へ移行</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration-checklist">移行チェックリスト</a></li><li><a class="" href="/docs/jp/developer/app-store-faq">開発者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-api"><li><a class="" href="/docs/jp/developer/openapi-developer-guide">ZimaOS API ガイド</a></li><li><a class="" href="/docs/jp/developer/openapi-live-preview">ZimaOS API エクスプローラー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-developer-version-log">
+          <span class="doc-sidebar__toggle-text">バージョン履歴</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/jp/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/jp/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/jp/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/jp/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/jp/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/jp/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/jp/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/jp/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/jp/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/jp/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/jp/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/jp/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/jp/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/jp/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/jp/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/jp/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/jp/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/jp/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/jp/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/jp/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/jp/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/jp/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">libvirt-goの紹介：Cgoを使わないGo向けLibvirt API</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="libvirt-goの紹介：Cgoを使わないGo向けLibvirt-API" class="article-heading">libvirt-goの紹介：Cgoを使わないGo向けLibvirt API<a class="article-anchor" href="#libvirt-goの紹介：Cgoを使わないGo向けLibvirt-API" aria-hidden="true"></a></h2><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/libvirt-go-launch-hero.webp" alt="ZVMを実行するZimaシステムと、cgoを無効にしたGoビルドを表示するターミナル。"></span></p>
+<p>本日、ZimaSpace Engineeringは<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Ns2Kracy/libvirt-go" class="doc-link">libvirt-go</a>を公開します。これは、puregoで構築した、cgoを使わないGo向けlibvirtバインディングの実験的な開発者プレビューです。このプロジェクトは、ZVMの開発と、ユーザーがHome Assistant OS、Windows、pfSenseなどのワークロード用マシンを作成・管理するホームサーバー仮想化の実用的なニーズから生まれました。Goとlibvirtの開発者がこのアプローチを検証し、その限界のテストに協力できるよう、今回ライブラリを公開します。libvirt-goは、リリース済みのどのZimaOSビルドにも含まれていません。今後、既存のZVMバックエンドを改善するために段階的に活用する予定の、独立した実験的プロジェクトです。</p>
+<h3 id="ZVMの構築中に直面した課題" class="article-heading">ZVMの構築中に直面した課題<a class="article-anchor" href="#ZVMの構築中に直面した課題" aria-hidden="true"></a></h3><p>ZVMを構築する際、libvirtを通じて仮想マシンの定義、起動、停止、状態確認、削除を行うGoコードが必要でした。これらの処理は、ストレージの接続やネットワークインターフェースの構成を含む、ホームサーバーVMの通常のライフサイクルを支えます。リリースビルドを複雑にすることなく、バックエンドがそのライフサイクルをより広く扱えるようにしたいと考えていました。</p>
+<p>主な課題は、cgoのクロスコンパイルでした。リリース用のクロスビルドを<code class="chip">CGO_ENABLED=0</code>で実行したいと考えていましたが、この設定ではcgoコードがビルドから除外されます。開発者が別のターゲット向けにZVMをビルドする場合、cgoベースのバインディングにはGoコンパイラー以外も必要です。ビルドマシンには、libvirtの開発用ヘッダー、それらを参照するpkg-configメタデータ、対象プラットフォーム用の動作するCコンパイラーも必要です。依存関係が増えるたびに、一貫したGoバイナリーを生成すべきリリースパイプラインへ、ホストとターゲットに関する前提が加わります。</p>
+<p>また、各ターゲットシステムにインストールされているlibvirtのバージョンも考慮する必要がありました。あるマシンでは、古い環境に存在しないシンボルやAPIが公開されている場合があります。1組のヘッダーに対するコンパイル時チェックだけでは、対応が必要なすべての実行環境を表現できません。そのため、Go APIには慎重に定めた対応範囲、実行時のバージョン認識、関数が利用できない場合の明確な動作が必要です。リソースの所有権も重要です。VM、接続、コールバックのハンドルには明示的な解放規則が必要であり、長時間にわたるライフサイクル処理でネイティブリソースをリークさせてはいけません。</p>
+<p>この経験から、puregoでlibvirt-goを構築し、libvirtを動的に読み込んでcgoなしで呼び出す方法に至りました。ZVMから着想を得た独立した実験として始め、テスト後に有用な部分を既存のバックエンドへ段階的に導入する予定です。現在、リリース済みのZimaOSビルドにはこの統合は含まれていません。</p>
+<h3 id="なぜ別のGoバインディングを構築するのか？" class="article-heading">なぜ別のGoバインディングを構築するのか？<a class="article-anchor" href="#なぜ別のGoバインディングを構築するのか？" aria-hidden="true"></a></h3><p>既存のGoバインディングは、長年にわたりlibvirtユーザーとGoの仮想化プロジェクトを支えてきました。libvirt-goは、ZVMの開発中に直面した特定の制約に対して、異なる手法を採用します。アプリケーションのビルドは<code class="chip">CGO_ENABLED=0</code>で成功する必要があるため、ビルド環境にはlibvirtのヘッダー、<code class="chip">pkg-config</code>、対象プラットフォーム向けのCコンパイラーが不要です。これにより、Goを中心とするリリースパイプライン内でクロスコンパイルを維持しやすくなります。</p>
+<p>生成されたバイナリーは、引き続き同一プロセス内でネイティブのlibvirt共有ライブラリにアクセスします。Goアプリケーションとlibvirtの間に、付随するサービスや別のプロトコルはありません。このプロジェクトは、アップストリームのメタデータから広範な低レベルAPIを生成し、より安全なGoのライフサイクルが必要なリソースハンドルと値には、所有権を考慮して手書きしたラッパーを追加します。</p>
+<p>実行時のシンボル検出も中核的な目標です。インストール済みのlibvirtは生成に使用したメタデータより古い場合がある一方、ディストリビューションが一部の新しい関数をバックポートしている場合もあります。libvirt-goは実際に存在するシンボルを確認するため、1つのビルド時バージョンですべてのターゲットを表せると想定せず、呼び出し側が利用できない処理を明示的に扱えます。この組み合わせは、ZVMのクロスビルドとデプロイの制約に適しています。また、cgoを使わないビルド、同一プロセス内でのlibvirtアクセス、多様なLinux環境にわたる慎重な互換性対応を必要とする、ほかのGoプロジェクトにも適している可能性があります。</p>
+<h3 id="libvirt-goの仕組み" class="article-heading">libvirt-goの仕組み<a class="article-anchor" href="#libvirt-goの仕組み" aria-hidden="true"></a></h3><p>libvirt-goには、生成された低レベル層と、手書きの高レベル層があります。実行時に<code class="chip">purego</code>がネイティブのlibvirt共有ライブラリを開き、CシンボルをGoから呼び出せる関数にバインドします。これにより、libvirtを同じプロセスで動作させながら、アプリケーションのビルドからcgoを除外できます。そのため、プログラムを実行するマシンには、引き続き互換性のあるlibvirt共有ライブラリが必要です。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/libvirt-go-architecture.webp" alt="Goアプリケーションから高レベルラッパー、生成されたRawAPIバインディング、puregoを経てネイティブlibvirtライブラリに至るlibvirt-goのアーキテクチャ。"></span></p>
+<p>ジェネレーターは、このリポジトリにベンダーとして取り込んだlibvirt 12.6.0の公式API XMLメタデータを読み込みます。main、admin、QEMU、LXCの各API全体で、このメタデータから正確に568個の関数と1,093個のenumが生成されます。生成されたサーフェスは、公開<code class="chip">RawAPI</code>メソッドを<code class="chip">purego</code>に適した型で提供します。そのカタログにはソースライブラリのルーティングも記録されるため、各関数はメインのlibvirtライブラリ、またはadmin、QEMU、LXCの各拡張ライブラリで検索されます。生成されたシンボル登録データは名前と呼び出し先を結び付け、導入バージョンはアップストリームのlibvirtが各関数を追加した時期を記録します。拡張ライブラリが見つからない場合は、そのライブラリが持つシンボルに影響しますが、メインライブラリの読み込みは妨げません。</p>
+<p>生成処理は広い対応範囲を提供し、手書きのラッパーはXML宣言だけでは表現できない動作規則を提供します。これらのラッパーは、接続、ドメイン、ストリーム、その他のネイティブハンドルの所有権を追跡します。割り当て済みの戻り値をGoデータにコピーし、必要に応じてネイティブの割り当てを解放します。また、ネイティブ呼び出しが必要とする期間にわたってGoの値を保持し、コールバックの登録とクリーンアップを管理して、libvirtのスレッドローカルなエラー記録を構造化されたGoエラーに変換します。呼び出しが成功した場合でも、参照の所有権が移る、解放が必要なメモリーが返る、呼び出し終了後も有効な処理が登録される可能性があるため、これらの詳細は重要です。</p>
+<p>互換性はローダー内に隠さず、呼び出し側から確認できます。<code class="chip">HasSymbol</code>は、読み込まれたライブラリが生成済みの関数をエクスポートしているかを報告します。<code class="chip">SymbolVersion</code>は、既知のシンボルが導入されたアップストリームのバージョンを報告します。要求した関数が存在しない場合、生成されたraw呼び出しと高レベル呼び出しは<code class="chip">SymbolUnavailableError</code>を返します。このエラーは<code class="chip">ErrSymbolUnavailable</code>をラップするため、通常のGoのエラー検査で、シンボル名と導入バージョンを保持したまま共通の状態を認識できます。</p>
+<p>このシンボル単位のモデルは、古いlibvirt環境とディストリビューションによるバックポートをサポートします。数値バージョンを完全な機能一覧として扱わず、実行時ライブラリがエクスポートする内容に基づきます。高レベルラッパーがない特殊な操作には<code class="chip">RawAPI</code>を使用できますが、raw呼び出し側はCの失敗センチネル、ネイティブの所有権、スレッドローカルなエラー処理に引き続き責任を負います。アプリケーションコードでは、高レベル層のほうが安全な出発点です。</p>
+<h3 id="試してみる" class="article-heading">試してみる<a class="article-anchor" href="#試してみる" aria-hidden="true"></a></h3><p>リポジトリのサンプルは、libvirtの<code class="chip">test:///default</code> URIを読み取り専用モードで開き、そのドメインを一覧表示します。</p>
+<!-- markdownlint-disable MD010 -->
+<figure class="highlight go code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line"></span><br><span class="line">	libvirt <span class="string">&quot;github.com/Ns2Kracy/libvirt-go&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	conn, err := libvirt.NewConnectReadOnly(<span class="string">&quot;test:///default&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">if</span> _, err := conn.Close(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Printf(<span class="string">&quot;close connection: %v&quot;</span>, err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	domains, err := conn.ListAllDomains(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, domain := <span class="keyword">range</span> domains &#123;</span><br><span class="line">		name, nameErr := domain.GetName()</span><br><span class="line">		<span class="keyword">if</span> err := domain.Free(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Printf(<span class="string">&quot;free domain: %v&quot;</span>, err)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> nameErr != <span class="literal">nil</span> &#123;</span><br><span class="line">			log.Fatal(nameErr)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println(name)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<!-- markdownlint-enable MD010 -->
+
+<p>リポジトリのルートから、libvirtがインストールされた対応Linuxマシン上で、cgoを無効にしてサンプルを実行します。</p>
+<figure class="highlight sh code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">CGO_ENABLED=0 go run ./examples/list-domains</span><br></pre></td></tr></table></div></figure>
+
+<p><code class="chip">test:///default</code>はlibvirtの合成テストドライバーです。サンプルリソースを提供し、実際のゲストには変更を加えません。ビルドにlibvirtの開発用ファイルは不要です。ただし、プログラムの実行時には互換性のあるlibvirt共有ライブラリが必要です。</p>
+<h3 id="現在の制限と検証" class="article-heading">現在の制限と検証<a class="article-anchor" href="#現在の制限と検証" aria-hidden="true"></a></h3><p>libvirt-goは実験段階にあり、本番ワークロードには推奨されません。実行時テスト済みでサポート対象となるプラットフォームはLinux amd64だけです。Linux arm64はコンパイルチェックのみ行っています。macOS、FreeBSD、NetBSDのローダー経路はこのプロジェクトではテストしておらず、サポート対象外です。</p>
+<p>実行時には、互換性のあるネイティブlibvirt共有ライブラリが必要です。アプリケーションのビルドからcgoを除外すると、ビルド時のCツールチェーン依存はなくなりますが、libvirt自体が置き換わるわけではありません。アプリケーションは接続を閉じ、各APIの所有権規則に従って返されたリソースを明示的に解放する必要があります。<code class="chip">RawAPI</code>の呼び出し側は、ネイティブの失敗センチネルを認識し、同じOSスレッドでスレッドローカルなlibvirtエラーを取得する必要もあります。本番のlibvirt&#x2F;QEMU&#x2F;KVM環境では検証していません。</p>
+<p>テストによる検証結果は、これらのサポート範囲とは分けて扱います。自動CIでは、ジェネレーター、ABIレイアウト、所有権ヘルパーを対象とするcgo無効のユニットテスト、Ubuntu 22.04と24.04上で<code class="chip">test:///default</code>を使用する合成統合テスト、raceチェック、生成コードのチェックを実行します。ゲート付きの実環境統合ジョブでは、一時的なUbuntuランナー上で隔離されたQEMU&#x2F;libvirtデーモンを起動し、使い捨てのフィクスチャ、ゲストライフサイクルのコールバック、クリーンアップを検証します。互換性チェックでは、異なるパッケージ版libvirtランタイムと、シンボルが見つからない場合の動作を扱います。GovulncheckとCodeQLにより、依存関係とコードのセキュリティ分析も追加します。</p>
+<p>これらのチェックは、APIの動作とテストの隔離性について有用な証拠を提供します。本番環境におけるストレージ転送、ストリーム、コールバック負荷、長時間にわたるゲストの頻繁な入れ替わりに対する信頼性を確立するものではありません。</p>
+<h3 id="今後の展開" class="article-heading">今後の展開<a class="article-anchor" href="#今後の展開" aria-hidden="true"></a></h3><p>今後の方針の1つは、各部分がテストで有用だと確認された後、libvirt-goを既存のZVMバックエンドの段階的な改善に使用することです。このライブラリは独立したパッケージとして維持し、cgoを使わないビルドで同一プロセス内のlibvirtアクセスを必要とする、ほかのGoプロジェクトも利用できるようにします。短期的な作業では、高レベルラッパーの拡充、高負荷時のストリームとコールバックのテスト、リソース寿命に関する検証範囲の強化、古いものから新しいものまで幅広いlibvirt互換性マトリクスの検証、Linux arm64をコンパイルチェックから実行時検証へ進めることに重点を置きます。ZimaOSのバージョン、リリース日、統合スケジュールの発表はありません。</p>
+<h3 id="開発者プレビューを試す" class="article-heading">開発者プレビューを試す<a class="article-anchor" href="#開発者プレビューを試す" aria-hidden="true"></a></h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Ns2Kracy/libvirt-go" class="doc-link">libvirt-goの開発者プレビュー</a>を試し、不足している点を見つけたら、対象を絞った<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Ns2Kracy/libvirt-go/issues" class="doc-link">GitHub issue</a>を作成してください。Linuxディストリビューションとアーキテクチャ、インストール済みのlibvirtバージョン、不足している高レベルラッパーまたは利用できないシンボル、最小限の再現手順を含めてください。</p>
+<p>古いlibvirtバージョンとLinux arm64での動作報告は、特に有用です。リソース、コールバック、ストリームに関する不具合では、クリーンアップの順序と、<code class="chip">test:///default</code>または実際のデーモンのどちらで問題を再現できるかを説明してください。コントリビューションも歓迎します。不足しているラッパーを追加する場合は、基盤となるlibvirt関数と所有権の動作を明記したissueから始めてください。そうすることで、実装とテストを一緒にレビューできます。</p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.728Z" itemprop="dateModified">最終更新日: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/developer/contributions"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">コミュニティの貢献</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/developer/docker-app-publishing"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">アプリを構築、公開</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#libvirt-go%E3%81%AE%E7%B4%B9%E4%BB%8B%EF%BC%9ACgo%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84Go%E5%90%91%E3%81%91Libvirt-API"><span class="toc-text">libvirt-goの紹介：Cgoを使わないGo向けLibvirt API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ZVM%E3%81%AE%E6%A7%8B%E7%AF%89%E4%B8%AD%E3%81%AB%E7%9B%B4%E9%9D%A2%E3%81%97%E3%81%9F%E8%AA%B2%E9%A1%8C"><span class="toc-text">ZVMの構築中に直面した課題</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%81%AA%E3%81%9C%E5%88%A5%E3%81%AEGo%E3%83%90%E3%82%A4%E3%83%B3%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%EF%BC%9F"><span class="toc-text">なぜ別のGoバインディングを構築するのか？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#libvirt-go%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">libvirt-goの仕組み</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B"><span class="toc-text">試してみる</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8F%BE%E5%9C%A8%E3%81%AE%E5%88%B6%E9%99%90%E3%81%A8%E6%A4%9C%E8%A8%BC"><span class="toc-text">現在の制限と検証</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8A%E5%BE%8C%E3%81%AE%E5%B1%95%E9%96%8B"><span class="toc-text">今後の展開</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%96%8B%E7%99%BA%E8%80%85%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E8%A9%A6%E3%81%99"><span class="toc-text">開発者プレビューを試す</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item "><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item current_page_item"><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/developer/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="developer:storage-and-filesystem">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-storage-and-filesystem">
+          <span class="doc-sidebar__toggle-text">ストレージとファイルシステム</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-storage-and-filesystem"><li><a class="" href="/docs/jp/developer/zfs-setup">ZFS 設定</a></li><li><a class="" href="/docs/jp/developer/nfs-on-zimaos">NFS ファイル共有</a></li><li><a class="" href="/docs/jp/developer/folder-encryption">暗号化フォルダー</a></li><li><a class="" href="/docs/jp/zimaos/raid-options">RAID オプション概要</a></li><li><a class="" href="/docs/jp/developer/raid6-setup">RAID 6 を作成</a></li><li><a class="" href="/docs/jp/developer/raid-rebuild-after-reinstall">再インストール後の RAID 再構築</a></li><li><a class="" href="/docs/jp/developer/iscsi-guide">iSCSI 利用ガイド</a></li><li><a class="" href="/docs/jp/developer/iscsi-setup">iSCSI 設定</a></li><li><a class="" href="/docs/jp/developer/rsync-backup-clones">Rsync バックアップクローン</a></li><li><a class="" href="/docs/jp/developer/synology-smb-connect">Synology SMB 接続</a></li><li><a class="" href="/docs/jp/developer/zimaos-qts-two-way-sync-guide">QTS 双方向同期</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:networking-and-protocols">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-networking-and-protocols">
+          <span class="doc-sidebar__toggle-text">ネットワークとプロトコル</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-networking-and-protocols"><li><a class="" href="/docs/jp/developer/networking">ネットワーク設定</a></li><li><a class="" href="/docs/jp/developer/how-to-open-ssh-in-zimaos">SSH を有効化</a></li><li><a class="" href="/docs/jp/developer/nas-transfer-speed-troubleshooting">ネットワーク転送速度</a></li><li><a class="" href="/docs/jp/developer/ssh-setup">SSH 高度な設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-development">
+          <span class="doc-sidebar__toggle-text">開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/jp/developer/python-setup">Python 環境</a></li><li><a class="" href="/docs/jp/developer/how-to-contribute">貢献ガイド</a></li><li><a class="" href="/docs/jp/developer/contributions">コミュニティの貢献</a></li><li><a class="is-current" href="/docs/jp/developer/introducing-libvirt-go">libvirt-go の紹介</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:app-store-development">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-app-store-development">
+          <span class="doc-sidebar__toggle-text">App Store 開発</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-app-store-development"><li><a class="" href="/docs/jp/developer/docker-app-publishing">アプリを構築、公開</a></li><li><a class="" href="/docs/jp/developer/app-store-create-from-scratch">App Store を作成</a></li><li><a class="" href="/docs/jp/developer/app-store-repository-structure">リポジトリ構成</a></li><li><a class="" href="/docs/jp/developer/app-store-config">ストア設定</a></li><li><a class="" href="/docs/jp/developer/app-store-compose-x-casaos">Docker Compose と x-casaos</a></li><li><a class="" href="/docs/jp/developer/app-store-build-output">ビルド出力</a></li><li><a class="" href="/docs/jp/developer/app-store-assets-localization">アセットとローカライズ</a></li><li><a class="" href="/docs/jp/developer/app-store-ci-cd">App Store CI/CD</a></li><li><a class="" href="/docs/jp/developer/app-store-github-actions">GitHub Actions</a></li><li><a class="" href="/docs/jp/developer/app-store-validation-workflow">検証ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-build-workflow">ビルドワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-publishing-workflow">公開ワークフロー</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration">v1 から v2 へ移行</a></li><li><a class="" href="/docs/jp/developer/app-store-v1-v2-migration-checklist">移行チェックリスト</a></li><li><a class="" href="/docs/jp/developer/app-store-faq">開発者 FAQ</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:api">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-api">
+          <span class="doc-sidebar__toggle-text">ZimaOS API</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-api"><li><a class="" href="/docs/jp/developer/openapi-developer-guide">ZimaOS API ガイド</a></li><li><a class="" href="/docs/jp/developer/openapi-live-preview">ZimaOS API エクスプローラー</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="developer:version-log">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-developer-version-log">
+          <span class="doc-sidebar__toggle-text">バージョン履歴</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-version-log"><li><a class="" href="/docs/developer/v-1-7-1">v1.7.1</a></li><li><a class="" href="/docs/jp/developer/v-1-7-0">v1.7.0</a></li><li><a class="" href="/docs/jp/developer/v-1-6-2">v1.6.2</a></li><li><a class="" href="/docs/jp/developer/v-1-6-1">v1.6.1</a></li><li><a class="" href="/docs/jp/developer/v-1-6-0">v1.6.0</a></li><li><a class="" href="/docs/jp/developer/v-1-5-4">v1.5.4</a></li><li><a class="" href="/docs/jp/developer/v-1-5-3">v1.5.3</a></li><li><a class="" href="/docs/jp/developer/v-1-5-2">v1.5.2</a></li><li><a class="" href="/docs/jp/developer/v-1-5-1">v1.5.1</a></li><li><a class="" href="/docs/jp/developer/v-1-5-0">v1.5.0</a></li><li><a class="" href="/docs/jp/developer/v-1-4-4">v1.4.4</a></li><li><a class="" href="/docs/jp/developer/v-1-4-3">v1.4.3</a></li><li><a class="" href="/docs/jp/developer/v-1-4-2">v1.4.2</a></li><li><a class="" href="/docs/jp/developer/v-1-4-1">v1.4.1</a></li><li><a class="" href="/docs/jp/developer/v-1-4-0">v1.4.0</a></li><li><a class="" href="/docs/jp/developer/v-1-3-3">v1.3.3</a></li><li><a class="" href="/docs/jp/developer/v-1-3-2">v1.3.2</a></li><li><a class="" href="/docs/jp/developer/v-1-3-1">v1.3.1</a></li><li><a class="" href="/docs/jp/developer/v-1-3-0">v1.3.0</a></li><li><a class="" href="/docs/jp/developer/zimaos-v1-2-5-available">v1.2.5</a></li><li><a class="" href="/docs/jp/developer/v-1-2-4">v1.2.4</a></li><li><a class="" href="/docs/jp/developer/v-1-2-3">v1.2.3</a></li><li><a class="" href="/docs/jp/developer/v-1-2-2">v1.2.2</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/developer/introducing-libvirt-go" data-lang="en">English</option>
+        
+          <option value="/docs/zh/developer/introducing-libvirt-go" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/developer/introducing-libvirt-go" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/developer/introducing-libvirt-go" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/developer/introducing-libvirt-go" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">ストア</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Execute uma IA privada no seu NAS ZimaOS: configuração verificada de 35B MoE | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/zimaos/local-llm-inference">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/zimaos/local-llm-inference">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/zimaos/local-llm-inference">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Transforme o seu ZimaCube num servidor de IA privado — deixe um agente de IA fazer a configuração ou siga os passos manuais verificados com Qwen3.6-35B-A3B e llama.cpp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Execute uma IA privada no seu NAS ZimaOS: configuração verificada de 35B MoE">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/zimaos/local-llm-inference">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Transforme o seu ZimaCube num servidor de IA privado — deixe um agente de IA fazer a configuração ou siga os passos manuais verificados com Qwen3.6-35B-A3B e llama.cpp.">
+<meta property="og:locale" content="pt_PT">
+<meta property="article:published_time" content="2026-09-15T09:07:49.749Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.749Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Implementar inferência de LLM local no ZimaOS",
+      "description": "Transforme o seu ZimaCube num servidor de IA privado — deixe um agente de IA fazer a configuração ou siga os passos manuais verificados com Qwen3.6-35B-A3B e llama.cpp.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.749Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ZimaOS",
+          "item": "https://www.zimaspace.com/docs/pt-PT/zimaos/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Implementar inferência de LLM local no ZimaOS"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/zimaos/local-llm-inference">English</a></li>
+            
+              <li><a href="/docs/zh/zimaos/local-llm-inference">中文</a></li>
+            
+              <li><a href="/docs/jp/zimaos/local-llm-inference">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/zimaos/local-llm-inference">Português</a></li>
+            
+              <li><a href="/docs/es/zimaos/local-llm-inference">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral do ZimaOS</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos">Fotografias</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos-supported-formats">Formatos suportados</a></li><li><a class="" href="/docs/pt-PT/zimaos/cloud-drive-connect">Ligar unidades na nuvem</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Migração de dados</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">IA local</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-local-ai"><li><a class="is-current" href="/docs/pt-PT/zimaos/local-llm-inference">Inferência LLM local</a></li><li><a class="" href="/docs/pt-PT/zimaos/local-ai-agent-on-zimaos">Agente de IA local</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li><li><a class="" href="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">Pré-visualização comunitária do ZVM Next</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Implementar inferência de LLM local no ZimaOS</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="Descricao-geral" class="article-heading">Descrição geral<a class="article-anchor" href="#Descricao-geral" aria-hidden="true"></a></h2><p>Transforme o seu NAS ZimaOS num servidor de IA privado. Sem nuvem, sem fatura de API, tudo fica nos seus discos.</p>
+<p><strong>Um motor, não um chatbot.</strong> Este guia implementa um servidor de API compatível com OpenAI — o endpoint em <code class="chip">http://&lt;your-nas-ip&gt;:8080/v1</code> não é uma janela de chat. Um chatbot é apenas um dos seus clientes. O maior valor: todas as aplicações de IA e agentes da sua LAN podem ligar-se a este único endpoint. Aponte o <a href="./app-store/deepseek-harness-setup" title="Instale o DeepSeek Harness a partir da App Store do ZimaOS e crie o seu primeiro espaço de trabalho" class="doc-link">DeepSeek Harness</a> ou qualquer agente de programação para ele, e o próprio agente — não apenas os seus chats — corre totalmente em local no seu próprio hardware.</p>
+<p><strong>O desempenho é medido, não teórico.</strong> Um ZimaCube com uma GPU RTX PRO 2000 responde a <strong>65–70 tokens por segundo</strong> com um modelo de mistura de especialistas de 35B — as respostas fluem mais depressa do que consegue lê-las. Condense uma semana de notas de reuniões, responda a perguntas sobre os seus próprios documentos, atenda os pedidos do seu agente de casa inteligente: a resposta já está a fluir enquanto ainda está a ler a sua própria pergunta. A placa que faz o trabalho consome apenas 70 W — uma fração de um PC de jogos de secretária. A esta velocidade, a maior parte do trabalho rotineiro de agentes — e os dados pessoais por trás dele — pode ficar totalmente no seu próprio hardware.</p>
+<h2 id="Antes-de-comecar" class="article-heading">Antes de começar<a class="article-anchor" href="#Antes-de-comecar" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Um dispositivo ZimaOS com uma ranhura PCIe livre e uma <strong>GPU NVIDIA</strong> — Compute Capability 8.0 ou mais recente, 16 GB de VRAM ou mais. A configuração abaixo foi verificada num ZimaCube com uma RTX PRO 2000.</li>
+<li><strong>ZimaOS 1.7 ou posterior</strong>, que ativa o controlador NVIDIA automaticamente quando a placa é inserida.</li>
+<li>Verifique a placa: abra um terminal e execute <code class="chip">nvidia-smi</code>. Se vir a placa, está pronto.</li>
+</ul>
+<blockquote>
+<p>Se a placa não for reconhecida, consulte <a href="../hardware/gpu-expansion" title="Adicione uma placa gráfica ao seu ZimaCube para IA e transcodificação" class="doc-link">Expansão de GPU</a> para a instalação física.</p>
+</blockquote>
+<h2 id="Caminho-A-deixe-um-agente-de-IA-faze-lo" class="article-heading">Caminho A: deixe um agente de IA fazê-lo<a class="article-anchor" href="#Caminho-A-deixe-um-agente-de-IA-faze-lo" aria-hidden="true"></a></h2><p>Se tem o DeepSeek Harness (ou outro agente de programação) no seu ZimaOS, toda a configuração se torna uma conversa.</p>
+<ol class="doc-steps">
+<li><p><strong>Instale o DeepSeek Harness</strong> a partir da App Store — consulte <a href="./app-store/deepseek-harness-setup" title="Instale o DeepSeek Harness a partir da App Store do ZimaOS e crie o seu primeiro espaço de trabalho" class="doc-link">Implementar o DeepSeek Harness</a>.</p>
+</li>
+<li><p><strong>Dê ao agente as permissões de que precisa.</strong></p>
+<ul class="doc-dots">
+<li>Uma autorização de pasta permite-lhe trabalhar nos seus discos.</li>
+<li>A autorização do socket Docker permite a gestão de contentores ao nível do sistema.</li>
+</ul>
+<p>Ambas estão cobertas nas notas de utilização do guia do DeepSeek Harness.</p>
+<p>A tarefa só pede ao agente que instale e configure software — os seus dados ficam de fora. Conceda o nível de socket para a configuração; revogue-o depois, se preferir.</p>
+</li>
+<li><p><strong>Inicie uma conversa e partilhe o que sabemos.</strong> Cole o seguinte no chat e continue a falar até o agente reportar sucesso:</p>
+<blockquote>
+<p>Configure um servidor LLM local neste anfitrião ZimaOS. Aqui está tudo o que precisa:</p>
+<ul class="doc-dots">
+<li><strong>Modelo:</strong> Qwen3.6-35B-A3B, formato GGUF, quantização IQ3_XXS. Descarregue <code class="chip">Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf</code> (cerca de 12,3 GB) do repositório Hugging Face <code class="chip">unsloth/Qwen3.6-35B-A3B-GGUF</code> usando a CLI <code class="chip">hf</code>.</li>
+<li><strong>Motor:</strong> execute o servidor llama.cpp a partir da imagem de contentor <code class="chip">ghcr.io/ggml-org/llama.cpp:server-cuda</code>. Não há nada para compilar.</li>
+<li><strong>GPU:</strong> mantenha todas as camadas na GPU (<code class="chip">--n-gpu-layers 99</code>). Se o modelo cair para a CPU nesta máquina de classe NAS, a velocidade desmorona.</li>
+<li><strong>Definições:</strong> contexto de 128K numa placa de 16 GB, flash attention ativado, temperatura de amostragem 0.7. Nunca coloque a temperatura a 0 — a amostragem gananciosa faz este modelo repetir-se para sempre.</li>
+<li><strong>Verifique:</strong> o endpoint compatível com OpenAI deve responder em <code class="chip">http://&lt;host-ip&gt;:8080/v1</code>. Envie uma conclusão de chat curta para confirmar e depois reporte o nome do contentor e um resumo do que fez.</li>
+</ul>
+<p>Se algo falhar, explique o que tentou e o que diz o erro. Pergunte-me antes de alterar seja o que for ao nível do sistema.</p>
+</blockquote>
+</li>
+<li><p><strong>Verifique no seu navegador.</strong> Abra <code class="chip">http://&lt;your-nas-ip&gt;:8080/v1/models</code> — uma lista JSON de modelos significa que o servidor está ativo.</p>
+<p>Se algo correu mal, mostre ao agente as notas da secção «Quando algo não funciona» e continue a conversa.</p>
+</li>
+</ol>
+<p><strong>Um último passo para a privacidade total:</strong> mude o fornecedor de modelos do agente para o seu novo endpoint local nas definições de modelo. A partir daí, o agente corre no seu próprio modelo no seu próprio hardware — todo o ciclo fica em casa.</p>
+<h2 id="Caminho-B-configuracao-manual" class="article-heading">Caminho B: configuração manual<a class="article-anchor" href="#Caminho-B-configuracao-manual" aria-hidden="true"></a></h2><p>Cinco passos, diretos pelo terminal.</p>
+<h3 id="Passo-1-Instale-a-GPU" class="article-heading">Passo 1: Instale a GPU<a class="article-anchor" href="#Passo-1-Instale-a-GPU" aria-hidden="true"></a></h3><p>Abra a caixa, assente a placa na ranhura PCIe, feito — a placa não precisa de cabo de alimentação.</p>
+<p>Percorrido completo: <a href="../hardware/gpu-expansion" title="Adicione uma placa gráfica ao seu ZimaCube para IA e transcodificação" class="doc-link">Expansão de GPU</a>.</p>
+<h3 id="Passo-2-Descarregue-a-imagem-do-motor" class="article-heading">Passo 2: Descarregue a imagem do motor<a class="article-anchor" href="#Passo-2-Descarregue-a-imagem-do-motor" aria-hidden="true"></a></h3><p>O servidor llama.cpp em contentor inclui os kernels CUDA para sm_80–120, pelo que não há nada para compilar:</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker pull ghcr.io/ggml-org/llama.cpp:server-cuda</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="Passo-3-Obtenha-o-modelo" class="article-heading">Passo 3: Obtenha o modelo<a class="article-anchor" href="#Passo-3-Obtenha-o-modelo" aria-hidden="true"></a></h3><p>Descarregue o ficheiro GGUF do <strong>Qwen3.6-35B-A3B</strong> em quantização <strong>IQ3_XXS</strong> — cerca de 12,3 GB, escolhido para que o modelo completo caiba em 16 GB de VRAM com espaço para um contexto de 128K.</p>
+<p>Se o seu dispositivo tem internet limitada, consulte <a href="./app-store/llm-manual-download" title="Descarregue modelos LLM manualmente para uso offline no ZimaOS" class="doc-link">Como descarregar manualmente o modelo de linguagem de grande dimensão</a>.</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p models/llm</span><br><span class="line">hf download unsloth/Qwen3.6-35B-A3B-GGUF \</span><br><span class="line">  Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf --local-dir models/llm</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="Passo-4-Inicie-o-servidor" class="article-heading">Passo 4: Inicie o servidor<a class="article-anchor" href="#Passo-4-Inicie-o-servidor" aria-hidden="true"></a></h3><figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run -d --name llm-server --gpus all -p 8080:8080 \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$PWD</span>/models/llm:/models&quot;</span> \</span><br><span class="line">  ghcr.io/ggml-org/llama.cpp:server-cuda \</span><br><span class="line">  -m /models/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf \</span><br><span class="line">  --host 0.0.0.0 --port 8080 \</span><br><span class="line">  -c 131072 --n-gpu-layers 99 -fa on --temp 0.7 --parallel 1</span><br></pre></td></tr></table></div></figure>
+
+<p><code class="chip">--n-gpu-layers 99</code> mantém todas as camadas na GPU. Em CPUs de classe NAS isto não é opcional — no momento em que o modelo transborda para a CPU, a velocidade desmorona.</p>
+<h3 id="Passo-5-Diga-ola" class="article-heading">Passo 5: Diga olá<a class="article-anchor" href="#Passo-5-Diga-ola" aria-hidden="true"></a></h3><p>O servidor expõe uma API compatível com OpenAI em <code class="chip">http://&lt;your-nas-ip&gt;:8080/v1</code>:</p>
+<figure class="highlight python code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line">client = OpenAI(base_url=<span class="string">&quot;http://&lt;nas-ip&gt;:8080/v1&quot;</span>, api_key=<span class="string">&quot;sk-none&quot;</span>)</span><br><span class="line">resp = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">&quot;Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf&quot;</span>,</span><br><span class="line">    messages=[&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Summarize my Documents folder&quot;</span>&#125;],</span><br><span class="line">    temperature=<span class="number">0.7</span>,</span><br><span class="line">    max_tokens=<span class="number">2048</span>,</span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(resp.choices[<span class="number">0</span>].message.content)</span><br></pre></td></tr></table></div></figure>
+
+<p>É toda a configuração. Aponte qualquer coisa para ele — a pesquisa de IA de uma aplicação de notas, um organizador de fotos, os seus próprios scripts — e cada um deles passa a correr no seu próprio hardware.</p>
+<h2 id="Numeros-verificados" class="article-heading">Números verificados<a class="article-anchor" href="#Numeros-verificados" aria-hidden="true"></a></h2><p>Medido num ZimaCube a correr ZimaOS com a RTX PRO 2000:</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>O quê</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Velocidade de resposta</td>
+<td>65–70 tokens&#x2F;s — mais depressa do que consegue ler. Um modelo denso de 27B na mesma placa chega a 18–23; a arquitetura MoE é a razão</td>
+</tr>
+<tr>
+<td>Contexto</td>
+<td>64K confortável — o contexto de um romance longo; 128K viável — uma pequena biblioteca dos seus próprios documentos; 256K não cabe em 16 GB</td>
+</tr>
+<tr>
+<td>Potência</td>
+<td>55–70 W sob carga, 6–12 W em repouso — menos que um portátil de jogos, silencioso ao ponto de esquecer que está ligado. Adequado para 24&#x2F;7</td>
+</tr>
+<tr>
+<td>Estabilidade</td>
+<td>Conversas de múltiplos turnos e recuperação de documentos longos verificadas</td>
+</tr>
+</tbody></table></div>
+<h2 id="Quando-algo-nao-funciona" class="article-heading">Quando algo não funciona<a class="article-anchor" href="#Quando-algo-nao-funciona" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><strong>O servidor nunca arranca.</strong> Execute <code class="chip">nvidia-smi</code> e confirme que a GPU está listada. Depois leia os registos com <code class="chip">docker logs llm-server</code> — as primeiras linhas costumam nomear a peça em falta.</li>
+<li><strong>Conflito de porta ao arrancar.</strong> Os registos mostram um erro de ligação de porta: outra aplicação no NAS já usa a 8080, uma porta muito comum no mundo do self-hosting. Escolha uma porta de host livre e aponte todos os clientes para ela — por exemplo, inicie o contentor com <code class="chip">-p 8088:8080</code> e use <code class="chip">http://&lt;your-nas-ip&gt;:8088/v1</code> como URL base.</li>
+<li><strong>A velocidade caiu de repente.</strong> Parte do modelo caiu para a CPU. Mantenha <code class="chip">--n-gpu-layers 99</code> e, se usar o Ollama em vez disso, execute <code class="chip">ollama ps</code> para ver a divisão GPU&#x2F;CPU — o Ollama descarrega silenciosamente.</li>
+<li><strong>O modelo repete-se para sempre.</strong> Colocou a temperatura a 0. Esta família de modelos precisa de <strong>0.6–0.7</strong>; a amostragem gananciosa parte-o.</li>
+<li><strong>As respostas param a meio da frase.</strong> Ficou sem espaço para pensar. O modelo pensa antes de responder, e os tokens de pensamento contam para o limite — mantenha <code class="chip">max_tokens</code> em <strong>2048 ou mais</strong>.</li>
+</ul>
+<h2 id="Ligacoes-de-referencia" class="article-heading">Ligações de referência<a class="article-anchor" href="#Ligacoes-de-referencia" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>llama.cpp – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ggml-org/llama.cpp" title="Código-fonte e releases do llama.cpp no GitHub" class="doc-link">Repositório do GitHub</a></li>
+<li>Servidor llama.cpp – <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ggml-org/llama.cpp/tree/master/tools/server" title="Documentação do servidor HTTP do llama.cpp" class="doc-link">documentação do servidor</a></li>
+</ul>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.749Z" itemprop="dateModified">Última atualização: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/zimaos/samba-member-setup"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Samba com vários utilizadores</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/zimaos/local-ai-agent-on-zimaos"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Agente de IA local</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Descricao-geral"><span class="toc-text">Descrição geral</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Antes-de-comecar"><span class="toc-text">Antes de começar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caminho-A-deixe-um-agente-de-IA-faze-lo"><span class="toc-text">Caminho A: deixe um agente de IA fazê-lo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caminho-B-configuracao-manual"><span class="toc-text">Caminho B: configuração manual</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Passo-1-Instale-a-GPU"><span class="toc-text">Passo 1: Instale a GPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Passo-2-Descarregue-a-imagem-do-motor"><span class="toc-text">Passo 2: Descarregue a imagem do motor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Passo-3-Obtenha-o-modelo"><span class="toc-text">Passo 3: Obtenha o modelo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Passo-4-Inicie-o-servidor"><span class="toc-text">Passo 4: Inicie o servidor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Passo-5-Diga-ola"><span class="toc-text">Passo 5: Diga olá</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Numeros-verificados"><span class="toc-text">Números verificados</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quando-algo-nao-funciona"><span class="toc-text">Quando algo não funciona</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ligacoes-de-referencia"><span class="toc-text">Ligações de referência</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item current_page_item"><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item "><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/zimaos/">Visão geral do ZimaOS</a></h4>
+    <div class="doc-sidebar__group" data-group="zimaos:setup-and-storage">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-setup-and-storage">
+          <span class="doc-sidebar__toggle-text">Configuração e armazenamento</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-setup-and-storage"><li><a class="" href="/docs/pt-PT/zimaos/get-started">Primeiros passos</a></li><li><a class="" href="/docs/pt-PT/zimaos/features">Visão geral das funcionalidades</a></li><li><a class="" href="/docs/pt-PT/zimaos/storage-setup">Configuração do armazenamento</a></li><li><a class="" href="/docs/pt-PT/zimaos/raid-options">Opções de RAID</a></li><li><a class="" href="/docs/pt-PT/zimaos/docker-app-paths">Caminhos de armazenamento das apps</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:sync-and-backup">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-sync-and-backup">
+          <span class="doc-sidebar__toggle-text">Sincronização e cópias</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-sync-and-backup"><li><a class="" href="/docs/pt-PT/zimaos/phone-backup">Cópia do telemóvel</a></li><li><a class="" href="/docs/pt-PT/zimaos/computer-backup">Cópia do computador</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos">Fotografias</a></li><li><a class="" href="/docs/pt-PT/zimaos/photos-supported-formats">Formatos suportados</a></li><li><a class="" href="/docs/pt-PT/zimaos/cloud-drive-connect">Ligar unidades na nuvem</a></li><li><a class="" href="/docs/pt-PT/zimaos/synology-to-zimacube-migration">Migrar de outro NAS</a></li><li><a class="" href="/docs/pt-PT/zimaos/data-migration">Migração de dados</a></li><li><a class="" href="/docs/pt-PT/zimaos/how-to-use-3-2-1-backup-on-zimaos">Estratégia de cópia 3-2-1</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:access-and-share">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-access-and-share">
+          <span class="doc-sidebar__toggle-text">Acesso e partilha</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-access-and-share"><li><a class="" href="/docs/pt-PT/zimaos/remote-access">Acesso remoto</a></li><li><a class="" href="/docs/pt-PT/zimaos/app-store/tailscale-wireguard-remote-access">Tailscale e WireGuard</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaclient-install">Transferir o ZimaClient</a></li><li><a class="" href="/docs/pt-PT/zimaos/thunderbolt-direct-connect">Ligação direta Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/zimaos/smb-troubleshooting">Partilha de ficheiros SMB</a></li><li><a class="" href="/docs/pt-PT/zimaos/share-via-link">Partilhar por ligação</a></li><li><a class="" href="/docs/pt-PT/zimaos/samba-member-setup">Samba com vários utilizadores</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:local-ai">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-local-ai">
+          <span class="doc-sidebar__toggle-text">IA local</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-local-ai"><li><a class="is-current" href="/docs/pt-PT/zimaos/local-llm-inference">Inferência LLM local</a></li><li><a class="" href="/docs/pt-PT/zimaos/local-ai-agent-on-zimaos">Agente de IA local</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:install-methods">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-install-methods">
+          <span class="doc-sidebar__toggle-text">Métodos de instalação</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-install-methods"><li><a class="" href="/docs/pt-PT/zimaos/how-to-install-zimaos">Instalar o ZimaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/install-zimaos-on-proxmox-ve">Instalar no Proxmox</a></li><li><a class="" href="/docs/pt-PT/zimaos/casaos-to-zimaos-migration">Migrar do CasaOS</a></li><li><a class="" href="/docs/pt-PT/zimaos/password-recovery">Repor a palavra-passe</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="zimaos:system">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-zimaos-system">
+          <span class="doc-sidebar__toggle-text">Sistema</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-zimaos-system"><li><a class="" href="/docs/pt-PT/zimaos/ups-setup">Configuração de UPS</a></li><li><a class="" href="/docs/pt-PT/zimaos/system-recovery">Recuperação do sistema</a></li><li><a class="" href="/docs/pt-PT/zimaos/offline-install">Instalação offline</a></li><li><a class="" href="/docs/pt-PT/zimaos/reset-network-settings">Repor a rede</a></li><li><a class="" href="/docs/pt-PT/zimaos/zimaos-search">Função de pesquisa</a></li><li><a class="" href="/docs/pt-PT/zimaos/time-machine-backup">Cópia com Time Machine</a></li><li><a class="" href="/docs/pt-PT/zimaos/zvm-next-virtual-machines-community-preview">Pré-visualização comunitária do ZVM Next</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/zimaos/local-llm-inference" data-lang="en">English</option>
+        
+          <option value="/docs/zh/zimaos/local-llm-inference" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/zimaos/local-llm-inference" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/zimaos/local-llm-inference" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/zimaos/local-llm-inference" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

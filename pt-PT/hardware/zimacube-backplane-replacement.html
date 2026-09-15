@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Guia de substituição da placa posterior do ZimaCube | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/pt-PT/hardware/zimacube-backplane-replacement">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/zimacube-backplane-replacement">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/zimacube-backplane-replacement">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/zimacube-backplane-replacement">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/zimacube-backplane-replacement">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/zimacube-backplane-replacement">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/zimacube-backplane-replacement">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="Guia passo a passo para remover e substituir a placa posterior dos discos rígidos do ZimaCube, incluindo ferramentas, notas de segurança, manuseamento dos cabos planos e verificação após a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guia de substituição da placa posterior do ZimaCube">
+<meta property="og:url" content="https://www.zimaspace.com/docs/pt-PT/hardware/zimacube-backplane-replacement">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="Guia passo a passo para remover e substituir a placa posterior dos discos rígidos do ZimaCube, incluindo ferramentas, notas de segurança, manuseamento dos cabos planos e verificação após a">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/remove-drives.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/side-screws.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/rear-panel.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/bracket-screws.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/power-cable.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/flat-cables.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/remove-backplane.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/con1-con2-slots.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/con1-con2-positions.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/con1-con2-cables.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/lspci-verify.webp">
+<meta property="article:published_time" content="2026-09-15T09:07:49.744Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.744Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/zimacube-backplane-replacement/remove-drives.webp">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Guia de substituição da placa posterior do ZimaCube",
+      "description": "Guia passo a passo para remover e substituir a placa posterior dos discos rígidos do ZimaCube, incluindo ferramentas, notas de segurança, manuseamento dos cabos planos e verificação após a substituição.",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.744Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/pt-PT/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Guia de substituição da placa posterior do ZimaCube"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="site-nav-link">Loja de aplicações</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/hardware/" class="site-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="site-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="site-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">Fórum</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="Pesquisa">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">Começar a pesquisar</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>PT-PT</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/zimacube-backplane-replacement">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/zimacube-backplane-replacement">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/zimacube-backplane-replacement">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/zimacube-backplane-replacement">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/zimacube-backplane-replacement">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">Loja</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="Pesquisa"
+     data-search-recent="Recentes"
+     data-search-suggested="Sugeridos"
+     data-search-no-results="Não existem resultados para “{query}”"
+     data-search-no-results-hint="Experimente outra palavra-chave ou verifique a ortografia."
+     data-search-remove="Remover"
+     data-search-overview="Visão geral"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="Loja de aplicações"
+     data-search-hardware="Hardware"
+     data-search-developer="Desenvolvimento"
+     data-search-help-center="Centro de ajuda">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="Começar a pesquisar">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/pt-PT/zimaos/how-to-install-zimaos"
+       data-title="Instalar o ZimaOS"
+       data-meta="ZimaOS › Métodos de instalação"></a>
+    <a href="/docs/pt-PT/zimaos/get-started"
+       data-title="Primeiros passos"
+       data-meta="ZimaOS › Configuração e armazenamento"></a>
+    <a href="/docs/pt-PT/zimaos/app-store/awesome-third-party-stores"
+       data-title="Lojas de aplicações da comunidade"
+       data-meta="Loja de aplicações › Projetos criativos"></a>
+    <a href="/docs/pt-PT/zimaos/remote-access"
+       data-title="Acesso remoto"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+    <a href="/docs/pt-PT/zimaos/zimaclient-install"
+       data-title="Transferir o ZimaClient"
+       data-meta="ZimaOS › Acesso e partilha"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/hardware/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/pt-PT/hardware/quick-start">Início rápido</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-details">Detalhes de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on-setup">Método de arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/pc-direct">Ligação direta ao PC</a></li><li><a class="" href="/docs/pt-PT/hardware/hdd-interface-guide">Guia da interface HDD</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-guide">Utilização da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-install">Instalar a sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on">Arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/gpu-expansion">Expansão de GPU</a></li><li><a class="" href="/docs/pt-PT/hardware/rtx-pro-2000-on-zimaos">Teste de desempenho RTX PRO 2000</a></li><li><a class="" href="/docs/pt-PT/hardware/raid-ssd-expansion">Expansão RAID com SSD</a></li><li><a class="" href="/docs/pt-PT/hardware/bios-configuration">Configuração da BIOS</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-fan-diy">Guia de ventoinha DIY</a></li><li><a class="is-current" href="/docs/pt-PT/hardware/zimacube-backplane-replacement">Substituir a placa posterior</a></li><li><a class="" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt">Velocidade por Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/hardware/compatible-network-adapters">Adaptadores de rede compatíveis</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-wol-on-zimacube">Ativar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/pt-PT/hardware/zimaboard-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/zimaboard-quick-start">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/power-on-zimaboard-2">Ligar o ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalação da ventoinha e PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/pt-PT/hardware/power-on-zimablade">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/zimablade-overview">Primeiros passos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/pt-PT/hardware/7th-bay-led">Indicador LED da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/ups-compatibility-list">Compatibilidade de UPS</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/supported-disk-formats">Formatos de disco suportados</a></li><li><a class="" href="/docs/pt-PT/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/pt-PT/hardware/install-unraid">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/install-truenas">Executar TrueNAS</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-x86-install">Executar OpenWrt</a></li><li><a class="" href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-usb-install">OpenWrt por USB</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-emmc-boot">OpenWrt em eMMC</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/unraid-install">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/third-party-os-install">Sistemas de terceiros</a></li><li><a class="" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Testes de hardware de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">NPU AMD Ryzen AI MAX+ 395</a></li><li><a class="" href="/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos">Teste de desempenho RTX 4000 SFF Ada</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">Guia de substituição da placa posterior do ZimaCube</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <p>Este guia aplica-se à série ZimaCube e explica como remover e substituir a placa posterior dos discos rígidos. Siga os passos pela ordem indicada; para voltar a montar, inverta os passos de desmontagem.</p>
+<h2 id="Ferramentas-necessarias" class="article-heading">Ferramentas necessárias<a class="article-anchor" href="#Ferramentas-necessarias" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>Chave de fendas Phillips M3 (para os parafusos da placa posterior e do suporte)</li>
+<li>Chave hexagonal H2 (para os parafusos dos painéis laterais)</li>
+<li>Pinça ou espátula de plástico (recomendado, para abrir o painel com clipes e descolar a fita preta)</li>
+</ul>
+<h2 id="Notas-importantes" class="article-heading">Notas importantes<a class="article-anchor" href="#Notas-importantes" aria-hidden="true"></a></h2><blockquote class="note warn"><strong class="note-title">Desligue e descarregue a energia</strong><p>Antes de substituir a placa posterior, desligue o dispositivo e retire o cabo de alimentação. Aguarde cerca de 30 segundos para que a energia residual se dissipe, de modo a evitar choques elétricos ou danos nos componentes.</p>
+</blockquote>
+
+<blockquote class="note warn"><strong class="note-title">Proteção ESD</strong><p>Toque numa superfície metálica ou use uma pulseira antiestática antes de manusear os componentes, para evitar danificar a placa posterior.</p>
+</blockquote>
+
+<ul class="doc-dots">
+<li>Os parafusos de locais diferentes podem ter comprimentos diferentes. Mantenha-os organizados para que cada um volte ao lugar correto.</li>
+<li>Os cabos planos (FPC) são frágeis. Descole a fita, levante os trincos e ligue ou desligue com cuidado para evitar rasgar o cabo ou partir um trinco.</li>
+<li>Ao ligar ou desligar conectores, segure o conector em si. Nunca puxe pelos fios.</li>
+<li>Os cabos planos têm uma orientação única. Tire uma fotografia para registar a orientação antes de os remover, alinhe com o encaixe ao reinstalar e nunca force um conector que não encaixe.</li>
+</ul>
+<h2 id="Passos-de-desmontagem" class="article-heading">Passos de desmontagem<a class="article-anchor" href="#Passos-de-desmontagem" aria-hidden="true"></a></h2><h3 id="1-Desligue-e-remova-os-discos" class="article-heading">1. Desligue e remova os discos<a class="article-anchor" href="#1-Desligue-e-remova-os-discos" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Desligue o dispositivo e retire o cabo de alimentação.</li>
+<li>Remova todas as gavetas de discos (incluindo a da sétima baía) e coloque-as de lado em segurança.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/remove-drives.webp" alt="Estrutura interna do ZimaCube com as gavetas de discos e o dissipador visíveis"></span></p>
+<h3 id="2-Remova-os-paineis-laterais-e-abra-a-tampa-superior" class="article-heading">2. Remova os painéis laterais e abra a tampa superior<a class="article-anchor" href="#2-Remova-os-paineis-laterais-e-abra-a-tampa-superior" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Remova os parafusos de fixação de ambos os lados do chassis (4 por lado).</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/side-screws.webp" alt="Parafusos laterais marcados com caixas vermelhas"></span></p>
+<ol start="2" class="doc-steps">
+<li>Abra a tampa superior.</li>
+<li>Levante os painéis laterais para cima, para dar espaço ao acesso aos cabos mais tarde.</li>
+</ol>
+<h3 id="3-Remova-o-painel-traseiro-e-o-suporte" class="article-heading">3. Remova o painel traseiro e o suporte<a class="article-anchor" href="#3-Remova-o-painel-traseiro-e-o-suporte" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>O painel traseiro está montado com clipes. Basta fazer alavanca para o abrir e remover.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/rear-panel.webp" alt="Painel traseiro removido, deixando ver as ventoinhas"></span></p>
+<ol start="2" class="doc-steps">
+<li>Remova os 6 parafusos do suporte traseiro (localizados atrás do painel com clipes, que fixam as ventoinhas e a placa posterior) e desligue os dois conectores das ventoinhas.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/bracket-screws.webp" alt="Parafusos do suporte traseiro e conectores das ventoinhas marcados"></span></p>
+<h3 id="4-Desligue-o-cabo-de-alimentacao-da-placa-posterior" class="article-heading">4. Desligue o cabo de alimentação da placa posterior<a class="article-anchor" href="#4-Desligue-o-cabo-de-alimentacao-da-placa-posterior" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Desligue o cabo de alimentação da placa posterior do lado esquerdo.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/power-cable.webp" alt="Cabo de alimentação da placa posterior marcado com uma caixa vermelha"></span></p>
+<h3 id="5-Remova-os-cabos-planos" class="article-heading">5. Remova os cabos planos<a class="article-anchor" href="#5-Remova-os-cabos-planos" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Descole com cuidado a fita preta dos cabos planos.</li>
+<li>Levante os trincos de ambos os conectores dos cabos planos, um de cada vez, e puxe suavemente os cabos.</li>
+<li>Ambas as extremidades de cada cabo são manuseadas da mesma forma. Mantenha a orientação (o conector tem um encaixe) e alinhe com o encaixe ao reinstalar.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/flat-cables.webp" alt="Conectores dos cabos planos na placa posterior identificados como BP CON1, 2P e 8P"></span></p>
+<h3 id="6-Remova-a-placa-posterior-antiga" class="article-heading">6. Remova a placa posterior antiga<a class="article-anchor" href="#6-Remova-a-placa-posterior-antiga" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Remova os 3 parafusos da placa posterior.</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/remove-backplane.webp" alt="Os três parafusos da placa posterior marcados com caixas vermelhas"></span></p>
+<ol start="2" class="doc-steps">
+<li>Levante suavemente a placa posterior antiga.</li>
+</ol>
+<h2 id="Instale-a-nova-placa-posterior" class="article-heading">Instale a nova placa posterior<a class="article-anchor" href="#Instale-a-nova-placa-posterior" aria-hidden="true"></a></h2><h3 id="1-Instale-a-nova-placa-posterior-e-volte-a-ligar-os-cabos" class="article-heading">1. Instale a nova placa posterior e volte a ligar os cabos<a class="article-anchor" href="#1-Instale-a-nova-placa-posterior-e-volte-a-ligar-os-cabos" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Coloque a nova placa posterior na posição e alinhe os orifícios dos parafusos.</li>
+<li>Fixe-a com os 3 parafusos da placa posterior.</li>
+<li>Volte a ligar os cabos planos: insira os cabos CON1 e CON2 nas ranhuras correspondentes, fazendo corresponder as etiquetas da placa posterior e da placa-mãe. Alinhe com o encaixe, insira, pressione o trinco e volte a aplicar a fita preta.</li>
+</ol>
+<blockquote>
+<p>Como distinguir os dois cabos (ver figuras abaixo): CON1 é o cabo mais comprido e CON2 o mais curto, cada um com etiqueta no próprio cabo. A extremidade marcada “BP” liga-se à placa posterior e a extremidade marcada “MB” liga-se à placa-mãe.</p>
+</blockquote>
+<blockquote class="note info"><strong class="note-title">Os cabos planos são universais</strong><p>Os cabos planos são universais e funcionam com os Cube de primeira e de segunda geração.</p>
+</blockquote>
+
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/con1-con2-slots.webp" alt="Ranhuras da placa posterior identificadas como BP CON1 e BP CON2"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/con1-con2-positions.webp" alt="Posições de ligação de CON1 e CON2 na placa-mãe"></span></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/con1-con2-cables.webp" alt="Os dois cabos planos com as extremidades BP e MB identificadas"></span></p>
+<h3 id="2-Volte-a-montar-pela-ordem-inversa" class="article-heading">2. Volte a montar pela ordem inversa<a class="article-anchor" href="#2-Volte-a-montar-pela-ordem-inversa" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li>Volte a ligar o cabo de alimentação da placa posterior do lado esquerdo.</li>
+<li>Reinstale o suporte traseiro, volte a ligar os dois cabos das ventoinhas e aperte os 6 parafusos.</li>
+<li>Volte a encaixar o painel traseiro com clipes.</li>
+<li>Reinstale os dois painéis laterais.</li>
+<li>Volte a colocar a tampa superior.</li>
+<li>Aperte os parafusos de ambos os lados do chassis (4 por lado).</li>
+<li>Reinstale todas as gavetas de discos (incluindo a da sétima baía).</li>
+</ol>
+<h3 id="3-Ligue-e-verifique" class="article-heading">3. Ligue e verifique<a class="article-anchor" href="#3-Ligue-e-verifique" aria-hidden="true"></a></h3><p>Ligue a alimentação, ligue o dispositivo e confirme que as ventoinhas giram normalmente e que todas as baías são detetadas corretamente.</p>
+<p>Execute <code class="chip">lspci</code> no terminal: se vir as duas partes assinaladas na imagem abaixo, a substituição foi bem-sucedida.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/zimacube-backplane-replacement/lspci-verify.webp" alt="Saída do terminal do lspci a mostrar os dispositivos ASMedia"></span></p>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.744Z" itemprop="dateModified">Última atualização: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/pt-PT/hardware/zimacube-fan-diy"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Guia de ventoinha DIY</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt"><span class="doc-pagenav__label">Seguinte<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Velocidade por Thunderbolt</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="Conteúdos">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ferramentas-necessarias"><span class="toc-text">Ferramentas necessárias</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Notas-importantes"><span class="toc-text">Notas importantes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Passos-de-desmontagem"><span class="toc-text">Passos de desmontagem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Desligue-e-remova-os-discos"><span class="toc-text">1. Desligue e remova os discos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Remova-os-paineis-laterais-e-abra-a-tampa-superior"><span class="toc-text">2. Remova os painéis laterais e abra a tampa superior</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Remova-o-painel-traseiro-e-o-suporte"><span class="toc-text">3. Remova o painel traseiro e o suporte</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Desligue-o-cabo-de-alimentacao-da-placa-posterior"><span class="toc-text">4. Desligue o cabo de alimentação da placa posterior</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Remova-os-cabos-planos"><span class="toc-text">5. Remova os cabos planos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Remova-a-placa-posterior-antiga"><span class="toc-text">6. Remova a placa posterior antiga</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Instale-a-nova-placa-posterior"><span class="toc-text">Instale a nova placa posterior</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Instale-a-nova-placa-posterior-e-volte-a-ligar-os-cabos"><span class="toc-text">1. Instale a nova placa posterior e volte a ligar os cabos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Volte-a-montar-pela-ordem-inversa"><span class="toc-text">2. Volte a montar pela ordem inversa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Ligue-e-verifique"><span class="toc-text">3. Ligue e verifique</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">Mantenha-se em contato<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">Junte-se à nossa lista de assinantes para receber as últimas notícias, atualizações e ofertas especiais.</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="Insira seu endereço de e-mail">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      Assinar
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Produtos</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">Acessórios</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Recurso</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Suporte</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">Contato</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">Política de Reembolso</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">Política de Privacidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">Termos de Serviço</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">Política de Envio</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">Explorar</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">Galeria</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Feito com IceWhale</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">Comunidade</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">Sobre Nós</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">Blog</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">Distribuidores</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">Afiliado</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/pt-PT/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/pt-PT/zimaos/app-store/" class="mobile-nav-link">Loja de aplicações</a></li><li class="menu-item current_page_item"><a href="/docs/pt-PT/hardware/" class="mobile-nav-link">Hardware</a></li><li class="menu-item "><a href="/docs/pt-PT/developer/" class="mobile-nav-link">Desenvolvimento</a></li><li class="menu-item "><a href="/docs/pt-PT/help-center/" class="mobile-nav-link">Centro de ajuda</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">Fórum</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/pt-PT/hardware/">Visão geral</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/pt-PT/hardware/quick-start">Início rápido</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-details">Detalhes de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on-setup">Método de arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/pc-direct">Ligação direta ao PC</a></li><li><a class="" href="/docs/pt-PT/hardware/hdd-interface-guide">Guia da interface HDD</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-guide">Utilização da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/7th-bay-install">Instalar a sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/auto-power-on">Arranque automático</a></li><li><a class="" href="/docs/pt-PT/hardware/gpu-expansion">Expansão de GPU</a></li><li><a class="" href="/docs/pt-PT/hardware/rtx-pro-2000-on-zimaos">Teste de desempenho RTX PRO 2000</a></li><li><a class="" href="/docs/pt-PT/hardware/raid-ssd-expansion">Expansão RAID com SSD</a></li><li><a class="" href="/docs/pt-PT/hardware/bios-configuration">Configuração da BIOS</a></li><li><a class="" href="/docs/pt-PT/hardware/zimacube-fan-diy">Guia de ventoinha DIY</a></li><li><a class="is-current" href="/docs/pt-PT/hardware/zimacube-backplane-replacement">Substituir a placa posterior</a></li><li><a class="" href="/docs/pt-PT/hardware/transfer-speeds-over-thunderbolt">Velocidade por Thunderbolt</a></li><li><a class="" href="/docs/pt-PT/hardware/compatible-network-adapters">Adaptadores de rede compatíveis</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-wol-on-zimacube">Ativar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/pt-PT/hardware/zimaboard-hardware-overview">Visão geral do hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/zimaboard-quick-start">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/hardware-interface">Interfaces de hardware</a></li><li><a class="" href="/docs/pt-PT/hardware/power-on-zimaboard-2">Ligar o ZimaBoard 2</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">Instalação da ventoinha e PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/pt-PT/hardware/power-on-zimablade">Ligar</a></li><li><a class="" href="/docs/pt-PT/hardware/zimablade-overview">Primeiros passos</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">Compatibilidade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/pt-PT/hardware/7th-bay-led">Indicador LED da sétima baía</a></li><li><a class="" href="/docs/pt-PT/hardware/ups-compatibility-list">Compatibilidade de UPS</a></li><li><a class="" href="/docs/pt-PT/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/supported-disk-formats">Formatos de disco suportados</a></li><li><a class="" href="/docs/pt-PT/hardware/ax210-wifi-6e">Módulo AX210 Wi-Fi</a></li><li><a class="" href="/docs/pt-PT/hardware/wake-on-lan-setup">Configurar Wake-on-LAN</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">Sistemas de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/pt-PT/hardware/install-unraid">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/install-truenas">Executar TrueNAS</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-x86-install">Executar OpenWrt</a></li><li><a class="" href="/docs/pt-PT/hardware/arch-linux-installation-on-zimaboard-2">Instalar Arch Linux</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-usb-install">OpenWrt por USB</a></li><li><a class="" href="/docs/pt-PT/hardware/openwrt-emmc-boot">OpenWrt em eMMC</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-install">Instalar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/openmediavault-setup">Configurar OMV</a></li><li><a class="" href="/docs/pt-PT/hardware/unraid-install">Executar Unraid</a></li><li><a class="" href="/docs/pt-PT/hardware/third-party-os-install">Sistemas de terceiros</a></li><li><a class="" href="/docs/pt-PT/hardware/minimal-ubuntu-server-build">Configurar Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">Testes de hardware de terceiros</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/pt-PT/hardware/amd-ryzen-ai-npu-on-zimaos">NPU AMD Ryzen AI MAX+ 395</a></li><li><a class="" href="/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos">Teste de desempenho RTX 4000 SFF Ada</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>PT-PT</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/zimacube-backplane-replacement" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/zimacube-backplane-replacement" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/zimacube-backplane-replacement" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/zimacube-backplane-replacement" data-lang="pt-PT" selected>Português</option>
+        
+          <option value="/docs/es/hardware/zimacube-backplane-replacement" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">Loja</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>ZimaOS での NVIDIA RTX 4000 SFF Ada LLM 推論：256K コンテキストで 74.5 t/s | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/jp/hardware/rtx-4000-ada-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/rtx-4000-ada-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/rtx-4000-ada-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="ZimaOS を実行する ZimaCube での NVIDIA RTX 4000 SFF Ada 20 GB の実測ベンチマーク：Qwen3.6-35B-A3B によるコンテナ化 llama.cpp、256K コンテキストのメモリ計算、MTP 投機的デコード、消費電力、推奨セットアップ。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZimaOS での NVIDIA RTX 4000 SFF Ada LLM 推論：256K コンテキストで 74.5 t&#x2F;s">
+<meta property="og:url" content="https://www.zimaspace.com/docs/jp/hardware/rtx-4000-ada-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="ZimaOS を実行する ZimaCube での NVIDIA RTX 4000 SFF Ada 20 GB の実測ベンチマーク：Qwen3.6-35B-A3B によるコンテナ化 llama.cpp、256K コンテキストのメモリ計算、MTP 投機的デコード、消費電力、推奨セットアップ。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-09-15T09:07:49.732Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.732Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "NVIDIA RTX 4000 SFF Ada ローカル LLM 推論性能テスト",
+      "description": "ZimaOS を実行する ZimaCube での NVIDIA RTX 4000 SFF Ada 20 GB の実測ベンチマーク：Qwen3.6-35B-A3B によるコンテナ化 llama.cpp、256K コンテキストのメモリ計算、MTP 投機的デコード、消費電力、推奨セットアップ。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.732Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/jp/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "NVIDIA RTX 4000 SFF Ada ローカル LLM 推論性能テスト"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/jp/zimaos/" class="site-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="site-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/jp/hardware/" class="site-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="site-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="site-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">フォーラム</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="検索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">検索を開始</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>JP</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/rtx-4000-ada-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/rtx-4000-ada-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/rtx-4000-ada-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/rtx-4000-ada-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">ストア</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="検索"
+     data-search-recent="最近の検索"
+     data-search-suggested="おすすめ"
+     data-search-no-results="「{query}」に一致する結果はありません"
+     data-search-no-results-hint="別のキーワードを試すか、入力を確認してください。"
+     data-search-remove="削除"
+     data-search-overview="概要"
+     data-search-zimaos="ジマOS"
+     data-search-app-store="App Store"
+     data-search-hardware="ハードウェア"
+     data-search-developer="開発"
+     data-search-help-center="ヘルプセンター">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="検索を開始">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/jp/zimaos/how-to-install-zimaos"
+       data-title="ZimaOS のインストール"
+       data-meta="ジマOS › インストール方法"></a>
+    <a href="/docs/jp/zimaos/get-started"
+       data-title="はじめに"
+       data-meta="ジマOS › セットアップとストレージ"></a>
+    <a href="/docs/jp/zimaos/app-store/awesome-third-party-stores"
+       data-title="コミュニティ App Store"
+       data-meta="App Store › クリエイティブな構築例"></a>
+    <a href="/docs/jp/zimaos/remote-access"
+       data-title="リモートアクセス"
+       data-meta="ジマOS › アクセスと共有"></a>
+    <a href="/docs/jp/zimaos/zimaclient-install"
+       data-title="ZimaClient のダウンロード"
+       data-meta="ジマOS › アクセスと共有"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/hardware/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/jp/hardware/quick-start">クイックスタート</a></li><li><a class="" href="/docs/jp/hardware/zimacube-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/hardware-details">ハードウェア詳細</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on-setup">自動電源オンの設定</a></li><li><a class="" href="/docs/jp/hardware/pc-direct">PC 直接接続</a></li><li><a class="" href="/docs/jp/hardware/hdd-interface-guide">HDD インターフェースガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-guide">7 番ベイ利用ガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-install">7 番ベイの取り付け</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on">自動電源オン</a></li><li><a class="" href="/docs/jp/hardware/gpu-expansion">GPU 拡張</a></li><li><a class="" href="/docs/jp/hardware/rtx-pro-2000-on-zimaos">RTX PRO 2000 性能検証</a></li><li><a class="" href="/docs/jp/hardware/raid-ssd-expansion">RAID SSD 拡張</a></li><li><a class="" href="/docs/jp/hardware/bios-configuration">BIOS 設定</a></li><li><a class="" href="/docs/jp/hardware/zimacube-fan-diy">DIY ファンガイド</a></li><li><a class="" href="/docs/jp/hardware/zimacube-backplane-replacement">バックプレーン交換</a></li><li><a class="" href="/docs/jp/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 転送速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">対応ネットワークアダプター</a></li><li><a class="" href="/docs/jp/hardware/enable-wol-on-zimacube">Wake-on-LAN を有効化</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/jp/hardware/zimaboard-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/zimaboard-quick-start">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/hardware-interface">ハードウェアインターフェース</a></li><li><a class="" href="/docs/jp/hardware/power-on-zimaboard-2">ZimaBoard 2 の電源を入れる</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">ファン取り付けと PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/jp/hardware/power-on-zimablade">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/zimablade-overview">はじめに</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">互換性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/jp/hardware/7th-bay-led">7 番ベイ LED インジケーター</a></li><li><a class="" href="/docs/jp/hardware/ups-compatibility-list">UPS 互換性リスト</a></li><li><a class="" href="/docs/jp/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/jp/hardware/supported-disk-formats">対応ディスク形式</a></li><li><a class="" href="/docs/jp/hardware/ax210-wifi-6e">AX210 Wi-Fi モジュール</a></li><li><a class="" href="/docs/jp/hardware/wake-on-lan-setup">Wake-on-LAN 設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">サードパーティ OS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/jp/hardware/install-unraid">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/install-truenas">TrueNAS を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-x86-install">OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux のインストール</a></li><li><a class="" href="/docs/jp/hardware/openwrt-usb-install">USB から OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-emmc-boot">OpenWrt eMMC 起動</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-install">OMV のインストール</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-setup">OMV の設定</a></li><li><a class="" href="/docs/jp/hardware/unraid-install">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/third-party-os-install">サードパーティ OS</a></li><li><a class="" href="/docs/jp/hardware/minimal-ubuntu-server-build">Ubuntu Server の設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">サードパーティ製ハードウェアの検証</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li><li><a class="is-current" href="/docs/jp/hardware/rtx-4000-ada-on-zimaos">RTX 4000 SFF Ada 性能検証</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">NVIDIA RTX 4000 SFF Ada ローカル LLM 推論性能テスト</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="概要" class="article-heading">概要<a class="article-anchor" href="#概要" aria-hidden="true"></a></h2><p>この記事は、NVIDIA RTX 4000 SFF Ada Generation 20 GB——外部電源コネクタ不要の 70 W カードで ZimaCube に収まる——が、コンテナ化 llama.cpp サーバーを通じて ZimaOS 1.7.1 上でローカル LLM 推論を実行する実測ベンチマークを記録したものです。20 GB の VRAM が 16 GB の <a href="./rtx-pro-2000-on-zimaos" title="ZimaOS での NVIDIA RTX PRO 2000 の完全なベンチマークレポート" class="doc-link">RTX PRO 2000</a>との重要な違いです：モデル本来の 256K コンテキストウィンドウが使えるようになります。</p>
+<p>5 ステップのデプロイ手順は <a href="../zimaos/local-llm-inference" title="検証済み35B MoE構成でZimaOS NAS上にプライベートAIを実行する" class="doc-link">ローカル LLM 推論</a>をご覧ください。</p>
+<h2 id="TL-DR" class="article-heading">TL;DR<a class="article-anchor" href="#TL-DR" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>結論</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>デプロイ</td>
+<td>コンテナ化——<code class="chip">ghcr.io/ggml-org/llama.cpp:server-cuda</code>、ローカルコンパイル不要</td>
+</tr>
+<tr>
+<td>最適なモデル</td>
+<td><strong>Qwen3.6-35B-A3B、unsloth UD-IQ3_XXS（13.21 GB）</strong></td>
+</tr>
+<tr>
+<td>デコード速度</td>
+<td><strong>74.5 t&#x2F;s</strong>（Q3_K_S は 83.3 t&#x2F;s だが 2.3 GB 余計にかかる）</td>
+</tr>
+<tr>
+<td>コンテキスト</td>
+<td><strong>256K のネイティブコンテキストを達成</strong>、KV q4 量子化と併用</td>
+</tr>
+<tr>
+<td>MTP 投機的デコード</td>
+<td>テストのうえ却下——受け入れ率 62〜72% だがデコードの利得は小さく不安定</td>
+</tr>
+<tr>
+<td>電力</td>
+<td>70 W の壁で 69.8 W、フル負荷で 83 °C</td>
+</tr>
+</tbody></table></div>
+<p>一言で言えば：20 GB の VRAM を備えた RTX 4000 SFF Ada は、16 GB ティアと同じ 35B MoE モデルをフルの 256K コンテキストウィンドウで動かします——推奨構成は 14.5 GB に収まり、十分な余裕があります。</p>
+<h2 id="テスト環境" class="article-heading">テスト環境<a class="article-anchor" href="#テスト環境" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>コンポーネント</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPU</td>
+<td>NVIDIA RTX 4000 SFF Ada Generation、Compute Capability 8.9、20475 MiB</td>
+</tr>
+<tr>
+<td>デバイス</td>
+<td>ZimaCube（互換 PCIe スロット、70 W で外部電源不要）</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>ZimaOS 1.7.1——カード挿入時にドライバー 580.105.08 が自動で有効化</td>
+</tr>
+<tr>
+<td>ランタイム</td>
+<td>Docker + nvidia-container-toolkit、<code class="chip">--gpus all</code> を検証済み</td>
+</tr>
+<tr>
+<td>エンジン</td>
+<td><code class="chip">ghcr.io/ggml-org/llama.cpp:server-cuda</code>（4.3 GB イメージ、sm_80〜120 CUDA カーネル同梱、ローカルビルド不要）</td>
+</tr>
+<tr>
+<td>モデル形式</td>
+<td>GGUF</td>
+</tr>
+</tbody></table></div>
+<p>特に断りのない限り、ベンチマークは llama-bench を <code class="chip">-p 512 -n 256 -r 3</code>（プロンプト 512 トークン、生成 256 トークン、3 回の平均）で使用します。</p>
+<h2 id="ベンチマーク結果" class="article-heading">ベンチマーク結果<a class="article-anchor" href="#ベンチマーク結果" aria-hidden="true"></a></h2><h3 id="量子化比較（llama-bench、512-x2F-256）" class="article-heading">量子化比較（llama-bench、512&#x2F;256）<a class="article-anchor" href="#量子化比較（llama-bench、512-x2F-256）" aria-hidden="true"></a></h3><p>量子化の出所がモデルの <strong>MTP（次トークン予測）層</strong>の有無を決めます：<code class="chip">prithivMLmods/...-MTP-GGUF</code> の量子化は MTP を保持し、<code class="chip">unsloth/...-GGUF</code> の UD 量子化はそれを除去します（ロード時に <code class="chip">model doesn&#39;t contain MTP layers</code> と報告されます）。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>量子化</th>
+<th>サイズ</th>
+<th>MTP</th>
+<th>デコード t&#x2F;s</th>
+<th>プリフィル t&#x2F;s</th>
+<th>メモ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Q3_K_S（標準 K-quant）</td>
+<td>15.55 GB</td>
+<td>あり</td>
+<td><strong>83.3</strong></td>
+<td>1692.6</td>
+<td>CUDA カーネルへの適合が最良</td>
+</tr>
+<tr>
+<td><strong>IQ3_XXS（unsloth UD）</strong></td>
+<td><strong>13.21 GB</strong></td>
+<td>なし</td>
+<td><strong>74.5</strong></td>
+<td><strong>1771.2</strong></td>
+<td>デコードが 10.6% 遅く、2.3 GB 節約</td>
+</tr>
+</tbody></table></div>
+<p>20 GB カードは <strong>IQ3_XXS</strong> を選ぶべきです：KV q4 で 256K コンテキストのための余地が残ります。Q3_K_S の 15.55 GB は 16 GB カードではロードすらできません。</p>
+<p>モデルの選択自体は 16 GB ティアと同じです：Qwen3.6-35B-A3B はこのクラスのカードに収まる最強のモデルで、ハイブリッド MoE アーキテクチャはエージェントとコーディングのシナリオ向けに作られています——帯域幅の完全な分析は <a href="./rtx-pro-2000-on-zimaos" title="ZimaOS での NVIDIA RTX PRO 2000 の完全なベンチマークレポート" class="doc-link">RTX PRO 2000</a>のページにあります。本格的なコーディングやナレッジベースのワークロードには、122B &#x2F; Flash ティアが次のステップで、より大きなカードが必要です。</p>
+<h3 id="最適化スイッチ-A-x2F-B（llama-bench、512-x2F-256、3-回の平均）" class="article-heading">最適化スイッチ A&#x2F;B（llama-bench、512&#x2F;256、3 回の平均）<a class="article-anchor" href="#最適化スイッチ-A-x2F-B（llama-bench、512-x2F-256、3-回の平均）" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>構成</th>
+<th>プリフィル</th>
+<th>デコード</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ベースライン（最適化なし）</td>
+<td>1713.3</td>
+<td>83.7</td>
+</tr>
+<tr>
+<td>+ flash-attn</td>
+<td>1295.6（−24%）</td>
+<td>84.2</td>
+</tr>
+<tr>
+<td>+ KV q8</td>
+<td>1692.6</td>
+<td>83.3</td>
+</tr>
+<tr>
+<td>+ ubatch 2048</td>
+<td><strong>2312.9（+36%）</strong></td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<h3 id="Flash-Attention-と長コンテキスト" class="article-heading">Flash Attention と長コンテキスト<a class="article-anchor" href="#Flash-Attention-と長コンテキスト" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>プロンプト</th>
+<th>プリフィル（fa&#x3D;on）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4096</td>
+<td>1691.7</td>
+</tr>
+<tr>
+<td>8192</td>
+<td>1635.1</td>
+</tr>
+<tr>
+<td>16384</td>
+<td>1580.8</td>
+</tr>
+</tbody></table></div>
+<p>fa&#x3D;off では 4096 トークンでも <code class="chip">failed to create context</code> で失敗します。このモデルでは flash attention が長コンテキストの必須条件です。</p>
+<h3 id="256K-コンテキストのメモリ計算" class="article-heading">256K コンテキストのメモリ計算<a class="article-anchor" href="#256K-コンテキストのメモリ計算" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>構成</th>
+<th>結果</th>
+<th>VRAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KV f16 + 256K</td>
+<td>メモリ不足</td>
+<td>&gt;20 GB</td>
+</tr>
+<tr>
+<td>KV q8 + 256K（MTP なし）</td>
+<td>動作</td>
+<td>~18.35 GB（Q3_K_S）&#x2F; 16186 MiB（IQ3_XXS）</td>
+</tr>
+<tr>
+<td>KV q4 + 256K（MTP なし）</td>
+<td>動作</td>
+<td><strong>14906 MiB（IQ3_XXS）</strong></td>
+</tr>
+<tr>
+<td>KV q4 + 256K + MTP</td>
+<td>動作（Q3_K_S）</td>
+<td>18894 MiB</td>
+</tr>
+</tbody></table></div>
+<h3 id="MTP-投機的デコード" class="article-heading">MTP 投機的デコード<a class="article-anchor" href="#MTP-投機的デコード" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>測定項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>実際の受け入れ率（サーバーログ）</td>
+<td><strong>62〜72%</strong></td>
+</tr>
+<tr>
+<td>デコード利得、自然な短い返信</td>
+<td>+3.9%</td>
+</tr>
+<tr>
+<td>デコード利得、固定 256 トークン、temp&#x3D;0.8</td>
+<td>+26.1%</td>
+</tr>
+<tr>
+<td>デコード利得、貪欲 temp&#x3D;0</td>
+<td>−10.1%</td>
+</tr>
+</tbody></table></div>
+<p>MTP は 20 GB ティアでは却下です：受け入れ率は高いものの、デコードは帯域幅でロックされており——MoE モデルはトークンごとに約 3B のアクティブエキスパートを読まざるを得ません。利得は小さく不安定なので、MTP はスキップが推奨です。</p>
+<h3 id="エージェントワークロード：長コンテキストでの-DeepSeek-Harness" class="article-heading">エージェントワークロード：長コンテキストでの DeepSeek Harness<a class="article-anchor" href="#エージェントワークロード：長コンテキストでの-DeepSeek-Harness" aria-hidden="true"></a></h3><p>実際の DeepSeek Harness エージェントセッションをワークロードとして測定：</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>総コンテキスト</th>
+<th>デコード t&#x2F;s</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>76K</td>
+<td>39.2</td>
+</tr>
+<tr>
+<td>101K</td>
+<td>33.0</td>
+</tr>
+</tbody></table></div>
+<p>コンテキストが大きくなるとデコードは遅くなります（KV の読み取りが増え、アテンションも増えるため）。これは長コンテキストの固有コストであり、欠陥ではありません——オーバーフローもトランケーションもありません。約 100K のコンテキストでも、約 33 t&#x2F;s はストリーミングエージェントにとって依然として流暢です。DeepSeek Harness や Codex スタイルのコーディングエージェントにとって、この 256K ウィンドウこそが 16 GB ティアではなくこのカードを選ぶ理由です。</p>
+<h3 id="消費電力と温度（フル負荷）" class="article-heading">消費電力と温度（フル負荷）<a class="article-anchor" href="#消費電力と温度（フル負荷）" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>消費電力</td>
+<td>69.8 W（70 W 制限いっぱい）</td>
+</tr>
+<tr>
+<td>温度</td>
+<td>83 °C（正常。スロットリング閾値は約 90 °C+）</td>
+</tr>
+<tr>
+<td>使用率</td>
+<td>96〜100%</td>
+</tr>
+<tr>
+<td>電力制限の調整可否</td>
+<td>調整不可（<code class="chip">-pl</code> は拒否され exit 4）</td>
+</tr>
+</tbody></table></div>
+<h2 id="なぜここでは-MTP-が効かないのか" class="article-heading">なぜここでは MTP が効かないのか<a class="article-anchor" href="#なぜここでは-MTP-が効かないのか" aria-hidden="true"></a></h2><p>16 GB の <a href="./rtx-pro-2000-on-zimaos" title="ZimaOS での NVIDIA RTX PRO 2000 の完全なベンチマークレポート" class="doc-link">RTX PRO 2000</a>では、デコードはメモリ帯域幅で約 65〜70 t&#x2F;s に制限されます。4000 SFF Ada は帯域幅が大きく（320 GB&#x2F;s）、デコードは 74〜83 t&#x2F;s に上がります——しかし同じ MoE の帯域幅ロジックは依然として成立します：トークンごとに約 3B のアクティブエキスパートを読む必要があります。MTP はその上にドラフトモデルを追加し、62〜72% の受け入れ率では、自然なテキストでの実利得は数パーセントで、貪欲サンプリングではマイナスです。メモリは KV q4 と 256K ウィンドウに使う方が価値があります。</p>
+<h2 id="推奨構成（20-GB-ティア）" class="article-heading">推奨構成（20 GB ティア）<a class="article-anchor" href="#推奨構成（20-GB-ティア）" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>量子化</td>
+<td>Qwen3.6-35B-A3B <strong>UD-IQ3_XXS</strong>（13.21 GB）</td>
+</tr>
+<tr>
+<td>Flash attention</td>
+<td>オン</td>
+</tr>
+<tr>
+<td>KV キャッシュ</td>
+<td>q4_0</td>
+</tr>
+<tr>
+<td>コンテキスト</td>
+<td>256K</td>
+</tr>
+<tr>
+<td>ubatch</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>MTP</td>
+<td>スキップ</td>
+</tr>
+<tr>
+<td>VRAM</td>
+<td><strong>14906 MiB（14.56 GB、約 5.5 GB の余裕）</strong></td>
+</tr>
+</tbody></table></div>
+<p>1 コマンドでサーバーを起動します：</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run -d --name llm-server --gpus all -p 8080:8080 \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$PWD</span>/models/llm:/models&quot;</span> \</span><br><span class="line">  ghcr.io/ggml-org/llama.cpp:server-cuda \</span><br><span class="line">  -m /models/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf \</span><br><span class="line">  --host 0.0.0.0 --port 8080 \</span><br><span class="line">  -c 262144 --n-gpu-layers 999 \</span><br><span class="line">  -fa on --cache-type-k q4_0 --cache-type-v q4_0</span><br></pre></td></tr></table></div></figure>
+
+<p>サービスは <code class="chip">http://&lt;host-ip&gt;:8080/v1</code> で OpenAI 互換エンドポイントを公開します（API key はプレースホルダーで、サーバーは認証しません）。OpenAI 形式のクライアントやエージェントならどれでも直接接続できます。</p>
+<h2 id="ティア比較" class="article-heading">ティア比較<a class="article-anchor" href="#ティア比較" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>ティア</th>
+<th>組み合わせ</th>
+<th>VRAM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20 GB</td>
+<td>IQ3_XXS + 256K + KV q4</td>
+<td>14.5 GB</td>
+</tr>
+<tr>
+<td>20 GB</td>
+<td>Q3_K_S + 256K + KV q4 + MTP</td>
+<td>18.45 GB（タイト）</td>
+</tr>
+<tr>
+<td>16 GB</td>
+<td>IQ3_XXS + 128K + KV q4</td>
+<td>約 14 GB（Q3_K_S はロード時に OOM）</td>
+</tr>
+</tbody></table></div>
+<h2 id="制限事項" class="article-heading">制限事項<a class="article-anchor" href="#制限事項" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li>MTP のデータポイントと長コンテキストの減衰は単一サンプルです。分散は厳密には評価していません。最適化マトリクス（A&#x2F;B 表）は 3 回の平均です。</li>
+<li>ハードウェアで検証したのは 20 GB 単一カードティアのみです。16&#x2F;24&#x2F;32 GB ティアは理論上の互換マトリクスに従い、本測定の対象外です。</li>
+<li>NVFP4（Blackwell のみ）、EAGLE、電力制限の調整はこのカードでは利用できず、テストに含めていません。</li>
+</ol>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.732Z" itemprop="dateModified">最終更新日: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">AMD Ryzen AI MAX+ 395 NPU</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目次">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%86%E3%82%B9%E3%83%88%E7%92%B0%E5%A2%83"><span class="toc-text">テスト環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%99%E3%83%B3%E3%83%81%E3%83%9E%E3%83%BC%E3%82%AF%E7%B5%90%E6%9E%9C"><span class="toc-text">ベンチマーク結果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8F%E5%AD%90%E5%8C%96%E6%AF%94%E8%BC%83%EF%BC%88llama-bench%E3%80%81512-x2F-256%EF%BC%89"><span class="toc-text">量子化比較（llama-bench、512&#x2F;256）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E9%81%A9%E5%8C%96%E3%82%B9%E3%82%A4%E3%83%83%E3%83%81-A-x2F-B%EF%BC%88llama-bench%E3%80%81512-x2F-256%E3%80%813-%E5%9B%9E%E3%81%AE%E5%B9%B3%E5%9D%87%EF%BC%89"><span class="toc-text">最適化スイッチ A&#x2F;B（llama-bench、512&#x2F;256、3 回の平均）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flash-Attention-%E3%81%A8%E9%95%B7%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88"><span class="toc-text">Flash Attention と長コンテキスト</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#256K-%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AE%E3%83%A1%E3%83%A2%E3%83%AA%E8%A8%88%E7%AE%97"><span class="toc-text">256K コンテキストのメモリ計算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MTP-%E6%8A%95%E6%A9%9F%E7%9A%84%E3%83%87%E3%82%B3%E3%83%BC%E3%83%89"><span class="toc-text">MTP 投機的デコード</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%EF%BC%9A%E9%95%B7%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%A7%E3%81%AE-DeepSeek-Harness"><span class="toc-text">エージェントワークロード：長コンテキストでの DeepSeek Harness</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E8%B2%BB%E9%9B%BB%E5%8A%9B%E3%81%A8%E6%B8%A9%E5%BA%A6%EF%BC%88%E3%83%95%E3%83%AB%E8%B2%A0%E8%8D%B7%EF%BC%89"><span class="toc-text">消費電力と温度（フル負荷）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%AA%E3%81%9C%E3%81%93%E3%81%93%E3%81%A7%E3%81%AF-MTP-%E3%81%8C%E5%8A%B9%E3%81%8B%E3%81%AA%E3%81%84%E3%81%AE%E3%81%8B"><span class="toc-text">なぜここでは MTP が効かないのか</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%A5%A8%E6%A7%8B%E6%88%90%EF%BC%8820-GB-%E3%83%86%E3%82%A3%E3%82%A2%EF%BC%89"><span class="toc-text">推奨構成（20 GB ティア）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%86%E3%82%A3%E3%82%A2%E6%AF%94%E8%BC%83"><span class="toc-text">ティア比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E9%99%90%E4%BA%8B%E9%A0%85"><span class="toc-text">制限事項</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">連絡を保つ<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">最新のニュース、アップデート、特別オファーを受け取るために、購読者リストに参加してください。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="メールアドレスを入力してください">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      購読する
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">製品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ジマキューブ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ジマボード</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ジマブレード</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">アクセサリ</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">カサOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">リソース</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ジマスペース</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">サポート</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">お問い合わせ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">返金ポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">プライバシーポリシー</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">利用規約</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">配送ポリシー</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">ギャラリー</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">IceWhaleで作成</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">コミュニティ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">当社について</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">ブログ</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">販売代理店</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">アフィリエイト</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/jp/zimaos/" class="mobile-nav-link">ジマOS</a></li><li class="menu-item "><a href="/docs/jp/zimaos/app-store/" class="mobile-nav-link">App Store</a></li><li class="menu-item current_page_item"><a href="/docs/jp/hardware/" class="mobile-nav-link">ハードウェア</a></li><li class="menu-item "><a href="/docs/jp/developer/" class="mobile-nav-link">開発</a></li><li class="menu-item "><a href="/docs/jp/help-center/" class="mobile-nav-link">ヘルプセンター</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">フォーラム</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/jp/hardware/">概要</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/jp/hardware/quick-start">クイックスタート</a></li><li><a class="" href="/docs/jp/hardware/zimacube-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/hardware-details">ハードウェア詳細</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on-setup">自動電源オンの設定</a></li><li><a class="" href="/docs/jp/hardware/pc-direct">PC 直接接続</a></li><li><a class="" href="/docs/jp/hardware/hdd-interface-guide">HDD インターフェースガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-guide">7 番ベイ利用ガイド</a></li><li><a class="" href="/docs/jp/hardware/7th-bay-install">7 番ベイの取り付け</a></li><li><a class="" href="/docs/jp/hardware/auto-power-on">自動電源オン</a></li><li><a class="" href="/docs/jp/hardware/gpu-expansion">GPU 拡張</a></li><li><a class="" href="/docs/jp/hardware/rtx-pro-2000-on-zimaos">RTX PRO 2000 性能検証</a></li><li><a class="" href="/docs/jp/hardware/raid-ssd-expansion">RAID SSD 拡張</a></li><li><a class="" href="/docs/jp/hardware/bios-configuration">BIOS 設定</a></li><li><a class="" href="/docs/jp/hardware/zimacube-fan-diy">DIY ファンガイド</a></li><li><a class="" href="/docs/jp/hardware/zimacube-backplane-replacement">バックプレーン交換</a></li><li><a class="" href="/docs/jp/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 転送速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">対応ネットワークアダプター</a></li><li><a class="" href="/docs/jp/hardware/enable-wol-on-zimacube">Wake-on-LAN を有効化</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/jp/hardware/zimaboard-hardware-overview">ハードウェア概要</a></li><li><a class="" href="/docs/jp/hardware/zimaboard-quick-start">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/hardware-interface">ハードウェアインターフェース</a></li><li><a class="" href="/docs/jp/hardware/power-on-zimaboard-2">ZimaBoard 2 の電源を入れる</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">ファン取り付けと PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/jp/hardware/power-on-zimablade">電源を入れる</a></li><li><a class="" href="/docs/jp/hardware/zimablade-overview">はじめに</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">互換性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/jp/hardware/7th-bay-led">7 番ベイ LED インジケーター</a></li><li><a class="" href="/docs/jp/hardware/ups-compatibility-list">UPS 互換性リスト</a></li><li><a class="" href="/docs/jp/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/jp/hardware/supported-disk-formats">対応ディスク形式</a></li><li><a class="" href="/docs/jp/hardware/ax210-wifi-6e">AX210 Wi-Fi モジュール</a></li><li><a class="" href="/docs/jp/hardware/wake-on-lan-setup">Wake-on-LAN 設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">サードパーティ OS</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/jp/hardware/install-unraid">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/install-truenas">TrueNAS を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-x86-install">OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/arch-linux-installation-on-zimaboard-2">Arch Linux のインストール</a></li><li><a class="" href="/docs/jp/hardware/openwrt-usb-install">USB から OpenWrt を実行</a></li><li><a class="" href="/docs/jp/hardware/openwrt-emmc-boot">OpenWrt eMMC 起動</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-install">OMV のインストール</a></li><li><a class="" href="/docs/jp/hardware/openmediavault-setup">OMV の設定</a></li><li><a class="" href="/docs/jp/hardware/unraid-install">Unraid を実行</a></li><li><a class="" href="/docs/jp/hardware/third-party-os-install">サードパーティ OS</a></li><li><a class="" href="/docs/jp/hardware/minimal-ubuntu-server-build">Ubuntu Server の設定</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">サードパーティ製ハードウェアの検証</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/jp/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li><li><a class="is-current" href="/docs/jp/hardware/rtx-4000-ada-on-zimaos">RTX 4000 SFF Ada 性能検証</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>JP</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/rtx-4000-ada-on-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/rtx-4000-ada-on-zimaos" data-lang="zh">中文</option>
+        
+          <option value="/docs/jp/hardware/rtx-4000-ada-on-zimaos" data-lang="jp" selected>日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/rtx-4000-ada-on-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/rtx-4000-ada-on-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">ストア</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>

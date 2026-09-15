@@ -88,8 +88,8 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="Alcance del protocolo: Esta página se centra en adaptar una aplicación Docker individual. Para el esquema v2 actual, el uso de mayúsculas en las claves locale, la estructura del repositor">
 <meta property="og:locale" content="es_ES">
-<meta property="article:published_time" content="2026-09-07T06:35:40.897Z">
-<meta property="article:modified_time" content="2026-09-07T06:35:40.897Z">
+<meta property="article:published_time" content="2026-09-15T09:07:49.508Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.508Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="zimaboard">
@@ -124,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-09-07T06:35:40.897Z"
+      "datePublished": "2026-09-15T09:07:49.508Z"
     }
   </script>
 
@@ -320,7 +320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li></ul>
+        <ul class="doc-sidebar__list" id="sidebar-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li><li><a class="" href="/docs/es/developer/introducing-libvirt-go">Presentación de libvirt-go</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="developer:app-store-development">
@@ -366,7 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <blockquote>
 <p><strong>Alcance del protocolo:</strong> Esta página se centra en adaptar una aplicación Docker individual. Para el esquema v2 actual, el uso de mayúsculas en las claves locale, la estructura del repositorio y los resultados de compilación, consulta <a href="./app-store-compose-x-casaos" class="doc-link">Docker Compose y x-casaos</a>, <a href="./app-store-repository-structure" class="doc-link">Estructura del repositorio</a> y <a href="./app-store-build-output" class="doc-link">Resultados de compilación</a>.</p>
 </blockquote>
-<h1 id="Manual-de-Adaptacion-de-Aplicaciones-Docker-para-ZimaOS" class="article-heading">Manual de Adaptación de Aplicaciones Docker para ZimaOS<a class="article-anchor" href="#Manual-de-Adaptacion-de-Aplicaciones-Docker-para-ZimaOS" aria-hidden="true"></a></h1><p>Cómo publicar aplicaciones en ZimaOS</p>
+<h2 id="Manual-de-Adaptacion-de-Aplicaciones-Docker-para-ZimaOS" class="article-heading">Manual de Adaptación de Aplicaciones Docker para ZimaOS<a class="article-anchor" href="#Manual-de-Adaptacion-de-Aplicaciones-Docker-para-ZimaOS" aria-hidden="true"></a></h2><p>Cómo publicar aplicaciones en ZimaOS</p>
 <ol class="doc-steps">
 <li>Tutorial de publicación y adaptación de aplicaciones Docker</li>
 <li>Tutorial de compilación de aplicaciones para PC y en línea</li>
@@ -374,35 +374,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ol>
 <p>Lista de verificación de aplicaciones Docker para ZimaOS y configuración recomendada</p>
 <p>Hito modular: Priorizar las actualizaciones de aplicaciones sin reiniciar</p>
-<h2 id="Juicio-sobre-la-tendencia-de-la-aplicacion" class="article-heading">Juicio sobre la tendencia de la aplicación<a class="article-anchor" href="#Juicio-sobre-la-tendencia-de-la-aplicacion" aria-hidden="true"></a></h2><blockquote>
+<h3 id="Juicio-sobre-la-tendencia-de-la-aplicacion" class="article-heading">Juicio sobre la tendencia de la aplicación<a class="article-anchor" href="#Juicio-sobre-la-tendencia-de-la-aplicacion" aria-hidden="true"></a></h3><blockquote>
 <p>Predecir preliminarmente la carga de trabajo de adaptación de la aplicación, si puede adaptarse directamente, si es necesario construir la imagen uno mismo, etc.</p>
 </blockquote>
 <p>En términos generales, el sitio web oficial de la aplicación se puede dividir en las siguientes tres tendencias:</p>
-<h3 id="Despliegue-autonomo-en-Docker" class="article-heading">Despliegue autónomo en Docker<a class="article-anchor" href="#Despliegue-autonomo-en-Docker" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Despliegue-autonomo-en-Docker" class="article-heading">Despliegue autónomo en Docker<a class="article-anchor" href="#Despliegue-autonomo-en-Docker" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>Dificultad: 🌟</li>
 <li>Características: El sitio web oficial o GitHub prioriza ofrecer opciones de despliegue autónomo.</li>
 <li>Ejemplos: LocalAI, OpenWebUI y Nextcloud, etc.</li>
 <li>Esto significa que el desarrollador de esta aplicación probablemente desarrolló y probó en un entorno de despliegue autónomo. También significa que esta aplicación tiene experiencia de despliegue autónomo por parte del desarrollador original y la comunidad, y generalmente es más fácil de adaptar.</li>
 <li>Es muy probable que se proporcione una imagen AIO con una configuración mínima, y luego podemos configurarla directamente.</li>
 </ul>
-<h3 id="Despliegue-autonomo-en-PC" class="article-heading">Despliegue autónomo en PC<a class="article-anchor" href="#Despliegue-autonomo-en-PC" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Despliegue-autonomo-en-PC" class="article-heading">Despliegue autónomo en PC<a class="article-anchor" href="#Despliegue-autonomo-en-PC" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>Dificultad: 🌟🌟🌟</li>
 <li>Características: El sitio web oficial o GitHub prioriza ofrecer descargas para Win&#x2F;Mac&#x2F;Linux, pero la interfaz principal se proporciona a través de WebUI.</li>
 <li>Ejemplo: AUTOMATIC1111&#x2F;stable-diffusion-webui</li>
 <li>Representa el proceso de instalación de esta aplicación, que será verificado por los desarrolladores y la comunidad. Sin embargo, puede que no haya una imagen Docker adecuada, ya que esto no es una prioridad cuando se inicia el proyecto.</li>
 <li>Si no hay una imagen Docker lista, será relativamente fácil empaquetarla como una imagen Docker por nuestra cuenta, ya que casi no hay que preocuparse por errores en el proceso de instalación. Solo hay que configurar el entorno requerido e instalar las dependencias previas.</li>
 </ul>
-<h3 id="Servicio-en-la-Nube" class="article-heading">Servicio en la Nube<a class="article-anchor" href="#Servicio-en-la-Nube" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Servicio-en-la-Nube" class="article-heading">Servicio en la Nube<a class="article-anchor" href="#Servicio-en-la-Nube" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>Dificultad: 🌟🌟🌟🌟🌟</li>
 <li>Características: El sitio web oficial o GitHub recomienda utilizar los servicios en la nube que proporcionan, y también ofrecen una forma de autodespliegue. Usualmente, la aplicación también se describe como una plataforma XX todo-en-uno que puede resolver diversas necesidades.</li>
 <li>Ejemplo: Dify, TaskingAI, etc.</li>
 <li>Los desarrolladores de esta aplicación generalmente dan prioridad al entorno de despliegue en clústeres en la nube, y probablemente prioricen el desarrollo basado en entornos de orquestación de contenedores como K8s. Las opciones de autodespliegue generalmente se construyen a través de Docker Compose o K8s. El inicio de una aplicación completa involucra múltiples servicios de contenedores y múltiples imágenes. Al mismo tiempo, se requieren una gran cantidad de variables de entorno e incluso archivos externos para permitir que la aplicación se inicie correctamente.</li>
 <li>Este tipo de aplicación requiere mucho esfuerzo para aprender las relaciones de los servicios necesarios para el proceso de inicio de la aplicación, así como el significado y los métodos de configuración de una gran cantidad de variables de entorno. Al mismo tiempo, si excede las capacidades de la aplicación de ZimaOS, será relativamente difícil construir una imagen por uno mismo, ya que se necesita comprender los métodos de configuración específicos de las diferentes pilas tecnológicas que utiliza este programa.</li>
 </ul>
-<h2 id="Entender-los-componentes-de-la-aplicacion" class="article-heading">Entender los componentes de la aplicación<a class="article-anchor" href="#Entender-los-componentes-de-la-aplicacion" aria-hidden="true"></a></h2><blockquote>
+<h3 id="Entender-los-componentes-de-la-aplicacion" class="article-heading">Entender los componentes de la aplicación<a class="article-anchor" href="#Entender-los-componentes-de-la-aplicacion" aria-hidden="true"></a></h3><blockquote>
 <p>Analizar qué servicios duplicados depende la aplicación, el impacto de las diferentes configuraciones y qué necesitan cuidar los usuarios.</p>
 </blockquote>
-<h3 id="Analizar-los-requisitos-del-servicio" class="article-heading">Analizar los requisitos del servicio<a class="article-anchor" href="#Analizar-los-requisitos-del-servicio" aria-hidden="true"></a></h3><p>Normalmente, cada aplicación tiene su propio front-end y back-end independiente, y puede depender de algunos servicios comunes como:</p>
+<h4 id="Analizar-los-requisitos-del-servicio" class="article-heading">Analizar los requisitos del servicio<a class="article-anchor" href="#Analizar-los-requisitos-del-servicio" aria-hidden="true"></a></h4><p>Normalmente, cada aplicación tiene su propio front-end y back-end independiente, y puede depender de algunos servicios comunes como:</p>
 <ul class="doc-dots">
 <li>Bases de datos varias: mysql, redis, pg, etc.</li>
 <li>APIs compartidas varias:<ul class="doc-dots">
@@ -414,13 +414,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote>
 <p>Dado que los servicios compartidos y las dependencias preinstaladas&#x2F;recomendadas no son compatibles en esta etapa,<br>Para el desarrollador&#x2F;adaptador de la aplicación:<br>Considerar dar prioridad a las imágenes AIO listas para usar cuando se adapten o considerar empaquetar los servicios necesarios en una imagen o compose.<br>Para el desarrollador de ZimaOS:<br>Considerar apoyar dependencias preinstaladas y recomendadas.</p>
 </blockquote>
-<h3 id="Analizar-los-requisitos-de-almacenamiento-de-datos" class="article-heading">Analizar los requisitos de almacenamiento de datos<a class="article-anchor" href="#Analizar-los-requisitos-de-almacenamiento-de-datos" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Analizar-los-requisitos-de-almacenamiento-de-datos" class="article-heading">Analizar los requisitos de almacenamiento de datos<a class="article-anchor" href="#Analizar-los-requisitos-de-almacenamiento-de-datos" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>Directorios de archivos temporales generados cuando la aplicación está en ejecución</li>
 <li>Directorios de archivos persistentes requeridos cuando la aplicación se restaura&#x2F;migra</li>
 <li>Directorios de archivos que los usuarios necesitan gestionar&#x2F;utilizar</li>
 </ul>
 <p>Una vez comprendido claramente, realizar el mapeo de inicialización correspondiente según la estructura de directorios de datos definida por ZimaOS e informar a los usuarios sobre los directorios que deben cuidar a través de las sugerencias adecuadas.</p>
-<h3 id="Analizar-los-requisitos-de-puertos" class="article-heading">Analizar los requisitos de puertos<a class="article-anchor" href="#Analizar-los-requisitos-de-puertos" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Analizar-los-requisitos-de-puertos" class="article-heading">Analizar los requisitos de puertos<a class="article-anchor" href="#Analizar-los-requisitos-de-puertos" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>¿Cuáles son los puertos de servicio WebUI, HTTP&#x2F;HTTPS?<ul class="doc-dots">
 <li>Normalmente pueden ser asignados libremente por el sistema, y los cambios no afectarán el uso normal.</li>
 <li>Algunas aplicaciones pueden tener requisitos específicos para dichos puertos, los cuales deben ser identificados.</li>
@@ -446,7 +446,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote>
 <p>Dado que ZimaOS no soporta asignación flexible de puertos en esta etapa,<br>Para el desarrollador&#x2F;adaptador de la aplicación:<br>Considerar configurar puertos y sugerencias de acuerdo con las características de la aplicación durante la adaptación.<br>Para el desarrollador de ZimaOS:<br>Considerar soportar un mecanismo definido para la asignación de puertos.</p>
 </blockquote>
-<h3 id="Analizar-los-requisitos-de-dispositivos" class="article-heading">Analizar los requisitos de dispositivos<a class="article-anchor" href="#Analizar-los-requisitos-de-dispositivos" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Analizar-los-requisitos-de-dispositivos" class="article-heading">Analizar los requisitos de dispositivos<a class="article-anchor" href="#Analizar-los-requisitos-de-dispositivos" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>Requisitos de GPU</li>
 <li>Requisitos de CPU</li>
 <li>Requisitos de dispositivos USB</li>
@@ -456,16 +456,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <blockquote>
 <p>Dado que ZimaOS no soporta asignación flexible de dispositivos en esta etapa,<br>Para el desarrollador&#x2F;adaptador de la aplicación:<br>Considerar configurar dispositivos y sugerencias de acuerdo con las características de la aplicación durante la adaptación.<br>Para el desarrollador de ZimaOS:<br>Considerar soportar un mecanismo definido para la asignación de dispositivos, así como un mecanismo de detección y retroalimentación para los requisitos de dispositivos.</p>
 </blockquote>
-<h3 id="Analizar-los-requisitos-de-tiempo-de-ejecucion" class="article-heading">Analizar los requisitos de tiempo de ejecución<a class="article-anchor" href="#Analizar-los-requisitos-de-tiempo-de-ejecucion" aria-hidden="true"></a></h3><ul class="doc-dots">
+<h4 id="Analizar-los-requisitos-de-tiempo-de-ejecucion" class="article-heading">Analizar los requisitos de tiempo de ejecución<a class="article-anchor" href="#Analizar-los-requisitos-de-tiempo-de-ejecucion" aria-hidden="true"></a></h4><ul class="doc-dots">
 <li>nvidia</li>
 <li>…</li>
 </ul>
 <p>Este tipo es raro, pero se recomienda entender los requisitos de tiempo de ejecución correspondientes cuando se adapten, configurarlos y escribirlos en las sugerencias de forma adecuada.</p>
-<h2 id="Leer-la-solucion-oficial-de-autodespliegue" class="article-heading">Leer la solución oficial de autodespliegue<a class="article-anchor" href="#Leer-la-solucion-oficial-de-autodespliegue" aria-hidden="true"></a></h2><blockquote>
+<h3 id="Leer-la-solucion-oficial-de-autodespliegue" class="article-heading">Leer la solución oficial de autodespliegue<a class="article-anchor" href="#Leer-la-solucion-oficial-de-autodespliegue" aria-hidden="true"></a></h3><blockquote>
 <p>Priorizar aprender las mejores prácticas oficiales cuando se adapte</p>
 </blockquote>
 <p>Las soluciones y documentos oficiales de autodespliegue suelen contener casos prácticos y técnicas de despliegue excelentes, los cuales se pueden leer de antemano para acelerar la adaptación.</p>
-<h2 id="Adaptado-a-la-aplicacion-Docker-de-ZimaOS" class="article-heading">Adaptado a la aplicación Docker de ZimaOS<a class="article-anchor" href="#Adaptado-a-la-aplicacion-Docker-de-ZimaOS" aria-hidden="true"></a></h2><blockquote>
+<h3 id="Adaptado-a-la-aplicacion-Docker-de-ZimaOS" class="article-heading">Adaptado a la aplicación Docker de ZimaOS<a class="article-anchor" href="#Adaptado-a-la-aplicacion-Docker-de-ZimaOS" aria-hidden="true"></a></h3><blockquote>
 <p>Ahora puedes integrar la información aprendida anteriormente y adaptarla a la aplicación ZimaOS.</p>
 </blockquote>
 <p>Cuando comiences a escribir, puedes hacer referencia a los archivos aplicados previamente para empezar a escribir:<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/CasaOS-AppStore/tree/main/Apps" class="doc-link">https://github.com/IceWhaleTech/CasaOS-AppStore/tree/main/Apps</a></p>
@@ -481,7 +481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Probar la instalación</li>
 <li>Enviar a GitHub</li>
 </ol>
-<h3 id="Ejemplo-heredado-de-x-casaos" class="article-heading">Ejemplo heredado de x-casaos<a class="article-anchor" href="#Ejemplo-heredado-de-x-casaos" aria-hidden="true"></a></h3><blockquote>
+<h4 id="Ejemplo-heredado-de-x-casaos" class="article-heading">Ejemplo heredado de x-casaos<a class="article-anchor" href="#Ejemplo-heredado-de-x-casaos" aria-hidden="true"></a></h4><blockquote>
 <p>Este ejemplo abreviado se conserva para explicar la adaptación de aplicaciones. Consulta <a href="./app-store-compose-x-casaos" class="doc-link">Docker Compose y x-casaos</a> para conocer los campos v2 obligatorios y las categorías permitidas.</p>
 </blockquote>
 <div class="code-block code-block--plain"><pre><code class="language">x-casaos:
@@ -501,14 +501,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-09-07T06:35:40.897Z" itemprop="dateModified">Última actualización: 2026-09-07</time>
-      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/developer/contributions"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Contribuciones de la comunidad</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/developer/app-store-create-from-scratch"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Crear una App Store</span></a></nav>
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.508Z" itemprop="dateModified">Última actualización: 2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/developer/introducing-libvirt-go"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Presentación de libvirt-go</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/developer/app-store-create-from-scratch"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Crear una App Store</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="Contenidos">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Manual-de-Adaptacion-de-Aplicaciones-Docker-para-ZimaOS"><span class="toc-text">Manual de Adaptación de Aplicaciones Docker para ZimaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Juicio-sobre-la-tendencia-de-la-aplicacion"><span class="toc-text">Juicio sobre la tendencia de la aplicación</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Despliegue-autonomo-en-Docker"><span class="toc-text">Despliegue autónomo en Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Despliegue-autonomo-en-PC"><span class="toc-text">Despliegue autónomo en PC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servicio-en-la-Nube"><span class="toc-text">Servicio en la Nube</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Entender-los-componentes-de-la-aplicacion"><span class="toc-text">Entender los componentes de la aplicación</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Analizar-los-requisitos-del-servicio"><span class="toc-text">Analizar los requisitos del servicio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analizar-los-requisitos-de-almacenamiento-de-datos"><span class="toc-text">Analizar los requisitos de almacenamiento de datos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analizar-los-requisitos-de-puertos"><span class="toc-text">Analizar los requisitos de puertos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analizar-los-requisitos-de-dispositivos"><span class="toc-text">Analizar los requisitos de dispositivos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analizar-los-requisitos-de-tiempo-de-ejecucion"><span class="toc-text">Analizar los requisitos de tiempo de ejecución</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leer-la-solucion-oficial-de-autodespliegue"><span class="toc-text">Leer la solución oficial de autodespliegue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adaptado-a-la-aplicacion-Docker-de-ZimaOS"><span class="toc-text">Adaptado a la aplicación Docker de ZimaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejemplo-heredado-de-x-casaos"><span class="toc-text">Ejemplo heredado de x-casaos</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Manual-de-Adaptacion-de-Aplicaciones-Docker-para-ZimaOS"><span class="toc-text">Manual de Adaptación de Aplicaciones Docker para ZimaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Juicio-sobre-la-tendencia-de-la-aplicacion"><span class="toc-text">Juicio sobre la tendencia de la aplicación</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Despliegue-autonomo-en-Docker"><span class="toc-text">Despliegue autónomo en Docker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Despliegue-autonomo-en-PC"><span class="toc-text">Despliegue autónomo en PC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Servicio-en-la-Nube"><span class="toc-text">Servicio en la Nube</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Entender-los-componentes-de-la-aplicacion"><span class="toc-text">Entender los componentes de la aplicación</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Analizar-los-requisitos-del-servicio"><span class="toc-text">Analizar los requisitos del servicio</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Analizar-los-requisitos-de-almacenamiento-de-datos"><span class="toc-text">Analizar los requisitos de almacenamiento de datos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Analizar-los-requisitos-de-puertos"><span class="toc-text">Analizar los requisitos de puertos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Analizar-los-requisitos-de-dispositivos"><span class="toc-text">Analizar los requisitos de dispositivos</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Analizar-los-requisitos-de-tiempo-de-ejecucion"><span class="toc-text">Analizar los requisitos de tiempo de ejecución</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Leer-la-solucion-oficial-de-autodespliegue"><span class="toc-text">Leer la solución oficial de autodespliegue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adaptado-a-la-aplicacion-Docker-de-ZimaOS"><span class="toc-text">Adaptado a la aplicación Docker de ZimaOS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Ejemplo-heredado-de-x-casaos"><span class="toc-text">Ejemplo heredado de x-casaos</span></a></li></ol></li></ol></li></ol>
     </nav>
   </aside>
 </div>
@@ -758,7 +758,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </button>
       </h4>
       <div class="doc-sidebar__list-motion">
-        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li></ul>
+        <ul class="doc-sidebar__list" id="mobile-nav-developer-development"><li><a class="" href="/docs/es/developer/python-setup">Entorno de Python</a></li><li><a class="" href="/docs/es/developer/how-to-contribute">Guía de contribución</a></li><li><a class="" href="/docs/es/developer/contributions">Contribuciones de la comunidad</a></li><li><a class="" href="/docs/es/developer/introducing-libvirt-go">Presentación de libvirt-go</a></li></ul>
       </div>
     </div>
     <div class="doc-sidebar__group" data-group="developer:app-store-development">

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>NVIDIA RTX PRO 2000 在 ZimaOS 上的大模型推理性能：实测 65–70 t/s | Zimaspace Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <script>
+    (function () {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('zima-docs-theme');
+      } catch (error) {
+        savedTheme = null;
+      }
+      var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }());
+  </script>
+  
+  <style>
+    html, body { background: #ffffff; }
+    html[data-theme="dark"], html[data-theme="dark"] body { background: #0f0f0f; }
+  </style>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://www.zimaspace.com/docs/zh/hardware/rtx-pro-2000-on-zimaos">
+  <!-- Alternate links -->
+  
+    
+    
+  <link rel="alternate" hreflang="en" href="https://www.zimaspace.com/docs/hardware/rtx-pro-2000-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="zh" href="https://www.zimaspace.com/docs/zh/hardware/rtx-pro-2000-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="jp" href="https://www.zimaspace.com/docs/jp/hardware/rtx-pro-2000-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="pt-PT" href="https://www.zimaspace.com/docs/pt-PT/hardware/rtx-pro-2000-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="es" href="https://www.zimaspace.com/docs/es/hardware/rtx-pro-2000-on-zimaos">
+    
+    
+    
+  <link rel="alternate" hreflang="x-default" href="https://www.zimaspace.com/docs/hardware/rtx-pro-2000-on-zimaos">
+    
+  
+  <!-- FAVICONS ICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon-32x32.png" />
+
+  <!-- Icon -->
+  
+  <link rel="manifest" href="/docs/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#f1b335">
+  <meta name="msapplication-TileImage" content="/docs/icon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#f1b335">
+
+  <!-- Start critical local fonts before the render-blocking stylesheets. -->
+  <link rel="preload" href="/docs/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/docs/fonts/britti-sans-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- build:css build/css/zima.css -->
+  
+<link rel="stylesheet" href="/docs/css/zima.css">
+
+  <link rel="stylesheet" href="/docs/css/docs-ui.css?v=20260901-theme-navigation">
+  <!-- endbuild -->
+  
+  
+  
+  <!-- Open Graph -->
+  
+  <meta name="description" content="NVIDIA RTX PRO 2000 Blackwell 16 GB 在运行 ZimaOS 的 ZimaCube 上的实测基准：Qwen3.6-35B-A3B MoE 的 llama.cpp 解码速度、上下文上限、功耗，以及推荐配置。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NVIDIA RTX PRO 2000 在 ZimaOS 上的大模型推理性能：实测 65–70 t&#x2F;s">
+<meta property="og:url" content="https://www.zimaspace.com/docs/zh/hardware/rtx-pro-2000-on-zimaos">
+<meta property="og:site_name" content="Zimaspace Docs">
+<meta property="og:description" content="NVIDIA RTX PRO 2000 Blackwell 16 GB 在运行 ZimaOS 的 ZimaCube 上的实测基准：Qwen3.6-35B-A3B MoE 的 llama.cpp 解码速度、上下文上限、功耗，以及推荐配置。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-09-15T09:07:49.755Z">
+<meta property="article:modified_time" content="2026-09-15T09:07:49.755Z">
+<meta property="article:author" content="ZimaSpace">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="zimaboard">
+<meta property="fb:admins" content="298662541343433">
+  
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5B6D8QGM');</script>
+<!-- End Google Tag Manager -->
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "NVIDIA RTX PRO 2000 本地大模型推理性能测试",
+      "description": "NVIDIA RTX PRO 2000 Blackwell 16 GB 在运行 ZimaOS 的 ZimaCube 上的实测基准：Qwen3.6-35B-A3B MoE 的 llama.cpp 解码速度、上下文上限、功耗，以及推荐配置。",
+      
+      "author": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "url": "https://www.zimaspace.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ZimaSpace",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.zimaspace.com/docs/logo.svg"
+        }
+      },
+      "datePublished": "2026-09-15T09:07:49.755Z"
+    }
+  </script>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ZimaSpace Docs",
+          "item": "https://www.zimaspace.com/docs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hardware",
+          "item": "https://www.zimaspace.com/docs/zh/hardware/"
+        },
+        
+        
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "NVIDIA RTX PRO 2000 本地大模型推理性能测试"
+        }
+        
+      ]
+    }
+  </script>
+  
+  
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body class="docs-page">
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B6D8QGM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div id="container">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/docs/" aria-label="ZimaSpace">
+      <img src="/docs/img/docs-logo.svg" width="34" height="33" alt="ZimaSpace">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <ul><li class="menu-item "><a href="/docs/zh/zimaos/" class="site-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="site-nav-link">应用商店</a></li><li class="menu-item current_page_item"><a href="/docs/zh/hardware/" class="site-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="site-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="site-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="site-nav-link">论坛</a></li></ul>
+    </nav>
+
+    <div class="header-tools">
+      <button id="showSearch" class="search-field" type="button" aria-label="搜索">
+        
+        <span class="search-field__hint">
+          <span class="search-field__label">开始搜索</span>
+          <kbd class="search-field__kbd">
+            <span class="search-field__cmd" aria-hidden="true"></span>
+            <span class="search-field__ctrl">Ctrl</span>
+            <span class="search-field__k">K</span>
+          </kbd>
+        </span>
+        <img src="/docs/img/docs-search.svg" width="16" height="16" alt="">
+      </button>
+
+      <div class="header-utils">
+        <div class="header-language">
+          <button class="header-utils__lang" type="button" aria-label="Language">
+            <img src="/docs/img/docs-globe.svg" width="20" height="20" alt="">
+            <span>ZH</span>
+          </button>
+          <ul class="header-language__menu">
+            
+              <li><a href="/docs/hardware/rtx-pro-2000-on-zimaos">English</a></li>
+            
+              <li><a href="/docs/zh/hardware/rtx-pro-2000-on-zimaos">中文</a></li>
+            
+              <li><a href="/docs/jp/hardware/rtx-pro-2000-on-zimaos">日本語</a></li>
+            
+              <li><a href="/docs/pt-PT/hardware/rtx-pro-2000-on-zimaos">Português</a></li>
+            
+              <li><a href="/docs/es/hardware/rtx-pro-2000-on-zimaos">Español</a></li>
+            
+          </ul>
+        </div>
+
+        
+        
+        <button id="theme-toggle" class="header-utils__theme" type="button" data-theme-toggle aria-label="Switch color theme">
+          <img src="/docs/img/docs-theme.svg" width="20" height="20" alt="">
+        </button>
+        
+      </div>
+
+      <a class="store-btn" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_header_store" target="_blank" rel="noopener external">商店</a>
+
+      
+      <button id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+        <span class="mobile-nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="search-container"
+     role="dialog"
+     aria-modal="true"
+     aria-hidden="true"
+     aria-label="搜索"
+     data-search-recent="最近搜索"
+     data-search-suggested="推荐"
+     data-search-no-results="没有找到与“{query}”相关的结果"
+     data-search-no-results-hint="请尝试其他关键词，或检查输入是否正确。"
+     data-search-remove="移除"
+     data-search-overview="概览"
+     data-search-zimaos="ZimaOS"
+     data-search-app-store="应用商店"
+     data-search-hardware="硬件"
+     data-search-developer="开发者"
+     data-search-help-center="帮助中心">
+  <button id="search-container-close" type="button" aria-label="Close search">
+    <span class="search-close-icon" aria-hidden="true"></span>
+  </button>
+  <div class="search-bg"></div>
+  <div class="search-content-container">
+    <div id="search-input-wrap">
+      <input type="search" id="search-input" placeholder="开始搜索">
+    </div>
+    <div id="resultContent"></div>
+  </div>
+  <div id="search-suggestion-data" hidden>
+    <a href="/docs/zh/zimaos/how-to-install-zimaos"
+       data-title="安装 ZimaOS"
+       data-meta="ZimaOS › 安装方式"></a>
+    <a href="/docs/zh/zimaos/get-started"
+       data-title="开始使用"
+       data-meta="ZimaOS › 设置与存储"></a>
+    <a href="/docs/zh/zimaos/app-store/awesome-third-party-stores"
+       data-title="社区应用商店"
+       data-meta="应用商店 › 创意项目"></a>
+    <a href="/docs/zh/zimaos/remote-access"
+       data-title="远程访问"
+       data-meta="ZimaOS › 访问与共享"></a>
+    <a href="/docs/zh/zimaos/zimaclient-install"
+       data-title="下载 ZimaClient"
+       data-meta="ZimaOS › 访问与共享"></a>
+  </div>
+</div>
+
+    <div class="docs-shell">
+  <aside class="doc-sidebar" role="navigation" aria-label="Documentation">
+  <nav class="doc-sidebar__inner">
+    <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/hardware/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimacube"><li><a class="" href="/docs/zh/hardware/quick-start">快速开始</a></li><li><a class="" href="/docs/zh/hardware/zimacube-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/hardware-details">硬件详情</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on-setup">自动开机方法</a></li><li><a class="" href="/docs/zh/hardware/pc-direct">PC 直连</a></li><li><a class="" href="/docs/zh/hardware/hdd-interface-guide">硬盘接口指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-guide">第七硬盘槽使用指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-install">安装第七硬盘槽</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on">自动开机</a></li><li><a class="" href="/docs/zh/hardware/gpu-expansion">GPU 扩展</a></li><li><a class="is-current" href="/docs/zh/hardware/rtx-pro-2000-on-zimaos">RTX PRO 2000 性能实测</a></li><li><a class="" href="/docs/zh/hardware/raid-ssd-expansion">RAID SSD 扩展</a></li><li><a class="" href="/docs/zh/hardware/bios-configuration">BIOS 配置</a></li><li><a class="" href="/docs/zh/hardware/zimacube-fan-diy">DIY 风扇指南</a></li><li><a class="" href="/docs/zh/hardware/zimacube-backplane-replacement">更换背板</a></li><li><a class="" href="/docs/zh/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 传输速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">兼容的网络适配器</a></li><li><a class="" href="/docs/zh/hardware/enable-wol-on-zimacube">启用网络唤醒</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimaboard"><li><a class="" href="/docs/zh/hardware/zimaboard-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/zimaboard-quick-start">开机</a></li><li><a class="" href="/docs/zh/hardware/hardware-interface">硬件接口</a></li><li><a class="" href="/docs/zh/hardware/power-on-zimaboard-2">ZimaBoard 2 开机</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">风扇安装与 PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-zimablade"><li><a class="" href="/docs/zh/hardware/power-on-zimablade">开机</a></li><li><a class="" href="/docs/zh/hardware/zimablade-overview">开始使用</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">兼容性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-compatibility"><li><a class="" href="/docs/zh/hardware/7th-bay-led">第七硬盘槽 LED 指示灯</a></li><li><a class="" href="/docs/zh/hardware/ups-compatibility-list">UPS 兼容性列表</a></li><li><a class="" href="/docs/zh/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/zh/hardware/supported-disk-formats">支持的磁盘格式</a></li><li><a class="" href="/docs/zh/hardware/ax210-wifi-6e">AX210 Wi-Fi 模块</a></li><li><a class="" href="/docs/zh/hardware/wake-on-lan-setup">网络唤醒设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">第三方系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="sidebar-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="sidebar-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li><li><a class="" href="/docs/zh/hardware/rtx-4000-ada-on-zimaos">RTX 4000 SFF Ada 性能实测</a></li></ul>
+      </div>
+    </div>
+  </nav>
+</aside>
+
+
+  <main class="doc-article" itemscope itemtype="http://schema.org/Article">
+    <header class="doc-article__head">
+      <h1 itemprop="name">NVIDIA RTX PRO 2000 本地大模型推理性能测试</h1>
+    </header>
+
+    <div class="doc-article__body" itemprop="articleBody">
+      <h2 id="概述" class="article-heading">概述<a class="article-anchor" href="#概述" aria-hidden="true"></a></h2><p>本文记录 NVIDIA RTX PRO 2000 Blackwell 16 GB——ZimaCube Creator 的官方显卡选项——在 ZimaOS 1.7.1 上运行本地大模型推理的实测基准。内容涵盖合成基准、真实对话生成、长上下文验证和功耗，最后给出推荐的模型和部署方案。</p>
+<p>五步部署流程见 <a href="../zimaos/local-llm-inference" title="在 ZimaOS NAS 上部署经过验证的 35B MoE 私有 AI 服务器" class="doc-link">本地大模型推理</a>。物理安装见 <a href="./gpu-expansion" title="为你的 ZimaCube 添加用于 AI 和转码的显卡" class="doc-link">GPU 扩展</a>。</p>
+<h2 id="TL-DR" class="article-heading">TL;DR<a class="article-anchor" href="#TL-DR" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>结论</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>能否跑本地大模型</td>
+<td>能——CUDA 13.0 &#x2F; 计算能力 12.0 完全支持</td>
+</tr>
+<tr>
+<td>最佳模型</td>
+<td><strong>Qwen3.6-35B-A3B（IQ3_XXS 量化）</strong></td>
+</tr>
+<tr>
+<td>解码速度</td>
+<td><strong>约 65–70 tokens&#x2F;s</strong></td>
+</tr>
+<tr>
+<td>长上下文</td>
+<td>64K 稳定，128K 可用</td>
+</tr>
+<tr>
+<td>对比 27B 稠密模型</td>
+<td>只有 18–23 t&#x2F;s——MoE 模型快约 3.5 倍</td>
+</tr>
+<tr>
+<td>真正的瓶颈</td>
+<td>16 GB 显存，不是算力也不是功耗</td>
+</tr>
+</tbody></table></div>
+<p>一句话总结：RTX PRO 2000 是 16 GB 级显卡里最适合本地 agent 推理的之一——70 W、Blackwell 架构，搭配 MoE 模型时解码速度比同体量稠密模型快数倍。</p>
+<h2 id="测试环境" class="article-heading">测试环境<a class="article-anchor" href="#测试环境" aria-hidden="true"></a></h2><h3 id="硬件" class="article-heading">硬件<a class="article-anchor" href="#硬件" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>规格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设备</td>
+<td>ZimaCube NAS（第一代入门款，ZimaOS 官方硬件）</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>ZimaOS 1.7.1</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Intel N100（4 核，0.7–3.4 GHz）</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>16 GB（约 15 GB 可用）+ 5.2 GB swap</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td><strong>NVIDIA RTX PRO 2000 Blackwell</strong></td>
+</tr>
+<tr>
+<td>显存</td>
+<td>16 GB GDDR7</td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td>13.0，驱动 580.105.08——插入显卡后由 ZimaOS 1.7.1 自动激活</td>
+</tr>
+<tr>
+<td>计算能力</td>
+<td>12.0（sm_120，Blackwell）</td>
+</tr>
+<tr>
+<td>功耗上限</td>
+<td>70 W</td>
+</tr>
+</tbody></table></div>
+<p>这是一台 GPU 强、CPU 弱的设备。N100 是低功耗效率核，所以每个模型都必须完整装进显存。推理一旦溢出到 CPU，速度就会崩盘。</p>
+<p>测试设备是第一代入门款 ZimaCube。在 ZimaCube 2 上，更强的 CPU 只会改善结果——GPU 侧的数据不变，因为显卡完全相同。</p>
+<h3 id="软件" class="article-heading">软件<a class="article-anchor" href="#软件" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>软件</th>
+<th>版本 &#x2F; 说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>推理引擎</td>
+<td>llama.cpp（从源码构建，使用 CUDA sm_120 后端；构建请用 CUDA 12.8——13.1 有已知的 MMQ 内核问题）</td>
+</tr>
+<tr>
+<td>服务器</td>
+<td>llama-server（OpenAI 兼容 API）</td>
+</tr>
+<tr>
+<td>模型格式</td>
+<td>GGUF（含 Unsloth Dynamic 量化）</td>
+</tr>
+</tbody></table></div>
+<p>RTX PRO 2000 是 Blackwell 卡（sm_120），需要较新的 CUDA 运行时和推理后端——较旧的预编译 llama.cpp 发行版可能不认这张卡。</p>
+<h2 id="测试方法" class="article-heading">测试方法<a class="article-anchor" href="#测试方法" aria-hidden="true"></a></h2><ol class="doc-steps">
+<li><strong>合成基准</strong>：<code class="chip">llama-bench</code> 全 GPU offload（<code class="chip">-ngl 99</code>），测试 prompt 处理（512&#x2F;2048 tokens）和 token 生成（128&#x2F;512 tokens）。</li>
+<li><strong>真实生成</strong>：<code class="chip">llama-cli</code>，<code class="chip">--temp 0.7</code>，单轮模式，固定随机种子，真实中文问答。</li>
+<li><strong>多轮与长上下文</strong>：通过 OpenAI 兼容的 llama-server API 做多轮对话和「大海捞针」检索。</li>
+<li><strong>上下文容量</strong>：以 64K &#x2F; 128K 上下文加载模型并测量显存占用。</li>
+</ol>
+<h3 id="参测模型" class="article-heading">参测模型<a class="article-anchor" href="#参测模型" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>架构</th>
+<th>总参数</th>
+<th>激活参数</th>
+<th>量化</th>
+<th>大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Qwen3.8-27B</td>
+<td>稠密</td>
+<td>27.3B</td>
+<td>27.3B（全部激活）</td>
+<td>Q3_K_XL &#x2F; Q2_K_XL &#x2F; IQ2_XXS</td>
+<td>8.4–12.5 GiB</td>
+</tr>
+<tr>
+<td>Qwen3.6-35B-A3B</td>
+<td>混合 MoE</td>
+<td>34.7B</td>
+<td>约 3B</td>
+<td>IQ3_XXS &#x2F; Q2_K_XL</td>
+<td>11.4–12.3 GiB</td>
+</tr>
+</tbody></table></div>
+<p>Qwen3.6-35B-A3B 是混合架构：10 层全注意力 + 30 层 SSM（Mamba）+ MoE，256 个专家每个 token 激活 8 个。它面向 agent 和编码场景。</p>
+<h2 id="基准结果" class="article-heading">基准结果<a class="article-anchor" href="#基准结果" aria-hidden="true"></a></h2><h3 id="合成基准（llama-bench，全-GPU-offload，tokens-x2F-s）" class="article-heading">合成基准（llama-bench，全 GPU offload，tokens&#x2F;s）<a class="article-anchor" href="#合成基准（llama-bench，全-GPU-offload，tokens-x2F-s）" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>模型（量化）</th>
+<th>大小</th>
+<th>预填充 pp2048</th>
+<th>解码 tg512</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Qwen3.8-27B Q3_K_XL</td>
+<td>12.51 GiB</td>
+<td>670</td>
+<td>17.9</td>
+</tr>
+<tr>
+<td>Qwen3.8-27B Q2_K_XL</td>
+<td>9.93 GiB</td>
+<td>670</td>
+<td>20.7</td>
+</tr>
+<tr>
+<td>Qwen3.8-27B IQ2_XXS</td>
+<td>8.38 GiB</td>
+<td>570</td>
+<td>23.1</td>
+</tr>
+<tr>
+<td><strong>Qwen3.6-35B-A3B IQ3_XXS</strong></td>
+<td>12.29 GiB</td>
+<td>1490</td>
+<td><strong>68.1</strong></td>
+</tr>
+<tr>
+<td><strong>Qwen3.6-35B-A3B Q2_K_XL</strong></td>
+<td>11.44 GiB</td>
+<td>1564</td>
+<td><strong>74.4</strong></td>
+</tr>
+</tbody></table></div>
+<h3 id="真实生成（llama-cli，–temp-0-7，中文问答）" class="article-heading">真实生成（llama-cli，–temp 0.7，中文问答）<a class="article-anchor" href="#真实生成（llama-cli，–temp-0-7，中文问答）" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>量化</th>
+<th>生成速度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IQ3_XXS</td>
+<td><strong>64.7 t&#x2F;s</strong></td>
+</tr>
+<tr>
+<td>Q2_K_XL</td>
+<td><strong>70.3 t&#x2F;s</strong></td>
+</tr>
+</tbody></table></div>
+<h3 id="多轮与长上下文验证" class="article-heading">多轮与长上下文验证<a class="article-anchor" href="#多轮与长上下文验证" aria-hidden="true"></a></h3><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>测试</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多轮上下文保持</td>
+<td>通过——第 2 轮正确回忆起更早的信息</td>
+</tr>
+<tr>
+<td>大海捞针检索</td>
+<td>通过——成功检索到更早的内容</td>
+</tr>
+<tr>
+<td>重复调用稳定性</td>
+<td>通过——稳定在约 63 t&#x2F;s</td>
+</tr>
+</tbody></table></div>
+<h3 id="Agent-工作负载适用性" class="article-heading">Agent 工作负载适用性<a class="article-anchor" href="#Agent-工作负载适用性" aria-hidden="true"></a></h3><p>Qwen3.6-35B-A3B 的混合架构面向 agent 和编码场景，实测数据也印证了这一点：多轮上下文保持和大海捞针检索都通过，重复调用稳定在约 63 t&#x2F;s。对 DeepSeek Harness 或 Codex 风格的编码 agent 来说，这是流畅的交互速度，35B 总参数带来的推理和编码能力是小稠密模型所没有的。</p>
+<p>16 GB 卡上的约束是上下文。Agent 对话会不断增长，64K 舒适，128K 紧凑。如果你的 agent 工作负载需要模型原生的 256K 窗口，20 GB 的 <a href="./rtx-4000-ada-on-zimaos" title="NVIDIA RTX 4000 SFF Ada 在 ZimaOS 上的完整基准测试报告" class="doc-link">RTX 4000 SFF Ada</a> 用 KV q4 量化可以做到。</p>
+<h2 id="为什么-MoE-模型比-27B-稠密模型快-3-5-倍" class="article-heading">为什么 MoE 模型比 27B 稠密模型快 3.5 倍<a class="article-anchor" href="#为什么-MoE-模型比-27B-稠密模型快-3-5-倍" aria-hidden="true"></a></h2><p>这是本次测试最有价值的发现。</p>
+<ul class="doc-dots">
+<li><strong>稠密模型</strong>每生成一个 token 都要读取全部 27B 权重，因此解码速度被内存带宽封顶。实测有效解码带宽约 224 GiB&#x2F;s，27B 模型只能到 18–23 t&#x2F;s。</li>
+<li><strong>MoE 模型</strong>每个 token 只激活 256 个专家中的 8 个（约 3B 参数），读取的权重少一个数量级，绕开了带宽瓶颈。这就是它能到 65–70 t&#x2F;s 的原因。</li>
+</ul>
+<p>在显存受限的设备上，MoE 是同时获得参数容量和解码速度的最佳方式。</p>
+<h2 id="显存是唯一硬上限" class="article-heading">显存是唯一硬上限<a class="article-anchor" href="#显存是唯一硬上限" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li>35B-A3B 的 IQ3_XXS 量化只有 12.3 GiB，16 GB 里还剩约 2.4 GB 余量。</li>
+<li>更高的量化（Q4 约 19–20 GB）或更大的模型会超出 16 GB。一旦 CPU offload 介入，N100 会把速度拖到不可用的程度。</li>
+<li>「能装进 16 GB 的最强 MoE」就是这台设备的性能天花板。</li>
+</ul>
+<h2 id="功耗" class="article-heading">功耗<a class="article-anchor" href="#功耗" aria-hidden="true"></a></h2><p>满生成负载下实测，显卡功耗约 55–70 W（贴着 70 W 上限但不超过），空闲 6–12 W。对一台 24&#x2F;7 运行的 NAS 来说，能效非常出色。</p>
+<h2 id="上下文容量" class="article-heading">上下文容量<a class="article-anchor" href="#上下文容量" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>上下文</th>
+<th>显存占用</th>
+<th>余量</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>64K</td>
+<td>13.5 GB</td>
+<td>2.4 GB</td>
+<td>舒适，推荐</td>
+</tr>
+<tr>
+<td>128K</td>
+<td>14.8 GB</td>
+<td>1.1 GB</td>
+<td>可用，紧凑</td>
+</tr>
+<tr>
+<td>~150K</td>
+<td>~15.6 GB</td>
+<td>~0.3 GB</td>
+<td>理论极限</td>
+</tr>
+<tr>
+<td>256K（模型原生）</td>
+<td>&gt;16 GB</td>
+<td>—</td>
+<td>装不下</td>
+</tr>
+</tbody></table></div>
+<p>上下文开销极小（每 1K tokens 约 22 MiB），因为只有 10 层注意力需要 KV 缓存；SSM 层保持恒定状态。</p>
+<h2 id="结论与建议" class="article-heading">结论与建议<a class="article-anchor" href="#结论与建议" aria-hidden="true"></a></h2><h3 id="最佳模型" class="article-heading">最佳模型<a class="article-anchor" href="#最佳模型" aria-hidden="true"></a></h3><p><strong>推荐：Qwen3.6-35B-A3B（IQ3_XXS 量化，3.06 bpw）</strong></p>
+<ol class="doc-steps">
+<li>它是能完整装进 16 GB 显存的最大、最强模型。</li>
+<li>解码约 65 t&#x2F;s——27B 稠密模型的 3.5 倍——足以支撑流畅的 agent 体验。</li>
+<li>35B 总参数带来的知识、推理和编码能力远超同体量的任何稠密模型。</li>
+<li>IQ3_XXS 是质量与速度的甜点。Q2_K_XL 快约 8%，但 2-bit 的质量损失更明显。</li>
+</ol>
+<p>在 16 GB 卡上，这就是这个档位的天花板。严肃的编码和知识库负载，下一步是 122B &#x2F; Flash 档——它装不进 16 GB，属于更大的卡。</p>
+<h3 id="使用注意事项" class="article-heading">使用注意事项<a class="article-anchor" href="#使用注意事项" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li><strong>采样温度 0.6–0.7，永远不要贪心（temp&#x3D;0）。</strong> 贪婪采样会让这个推理模型退化成无限重复。</li>
+<li><strong>它是推理模型。</strong> 回答前会输出思维链，思考 token 计入上限。把 <code class="chip">max_tokens</code> 保持在 2048 或更高，否则回答会在思考中途被截断。</li>
+<li><strong>响应字段。</strong> 最终答案在 <code class="chip">content</code>；推理轨迹在 <code class="chip">reasoning_content</code>（与 DeepSeek 相同的扩展字段）。</li>
+</ol>
+<h3 id="适用场景" class="article-heading">适用场景<a class="article-anchor" href="#适用场景" aria-hidden="true"></a></h3><ul class="doc-dots">
+<li>本地 agent：编码、任务编排、工具调用</li>
+<li>NAS 上的私有 AI 助手和 RAG 知识库问答</li>
+<li>低功耗、常开的本地推理</li>
+<li>不适合：超过 128K 的上下文，或更高量化的大模型</li>
+</ul>
+<h2 id="部署（OpenAI-兼容服务器）" class="article-heading">部署（OpenAI 兼容服务器）<a class="article-anchor" href="#部署（OpenAI-兼容服务器）" aria-hidden="true"></a></h2><p>使用与部署指南相同的容器化服务器——无需编译，镜像内置最高 sm_120 的 CUDA 内核：</p>
+<figure class="highlight bash code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">docker run -d --name llm-server --gpus all -p 8080:8080 \</span><br><span class="line">  -v <span class="string">&quot;<span class="variable">$PWD</span>/models/llm:/models&quot;</span> \</span><br><span class="line">  ghcr.io/ggml-org/llama.cpp:server-cuda \</span><br><span class="line">  -m /models/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf \</span><br><span class="line">  --host 0.0.0.0 --port 8080 \</span><br><span class="line">  -c 131072 --n-gpu-layers 99 -fa on --temp 0.7 --parallel 1</span><br></pre></td></tr></table></div></figure>
+
+<p>服务器暴露 OpenAI 兼容 API，主流 agent 框架（OpenAI SDK 等）可以直接调用：</p>
+<figure class="highlight python code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line">client = OpenAI(base_url=<span class="string">&quot;http://&lt;zima-cube-ip&gt;:8080/v1&quot;</span>, api_key=<span class="string">&quot;sk-none&quot;</span>)</span><br><span class="line">resp = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">&quot;/models/Qwen3.6-35B-A3B-UD-IQ3_XXS.gguf&quot;</span>,</span><br><span class="line">    messages=[&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Hello&quot;</span>&#125;],</span><br><span class="line">    temperature=<span class="number">0.7</span>,</span><br><span class="line">    max_tokens=<span class="number">2048</span>,          <span class="comment"># 保持大值，否则思考会吃掉上限</span></span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(resp.choices[<span class="number">0</span>].message.content)             <span class="comment"># 最终答案</span></span><br><span class="line"><span class="built_in">print</span>(resp.choices[<span class="number">0</span>].message.reasoning_content)   <span class="comment"># 推理轨迹（可选）</span></span><br></pre></td></tr></table></div></figure>
+
+<h2 id="附录：已验证的-GPU-档案" class="article-heading">附录：已验证的 GPU 档案<a class="article-anchor" href="#附录：已验证的-GPU-档案" aria-hidden="true"></a></h2><figure class="highlight text code-block code-block--highlighted"><div class="doc-table-scroll code-block__scroller" tabindex="0"><table><tr><td class="code"><pre><span class="line">NVIDIA RTX PRO 2000 Blackwell</span><br><span class="line">Compute Capability: 12.0 (sm_120)</span><br><span class="line">VRAM: 16311 MiB (15848 MiB usable by CUDA)</span><br><span class="line">Driver: 580.105.08 / CUDA 13.0</span><br><span class="line">Power limit: 70 W</span><br></pre></td></tr></table></div></figure>
+
+    </div>
+
+    <footer class="article-footer">
+      <time class="article-footer-updated" datetime="2026-09-15T09:07:49.755Z" itemprop="dateModified">最后更新：2026-09-15</time>
+      <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/zh/hardware/gpu-expansion"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>上一篇</span><span class="doc-pagenav__title">GPU 扩展</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/zh/hardware/raid-ssd-expansion"><span class="doc-pagenav__label">下一篇<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">RAID SSD 扩展</span></a></nav>
+    </footer>
+  </main>
+
+  <aside class="doc-toc" role="navigation" aria-label="目录">
+    <nav class="doc-toc__inner">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="toc-text">测试环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6"><span class="toc-text">硬件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-text">软件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-text">测试方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">参测模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E5%87%86%E7%BB%93%E6%9E%9C"><span class="toc-text">基准结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%9F%BA%E5%87%86%EF%BC%88llama-bench%EF%BC%8C%E5%85%A8-GPU-offload%EF%BC%8Ctokens-x2F-s%EF%BC%89"><span class="toc-text">合成基准（llama-bench，全 GPU offload，tokens&#x2F;s）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E7%94%9F%E6%88%90%EF%BC%88llama-cli%EF%BC%8C%E2%80%93temp-0-7%EF%BC%8C%E4%B8%AD%E6%96%87%E9%97%AE%E7%AD%94%EF%BC%89"><span class="toc-text">真实生成（llama-cli，–temp 0.7，中文问答）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BD%AE%E4%B8%8E%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87%E9%AA%8C%E8%AF%81"><span class="toc-text">多轮与长上下文验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Agent-%E5%B7%A5%E4%BD%9C%E8%B4%9F%E8%BD%BD%E9%80%82%E7%94%A8%E6%80%A7"><span class="toc-text">Agent 工作负载适用性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-MoE-%E6%A8%A1%E5%9E%8B%E6%AF%94-27B-%E7%A8%A0%E5%AF%86%E6%A8%A1%E5%9E%8B%E5%BF%AB-3-5-%E5%80%8D"><span class="toc-text">为什么 MoE 模型比 27B 稠密模型快 3.5 倍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%BE%E5%AD%98%E6%98%AF%E5%94%AF%E4%B8%80%E7%A1%AC%E4%B8%8A%E9%99%90"><span class="toc-text">显存是唯一硬上限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%80%97"><span class="toc-text">功耗</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%AE%B9%E9%87%8F"><span class="toc-text">上下文容量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="toc-text">结论与建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E6%A8%A1%E5%9E%8B"><span class="toc-text">最佳模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">使用注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%EF%BC%88OpenAI-%E5%85%BC%E5%AE%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="toc-text">部署（OpenAI 兼容服务器）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E5%B7%B2%E9%AA%8C%E8%AF%81%E7%9A%84-GPU-%E6%A1%A3%E6%A1%88"><span class="toc-text">附录：已验证的 GPU 档案</span></a></li></ol>
+    </nav>
+  </aside>
+</div>
+
+    <!-- FOOTER START -->
+<footer class="site-footer footer-large footer-dark text-white footer-style1">
+
+  <!-- FOOTER BLOCKES START -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_newsletter">
+            <h3 class="widget-title">保持联系<span style="color:#f1b335">_</span></h3>
+            <p style="margin-bottom:24px">加入我们的订阅者列表，获取最新的新闻、更新和特别优惠。</p>
+            <div class="newsletter-input" style="max-width: 360px">
+              <form class=" validate" action="https://zimaboard.us2.list-manage.com/subscribe/post-json?u=f78b71ceb3f6e97b84a70d168&id=acfeda8784" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group">
+                  <input id="mce-EMAIL" type="email" class="form-control" name="EMAIL" placeholder="输入您的电子邮件地址">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="f_id" tabindex="-1" value="008245e0f0">
+                  </div>
+                  <div hidden=""><input type="hidden" name="tags" value="1551286"></div>
+                  <div class="input-group-append flex item-center" style="margin-left:15px">
+                    <button type="submit" class="mc-button nl-search-btn text-black title-style-2">
+                      订阅
+                      <img src="/docs/img/arrow.svg" alt="SVG Icon">
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+          <div class="widget widget_social">
+            <ul class="wt-social-links">
+              
+              <li>
+                <a href="https://www.facebook.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/facebook.svg" alt="Facebook">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://discord.gg/f9nzbmpMtU" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/discord.svg" alt="Discord">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.youtube.com/@ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/youtube.svg" alt="Youtube">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.instagram.com/zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/instagram.svg" alt="Instagram">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://x.com/ZimaSpace" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/x.svg" alt="X / Twitter">
+                </a>
+              </li>
+              
+              <li>
+                <a href="https://www.tiktok.com/@zimaboard" rel="external nofollow noreferrer" target="_blank">
+                  <img src="/docs/img/tiktok.svg" alt="TikTok">
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-middle">
+    <div class="container menu-wrapper">
+      <div class="row">
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">产品</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/cube-personal-cloud">ZimaCube</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/single-board-server">ZimaBoard</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/products/blade-personal-nas">ZimaBlade</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/collections/zima-accessories">配件</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.casaos.io">CasaOS</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">资源</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com">ZimaSpace</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">支持</h3>
+          <ul>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">Discord</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/contact">联系我们</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/refund-policy">退款政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/privacy-policy">隐私政策</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/terms-of-service">服务条款</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/support/shipping-policy">运输政策</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-6 col-lg-3 col-md-3">
+          <h3 class="menu-title">探索</h3>
+          <ul>
+            
+            <li>
+              <a href="https://www.zimaspace.com/explore/gallery">图库</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU">由 IceWhale 制作</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://icewhale.community">社区</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/about">关于我们</a>
+            </li>
+            
+            <li>
+              <a target="_blank" rel="noopener external nofollow noreferrer" href="https://shop.zimaspace.com/blogs/zima-campaign-hub">博客</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/distributors">经销商</a>
+            </li>
+            
+            <li>
+              <a href="https://www.zimaspace.com/affiliate">加盟</a>
+            </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="wt-footer-bot-left d-flex justify-content-center">
+        <span class="copyrights-text">© 2020-2024 IceWhale Technology Limited. All rights reserved. </span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      
+      <li class="menu-item "><a href="/docs/zh/zimaos/" class="mobile-nav-link">ZimaOS</a></li><li class="menu-item "><a href="/docs/zh/zimaos/app-store/" class="mobile-nav-link">应用商店</a></li><li class="menu-item current_page_item"><a href="/docs/zh/hardware/" class="mobile-nav-link">硬件</a></li><li class="menu-item "><a href="/docs/zh/developer/" class="mobile-nav-link">开发者</a></li><li class="menu-item "><a href="/docs/zh/help-center/" class="mobile-nav-link">帮助中心</a></li><li class="menu-item "><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="mobile-nav-link">论坛</a></li>
+    </ul>
+    
+      <h4 class="doc-sidebar__overview"><a class="" href="/docs/zh/hardware/">概览</a></h4>
+    <div class="doc-sidebar__group" data-group="hardware:zimacube">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimacube">
+          <span class="doc-sidebar__toggle-text">ZimaCube</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimacube"><li><a class="" href="/docs/zh/hardware/quick-start">快速开始</a></li><li><a class="" href="/docs/zh/hardware/zimacube-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/hardware-details">硬件详情</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on-setup">自动开机方法</a></li><li><a class="" href="/docs/zh/hardware/pc-direct">PC 直连</a></li><li><a class="" href="/docs/zh/hardware/hdd-interface-guide">硬盘接口指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-guide">第七硬盘槽使用指南</a></li><li><a class="" href="/docs/zh/hardware/7th-bay-install">安装第七硬盘槽</a></li><li><a class="" href="/docs/zh/hardware/auto-power-on">自动开机</a></li><li><a class="" href="/docs/zh/hardware/gpu-expansion">GPU 扩展</a></li><li><a class="is-current" href="/docs/zh/hardware/rtx-pro-2000-on-zimaos">RTX PRO 2000 性能实测</a></li><li><a class="" href="/docs/zh/hardware/raid-ssd-expansion">RAID SSD 扩展</a></li><li><a class="" href="/docs/zh/hardware/bios-configuration">BIOS 配置</a></li><li><a class="" href="/docs/zh/hardware/zimacube-fan-diy">DIY 风扇指南</a></li><li><a class="" href="/docs/zh/hardware/zimacube-backplane-replacement">更换背板</a></li><li><a class="" href="/docs/zh/hardware/transfer-speeds-over-thunderbolt">Thunderbolt 传输速度</a></li><li><a class="" href="/docs/hardware/compatible-network-adapters">兼容的网络适配器</a></li><li><a class="" href="/docs/zh/hardware/enable-wol-on-zimacube">启用网络唤醒</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimaboard">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimaboard">
+          <span class="doc-sidebar__toggle-text">ZimaBoard</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimaboard"><li><a class="" href="/docs/zh/hardware/zimaboard-hardware-overview">硬件概览</a></li><li><a class="" href="/docs/zh/hardware/zimaboard-quick-start">开机</a></li><li><a class="" href="/docs/zh/hardware/hardware-interface">硬件接口</a></li><li><a class="" href="/docs/zh/hardware/power-on-zimaboard-2">ZimaBoard 2 开机</a></li><li><a class="" href="/docs/hardware/fan-install-bios-pwm">风扇安装与 PWM</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:zimablade">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-zimablade">
+          <span class="doc-sidebar__toggle-text">ZimaBlade</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-zimablade"><li><a class="" href="/docs/zh/hardware/power-on-zimablade">开机</a></li><li><a class="" href="/docs/zh/hardware/zimablade-overview">开始使用</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:compatibility">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-compatibility">
+          <span class="doc-sidebar__toggle-text">兼容性</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-compatibility"><li><a class="" href="/docs/zh/hardware/7th-bay-led">第七硬盘槽 LED 指示灯</a></li><li><a class="" href="/docs/zh/hardware/ups-compatibility-list">UPS 兼容性列表</a></li><li><a class="" href="/docs/zh/hardware/enable-intel-ax210">Intel AX210 Wi-Fi</a></li><li><a class="" href="/docs/zh/hardware/supported-disk-formats">支持的磁盘格式</a></li><li><a class="" href="/docs/zh/hardware/ax210-wifi-6e">AX210 Wi-Fi 模块</a></li><li><a class="" href="/docs/zh/hardware/wake-on-lan-setup">网络唤醒设置</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-os">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-os">
+          <span class="doc-sidebar__toggle-text">第三方系统</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-os"><li><a class="" href="/docs/zh/hardware/install-unraid">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/install-truenas">运行 TrueNAS</a></li><li><a class="" href="/docs/zh/hardware/openwrt-x86-install">运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/arch-linux-installation-on-zimaboard-2">安装 Arch Linux</a></li><li><a class="" href="/docs/zh/hardware/openwrt-usb-install">通过 USB 运行 OpenWrt</a></li><li><a class="" href="/docs/zh/hardware/openwrt-emmc-boot">OpenWrt eMMC 启动</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-install">安装 OMV</a></li><li><a class="" href="/docs/zh/hardware/openmediavault-setup">配置 OMV</a></li><li><a class="" href="/docs/zh/hardware/unraid-install">运行 Unraid</a></li><li><a class="" href="/docs/zh/hardware/third-party-os-install">第三方系统</a></li><li><a class="" href="/docs/zh/hardware/minimal-ubuntu-server-build">设置 Ubuntu Server</a></li></ul>
+      </div>
+    </div>
+    <div class="doc-sidebar__group" data-group="hardware:third-party-hardware">
+      <h4 class="doc-sidebar__title">
+        <button type="button" class="doc-sidebar__toggle" aria-expanded="true" aria-controls="mobile-nav-hardware-third-party-hardware">
+          <span class="doc-sidebar__toggle-text">第三方硬件实测</span>
+        </button>
+      </h4>
+      <div class="doc-sidebar__list-motion">
+        <ul class="doc-sidebar__list" id="mobile-nav-hardware-third-party-hardware"><li><a class="" href="/docs/zh/hardware/amd-ryzen-ai-npu-on-zimaos">AMD Ryzen AI MAX+ 395 NPU</a></li><li><a class="" href="/docs/zh/hardware/rtx-4000-ada-on-zimaos">RTX 4000 SFF Ada 性能实测</a></li></ul>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div id="mobile-nav-utils">
+    <div class="mobile-nav-lang">
+      <span class="mobile-nav-lang__label">
+        <i class="mobile-nav-icon mobile-nav-icon--globe" aria-hidden="true"></i>
+        <span>ZH</span>
+      </span>
+      <select id="mobile-lang-select" aria-label="Language">
+        
+          <option value="/docs/hardware/rtx-pro-2000-on-zimaos" data-lang="en">English</option>
+        
+          <option value="/docs/zh/hardware/rtx-pro-2000-on-zimaos" data-lang="zh" selected>中文</option>
+        
+          <option value="/docs/jp/hardware/rtx-pro-2000-on-zimaos" data-lang="jp">日本語</option>
+        
+          <option value="/docs/pt-PT/hardware/rtx-pro-2000-on-zimaos" data-lang="pt-PT">Português</option>
+        
+          <option value="/docs/es/hardware/rtx-pro-2000-on-zimaos" data-lang="es">Español</option>
+        
+      </select>
+    </div>
+
+    
+    <button class="mobile-nav-theme" type="button" data-theme-toggle aria-label="Switch color theme">
+      <i class="mobile-nav-icon mobile-nav-icon--theme" aria-hidden="true"></i>
+    </button>
+    
+
+    <a class="mobile-nav-store" href="https://shop.zimaspace.com/?utm_source=zimaspace_docs&utm_medium=referral&utm_campaign=docs_mobile_nav_store" target="_blank" rel="noopener external">商店</a>
+  </div>
+</nav>
+
+  <!-- Scripts -->
+<!-- Cookie -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<!-- build:js build/js/main.js -->
+
+<script src="/docs/js/jquery-2.2.0.min.js"></script>
+
+
+<script src="/docs/js/lang_select.js"></script>
+
+
+<script src="/docs/js/mobile_nav.js"></script>
+
+
+<script src="/docs/js/content_bar.js"></script>
+
+
+<script src="/docs/js/search_bar.js"></script>
+
+
+<script src="/docs/js/hexo_resize_image.js"></script>
+
+
+<script src="/docs/js/sweetalert2@11.js"></script>
+
+
+<script src="/docs/js/jquery.formchimp.js"></script>
+
+
+<script src="/docs/js/cloudflare_ai_search.js"></script>
+
+
+
+<script src="/docs/js/theme_toggle.js"></script>
+
+
+<!-- endbuild -->
+
+
+<script src="/docs/js/slidebar.js"></script>
+
+
+<script src="/docs/js/sidebar_collapse.js"></script>
+
+
+<script src="/docs/js/code_blocks.js"></script>
+
+
+
+
+<!-- Algolia -->
+
+
+</body>
+</html>
