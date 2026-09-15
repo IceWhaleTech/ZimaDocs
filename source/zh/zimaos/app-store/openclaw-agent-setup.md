@@ -5,7 +5,7 @@ type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-## 1. 概述
+## 概述
 
 本教程将指导你在运行 CasaOS/ZimaOS 的设备上部署 OpenClaw，完成基础配置，并通过 Telegram 启用 AI 模型交互。教程以 Telegram 机器人为例，涵盖从模型提供商设置到机器人配对的完整流程。
 
@@ -69,7 +69,7 @@ tip: Do not remove this front matter block. The description field is used for th
 
 ---
 
-## 2. 详细步骤（以 CasaOS 为例）
+## 详细步骤（以 CasaOS 为例）
 
 ### 2.1 打开终端
 
@@ -141,7 +141,7 @@ node /app/dist/index.js config
 
 ### 2.4 配置模型
 
-#### 1. 选择提供商
+#### 选择提供商
 
 在 **Select sections to configure** 中，选择 **Model**。
   ![光标位于 Model 选项](https://manage.icewhale.io/api/static/docs/1773220763191_image.png)
@@ -150,7 +150,7 @@ node /app/dist/index.js config
 在 **Model / auth provider** 中，选择 **custom provider**。
 ![高亮显示 custom provider](https://manage.icewhale.io/api/static/docs/1773220810816_image.png)
 
-#### 2. 输入模型参数
+#### 输入模型参数
 
 输入 **Base URL**（例如：`https://api.openai.com/v1`）。
 ![Base URL 输入框](https://manage.icewhale.io/api/static/docs/1773220830104_image.png)
@@ -168,7 +168,7 @@ node /app/dist/index.js config
 
 ### 2.5 配置渠道（以 Telegram 为例）
 
-#### 1. 打开渠道设置
+#### 打开渠道设置
 
 在 **Select sections to configure** 中，选择 **Channels**。
 ![光标位于 Channels 选项](https://manage.icewhale.io/api/static/docs/1773220923167_image.png)
@@ -180,7 +180,7 @@ node /app/dist/index.js config
 从列表中选择 **Telegram**。
 ![在渠道列表中选中 Telegram](https://manage.icewhale.io/api/static/docs/1773220953934_image.png)
 
-#### 2. 获取机器人 Token
+#### 获取机器人 Token
 
 在 Telegram 中与 **@BotFather** 开启对话，并发送 `/newbot` 开始创建机器人。
 BotFather 会要求你提供：
@@ -193,7 +193,7 @@ BotFather 会要求你提供：
 
 > **请保存此 Token** —— 下一步会用到。
 
-#### 3. 输入机器人 Token
+#### 输入机器人 Token
 
 选择 **Enter Telegram bot token**。
 ![菜单中的 Token 输入选项](https://manage.icewhale.io/api/static/docs/1773221116186_image.png)
@@ -202,7 +202,7 @@ BotFather 会要求你提供：
   ![Token 输入框](https://manage.icewhale.io/api/static/docs/1773221130505_image.png)
 
 
-#### 4. 设置 DM 访问策略
+#### 设置 DM 访问策略
 
 当出现 **Configure DM access policies now? (default: pairing)** 提示时，选择 **Yes**。
 ![策略配置提示](https://manage.icewhale.io/api/static/docs/1773221160225_image.png)
@@ -213,7 +213,7 @@ BotFather 会要求你提供：
 返回 **Select sections to configure**，选择 **Continue (Done)** 完成 Telegram 设置。
   ![高亮显示 Continue (Done) 选项](https://manage.icewhale.io/api/static/docs/1773221202944_image.png)
 
-#### 5. 完成配对
+#### 完成配对
 
 在 Telegram 中打开你的机器人聊天窗口并发送 `/start`。等待机器人回复配对码。
 ![Telegram 对话中显示机器人返回的配对码](https://manage.icewhale.io/api/static/docs/1773221237858_image.png)
@@ -243,18 +243,18 @@ https://<ip>:24190?token=casaos
 
 ![](https://manage.icewhale.io/api/static/docs/1778125603653_image.png)
 
-#### 1. 进入 OpenClaw 容器
+#### 进入 OpenClaw 容器
 运行：
 ```bash
 docker exec -it openclaw bash
 ```
-#### 2. 查看待批准设备
+#### 查看待批准设备
 在容器内运行：
 ```bash
 node /app/dist/index.js devices list
 ```
 如果存在未配对设备，OpenClaw 将显示一个 request_id。
-#### 3. 批准设备
+#### 批准设备
 运行以下命令，并将 <request_id> 替换为上面显示的实际 ID：
 ```bash
 node /app/dist/index.js devices approve <request_id>

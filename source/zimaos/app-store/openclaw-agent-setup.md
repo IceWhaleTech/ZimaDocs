@@ -6,7 +6,7 @@ type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-## 1. Overview
+## Overview
 
 This tutorial guides you through deploying OpenClaw on a device running CasaOS/ZimaOS, completing the basic configuration, and enabling AI model interaction via Telegram. Using a Telegram bot as the example, this tutorial covers the entire process from model provider setup to bot pairing.
 
@@ -26,7 +26,7 @@ This tutorial guides you through deploying OpenClaw on a device running CasaOS/Z
   - 4 GB RAM
   - 20 GB Storage
 
-- Software：CasaOS v0.4.15 / ZimaOS v1.5.4 (latest)
+- Software:CasaOS v0.4.15 / ZimaOS v1.5.4 (latest)
 
 - Network：Must  The device must be connected to the internet and able to reach the Telegram API. A wired connection is recommended for stability.
 
@@ -70,7 +70,7 @@ This tutorial guides you through deploying OpenClaw on a device running CasaOS/Z
 
 ---
 
-## 2. Detailed Steps (CasaOs Example)
+## Detailed Steps (CasaOS Example)
 
 ### 2.1 Open a Terminal 
 
@@ -142,7 +142,7 @@ The highlighted option is the currently selected one. Press **Enter** to confirm
 
 ### 2.4 Configure the Model
 
-#### 1. Select a Provider
+#### Select a Provider
 
 In **Select sections to configure**, choose **Model**.
   ![Cursor on the Model option](https://manage.icewhale.io/api/static/docs/1773220763191_image.png)
@@ -151,7 +151,7 @@ In **Select sections to configure**, choose **Model**.
 In **Model / auth provider**, select **custom provider**.
 ![custom provider highlighted](https://manage.icewhale.io/api/static/docs/1773220810816_image.png)
 
-#### 2. Enter Model Parameters
+#### Enter Model Parameters
 
 Enter the **Base URL** (e.g., `https://api.openai.com/v1`).
 ![Base URL input field](https://manage.icewhale.io/api/static/docs/1773220830104_image.png)
@@ -169,7 +169,7 @@ Select the **Model ID** you want to use.
 
 ### 2.5 Configure a Channel (Telegram Example)
 
-#### 1. Open Channel Settings
+#### Open Channel Settings
 
 In **Select sections to configure**, choose **Channels**.
 ![Cursor on the Channels option](https://manage.icewhale.io/api/static/docs/1773220923167_image.png)
@@ -181,7 +181,7 @@ Select **Configure / link**.
 Select **Telegram** from the list.
 ![Telegram selected in the channel list](https://manage.icewhale.io/api/static/docs/1773220953934_image.png)
 
-#### 2. Get a Bot Token
+#### Get a Bot Token
 
 Open a conversation with **@BotFather** on Telegram and send `/newbot` to start creating a bot.
 BotFather will ask you to provide:
@@ -194,7 +194,7 @@ Once created, BotFather will return an **HTTP API Token**
 
 > **Save this Token** — you will need it in the next step.
 
-#### 3. Enter the Bot Token
+#### Enter the Bot Token
 
 Select **Enter Telegram bot token**.
 ![Token input option in the menu](https://manage.icewhale.io/api/static/docs/1773221116186_image.png)
@@ -203,7 +203,7 @@ Paste or type the Token you received from BotFather.
   ![Token input field](https://manage.icewhale.io/api/static/docs/1773221130505_image.png)
 
 
-#### 4. Set the DM Access Policy
+#### Set the DM Access Policy
 
 When asked **Configure DM access policies now? (default: pairing)**, select **Yes**.
 ![Policy configuration prompt](https://manage.icewhale.io/api/static/docs/1773221160225_image.png)
@@ -214,7 +214,7 @@ In **Telegram DM policy**, select **Pairing (recommended)**.
 Return to **Select sections to configure** and choose **Continue (Done)** to finish the Telegram setup.
   ![Continue (Done) option highlighted](https://manage.icewhale.io/api/static/docs/1773221202944_image.png)
 
-#### 5. Complete Pairing
+#### Complete Pairing
 
 Open your bot's chat in Telegram and send `/start`. Wait for the bot to reply with a pairing code.
 ![Telegram conversation showing the bot's pairing code reply](https://manage.icewhale.io/api/static/docs/1773221237858_image.png)
@@ -244,18 +244,18 @@ This is expected behavior in newer OpenClaw versions. The Web UI device must fir
 
 ![](https://manage.icewhale.io/api/static/docs/1778125603653_image.png)
 
-#### 1. Enter the OpenClaw container
+#### Enter the OpenClaw container
 Run:
 ```bash
 docker exec -it openclaw bash
 ```
-#### 2. List pending devices
+#### List pending devices
 Inside the container, run:
 ```bash
 node /app/dist/index.js devices list
 ```
 If an unpaired device exists, OpenClaw will display a request_id.
-#### 3. Approve the device
+#### Approve the device
 Run the following command and replace <request_id> with the actual ID shown above:
 ```bash
 node /app/dist/index.js devices approve <request_id>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">ZVM snapshot versus backup</title><desc id="desc">A hand-drawn comparison explains that snapshots are disk-only local rollback points while backups are independent bundles, with backup restore still a later milestone.</desc>
+<defs>
+ <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#d9d3c7" opacity="0.45"/></pattern>
+ <filter id="rough" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="11" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.25" xChannelSelector="R" yChannelSelector="G"/></filter>
+ <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#233044" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#fffaf0"/><rect width="100%" height="100%" fill="url(#dots)"/>
+<text x="800" y="108.04" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="56" font-weight="700" fill="#233044"><tspan x="800" dy="0">A snapshot is not a backup</tspan></text>
+<text x="800" y="167.36" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="29" font-weight="500" fill="#617084"><tspan x="800" dy="0">They solve different recovery problems - and need different promises</tspan></text>
+<rect x="90" y="230" width="610" height="505" rx="22" fill="#d9ecff" stroke="#4a90e2" stroke-width="3" transform="rotate(-0.22918311805232927 395 482.5)" filter="url(#rough)"/>
+<rect x="900" y="230" width="610" height="505" rx="22" fill="#dff3e4" stroke="#5caf6f" stroke-width="3" transform="rotate(0.22918311805232927 1205 482.5)" filter="url(#rough)"/>
+<text x="395" y="304.74" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="36" font-weight="700" fill="#4a90e2"><tspan x="395" dy="0">DISK SNAPSHOT</tspan></text>
+<text x="395" y="355.18" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="27" font-weight="700" fill="#233044"><tspan x="395" dy="0">Fast, local rollback point</tspan></text>
+<path d="M 190 385 L 600 385" fill="none" stroke="#4a90e2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+<text x="155" y="459.5" text-anchor="start" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="25" font-weight="500" fill="#233044"><tspan x="155" dy="0">- Disk-only; no RAM state</tspan><tspan x="155" dy="32">- Crash-consistent by default</tspan><tspan x="155" dy="32">- Guest Agent can quiesce</tspan><tspan x="155" dy="32">- Restore while VM is stopped</tspan><tspan x="155" dy="32">- Space and overlay monitoring</tspan></text>
+<text x="1205" y="304.74" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="36" font-weight="700" fill="#5caf6f"><tspan x="1205" dy="0">FULL BACKUP</tspan></text>
+<text x="1205" y="355.18" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="27" font-weight="700" fill="#233044"><tspan x="1205" dy="0">Independent copy in ZimaOS Files</tspan></text>
+<path d="M 1000 385 L 1410 385" fill="none" stroke="#5caf6f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+<text x="965" y="459.5" text-anchor="start" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="25" font-weight="500" fill="#233044"><tspan x="965" dy="0">- .zvm-backup bundle</tspan><tspan x="965" dy="32">- VM config + QCOW2 disks</tspan><tspan x="965" dy="32">- SHA-256 + versioned manifest</tspan><tspan x="965" dy="32">- Guarded destination path</tspan><tspan x="965" dy="32">- Restore is a later milestone</tspan></text>
+<ellipse cx="800.5" cy="442.5" rx="52.5" ry="52.5" fill="#ffffff" stroke="#e96b5b" stroke-width="3" filter="url(#rough)"/>
+<text x="800.5" y="452.28" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="42" font-weight="700" fill="#e96b5b"><tspan x="800.5" dy="0">!=</tspan></text>
+<rect x="220" y="772" width="1160" height="82" rx="22" fill="#ffffff" stroke="#233044" stroke-width="3" filter="url(#rough)"/>
+<text x="800" y="821.54" text-anchor="middle" font-family="Virgil, 'Comic Sans MS', 'Segoe Print', cursive" font-size="31" font-weight="700" fill="#233044"><tspan x="800" dy="0">Different tools. Different recovery guarantees.</tspan></text>
+</svg>

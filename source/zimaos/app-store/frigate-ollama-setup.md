@@ -210,3 +210,5 @@ When Frigate detects a person object in the monitoring screen, it will automatic
 ![](https://manage.icewhale.io/api/static/docs/1745204647915_image.png)
 At this point, the intelligent monitoring system of Frigate and Ollama has been successfully built. You can check the detection effect through real-time screen, or enter the log and snapshot page to verify whether the AI analysis is running normally.
 To further optimize the experience, you can try accessing notification services, adjusting model parameters, or adding more cameras.
+
+New to Frigate? Start with the one-step App Store install in [Frigate Setup](./frigate-setup "Install Frigate from the ZimaOS App Store for local AI camera monitoring").

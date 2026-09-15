@@ -141,3 +141,5 @@ Após iniciar o Frigate, verifique e registre a conta e a senha padrão no log.
 ![](https://manage.icewhale.io/api/static/docs/1745203946052_image.png)  
 #### Configurar o Frigate  
 1. Entre
+
+Novo no Frigate? Comece pela instalação num passo da App Store no [Configuração do Frigate](./frigate-setup "Instale o Frigate a partir da App Store do ZimaOS para vigilância de câmaras com IA local").

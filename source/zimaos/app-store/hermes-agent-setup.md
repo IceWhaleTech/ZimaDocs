@@ -9,6 +9,8 @@ tip: Top bar fixed format, do not delete. description is the article description
 
 ## Overview
 
+Hermes Agent is a self-hosted AI agent for ZimaOS that learns and remembers from your conversations. It runs around the clock on your own hardware, and you talk to it through its Web UI or a Telegram bot — your data stays at home.
+
 This tutorial guides you through configuring model services and messaging platforms on a device with Hermes Agent deployed, enabling AI model interaction via Telegram. Using Telegram as an example, it covers the complete workflow from model provider configuration to bot verification.
 
 > **Note:** In most cases, you can configure models and messaging directly through the Hermes WebUI. If the corresponding options are not found, refer to this tutorial to complete the configuration in the container terminal.

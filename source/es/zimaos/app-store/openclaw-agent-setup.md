@@ -5,7 +5,7 @@ type: Docs
 author: icewhale123456
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
 ---
-## 1. Overview
+## Overview
 
 Este tutorial lo guía a través del despliegue de OpenClaw en un dispositivo que ejecuta CasaOS/ZimaOS, completando la configuración básica y habilitando la interacción con el modelo de IA a través de Telegram. Usando un bot de Telegram como ejemplo, este tutorial cubre todo el proceso desde la configuración del proveedor del modelo hasta el emparejamiento del bot.
 
@@ -25,7 +25,7 @@ Este tutorial lo guía a través del despliegue de OpenClaw en un dispositivo qu
   - 4 GB de RAM
   - 20 GB de almacenamiento
 
-- Software：CasaOS v0.4.15 / ZimaOS v1.5.4 (última versión)
+- Software:CasaOS v0.4.15 / ZimaOS v1.5.4 (última versión)
 
 - Red：El dispositivo debe estar conectado a internet y poder acceder a la API de Telegram. Se recomienda una conexión por cable para mayor estabilidad.
 
@@ -69,7 +69,7 @@ Este tutorial lo guía a través del despliegue de OpenClaw en un dispositivo qu
 
 ---
 
-## 2. Detailed Steps (CasaOs Example)
+## Detailed Steps (CasaOS Example)
 
 ### 2.1 Open a Terminal 
 
@@ -141,7 +141,7 @@ La opción resaltada es la actualmente seleccionada. Presione **Enter** para con
 
 ### 2.4 Configure the Model
 
-#### 1. Select a Provider
+#### Select a Provider
 
 En **Select sections to configure**, elija **Model**.
   ![Cursor en la opción Model](https://manage.icewhale.io/api/static/docs/1773220763191_image.png)
@@ -150,7 +150,7 @@ En **Select sections to configure**, elija **Model**.
 En **Model / auth provider**, seleccione **custom provider**.
 ![custom provider resaltado](https://manage.icewhale.io/api/static/docs/1773220810816_image.png)
 
-#### 2. Enter Model Parameters
+#### Enter Model Parameters
 
 Ingrese la **Base URL** (por ejemplo, `https://api.openai.com/v1`).
 ![Campo de entrada de Base URL](https://manage.icewhale.io/api/static/docs/1773220830104_image.png)
@@ -168,7 +168,7 @@ Seleccione el **Model ID** que desea usar.
 
 ### 2.5 Configure a Channel (Telegram Example)
 
-#### 1. Open Channel Settings
+#### Open Channel Settings
 
 En **Select sections to configure**, elija **Channels**.
 ![Cursor en la opción Channels](https://manage.icewhale.io/api/static/docs/1773220923167_image.png)
@@ -180,7 +180,7 @@ Seleccione **Configure / link**.
 Seleccione **Telegram** de la lista.
 ![Telegram seleccionado en la lista de canales](https://manage.icewhale.io/api/static/docs/1773220953934_image.png)
 
-#### 2. Get a Bot Token
+#### Get a Bot Token
 
 Abra una conversación con **@BotFather** en Telegram y envíe `/newbot` para comenzar a crear un bot.
 BotFather le pedirá que proporcione:
@@ -193,7 +193,7 @@ Una vez creado, BotFather devolverá un **HTTP API Token**
 
 > **Guarde este Token** — lo necesitará en el siguiente paso.
 
-#### 3. Enter the Bot Token
+#### Enter the Bot Token
 
 Seleccione **Enter Telegram bot token**.
 ![Opción de entrada del token en el menú](https://manage.icewhale.io/api/static/docs/1773221116186_image.png)
@@ -202,7 +202,7 @@ Pegue o escriba el Token que recibió de BotFather.
   ![Campo de entrada del Token](https://manage.icewhale.io/api/static/docs/1773221130505_image.png)
 
 
-#### 4. Set the DM Access Policy
+#### Set the DM Access Policy
 
 Cuando se le pregunte **Configure DM access policies now? (default: pairing)**, seleccione **Yes**.
 ![Mensaje de configuración de políticas](https://manage.icewhale.io/api/static/docs/1773221160225_image.png)
@@ -213,7 +213,7 @@ En **Telegram DM policy**, seleccione **Pairing (recommended)**.
 Regrese a **Select sections to configure** y elija **Continue (Done)** para finalizar la configuración de Telegram.
   ![Opción Continue (Done) resaltada](https://manage.icewhale.io/api/static/docs/1773221202944_image.png)
 
-#### 5. Complete Pairing
+#### Complete Pairing
 
 Abra el chat de su bot en Telegram y envíe `/start`. Espere a que el bot responda con un código de emparejamiento.
 ![Conversación de Telegram mostrando el código de emparejamiento del bot](https://manage.icewhale.io/api/static/docs/1773221237858_image.png)
@@ -243,18 +243,18 @@ Este comportamiento es esperado en las versiones más recientes de OpenClaw. El 
 
 ![](https://manage.icewhale.io/api/static/docs/1778125603653_image.png)
 
-#### 1. Enter the OpenClaw container
+#### Enter the OpenClaw container
 Ejecute:
 ```bash id="rvb5dp"
 docker exec -it openclaw bash
 ```
-#### 2. List pending devices
+#### List pending devices
 Dentro del contenedor, ejecute:
 ```bash id="v2i5kv"
 node /app/dist/index.js devices list
 ```
 Si existe un dispositivo no emparejado, OpenClaw mostrará un request_id.
-#### 3. Approve the device
+#### Approve the device
 Ejecute el siguiente comando y reemplace <request_id> con el ID real mostrado arriba:
 ```bash id="frgqex"
 node /app/dist/index.js devices approve <request_id>

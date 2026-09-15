@@ -18,8 +18,8 @@ La mayoría de las personas empieza aquí. Convierte el NAS en un centro de stre
 - **[Sincronización masiva de fotos](./cli-guide "Sincroniza miles de fotos desde la línea de comandos")** — ideal para migrar bibliotecas de gran tamaño
 - **[Copia de fotos con Immich](./immich-photo-backup "Configura Immich en profundidad para proteger tu fototeca")** — ajustes avanzados de copia de seguridad
 - **[Servidor multimedia Jellyfin](./media-server-setup-with-jellyfin "Configura Jellyfin para transmitir películas, series y música desde el NAS")** — gratuito, de código abierto y compatible con muchos dispositivos
-- **[Servidor de cámaras NVR](./nvr-camera-server "Conecta cámaras de seguridad al NAS con detección de objetos por IA")** — vigilancia y detección de objetos en tu propio servidor
 - **[Sincronización de fotos con Immich](./sync-photos-with-immich "Sincroniza las fotos del teléfono con el NAS mediante Immich")** — una alternativa autoalojada a Google Photos
+- **[PhotoPrism](./photoprism-setup "Ejecuta PhotoPrism en ZimaOS como galería de fotos con IA autoalojada")** — una galería de fotos con IA, con búsqueda inteligente, rostros y álbumes
 - **[Servidor multimedia Plex](./plex-setup-guide "Instala Plex Media Server y transmite tu biblioteca a cualquier dispositivo")** — interfaz cuidada y aplicaciones para prácticamente cualquier plataforma
 - **[Servidor DLNA](./dlna-server-setup "Transmite contenido a televisores antiguos y dispositivos DLNA")** — compatible con televisores y reproductores DLNA
 - **[Transcodificación de Plex por GPU](./plex-and-gpu-transcoding "Activa la transcodificación por hardware para reproducir 4K con fluidez")** — utiliza aceleración de hardware para el contenido 4K
@@ -32,19 +32,34 @@ Estas son algunas de las aplicaciones más utilizadas por la comunidad. Cada una
 
 - **[Sincronización con Syncthing](./syncthing-setup "Mantén carpetas sincronizadas entre dispositivos con Syncthing")** — sincroniza ordenadores y teléfonos
 - **[Bloqueador de anuncios Pi-hole](./pi-hole-setup "Bloquea anuncios en toda la red doméstica con Pi-hole")** — protege automáticamente todos los dispositivos de la red
+- **[AdGuard Home](./adguard-home-setup "Bloquea anuncios y rastreadores en toda la red con AdGuard Home en ZimaOS")** — otro bloqueador de anuncios para toda la red, con un panel pulido
+- **[Nginx Proxy Manager](./nginx-proxy-manager-setup "Configura proxies inversos y certificados HTTPS con Nginx Proxy Manager")** — da a tus aplicaciones dominios amigables y HTTPS
 - **[Gestión de documentos](./paperless-ngx-install "Administra y busca documentos escaneados con Paperless-ngx")** — convierte documentos en papel en un archivo consultable
 - **[Procesamiento de documentos con IA](./paperless-ai-install "Clasifica y etiqueta documentos automáticamente con Paperless-AI")** — añade clasificación automática a Paperless
 - **[Gestor de películas Radarr](./radarr-setup "Automatiza las descargas y la administración de películas")** — elige las películas y deja que Radarr gestione el resto
 - **[Radio por Internet](./azuracast-install "Ejecuta tu propia emisora con AzuraCast")** — crea y administra una emisora en línea
 - **[Monitorización de servidores](./zabbix-install-guide "Supervisa servidores y redes con los paneles de Zabbix")** — controla el estado de la infraestructura
-- **[Descargador de torrents](./webtorrent-feature "Descarga torrents directamente en el almacenamiento del NAS")** — guarda las descargas directamente en el NAS
+- **[Transmission](./transmission-setup "Descarga torrents directamente en tu NAS con Transmission")** — añade archivos torrent o enlaces magnet y guárdalos en el NAS
 - **[Guía de configuración de Syncthing](./syncthing-install "Configura opciones avanzadas de Syncthing")** — ajustes más detallados para varios dispositivos
+- **[Blinko](./blinko-setup "Ejecuta Blinko en ZimaOS como herramienta de notas con IA autoalojada")** — captura ideas fugaces en tarjetas y búscalas con IA
+- **[Karakeep](./karakeep-setup "Guarda todo con Karakeep y deja que la IA lo etiquete")** — un gestor de marcadores que etiqueta y resume con IA
+- **[VoceChat](./vocechat-setup "Ejecuta un servidor de chat privado con VoceChat en ZimaOS")** — un servidor de chat privado para tu familia o equipo
+- **[RomM](./romm-setup "Organiza tu colección de ROMs con RomM en ZimaOS")** — una biblioteca ordenada para tu colección de juegos
+- **[Adminer](./adminer-setup-guide "Inspecciona bases de datos SQLite con Adminer en ZimaOS")** — mira dentro de las bases de datos de tus aplicaciones
+
+## Hogar inteligente
+
+Las cámaras y los sensores son los ojos y oídos de un hogar inteligente — estas aplicaciones mantienen la señal en tu propio hardware.
+
+- **[Frigate](./frigate-setup "Ejecuta Frigate en ZimaOS como NVR local con IA para vigilancia de cámaras")** — vigilancia de cámaras local con IA y detección de objetos
+- **[Servidor de cámaras NVR](./nvr-camera-server "Conecta cámaras de seguridad al NAS con detección de objetos por IA")** — vigilancia y detección de objetos en tu propio servidor
 
 ## Agentes e inferencia
 
 Ejecutar IA en tu propio hardware evita que los datos salgan de casa. La comunidad está avanzando con rapidez en esta dirección.
 
 - **[DeepSeek Harness](./deepseek-harness-setup "Ejecuta DeepSeek Harness en tu servidor doméstico como agente físico")** — un agente de IA físico en tu servidor doméstico que hace vibe coding y automatiza tareas
+- **[Inferencia de LLM local](../local-llm-inference "Ejecuta un servidor de IA privado en tu NAS ZimaOS con una configuración verificada")** — un motor de IA privado en tu propio hardware, sin nube
 - **[Activar la búsqueda con IA](./enable-ai "Busca archivos mediante lenguaje natural en el servidor doméstico")** — encuentra contenido con preguntas normales
 - **[Desplegar DeepSeek R1](./deploy-deepseek-r1 "Ejecuta DeepSeek R1 localmente en tu servidor de agentes")** — utiliza un modelo potente en hardware Zima
 - **[Descargar modelos de IA](./llm-manual-download "Descarga modelos para instalaciones sin conexión")** — prepara entornos aislados o con poco ancho de banda

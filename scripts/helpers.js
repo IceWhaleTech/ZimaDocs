@@ -243,10 +243,24 @@ function addPageAnchors(str) {
   return $.html();
 }
 
+function normalizeArticleHeadingLevels(str) {
+  const $ = cheerio.load(str, { decodeEntities: false });
+  if (!$('h1').length) return str;
+
+  $('h1, h2, h3, h4, h5').each(function() {
+    const level = Number(this.name.slice(1));
+    this.name = 'h' + (level + 1);
+  });
+
+  return $.html();
+}
+
 hexo.extend.helper.register('page_anchor', addPageAnchors);
+hexo.extend.helper.register('doc_heading_content', normalizeArticleHeadingLevels);
 
 hexo.extend.helper.register('doc_content', function(str) {
-  const $ = cheerio.load(addPageAnchors(str), { decodeEntities: false });
+  const normalizedContent = normalizeArticleHeadingLevels(str);
+  const $ = cheerio.load(addPageAnchors(normalizedContent), { decodeEntities: false });
 
   $('a').not('.article-anchor').addClass('doc-link');
   $('code').not('pre code').addClass('chip');

@@ -44,6 +44,12 @@ Once your data is in place, make it accessible.
 - **[Share via Link](./share-via-link "Create share links to send files to anyone without an account")** — generate a link to share files without an account
 - **[Samba Multi-User](./samba-member-setup "Set up Samba with per-user access control on ZimaOS")** — per-user access control for Samba shares
 
+## Local AI
+
+Run a private AI on your own hardware.
+
+- **[Local LLM Inference](./local-llm-inference "Run a private AI on your ZimaOS NAS with a verified 35B MoE setup")** — five steps to an OpenAI-compatible AI server on your NAS
+
 ## Install Methods
 
 Different ways to get ZimaOS running, depending on your setup.
