@@ -93,7 +93,7 @@ DNS-based blocking works by domain, so it can block:
 - malicious and phishing domains
 - telemetry from apps and smart home devices
 
-Please note: AdGuard Home cannot remove ads served from the same domain as the content, such as YouTube in-video ads and most in-app ads. Those require a device-level ad blocker.
+Please note: AdGuard Home cannot remove ads served from the same domain as the content, such as YouTube in-video ads and most in-app ads. Those require a device-level ad blocker. For YouTube and in-app ads on your phone or computer, try AdGuard Ad Blocker with the code ZIMAGUARD30 for 30% off.
 
 Network-wide filtering is active when client requests appear in AdGuard Home's **Query Log** and blocked requests appear in the **Dashboard** statistics.
 
@@ -105,7 +105,7 @@ AdGuard Home runs as a Docker container, and auto-updates are disabled in Docker
 
 ## Related Guides
 
-- Prefer a device-friendly alternative with a simpler web dashboard? See [Pi-hole Setup](./pi-hole-setup "Block ads and trackers network-wide with Pi-hole on ZimaOS").
+- Looking for another option? See [Pi-hole Setup](./pi-hole-setup "Block ads and trackers network-wide with Pi-hole on ZimaOS").
 
 ## Need Help?
 

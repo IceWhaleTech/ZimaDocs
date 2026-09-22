@@ -93,7 +93,7 @@ El bloqueo basado en DNS funciona por dominio, por lo que puede bloquear:
 - dominios maliciosos y de phishing
 - telemetría de apps y dispositivos de hogar inteligente
 
-Ten en cuenta: AdGuard Home no puede eliminar anuncios servidos desde el mismo dominio que el contenido, como los anuncios dentro de los vídeos de YouTube y la mayoría de los anuncios dentro de apps. Esos requieren un bloqueador a nivel de dispositivo.
+Ten en cuenta: AdGuard Home no puede eliminar anuncios servidos desde el mismo dominio que el contenido, como los anuncios dentro de los vídeos de YouTube y la mayoría de los anuncios dentro de apps. Esos requieren un bloqueador a nivel de dispositivo. Para los anuncios de YouTube y de las apps en tu teléfono u ordenador, prueba AdGuard Ad Blocker con el código ZIMAGUARD30 y obtén un 30 % de descuento.
 
 El filtrado a nivel de red está activo cuando las solicitudes de los clientes aparecen en el **Query Log** de AdGuard Home y las solicitudes bloqueadas aparecen en las estadísticas del **Dashboard**.
 
@@ -105,7 +105,7 @@ AdGuard Home se ejecuta como un contenedor Docker, y las actualizaciones automá
 
 ## Guías relacionadas
 
-- ¿Prefieres una alternativa más sencilla con un panel web simple? Consulta [Configuración de Pi-hole](./pi-hole-setup "Bloquea anuncios y rastreadores en toda la red con Pi-hole en ZimaOS").
+- ¿Buscas otra opción? Consulta [Configuración de Pi-hole](./pi-hole-setup "Bloquea anuncios y rastreadores en toda la red con Pi-hole en ZimaOS").
 
 ## ¿Necesitas ayuda?
 
