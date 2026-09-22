@@ -93,7 +93,7 @@ AdGuard Home 默认启用 **AdGuard DNS filter**，因此设置完成后过滤�
 - 恶意和钓鱼域名
 - 应用和智能家居设备发出的遥测数据
 
-请注意：AdGuard Home 无法移除与内容同域名的广告，例如 YouTube 视频内广告和大多数应用内广告。这些需要设备级的广告拦截器。
+请注意：AdGuard Home 无法移除与内容同域名的广告，例如 YouTube 视频内广告和大多数应用内广告。这些需要设备级的广告拦截器。在手机或电脑上拦截 YouTube 和应用内广告，可以试试 AdGuard Ad Blocker，使用优惠码 ZIMAGUARD30 可享 7 折优惠。
 
 当客户端请求出现在 AdGuard Home 的 **Query Log** 中、且被拦截的请求出现在 **Dashboard** 统计中时，说明全网络过滤已经生效。
 
@@ -105,7 +105,7 @@ AdGuard Home 以 Docker 容器方式运行，而 Docker 安装默认禁用自动
 
 ## 相关指南
 
-- 想要一个界面更简单、对设备更友好的替代方案？参见 [Pi-hole 安装](./pi-hole-setup "在 ZimaOS 上用 Pi-hole 实现全网络广告与追踪器拦截")。
+- 在寻找其他选择？参见 [Pi-hole 安装](./pi-hole-setup "在 ZimaOS 上用 Pi-hole 实现全网络广告与追踪器拦截")。
 
 ## 需要帮助？
 
