@@ -1,4 +1,3 @@
-:::writing{variant="document" id="71642"}
 ---
 title: Restablecer la configuración de red
 description: "Cómo restablecer la configuración de red y la configuración de IP estática de ZimaOS utilizando una unidad USB cuando los cambios en la red provocan problemas de conectividad."
@@ -28,4 +27,3 @@ Cree un archivo en el directorio raíz del disco con el nombre `_ResetNetwork`; 
 Cualquiera de las siguientes condiciones se considerará un restablecimiento exitoso.
 - La pantalla muestra que la IP ha cambiado.
 - El archivo `_ResetNetwork` de la unidad USB ha sido eliminado.
-:::

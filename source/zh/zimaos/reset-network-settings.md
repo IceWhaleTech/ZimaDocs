@@ -1,4 +1,3 @@
-:::writing{variant="document" id="73915"}
 ---
 title: 重置网络设置
 description: "当网络更改导致连接问题时，如何使用 USB 驱动器重置 ZimaOS 网络设置和静态 IP 配置。"
@@ -27,4 +26,3 @@ Mac 格式化操作可以在磁盘管理工具中选择磁盘并执行抹除操�
 以下任一情况出现即可视为成功。
 - 显示屏显示 IP 已更改。
 - USB 驱动器中的 `_ResetNetwork` 文件已被移除。
-:::
