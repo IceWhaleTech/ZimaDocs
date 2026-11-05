@@ -1,6 +1,6 @@
 ---
 title: 在Proxmox VE上使用ISO镜像安装ZimaOS  
-description:  
+description: "使用官方 ISO 镜像在 Proxmox VE 上安装 ZimaOS，适用于虚拟机测试、评估和轻量使用场景。"
 type: Docs  
 author: icewhale123456  
 tip: Do not remove this front matter block. The description field is used for the article summary; if left empty, the first paragraph will be used instead.
@@ -38,89 +38,60 @@ tip: Do not remove this front matter block. The description field is used for th
 
 ---
 
-## 安装步骤  
+## 安装步骤
 
-{% note warn Note: %}
-  本教程所需的ZimaOS ISO镜像可以从以下链接下载：  
-  https://github.com/IceWhaleTech/ZimaOS/releases  
-{% endnote %}
+> Proxmox 截图中的版本号和存储名称仅为示例。
 
-### 上传ZimaOS ISO镜像  
-1. 登录Proxmox VE Web界面  
-2. 导航至**local → ISO Images → Upload**  
-![](https://manage.icewhale.io/api/static/docs/1767616598247_copyImage.png)  
-3. 选择已下载的**ZimaOS ISO镜像**并点击**Upload**  
-![](https://manage.icewhale.io/api/static/docs/1767616612358_image.png)
+### 上传ZimaOS ISO镜像
+1. 从 [ZimaOS GitHub Releases](https://github.com/IceWhaleTech/ZimaOS/releases) 下载 `_installer.iso` 文件。
+2. 在 Proxmox VE 中选择节点及支持 ISO 的存储位置，例如 **local → ISO Images → Upload**。
+3. 选择 ISO 文件，点击 **Upload**。
 
-### 创建虚拟机  
-1. 点击**创建VM**按钮  
-![](https://manage.icewhale.io/api/static/docs/1767616679913_image.png)  
-2. 在操作系统页面，选择ZimaOS ISO镜像  
-![](https://manage.icewhale.io/api/static/docs/1767616694612_image.png)  
-3. 在系统页面：  
-  - 设置BIOS为UEFI  
-  - 取消勾选**添加EFI磁盘**  
-![](https://manage.icewhale.io/api/static/docs/1767616715004_image.png)  
-4. 在**CPU**页面，调整CPU核数
+![在 Proxmox VE 上传窗口中选择 ZimaOS 安装 ISO](/images/guides/zimaos-proxmox-upload-iso.webp)
 
-{% note warn  %} **目的**：分配更多的CPU核心可以提高多线程性能，帮助在负载下保持顺畅运行。  
-**推荐**：4个或更多CPU核心  
-{% endnote %}
+### 创建虚拟机
+点击 **Create VM**，填写名称和 VM ID，并按下表配置。不同 Proxmox VE 版本的界面名称可能略有区别。
 
-![](https://manage.icewhale.io/api/static/docs/1767616752746_image.png)  
-5. 在**内存**页面，调整内存大小  
-{% note warn  %} **目的**：更多的内存可以让ZimaOS运行更多的服务，提升多任务性能，并减少频繁操作时的卡顿。  
-**推荐**：8GB（8192MB）或更多  
-{% endnote %}
+| 设置 | 配置 |
+|---|---|
+| OS | 选择已上传的 ZimaOS ISO，客户机操作系统类型选择 Linux |
+| BIOS | **OVMF (UEFI)** |
+| EFI 磁盘 | 启用 **Add EFI Disk** 并选择存储位置 |
+| Secure Boot | 创建 EFI 磁盘时取消勾选 **Pre-Enroll keys** |
+| 系统盘 | 至少 **32 GB**，使用 SCSI 磁盘和 VirtIO SCSI 控制器 |
+| CPU | 至少 **2 个核心**，建议 4 个 |
+| 内存 | 至少 **4096 MB**，建议 8192 MB |
+| 网络 | 连接局域网的网桥，例如 `vmbr0`，使用 VirtIO 网络设备 |
 
-![](https://manage.icewhale.io/api/static/docs/1767616800421_image.png)
+EFI 磁盘用于保存固件设置，与安装 ZimaOS 的系统盘是两个不同的磁盘。请保持 Secure Boot 关闭。Proxmox 对 EFI 磁盘和预注册密钥的说明见 [BIOS and UEFI](https://pve.proxmox.com/pve-docs/chapter-qm.html#_bios_and_uefi)。
 
-### 安装ZimaOS  
-1. 创建虚拟机后，点击**启动**  
-![](https://manage.icewhale.io/api/static/docs/1767616824433_image.png)  
-2. 点击**控制台**以打开虚拟机控制台  
-![](https://manage.icewhale.io/api/static/docs/1767616843275_image.png)  
-3. 按`Enter`开始ZimaOS安装过程  
-![](https://manage.icewhale.io/api/static/docs/1767616860449_image.png)  
-4. 选择**Install ZimaOS**并按`Enter`  
-![](https://manage.icewhale.io/api/static/docs/1767616872278_image.png)  
-5. 选择目标磁盘进行安装并按`Enter`  
-![](https://manage.icewhale.io/api/static/docs/1767616901998_image.png)  
-6. 选择**Yes**确认磁盘并按`Enter`  
-![](https://manage.icewhale.io/api/static/docs/1767616916757_image.png)  
-7. 再次确认以继续安装  
-![](https://manage.icewhale.io/api/static/docs/1767616933805_image.png)  
-8. 安装完成后，会显示完成屏幕  
-![](https://manage.icewhale.io/api/static/docs/1767616945992_image.png)
+完成创建向导。在 **Options → Boot Order** 中启用虚拟 CD/DVD 驱动器供首次启动使用，同时保留系统盘作为可启动设备。
 
----
+### 安装ZimaOS
+1. 启动虚拟机并打开 **Console**，从已挂载的 ISO 启动。
+2. 在 ZimaOS 图形安装程序的欢迎界面点击 **Start**，然后选择安装程序的语言。
 
-### 移除ISO镜像  
-1. 返回Proxmox VE界面  
-2. 选择虚拟机，点击**CD**并选择**编辑**  
-![](https://manage.icewhale.io/api/static/docs/1767616981489_image.png)  
-3. 选择**不使用任何媒体**并点击**确定**  
-![](https://manage.icewhale.io/api/static/docs/1767616998638_image.png)  
-4. 修改后，配置应该如下所示  
-![](https://manage.icewhale.io/api/static/docs/1767617011570_image.png)
+![ZimaOS 图形安装程序欢迎界面](/images/guides/zimaos-installer-welcome.webp)
 
----
+3. 选择虚拟机的系统盘，点击 **Continue**。仔细核对容量：**所选磁盘上的全部数据都会被清除**。
+4. 检查安装前的验证结果，点击 **Continue**。
+5. 确认目标磁盘，点击 **Erase and install**。
+6. 保持虚拟机运行，直到出现安装完成界面。图形界面的操作流程也可参照 [ZimaOS 安装指南](./how-to-install-zimaos)，虚拟机中的磁盘名称会有所不同。
 
-### 启动并访问ZimaOS  
-1. 启动ZimaOS虚拟机  
-2. 点击**控制台**以访问虚拟机控制台  
-3. 等待系统完成启动  
-4. 控制台中将显示IP地址  
-打开浏览器并输入IP地址，访问ZimaOS Web管理界面。  
-![](https://manage.icewhale.io/api/static/docs/1767617057004_image.png)
+### 移除ISO镜像
+在安装完成界面点击重启之前：
+1. 在 Proxmox VE 中打开虚拟机的 **Hardware** 页面。
+2. 选择 **CD/DVD Drive**，点击 **Edit**，选择 **Do not use any media**，点击 **OK**。
 
----
+![从虚拟 CD/DVD 驱动器移除 ISO](https://manage.icewhale.io/api/static/docs/1767616998638_image.png)
 
-## 继续探索ZimaOS  
+3. 在 **Options → Boot Order** 中将已安装的系统盘放到第一位，保留 EFI 磁盘连接。
+4. 返回 **Console**，在安装程序中点击 **Restart**。
 
-现在，ZimaOS已经在虚拟机中运行，您可以继续按自己的节奏探索其功能和工作流程。  
-要了解如何开始系统设置、存储管理和应用部署，请访问以下指南：
+### 启动并访问ZimaOS
+从系统盘启动后，虚拟机控制台会显示 IP 地址。在能够访问虚拟机所在网络的电脑上，将该地址输入浏览器即可打开 ZimaOS。也可以使用同一网络中的 ZimaClient 连接。
 
-👉[开始使用ZimaOS](../../zimaos/get-started)
+如果又进入安装程序，请检查 ISO 是否已移除，以及系统盘是否位于启动顺序首位。如果 UEFI 提示安全验证失败，请确认 Secure Boot 已关闭。如果没有显示 IP，请检查虚拟机的网桥、虚拟网络设备和 DHCP 服务。
 
-这份指南将帮助您迈出下一步，充分利用您的ZimaOS环境。
+## 继续探索ZimaOS
+参照 [ZimaOS 快速入门指南](./get-started)完成初始设置，开始管理存储和应用。

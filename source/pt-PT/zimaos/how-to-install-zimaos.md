@@ -10,70 +10,117 @@ tip: Não remova este bloco de Front Matter. O campo description é utilizado co
 O ZimaOS é um sistema operativo NAS leve concebido para equipamentos x86-64 genéricos.
 Este guia apresenta o processo completo para **transferir, gravar e instalar o ZimaOS** de forma rápida e correta.
 
+Para uma máquina virtual, consulte [Instalar o ZimaOS no Proxmox VE](./install-zimaos-on-proxmox-ve).
+
 ---
 
 ## O que é necessário
 - Um **dispositivo Zima** ou um equipamento x86-64 genérico com pelo menos 25 GB de armazenamento.
 - Uma unidade USB com 4 GB ou mais.
+- [ZimaOS USB Creator](https://www.zimaspace.com/zimaos/download) ou [balenaEtcher](https://etcher.balena.io/).
 
 ---
 
 ## Preparação
 Para arrancar o ZimaOS, ative o modo de arranque UEFI no BIOS e desative o Secure Boot.
 
-### Passo 1: Transferir a imagem de instalação do ZimaOS
-Transfira o ficheiro `.img` mais recente do ZimaOS a partir da página oficial de versões no GitHub:
-👉 [Versões do ZimaOS no GitHub](https://github.com/IceWhaleTech/ZimaOS/releases)
+### Passo 1: Preparar a imagem de instalação do ZimaOS
+O ZimaOS USB Creator transfere a versão que selecionar na aplicação. Se utilizar o balenaEtcher, transfira o ficheiro terminado em `_installer.img` a partir das [versões do ZimaOS no GitHub](https://github.com/IceWhaleTech/ZimaOS/releases). O ficheiro `.raucb` é um pacote de atualização, não uma imagem de instalação USB.
 
+### Passo 2: Criar uma unidade USB de arranque do ZimaOS
+Escolha um dos métodos seguintes e avance para o passo 3.
 
-### Passo 2: Criar uma unidade USB de arranque
-Grave a imagem do ZimaOS numa unidade USB. A ferramenta mais simples é o **Balena Etcher**.
+> Os números de versão, nomes de ficheiros, unidades e detalhes da interface nas imagens são exemplos.
 
-1. Transfira e instale o [Balena Etcher](https://etcher.balena.io/#download-etcher)
-2. Abra o Etcher e selecione o ficheiro `.img` do ZimaOS.
-3. Introduza a unidade USB e selecione-a como destino.
-4. Clique em **Flash** para iniciar a gravação.
+> A gravação de uma imagem apaga todos os dados da unidade USB selecionada. Faça uma cópia dos ficheiros importantes e confirme o nome e a capacidade da unidade antes de continuar.
 
-![Balena Etcher aberto com a imagem do instalador do ZimaOS](https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png)
-![Balena Etcher a selecionar a unidade USB de destino para instalar o ZimaOS](https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png)
-![Gravação da imagem do ZimaOS na unidade USB concluída](https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png)
+#### Opção A: ZimaOS USB Creator
 
+1. Introduza a unidade USB e abra o **ZimaOS USB Creator**. Em **Choose operating system**, selecione a versão do ZimaOS que pretende instalar e clique em **Next**.
 
+![Escolher uma versão do ZimaOS no USB Creator](/images/guides/usb-creator-select-os.webp)
+
+2. Selecione a unidade USB. Confirme o nome e a capacidade, mantenha **Exclude system drives** selecionado e clique em **Next**.
+
+![Selecionar a unidade USB no USB Creator](/images/guides/usb-creator-select-storage.webp)
+
+3. Reveja a imagem do sistema e a unidade de armazenamento no resumo e clique em **Write**.
+
+![Rever a imagem e a unidade USB de destino](/images/guides/usb-creator-review-write.webp)
+
+4. Confirme a unidade de destino na caixa de diálogo **Erase this device?** e clique em **Erase and write**.
+
+![Confirmar o apagamento e a gravação na unidade USB](/images/guides/usb-creator-erase-warning.webp)
+
+5. Autorize o acesso de administrador, se solicitado. Aguarde enquanto o USB Creator transfere e grava a imagem; mantenha a unidade USB ligada.
+
+![USB Creator a transferir e gravar a imagem](/images/guides/usb-creator-writing-progress.webp)
+
+6. Quando aparecer **Write complete!**, a unidade já foi ejetada automaticamente. Clique em **Finish** e retire-a em segurança.
+
+![Ecrã de gravação concluída do USB Creator](/images/guides/usb-creator-write-complete.webp)
+
+#### Opção B: balenaEtcher
+
+1. Transfira e instale o [balenaEtcher](https://etcher.balena.io/).
+
+2. Abra o Etcher, clique em **Flash from file** e selecione o ficheiro `_installer.img` transferido no passo 1.
+
+![Selecionar a imagem de instalação do ZimaOS no balenaEtcher](/images/guides/zimaos-etcher-select-image.webp)
+
+3. Clique em **Select target** e selecione a unidade USB. Confirme o nome e a capacidade.
+
+![Selecionar a unidade USB de destino no balenaEtcher](/images/guides/zimaos-etcher-select-target.webp)
+
+4. Clique em **Flash!**, autorize o acesso se solicitado e aguarde a conclusão da gravação e da verificação.
+
+5. Quando o Etcher indicar a conclusão, ejete a unidade USB em segurança e avance para o passo 3.
+
+![balenaEtcher terminou de gravar a imagem do ZimaOS](/images/guides/zimaos-etcher-complete.webp)
 
 ### Passo 3: Arrancar o dispositivo por USB
-1. Introduza a unidade USB de arranque no dispositivo.
-2. Abra o BIOS ou o menu de arranque e selecione **Boot from USB**.
+1. Introduza a unidade USB de arranque no dispositivo. Abra o BIOS ou o menu de arranque e inicie o equipamento a partir da unidade USB.
+2. No ecrã de boas-vindas do ZimaOS Installer, clique em **Start**.
 
-![Menu principal do instalador para escolher entre instalar o ZimaOS ou reiniciar](https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png)
+![Ecrã de boas-vindas do ZimaOS Installer com o botão Start](/images/guides/zimaos-installer-welcome.webp)
 
-![Menu de instalação rápida para selecionar o dispositivo ou espaço onde instalar o ZimaOS](https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png)
+3. Escolha o idioma do instalador e clique em **Continue**.
 
-![Confirmação anterior à instalação com a opção Yes](https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png)
+![Seleção do idioma do ZimaOS Installer](/images/guides/zimaos-installer-choose-language.webp)
 
-![Última oportunidade para cancelar a instalação com a opção Yes](https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png)
+4. Selecione o disco onde pretende instalar o ZimaOS. Confirme cuidadosamente o nome, o caminho e a capacidade: **todos os dados desse disco serão apagados**. Clique em **Continue**.
 
-![Barra de progresso da instalação](https://manage.icewhale.io/api/static/docs/1758611912717_installing.png)
+![Seleção do disco onde instalar o ZimaOS](/images/guides/zimaos-installer-choose-disk.webp)
 
+5. Reveja o disco de destino e as verificações da instalação; depois, clique em **Continue**.
+
+![Revisão do disco de destino e das verificações da instalação](/images/guides/zimaos-installer-ready.webp)
+
+6. Confirme novamente o disco no aviso de apagamento e clique em **Erase and install**.
+
+![Confirmação do apagamento do disco selecionado](/images/guides/zimaos-installer-erase-confirmation.webp)
+
+7. Mantenha o dispositivo ligado enquanto o instalador grava o ZimaOS.
+
+![Progresso da instalação do ZimaOS](/images/guides/zimaos-installer-progress.webp)
 
 ### Passo 4: Concluir a instalação do ZimaOS
-Siga as instruções apresentadas para instalar o ZimaOS.
-Quando o sistema solicitar, retire a unidade USB e reinicie o dispositivo.
-O equipamento arrancará automaticamente no **ZimaOS**.
-![Retirar a unidade USB e reiniciar](https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png)
+Quando surgir o ecrã de instalação concluída, retire a unidade USB e clique em **Restart**. O dispositivo arrancará a partir do disco instalado e iniciará o ZimaOS.
 
-
+![Ecrã de instalação concluída do ZimaOS com o botão Restart](/images/guides/zimaos-installer-complete.webp)
 
 ### Passo 5: Aceder ao ZimaOS
-Depois de reiniciar, a forma mais simples de iniciar sessão é utilizar o **ZimaClient**, que deteta automaticamente o dispositivo na rede e permite aceder rapidamente ao ZimaOS.
+Depois de reiniciar, o ecrã do dispositivo mostra os dados do sistema e como aceder ao ZimaOS. O número de série e o endereço IP estão ocultos na imagem; utilize o endereço apresentado no seu dispositivo.
 
-👉 Transfira o ZimaClient e siga este guia: [Guia de início rápido do ZimaOS](./get-started)
+![Consola do ZimaOS com dados do sistema e informações de acesso, com o número de série e o endereço IP ocultos](/images/guides/zimaos-console-access.webp)
 
-![Ecrã de boas-vindas da interface Web do ZimaOS](https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png)
+A forma mais simples de estabelecer ligação é utilizar o **ZimaClient**, que deteta o dispositivo na rede. Transfira o ZimaClient e consulte o [Guia de início rápido do ZimaOS](./get-started).
 
+Em alternativa, introduza num navegador o endereço IP apresentado no seu dispositivo para abrir a **interface Web do ZimaOS**.
 
-Também pode consultar o endereço IP do dispositivo na rede e introduzi-lo num navegador para abrir a **interface Web do ZimaOS**.
-![Ecrã de informações do ZimaOS com o endereço IP e a versão do sistema](https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png)
+O exemplo seguinte mostra a página inicial num ZimaCube. Selecione um idioma e leia a Política de Privacidade antes de continuar. A página pode ser diferente noutros dispositivos.
 
+![Página inicial de configuração do ZimaCube com opções de idioma e Política de Privacidade](/images/guides/zimaos-zimacube-welcome.webp)
 
 🎉 **Parabéns!** Instalou o ZimaOS e já pode explorar todas as funcionalidades de NAS.
 
