@@ -94,22 +94,29 @@
 <meta property="og:site_name" content="Zimaspace Docs">
 <meta property="og:description" content="ZimaOSのインストール手順を説明します。イメージのダウンロード、USBへの書き込み、インストール、ZimaClientまたはIPアドレスでのログインを含みます。">
 <meta property="og:locale">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611912717_installing.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png">
-<meta property="article:published_time" content="2026-10-29T10:35:42.839Z">
-<meta property="article:modified_time" content="2026-10-29T10:35:42.839Z">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-select-os.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-select-storage.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-review-write.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-erase-warning.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-writing-progress.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-write-complete.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-etcher-select-image.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-etcher-select-target.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-etcher-complete.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-welcome.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-choose-language.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-choose-disk.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-ready.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-erase-confirmation.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-progress.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-complete.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-console-access.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-zimacube-welcome.webp">
+<meta property="article:published_time" content="2026-11-05T02:54:29.721Z">
+<meta property="article:modified_time" content="2026-11-05T02:54:29.721Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/usb-creator-select-os.webp">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -142,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-10-29T10:35:42.839Z"
+      "datePublished": "2026-11-05T02:54:29.721Z"
     }
   </script>
 
@@ -382,36 +389,98 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="doc-article__body" itemprop="articleBody">
       <h2 id="このガイドで分かること" class="article-heading">このガイドで分かること<a class="article-anchor" href="#このガイドで分かること" aria-hidden="true"></a></h2><p>ZimaOSは一般的なx86-64機器向けに設計された軽量NAS OSです。<br>このガイドでは、ZimaOSをすばやく正しく <strong>ダウンロード、書き込み、インストール</strong> する手順を説明します。</p>
+<p>仮想マシンにインストールする場合は、<a href="./install-zimaos-on-proxmox-ve" class="doc-link">Proxmox VEへのZimaOSインストール手順</a>を参照してください。</p>
 <hr>
 <h2 id="必要なもの" class="article-heading">必要なもの<a class="article-anchor" href="#必要なもの" aria-hidden="true"></a></h2><ul class="doc-dots">
 <li><strong>Zimaデバイス</strong> または25 GB以上のストレージを搭載する一般的なx86-64機器。</li>
 <li>4 GB以上を推奨するUSBメモリー。</li>
+<li><a href="https://www.zimaspace.com/zimaos/download" class="doc-link">ZimaOS USB Creator</a> または <a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/" class="doc-link">balenaEtcher</a>。</li>
 </ul>
 <hr>
 <h2 id="準備" class="article-heading">準備<a class="article-anchor" href="#準備" aria-hidden="true"></a></h2><p>ZimaOSを起動するには、BIOSでUEFI起動モードを有効にし、Secure Bootを無効にします。</p>
-<h3 id="手順1：ZimaOSインストールイメージをダウンロードする" class="article-heading">手順1：ZimaOSインストールイメージをダウンロードする<a class="article-anchor" href="#手順1：ZimaOSインストールイメージをダウンロードする" aria-hidden="true"></a></h3><p>公式GitHubリリースページから最新のZimaOS <code class="chip">.img</code> ファイルをダウンロードします。<br>👉 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS/releases" class="doc-link">ZimaOS GitHub Releases</a></p>
-<h3 id="手順2：起動可能なUSBメモリーを作成する" class="article-heading">手順2：起動可能なUSBメモリーを作成する<a class="article-anchor" href="#手順2：起動可能なUSBメモリーを作成する" aria-hidden="true"></a></h3><p>ZimaOSイメージをUSBメモリーへ書き込みます。最も簡単なツールは <strong>Balena Etcher</strong> です。</p>
-<ol class="doc-steps">
-<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/#download-etcher" class="doc-link">Balena Etcher</a>をダウンロードしてインストールします。</li>
-<li>Etcherを開き、ZimaOSの<code class="chip">.img</code>ファイルを選択します。</li>
-<li>USBメモリーを挿入し、書き込み先として選択します。</li>
-<li><strong>Flash</strong> をクリックして書き込みを開始します。</li>
+<h3 id="手順1：ZimaOSインストールイメージを準備する" class="article-heading">手順1：ZimaOSインストールイメージを準備する<a class="article-anchor" href="#手順1：ZimaOSインストールイメージを準備する" aria-hidden="true"></a></h3><p>ZimaOS USB Creatorは、アプリで選択したバージョンをダウンロードします。balenaEtcherを使用する場合は、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS/releases" class="doc-link">ZimaOS GitHub Releases</a>から末尾が <code class="chip">_installer.img</code> のファイルをダウンロードしてください。<code class="chip">.raucb</code> は更新パッケージであり、USBインストール用のイメージではありません。</p>
+<h3 id="手順2：起動可能なZimaOS-USBメモリーを作成する" class="article-heading">手順2：起動可能なZimaOS USBメモリーを作成する<a class="article-anchor" href="#手順2：起動可能なZimaOS-USBメモリーを作成する" aria-hidden="true"></a></h3><p>次のいずれかの方法で作成し、手順3に進んでください。</p>
+<blockquote>
+<p>画像内のバージョン番号、ファイル名、ドライブ名、画面の詳細は一例です。</p>
+</blockquote>
+<blockquote>
+<p>イメージを書き込むと、選択したUSBメモリーの全データが消去されます。重要なファイルをバックアップし、ドライブ名と容量を確認してから進んでください。</p>
+</blockquote>
+<h4 id="方法A：ZimaOS-USB-Creator" class="article-heading">方法A：ZimaOS USB Creator<a class="article-anchor" href="#方法A：ZimaOS-USB-Creator" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li>USBメモリーを挿入し、<strong>ZimaOS USB Creator</strong> を開きます。<strong>Choose operating system</strong> でインストールするZimaOSのバージョンを選び、<strong>Next</strong> をクリックします。</li>
 </ol>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758610770697_open-balenaetcher-and-mount-zimaos-installer-img.png" alt="ZimaOSインストールイメージを開いたBalena Etcher"></span><br><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758610775577_select-target-usb-device-for-zimaos-image.png" alt="ZimaOSイメージの書き込み先USBデバイスを選択するBalena Etcher"></span><br><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758610785477_flash-zimaos-installer-img-completed.png" alt="USBデバイスへのZimaOSイメージ書き込み完了画面"></span></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/usb-creator-select-os.webp" alt="USB CreatorでZimaOSのバージョンを選択する"></span></p>
+<ol start="2" class="doc-steps">
+<li>USBメモリーを選択します。名前と容量を確認し、<strong>Exclude system drives</strong> を選択したまま <strong>Next</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/usb-creator-select-storage.webp" alt="USB CreatorでUSBメモリーを選択する"></span></p>
+<ol start="3" class="doc-steps">
+<li>概要画面でOSイメージとストレージデバイスを確認し、<strong>Write</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/usb-creator-review-write.webp" alt="イメージと書き込み先のUSBメモリーを確認する"></span></p>
+<ol start="4" class="doc-steps">
+<li><strong>Erase this device?</strong> ダイアログで対象ドライブを確認し、<strong>Erase and write</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/usb-creator-erase-warning.webp" alt="USBメモリーの消去と書き込みを確認する"></span></p>
+<ol start="5" class="doc-steps">
+<li>管理者認証を求められた場合は認証します。USB Creatorがイメージをダウンロードして書き込む間、USBメモリーを接続したまま待ちます。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/usb-creator-writing-progress.webp" alt="USB Creatorがイメージをダウンロードして書き込む画面"></span></p>
+<ol start="6" class="doc-steps">
+<li><strong>Write complete!</strong> が表示されると、USBメモリーは自動的に取り出されています。<strong>Finish</strong> をクリックし、安全に取り外します。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/usb-creator-write-complete.webp" alt="USB Creatorの書き込み完了画面"></span></p>
+<h4 id="方法B：balenaEtcher" class="article-heading">方法B：balenaEtcher<a class="article-anchor" href="#方法B：balenaEtcher" aria-hidden="true"></a></h4><ol class="doc-steps">
+<li><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://etcher.balena.io/" class="doc-link">balenaEtcher</a>をダウンロードしてインストールします。</p>
+</li>
+<li><p>Etcherを開き、<strong>Flash from file</strong> をクリックして、手順1でダウンロードした <code class="chip">_installer.img</code> ファイルを選択します。</p>
+</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-etcher-select-image.webp" alt="balenaEtcherでZimaOSのインストールイメージを選択する"></span></p>
+<ol start="3" class="doc-steps">
+<li><strong>Select target</strong> をクリックしてUSBメモリーを選び、名前と容量を確認します。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-etcher-select-target.webp" alt="balenaEtcherで書き込み先USBメモリーを選択する"></span></p>
+<ol start="4" class="doc-steps">
+<li><p><strong>Flash!</strong> をクリックし、必要に応じてアクセスを許可します。書き込みと検証が完了するまで待ちます。</p>
+</li>
+<li><p>Etcherに完了と表示されたら、USBメモリーを安全に取り外し、次の手順3に進みます。</p>
+</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-etcher-complete.webp" alt="balenaEtcherによるZimaOSイメージの書き込み完了"></span></p>
 <h3 id="手順3：USBからデバイスを起動する" class="article-heading">手順3：USBからデバイスを起動する<a class="article-anchor" href="#手順3：USBからデバイスを起動する" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>起動可能なUSBメモリーをデバイスに挿入します。</li>
-<li>BIOSまたはブートメニューを開き、<strong>Boot from USB</strong> を選択します。</li>
+<li>起動可能なUSBメモリーをデバイスに挿入します。BIOSまたはブートメニューを開き、USBメモリーから起動します。</li>
+<li>ZimaOS Installerのようこそ画面で <strong>Start</strong> をクリックします。</li>
 </ol>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611834229_select-boot-to-install-zimaos.png" alt="ZimaOSのインストールまたは再起動を選択するインストーラーのメインメニュー"></span></p>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611857595_select-space-to-install-zimaos.png" alt="ZimaOSのインストール先デバイスまたは領域を選択するクイックインストールメニュー"></span></p>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611899595_confirmaton-before-install.png" alt="インストール前の確認でYesを選択する画面"></span></p>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611906569_last-chance-to-abort-the-installation.png" alt="インストールを中止できる最後の確認でYesを選択する画面"></span></p>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611912717_installing.png" alt="インストールの進行状況を表示する画面"></span></p>
-<h3 id="手順4：ZimaOSのインストールを完了する" class="article-heading">手順4：ZimaOSのインストールを完了する<a class="article-anchor" href="#手順4：ZimaOSのインストールを完了する" aria-hidden="true"></a></h3><p>画面の指示に従ってZimaOSをインストールします。<br>指示が表示されたらUSBメモリーを取り外し、デバイスを再起動します。<br>これで <strong>ZimaOS</strong> が自動的に起動します。</p><p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758613053107_installation-zimaos-done.png" alt="USBデバイスを取り外して再起動する画面"></span></p>
-<h3 id="手順5：ZimaOSへアクセスする" class="article-heading">手順5：ZimaOSへアクセスする<a class="article-anchor" href="#手順5：ZimaOSへアクセスする" aria-hidden="true"></a></h3><p>再起動後は、<strong>ZimaClient</strong> を使用するのが最も簡単です。ネットワーク上のデバイスを自動検出し、ZimaOSへすばやく接続できます。</p>
-<p>👉 ZimaClientをダウンロードし、次のガイドを参照してください：<a href="./get-started" class="doc-link">ZimaOSクイックスタートガイド</a></p>
-<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611011147_Zimaos-webUI.png" alt="ZimaOS Web UIのようこそ画面"></span></p>
-<p>ネットワーク上でIPアドレスを確認し、ブラウザーへ入力して <strong>ZimaOS Web UI</strong> を開くこともできます。</p><p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1758611045998_zimaos-Information-Display-Interface.png" alt="IPアドレスとOSバージョンを表示するZimaOS情報画面"></span></p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-welcome.webp" alt="Startボタンが表示されたZimaOS Installerのようこそ画面"></span></p>
+<ol start="3" class="doc-steps">
+<li>インストーラーの言語を選び、<strong>Continue</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-choose-language.webp" alt="ZimaOS Installerの言語選択画面"></span></p>
+<ol start="4" class="doc-steps">
+<li>ZimaOSのインストール先ディスクを選びます。名前、パス、容量をよく確認してください。<strong>選択したディスクの全データが消去されます</strong>。確認後、<strong>Continue</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-choose-disk.webp" alt="ZimaOSのインストール先ディスクを選択する画面"></span></p>
+<ol start="5" class="doc-steps">
+<li>対象ディスクとインストール前の確認結果を確認し、<strong>Continue</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-ready.webp" alt="対象ディスクとインストール前の確認結果"></span></p>
+<ol start="6" class="doc-steps">
+<li>消去の警告画面でディスクをもう一度確認し、<strong>Erase and install</strong> をクリックします。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-erase-confirmation.webp" alt="選択したディスクの消去を確認する画面"></span></p>
+<ol start="7" class="doc-steps">
+<li>インストーラーがZimaOSを書き込んでいる間は、デバイスの電源を切らないでください。</li>
+</ol>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-progress.webp" alt="ZimaOSのインストール進行状況"></span></p>
+<h3 id="手順4：ZimaOSのインストールを完了する" class="article-heading">手順4：ZimaOSのインストールを完了する<a class="article-anchor" href="#手順4：ZimaOSのインストールを完了する" aria-hidden="true"></a></h3><p>インストール完了画面が表示されたら、USBメモリーを取り外してから <strong>Restart</strong> をクリックします。デバイスはインストール先ディスクから起動し、ZimaOSが立ち上がります。</p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-complete.webp" alt="Restartボタンが表示されたZimaOSのインストール完了画面"></span></p>
+<h3 id="手順5：ZimaOSへアクセスする" class="article-heading">手順5：ZimaOSへアクセスする<a class="article-anchor" href="#手順5：ZimaOSへアクセスする" aria-hidden="true"></a></h3><p>再起動後、デバイスの画面にシステム情報とZimaOSへのアクセス方法が表示されます。画像内のシリアル番号とIPアドレスは隠しています。実際にはご自身のデバイスに表示されたアドレスを使用してください。</p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-console-access.webp" alt="シリアル番号とIPアドレスを隠した、システム情報とアクセス方法を表示するZimaOSの画面"></span></p>
+<p>接続には、ネットワーク上のデバイスを検出できる <strong>ZimaClient</strong> が便利です。ZimaClientをダウンロードし、<a href="./get-started" class="doc-link">ZimaOSクイックスタートガイド</a>を参照してください。</p>
+<p>または、デバイスに表示されたIPアドレスをブラウザーに入力して <strong>ZimaOS Web UI</strong> を開くこともできます。</p>
+<p>次の画像は、ZimaCubeで表示される初期画面の例です。言語を選び、プライバシーポリシーを確認してから進んでください。ほかのデバイスでは画面が異なる場合があります。</p>
+<p class="doc-figures doc-figures--install-card"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-zimacube-welcome.webp" alt="言語とプライバシーポリシーの項目があるZimaCubeの初期設定画面"></span></p>
 <p>🎉 <strong>インストール完了です。</strong> ZimaOSのNAS機能を使用できます。</p>
 <hr>
 <h2 id="ZimaOSで次に行うこと" class="article-heading">ZimaOSで次に行うこと<a class="article-anchor" href="#ZimaOSで次に行うこと" aria-hidden="true"></a></h2><p>スマートサーバーにZimaOSをインストールしたら、個人用クラウドや自宅サーバーを構築できます。<br>次のような使い方があります。</p>
@@ -433,14 +502,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-10-29T10:35:42.839Z" itemprop="dateModified">最終更新日: 2026-10-29</time>
+      <time class="article-footer-updated" datetime="2026-11-05T02:54:29.721Z" itemprop="dateModified">最終更新日: 2026-11-05</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/local-ai-agent-on-zimaos"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">ローカル AI エージェント</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/install-zimaos-on-proxmox-ve"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Proxmox へのインストール</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="目次">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%93%E3%81%AE%E3%82%AC%E3%82%A4%E3%83%89%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E3%81%93%E3%81%A8"><span class="toc-text">このガイドで分かること</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE"><span class="toc-text">必要なもの</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%96%E5%82%99"><span class="toc-text">準備</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%861%EF%BC%9AZimaOS%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B"><span class="toc-text">手順1：ZimaOSインストールイメージをダウンロードする</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%862%EF%BC%9A%E8%B5%B7%E5%8B%95%E5%8F%AF%E8%83%BD%E3%81%AAUSB%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><span class="toc-text">手順2：起動可能なUSBメモリーを作成する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%863%EF%BC%9AUSB%E3%81%8B%E3%82%89%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B"><span class="toc-text">手順3：USBからデバイスを起動する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%864%EF%BC%9AZimaOS%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%92%E5%AE%8C%E4%BA%86%E3%81%99%E3%82%8B"><span class="toc-text">手順4：ZimaOSのインストールを完了する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%865%EF%BC%9AZimaOS%E3%81%B8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B"><span class="toc-text">手順5：ZimaOSへアクセスする</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZimaOS%E3%81%A7%E6%AC%A1%E3%81%AB%E8%A1%8C%E3%81%86%E3%81%93%E3%81%A8"><span class="toc-text">ZimaOSで次に行うこと</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%93%E3%81%AE%E3%82%AC%E3%82%A4%E3%83%89%E3%81%A7%E5%88%86%E3%81%8B%E3%82%8B%E3%81%93%E3%81%A8"><span class="toc-text">このガイドで分かること</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE"><span class="toc-text">必要なもの</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%96%E5%82%99"><span class="toc-text">準備</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%861%EF%BC%9AZimaOS%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E6%BA%96%E5%82%99%E3%81%99%E3%82%8B"><span class="toc-text">手順1：ZimaOSインストールイメージを準備する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%862%EF%BC%9A%E8%B5%B7%E5%8B%95%E5%8F%AF%E8%83%BD%E3%81%AAZimaOS-USB%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><span class="toc-text">手順2：起動可能なZimaOS USBメモリーを作成する</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95A%EF%BC%9AZimaOS-USB-Creator"><span class="toc-text">方法A：ZimaOS USB Creator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95B%EF%BC%9AbalenaEtcher"><span class="toc-text">方法B：balenaEtcher</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%863%EF%BC%9AUSB%E3%81%8B%E3%82%89%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B"><span class="toc-text">手順3：USBからデバイスを起動する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%864%EF%BC%9AZimaOS%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%82%92%E5%AE%8C%E4%BA%86%E3%81%99%E3%82%8B"><span class="toc-text">手順4：ZimaOSのインストールを完了する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E9%A0%865%EF%BC%9AZimaOS%E3%81%B8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B"><span class="toc-text">手順5：ZimaOSへアクセスする</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZimaOS%E3%81%A7%E6%AC%A1%E3%81%AB%E8%A1%8C%E3%81%86%E3%81%93%E3%81%A8"><span class="toc-text">ZimaOSで次に行うこと</span></a></li></ol>
     </nav>
   </aside>
 </div>

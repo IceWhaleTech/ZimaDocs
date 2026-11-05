@@ -87,37 +87,21 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="**Con el lanzamiento oficial de la imagen ISO de ZimaOS, ahora puede instalar y desplegar ZimaOS más fácilmente en entornos virtualizados como Proxmox VE (PVE). Esta imagen ISO está especí">
+  <meta name="description" content="Guía para instalar ZimaOS en Proxmox VE con la imagen ISO oficial para pruebas, evaluación y uso ligero en máquinas virtuales.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Instalar ZimaOS en Proxmox VE usando la imagen ISO">
 <meta property="og:url" content="https://www.zimaspace.com/docs/es/zimaos/install-zimaos-on-proxmox-ve">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="**Con el lanzamiento oficial de la imagen ISO de ZimaOS, ahora puede instalar y desplegar ZimaOS más fácilmente en entornos virtualizados como Proxmox VE (PVE). Esta imagen ISO está especí">
+<meta property="og:description" content="Guía para instalar ZimaOS en Proxmox VE con la imagen ISO oficial para pruebas, evaluación y uso ligero en máquinas virtuales.">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616598247_copyImage.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616612358_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616679913_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616694612_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616715004_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616752746_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616800421_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616824433_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616843275_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616860449_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616872278_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616901998_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616916757_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616933805_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616945992_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616981489_image.png">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-proxmox-upload-iso.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-installer-welcome.webp">
 <meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767616998638_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767617011570_image.png">
-<meta property="og:image" content="https://manage.icewhale.io/api/static/docs/1767617057004_image.png">
-<meta property="article:published_time" content="2026-10-29T10:35:42.626Z">
-<meta property="article:modified_time" content="2026-10-29T10:35:42.626Z">
+<meta property="article:published_time" content="2026-11-05T02:54:29.496Z">
+<meta property="article:modified_time" content="2026-11-05T02:54:29.496Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://manage.icewhale.io/api/static/docs/1767616598247_copyImage.png">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/zimaos-proxmox-upload-iso.webp">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -135,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "headline": "Instalar ZimaOS en Proxmox VE usando la imagen ISO",
-      "description": "",
+      "description": "Guía para instalar ZimaOS en Proxmox VE con la imagen ISO oficial para pruebas, evaluación y uso ligero en máquinas virtuales.",
       
       "author": {
         "@type": "Organization",
@@ -150,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-10-29T10:35:42.626Z"
+      "datePublished": "2026-11-05T02:54:29.496Z"
     }
   </script>
 
@@ -416,67 +400,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <li>Tipo de BIOS de la VM: OVMF (UEFI)</li>
 </ul>
 <hr>
-<h2 id="Pasos-de-instalacion" class="article-heading">Pasos de instalación<a class="article-anchor" href="#Pasos-de-instalacion" aria-hidden="true"></a></h2><blockquote class="note warn"><strong class="note-title">Nota:</strong><p>La imagen ISO de ZimaOS necesaria para este tutorial se puede descargar desde:<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS/releases" class="doc-link">https://github.com/IceWhaleTech/ZimaOS/releases</a>  </p>
-</blockquote>  
-
+<h2 id="Pasos-de-instalacion" class="article-heading">Pasos de instalación<a class="article-anchor" href="#Pasos-de-instalacion" aria-hidden="true"></a></h2><blockquote>
+<p>Los números de versión y los nombres de almacenamiento en las capturas de Proxmox son ejemplos.</p>
+</blockquote>
 <h3 id="Subir-la-imagen-ISO-de-ZimaOS" class="article-heading">Subir la imagen ISO de ZimaOS<a class="article-anchor" href="#Subir-la-imagen-ISO-de-ZimaOS" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Inicie sesión en la interfaz web de Proxmox VE  </li>
-<li>Vaya a <strong>local → ISO Images → Subir</strong><br><img src="https://manage.icewhale.io/api/static/docs/1767616598247_copyImage.png">  </li>
-<li>Seleccione la <strong>imagen ISO de ZimaOS</strong> descargada y haga clic en <strong>Subir</strong><br><img src="https://manage.icewhale.io/api/static/docs/1767616612358_image.png"></li>
+<li>Descarga el archivo <code class="chip">_installer.iso</code> de <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/IceWhaleTech/ZimaOS/releases" class="doc-link">Versiones de ZimaOS en GitHub</a>.</li>
+<li>En Proxmox VE, selecciona el nodo y un almacenamiento que admita ISO, por ejemplo <strong>local → ISO Images → Upload</strong>.</li>
+<li>Selecciona el archivo ISO y haz clic en <strong>Upload</strong>.</li>
 </ol>
-<h3 id="Crear-una-maquina-virtual" class="article-heading">Crear una máquina virtual<a class="article-anchor" href="#Crear-una-maquina-virtual" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Haga clic en el botón Crear VM<br><img src="https://manage.icewhale.io/api/static/docs/1767616679913_image.png">  </li>
-<li>En la página de Sistema operativo, seleccione la imagen ISO de ZimaOS<br><img src="https://manage.icewhale.io/api/static/docs/1767616694612_image.png">  </li>
-<li>En la página de Sistema:</li>
-</ol>
-<ul class="doc-dots">
-<li>Establezca el BIOS en UEFI  </li>
-<li>Desmarque la opción de agregar disco EFI<br><img src="https://manage.icewhale.io/api/static/docs/1767616715004_image.png"></li>
-</ul>
-<ol start="4" class="doc-steps">
-<li>En la página de <strong>CPU</strong>, ajuste el número de núcleos de CPU</li>
-</ol>
-<blockquote class="note warn"><p> <strong>Propósito</strong>: Asignar más núcleos de CPU mejora el rendimiento de múltiples hilos y ayuda a asegurar un funcionamiento suave bajo carga.<br><strong>Recomendado</strong>: 4 núcleos de CPU o más  </p>
-</blockquote>  
-
-<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767616752746_image.png"></span></p><p>5. En la página de <strong>Memoria</strong>, ajuste el tamaño de la memoria  </p>
-<blockquote class="note warn"><p> <strong>Propósito</strong>: Más memoria permite que ZimaOS ejecute servicios adicionales, mejora el rendimiento multitarea y reduce la lentitud durante operaciones frecuentes.<br><strong>Recomendado</strong>: 8 GB (8192 MB) o más  </p>
-</blockquote>  
-
-<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767616800421_image.png"></span>  </p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-proxmox-upload-iso.webp" alt="Seleccionar la ISO de instalación de ZimaOS en el diálogo de subida de Proxmox VE"></span></p>
+<h3 id="Crear-una-maquina-virtual" class="article-heading">Crear una máquina virtual<a class="article-anchor" href="#Crear-una-maquina-virtual" aria-hidden="true"></a></h3><p>Haz clic en <strong>Create VM</strong>, asigna un nombre y un ID a la VM y configura lo siguiente. Las etiquetas pueden variar entre versiones de Proxmox VE.</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>Ajuste</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OS</td>
+<td>ISO de ZimaOS subida; sistema invitado Linux</td>
+</tr>
+<tr>
+<td>BIOS</td>
+<td><strong>OVMF (UEFI)</strong></td>
+</tr>
+<tr>
+<td>Disco EFI</td>
+<td>Activa <strong>Add EFI Disk</strong> y selecciona su almacenamiento</td>
+</tr>
+<tr>
+<td>Secure Boot</td>
+<td>Desmarca <strong>Pre-Enroll keys</strong> al crear el disco EFI</td>
+</tr>
+<tr>
+<td>Disco de sistema</td>
+<td>Al menos <strong>32 GB</strong>, disco SCSI con controlador VirtIO SCSI</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Al menos <strong>2 núcleos</strong>; 4 recomendados</td>
+</tr>
+<tr>
+<td>Memoria</td>
+<td>Al menos <strong>4096 MB</strong>; 8192 MB recomendados</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Puente conectado a la LAN, como <code class="chip">vmbr0</code>, con un dispositivo de red VirtIO</td>
+</tr>
+</tbody></table></div>
+<p>El disco EFI guarda los ajustes del firmware y es distinto del disco de sistema donde se instala ZimaOS. Mantén Secure Boot desactivado. Proxmox explica los discos EFI y las claves preinstaladas en <a target="_blank" rel="noopener external nofollow noreferrer" href="https://pve.proxmox.com/pve-docs/chapter-qm.html#_bios_and_uefi" class="doc-link">BIOS and UEFI</a>.</p>
+<p>Finaliza el asistente. En <strong>Options → Boot Order</strong>, activa la unidad CD&#x2F;DVD virtual para el primer arranque y mantén el disco de sistema disponible como dispositivo de arranque.</p>
 <h3 id="Instalar-ZimaOS" class="article-heading">Instalar ZimaOS<a class="article-anchor" href="#Instalar-ZimaOS" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Después de crear la máquina virtual, haga clic en <strong>Iniciar</strong><br><img src="https://manage.icewhale.io/api/static/docs/1767616824433_image.png">  </li>
-<li>Haga clic en <strong>Consola</strong> para abrir la consola de la VM<br><img src="https://manage.icewhale.io/api/static/docs/1767616843275_image.png">  </li>
-<li>Presione <code class="chip">Enter</code> para comenzar el proceso de instalación de ZimaOS<br><img src="https://manage.icewhale.io/api/static/docs/1767616860449_image.png">  </li>
-<li>Seleccione <code class="chip">Instalar ZimaOS</code> y presione <code class="chip">Enter</code><br><img src="https://manage.icewhale.io/api/static/docs/1767616872278_image.png">  </li>
-<li>Seleccione el disco de destino para la instalación y presione <code class="chip">Enter</code><br><img src="https://manage.icewhale.io/api/static/docs/1767616901998_image.png">  </li>
-<li>Confirme el disco seleccionado eligiendo <code class="chip">Sí</code> y presione <code class="chip">Enter</code><br><img src="https://manage.icewhale.io/api/static/docs/1767616916757_image.png">  </li>
-<li>Confirme nuevamente para proceder con la instalación<br><img src="https://manage.icewhale.io/api/static/docs/1767616933805_image.png">  </li>
-<li>Cuando termine la instalación, aparecerá la pantalla de finalización<br><img src="https://manage.icewhale.io/api/static/docs/1767616945992_image.png"></li>
+<li>Inicia la VM y abre <strong>Console</strong>. Arranca desde la ISO conectada.</li>
+<li>En la bienvenida del instalador gráfico de ZimaOS, haz clic en <strong>Start</strong> y elige el idioma.</li>
 </ol>
-<hr>
-<h3 id="Eliminar-la-imagen-ISO" class="article-heading">Eliminar la imagen ISO<a class="article-anchor" href="#Eliminar-la-imagen-ISO" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Regrese a la interfaz de Proxmox VE  </li>
-<li>Seleccione la máquina virtual, elija <strong>CD</strong>, y haga clic en <strong>Editar</strong><br><img src="https://manage.icewhale.io/api/static/docs/1767616981489_image.png">  </li>
-<li>Seleccione <strong>No usar ningún medio</strong> y haga clic en <strong>OK</strong><br><img src="https://manage.icewhale.io/api/static/docs/1767616998638_image.png">  </li>
-<li>Después del cambio, la configuración debería aparecer como se muestra a continuación<br><img src="https://manage.icewhale.io/api/static/docs/1767617011570_image.png"></li>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/zimaos-installer-welcome.webp" alt="Pantalla de bienvenida del instalador gráfico de ZimaOS"></span></p>
+<ol start="3" class="doc-steps">
+<li>Selecciona el disco de sistema de la VM y haz clic en <strong>Continue</strong>. Comprueba la capacidad: <strong>se borrarán todos los datos del disco seleccionado</strong>.</li>
+<li>Revisa las comprobaciones de instalación y haz clic en <strong>Continue</strong>.</li>
+<li>Confirma el disco de destino y haz clic en <strong>Erase and install</strong>.</li>
+<li>Mantén la VM encendida hasta que aparezca la pantalla de instalación completa. También puedes ver las pantallas en la <a href="./how-to-install-zimaos" class="doc-link">guía de instalación de ZimaOS</a>; los nombres de los discos serán distintos en una VM.</li>
 </ol>
-<hr>
-<h3 id="Iniciar-y-acceder-a-ZimaOS" class="article-heading">Iniciar y acceder a ZimaOS<a class="article-anchor" href="#Iniciar-y-acceder-a-ZimaOS" aria-hidden="true"></a></h3><ol class="doc-steps">
-<li>Inicie la máquina virtual de ZimaOS  </li>
-<li>Haga clic en Consola para acceder a la consola de la VM  </li>
-<li>Espere a que el sistema termine de arrancar  </li>
-<li>La dirección IP se mostrará en la consola<br>Abra un navegador web e ingrese la dirección IP para acceder a la interfaz de gestión web de ZimaOS.<br><img src="https://manage.icewhale.io/api/static/docs/1767617057004_image.png"></li>
+<h3 id="Eliminar-la-imagen-ISO" class="article-heading">Eliminar la imagen ISO<a class="article-anchor" href="#Eliminar-la-imagen-ISO" aria-hidden="true"></a></h3><p>Antes de reiniciar desde la pantalla de instalación completa:</p>
+<ol class="doc-steps">
+<li>Abre la pestaña <strong>Hardware</strong> de la VM en Proxmox VE.</li>
+<li>Selecciona <strong>CD&#x2F;DVD Drive</strong>, haz clic en <strong>Edit</strong>, elige <strong>Do not use any media</strong> y haz clic en <strong>OK</strong>.</li>
 </ol>
-<hr>
-<h2 id="Continue-explorando-ZimaOS" class="article-heading">Continúe explorando ZimaOS<a class="article-anchor" href="#Continue-explorando-ZimaOS" aria-hidden="true"></a></h2><p>Ahora que ZimaOS está funcionando en su máquina virtual, puede seguir explorando sus características y flujos de trabajo a su propio ritmo.<br>Para aprender cómo comenzar con la configuración del sistema, gestión de almacenamiento y despliegue de aplicaciones, por favor visite la siguiente guía:  </p>
-<p>👉<a href="../../zimaos/get-started" class="doc-link">Comenzar con ZimaOS</a></p>
-<p>Esta guía le ayudará a dar los siguientes pasos y aprovechar al máximo su entorno ZimaOS.</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="https://manage.icewhale.io/api/static/docs/1767616998638_image.png" alt="Desconectar la ISO de la unidad CD/DVD virtual"></span></p>
+<ol start="3" class="doc-steps">
+<li>En <strong>Options → Boot Order</strong>, coloca primero el disco de sistema instalado. Mantén conectado el disco EFI.</li>
+<li>Vuelve a <strong>Console</strong> y haz clic en <strong>Restart</strong> en el instalador.</li>
+</ol>
+<h3 id="Iniciar-y-acceder-a-ZimaOS" class="article-heading">Iniciar y acceder a ZimaOS<a class="article-anchor" href="#Iniciar-y-acceder-a-ZimaOS" aria-hidden="true"></a></h3><p>Después de arrancar desde el disco de sistema, la consola de la VM muestra su dirección IP. Desde un ordenador con acceso a la red de la VM, introduce esa dirección en un navegador para abrir ZimaOS. También puedes usar ZimaClient en la misma red.</p>
+<p>Si vuelve a aparecer el instalador, comprueba que la ISO esté desconectada y el disco de sistema sea el primero en el orden de arranque. Si UEFI muestra una infracción de seguridad, verifica que Secure Boot esté desactivado. Si no aparece una IP, comprueba el puente de red, el dispositivo de red virtual y el servicio DHCP.</p>
+<h2 id="Continue-explorando-ZimaOS" class="article-heading">Continúe explorando ZimaOS<a class="article-anchor" href="#Continue-explorando-ZimaOS" aria-hidden="true"></a></h2><p>Sigue <a href="./get-started" class="doc-link">Primeros pasos con ZimaOS</a> para completar la configuración inicial y empezar a gestionar el almacenamiento y las aplicaciones.</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-10-29T10:35:42.626Z" itemprop="dateModified">Última actualización: 2026-10-29</time>
+      <time class="article-footer-updated" datetime="2026-11-05T02:54:29.496Z" itemprop="dateModified">Última actualización: 2026-11-05</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/es/zimaos/how-to-install-zimaos"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>Anterior</span><span class="doc-pagenav__title">Instalar ZimaOS</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/es/zimaos/casaos-to-zimaos-migration"><span class="doc-pagenav__label">Siguiente<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Migrar desde CasaOS</span></a></nav>
     </footer>
   </main>
