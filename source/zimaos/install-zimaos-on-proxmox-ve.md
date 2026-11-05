@@ -37,87 +37,58 @@ Software & System Requirements
 ---
 ## Installation Steps
 
-{% note warn Note: %}
- The ZimaOS ISO image required for this tutorial can be downloaded from:
-https://github.com/IceWhaleTech/ZimaOS/releases
-{% endnote %}
+> Version numbers and storage names in the Proxmox screenshots are examples.
 
 ### Upload the ZimaOS ISO Image
-1. Log in to the Proxmox VE web interface
-2. Navigate to **local → ISO Images → Upload**
-![](https://manage.icewhale.io/api/static/docs/1767616598247_copyImage.png)
-3. Select the downloaded **ZimaOS ISO image** and click **Upload**
-![](https://manage.icewhale.io/api/static/docs/1767616612358_image.png)
+1. Download the `_installer.iso` file from [ZimaOS GitHub Releases](https://github.com/IceWhaleTech/ZimaOS/releases).
+2. In Proxmox VE, select the node and an ISO-enabled storage location, such as **local → ISO Images → Upload**.
+3. Select the ISO file and click **Upload**.
+
+![Select the ZimaOS installer ISO in the Proxmox VE upload dialog](/images/guides/zimaos-proxmox-upload-iso.webp)
 
 ### Create a Virtual Machine
-1. Click the Create VM button
-![](https://manage.icewhale.io/api/static/docs/1767616679913_image.png)
-2. On the OS page, select the ZimaOS ISO image
-![](https://manage.icewhale.io/api/static/docs/1767616694612_image.png)
-3. On the System page:
-  - Set BIOS to UEFI
-  - Uncheck Add EFI Disk
-![](https://manage.icewhale.io/api/static/docs/1767616715004_image.png)
-4. On the **CPU** page, adjust the number of CPU cores
+Click **Create VM**, assign a name and VM ID, and configure the following settings. Interface labels may vary between Proxmox VE versions.
 
-{% note warn  %} **Purpose:** Allocating more CPU cores improves multi-threaded performance and helps ensure smooth operation under load.
-**Recommended**: 4 CPU cores or more
-{% endnote %}
+| Setting | Value |
+|---|---|
+| OS | Select the uploaded ZimaOS ISO; guest OS type Linux |
+| BIOS | **OVMF (UEFI)** |
+| EFI disk | Enable **Add EFI Disk** and select its storage |
+| Secure Boot | Clear **Pre-Enroll keys** when creating the EFI disk |
+| System disk | At least **32 GB**, using a SCSI disk and VirtIO SCSI controller |
+| CPU | At least **2 cores**; 4 recommended |
+| Memory | At least **4096 MB**; 8192 MB recommended |
+| Network | A bridge connected to your LAN, such as `vmbr0`, with a VirtIO network device |
 
-![](https://manage.icewhale.io/api/static/docs/1767616752746_image.png)
-5. On the **Memory** page, adjust the memory size
-{% note warn  %} **Purpose:** More memory allows ZimaOS to run additional services, improves multitasking performance, and reduces slowdowns during frequent operations.
-**Recommended**: 8 GB (8192 MB) or more 
-{% endnote %}
+The EFI disk stores firmware settings; it is separate from the system disk where ZimaOS is installed. Keep Secure Boot disabled. Proxmox documents EFI disks and pre-enrolled keys in [BIOS and UEFI](https://pve.proxmox.com/pve-docs/chapter-qm.html#_bios_and_uefi).
 
-![](https://manage.icewhale.io/api/static/docs/1767616800421_image.png)
+Finish the wizard. Under **Options → Boot Order**, enable the virtual CD/DVD drive for the first boot and keep the system disk available as a boot device.
 
 ### Install ZimaOS
-1. After creating the virtual machine, click **Start**
-![](https://manage.icewhale.io/api/static/docs/1767616824433_image.png)
-2. Click **Console** to open the VM console
-![](https://manage.icewhale.io/api/static/docs/1767616843275_image.png)
-3. Press `Enter` to start the ZimaOS installation process
-![](https://manage.icewhale.io/api/static/docs/1767616860449_image.png)
-4. Select `Install ZimaOS` and press `Enter`
-![](https://manage.icewhale.io/api/static/docs/1767616872278_image.png)
-5. Select the target disk for installation and press `Enter`
-![](https://manage.icewhale.io/api/static/docs/1767616901998_image.png)
-6. Confirm the selected disk by choosing `Yes` and pressing `Enter`
-![](https://manage.icewhale.io/api/static/docs/1767616916757_image.png)
-7. Confirm again to proceed with installation
-![](https://manage.icewhale.io/api/static/docs/1767616933805_image.png)
-8. When the installation finishes, the completion screen will appear
-![](https://manage.icewhale.io/api/static/docs/1767616945992_image.png)
+1. Start the VM and open **Console**. Boot from the attached ISO.
+2. On the graphical ZimaOS Installer welcome screen, click **Start** and select the installer language.
 
----
+![ZimaOS graphical installer welcome screen](/images/guides/zimaos-installer-welcome.webp)
+
+3. Select the VM's system disk and click **Continue**. Check the capacity: **all data on the selected disk will be erased**.
+4. Review the installation checks and click **Continue**.
+5. Confirm the target disk and click **Erase and install**.
+6. Keep the VM running until the installation complete screen appears. The graphical screens are also shown in the [ZimaOS installation guide](./how-to-install-zimaos); disk names in a VM will differ.
+
 ### Remove the ISO Image
-1. Return to the Proxmox VE interface
-2. Select the virtual machine, choose **CD**, and click **Edit**
-![](https://manage.icewhale.io/api/static/docs/1767616981489_image.png)
-3. Select **Do not use any media** and click **OK**
-![](https://manage.icewhale.io/api/static/docs/1767616998638_image.png)
-4. After the change, the configuration should appear as shown below
-![](https://manage.icewhale.io/api/static/docs/1767617011570_image.png)
+Before restarting from the completion screen:
+1. Open the VM's **Hardware** tab in Proxmox VE.
+2. Select the **CD/DVD Drive**, click **Edit**, choose **Do not use any media**, and click **OK**.
 
----
+![Detach the ISO from the virtual CD/DVD drive](https://manage.icewhale.io/api/static/docs/1767616998638_image.png)
+
+3. Under **Options → Boot Order**, place the installed system disk first. Keep the EFI disk attached.
+4. Return to **Console** and click **Restart** in the installer.
 
 ### Start and Access ZimaOS
-1. Start the ZimaOS virtual machine
-2. Click Console to access the VM console
-3. Wait for the system to finish booting
-4. The IP address will be displayed in the console
-Open a web browser and enter the IP address to access the ZimaOS Web Management Interface.
-![](https://manage.icewhale.io/api/static/docs/1767617057004_image.png)
+After booting from the system disk, the VM console displays its IP address. From a computer that can reach the VM's network, enter that address in a browser to open ZimaOS. You can also use ZimaClient on the same network.
 
----
+If the installer appears again, check that the ISO is detached and the system disk is first in the boot order. If UEFI reports a security violation, check that Secure Boot is disabled. If no IP appears, check the VM's network bridge, virtual network device, and DHCP service.
 
 ## Continue Exploring ZimaOS
-
-Now that ZimaOS is running in your virtual machine, you can continue exploring its features and workflows at your own pace.  
-To learn how to get started with system setup, storage management, and application deployment, please visit the following guide:
-
-👉[Get Started with ZimaOS ](./get-started)
-
-
-This guide will help you take the next steps and make the most of your ZimaOS environment.
+Follow [Get Started with ZimaOS](./get-started) to complete initial setup and begin managing storage and applications.
