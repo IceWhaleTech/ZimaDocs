@@ -179,3 +179,5 @@ Emby はライブラリを自動で満たし続けるツールとよく合いま
 ## ヘルプが必要ですか？
 
 ZimaOS での Emby のインストールや使用で問題が発生した場合は、[ZimaSpace Discord コミュニティ](https://discord.gg/f9nzbmpMtU "ZimaOS サポートのための ZimaSpace Discord コミュニティに参加")にご参加ください。チームとコミュニティメンバーが喜んでお手伝いします。
+
+Emby に「Permission denied」エラーが表示される場合や、字幕、ポスター、メタデータをメディアフォルダに保存できない場合は、[**Emby の書き込み権限を修正する**](./fix-emby-write-permissions)を参照し、ZimaOS でフォルダの権限を確認・更新する手順をご覧ください。

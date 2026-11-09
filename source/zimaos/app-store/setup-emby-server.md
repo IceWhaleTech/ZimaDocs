@@ -179,3 +179,5 @@ Emby pairs well with tools that keep the library filling itself:
 ## Need Help?
 
 If you run into any issues while installing or using Emby on ZimaOS, join the [ZimaSpace Discord community](https://discord.gg/f9nzbmpMtU "Join the ZimaSpace Discord community for ZimaOS support"). Our team and community members will be happy to help.
+
+If Emby reports a “Permission denied” error or cannot save subtitles, posters, or metadata to your media folders, see [**Fix Emby Write Permissions**](./fix-emby-write-permissions) for steps to check and update folder permissions on ZimaOS.

@@ -179,3 +179,5 @@ Emby 很适合与让媒体库自动充实的工具搭配：
 ## 需要帮助？
 
 如果你在 ZimaOS 上安装或使用 Emby 时遇到任何问题，欢迎加入 [ZimaSpace Discord 社区](https://discord.gg/f9nzbmpMtU "加入 ZimaSpace Discord 社区获取 ZimaOS 支持")。我们的团队和社区成员很乐意提供帮助。
+
+如果 Emby 报告“Permission denied”错误，或无法将字幕、海报或元数据保存到媒体文件夹，请参阅 [**修复 Emby 写入权限**](./fix-emby-write-permissions)，了解在 ZimaOS 上检查和更新文件夹权限的步骤。

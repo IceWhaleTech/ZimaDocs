@@ -179,3 +179,5 @@ O Emby combina bem com ferramentas que mantêm a biblioteca a encher-se sozinha:
 ## Precisa de ajuda?
 
 Se tiver problemas ao instalar ou usar o Emby no ZimaOS, junte-se à [comunidade Discord do ZimaSpace](https://discord.gg/f9nzbmpMtU "Junte-se à comunidade Discord do ZimaSpace para suporte do ZimaOS"). A nossa equipa e os membros da comunidade terão todo o gosto em ajudar.
+
+Se o Emby apresentar um erro “Permission denied” ou não conseguir guardar legendas, cartazes ou metadados nas suas pastas de multimédia, consulte [**Corrigir as permissões de escrita do Emby**](./fix-emby-write-permissions) para saber como verificar e atualizar as permissões das pastas em ZimaOS.
