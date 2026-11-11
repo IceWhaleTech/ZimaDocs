@@ -31,6 +31,8 @@ Open the App Store from your ZimaOS dashboard and search for Emby. One result co
 
 The ZimaOS package arrives with its storage already mapped. Movies live in `/DATA/Media/Movies` and shows in `/DATA/Media/TV Shows`, both reachable from the Files app, and Emby reads them as `/data/movies` and `/data/tvshows` from inside the container.
 
+If you are adding HDD-Storage and wish to mount directories for Emby Server to use, please make sure you setup the permissions to give Emby Server read-write access. See [**Fix Emby Write Permissions on ZimaOS | Zimaspace Docs**](./fix-emby-write-permissions).
+
 Click Install and wait for the container to pull. Emby appears on your dashboard when it is ready, and clicking the icon opens the web interface.
 
 ![Emby app icon on the ZimaOS dashboard beside Files, Backup, ZVM, and Immich](/images/app-store/emby-installed-on-dashboard.webp)
@@ -179,5 +181,3 @@ Emby pairs well with tools that keep the library filling itself:
 ## Need Help?
 
 If you run into any issues while installing or using Emby on ZimaOS, join the [ZimaSpace Discord community](https://discord.gg/f9nzbmpMtU "Join the ZimaSpace Discord community for ZimaOS support"). Our team and community members will be happy to help.
-
-If Emby reports a “Permission denied” error or cannot save subtitles, posters, or metadata to your media folders, see [**Fix Emby Write Permissions**](./fix-emby-write-permissions) for steps to check and update folder permissions on ZimaOS.
