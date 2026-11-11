@@ -31,6 +31,8 @@ Abra a App Store a partir do painel do ZimaOS e procure por Emby. Aparece um ún
 
 O pacote do ZimaOS chega com o seu armazenamento já mapeado. Os filmes vivem em `/DATA/Media/Movies` e as séries em `/DATA/Media/TV Shows`, ambos acessíveis a partir da aplicação Files, e o Emby lê-os como `/data/movies` e `/data/tvshows` a partir de dentro do contentor.
 
+Se estiver a adicionar HDD-Storage e pretender montar diretórios para o Emby Server utilizar, certifique-se de que configura as permissões para conceder ao Emby Server acesso de leitura e escrita. Consulte [**Corrigir as permissões de escrita do Emby em ZimaOS | Zimaspace Docs**](./fix-emby-write-permissions).
+
 Clique em Install e aguarde que o contentor seja transferido. O Emby aparece no seu painel quando estiver pronto, e clicar no ícone abre a interface web.
 
 ![Ícone da aplicação Emby no painel do ZimaOS ao lado de Files, Backup, ZVM e Immich](/images/app-store/emby-installed-on-dashboard.webp)
@@ -179,5 +181,3 @@ O Emby combina bem com ferramentas que mantêm a biblioteca a encher-se sozinha:
 ## Precisa de ajuda?
 
 Se tiver problemas ao instalar ou usar o Emby no ZimaOS, junte-se à [comunidade Discord do ZimaSpace](https://discord.gg/f9nzbmpMtU "Junte-se à comunidade Discord do ZimaSpace para suporte do ZimaOS"). A nossa equipa e os membros da comunidade terão todo o gosto em ajudar.
-
-Se o Emby apresentar um erro “Permission denied” ou não conseguir guardar legendas, cartazes ou metadados nas suas pastas de multimédia, consulte [**Corrigir as permissões de escrita do Emby**](./fix-emby-write-permissions) para saber como verificar e atualizar as permissões das pastas em ZimaOS.

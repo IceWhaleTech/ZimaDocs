@@ -31,6 +31,8 @@ Emby 需要在硬盘上有两处空间。一处存放它自己的配置和海报
 
 ZimaOS 包自带已映射好的存储。电影存放在 `/DATA/Media/Movies`，剧集存放在 `/DATA/Media/TV Shows`，两者都能在 Files 应用中访问；Emby 在容器内把它们读作 `/data/movies` 和 `/data/tvshows`。
 
+如果你正在添加 HDD-Storage，并希望挂载目录供 Emby Server 使用，请确保设置好权限，授予 Emby Server 读写访问权限。请参阅 [**修复 ZimaOS 上 Emby 的写入权限 | Zimaspace Docs**](./fix-emby-write-permissions)。
+
 点击 Install 并等待容器拉取完成。就绪后 Emby 会出现在你的桌面上，点击图标即可打开 Web 界面。
 
 ![ZimaOS 桌面上 Files、Backup、ZVM 和 Immich 旁的 Emby 应用图标](/images/app-store/emby-installed-on-dashboard.webp)
@@ -179,5 +181,3 @@ Emby 很适合与让媒体库自动充实的工具搭配：
 ## 需要帮助？
 
 如果你在 ZimaOS 上安装或使用 Emby 时遇到任何问题，欢迎加入 [ZimaSpace Discord 社区](https://discord.gg/f9nzbmpMtU "加入 ZimaSpace Discord 社区获取 ZimaOS 支持")。我们的团队和社区成员很乐意提供帮助。
-
-如果 Emby 报告“Permission denied”错误，或无法将字幕、海报或元数据保存到媒体文件夹，请参阅 [**修复 Emby 写入权限**](./fix-emby-write-permissions)，了解在 ZimaOS 上检查和更新文件夹权限的步骤。

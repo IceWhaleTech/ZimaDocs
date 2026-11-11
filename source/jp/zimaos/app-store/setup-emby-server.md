@@ -31,6 +31,8 @@ ZimaOS ダッシュボードから App Store を開き、Emby を検索します
 
 ZimaOS パッケージはストレージがすでにマッピングされた状態で提供されます。映画は `/DATA/Media/Movies` に、番組は `/DATA/Media/TV Shows` に置かれ、どちらも Files アプリからアクセスできます。Emby はコンテナ内からこれらを `/data/movies` と `/data/tvshows` として読み取ります。
 
+HDD-Storage を追加して Emby Server が使用するディレクトリをマウントする場合は、Emby Server に読み取りと書き込みのアクセス権を付与するよう、権限を設定してください。[**ZimaOS で Emby の書き込み権限を修正する | Zimaspace Docs**](./fix-emby-write-permissions)をご覧ください。
+
 Install をクリックし、コンテナのプルを待ちます。準備ができると Emby がダッシュボードに表示され、アイコンをクリックすると Web インターフェースが開きます。
 
 ![Files、Backup、ZVM、Immich と並んだ ZimaOS ダッシュボードの Emby アプリアイコン](/images/app-store/emby-installed-on-dashboard.webp)
@@ -179,5 +181,3 @@ Emby はライブラリを自動で満たし続けるツールとよく合いま
 ## ヘルプが必要ですか？
 
 ZimaOS での Emby のインストールや使用で問題が発生した場合は、[ZimaSpace Discord コミュニティ](https://discord.gg/f9nzbmpMtU "ZimaOS サポートのための ZimaSpace Discord コミュニティに参加")にご参加ください。チームとコミュニティメンバーが喜んでお手伝いします。
-
-Emby に「Permission denied」エラーが表示される場合や、字幕、ポスター、メタデータをメディアフォルダに保存できない場合は、[**Emby の書き込み権限を修正する**](./fix-emby-write-permissions)を参照し、ZimaOS でフォルダの権限を確認・更新する手順をご覧ください。
