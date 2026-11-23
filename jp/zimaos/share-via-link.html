@@ -2,7 +2,7 @@
 <html lang="jp">
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
-  <title>リンクで共有 | Zimaspace Docs</title>
+  <title>相手のアカウント登録なしで ZimaOS のファイルや写真を共有 | Zimaspace Docs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
@@ -87,17 +87,25 @@
   
   <!-- Open Graph -->
   
-  <meta name="description" content="「リンクで共有」の仕組みはじめにより速く、安全で、効率的なファイル共有体験を提供するために、WebTorrent技術を利用した新機能—リンク経由のファイル共有を導入しました。 この記事では、この技術の仕組み、技術的特徴、使用時に考慮すべきリスクについて簡単に説明します。より詳細な技術情報については、WebTorrentの公式ドキュメントを参照してください。  1. WebT">
+  <meta name="description" content="Files からファイルやフォルダーを、Photos から写真やアルバムを共有できます。受信者はブラウザーで閲覧・プレビュー・ダウンロードでき、共有者はパスワードや有効期限の設定、共有の停止を行えます。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="リンクで共有">
+<meta property="og:title" content="相手のアカウント登録なしで ZimaOS のファイルや写真を共有">
 <meta property="og:url" content="https://www.zimaspace.com/docs/jp/zimaos/share-via-link">
 <meta property="og:site_name" content="Zimaspace Docs">
-<meta property="og:description" content="「リンクで共有」の仕組みはじめにより速く、安全で、効率的なファイル共有体験を提供するために、WebTorrent技術を利用した新機能—リンク経由のファイル共有を導入しました。 この記事では、この技術の仕組み、技術的特徴、使用時に考慮すべきリスクについて簡単に説明します。より詳細な技術情報については、WebTorrentの公式ドキュメントを参照してください。  1. WebT">
+<meta property="og:description" content="Files からファイルやフォルダーを、Photos から写真やアルバムを共有できます。受信者はブラウザーで閲覧・プレビュー・ダウンロードでき、共有者はパスワードや有効期限の設定、共有の停止を行えます。">
 <meta property="og:locale">
-<meta property="article:published_time" content="2026-11-11T03:54:28.418Z">
-<meta property="article:modified_time" content="2026-11-11T03:54:28.418Z">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/files-create.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/files-desktop.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/photos-create.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/photos-desktop.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/photos-mobile.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/photos-manage.webp">
+<meta property="og:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/architecture.svg">
+<meta property="article:published_time" content="2026-11-23T10:57:46.915Z">
+<meta property="article:modified_time" content="2026-11-23T10:57:46.915Z">
 <meta property="article:author" content="ZimaSpace">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zimaspace.com/docs/images/guides/share-via-link/jp/files-create.webp">
 <meta name="twitter:site" content="zimaboard">
 <meta property="fb:admins" content="298662541343433">
   
@@ -115,7 +123,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "TechArticle",
       "headline": "リンクで共有",
-      "description": "",
+      "description": "Files からファイルやフォルダーを、Photos から写真やアルバムを共有できます。受信者はブラウザーで閲覧・プレビュー・ダウンロードでき、共有者はパスワードや有効期限の設定、共有の停止を行えます。",
       
       "author": {
         "@type": "Organization",
@@ -130,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "url": "https://www.zimaspace.com/docs/logo.svg"
         }
       },
-      "datePublished": "2026-11-11T03:54:28.418Z"
+      "datePublished": "2026-11-23T10:57:46.915Z"
     }
   </script>
 
@@ -369,47 +377,174 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <div class="doc-article__body" itemprop="articleBody">
-      <h2 id="「リンクで共有」の仕組み" class="article-heading">「リンクで共有」の仕組み<a class="article-anchor" href="#「リンクで共有」の仕組み" aria-hidden="true"></a></h2><h4 id="はじめに" class="article-heading">はじめに<a class="article-anchor" href="#はじめに" aria-hidden="true"></a></h4><p>より速く、安全で、効率的なファイル共有体験を提供するために、<strong>WebTorrent</strong>技術を利用した新機能—リンク経由のファイル共有を導入しました。</p>
-<p>この記事では、この技術の仕組み、技術的特徴、使用時に考慮すべきリスクについて簡単に説明します。より詳細な技術情報については、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/webtorrent/webtorrent/blob/master/docs/faq.md" class="doc-link">WebTorrentの公式ドキュメント</a>を参照してください。</p>
-<hr>
-<p><strong>1.</strong> <strong><strong>WebTorrent技術とは？</strong></strong></p>
-<ul class="doc-dots">
-<li>WebTorrentは、ピア・ツー・ピア（P2P）ネットワーク技術に基づくファイル共有プロトコルで、ユーザーは中央サーバーなしでネットワーク上の他のユーザー間で直接ファイルを転送できます。</li>
-<li>従来のファイル共有方法と比較して、WebTorrentはより速いダウンロード速度とより良いプライバシー保護を提供します。</li>
+      <p>同僚にプロジェクト資料を送る、家族に週末の写真を見せる、アルバムを継続的に更新する。ZimaOS で共有リンクを作成すれば、相手は ZimaOS のアカウント登録や受信用アプリのインストールなしで、ブラウザーから内容を閲覧・ダウンロードできます。</p>
+<p>ファイルは引き続き、あなたの ZimaOS デバイスから提供されます。共有する内容、パスワードの有無、リンクの有効期限、共有を停止するタイミングを自分で決められます。</p>
+<h2 id="共有する内容に合った方法を選ぶ" class="article-heading">共有する内容に合った方法を選ぶ<a class="article-anchor" href="#共有する内容に合った方法を選ぶ" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>共有する内容</th>
+<th>操作するアプリ</th>
+<th>主な用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ファイル、フォルダー、資料一式</td>
+<td>Files</td>
+<td>プロジェクト資料の納品、文書の送付、更新されるフォルダーの共有</td>
+</tr>
+<tr>
+<td>選択した写真</td>
+<td>Photos</td>
+<td>旅行のベストショット、イベント写真、単発の納品</td>
+</tr>
+<tr>
+<td>アルバム全体</td>
+<td>Photos</td>
+<td>家族のアルバム、継続的に更新する作品集</td>
+</tr>
+</tbody></table></div>
+<blockquote>
+<p><strong>始める前に：</strong> ZimaOS デバイスの電源とネットワーク接続を維持し、元のディスクやストレージにアクセスできることを確認してください。受信者には、最新に近い Chrome、Edge、Safari、Firefox の利用をお勧めします。画面例にはデモ用の内容を使用しており、実際の利用者の共有リンクは含みません。表示名はアプリのバージョンや言語によって異なり、一部の画面例には英語の表示が含まれます。</p>
+</blockquote>
+<h2 id="Files-で資料を共有する" class="article-heading">Files で資料を共有する<a class="article-anchor" href="#Files-で資料を共有する" aria-hidden="true"></a></h2><h3 id="リンクを作成する" class="article-heading">リンクを作成する<a class="article-anchor" href="#リンクを作成する" aria-hidden="true"></a></h3><ol class="doc-steps">
+<li><strong>Files</strong> を開き、共有するファイルやフォルダーを選択します。</li>
+<li><strong>リンクで共有</strong>（<strong>Share via link</strong>）を開き、内容が分かるタイトルを入力します。</li>
+<li>必要に応じてアクセスパスワード、有効期限、訪問履歴を設定し、<strong>作成</strong>を選択します。</li>
+<li>作成されたリンクをコピーして相手に送ります。パスワードを設定した場合は、それも伝えてください。機密性の高い資料では、パスワードを別の連絡手段で送ることをお勧めします。</li>
+</ol>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/files-create.webp" alt="Files の共有作成画面。タイトル、アクセスパスワード、有効期限、訪問履歴を設定できる"></span></p>
+<p><em>Files の作成画面。リンクを送る前に、共有内容とアクセス設定を確認できます。</em></p>
+<h3 id="相手に表示される画面" class="article-heading">相手に表示される画面<a class="article-anchor" href="#相手に表示される画面" aria-hidden="true"></a></h3><p>リンクを開いた相手は、フォルダーの閲覧、ファイルの検索、リスト表示とグリッド表示の切り替え、対応形式のプレビューを利用できます。必要なファイルやフォルダーを選択してダウンロードでき、複数項目はアーカイブとしてまとめて取得できます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/files-desktop.webp" alt="Files の受信ページ。左側に共有情報、右側にプロジェクトのファイル一覧が表示されている"></span></p>
+<p><em>Files の受信ページ。内容を閲覧・プレビューしてから、必要な資料を選んでダウンロードできます。</em></p>
+<p>フォルダーの共有内容は元のフォルダーに追従します。ファイルの追加・削除・変更後、相手はページを更新して現在の内容を確認できます。特定のバージョンを納品する場合は、確定した資料を別のフォルダーにまとめてから共有してください。</p>
+<h2 id="Photos-で写真を共有する" class="article-heading">Photos で写真を共有する<a class="article-anchor" href="#Photos-で写真を共有する" aria-hidden="true"></a></h2><h3 id="選択した写真、またはアルバム全体を共有する" class="article-heading">選択した写真、またはアルバム全体を共有する<a class="article-anchor" href="#選択した写真、またはアルバム全体を共有する" aria-hidden="true"></a></h3><p><strong>Photos</strong> で写真またはアルバムを選択し、<strong>共有</strong>からリンクを作成します。タイトル、アクセスパスワード、有効期限を設定したら、リンクをコピーして相手に送れます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/photos-create.webp" alt="Photos の共有作成画面。アルバム、タイトル、有効期限、パスワード、訪問履歴が表示されている"></span></p>
+<p><em>Photos の作成画面。写真の選択共有とアルバム共有は、同じ共有設定を使用します。</em></p>
+<p>違いは、作成後に内容がどのように変わるかです。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>共有方法</th>
+<th>作成後の更新</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>選択した写真</td>
+<td>リンク作成時に選んだ写真を共有します。新しい写真は自動で追加されません。写真を追加したい場合は、新しい共有を作成してください。</td>
+</tr>
+<tr>
+<td>アルバム全体</td>
+<td>アルバムの変更に追従します。後からアルバムに追加した写真も共有に含まれます。</td>
+</tr>
+</tbody></table></div>
+<h3 id="相手がそのまま写真を楽しめる" class="article-heading">相手がそのまま写真を楽しめる<a class="article-anchor" href="#相手がそのまま写真を楽しめる" aria-hidden="true"></a></h3><p>リンクを開くと、写真を閲覧するページが表示されます。相手はグリッド表示とウォーターフォール表示の切り替え、表示サイズの調整、大きなプレビュー、スライドショー、写真の選択とダウンロードを利用できます。対応する写真では、取得可能な撮影情報を必要なときに確認できます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/photos-desktop.webp" alt="Photos のデスクトップ受信ページ。左側に共有サイズ、項目数、有効期限、右側に写真のグリッドが表示されている"></span></p>
+<p><em>写真を中心に見せる Photos の受信ページ。サムネイルは必要に応じて読み込み、大きなプレビューは開いたときに取得します。</em></p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/photos-mobile.webp" alt="スマートフォンの Photos 受信ページ。2 列の写真グリッドと、検索・ダウンロード・表示切り替えのボタンが表示されている"></span></p>
+<p><em>スマートフォンでも受信用アプリをインストールせず、写真の閲覧・選択・ダウンロードができます。</em></p>
+<p>閲覧用のプレビューで、デバイス内の元の写真が上書きされることはありません。オリジナルをダウンロードすると、元ファイルの形式と内容が保持されます。プレビューの可否は、ファイル形式、デバイスの処理能力、ブラウザーの対応状況によって異なります。</p>
+<h2 id="共有を自分で管理する" class="article-heading">共有を自分で管理する<a class="article-anchor" href="#共有を自分で管理する" aria-hidden="true"></a></h2><h3 id="パスワードと有効期限" class="article-heading">パスワードと有効期限<a class="article-anchor" href="#パスワードと有効期限" aria-hidden="true"></a></h3><p>非公開の内容にはパスワードを設定し、用途に合った有効期限を選びましょう。パスワードと有効期限は、その後のアクセスを制御します。相手のデバイスに保存済みのファイルを、リンクの失効によって遠隔削除することはできません。</p>
+<h3 id="確認・変更・停止" class="article-heading">確認・変更・停止<a class="article-anchor" href="#確認・変更・停止" aria-hidden="true"></a></h3><p>共有管理では、作成済みの共有の状態を確認し、利用可能な設定を変更したり、共有を停止したりできます。Photos では、選択した写真と自動更新されるアルバムを区別して管理できます。</p>
+<p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/photos-manage.webp" alt="Photos の共有管理一覧。選択した写真と、自動更新されるアルバムが表示されている"></span></p>
+<p><em>共有管理に表示される写真の選択共有とアルバム。アクセス設定の管理もここから行えます。</em></p>
+<p>共有を停止すると、そのリンクによる後続のアクセスができなくなります。共有記録を完全に削除しても、元ファイルはデバイスに残ります。共有中のアルバム自体を削除した場合もリンクは無効になりますが、一時的にアルバムを空にしただけでは、別のリンクに自動で置き換わりません。</p>
+<h3 id="必要な場合だけ訪問履歴を有効にする" class="article-heading">必要な場合だけ訪問履歴を有効にする<a class="article-anchor" href="#必要な場合だけ訪問履歴を有効にする" aria-hidden="true"></a></h3><p>訪問履歴は初期設定で無効です。有効にすると、訪問時刻、ページが前面に表示されていたおおよその時間、信頼できる方法で取得できた場合の一部を伏せたアクセス元 IP アドレスを確認できます。取得できないアクセス元は不明と表示されます。記録の保存期間は 90 日です。無効にすると新しい収集は停止し、既存の記録は保存期間に従って削除されます。</p>
+<p>これらの情報は、共有へのアクセス状況を把握するためのものです。相手の身元を正確に特定することはできず、滞在時間もファイルを最後まで読んだ証明にはなりません。</p>
+<h2 id="リンクが開けない場合" class="article-heading">リンクが開けない場合<a class="article-anchor" href="#リンクが開けない場合" aria-hidden="true"></a></h2><div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>ページの状態</th>
+<th>対処方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>リンクが無効、または不完全</td>
+<td>元のメッセージからリンク全体をコピーし直してください。解決しない場合は、共有者に再送を依頼してください。</td>
+</tr>
+<tr>
+<td>共有が期限切れ、または利用不可</td>
+<td>共有者に、有効期限の延長、共有状態の確認、または新しいリンクの発行を依頼してください。</td>
+</tr>
+<tr>
+<td>デバイスに一時的に接続できない</td>
+<td>双方のネットワークと、ZimaOS および元ストレージがオンラインかを確認してから再試行してください。共有が停止されている可能性もあります。</td>
+</tr>
+<tr>
+<td>古いリンクがサポートされていない</td>
+<td>共有者に ZimaOS と関連アプリを更新してもらい、新しいリンクを作成してください。</td>
+</tr>
+<tr>
+<td>プレビューに失敗する</td>
+<td>再試行するか、オリジナルをダウンロードして対応アプリで開いてください。</td>
+</tr>
+<tr>
+<td>スマートフォンのアプリ内ブラウザーでダウンロードできない</td>
+<td>Safari や Chrome などの単独ブラウザーで開き、ダウンロードが完了するまでページを開いたままにしてください。</td>
+</tr>
+</tbody></table></div>
+<p>一時的に接続が切れた場合、ページは再接続を試みます。<strong>ダウンロードを続行</strong>が表示された場合は、案内に従ってください。受信済みデータを再利用できるかは、ブラウザー、ローカルストレージ、元ファイルの変更有無によって異なります。すべてのデバイスで、タブを閉じた後も再開できるとは限りません。</p>
+<h2 id="さらに詳しく：可用性・性能・プライバシー" class="article-heading">さらに詳しく：可用性・性能・プライバシー<a class="article-anchor" href="#さらに詳しく：可用性・性能・プライバシー" aria-hidden="true"></a></h2><p>ここからは、現在の共有機能の仕組みを説明します。利用するために必要な知識ではありませんが、ネットワークごとの動作やセキュリティ上の範囲を理解するのに役立ちます。</p>
+<h3 id="ファイルが相手に届くまで" class="article-heading">ファイルが相手に届くまで<a class="article-anchor" href="#ファイルが相手に届くまで" aria-hidden="true"></a></h3><p class="doc-figures"><span class="doc-figure-frame"><img src="/docs/images/guides/share-via-link/jp/architecture.svg" alt="公開向け構成図。ZimaOS から受信者のブラウザーへ暗号化データを直接転送するか、暗号化中継を利用する。接続調整サービスが双方の接続を支援する"></span></p>
+<p><em>機能の関係を示した図です。実線はファイルデータ、破線は接続調整を表します。どちらのデータ経路もエンドツーエンド暗号化で保護されますが、常に同時に使用されるわけではありません。</em></p>
+<p><strong>デバイスが内容の提供とアクセス確認を行います。</strong> Files と Photos では共有の入口が異なります。共通の共有機能は、現在の共有状態、ファイル権限、ファイルのバージョンを確認します。ファイルの識別子を知っているだけでは、読み取り権限は得られません。</p>
+<p><strong>ブラウザーが受信・検証・表示を行います。</strong> アクセスが許可されてから対象の内容を読み取り、受信側で復号して表示します。プレビュー、サムネイル、ダウンロードデータにも認可が必要です。</p>
+<p><strong>ネットワークサービスが双方の接続を支援します。</strong> デバイスとブラウザー間の直接転送と、暗号化中継を利用した転送に対応します。使用する経路は、ネットワークや利用可能なサービスによって決まります。接続調整と中継は、それぞれ異なる役割を担います。</p>
+<h3 id="可用性：接続方法を一つに限定しない" class="article-heading">可用性：接続方法を一つに限定しない<a class="article-anchor" href="#可用性：接続方法を一つに限定しない" aria-hidden="true"></a></h3><p>家庭の回線、モバイル回線、企業ネットワークでは接続条件が異なります。システムは利用できる経路でアクセスを開始しながら、別の経路をバックグラウンドで確認できます。直接接続が利用できない場合は、暗号化中継で転送を継続できます。一時的な失敗では、回数などを制限した再試行や経路調整を行い、ページ上にも状態や復旧操作を表示します。</p>
+<p>データは分割して転送されるため、復旧可能な失敗で受信済みの内容すべてが無効になるとは限りません。また、元ファイルのバージョンを確認し、変更前後のデータを誤って結合しないようにします。</p>
+<p>こうした仕組みは複雑なネットワークでの可用性を高めますが、すべての環境での接続を保証するものではありません。デバイスの電源オフ、ストレージの利用不可、共有の停止、権限の変更、ネットワークサービスの停止などでアクセスは中断されます。<strong>暗号化中継は、デバイスがオフラインでもファイルを無期限に提供するクラウドドライブではありません。</strong></p>
+<h3 id="性能：まず内容を見せ、必要な分を取得する" class="article-heading">性能：まず内容を見せ、必要な分を取得する<a class="article-anchor" href="#性能：まず内容を見せ、必要な分を取得する" aria-hidden="true"></a></h3><p>写真の閲覧は小さなサムネイルから始まります。適切なぼかし画像用の情報がある場合は、サムネイルより先に仮表示を行えます。鮮明なプレビューや撮影情報は必要になったときに取得するため、アルバムを見るだけで全オリジナルを転送する必要はありません。</p>
+<p>大量のファイルや写真は、まとめて行う分割読み取りと表示領域に応じた描画により、初期の処理量を抑えます。キャッシュ済みのサムネイルも、現在の認可とファイルバージョンの確認を経て再利用できます。全体検索、並べ替え、未取得のフォルダーへの移動には追加の読み取りが必要な場合があります。</p>
+<p>ダウンロードでは、経路に応じて並列読み取り数を制限し、ブラウザーが対応していれば受信しながら書き込みます。これによりメモリー使用量を抑え、大きなファイル全体をメモリーに置かずに処理できます。保存方法やストレージ権限はブラウザーによって異なります。</p>
+<p>参考として、管理された条件で測定した単一ファイルの完全転送の平均速度を示します。計測にはブラウザーでの保存完了を含み、ファイル内容の検証にも合格しています。単位は十進表記の MB&#x2F;s（1 MB &#x3D; 1,000,000 バイト）です。これらは測定例であり、瞬間的なピーク、製品の固定上限、あらゆる環境での保証速度を示すものではありません。接続の確立とファイル一覧の取得は計測に含まず、中継の測定では接続を事前に準備しています。</p>
+<div class="doc-table-scroll" tabindex="0"><table>
+<thead>
+<tr>
+<th>テスト条件</th>
+<th>単一ファイルの参考速度</th>
+<th>測定範囲</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直接接続：ローカル送受信テスト</td>
+<td>約 191 MB&#x2F;s</td>
+<td>同一マシン上のソフトウェア経路のみ。物理ネットワークやデバイスのディスク性能を示すものではありません</td>
+</tr>
+<tr>
+<td>インターネット経由の暗号化中継</td>
+<td>62.58 MB&#x2F;s</td>
+<td>特定のテスト構成での完全転送の一例。複数回の測定では変動があります</td>
+</tr>
+</tbody></table></div>
+<p>実際の速度は、共有デバイスの上り帯域、ディスク速度、受信者のネットワーク、転送経路、ブラウザーの能力に左右されます。複数人が同時にダウンロードするとデバイスや回線のリソースを共有しますが、受信者同士でファイルを配信し合うネットワークが自動的に作られるわけではありません。</p>
+<h3 id="プライバシー：内容を保護し、範囲を明確にする" class="article-heading">プライバシー：内容を保護し、範囲を明確にする<a class="article-anchor" href="#プライバシー：内容を保護し、範囲を明確にする" aria-hidden="true"></a></h3><p><strong>内容は両端で暗号化・復号されます。</strong> 直接転送と中継転送のどちらも、エンドツーエンド暗号化を使用します。中継サービスが受け取るのは暗号化された断片であり、そのまま読める元ファイルではありません。暗号化と完全性の検証を組み合わせて転送内容を保護します。</p>
+<p><strong>一時的な中継は、恒久的な公開保管ではありません。</strong> 暗号化された断片には認可、有効期限、クリーンアップの仕組みがあります。アクセスの失効と、保存先での物理的な削除は同時ではありません。すべてのコピーが直ちに消えるとは考えないでください。</p>
+<p><strong>内容の暗号化は、ネットワーク上の匿名性を保証しません。</strong> 接続の確立、ページの配信、中継を行う基盤は、IP アドレスや接続時刻など必要なネットワーク情報を処理する場合があります。有効なリンクはアクセスの入口であり、受信者は取得したファイルを保存・転送できます。リンクとパスワードは、適切な相手にだけ伝えてください。</p>
+<p><strong>訪問履歴と接続品質の診断は別のものです。</strong> 訪問履歴を有効にするかは共有者が決めます。接続品質の診断では、安定性や転送動作の改善のため、接続状態、所要時間、速度、失敗の分類などを記録します。ファイル本文、ファイル名、共有リンク、パスワード、復号鍵は含みません。</p>
+<p><strong>写真のメタデータには個別の確認が必要です。</strong> オリジナルには撮影日時や位置などの情報が含まれる場合があります。撮影情報を必要なときだけ読み込むことは、元画像からのメタデータ削除を意味しません。相手に渡したくない情報がある場合は、公開用のコピーを用意してから共有してください。</p>
+<p><strong>共有端末ではブラウザー内のデータも管理してください。</strong> サムネイルのキャッシュやダウンロードで、ブラウザーのローカルストレージを使用する場合があります。公共のパソコンでは、利用後に必要に応じてサイトデータとダウンロード済みファイルを削除してください。ローカルデータの削除により、キャッシュの再利用やダウンロードの復旧ができなくなる場合もあります。</p>
+<h3 id="法令遵守と免責事項" class="article-heading">法令遵守と免責事項<a class="article-anchor" href="#法令遵守と免責事項" aria-hidden="true"></a></h3><p><strong>適法に、必要な権利を有する内容を共有してください。</strong> リンク共有機能を利用する際は、適用される法令を遵守し、対象の内容を共有する権利または必要な許諾を有していることを確認してください。本機能を利用して違法な内容を配布したり、他者の著作権、プライバシー権、肖像権その他の正当な権利・利益を侵害したりしないでください。</p>
+<p><strong>暗号化は、法的な許諾の代わりにはなりません。</strong> エンドツーエンド暗号化、アクセスパスワード、有効期限は、転送の保護とアクセスの制御を目的としています。共有内容の適法性が審査済みであることや、共有者または受信者がその内容を使用・複製・再配布する許諾を得ていることを意味するものではありません。</p>
+<p><strong>送信前に、共有範囲と受信者を確認してください。</strong> 受信者は、取得した内容を保存・転送する場合があります。共有の停止やリンクの期限切れによって、受信者がすでに保存したファイルを回収することはできません。個人情報、機密資料、第三者の内容を共有する場合は、事前に必要な許諾を得てください。</p>
+<p><strong>違法または権利侵害のおそれがある共有は、制限される場合があります。</strong> 共有内容に違法行為や権利侵害の疑いがある場合、サービス提供者は適用法令に従ってリンクへのアクセスを制限し、または該当する共有サービスを停止することがあります。これらの措置は共有アクセスを対象とし、デバイス上の元ファイルの削除を意味するものではありません。</p>
+<p><strong>各当事者は、法令に従って責任を負います。</strong> 共有者と受信者は、それぞれの共有、取得、使用行為について法令上の責任を負います。本説明は、サービス提供者が適用法令に基づき負う責任を免除または制限するものではありません。</p>
+<h2 id="関連情報" class="article-heading">関連情報<a class="article-anchor" href="#関連情報" aria-hidden="true"></a></h2><ul class="doc-dots">
+<li><a href="./photos" class="doc-link">ZimaOS Photos を詳しく見る</a></li>
+<li><a href="./photos-supported-formats" class="doc-link">Photos が対応する写真形式を確認する</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">ZimaSpace コミュニティでサポートを探す</a></li>
 </ul>
-<p><strong>2.</strong> <strong>「リンクでファイルを共有する」機能はどう機能しますか？</strong></p>
-<ul class="doc-dots">
-<li>ユーザーは私たちのプラットフォームを通じて特別なリンクを作成し、他の人々はこのリンクを通じてファイルにアクセスしてダウンロードできます。</li>
-<li>ファイルはWebTorrentネットワーク上で転送され、転送プロセスの分散化と効率を確保します。</li>
-</ul>
-<p><strong>3.</strong> <strong>WebTorrentの技術的特徴：</strong></p>
-<ul class="doc-dots">
-<li><strong>分散化</strong>：中央サーバーはなく、ファイルはユーザー間で直接転送されます。</li>
-<li><strong>効率性</strong>：P2Pネットワークのメリットを活かし、ダウンロードする人が多ければ多いほど、ダウンロード速度が速くなります。</li>
-<li><strong>プライバシー保護</strong>：ユーザーのデータは中央サーバーにアップロードされず、プライバシー漏洩のリスクが減ります。</li>
-<li><strong>クロスプラットフォーム</strong>：WebTorrentはさまざまなデバイスとブラウザをサポートし、ユーザーはさまざまなプラットフォーム間でシームレスにファイルを共有できます。</li>
-</ul>
-<p><strong>4.</strong> <strong>使用時に避けるべきリスク：</strong></p>
-<ul class="doc-dots">
-<li><strong>ファイル共有の持続性</strong>：ファイルがP2Pネットワークにアップロードされると、共有をキャンセルしても、ネットワーク内でダウンロードされ続ける可能性があります。</li>
-<li><strong>プライバシー保護</strong>：ファイルを共有する前に、ファイル内容のプライバシーについて慎重に考慮し、センシティブまたは個人情報が開示されないようにしてください。</li>
-<li><strong>法的責任</strong>：ファイルを共有する法的権利を持っていることを確認し、著作権やその他の法的権利を侵害しないようにしてください。</li>
-<li><strong>サイバーセキュリティ</strong>：WebTorrentはある程度のセキュリティ保護を提供しますが、ユーザーは常に警戒し、マルウェア攻撃を防ぐためにセキュリティソフトを定期的に更新するべきです。</li>
-</ul>
-<h4 id="結論" class="article-heading">結論<a class="article-anchor" href="#結論" aria-hidden="true"></a></h4><p>WebTorrent技術に基づく新機能「リンクで共有」は、ユーザーに強力で効率的、安全なファイル共有ソリューションを提供します。この新しいツールを活用することをお勧めしますが、上記のリスクを考慮に入れて、私たちのサービスの安全かつ適法な使用を確保してください。</p>
-<h4 id="サポート" class="article-heading">サポート<a class="article-anchor" href="#サポート" aria-hidden="true"></a></h4><p>WebTorrent技術やファイル共有機能について質問がある場合は、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://discord.gg/f9nzbmpMtU" class="doc-link">Discord</a>または<a target="_blank" rel="noopener external nofollow noreferrer" href="https://community.zimaspace.com/" class="doc-link">IceWhale Community</a>で私たちのチームにサポートを依頼してください。</p>
 
     </div>
 
     <footer class="article-footer">
-      <time class="article-footer-updated" datetime="2026-11-11T03:54:28.418Z" itemprop="dateModified">最終更新日: 2026-11-11</time>
+      <time class="article-footer-updated" datetime="2026-11-23T10:57:46.915Z" itemprop="dateModified">最終更新日: 2026-11-23</time>
       <nav class="doc-pagenav"><a class="doc-pagenav__item doc-pagenav__item--prev" href="/docs/jp/zimaos/smb-troubleshooting"><span class="doc-pagenav__label"><span class="doc-pagenav__arrow" aria-hidden="true"></span>前へ</span><span class="doc-pagenav__title">SMB ファイル共有</span></a><a class="doc-pagenav__item doc-pagenav__item--next" href="/docs/jp/zimaos/samba-member-setup"><span class="doc-pagenav__label">次へ<span class="doc-pagenav__arrow" aria-hidden="true"></span></span><span class="doc-pagenav__title">Samba マルチユーザー設定</span></a></nav>
     </footer>
   </main>
 
   <aside class="doc-toc" role="navigation" aria-label="目次">
     <nav class="doc-toc__inner">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8C%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%A7%E5%85%B1%E6%9C%89%E3%80%8D%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF"><span class="toc-text">「リンクで共有」の仕組み</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B5%90%E8%AB%96"><span class="toc-text">結論</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"><span class="toc-text">サポート</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B%E5%86%85%E5%AE%B9%E3%81%AB%E5%90%88%E3%81%A3%E3%81%9F%E6%96%B9%E6%B3%95%E3%82%92%E9%81%B8%E3%81%B6"><span class="toc-text">共有する内容に合った方法を選ぶ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Files-%E3%81%A7%E8%B3%87%E6%96%99%E3%82%92%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B"><span class="toc-text">Files で資料を共有する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"><span class="toc-text">リンクを作成する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%89%8B%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%E7%94%BB%E9%9D%A2"><span class="toc-text">相手に表示される画面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Photos-%E3%81%A7%E5%86%99%E7%9C%9F%E3%82%92%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B"><span class="toc-text">Photos で写真を共有する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%B8%E6%8A%9E%E3%81%97%E3%81%9F%E5%86%99%E7%9C%9F%E3%80%81%E3%81%BE%E3%81%9F%E3%81%AF%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0%E5%85%A8%E4%BD%93%E3%82%92%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B"><span class="toc-text">選択した写真、またはアルバム全体を共有する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%89%8B%E3%81%8C%E3%81%9D%E3%81%AE%E3%81%BE%E3%81%BE%E5%86%99%E7%9C%9F%E3%82%92%E6%A5%BD%E3%81%97%E3%82%81%E3%82%8B"><span class="toc-text">相手がそのまま写真を楽しめる</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E6%9C%89%E3%82%92%E8%87%AA%E5%88%86%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B"><span class="toc-text">共有を自分で管理する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%81%A8%E6%9C%89%E5%8A%B9%E6%9C%9F%E9%99%90"><span class="toc-text">パスワードと有効期限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%BA%E8%AA%8D%E3%83%BB%E5%A4%89%E6%9B%B4%E3%83%BB%E5%81%9C%E6%AD%A2"><span class="toc-text">確認・変更・停止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E3%81%AA%E5%A0%B4%E5%90%88%E3%81%A0%E3%81%91%E8%A8%AA%E5%95%8F%E5%B1%A5%E6%AD%B4%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B"><span class="toc-text">必要な場合だけ訪問履歴を有効にする</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%AA%E3%83%B3%E3%82%AF%E3%81%8C%E9%96%8B%E3%81%91%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88"><span class="toc-text">リンクが開けない場合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%95%E3%82%89%E3%81%AB%E8%A9%B3%E3%81%97%E3%81%8F%EF%BC%9A%E5%8F%AF%E7%94%A8%E6%80%A7%E3%83%BB%E6%80%A7%E8%83%BD%E3%83%BB%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC"><span class="toc-text">さらに詳しく：可用性・性能・プライバシー</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%8C%E7%9B%B8%E6%89%8B%E3%81%AB%E5%B1%8A%E3%81%8F%E3%81%BE%E3%81%A7"><span class="toc-text">ファイルが相手に届くまで</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%94%A8%E6%80%A7%EF%BC%9A%E6%8E%A5%E7%B6%9A%E6%96%B9%E6%B3%95%E3%82%92%E4%B8%80%E3%81%A4%E3%81%AB%E9%99%90%E5%AE%9A%E3%81%97%E3%81%AA%E3%81%84"><span class="toc-text">可用性：接続方法を一つに限定しない</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%EF%BC%9A%E3%81%BE%E3%81%9A%E5%86%85%E5%AE%B9%E3%82%92%E8%A6%8B%E3%81%9B%E3%80%81%E5%BF%85%E8%A6%81%E3%81%AA%E5%88%86%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B"><span class="toc-text">性能：まず内容を見せ、必要な分を取得する</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%EF%BC%9A%E5%86%85%E5%AE%B9%E3%82%92%E4%BF%9D%E8%AD%B7%E3%81%97%E3%80%81%E7%AF%84%E5%9B%B2%E3%82%92%E6%98%8E%E7%A2%BA%E3%81%AB%E3%81%99%E3%82%8B"><span class="toc-text">プライバシー：内容を保護し、範囲を明確にする</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%BB%A4%E9%81%B5%E5%AE%88%E3%81%A8%E5%85%8D%E8%B2%AC%E4%BA%8B%E9%A0%85"><span class="toc-text">法令遵守と免責事項</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E6%83%85%E5%A0%B1"><span class="toc-text">関連情報</span></a></li></ol>
     </nav>
   </aside>
 </div>
